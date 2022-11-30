@@ -1,0 +1,5 @@
+Start15:21
+insert into tblBoardRateDetail(InvID,ItemID,BatchUnique,MRP,Srate1,Srate2,Srate3,Srate4,Srate5)values(9,3,'1003',100,90,,,,)
+Incorrect syntax near ','.
+
+End

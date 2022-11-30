@@ -1,0 +1,14 @@
+10-Nov-2022 18:44:48
+EventTarget:dgvItems_CellEndEdit
+Input string was not in a correct format.
+
+mscorlib
+User Name: Administrator
+------------------------------------------------------------------------------
+10-Nov-2022 18:57:39
+EventTarget:dgvItems_CellEndEdit
+Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------

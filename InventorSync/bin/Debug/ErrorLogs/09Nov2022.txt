@@ -1,0 +1,108 @@
+Start17:21
+BACKUP DATABASE [System.Data.DataRowView] TO  DISK = N'C:\DIGIDATA\Data\System.Data.DataRowView.BAK' WITH NOFORMAT, INIT,  NAME = N'System.Data.DataRowView-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 30
+Database 'System.Data.DataRowView' does not exist. Make sure that the name is entered correctly.
+BACKUP DATABASE is terminating abnormally.
+
+EndStart17:25
+ CREATE DATABASE ABCD ON ( NAME = ABCD_dat,FILENAME = 'C:\DIGIDATA\ABCD.mdf',SIZE = 10,MAXSIZE = UNLIMITED,FILEGROWTH = 5 )  LOG ON ( NAME = ABCD_log,   FILENAME = 'C:\DIGIDATA\ABCD.ldf',     SIZE = 5MB,     MAXSIZE = UNLIMITED,    FILEGROWTH = 5MB ) 
+Database 'ABCD' already exists. Choose a different database name.
+
+EndStart17:28
+BACKUP DATABASE [System.Data.DataRowView] TO  DISK = N'C:\DIGIDATA\Data\System.Data.DataRowView.BAK' WITH NOFORMAT, INIT,  NAME = N'System.Data.DataRowView-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 30
+Database 'System.Data.DataRowView' does not exist. Make sure that the name is entered correctly.
+BACKUP DATABASE is terminating abnormally.
+
+EndStart17:28
+ Restore filelistonly FROM         disk = 'C:\DIGIDATA\Data\System.Data.DataRowView.BAK'
+Cannot open backup device 'C:\DIGIDATA\Data\System.Data.DataRowView.BAK'. Operating system error 3(The system cannot find the path specified.).
+RESTORE FILELIST is terminating abnormally.
+
+EndStart17:28
+ RESTORE DATABASE [ABCD1] FROM  DISK = N'C:\DIGIDATA\Data\System.Data.DataRowView.BAK' WITH  FILE = 1,  MOVE N'' TO N'C:\DIGIDATA\DESKTOP-THO19HQDIGIPOSABCD1_DAT.mdf', MOVE N'' TO N'C:\DIGIDATA\DESKTOP-THO19HQDIGIPOSABCD1_LOG.ldf',  NOUNLOAD,  REPLACE,  STATS = 10
+Cannot open backup device 'C:\DIGIDATA\Data\System.Data.DataRowView.BAK'. Operating system error 3(The system cannot find the path specified.).
+RESTORE DATABASE is terminating abnormally.
+
+EndStart17:28
+ ALTER DATABASE [ABCD1] MODIFY FILE (NAME=N'', NEWNAME=N'ABCD1_DAT')  
+An object or column name is missing or empty. For SELECT INTO statements, verify each column has a name. For other statements, look for empty alias names. Aliases defined as "" or [] are not allowed. Change the alias to a valid name.
+
+EndStart17:28
+ ALTER DATABASE [ABCD1] MODIFY FILE (NAME=N'', NEWNAME=N'ABCD1_Log') 
+An object or column name is missing or empty. For SELECT INTO statements, verify each column has a name. For other statements, look for empty alias names. Aliases defined as "" or [] are not allowed. Change the alias to a valid name.
+
+EndStart17:28
+Select Password From tblUsers Where username='admin' and companyid=System.Data.DataRowView
+Invalid object name 'tblUsers'.
+
+EndStart17:29
+BACKUP DATABASE [System.Data.DataRowView] TO  DISK = N'C:\DIGIDATA\Data\System.Data.DataRowView.BAK' WITH NOFORMAT, INIT,  NAME = N'System.Data.DataRowView-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 30
+Database 'System.Data.DataRowView' does not exist. Make sure that the name is entered correctly.
+BACKUP DATABASE is terminating abnormally.
+
+EndStart17:29
+ Restore filelistonly FROM         disk = 'C:\DIGIDATA\Data\System.Data.DataRowView.BAK'
+Cannot open backup device 'C:\DIGIDATA\Data\System.Data.DataRowView.BAK'. Operating system error 3(The system cannot find the path specified.).
+RESTORE FILELIST is terminating abnormally.
+
+EndStart17:29
+ RESTORE DATABASE [ABCD11] FROM  DISK = N'C:\DIGIDATA\Data\System.Data.DataRowView.BAK' WITH  FILE = 1,  MOVE N'' TO N'C:\DIGIDATA\DESKTOP-THO19HQDIGIPOSABCD11_DAT.mdf', MOVE N'' TO N'C:\DIGIDATA\DESKTOP-THO19HQDIGIPOSABCD11_LOG.ldf',  NOUNLOAD,  REPLACE,  STATS = 10
+Cannot open backup device 'C:\DIGIDATA\Data\System.Data.DataRowView.BAK'. Operating system error 3(The system cannot find the path specified.).
+RESTORE DATABASE is terminating abnormally.
+
+EndStart17:29
+ ALTER DATABASE [ABCD11] MODIFY FILE (NAME=N'', NEWNAME=N'ABCD11_DAT')  
+An object or column name is missing or empty. For SELECT INTO statements, verify each column has a name. For other statements, look for empty alias names. Aliases defined as "" or [] are not allowed. Change the alias to a valid name.
+
+EndStart17:29
+ ALTER DATABASE [ABCD11] MODIFY FILE (NAME=N'', NEWNAME=N'ABCD11_Log') 
+An object or column name is missing or empty. For SELECT INTO statements, verify each column has a name. For other statements, look for empty alias names. Aliases defined as "" or [] are not allowed. Change the alias to a valid name.
+
+EndStart17:29
+Select Password From tblUsers Where username='admin' and companyid=System.Data.DataRowView
+Invalid object name 'tblUsers'.
+
+EndStart17:36
+BACKUP DATABASE [DigiposDemo] TO  DISK = N'C:\DIGIDATA\Data\DigiposDemo.BAK' WITH NOFORMAT, INIT,  NAME = N'DigiposDemo-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 30
+Cannot open backup device 'C:\DIGIDATA\Data\DigiposDemo.BAK'. Operating system error 3(The system cannot find the path specified.).
+BACKUP DATABASE is terminating abnormally.
+
+EndStart17:37
+ Restore filelistonly FROM         disk = 'C:\DIGIDATA\Data\DigiposDemo.BAK'
+Cannot open backup device 'C:\DIGIDATA\Data\DigiposDemo.BAK'. Operating system error 3(The system cannot find the path specified.).
+RESTORE FILELIST is terminating abnormally.
+
+EndStart17:37
+ RESTORE DATABASE [abcd12] FROM  DISK = N'C:\DIGIDATA\Data\DigiposDemo.BAK' WITH  FILE = 1,  MOVE N'' TO N'C:\DIGIDATA\DESKTOP-THO19HQDIGIPOSabcd12_DAT.mdf', MOVE N'' TO N'C:\DIGIDATA\DESKTOP-THO19HQDIGIPOSabcd12_LOG.ldf',  NOUNLOAD,  REPLACE,  STATS = 10
+Cannot open backup device 'C:\DIGIDATA\Data\DigiposDemo.BAK'. Operating system error 3(The system cannot find the path specified.).
+RESTORE DATABASE is terminating abnormally.
+
+EndStart17:37
+ ALTER DATABASE [abcd12] MODIFY FILE (NAME=N'', NEWNAME=N'abcd12_DAT')  
+An object or column name is missing or empty. For SELECT INTO statements, verify each column has a name. For other statements, look for empty alias names. Aliases defined as "" or [] are not allowed. Change the alias to a valid name.
+
+EndStart17:37
+ ALTER DATABASE [abcd12] MODIFY FILE (NAME=N'', NEWNAME=N'abcd12_Log') 
+An object or column name is missing or empty. For SELECT INTO statements, verify each column has a name. For other statements, look for empty alias names. Aliases defined as "" or [] are not allowed. Change the alias to a valid name.
+
+EndStart17:39
+BACKUP DATABASE [DigiposDemo] TO  DISK = N'C:\DIGIDATA\Data\DigiposDemo.BAK' WITH NOFORMAT, INIT,  NAME = N'DigiposDemo-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 30
+Cannot open backup device 'C:\DIGIDATA\Data\DigiposDemo.BAK'. Operating system error 3(The system cannot find the path specified.).
+BACKUP DATABASE is terminating abnormally.
+
+EndStart17:40
+Select Password From tblUsers Where username='admin' and companyid=System.Data.DataRowView
+Invalid object name 'tblUsers'.
+
+EndStart17:43
+Select Password From startup.dbo.tblUsers Where username='admin' and companyid=System.Data.DataRowView
+The multi-part identifier "System.Data.DataRowView" could not be bound.
+
+EndStart17:46
+Select Password From startup.dbo.tblUsers, startup.dbo.tblCompany Where startup.dbo.tblUsers.CompanyID=startup.dbo.tblCompany.CompanyID and username='admin' and companycode=DigiposDemo
+Invalid column name 'DigiposDemo'.
+
+EndStart18:34
+update abc23.dbo.tblUserMaster set pwd='admin23' where username='admin')
+Incorrect syntax near ')'.
+
+End

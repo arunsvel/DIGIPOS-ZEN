@@ -1,0 +1,18 @@
+Start13:23
+OpenConnection
+Flow moved to OpenConnection 
+
+EndStart13:25
+OpenConnection
+Flow moved to OpenConnection 
+
+EndStart13:26
+BACKUP DATABASE [DigiposModel] TO  DISK = N'C:\DCSData\Data\DigiposModel.BAK' WITH NOFORMAT, INIT,  NAME = N'DigiposModel-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 30
+Cannot open backup device 'C:\DCSData\Data\DigiposModel.BAK'. Operating system error 3(The system cannot find the path specified.).
+BACKUP DATABASE is terminating abnormally.
+
+EndStart13:32
+Select max(CompanyID) + 1 as newCompID from dcsstartup.dbo.tblCompany 
+Invalid object name 'dcsstartup.dbo.tblCompany'.
+
+End

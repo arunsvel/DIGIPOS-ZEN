@@ -1,0 +1,49 @@
+15-Nov-2022 17:10:04
+EventTarget:dgvItems_CellEndEdit
+Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+15-Nov-2022 17:12:11
+EventTarget:dgvItems_CellEndEdit
+Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+15-Nov-2022 17:18:37
+EventTarget:dgvItems_CellEndEdit
+Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+15-Nov-2022 17:29:43
+EventTarget:dgvItems_CellEndEdit
+Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+15-Nov-2022 17:31:02
+EventTarget:dgvItems_CellEndEdit
+Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+15-Nov-2022 17:31:53
+EventTarget:dgvItems_CellEndEdit
+Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+15-Nov-2022 17:32:27
+EventTarget:dgvItems_CellEndEdit
+Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------

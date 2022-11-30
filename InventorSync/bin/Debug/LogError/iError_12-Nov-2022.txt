@@ -1,0 +1,35 @@
+12-Nov-2022 18:04:17
+EventTarget:RepackingMasterCRUD
+Could not find stored procedure 'UspRepackingInsert'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+12-Nov-2022 18:10:25
+EventTarget:RepackingMasterCRUD
+Could not find stored procedure 'UspRepackingInsert'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+12-Nov-2022 18:10:56
+EventTarget:RepackingMasterCRUD
+Could not find stored procedure 'UspRepackingInsert'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+12-Nov-2022 18:11:48
+EventTarget:RepackingMasterCRUD
+Could not find stored procedure 'UspRepackingInsert'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+12-Nov-2022 18:13:48
+EventTarget:RepackingMasterCRUD
+Could not find stored procedure 'UspRepackingInsert'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------

@@ -1,0 +1,25 @@
+Start12:05
+Update  tblWMDetails set BlnSkipHeader=0,  SqlQuery = 'SELECT TOP (1000) [ItemID] ,[ItemCode] ,[ItemName] ,[BatchUnique] ,[PLUNumber] ,[MRP] ,[SRATE1] ,[SRATE2] ,[SRATE3] ,[SRATE4] ,[SRATE5] ,[Unit] ,[QOH]   FROM  [vwBoardRatePLU] ',CSVPath ='',ExportFileType='' ,ExportFileFormat=''  where ModelName ='DEFAULTMACHINE'
+Invalid object name 'tblWMDetails'.
+
+EndStart12:05
+Insert into tblWMDetails (ModelName,SqlQuery,CSVPath,ExportFileType,ExportFileFormat,BlnSkipHeader) values ('DEFAULTMACHINE', 'SELECT TOP (1000) [ItemID] ,[ItemCode] ,[ItemName] ,[BatchUnique] ,[PLUNumber] ,[MRP] ,[SRATE1] ,[SRATE2] ,[SRATE3] ,[SRATE4] ,[SRATE5] ,[Unit] ,[QOH]   FROM  [vwBoardRatePLU] ','','','',0) 
+Invalid object name 'tblWMDetails'.
+
+EndStart12:05
+Select ID as Field1 from tblWMDetails  Where ModelName = 'DEFAULTMACHINE'
+Invalid object name 'tblWMDetails'.
+
+EndStart12:05
+insert into tblBoardRateMaster(InvID,InvNo,InvDate,InvTime,CCID,MachineModel,VchTypeID,MachineModelID,DisplayRate)values(1,1,'08-Nov-2022','12:05:55',1,'DEFAULTMACHINE',40, 0,)
+Incorrect syntax near ')'.
+
+EndStart12:36
+insert into tblBoardRateMaster(InvID,InvNo,InvDate,InvTime,CCID,MachineModel,VchTypeID,MachineModelID,DisplayRate)values(1,1,'08-Nov-2022','12:36:41',1,'DEFAULTMACHINE',40, 1,)
+Incorrect syntax near ')'.
+
+EndStart12:38
+insert into tblBoardRateMaster(InvID,InvNo,InvDate,InvTime,CCID,MachineModel,VchTypeID,MachineModelID,DisplayRate)values(1,1,'08-Nov-2022','12:38:32',1,'DEFAULTMACHINE',40, 1,)
+Incorrect syntax near ')'.
+
+End
