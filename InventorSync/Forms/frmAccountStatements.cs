@@ -468,11 +468,11 @@ namespace InventorSync
                         PrevVchtypeID = Comm.ToInt32(Rs.fields("VchtypeID"));
                         PrevRefID = Comm.ToInt32(Rs.fields("refID"));
 
-                        SubTotalDebit = SubTotalDebit + Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
-                        SubTotalCredit = SubTotalCredit + Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
+                        SubTotalDebit = SubTotalDebit + Comm.ToDouble(Rs.fields("AmountC")); // Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
+                        SubTotalCredit = SubTotalCredit + Comm.ToDouble(Rs.fields("AmountD")); // Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
 
-                        AmountD = AmountD + Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
-                        AmountC = AmountC + Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
+                        AmountD = AmountD + Comm.ToDouble(Rs.fields("AmountC")); // Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
+                        AmountC = AmountC + Comm.ToDouble(Rs.fields("AmountD")); // Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
                         dgvDetails["Balance", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD - AmountC, true) + Interaction.IIf(Comm.ToDouble(AmountD - AmountC) > 0, " Dr", " Cr");
                     }
                     Rs.MoveNext();
