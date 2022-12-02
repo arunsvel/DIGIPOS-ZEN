@@ -1553,7 +1553,7 @@ namespace InventorSync
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.77519F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.22481F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 508F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 510F));
             this.tableLayoutPanel4.Controls.Add(this.label31, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 84);
@@ -2481,7 +2481,7 @@ namespace InventorSync
             this.tblpCashDicper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblpCashDicper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblpCashDicper.Size = new System.Drawing.Size(131, 53);
-            this.tblpCashDicper.TabIndex = 23;
+            this.tblpCashDicper.TabIndex = 21;
             // 
             // txtcashDisper
             // 
@@ -2509,7 +2509,7 @@ namespace InventorSync
             this.lblCashDicperc.Location = new System.Drawing.Point(3, 0);
             this.lblCashDicperc.Name = "lblCashDicperc";
             this.lblCashDicperc.Size = new System.Drawing.Size(125, 20);
-            this.lblCashDicperc.TabIndex = 4;
+            this.lblCashDicperc.TabIndex = 21;
             this.lblCashDicperc.Text = "Cash Dis%:";
             this.lblCashDicperc.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
@@ -2526,7 +2526,7 @@ namespace InventorSync
             this.tblpCashDisc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblpCashDisc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblpCashDisc.Size = new System.Drawing.Size(131, 53);
-            this.tblpCashDisc.TabIndex = 20;
+            this.tblpCashDisc.TabIndex = 24;
             // 
             // txtCashDisc
             // 

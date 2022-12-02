@@ -89,6 +89,8 @@ namespace InventorSync
             int t = form.ClientSize.Height - 80; 
             this.SetBounds(5, 0, l, t);
 
+            panel1.Visible = false;
+
             AddColumnsToGrid(dgvDetails);
             ClearControls();
         }
@@ -186,7 +188,7 @@ namespace InventorSync
                 if (strCCIDsql != "")
                     StrCCSQL1 = strCCIDsql.Replace("and", "") + " AND ";
 
-                rs.Open("Select Sum(AmountD)-Sum(AmountC) as Balance from tblVoucher where " + StrCCSQL1 + " Optional=0  " + strVchtypeID + " and DrLid=" + LedgerID + StrSqlDate);
+                rs.Open("Select Sum(AmountD)-Sum(AmountC) as Balance from tblVoucher where " + StrCCSQL1 + " Optional=0  " + strVchtypeID + " and LedgerID=" + LedgerID + StrSqlDate);
 
                 if (!rs.eof())
                 {
@@ -333,16 +335,17 @@ namespace InventorSync
             double SubBalance = 0;
 
             if (tgsDetailed.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active)
-                Rs.Open("SELECT        TOP (100) PERCENT dbo.tblledger.laliasname as AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC, dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblledger.AccountGroupID as CheckID,dbo.tblledger.lid as AccountGroupID  FROM            dbo.tblledger inner join dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.crLID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE tblvoucher.optional=0 and   (dbo.tblVoucher.DrLID = 3 AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "')  " + strCCIDsql + " and tblVoucher.vchtypeid not in(1005)  GROUP BY dbo.tblledger.lid, dbo.tblledger.laliasname, dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration ,dbo.tblledger.AccountGroupID  " + " Union " + " SELECT        TOP (100) PERCENT dbo.tblledger.laliasname as AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC,  dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblledger.AccountGroupID as CheckID,dbo.tblledger.lid as AccountGroupID  FROM            dbo.tblledger INNER JOIN dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.crLID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE    tblvoucher.optional=0 and    (dbo.tblVoucher.DrLID <> 3) " + StrCCSQL1 + " AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "' and tblVoucher.vchtypeid not in(1005) GROUP BY dbo.tblledger.lid, dbo.tblledger.laliasname, dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration ,dbo.tblledger.AccountGroupID  " + " ORDER BY dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo,dbo.tblVoucher.mynarration ");
+                Rs.Open("SELECT        TOP (100) PERCENT dbo.tblledger.laliasname as AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC, dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblledger.AccountGroupID as CheckID,dbo.tblledger.lid as AccountGroupID  FROM            dbo.tblledger inner join dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.LedgerID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE tblledger.lid <> 0 and tblvoucher.optional=0 and   (dbo.tblVoucher.LedgerID = 3 AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "')  " + strCCIDsql + " and tblVoucher.vchtypeid not in(1005)  GROUP BY dbo.tblledger.lid, dbo.tblledger.laliasname, dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration ,dbo.tblledger.AccountGroupID  having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " Union " + " SELECT        TOP (100) PERCENT dbo.tblledger.laliasname as AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC,  dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblledger.AccountGroupID as CheckID,dbo.tblledger.lid as AccountGroupID  FROM            dbo.tblledger INNER JOIN dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.LedgerID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE    tblledger.lid <> 0 and tblvoucher.optional=0 and    (dbo.tblVoucher.LedgerID <> 3) " + StrCCSQL1 + " AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "' and tblVoucher.vchtypeid not in(1005) GROUP BY dbo.tblledger.lid, dbo.tblledger.laliasname, dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration ,dbo.tblledger.AccountGroupID  having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " ORDER BY dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.vchtypeid, dbo.tblVoucher.VchNo, dbo.tblVoucher.mynarration, AmountD ");
             else
-                Rs.Open("SELECT        TOP (100) PERCENT dbo.tblAccountGroup.AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC, dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblAccountGroup.AccountGroupID as CheckID,dbo.tblAccountGroup.AccountGroupID  FROM            dbo.tblAccountGroup INNER JOIN dbo.tblLedger ON dbo.tblAccountGroup.AccountGroupID = dbo.tblLedger.AccountGroupID INNER JOIN  dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.crLID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE tblvoucher.optional=0 and   (dbo.tblVoucher.DrLID = 3 AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "')  " + StrCCSQL1 + " and tblVoucher.vchtypeid not in(1005)  GROUP BY dbo.tblAccountGroup.AccountGroup, dbo.tblAccountGroup.AccountGroupID, dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration  " + " Union " + " SELECT        TOP (100) PERCENT dbo.tblAccountGroup.AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC,  dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblAccountGroup.AccountGroupID as CheckID,dbo.tblAccountGroup.AccountGroupID  FROM            dbo.tblAccountGroup INNER JOIN dbo.tblLedger ON dbo.tblAccountGroup.AccountGroupID = dbo.tblLedger.AccountGroupID INNER JOIN dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.crLID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE    tblvoucher.optional=0 and    (dbo.tblVoucher.DrLID <> 3) " + StrCCSQL1 + " AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "' and tblVoucher.vchtypeid not in(1005) GROUP BY dbo.tblAccountGroup.AccountGroup, dbo.tblAccountGroup.AccountGroupID,dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration " + " ORDER BY dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo,dbo.tblVoucher.mynarration ");
+                Rs.Open("SELECT        TOP (100) PERCENT dbo.tblAccountGroup.AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC, dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblAccountGroup.AccountGroupID as CheckID,dbo.tblAccountGroup.AccountGroupID  FROM            dbo.tblAccountGroup INNER JOIN dbo.tblLedger ON dbo.tblAccountGroup.AccountGroupID = dbo.tblLedger.AccountGroupID and tblLedger.LID <> 0 INNER JOIN  dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.LedgerID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE tblvoucher.optional=0 and   (dbo.tblVoucher.LedgerID = 3 AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "')  " + StrCCSQL1 + " and tblVoucher.vchtypeid not in(1005)  GROUP BY dbo.tblAccountGroup.AccountGroup, dbo.tblAccountGroup.AccountGroupID, dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration  having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " Union " + " SELECT        TOP (100) PERCENT dbo.tblAccountGroup.AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC,  dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblAccountGroup.AccountGroupID as CheckID,dbo.tblAccountGroup.AccountGroupID  FROM            dbo.tblAccountGroup INNER JOIN dbo.tblLedger ON dbo.tblAccountGroup.AccountGroupID = dbo.tblLedger.AccountGroupID and tblLedger.LID <> 0 INNER JOIN dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.LedgerID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE    tblvoucher.optional=0 and    (dbo.tblVoucher.LedgerID <> 3) " + StrCCSQL1 + " AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "' and tblVoucher.vchtypeid not in(1005) GROUP BY dbo.tblAccountGroup.AccountGroup, dbo.tblAccountGroup.AccountGroupID, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.mynarration having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " ORDER BY dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo,dbo.tblVoucher.mynarration, AmountD ");
+
             Font MySubTotalFont = new Font("Segoe UI", 10, FontStyle.Bold);
             double DebitVal = 0;
             double CreditVal = 0;
             {
                 var withBlock = dgvDetails;
                 dgvDetails.Rows.Add("");
-                dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = dtpfrom.Value.ToString("dd/MMM/YYYY");
+                dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = dtpfrom.Value.ToString("dd/MMM/yyyy");
                 dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = "Opening Balance Of Cash";
 
                 if (CashBalance > 0)
@@ -367,6 +370,15 @@ namespace InventorSync
                 DateTime PrevDate = dtpfrom.Value; //.ToString("dd/MMM/YYYY");
                 SubTotalCredit = 0;
                 SubTotalDebit = 0;
+
+                int PrevVchtypeID = 0;
+                int PrevRefID = 0;
+
+                double VchAmountC = 0;
+                double VchAmountD = 0;
+
+                string AccountGroup = "";
+
                 while (!Rs.eof())
                 {
                     if (Comm.ToDouble(Rs.fields("checkid")) != 17)
@@ -374,6 +386,7 @@ namespace InventorSync
                         if (PrevDate != Convert.ToDateTime(Rs.fields("VchDate")))
                         {
                             PrevDate = Convert.ToDateTime(Rs.fields("VchDate"));
+
                             dgvDetails.Rows.Add("");
                             dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = SubTotalDebit;
                             dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = SubTotalCredit;
@@ -400,17 +413,60 @@ namespace InventorSync
                                 dgvDetails["Balance", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD - AmountC, true) + Interaction.IIf(Comm.ToDouble(AmountD - AmountC) > 0, " Dr", " Cr");
                             }
                         }
-                        dgvDetails.Rows.Add("");
+
+                        if (tgsDetailed.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive)
+                        {
+                            if (PrevVchtypeID != 0 && PrevRefID != 0)
+                            {
+                                if (PrevVchtypeID != Comm.ToInt32(Rs.fields("VchtypeID")) || PrevRefID != Comm.ToInt32(Rs.fields("refID")))
+                                {
+                                    VchAmountC = 0;
+                                    VchAmountD = 0;
+                                    AccountGroup = "";
+
+                                    dgvDetails.Rows.Add("");
+                                }
+                                else if ((PrevVchtypeID == Comm.ToInt32(Rs.fields("VchtypeID")) && PrevRefID == Comm.ToInt32(Rs.fields("refID")))
+                                         && (VchAmountC > 0 && Comm.ToInt32(Rs.fields("AmountD")) > 0))
+                                {
+                                    VchAmountC = 0;
+                                    VchAmountD = 0;
+                                    AccountGroup = "";
+
+                                    dgvDetails.Rows.Add("");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            VchAmountC = 0;
+                            VchAmountD = 0;
+                            AccountGroup = "";
+
+                            dgvDetails.Rows.Add("");
+                        }
+
+                        VchAmountC += Comm.ToDouble(Rs.fields("AmountC"));
+                        VchAmountD += Comm.ToDouble(Rs.fields("AmountD"));
+
+                        if (AccountGroup != "") 
+                            AccountGroup += ",";
+                        
+                        AccountGroup += Rs.fields("AccountGroup");
+
                         dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = Convert.ToDateTime(Rs.fields("VchDate")).ToString("dd/MMM/yyyy");
-                        dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = Rs.fields("AccountGroup");
+                        dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = AccountGroup;
                         dgvDetails["Vchtype", dgvDetails.Rows.Count - 1].Value = Rs.fields("Vchtype");
                         dgvDetails["VchNo", dgvDetails.Rows.Count - 1].Value = Rs.fields("Vchno");
                         dgvDetails["Narration", dgvDetails.Rows.Count - 1].Value = Rs.fields("mynarration");
-                        dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(Rs.fields("AmountD")), true);
-                        dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(Rs.fields("AmountC")), true);
+                        dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(VchAmountC, true);
+                        dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(VchAmountD, true);
                         dgvDetails["DrillDownID", dgvDetails.Rows.Count - 1].Value = Rs.fields("refID");
                         dgvDetails["DrillDownType", dgvDetails.Rows.Count - 1].Value = Rs.fields("vchtypeID");
                         dgvDetails["Nature", dgvDetails.Rows.Count - 1].Value = "Opentrans";
+
+                        PrevVchtypeID = Comm.ToInt32(Rs.fields("VchtypeID"));
+                        PrevRefID = Comm.ToInt32(Rs.fields("refID"));
 
                         SubTotalDebit = SubTotalDebit + Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
                         SubTotalCredit = SubTotalCredit + Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
@@ -421,6 +477,23 @@ namespace InventorSync
                     }
                     Rs.MoveNext();
                 }
+
+                //if (tgsDetailed.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive)
+                //{
+                //    if (VchAmountC != 0 || VchAmountD != 0)
+                //    {
+                //        dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = Convert.ToDateTime(Rs.fields("VchDate")).ToString("dd/MMM/yyyy");
+                //        dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = AccountGroup;
+                //        dgvDetails["Vchtype", dgvDetails.Rows.Count - 1].Value = Rs.fields("Vchtype");
+                //        dgvDetails["VchNo", dgvDetails.Rows.Count - 1].Value = Rs.fields("Vchno");
+                //        dgvDetails["Narration", dgvDetails.Rows.Count - 1].Value = Rs.fields("mynarration");
+                //        dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(VchAmountD, true);
+                //        dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(VchAmountC, true);
+                //        dgvDetails["DrillDownID", dgvDetails.Rows.Count - 1].Value = Rs.fields("refID");
+                //        dgvDetails["DrillDownType", dgvDetails.Rows.Count - 1].Value = Rs.fields("vchtypeID");
+                //        dgvDetails["Nature", dgvDetails.Rows.Count - 1].Value = "Opentrans";
+                //    }
+                //}
             }
 
             dgvDetails.Rows.Add("");
@@ -450,7 +523,7 @@ namespace InventorSync
                 dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(AmountD - AmountC), true);
             else
                 dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Math.Abs(Comm.ToDouble(AmountD - AmountC)), true);
-            dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = "Closing cash Balance";
+            dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = "Daybook Balance";
 
             dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
             dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;

@@ -65,6 +65,8 @@ namespace InventorSync.InventorBL.Transaction
                     SpParam.Value = clsSale.clsJsonPMInfo_.Cancelled;
                     SpParam = sqlCmd.Parameters.Add("@OtherExpense", SqlDbType.Decimal);
                     SpParam.Value = clsSale.clsJsonPMInfo_.OtherExpense;
+                    SpParam = sqlCmd.Parameters.Add("@Coolie", SqlDbType.Decimal);
+                    SpParam.Value = clsSale.clsJsonPMInfo_.CoolieTotal;
                     SpParam = sqlCmd.Parameters.Add("@SalesManID", SqlDbType.Decimal);
                     SpParam.Value = clsSale.clsJsonPMEmployeeInfo_.EmpID;
                     SpParam = sqlCmd.Parameters.Add("@Taxable", SqlDbType.Decimal);

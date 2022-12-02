@@ -4566,6 +4566,7 @@ namespace InventorSync
             txtTaxAmt.Text = Comm.chkChangeValuetoZero(Convert.ToString(clsSales.clsJsonPMInfo_.TaxAmt));
 
             txtOtherExp.Text = Comm.chkChangeValuetoZero(Convert.ToString(clsSales.clsJsonPMInfo_.OtherExpense));
+            txtCoolie.Text = Comm.chkChangeValuetoZero(Convert.ToString(clsSales.clsJsonPMInfo_.CoolieTotal));
             txtNetAmt.Text = Comm.chkChangeValuetoZero(Convert.ToString(clsSales.clsJsonPMInfo_.NetAmount));
             txtCashDisc.Text = Comm.chkChangeValuetoZero(Convert.ToString(clsSales.clsJsonPMInfo_.CashDiscount));
             txtRoundOff.Text = Comm.chkChangeValuetoZero(Convert.ToString(clsSales.clsJsonPMInfo_.RoundOff));
@@ -4928,7 +4929,7 @@ namespace InventorSync
                             }
                         }
 
-                        decimal[,] AccountDetails = new decimal[100, 8];
+                        decimal[,] AccountDetails = new decimal[100, 9]; //last column is to update posting succes or not
 
                         //To ease the condition inside the next loop
                         for (int j = 0; j < 100; j++)
@@ -5034,12 +5035,28 @@ namespace InventorSync
                             }
                             if (cboPayment.SelectedIndex == 2)
                             {
-                                VoucherInsertSalesEntry(AccountDetails);
-                                
-                                //Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 1, 0, 1, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(lblBillAmount.Text.ToString()), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
-                                foreach (clsCashDeskDetail cd in RetCashDesk.PaymentDetails)
+                                if (clsVchTypeFeatures.BLNPOSTCASHENTRY == true)
                                 {
-                                    Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(cd.LedgerID.ToString()), Convert.ToDecimal(cd.LedgerID.ToString()), 0, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), Convert.ToDouble(cd.Amount.ToString()), 0, Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                    VoucherInsertSalesEntry(AccountDetails);
+
+                                    Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(lblLID.Text.ToString()), Convert.ToDecimal(lblLID.Text.ToString()), 0, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), Convert.ToDouble(lblBillAmount.Text.ToString()), 0, Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                    
+                                    
+                                    foreach (clsCashDeskDetail cd in RetCashDesk.PaymentDetails)
+                                    {
+                                        Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(lblLID.Text.ToString()), 0, Convert.ToDecimal(lblLID.Text.ToString()), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(lblBillAmount.Text.ToString()), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                        Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(cd.LedgerID.ToString()), Convert.ToDecimal(cd.LedgerID.ToString()), 0, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), Convert.ToDouble(cd.Amount.ToString()), 0, Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                    }
+                                }
+                                else
+                                {
+                                    VoucherInsertSalesEntry(AccountDetails);
+
+                                    //Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 1, 0, 1, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(lblBillAmount.Text.ToString()), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                    foreach (clsCashDeskDetail cd in RetCashDesk.PaymentDetails)
+                                    {
+                                        Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(cd.LedgerID.ToString()), Convert.ToDecimal(cd.LedgerID.ToString()), 0, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), Convert.ToDouble(cd.Amount.ToString()), 0, Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                    }
                                 }
                             }
                         }
@@ -5196,66 +5213,137 @@ namespace InventorSync
                 sqlControl rs = new sqlControl();
                 sqlControl cn = new sqlControl();
 
+
+                ////item disc total + bill disc total
+                //Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 52, 0, 52, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Comm.ToDouble(txtItemDiscTot.Text.ToString()) + Comm.ToDouble(txtDiscAmt.Text.ToString()), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+
+                ////agent comm total
+                //Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 1] + AccountDetails[i, 2]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+
+                ////coolie
+                //Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 1] + AccountDetails[i, 2]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+
+                //other exp + coolie
+                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 22, 0, 22, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Comm.ToDouble(txtOtherExp.Text) + Comm.ToDouble(txtCoolie.Text), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+
+                //cash discount
+                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 38, 38, 0, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), Comm.ToDouble(txtCashDisc.Text), 0, Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+
+                //round off
+                if (Comm.ToDecimal(txtRoundOff.Text.ToString()) > 0)
+                    Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 51, 0, 51, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Comm.ToDouble(txtRoundOff.Text.ToString()), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                else
+                    Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 51, 51, 0, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), Comm.ToDouble(txtRoundOff.Text.ToString()), 0, Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+
                 for (int i = 0; i < 100; i++)
                 {
                     if (AccountDetails[i, 0] != -1)
                     {
-                        cn.Execute("EXEC spTaxLedgerInsert " + AccountDetails[i, 0].ToString() + ",0," + (AccountDetails[i, 0] / 2).ToString() + "," + (AccountDetails[i, 0] / 2).ToString() + "," + AccountDetails[i, 0].ToString() + "," + AccountDetails[i, 6].ToString() + "," + AccountDetails[i, 7].ToString() + "");
+                        try
+                        {
+                            cn.Execute("EXEC spTaxLedgerInsert " + (AccountDetails[i, 0] * 1).ToString() + ",0," + (AccountDetails[i, 0] / 2).ToString() + "," + (AccountDetails[i, 0] / 2).ToString() + "," + (AccountDetails[i, 0] * 1).ToString() + "," + (AccountDetails[i, 6] * 1).ToString() + "," + (AccountDetails[i, 7] * 1).ToString() + "");
+                        }
+                        catch { }
 
                         rs.Open("select lid,LAliasName,IGSTTaxPer,TaxParameter,TaxParameterType from tblledger  where TaxParameterType = 'SALES' ");
 
-                        while (!rs.eof())
+                        if (AccountDetails[i, 0] == 0)
                         {
-                            switch (rs.fields("TaxParameter"))
+                            Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 40, 0, 40, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 1] + AccountDetails[i, 2]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+
+                            AccountDetails[i, 8] = 1;
+                        }
+                        else
+                        {
+                            while (!rs.eof())
                             {
-                                case "TAXABLE":
-                                    {
-                                        if (AccountDetails[i, 0] == Comm.ToDecimal(rs.fields("IGSTTaxPer")))
-                                            Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 1] + AccountDetails[i, 2]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                switch (rs.fields("TaxParameter"))
+                                {
+                                    case "TAXABLE":
+                                        {
+                                            if (AccountDetails[i, 0] == Comm.ToDecimal(rs.fields("IGSTTaxPer")))
+                                            {
+                                                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 1] + AccountDetails[i, 2]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
 
-                                        break;
-                                    }
-                                case "TAXCGST":
-                                    {
-                                        if ((AccountDetails[i, 0] / 2) == Comm.ToDecimal(rs.fields("IGSTTaxPer")))
-                                            Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 3]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                                AccountDetails[i, 8] = 1;
+                                            }
 
-                                        break;
-                                    }
-                                case "TAXSGST":
-                                    {
-                                        if ((AccountDetails[i, 0] / 2) == Comm.ToDecimal(rs.fields("IGSTTaxPer")))
-                                            Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 4]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                            break;
+                                        }
+                                    case "TAXCGST":
+                                        {
+                                            if ((AccountDetails[i, 0] / 2) == Comm.ToDecimal(rs.fields("IGSTTaxPer")))
+                                            {
+                                                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 3]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
 
-                                        break;
-                                    }
-                                case "TAXIGST":
-                                    {
-                                        if (AccountDetails[i, 0] == Comm.ToDecimal(rs.fields("IGSTTaxPer")))
-                                            Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 5]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                                AccountDetails[i, 8] = 1;
+                                            }
 
-                                        break;
-                                    }
-                                case "TAXCESS":
-                                    {
-                                        if (AccountDetails[i, 0] == Comm.ToDecimal(rs.fields("IGSTTaxPer")))
-                                            Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 6]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                            break;
+                                        }
+                                    case "TAXSGST":
+                                        {
+                                            if ((AccountDetails[i, 0] / 2) == Comm.ToDecimal(rs.fields("IGSTTaxPer")))
+                                            {
+                                                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 4]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
 
-                                        break;
-                                    }
-                                case "TAXCOMPCESS":
-                                    {
-                                        if (AccountDetails[i, 0] == Comm.ToDecimal(rs.fields("IGSTTaxPer")))
-                                            Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 7] + AccountDetails[i, 2]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                                AccountDetails[i, 8] = 1;
+                                            }
 
-                                        break;
-                                    }
-                                case null:
-                                    {
-                                        break;
-                                    }
-                            } 
-                            rs.MoveNext();
+                                            break;
+                                        }
+                                    case "TAXIGST":
+                                        {
+                                            if (AccountDetails[i, 0] == Comm.ToDecimal(rs.fields("IGSTTaxPer")))
+                                            {
+                                                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 5]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+
+                                                AccountDetails[i, 8] = 1;
+                                            }
+
+                                            break;
+                                        }
+                                    case "TAXCESS":
+                                        {
+                                            if (AccountDetails[i, 0] == Comm.ToDecimal(rs.fields("IGSTTaxPer")))
+                                            {
+                                                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 6]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+
+                                                AccountDetails[i, 8] = 1;
+                                            }
+
+                                            break;
+                                        }
+                                    case "TAXCOMPCESS":
+                                        {
+                                            if (AccountDetails[i, 0] == Comm.ToDecimal(rs.fields("IGSTTaxPer")))
+                                            {
+                                                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 7]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+
+                                                AccountDetails[i, 8] = 1;
+                                            }
+
+                                            break;
+                                        }
+                                    case null:
+                                        {
+                                            break;
+                                        }
+                                }
+                                rs.MoveNext();
+                            }
+                        }
+                    }
+                }
+
+                for (int i = 0; i < 100; i++)
+                {
+                    if (AccountDetails[i, 0] != -1)
+                    {
+                        if (AccountDetails[i, 8] <= 0)
+                        {
+                            MessageBox.Show("Some of the entries could not be posted. Possible cause may be ledger missing or invalid taxparameter in ledger or invalid entries.", "Invoice Accounts Posting", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
                         }
                     }
                 }
@@ -7814,12 +7902,25 @@ namespace InventorSync
 
         private void txtCoolie_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (txtCoolie.Text.Trim() != ".")
+                {
+                    if (txtCoolie.Text == "") { txtCoolie.Text = "0"; txtCoolie.SelectAll(); }
+                    CalcTotal();
+                }
+            }
+            catch (Exception ex)
+            {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void txtCoolie_KeyDown(object sender, KeyEventArgs e)
         {
-            SendKeys.Send("{TAB}");
+            if (e.KeyCode == Keys.Enter)
+                SendKeys.Send("{TAB}");
 
         }
 
@@ -9067,6 +9168,10 @@ namespace InventorSync
                             //DblrateDiscper = Comm.ToDouble(dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.cRateDiscPer)].Value);
                             DblRateAfterRDiscount = DblRate - (DblRate * DblrateDiscper / 100);
 
+                            if (Comm.ToDouble(dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.cCoolie)].Value) > 0)
+                            {
+                                blnCalculateCoolie = true;
+                            }
                             if (blnCalculateCoolie == true)
                             {
                                 CoolieTotal += Comm.ToDouble(dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.cCoolie)].Value);
@@ -9514,7 +9619,7 @@ namespace InventorSync
             txtCompCess.Text = Comm.FormatValue(DblCompcessAmountTot);
             txtNetAmt.Text = Comm.FormatValue(DblNetAmountTotal);
 
-            double bALANCEFORrOUNDOFF = Comm.ToDouble(Comm.FormatAmt(DblNetAmountTotal - 0 - Comm.ToDouble(txtCashDisc.Text) + Comm.ToDouble(txtOtherExp.Text), ""));
+            double bALANCEFORrOUNDOFF = Comm.ToDouble(Comm.FormatAmt(DblNetAmountTotal - 0 - Comm.ToDouble(txtCashDisc.Text) + Comm.ToDouble(txtOtherExp.Text) + Comm.ToDouble(txtCoolie.Text), ""));
 
             lblBillAmount.Text = Comm.FormatValue(bALANCEFORrOUNDOFF);
 

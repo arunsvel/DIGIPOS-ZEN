@@ -1,0 +1,70 @@
+02-Dec-2022 13:41:41
+EventTarget:SalesMasterCRUD
+Procedure or function UspSalesInsert has too many arguments specified.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+02-Dec-2022 13:41:55
+EventTarget:SalesMasterCRUD
+Procedure or function UspSalesInsert has too many arguments specified.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+02-Dec-2022 13:42:47
+EventTarget:SalesMasterCRUD
+Procedure or function UspSalesInsert has too many arguments specified.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+02-Dec-2022 13:44:39
+EventTarget:SalesMasterCRUD
+Procedure or function UspSalesInsert has too many arguments specified.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+02-Dec-2022 13:45:27
+EventTarget:SalesMasterCRUD
+Procedure or function UspSalesInsert has too many arguments specified.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+02-Dec-2022 13:46:35
+EventTarget:SalesMasterCRUD
+Procedure or function UspSalesInsert has too many arguments specified.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+02-Dec-2022 13:46:46
+EventTarget:SalesMasterCRUD
+Procedure or function UspSalesInsert has too many arguments specified.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+02-Dec-2022 13:48:24
+EventTarget:SalesMasterCRUD
+Procedure or function UspSalesInsert has too many arguments specified.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+02-Dec-2022 13:48:32
+EventTarget:SalesMasterCRUD
+Procedure or function UspSalesInsert has too many arguments specified.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+02-Dec-2022 14:02:01
+EventTarget:SalesMasterCRUD
+Procedure or function UspSalesInsert has too many arguments specified.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------

@@ -2661,6 +2661,22 @@ namespace InventorSync
 
             try
             {
+                sQuery = @"alter table tblsales add coolie decimal";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"update tblsales set coolie = 0 where coolie is null";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
                 sQuery = @"alter table tblsales add DelNoteNo varchar(200)";
                 Comm.fnExecuteNonQuery(sQuery, false);
             }
@@ -3998,7 +4014,7 @@ namespace InventorSync
             { }
             try
             {
-                sQuery = @"create PROCEDURE [dbo].[UspSalesInsert] (@InvId                        NUMERIC(18, 0),
+                sQuery = @"CREATE PROCEDURE [dbo].[UspSalesInsert] (@InvId                        NUMERIC(18, 0),
                                                                     @InvNo                        VARCHAR(100),
                                                                     @AutoNum                      NUMERIC(18, 0),
                                                                     @Prefix                       VARCHAR(50),
@@ -4016,6 +4032,7 @@ namespace InventorSync
                                                                     @BillAmt                      FLOAT,
                                                                     @Cancelled                    NUMERIC(18, 0),
                                                                     @OtherExpense                 FLOAT,
+                                                                    @Coolie                       FLOAT,
                                                                     @SalesManID                   NUMERIC(18, 0),
                                                                     @Taxable                      FLOAT,
                                                                     @NonTaxable                   FLOAT,
@@ -4127,6 +4144,7 @@ namespace InventorSync
                                                         billamt,
                                                         cancelled,
                                                         otherexpense,
+                                                        Coolie,
                                                         salesmanid,
                                                         taxable,
                                                         nontaxable,
@@ -4227,6 +4245,7 @@ namespace InventorSync
                                                     @BillAmt,
                                                     @Cancelled,
                                                     @OtherExpense,
+                                                    @Coolie,
                                                     @SalesManID,
                                                     @Taxable,
                                                     @NonTaxable,
@@ -4333,6 +4352,7 @@ namespace InventorSync
                                                 billamt = @BillAmt,
                                                 cancelled = @Cancelled,
                                                 otherexpense = @OtherExpense,
+                                                Coolie = @Coolie,
                                                 salesmanid = @SalesManID,
                                                 taxable = @Taxable,
                                                 nontaxable = @NonTaxable,
@@ -4457,6 +4477,7 @@ namespace InventorSync
                                             Error_message()   AS ErrorMessage;
                                 END catch;
                             END ";
+
                 Comm.fnExecuteNonQuery(sQuery, false);
             }
             catch
@@ -4508,7 +4529,7 @@ namespace InventorSync
                                                     FROM   tblledger
 
                                                     INSERT INTO tblledger(lid,lname,laliasname,creditdays,targetamt,emailaddress,phone,mobileno,opbalance,discper,fax,[address],blnbank,[type],activestatus,dob,blnwallet,blncoupon,transcomn,blnsmswelcome,dlno,tds,areaid,plid,groupname,accountgroupid,blnbillwise,ledgernameunicode,ledgeraliasnameunicode,contactperson,stateid,hsncode,cgsttaxper,sgsttaxper,igsttaxper,taxparameter,taxparametertype) VALUES      
-                                                    (@Maxid,Cast((@vatPer) AS VARCHAR(12)) + ' '+ @TaxType,Cast((@vatPer) AS VARCHAR(12)) + ' '+ @TaxType,0,0,'','','',0,0,'','',0,@Strtype,0,Getdate(),0,0,0,0,'','0',1,1,'LEDGER',@intAccGroupId,0,N'',N'','',40,'',0,0,@vatPer,@TaxParameter,@TaxMode )
+                                                    (@Maxid,Cast((@vatPer) AS VARCHAR(12)) + ' '+ @TaxType,Cast((@vatPer) AS VARCHAR(12)) + ' '+ @TaxType,0,0,'','','',0,0,'','',0,@Strtype,1,Getdate(),0,0,0,0,'','0',1,1,'LEDGER',@intAccGroupId,0,N'',N'','',40,'',0,0,@vatPer,@TaxParameter,@TaxMode )
                                                 END
                                           END ";
 
@@ -16019,6 +16040,18 @@ AS
                 if (MessageBox.Show("Do you like to change default pricelist for general supplier", "DB Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     sQuery = @"UPDATE TBLLEDGER SET PLID=1 WHERE LID=100";
+
+                    Comm.fnExecuteNonQuery(sQuery, false);
+                }
+            }
+            catch
+            { }
+
+            try
+            {
+                if (MessageBox.Show("Do you like to activate all tax parameter ledgers", "DB Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    sQuery = @"update tblledger set ActiveStatus = 1 where TaxParameter <> 'DEFAULT' and TaxParameter <> ''";
 
                     Comm.fnExecuteNonQuery(sQuery, false);
                 }
