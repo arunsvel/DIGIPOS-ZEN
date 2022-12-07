@@ -19,7 +19,7 @@ namespace InventorSync.Info
             get;
             set;
         }
-        public double HSNID
+        public double HSNCODE
         {
             get;
             set;

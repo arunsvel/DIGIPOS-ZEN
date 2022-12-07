@@ -6261,6 +6261,10 @@ namespace InventorSync
                                 {
                                     if (dgvPurchase.Columns[GetEnum(GridColIndexes.cBarCode)].Visible == true)
                                         dgvPurchase.CurrentCell = dgvPurchase.Rows[dgvPurchase.CurrentRow.Index].Cells[GetEnum(GridColIndexes.cBarCode)];
+                                    else if (dgvPurchase.Columns[GetEnum(GridColIndexes.cQty)].Visible == true)
+                                        dgvPurchase.CurrentCell = dgvPurchase.Rows[dgvPurchase.CurrentRow.Index].Cells[GetEnum(GridColIndexes.cQty)];
+
+                                    dgvPurchase.EndEdit();
 
                                     dgvPurchase.Rows[dgvPurchase.CurrentRow.Index].Cells[GetEnum(GridColIndexes.CItemCode)].Value = dtItemPublic.Rows[0]["ItemCode"].ToString();
                                     
@@ -6324,6 +6328,8 @@ namespace InventorSync
                                     
                                     if(dtItemPublic.Rows[0]["StockID"].ToString() != "")
                                         FillGridAsperStockID(Comm.ToInt32(dtItemPublic.Rows[0]["StockID"].ToString()));
+
+                                    dgvPurchase.EndEdit();
 
                                     if (dgvPurchase.Rows[dgvPurchase.CurrentRow.Index].Cells[GetEnum(GridColIndexes.CExpiry)].Visible == true)
                                         dgvPurchase.CurrentCell = dgvPurchase.Rows[dgvPurchase.CurrentRow.Index].Cells[GetEnum(GridColIndexes.CExpiry)];

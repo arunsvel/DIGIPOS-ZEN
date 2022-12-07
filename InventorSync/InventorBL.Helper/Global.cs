@@ -87,6 +87,12 @@ namespace InventorSync.InventorBL.Helper
             ComputerName = computerName;
         }
         
+        public static bool blnTrialExpired { get; private set; }
+        public static void SetTrialExpired(bool TrialExpired)
+        {
+            blnTrialExpired = TrialExpired;
+        }
+
         public static int gblUserGroupID { get; private set; }
         public static void SetUserGroupId(int iUGID)
         {

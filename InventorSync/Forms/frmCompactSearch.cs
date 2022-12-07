@@ -107,6 +107,7 @@ namespace InventorSync.Forms
                 Boolean result = btnSearchClick("0|" + txtSearch.Text + "");
                 this.Close();
             }
+          
             else if (e.KeyCode == Keys.Enter)
             {
                 WhenDgvSearchEnter();
@@ -203,7 +204,7 @@ namespace InventorSync.Forms
             if (txtSearch.Text.Length > 0)
                 txtSearch.Select(txtSearch.Text.Length, 1);
 
-            if (strFormName.Trim() == "HSNCode" || strFormName.Trim() == "Rack" || strFormName.Trim() == "Bar Code")
+            if ( strFormName.Trim() == "Rack" || strFormName.Trim() == "Bar Code")
             {
                 btnAdd.Visible = false;
                 btnEdit.Visible = false;
@@ -303,6 +304,13 @@ namespace InventorSync.Forms
                 //frmM.BringToFront();
 
             }
+            if (strFormName.Trim() == "HSNCode")
+            {
+                frmHSN frmM = new frmHSN(0, true, txtSearch, true);
+                frmM.ShowDialog();
+                //frmM.BringToFront();
+
+            }
             //Added by Anjitha 27/01/2022
             else if (strFormName.Trim() == "frmSupplier")
             {
@@ -352,7 +360,7 @@ namespace InventorSync.Forms
         {
             int sVal = 0;
             if (dgvSearch.CurrentRow != null)
-                sVal = Convert.ToInt32(dgvSearch.CurrentRow.Cells[iSelIDPos].FormattedValue);
+                sVal = Convert.ToInt32(dgvSearch.CurrentRow.Cells[iSelIDPos+1].FormattedValue);
             if (strFormName.Trim() == "frmItemMaster")
             {
                 frmItemMaster frmM = new frmItemMaster(sVal, true, "E", txtSearch, true);
@@ -373,6 +381,11 @@ namespace InventorSync.Forms
             {
                 frmAreaMaster frmArea = new frmAreaMaster(sVal, true, txtSearch, true);
                 frmArea.ShowDialog();
+            }
+            else if (strFormName.Trim() == "HSNCode")
+            {
+                frmHSN frmM = new frmHSN(sVal, true, txtSearch, true);
+                frmM.ShowDialog();
             }
             else if (strFormName.Trim() == "frmAgent")
             {
@@ -428,21 +441,30 @@ namespace InventorSync.Forms
                     {
                         if (sVal.ToUpper() != sSearchText.ToUpper())
                         {
-                            DialogResult dlgResult = MessageBox.Show("Do you really want to create HSNCode[" + sSearchText + "] Yes ? Or No to Select the existing HSNCode [" + sVal + "].", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                            if (dlgResult.Equals(DialogResult.Yes))
-                            {
-                                WhenClickGo("NOTEXIST" + "|" + sSearchText);
-                            }
-                            else
-                            {
+                            //DialogResult dlgResult = MessageBox.Show("Do you really want to create HSNCode[" + sSearchText + "] Yes ? Or No to Select the existing HSNCode [" + sVal + "].", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                            //if (dlgResult.Equals(DialogResult.Yes))
+                            //{
+                            //    // WhenClickGo("NOTEXIST" + "|" + sSearchText);
+                            //    if (strFormName.Trim() == "HSNCode")
+                            //    {
+                            //        frmItemMaster frmM = new frmItemMaster(0, true, "S", txtSearch, true);
+                            //        frmM.ShowDialog();
+                            //        frmM.BringToFront();
+
+                            //    }
+                            //}
+                            //else
+                            //{
                                 //string sTaxVal = dgvSearch.CurrentRow.Cells[1].FormattedValue.ToString();
                                 WhenClickGo(sVal + "|" + sSearchText + "|" + sTaxVal);
-                            }
+                            //}
                         }
                         else
                         {
+
                             //string sTaxVal = dgvSearch.CurrentRow.Cells[1].FormattedValue.ToString();
                             WhenClickGo(sVal + "|" + sSearchText + "|" + sTaxVal);
+
                         }
                     }
                     else
@@ -464,12 +486,12 @@ namespace InventorSync.Forms
                     }
                 }
             }
-            else
-            {
-                string sVal = "NOTEXIST";
-                string sSearchText = txtSearch.Text;
-                WhenClickGo(sVal + "|" + sSearchText);
-            }
+            //else
+            //{
+            //    string sVal = "NOTEXIST";
+            //    string sSearchText = txtSearch.Text;
+            //    WhenClickGo(sVal + "|" + sSearchText);
+            //}
         }
         //Description : Form Close functionality
         private void WhenClickGo(string LstIDandText)

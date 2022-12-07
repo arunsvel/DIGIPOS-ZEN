@@ -180,7 +180,7 @@ namespace InventorSync
             this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 235F));
-            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 498F));
+            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 508F));
             this.tlpButtons.Controls.Add(this.rdoOtherSettings, 4, 0);
             this.tlpButtons.Controls.Add(this.rdoTransaction, 1, 0);
             this.tlpButtons.Controls.Add(this.rdoReports, 2, 0);
@@ -309,11 +309,11 @@ namespace InventorSync
             // tlpgroupbox
             // 
             this.tlpgroupbox.ColumnCount = 5;
-            this.tlpgroupbox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.671891F));
-            this.tlpgroupbox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.8255934F));
-            this.tlpgroupbox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.821317F));
-            this.tlpgroupbox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.9404389F));
-            this.tlpgroupbox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 94.04388F));
+            this.tlpgroupbox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.71648F));
+            this.tlpgroupbox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.776579F));
+            this.tlpgroupbox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.007704F));
+            this.tlpgroupbox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.545455F));
+            this.tlpgroupbox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.87673F));
             this.tlpgroupbox.Controls.Add(this.dgvReports, 2, 0);
             this.tlpgroupbox.Controls.Add(this.dgvTrans, 1, 0);
             this.tlpgroupbox.Controls.Add(this.dgvsettingsMaster, 0, 0);
@@ -343,12 +343,12 @@ namespace InventorSync
             this.dgvReports.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvReports.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReports.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvReports.Location = new System.Drawing.Point(34, 3);
+            this.dgvReports.Location = new System.Drawing.Point(918, 3);
             this.dgvReports.Name = "dgvReports";
             this.dgvReports.RowHeadersVisible = false;
             this.dgvReports.RowHeadersWidth = 51;
             this.dgvReports.RowTemplate.Height = 24;
-            this.dgvReports.Size = new System.Drawing.Size(30, 466);
+            this.dgvReports.Size = new System.Drawing.Size(59, 466);
             this.dgvReports.TabIndex = 1;
             this.dgvReports.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReports_CellClick);
             this.dgvReports.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReports_CellContentClick);
@@ -371,12 +371,12 @@ namespace InventorSync
             this.dgvTrans.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTrans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTrans.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTrans.Location = new System.Drawing.Point(24, 3);
+            this.dgvTrans.Location = new System.Drawing.Point(856, 3);
             this.dgvTrans.Name = "dgvTrans";
             this.dgvTrans.RowHeadersVisible = false;
             this.dgvTrans.RowHeadersWidth = 51;
             this.dgvTrans.RowTemplate.Height = 24;
-            this.dgvTrans.Size = new System.Drawing.Size(4, 466);
+            this.dgvTrans.Size = new System.Drawing.Size(56, 466);
             this.dgvTrans.TabIndex = 1;
             this.dgvTrans.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrans_CellClick);
             this.dgvTrans.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrans_CellContentClick);
@@ -415,7 +415,7 @@ namespace InventorSync
             this.dgvsettingsMaster.RowHeadersVisible = false;
             this.dgvsettingsMaster.RowHeadersWidth = 51;
             this.dgvsettingsMaster.RowTemplate.Height = 24;
-            this.dgvsettingsMaster.Size = new System.Drawing.Size(15, 466);
+            this.dgvsettingsMaster.Size = new System.Drawing.Size(847, 466);
             this.dgvsettingsMaster.TabIndex = 0;
             this.dgvsettingsMaster.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvsettingsMaster_CellClick);
             this.dgvsettingsMaster.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvsettingsMaster_CellContentClick);
@@ -438,12 +438,12 @@ namespace InventorSync
             this.dgvaccounts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvaccounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvaccounts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvaccounts.Location = new System.Drawing.Point(70, 3);
+            this.dgvaccounts.Location = new System.Drawing.Point(983, 3);
             this.dgvaccounts.Name = "dgvaccounts";
             this.dgvaccounts.RowHeadersVisible = false;
             this.dgvaccounts.RowHeadersWidth = 51;
             this.dgvaccounts.RowTemplate.Height = 24;
-            this.dgvaccounts.Size = new System.Drawing.Size(6, 466);
+            this.dgvaccounts.Size = new System.Drawing.Size(53, 466);
             this.dgvaccounts.TabIndex = 1;
             this.dgvaccounts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvaccounts_CellClick);
             this.dgvaccounts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvaccounts_CellContentClick);
@@ -465,9 +465,9 @@ namespace InventorSync
             this.gpbOtherSett.Controls.Add(this.lblBill);
             this.gpbOtherSett.Controls.Add(this.lblDiscHeading);
             this.gpbOtherSett.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gpbOtherSett.Location = new System.Drawing.Point(82, 3);
+            this.gpbOtherSett.Location = new System.Drawing.Point(1042, 3);
             this.gpbOtherSett.Name = "gpbOtherSett";
-            this.gpbOtherSett.Size = new System.Drawing.Size(1213, 466);
+            this.gpbOtherSett.Size = new System.Drawing.Size(253, 466);
             this.gpbOtherSett.TabIndex = 2;
             this.gpbOtherSett.TabStop = false;
             // 

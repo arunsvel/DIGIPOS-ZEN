@@ -708,8 +708,8 @@ namespace InventorSync
                     txtManufacture.Text = dtLoad.Rows[0]["MnfName"].ToString();
                     strCheck = dtLoad.Rows[0]["MnfName"].ToString();
                     txtManfShortName.Text = dtLoad.Rows[0]["MnfShortName"].ToString();
-                    decimal DiscPer = Convert.ToDecimal(dtLoad.Rows[0]["DiscPer"].ToString());
-                    txtDiscountPerc.Text = FormatValue(Convert.ToDouble(DiscPer), true, "#.00");
+                    decimal DiscPer = Comm.ToDecimal(dtLoad.Rows[0]["DiscPer"].ToString());
+                    txtDiscountPerc.Text = FormatValue(Comm.ToDouble(DiscPer), true, "#.00");
                     iAction = 1;
                 }
             }

@@ -57,11 +57,12 @@ namespace InventorSync
 
         double outoflimitbillvalue = 0;
 
+        string OldData = "";
+
         public frmStockOutVoucherNew(int iVchTpeId = 0, int iTransID = 0, bool bFromEdit = false, object MDIParent = null)
         {
             try
             {
-
                 InitializeComponent();
                 Application.AddMessageFilter(this);
 
@@ -1434,6 +1435,17 @@ namespace InventorSync
         {
             try
             {
+                //if (iIDFromEditWindow == 0)
+                //{
+                //    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "SALES") == false)
+                //        return;
+                //}
+                //else
+                //{
+                //    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "SALES") == false)
+                //        return;
+                //}
+
                 Cursor.Current = Cursors.WaitCursor;
                 if (iIDFromEditWindow == 0)
                     CRUD_Operations(0, false, blnBulkResave);
@@ -1462,6 +1474,7 @@ namespace InventorSync
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
             SaveData();
         }
 
@@ -4721,24 +4734,15 @@ namespace InventorSync
                                         }
                                         else
                                         {
-                                            //sqlControl rs = new sqlControl();
-                                            #region "DELETE THE CASH DESK POSTING IF EDIT MODE"
-
                                             int ID = Comm.gfnGetNextSerialNo("tblCashDeskdetails", "ID");
 
-                                            if (iIDFromEditWindow != 0)
+                                            DeleteCashDesk(sqlConn, trans);
+
+                                            //sqlControl rs = new sqlControl();
+
+                                            if (iAction < 2)
                                             {
-                                                sqlControl rs = new sqlControl();
-                                                rs.ShowExceptionAutomatically = true;
-
-                                                int CashDeshID = 0;
-                                                rs.Open("Select ID From tblCashDeskdetails Where InvID=" + iIDFromEditWindow.ToString() + " and vchtypeid=" + vchtypeID.ToString());
-                                                if (!rs.eof())
-                                                {
-                                                    CashDeshID = Comm.ToInt32(rs.fields("ID").ToString());
-                                                }
-
-                                                using (SqlCommand sqlCmd = new SqlCommand("Delete from tblCashDeskItems where ID = " + CashDeshID.ToString(), sqlConn, trans))
+                                                using (SqlCommand sqlCmd = new SqlCommand("INSERT INTO tblCashDeskdetails (ID,VchTypeID,InvID,BillAmount,BalanceAmount) VALUES (" + ID + "," + vchtypeID + "," + clsPM.clsJsonPMInfo_.InvId + "," + RetCashDesk.BillAmount + "," + RetCashDesk.Balance + ")", sqlConn, trans))
                                                 {
                                                     sqlCmd.CommandType = CommandType.Text;
                                                     SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
@@ -4746,36 +4750,18 @@ namespace InventorSync
                                                     sqlDa.Fill(dsCommon);
                                                 }
 
-                                                using (SqlCommand sqlCmd = new SqlCommand("Delete from tblCashDeskdetails where ID = " + CashDeshID.ToString(), sqlConn, trans))
+                                                foreach (clsCashDeskDetail cdi in RetCashDesk.PaymentDetails)
                                                 {
-                                                    sqlCmd.CommandType = CommandType.Text;
-                                                    SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
-                                                    DataSet dsCommon = new DataSet();
-                                                    sqlDa.Fill(dsCommon);
-                                                }
-                                            }
+                                                    if (cdi.CurrentReceipt > 0) txtInstantReceipt.Text = cdi.CurrentReceipt.ToString();
 
-                                            #endregion
-
-                                            using (SqlCommand sqlCmd = new SqlCommand("INSERT INTO tblCashDeskdetails (ID,VchTypeID,InvID,BillAmount,BalanceAmount) VALUES (" + ID + "," + vchtypeID + "," + clsPM.clsJsonPMInfo_.InvId + "," + RetCashDesk.BillAmount + "," + RetCashDesk.Balance + ")", sqlConn, trans))
-                                            {
-                                                sqlCmd.CommandType = CommandType.Text;
-                                                SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
-                                                DataSet dsCommon = new DataSet();
-                                                sqlDa.Fill(dsCommon);
-                                            }
-
-                                            foreach (clsCashDeskDetail cdi in RetCashDesk.PaymentDetails)
-                                            {
-                                                if (cdi.CurrentReceipt > 0) txtInstantReceipt.Text = cdi.CurrentReceipt.ToString();
-
-                                                //using (SqlCommand sqlCmd = new SqlCommand("INSERT INTO tblCashDeskItems (ID,PaymentType,PaymentID,LedgerID,Amount) VALUES (" + ID + ",'" + cdi.PaymentType + "'," + cdi.PaymentID + "," + cdi.LedgerID + "," + cdi.Amount + ")", sqlConn, trans))
-                                                using (SqlCommand sqlCmd = new SqlCommand("INSERT INTO tblCashDeskItems (ID,PaymentType,PaymentID,LedgerID,Amount,PreviousBalance,TotalOutstanting,CurrentReceipt,CurrentBalance) VALUES (" + ID + ",'" + cdi.PaymentType + "'," + cdi.PaymentID + "," + cdi.LedgerID + "," + cdi.Amount + "," + cdi.PreviousBalance + "," + cdi.TotalOutstanting + "," + cdi.CurrentReceipt + "," + cdi.CurrentBalance + " )", sqlConn, trans))
-                                                {
-                                                    sqlCmd.CommandType = CommandType.Text;
-                                                    SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
-                                                    DataSet dsCommon = new DataSet();
-                                                    sqlDa.Fill(dsCommon);
+                                                    //using (SqlCommand sqlCmd = new SqlCommand("INSERT INTO tblCashDeskItems (ID,PaymentType,PaymentID,LedgerID,Amount) VALUES (" + ID + ",'" + cdi.PaymentType + "'," + cdi.PaymentID + "," + cdi.LedgerID + "," + cdi.Amount + ")", sqlConn, trans))
+                                                    using (SqlCommand sqlCmd = new SqlCommand("INSERT INTO tblCashDeskItems (ID,PaymentType,PaymentID,LedgerID,Amount,PreviousBalance,TotalOutstanting,CurrentReceipt,CurrentBalance) VALUES (" + ID + ",'" + cdi.PaymentType + "'," + cdi.PaymentID + "," + cdi.LedgerID + "," + cdi.Amount + "," + cdi.PreviousBalance + "," + cdi.TotalOutstanting + "," + cdi.CurrentReceipt + "," + cdi.CurrentBalance + " )", sqlConn, trans))
+                                                    {
+                                                        sqlCmd.CommandType = CommandType.Text;
+                                                        SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
+                                                        DataSet dsCommon = new DataSet();
+                                                        sqlDa.Fill(dsCommon);
+                                                    }
                                                 }
                                             }
                                         }
@@ -4786,6 +4772,45 @@ namespace InventorSync
                                     }
                                 }
                             }
+                        }
+                        else
+                        {
+                            DeleteCashDesk(sqlConn, trans);
+
+                            //#region "DELETE THE CASH DESK POSTING IF DELETE OR CANCEL MODE"
+
+                            //int ID = Comm.gfnGetNextSerialNo("tblCashDeskdetails", "ID");
+
+                            //if (iIDFromEditWindow != 0)
+                            //{
+                            //    sqlControl rs = new sqlControl();
+                            //    rs.ShowExceptionAutomatically = true;
+
+                            //    int CashDeshID = 0;
+                            //    rs.Open("Select ID From tblCashDeskdetails Where InvID=" + iIDFromEditWindow.ToString() + " and vchtypeid=" + vchtypeID.ToString());
+                            //    if (!rs.eof())
+                            //    {
+                            //        CashDeshID = Comm.ToInt32(rs.fields("ID").ToString());
+                            //    }
+
+                            //    using (SqlCommand sqlCmd = new SqlCommand("Delete from tblCashDeskItems where ID = " + CashDeshID.ToString(), sqlConn, trans))
+                            //    {
+                            //        sqlCmd.CommandType = CommandType.Text;
+                            //        SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
+                            //        DataSet dsCommon = new DataSet();
+                            //        sqlDa.Fill(dsCommon);
+                            //    }
+
+                            //    using (SqlCommand sqlCmd = new SqlCommand("Delete from tblCashDeskdetails where ID = " + CashDeshID.ToString(), sqlConn, trans))
+                            //    {
+                            //        sqlCmd.CommandType = CommandType.Text;
+                            //        SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
+                            //        DataSet dsCommon = new DataSet();
+                            //        sqlDa.Fill(dsCommon);
+                            //    }
+                            //}
+
+                            //#endregion
                         }
                         //else
                         //{
@@ -4937,6 +4962,7 @@ namespace InventorSync
                             AccountDetails[j, 0] = -1;
                         }
 
+                        #region "ACCOUNTS POSTING"
                         for (int i = 0; i < dgvSales.RowCount - 1; i++)
                         {
                             for (int j = 0; j < 100; j++)
@@ -4984,16 +5010,6 @@ namespace InventorSync
                                 }
                             }
                         }
-
-                        //item disc total
-                        //bill disc total
-                        //agent comm total
-                        //coolie
-                        //other exp
-                        //cash discount
-                        //round off
-                        //receipt
-
 
                         if (iAction == 0 || iAction == 1)
                         {
@@ -5060,8 +5076,15 @@ namespace InventorSync
                                 }
                             }
                         }
+                        #endregion
 
                         trans.Commit();
+
+                        //if (iIDFromEditWindow == 0)
+                        //    Comm.writeuserlog(Common.UserActivity.new_Entry, strJson, "", "New Sales InvNo : " + txtInvAutoNo.Text.ToString() + " Created", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsVchType.TransactionName);
+                        //else
+                        //    Comm.writeuserlog(Common.UserActivity.new_Entry, strJson, OldData, "Sales InvNo : " + txtInvAutoNo.Text.ToString() + " Updated", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsVchType.TransactionName);
+
                         blnTransactionStarted = false;
 
                         Comm.SaveInAppSettings("STRSALES_" + vchtypeID.ToString(), txtTermsOfDelivery.Text);
@@ -5206,6 +5229,49 @@ namespace InventorSync
             }
         }
 
+        private void DeleteCashDesk(SqlConnection sqlConn, SqlTransaction trans)
+        {
+            try
+            {
+                #region "DELETE THE CASH DESK POSTING IF EDIT MODE"
+
+                if (iIDFromEditWindow != 0)
+                {
+                    sqlControl rs = new sqlControl();
+                    rs.ShowExceptionAutomatically = true;
+
+                    int CashDeshID = 0;
+                    rs.Open("Select ID From tblCashDeskdetails Where InvID=" + iIDFromEditWindow.ToString() + " and vchtypeid=" + vchtypeID.ToString());
+                    if (!rs.eof())
+                    {
+                        CashDeshID = Comm.ToInt32(rs.fields("ID").ToString());
+                    }
+
+                    using (SqlCommand sqlCmd = new SqlCommand("Delete from tblCashDeskItems where ID = " + CashDeshID.ToString(), sqlConn, trans))
+                    {
+                        sqlCmd.CommandType = CommandType.Text;
+                        SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
+                        DataSet dsCommon = new DataSet();
+                        sqlDa.Fill(dsCommon);
+                    }
+
+                    using (SqlCommand sqlCmd = new SqlCommand("Delete from tblCashDeskdetails where ID = " + CashDeshID.ToString(), sqlConn, trans))
+                    {
+                        sqlCmd.CommandType = CommandType.Text;
+                        SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
+                        DataSet dsCommon = new DataSet();
+                        sqlDa.Fill(dsCommon);
+                    }
+                }
+
+                #endregion
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private bool VoucherInsertSalesEntry(decimal[,] AccountDetails)
         {
             try
@@ -5216,15 +5282,17 @@ namespace InventorSync
 
                 ////item disc total + bill disc total
                 //Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 52, 0, 52, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Comm.ToDouble(txtItemDiscTot.Text.ToString()) + Comm.ToDouble(txtDiscAmt.Text.ToString()), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                //DISCOUNTS CANNOT BE POSTED AS THEY ARE ALREADY DEDUCTED FROM TAXABLE AMOUNT. 
+                //  BUT CASH DISCOUNT IS POSTED IN BELOW SECTIONS
 
                 ////agent comm total
                 //Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 1] + AccountDetails[i, 2]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
 
-                ////coolie
-                //Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(rs.fields("lid")), 0, Convert.ToDecimal(rs.fields("lid")), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(AccountDetails[i, 1] + AccountDetails[i, 2]), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                //COOLIE 
+                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 58, 0, 58, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Comm.ToDouble(txtCoolie.Text), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
 
-                //other exp + coolie
-                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 22, 0, 22, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Comm.ToDouble(txtOtherExp.Text) + Comm.ToDouble(txtCoolie.Text), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                //other exp 
+                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 22, 0, 22, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Comm.ToDouble(txtOtherExp.Text), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
 
                 //cash discount
                 Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 38, 38, 0, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), Comm.ToDouble(txtCashDisc.Text), 0, Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
@@ -6001,6 +6069,8 @@ namespace InventorSync
 
                                 //if (dgvSales.Rows.Count <= iRow + 1)
                                 //    dgvSales.Rows.Add();
+
+                                CalcTotal();
 
                                 return true;
                             }
@@ -7281,6 +7351,7 @@ namespace InventorSync
                             }
                             dgvSales.Focus();
                         }
+                        CalcTotal();
                     }
                 }
                 else if (dgvSales.CurrentCell.ColumnIndex == GetEnum(gridColIndexes.cQty))
@@ -10481,6 +10552,8 @@ namespace InventorSync
                     dgvSales.Columns["cSRate3"].Visible = false;
                     dgvSales.Columns["cSRate4"].Visible = false;
                     dgvSales.Columns["cSRate5"].Visible = false;
+
+                    OldData = dtLoad.Rows[0]["JsonData"].ToString();
                 }
             }
             catch (Exception ex)

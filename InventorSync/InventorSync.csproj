@@ -385,6 +385,12 @@
     <Compile Include="Forms\frmGstReport.Designer.cs">
       <DependentUpon>frmGstReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmHSN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmHSN.Designer.cs">
+      <DependentUpon>frmHSN.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmPriceListUpdator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -673,8 +679,10 @@
     <Compile Include="Info\UspGetAccountGroupCheckedListInfo.cs" />
     <Compile Include="Info\UspGetAreaCheckedListInfo.cs" />
     <Compile Include="Info\UspGetCashDeskIMasterInfo.cs" />
+    <Compile Include="Info\UspGetHSNInfo.cs" />
     <Compile Include="Info\UspGetRepackingInfo.cs" />
     <Compile Include="Info\UspInsertCashDeskMaster.cs" />
+    <Compile Include="Info\UspInsertHSNmasterInfo.cs" />
     <Compile Include="Info\UspPriceListDetailInsertInfo.cs" />
     <Compile Include="Info\UspPriceListInsertInfo.cs" />
     <Compile Include="Info\UspAccountGroupInsertInfo.cs" />
@@ -758,6 +766,7 @@
     <Compile Include="InventorBL\Master\clsDepartment.cs" />
     <Compile Include="InventorBL\Master\clsEditCommand.cs" />
     <Compile Include="InventorBL\Master\clsEmployee.cs" />
+    <Compile Include="InventorBL\Master\clsHSNMaster.cs" />
     <Compile Include="InventorBL\Master\clsItemAnalysis.cs" />
     <Compile Include="InventorBL\Master\clsItemMaster.cs" />
     <Compile Include="InventorBL\Master\clsMaster.cs" />
@@ -881,6 +890,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmGstReport.resx">
       <DependentUpon>frmGstReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmHSN.resx">
+      <DependentUpon>frmHSN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPriceListUpdator.resx">
       <DependentUpon>frmPriceListUpdator.cs</DependentUpon>

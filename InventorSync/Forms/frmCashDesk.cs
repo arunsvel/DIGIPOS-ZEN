@@ -67,10 +67,10 @@ namespace InventorSync.Forms
                 }
                 int[] myCurrencies = { 1, 2, 5, 10, 20, 50, 100, 200, 500, 2000 };
 
-                txtBillAmount.Text = Convert.ToDecimal(mcashdesk.BillAmount).ToString();
+                txtBillAmount.Text = Comm.ToDecimal(mcashdesk.BillAmount).ToString();
                 //lblMop.Text = mcashdesk.MOP;
 
-                decimal ta = Convert.ToDecimal(txtBillAmount.Text.Replace(" ", ""));
+                decimal ta = Comm.ToDecimal(txtBillAmount.Text.Replace(" ", ""));
                 decimal ta1 = Math.Ceiling(ta);
 
                 int amount = decimal.ToInt32(ta1);
@@ -103,118 +103,122 @@ namespace InventorSync.Forms
 
                 int i = 1;
 
+
                 try
                 {
-                    while (PropIncr <= 9)
+                    if (mcashdesk.BillAmount > 0)
                     {
-                        if (PropIncr >= 9) break;
-
-                        if (ProposedAmounts[PropIncr - 1] == 2000) break;
-                        if (ProposedAmounts[PropIncr - 1] > 2000)
+                        while (PropIncr <= 9)
                         {
-                            if (ProposedAmounts[PropIncr - 1] % 500 == 0)
-                                break;
-                        }
-                        //if (i >= ProposedAmounts[PropIncr - 1].ToString().Length) break;
+                            if (PropIncr >= 9) break;
 
-                        //Digit that is to be converted
-
-                        ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-
-                        ConvDigit = Convert.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
-                        if (ConvDigit == 1)
-                        {
-                            CurrentCurrency = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-                            CurrencyCheck = Convert.ToInt32(ProposedAmounts[PropIncr - 1].ToString().Substring(ProposedAmounts[PropIncr - 1].ToString().Length - i, i));
-                            CurrentCurrency = CurrentCurrency - CurrencyCheck;
-
-                            CurrencyCheck = CurrencyCheck + ((2 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 2
-
-                            if (CurrencyCheck == 1000 && ProposedAmounts[PropIncr - 1] < 1000) // || CurrencyCheck == 10000 || CurrencyCheck == 100000 || CurrencyCheck == 1000000 || CurrencyCheck == 10000000 || CurrencyCheck == 100000000 || CurrencyCheck == 1000000000)
-                                CurrencyCheck = CurrencyCheck * 2;
-
-                            ProposedAmounts[PropIncr] = SeparatedAmount + CurrentCurrency + CurrencyCheck; // ProposedAmounts[PropIncr - 1] + ((2 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 2
-
-                            if (ProposedAmounts[PropIncr] == 2000) break;
-                            if (ProposedAmounts[PropIncr] > 2000)
+                            if (ProposedAmounts[PropIncr - 1] == 2000) break;
+                            if (ProposedAmounts[PropIncr - 1] > 2000)
                             {
-                                if (ProposedAmounts[PropIncr] % 500 == 0)
+                                if (ProposedAmounts[PropIncr - 1] % 500 == 0)
+                                    break;
+                            }
+                            //if (i >= ProposedAmounts[PropIncr - 1].ToString().Length) break;
+
+                            //Digit that is to be converted
+
+                            ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+
+                            ConvDigit = Comm.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
+                            if (ConvDigit == 1)
+                            {
+                                CurrentCurrency = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+                                CurrencyCheck = Comm.ToInt32(ProposedAmounts[PropIncr - 1].ToString().Substring(ProposedAmounts[PropIncr - 1].ToString().Length - i, i));
+                                CurrentCurrency = CurrentCurrency - CurrencyCheck;
+
+                                CurrencyCheck = CurrencyCheck + ((2 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 2
+
+                                if (CurrencyCheck == 1000 && ProposedAmounts[PropIncr - 1] < 1000) // || CurrencyCheck == 10000 || CurrencyCheck == 100000 || CurrencyCheck == 1000000 || CurrencyCheck == 10000000 || CurrencyCheck == 100000000 || CurrencyCheck == 1000000000)
+                                    CurrencyCheck = CurrencyCheck * 2;
+
+                                ProposedAmounts[PropIncr] = SeparatedAmount + CurrentCurrency + CurrencyCheck; // ProposedAmounts[PropIncr - 1] + ((2 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 2
+
+                                if (ProposedAmounts[PropIncr] == 2000) break;
+                                if (ProposedAmounts[PropIncr] > 2000)
+                                {
+                                    if (ProposedAmounts[PropIncr] % 500 == 0)
+                                        break;
+                                }
+
+                                PropIncr++;
+                                if (PropIncr >= 9) break;
+
+                                ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+                                ConvDigit = Comm.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
+                            }
+                            if (ConvDigit >= 2 && ConvDigit < 5)
+                            {
+                                CurrentCurrency = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+                                CurrencyCheck = Comm.ToInt32(ProposedAmounts[PropIncr - 1].ToString().Substring(ProposedAmounts[PropIncr - 1].ToString().Length - i, i));
+                                CurrentCurrency = CurrentCurrency - CurrencyCheck;
+
+                                CurrencyCheck = CurrencyCheck + ((5 * ConvFactor) - (ConvDigit * ConvFactor));
+
+                                if (CurrencyCheck == 1000 && ProposedAmounts[PropIncr - 1] < 1000)
+                                    CurrencyCheck = CurrencyCheck * 2;
+
+                                ProposedAmounts[PropIncr] = SeparatedAmount + CurrentCurrency + CurrencyCheck; // ProposedAmounts[PropIncr - 1] + ((5 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 5
+
+                                if (ProposedAmounts[PropIncr] == 2000) break;
+                                if (ProposedAmounts[PropIncr] > 2000)
+                                {
+                                    if (ProposedAmounts[PropIncr] % 500 == 0)
+                                        break;
+                                }
+
+                                PropIncr++;
+                                if (PropIncr >= 9) break;
+
+                                ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+                                ConvDigit = Comm.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
+                            }
+                            if (ConvDigit >= 5 && ConvDigit < 10)
+                            {
+                                CurrentCurrency = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+                                CurrencyCheck = Comm.ToInt32(ProposedAmounts[PropIncr - 1].ToString().Substring(ProposedAmounts[PropIncr - 1].ToString().Length - i, i));
+                                CurrentCurrency = CurrentCurrency - CurrencyCheck;
+
+                                CurrencyCheck = CurrencyCheck + ((10 * ConvFactor) - (ConvDigit * ConvFactor));
+
+                                if (CurrencyCheck == 1000 && ProposedAmounts[PropIncr - 1] < 1000)
+                                    CurrencyCheck = CurrencyCheck * 2;
+
+                                ProposedAmounts[PropIncr] = SeparatedAmount + CurrentCurrency + CurrencyCheck; // ProposedAmounts[PropIncr - 1] + ((10 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 0
+
+                                if (ProposedAmounts[PropIncr] == 2000) break;
+                                if (ProposedAmounts[PropIncr] > 2000)
+                                {
+                                    if (ProposedAmounts[PropIncr] % 500 == 0)
+                                        break;
+                                }
+
+                                PropIncr++;
+                                if (PropIncr >= 9) break;
+
+                                ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+                                ConvDigit = Comm.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
+                            }
+
+                            if (ProposedAmounts[PropIncr - 1] > 2000)
+                            {
+                                if (ProposedAmounts[PropIncr - 1] % 500 == 0)
                                     break;
                             }
 
-                            PropIncr++;
+
+                            //if (ProposedAmounts[PropIncr - 1] % 500 == 0)
+                            //    break;
+                            //When the digit is rounded to 10, then i is incremented so that next time loop runs 2 digits will be separated
+                            i++;
+                            ConvFactor *= 10;
+
                             if (PropIncr >= 9) break;
-
-                            ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-                            ConvDigit = Convert.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
                         }
-                        if (ConvDigit >= 2 && ConvDigit < 5)
-                        {
-                            CurrentCurrency = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-                            CurrencyCheck = Convert.ToInt32(ProposedAmounts[PropIncr - 1].ToString().Substring(ProposedAmounts[PropIncr - 1].ToString().Length - i, i));
-                            CurrentCurrency = CurrentCurrency - CurrencyCheck;
-
-                            CurrencyCheck = CurrencyCheck + ((5 * ConvFactor) - (ConvDigit * ConvFactor));
-
-                            if (CurrencyCheck == 1000 && ProposedAmounts[PropIncr - 1] < 1000)
-                                CurrencyCheck = CurrencyCheck * 2;
-
-                            ProposedAmounts[PropIncr] = SeparatedAmount + CurrentCurrency + CurrencyCheck; // ProposedAmounts[PropIncr - 1] + ((5 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 5
-
-                            if (ProposedAmounts[PropIncr] == 2000) break;
-                            if (ProposedAmounts[PropIncr] > 2000)
-                            {
-                                if (ProposedAmounts[PropIncr] % 500 == 0)
-                                    break;
-                            }
-
-                            PropIncr++;
-                            if (PropIncr >= 9) break;
-
-                            ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-                            ConvDigit = Convert.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
-                        }
-                        if (ConvDigit >= 5 && ConvDigit < 10)
-                        {
-                            CurrentCurrency = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-                            CurrencyCheck = Convert.ToInt32(ProposedAmounts[PropIncr - 1].ToString().Substring(ProposedAmounts[PropIncr - 1].ToString().Length - i, i));
-                            CurrentCurrency = CurrentCurrency - CurrencyCheck;
-
-                            CurrencyCheck = CurrencyCheck + ((10 * ConvFactor) - (ConvDigit * ConvFactor));
-
-                            if (CurrencyCheck == 1000 && ProposedAmounts[PropIncr - 1] < 1000)
-                                CurrencyCheck = CurrencyCheck * 2;
-
-                            ProposedAmounts[PropIncr] = SeparatedAmount + CurrentCurrency + CurrencyCheck; // ProposedAmounts[PropIncr - 1] + ((10 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 0
-
-                            if (ProposedAmounts[PropIncr] == 2000) break;
-                            if (ProposedAmounts[PropIncr] > 2000)
-                            {
-                                if (ProposedAmounts[PropIncr] % 500 == 0)
-                                    break;
-                            }
-
-                            PropIncr++;
-                            if (PropIncr >= 9) break;
-
-                            ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-                            ConvDigit = Convert.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
-                        }
-
-                        if (ProposedAmounts[PropIncr - 1] > 2000)
-                        {
-                            if (ProposedAmounts[PropIncr - 1] % 500 == 0)
-                                break;
-                        }
-
-
-                        //if (ProposedAmounts[PropIncr - 1] % 500 == 0)
-                        //    break;
-                        //When the digit is rounded to 10, then i is incremented so that next time loop runs 2 digits will be separated
-                        i++;
-                        ConvFactor *= 10;
-
-                        if (PropIncr >= 9) break;
                     }
                 }
                 catch (Exception ex)
@@ -458,7 +462,7 @@ namespace InventorSync.Forms
             }
             else
             {
-                txtAmount.Text = (Convert.ToDecimal(txtBillAmount.Text) - Convert.ToDecimal(txtTotal.Text)).ToString();
+                txtAmount.Text = (Comm.ToDecimal(txtBillAmount.Text) - Comm.ToDecimal(txtTotal.Text)).ToString();
             }
         }
 
@@ -847,7 +851,7 @@ namespace InventorSync.Forms
                         }
                         else
                         {
-                            if ((Convert.ToDecimal(txtBillAmount.Text) - (Convert.ToDecimal(txtTotal.Text))) > 0)
+                            if ((Comm.ToDecimal(txtBillAmount.Text) - (Comm.ToDecimal(txtTotal.Text))) > 0)
                             {
                                 if (lblMop.Text == "CASH")
                                 {
@@ -863,9 +867,9 @@ namespace InventorSync.Forms
                                 {
                                     History_addGrid(lblMop.Text, txtAmount.Text, txtShortage.Text, lblMop.Tag.ToString(), txtAmount.Tag.ToString());
                                 }
-                                decimal t = Convert.ToDecimal(txtTotal.Text);
-                                decimal s = Convert.ToDecimal(txtShortage.Text);
-                                decimal a = Convert.ToDecimal(txtBillAmount.Text);
+                                decimal t = Comm.ToDecimal(txtTotal.Text);
+                                decimal s = Comm.ToDecimal(txtShortage.Text);
+                                decimal a = Comm.ToDecimal(txtBillAmount.Text);
                                 if (s > 0)
                                 {
                                     lblBalance.Text = "Balance : 0 ";
@@ -923,15 +927,15 @@ namespace InventorSync.Forms
 
                 {
 
-                    decimal ba = Convert.ToDecimal(txtBillAmount.Text);
+                    decimal ba = Comm.ToDecimal(txtBillAmount.Text);
                     decimal a = 0;
                     if (txtTotal.Text != "")
                     {
-                        a = Convert.ToDecimal(txtTotal.Text);
+                        a = Comm.ToDecimal(txtTotal.Text);
                     }
                     else
                     {
-                        a = Convert.ToDecimal("0");
+                        a = Comm.ToDecimal("0");
                     }
                     txtShortage.Text = (ba - a).ToString();
                     if ((ba - a) > 0)
@@ -999,10 +1003,10 @@ namespace InventorSync.Forms
                 bool blnsettle = false;
                 if (txtAmount.Text == "") txtAmount.Text = "0";
 
-                if ((Convert.ToDecimal(txtBillAmount.Text) - Convert.ToDecimal(txtAmount.Text)) != 0)
+                if ((Comm.ToDecimal(txtBillAmount.Text) - Comm.ToDecimal(txtAmount.Text)) != 0)
                 {
                     //this condition works when the gpay, phonepay etc is selected, there they won't click the add button
-                    if ((Convert.ToDecimal(txtBillAmount.Text) - (Convert.ToDecimal(txtTotal.Text))) > 0 && (Convert.ToDecimal(txtAmount.Text))< (Convert.ToDecimal(txtBillAmount.Text)))
+                    if ((Comm.ToDecimal(txtBillAmount.Text) - (Comm.ToDecimal(txtTotal.Text))) > 0 && (Comm.ToDecimal(txtAmount.Text))< (Comm.ToDecimal(txtBillAmount.Text)))
                     {
                         MessageBox.Show("Settled amount is less than billamount");
                     }
@@ -1049,26 +1053,26 @@ namespace InventorSync.Forms
 
                             if (lblMop.Text == "CASH")
                             {
-                                clsCashDeskDetail cdd = new clsCashDeskDetail(lblMop.Text.ToUpper(), 1, 3, Convert.ToDecimal(txtBillAmount.Text),0,0,0,0);
+                                clsCashDeskDetail cdd = new clsCashDeskDetail(lblMop.Text.ToUpper(), 1, 3, Comm.ToDecimal(txtBillAmount.Text),0,0,0,0);
                                 mcashdesk.PaymentDetails.Add(cdd);
                                 Dataposs();
                             }
                             else if (lblMop.Text == "Mixed")
                             {
-                                clsCashDeskDetail cdd = new clsCashDeskDetail("Cash".ToUpper(), 1, 3, Convert.ToDecimal(txtBillAmount.Text),0,0,0,0);
+                                clsCashDeskDetail cdd = new clsCashDeskDetail("Cash".ToUpper(), 1, 3, Comm.ToDecimal(txtBillAmount.Text),0,0,0,0);
                                 mcashdesk.PaymentDetails.Add(cdd);
                                 Dataposs();
                             }
                             else if (lblMop.Text == "Credit")
                             {
-                                clsCashDeskDetail cdd = new clsCashDeskDetail("Credit".ToUpper(), 0, Comm.ToInt32(mcashdesk.LedgerID), Convert.ToDecimal(txtBillAmount.Text), Convert.ToDecimal(txtPreviousBalance.Text), Convert.ToDecimal(txtOutstanting.Text), Convert.ToDecimal(txtCurrentReceipt.Text), Convert.ToDecimal(txtCurrentBalance.Text));
+                                clsCashDeskDetail cdd = new clsCashDeskDetail("Credit".ToUpper(), 0, Comm.ToInt32(mcashdesk.LedgerID), Comm.ToDecimal(txtBillAmount.Text), Comm.ToDecimal(txtPreviousBalance.Text), Comm.ToDecimal(txtOutstanting.Text), Comm.ToDecimal(txtCurrentReceipt.Text), Comm.ToDecimal(txtCurrentBalance.Text));
                                 mcashdesk.PaymentDetails.Add(cdd);
                                 Dataposs();
                             }
                         }
                         else
                         {
-                            clsCashDeskDetail cdd = new clsCashDeskDetail(lblMop.Text.ToUpper(), Comm.ToInt32(lblMop.Tag.ToString()), Comm.ToInt32(txtAmount.Tag.ToString()), Convert.ToDecimal(txtBillAmount.Text),0,0,0,0);
+                            clsCashDeskDetail cdd = new clsCashDeskDetail(lblMop.Text.ToUpper(), Comm.ToInt32(lblMop.Tag.ToString()), Comm.ToInt32(txtAmount.Tag.ToString()), Comm.ToDecimal(txtBillAmount.Text),0,0,0,0);
                             mcashdesk.PaymentDetails.Add(cdd);
                             Dataposs();
                         }
@@ -1097,34 +1101,34 @@ namespace InventorSync.Forms
                             decimal sum = 0;
                             for (int i = 0; i < dgvPayments.Rows.Count; ++i)
                             {
-                                sum += Convert.ToInt32(dgvPayments.Rows[i].Cells[1].Value);
+                                sum += Comm.ToInt32(dgvPayments.Rows[i].Cells[1].Value);
                             }
                             txtTotal.Text = sum.ToString();
                             if (!string.IsNullOrEmpty(txtBillAmount.Text) || string.IsNullOrEmpty(txtAmount.Text))
 
                             {
 
-                                decimal ba = Convert.ToDecimal(txtBillAmount.Text);
+                                decimal ba = Comm.ToDecimal(txtBillAmount.Text);
                                 decimal a = 0;
                                 if (txtTotal.Text != "")
                                 {
-                                    a = Convert.ToDecimal(txtTotal.Text);
+                                    a = Comm.ToDecimal(txtTotal.Text);
                                 }
                                 else
                                 {
-                                    a = Convert.ToDecimal("0");
+                                    a = Comm.ToDecimal("0");
                                 }
                                 decimal s = 0;
                                 if (txtShortage.Text != "")
                                 {
-                                    s = Convert.ToDecimal(txtShortage.Text);
+                                    s = Comm.ToDecimal(txtShortage.Text);
                                 }
                                 else
                                 {
-                                    s = Convert.ToDecimal("0");
+                                    s = Comm.ToDecimal("0");
                                 }
-                                decimal t = Convert.ToDecimal(txtTotal.Text);
-                                decimal g = Convert.ToDecimal(txtBillAmount.Text);
+                                decimal t = Comm.ToDecimal(txtTotal.Text);
+                                decimal g = Comm.ToDecimal(txtBillAmount.Text);
                                 if (s > 0)
                                 {
                                     lblBalance.Text = "Balance : 0 ";
@@ -1167,8 +1171,8 @@ namespace InventorSync.Forms
         {
             if (txtCurrentReceipt.Text != "")
             {
-                decimal t = Convert.ToDecimal(txtOutstanting.Text);
-                decimal g = Convert.ToDecimal(txtCurrentReceipt.Text);
+                decimal t = Comm.ToDecimal(txtOutstanting.Text);
+                decimal g = Comm.ToDecimal(txtCurrentReceipt.Text);
                 txtCurrentBalance.Text = (t - g).ToString();
             }
         }
@@ -1187,8 +1191,8 @@ namespace InventorSync.Forms
             }
             if (txtAmount.Text != "")
             {
-                decimal t = Convert.ToDecimal(txtTotal.Text);
-                decimal a = Convert.ToDecimal(txtBillAmount.Text);
+                decimal t = Comm.ToDecimal(txtTotal.Text);
+                decimal a = Comm.ToDecimal(txtBillAmount.Text);
 
                 decimal b = t - a;
                 //txtShortage.Text = "";
@@ -1242,13 +1246,13 @@ namespace InventorSync.Forms
             decimal t = 0;
             if (txtAmount.Text == "")
             {
-                 t = Convert.ToDecimal("0");
+                 t = Comm.ToDecimal("0");
             }
             else
             {
-                 t = Convert.ToDecimal(txtAmount.Text);
+                 t = Comm.ToDecimal(txtAmount.Text);
             }
-            decimal a = Convert.ToDecimal(txtBillAmount.Text);
+            decimal a = Comm.ToDecimal(txtBillAmount.Text);
 
             decimal b = t - a;
             if (b > 0)

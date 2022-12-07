@@ -898,7 +898,7 @@ namespace InventorSync.InventorBL.Helper
                 {
                     if (blnFirstOccurance)
                     {
-                        if (Value.ToString() == sqlDT.Rows[i].Field<string>(ColumnName))
+                        if (Value.ToString() == sqlDT.Rows[i][ColumnName].ToString()) //sqlDT.Rows[i].Field(ColumnName))
                         {
                             index = i;
                             break;
@@ -906,12 +906,12 @@ namespace InventorSync.InventorBL.Helper
                     }
                     if (blnLastOccurance)
                     {
-                        if (Value.ToString() == sqlDT.Rows[i].Field<string>(ColumnName))
+                        if (Value.ToString() == sqlDT.Rows[i][ColumnName].ToString())
                             index = i;
                     }
                     if (OccurCount != OccuranceIndex)
                     {
-                        if (Value.ToString() == sqlDT.Rows[i].Field<string>(ColumnName))
+                        if (Value.ToString() == sqlDT.Rows[i][ColumnName].ToString())
                         {
                             OccurCount = OccurCount + 1;
                             if (OccurCount == OccuranceIndex)

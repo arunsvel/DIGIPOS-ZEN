@@ -1,0 +1,13 @@
+Start15:19
+Select sum(qtyin * CostRateExcl)-sum(qtyout * CostRateExcl) as Clsstk from tblstockhistory  and VchDate <= '06-Aug-2016' 
+Incorrect syntax near the keyword 'and'.
+
+EndStart15:19
+Select sum(qtyin * CostRateExcl)-sum(qtyout * CostRateExcl) as Clsstk from tblstockhistory  and VchDate <= '06-Aug-2016' 
+Incorrect syntax near the keyword 'and'.
+
+EndStart15:20
+Select sum(qtyin * CostRateExcl)-sum(qtyout * CostRateExcl) as Clsstk from tblstockhistory VchDate <= '06-Aug-2016'  
+Incorrect syntax near '<'.
+
+End

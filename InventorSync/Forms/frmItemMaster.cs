@@ -546,12 +546,14 @@ namespace InventorSync
             }
             else if (e.KeyCode == Keys.Enter)
             {
-                if (txtBarcode.Enabled == true)
+                if (txtBarcode.Enabled == true && txtBarcode.Visible == true)
                     txtBarcode.Focus();
-                else if (chkExpiryItem.Enabled == true)
+                else if (chkExpiryItem.Enabled == true && chkExpiryItem.Visible == true)
                     chkExpiryItem.Focus();
-                else
+                else if (cboAlterUnit.Enabled == true && cboAlterUnit.Visible == true)
                     cboAlterUnit.Focus();
+                else
+                    SaveData();
             }
         }
         private void sfcboUnit_KeyDown(object sender, KeyEventArgs e)
@@ -619,11 +621,9 @@ namespace InventorSync
                     this.txtHSNCode.TextChanged -= this.txtHSNCode_TextChanged;
                     if (txtHSNCode.Text == "") txtHSNCode.Text = "~";
                     this.txtHSNCode.TextChanged += this.txtHSNCode_TextChanged;
-                    string sQuery = "SELECT DISTINCT Top 25 ISNULL( Convert(Varchar(18),HSNID),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere,HSNID as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNID  FROM tblItemMaster where ActiveStatus = 1 AND HSNID > 0 AND TenantID=" + Global.gblTenantID + " ";
-                    new frmCompactSearch(GetFromHSNCodeSearch, sQuery, "AnyWhere|Convert(varchar(50),HSNID)|Convert(varchar(50),IGSTTaxPer)|Convert(varchar(50),CessPer)", txtHSNCode.Location.X + 750, txtHSNCode.Location.Y + 30, 3, 0, txtHSNCode.Text, 4, 0, "ORDER BY HSNID ASC", 0, 0, "HSN Code Search ...", 0, "200,80,80,0", true, "HSNCode", 0, true, this.MdiParent).ShowDialog();
-                    //string sQuery = "SELECT DISTINCT Top 25 ISNULL( Convert(Varchar(18),HSNID),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere,HSNID as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %] FROM tblItemMaster where ActiveStatus = 1 AND HSNID > 0 AND TenantID=" + Global.gblTenantID + "";
-                    //new frmCompactSearch(GetFromHSNCodeSearch, sQuery, "AnyWhere|Convert(varchar(50),HSNID)|Convert(varchar(50),IGSTTaxPer)|Convert(varchar(50),CessPer)", txtHSNCode.Location.X + 750, txtHSNCode.Location.Y + 40, 3, 0, txtHSNCode.Text, 4, 0, "ORDER BY HSNID ASC", 0, 0, "HSN Code Search ...", 0, "200,80,80,0", true, "HSNCode", 0, true).ShowDialog();
-
+                    string sQuery = "SELECT DISTINCT Top 25 ISNULL( Convert(Varchar(18),HSNCODE),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere,HSNCODE as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNCODE  FROM tblHSNCode where  HSNCODE > 0 AND TenantID=" + Global.gblTenantID + " ";
+                    new frmCompactSearch(GetFromHSNCodeSearch, sQuery, "AnyWhere|Convert(varchar(50),HSNCODE)|Convert(varchar(50),IGSTTaxPer)|Convert(varchar(50),CessPer)", txtHSNCode.Location.X + 750, txtHSNCode.Location.Y + 30, 3, 0, txtHSNCode.Text, 4, 0, "ORDER BY HSNCODE ASC", 0, 0, "HSN Code Search ...", 0, "200,80,80,0", true, "HSNCode", 0, true, this.MdiParent).ShowDialog();
+                  
                         this.txtHSNCode.TextChanged -= this.txtHSNCode_TextChanged;
                     if (txtHSNCode.Text == "~") txtHSNCode.Clear();
                     this.txtHSNCode.TextChanged += this.txtHSNCode_TextChanged;
@@ -646,16 +646,13 @@ namespace InventorSync
                         }
 
                     }
-                    if (Convert.ToDecimal(cboIGSTPerc.Text) != 0)
+                    if (Convert.ToDecimal(cboIGSTPerc.Text) != 0 || cboIGSTPerc.Enabled == false)
                     {
                         txtPRate.Focus();
                     }
                     else
                     {
                         cboIGSTPerc.Focus();
-                        //SendKeys.Send("{F4}");
-                        //e.Handled = true;
-
                     }
                 }
             }
@@ -1772,7 +1769,10 @@ namespace InventorSync
                             txtSRate4.Text = CalculationInPriceDetails(Convert.ToDecimal(txtPerc4.Text)).ToString("#0.00");
                 }
                 catch
-                { }
+                { 
+                
+                
+                }
 
                 // gpTaxInclExcl.Visible = true;
                 dgvTaxIncl.DataSource = TaxInclusiveExclusive();
@@ -1819,33 +1819,33 @@ namespace InventorSync
         }
         private void txtIGSTPerc_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (cboIGSTPerc.Text.TrimEnd().TrimStart() == ".")
-                {
-                    int taxindex = -1;
-                    taxindex = cboIGSTPerc.FindStringExact("0");
-                    if (taxindex >= 0)
-                    {
-                        cboIGSTPerc.SelectedIndex = taxindex;
-                        SplitTaxPercentages();
-                    }
-                    else if (taxindex == -1)
-                    {
-                        cboIGSTPerc.SelectedIndex = -1;
-                    }
-                }
-                if (Convert.ToDecimal(Comm.Val(cboIGSTPerc.Text)) > 0)
-                {
-                    txtCGSTPerc.Text = (Convert.ToDecimal(Comm.Val(cboIGSTPerc.Text)) / 2).ToString("#0.00");
-                    txtSGSTPerc.Text = (Convert.ToDecimal(Comm.Val(cboIGSTPerc.Text)) / 2).ToString("#0.00");
-                }
-            }
-            catch (Exception ex)
-            {
-                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
-                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    if (cboIGSTPerc.Text.TrimEnd().TrimStart() == ".")
+            //    {
+            //        int taxindex = -1;
+            //        taxindex = cboIGSTPerc.FindStringExact("0");
+            //        if (taxindex >= 0)
+            //        {
+            //            cboIGSTPerc.SelectedIndex = taxindex;
+            //            SplitTaxPercentages();
+            //        }
+            //        else if (taxindex == -1)
+            //        {
+            //            cboIGSTPerc.SelectedIndex = -1;
+            //        }
+            //    }
+            //    if (Convert.ToDecimal(Comm.Val(cboIGSTPerc.Text)) > 0)
+            //    {
+            //        txtCGSTPerc.Text = (Convert.ToDecimal(Comm.Val(cboIGSTPerc.Text)) / 2).ToString("#0.00");
+            //        txtSGSTPerc.Text = (Convert.ToDecimal(Comm.Val(cboIGSTPerc.Text)) / 2).ToString("#0.00");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            //    MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         private void txtManufacturer_TextChanged(object sender, EventArgs e)
         {
@@ -1865,8 +1865,8 @@ namespace InventorSync
             //string sQuery = "SELECT DISTINCT Top 25 ISNULL( Convert(Varchar(18),HSNID),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere,HSNID as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNID  FROM tblItemMaster where ActiveStatus = 1 AND HSNID > 0 AND TenantID=" + Global.gblTenantID + "";
             //new frmCompactSearch(GetFromHSNCodeSearch, sQuery, "AnyWhere|HSN Code|IGST %|Cess %|HSNID", txtHSNCode.Location.X + 750, txtHSNCode.Location.Y + 30, 3, 0, txtHSNCode.Text, 4, 0, "ORDER BY HSNID ASC", 0, 0, "HSN Code Search ...", 0, "200,80,80,0", true, "HSNCode", 0, true).ShowDialog();
 
-            string sQuery = "SELECT DISTINCT Top 25 ISNULL(Convert(Varchar(18),HSNID),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere,HSNID as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNID  FROM tblItemMaster where ActiveStatus = 1 AND HSNID > 0 AND TenantID=" + Global.gblTenantID + " ";
-            new frmCompactSearch(GetFromHSNCodeSearch, sQuery, "AnyWhere|Convert(varchar(50),HSNID)|Convert(varchar(50),IGSTTaxPer)|Convert(varchar(50),CessPer)", txtHSNCode.Location.X + 750, txtHSNCode.Location.Y + 30, 3, 0, txtHSNCode.Text, 4, 0, "ORDER BY HSNID ASC", 0, 0, "HSN Code Search ...", 0, "200,80,80,0", true, "HSNCode", 0, true, this.MdiParent).ShowDialog();
+            string sQuery = "SELECT DISTINCT Top 25 ISNULL( Convert(Varchar(18),HSNCODE),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere, HSNCODE as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNCODE,HID  FROM tblHSNCode WHERE  HSNCODE > 0  AND TenantID=" + Global.gblTenantID + " ";
+            new frmCompactSearch(GetFromHSNCodeSearch, sQuery, "AnyWhere|Convert(varchar(50),HSNCODE)|Convert(varchar(50),IGSTTaxPer)|Convert(varchar(50),CessPer)", txtHSNCode.Location.X + 750, txtHSNCode.Location.Y + 30,3 , 0, txtHSNCode.Text, 4, 0, "ORDER BY HSNCODE ASC", 0, 0, "HSN Code Search ...", 0, "200,80,80,0", true, "HSNCode", 0, true, this.MdiParent).ShowDialog();
             if (cboIGSTPerc.Text == "0")
             {
                 cboIGSTPerc.Focus();
@@ -4007,33 +4007,31 @@ namespace InventorSync
                     if (Convert.ToInt32(sCompSearchData[0].ToString()) != 0)
                     {
                         //Commented and Added by Anjitha 24/03/2022 12:21 PM
-                        GetHSNInfo.ItemID = 0;
-                        //GetHSNInfo.ItemID = Convert.ToDouble(sCompSearchData[0].ToString());
-                        GetHSNInfo.TenantID = Global.gblTenantID;
+                         GetHSNInfo.TenantID = Global.gblTenantID;
                        // GetHSNInfo.HSNID = 0;
-                        GetHSNInfo.HSNID = Convert.ToDouble(sCompSearchData[0].ToString());
+                        GetHSNInfo.HSNCODE = Convert.ToDouble(sCompSearchData[0].ToString());
                         GetHSNInfo.IGSTTaxPer = Convert.ToDouble(sCompSearchData[2].ToString());
                         dtHSN = clsItmMst.GetHSNFromItemMaster(GetHSNInfo);
 
                         if (dtHSN.Rows.Count > 0)
                         {
                             this.txtHSNCode.TextChanged -= this.txtHSNCode_TextChanged;
-                            txtHSNCode.Text = dtHSN.Rows[0]["HSNID"].ToString();
+                            txtHSNCode.Text = dtHSN.Rows[0]["HSNCODE"].ToString();
                             this.txtHSNCode.TextChanged += this.txtHSNCode_TextChanged;
 
-                            //cboIGSTPerc.Text = Convert.ToDecimal(dtHSN.Rows[0]["IGSTTaxPer"].ToString()).ToString("#0.00");
-                            int taxindex = -1;
-                            taxindex = cboIGSTPerc.FindStringExact(dtHSN.Rows[0]["IGSTTaxPer"].ToString());
-                            if (taxindex >= 0)
-                            {
-                                cboIGSTPerc.SelectedIndex = taxindex;
-                                SplitTaxPercentages();
-                            }
-                            else if (taxindex == -1)
-                            {
-                                cboIGSTPerc.SelectedIndex = -1;
-                                MessageBox.Show("IGST Percentage " + dtHSN.Rows[0]["IGSTTaxPer"].ToString() + " not found in the list. Please select correct IGST Percentage or add to list from settings.");
-                            }
+                            cboIGSTPerc.Text = Convert.ToDecimal(dtHSN.Rows[0]["IGSTTaxPer"].ToString()).ToString();
+                            //int taxindex = -1;
+                            //taxindex = cboIGSTPerc.FindStringExact(dtHSN.Rows[0]["IGSTTaxPer"].ToString());
+                            //if (taxindex >= 0)
+                            //{
+                              
+                             SplitTaxPercentages();
+                            //}
+                            //else if (taxindex == -1)
+                            //{
+                            //    cboIGSTPerc.SelectedIndex = -1;
+                            //    MessageBox.Show("IGST Percentage " + dtHSN.Rows[0]["IGSTTaxPer"].ToString() + " not found in the list. Please select correct IGST Percentage or add to list from settings.");
+                            //}
 
                             //txtSGSTPerc.Text = Convert.ToDecimal(dtHSN.Rows[0]["SGSTTaxPer"].ToString()).ToString("#0.00");
                             //txtCGSTPerc.Text = Convert.ToDecimal(dtHSN.Rows[0]["CGSTTaxPer"].ToString()).ToString("#0.00");
@@ -4896,8 +4894,8 @@ namespace InventorSync
                 itemInsertInfo.FinishedGoodID = 0;
                 itemInsertInfo.MinRate = Convert.ToDecimal(Comm.Val(txtMinRate.Text));
                 itemInsertInfo.MaxRate = Convert.ToDecimal(Comm.Val(txtMaxRate.Text));
-                itemInsertInfo.HSNID = Convert.ToDecimal(txtHSNCode.Text);
-                itemInsertInfo.iCatDiscPer =dCatDiscPer;
+                itemInsertInfo.HSNID = Comm.ToDecimal(txtHSNCode.Text);
+                itemInsertInfo.iCatDiscPer = dCatDiscPer;
                 itemInsertInfo.IPGDiscPer = 0;
                 itemInsertInfo.ImanDiscPer = dManfDiscPer;
                 itemInsertInfo.ItemNameUniCode = "";
@@ -5037,7 +5035,9 @@ namespace InventorSync
                                 this.Close();
                             }
                             else
+
                                 ClearFormControls();
+
                         }
                         else
                             ClearFormControls();
@@ -5217,6 +5217,7 @@ namespace InventorSync
             chkExpiryItem.Checked = false;
             rdoNo.Checked = false;
             rdoWeight.Checked = false;
+
 
             cboAlterUnit.SelectedIndex = 0;
             cboProductClass.SelectedIndex = 0;

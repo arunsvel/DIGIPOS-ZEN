@@ -14,6 +14,7 @@ using InventorSync.Forms;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using Syncfusion.Windows.Forms.Tools;
+using Microsoft.VisualBasic;
 
 namespace InventorSync
 {
@@ -1777,6 +1778,7 @@ namespace InventorSync
                     LoadPriceList();
                     cboPriceList.SelectedValue = plid;
                     txtledgerOpbal.Text = dtLoad.Rows[0]["OpBalance"].ToString();
+                    cboLedgerOpTyp.SelectedItem = dtLoad.Rows[0]["Type"].ToString();
                     cboGsttyp.SelectedItem = dtLoad.Rows[0]["GSTType"].ToString();
                     cboGroup.SelectedItem = dtLoad.Rows[0]["GroupName"].ToString();
                     cboLedgerOpTyp.SelectedItem = dtLoad.Rows[0]["Type"].ToString();
@@ -1880,7 +1882,11 @@ namespace InventorSync
                 }
                 else
                     LedgerInfo.AgentID = 1;
+
                 strRet = clsled.InsertUpdateDeleteLedger(LedgerInfo, iAction);
+
+                bool blnfailed = false;
+
                 if (strRet.Length > 2)
                 {
                     strResult = strRet.Split('|');
@@ -1888,75 +1894,112 @@ namespace InventorSync
                     {
                         if (strResult[1].ToString().ToUpper().Contains("DUPLICATE"))
                         {
-                           if (strResult[1].ToString().Contains("IX_tblLedger"))
-                           {
-                              MessageBox.Show("Duplicate Entry, User has restricted to enter duplicate values in the Ledger alias name (" + txtledgerAliasName.Text + ")", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
-                              txtledgerAliasName.Focus();
-                              txtledgerAliasName.SelectAll();
-                           }
-                           else
-                           {
-                              MessageBox.Show("Duplicate Entry, User has restricted to enter duplicate values in the Ledger name(" + txtledgerName.Text + ")", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                              txtledgerName.Focus();
+                            if (strResult[1].ToString().Contains("IX_tblLedger"))
+                            {
+                                MessageBox.Show("Duplicate Entry, User has restricted to enter duplicate values in the Ledger alias name (" + txtledgerAliasName.Text + ")", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                                txtledgerAliasName.Focus();
+                                txtledgerAliasName.SelectAll();
+                                blnfailed = true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Duplicate Entry, User has restricted to enter duplicate values in the Ledger name(" + txtledgerName.Text + ")", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtledgerName.Focus();
                                 //txtledgerName.SelectAll();
                                 txtledgerName.SelectionStart = txtledgerName.Text.ToString().Length;
+                                blnfailed = true;
 
                             }
                         }
                         else
-                             MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        {
+                            MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                            if (strResult[1].ToString().ToUpper().Contains("DEFAULT LEDGERS CANNOT BE EDITED "))
+                            {
+                                LedgerOpening();
+                                MessageBox.Show("OPENING AMOUNT IS UPDATED IN ACCOUNTS. PLEASE CHECK THE REPORTS.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                            }
+                        }
                     }
                 }
                 else
                 {
                     if (Convert.ToInt32(strRet) == -1)
-                        MessageBox.Show("Failed to Save...", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
-                    else if (CtrlPassed != null)//For Passed Value from this to Another Form Control
                     {
-                        if (CtrlPassed is TextBox)
-                        {
-                            string ledname = txtledgerName.Text;
-                            decimal lid = LedgerInfo.LID;
-                            //CtrlPassed.Text = txtledgerName.Text;
-                            //CtrlPassed.Tag = LedgerInfo.LID;
-                            //CtrlPassed.Focus();
-
-                            //CtrlPassed_Textchanged event is triggered which opens subwindow as dialog.
-                            //So the ledger window will not be closed after that.
-                            //First close the ledger window, then assign the values.
-                            this.Close();
-                            CtrlPassed.Focus();
-                            CtrlPassed.Tag = lid;
-                            CtrlPassed.Text = ledname;
-
-                        }
-                        else if (CtrlPassed is ComboBox)
-                        {
-                            DataTable dtBrand = Comm.fnGetData("SELECT LID,LName FROM tblLedger  WHERE TenantID = " + Global.gblTenantID + " ORDER BY LName Asc").Tables[0];
-                            ((ComboBox)CtrlPassed).DataSource = dtBrand;
-                            ((ComboBox)CtrlPassed).DisplayMember = "LName";
-                            ((ComboBox)CtrlPassed).ValueMember = "LID";
-                            ((ComboBox)CtrlPassed).SelectedValue = LedgerInfo.LID;
-                            ((ComboBox)CtrlPassed).Tag = LedgerInfo.LID;
-
-                            CtrlPassed.Focus();
-                            this.Close();
-                        }
+                        MessageBox.Show("Failed to Save...", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        blnfailed = true;
                     }
                     else
                     {
-                        ClearAll();
-                        FillTreeview();
-                        Settreeview();
-                        if (bFromEditWindowLedger == true)
-                          {
-                              this.Close();
-                          }
+                        LedgerOpening();
+
+                        if (CtrlPassed != null)//For Passed Value from this to Another Form Control
+                        {
+                            if (CtrlPassed is TextBox)
+                            {
+                                string ledname = txtledgerName.Text;
+                                decimal lid = LedgerInfo.LID;
+
+                                //CtrlPassed_Textchanged event is triggered which opens subwindow as dialog.
+                                //So the ledger window will not be closed after that.
+                                //First close the ledger window, then assign the values.
+                                this.Close();
+                                CtrlPassed.Focus();
+                                CtrlPassed.Tag = lid;
+                                CtrlPassed.Text = ledname;
+                            }
+                            else if (CtrlPassed is ComboBox)
+                            {
+                                DataTable dtBrand = Comm.fnGetData("SELECT LID,LName FROM tblLedger  WHERE TenantID = " + Global.gblTenantID + " ORDER BY LName Asc").Tables[0];
+                                ((ComboBox)CtrlPassed).DataSource = dtBrand;
+                                ((ComboBox)CtrlPassed).DisplayMember = "LName";
+                                ((ComboBox)CtrlPassed).ValueMember = "LID";
+                                ((ComboBox)CtrlPassed).SelectedValue = LedgerInfo.LID;
+                                ((ComboBox)CtrlPassed).Tag = LedgerInfo.LID;
+
+                                CtrlPassed.Focus();
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            ClearAll();
+                            FillTreeview();
+                            Settreeview();
+                            if (bFromEditWindowLedger == true)
+                            {
+                                this.Close();
+                            }
+                        }
+                        Comm.MessageboxToasted("Ledger", "Ledger saved successfully");
                     }
-                    Comm.MessageboxToasted("Ledger", "Ledger saved successfully");
                 }
             }
         }
+        
+        private void LedgerOpening()
+        {
+            sqlControl rs = new sqlControl();
+            rs.ShowExceptionAutomatically = true;
+            rs.Execute("Delete from tblvoucher where refid = " + LedgerInfo.LID + " and vchtypeID = 1005 ");
+            if (rs.Exception != "")
+            {
+                MessageBox.Show(rs.Exception, "Accounts Posting", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cboLedgerOpTyp.SelectedIndex > 1) //dr
+            {
+                Comm.VoucherInsert(Convert.ToInt32(1), 1005, Global.FyStartDate, DateAndTime.Now.ToLocalTime(), LedgerInfo.LID, LedgerInfo.LID, 0, Convert.ToInt32(LedgerInfo.LID), LedgerInfo.LID.ToString(), "".ToString(), Convert.ToDouble(txtledgerOpbal.Text), 0, Convert.ToInt32(1), Convert.ToInt32(1), 0, 0, false, "");
+                Comm.VoucherInsert(Convert.ToInt32(1), 1005, Global.FyStartDate, DateAndTime.Now.ToLocalTime(), 999, 0, 999, Convert.ToInt32(LedgerInfo.LID), LedgerInfo.LID.ToString(), "".ToString(), 0, Convert.ToDouble(txtledgerOpbal.Text), Convert.ToInt32(1), Convert.ToInt32(1), 0, 0, false, "");
+            }
+            else //cr
+            {
+                Comm.VoucherInsert(Convert.ToInt32(1), 1005, Global.FyStartDate, DateAndTime.Now.ToLocalTime(), LedgerInfo.LID, 0, LedgerInfo.LID, Convert.ToInt32(LedgerInfo.LID), LedgerInfo.LID.ToString(), "".ToString(), 0, Convert.ToDouble(txtledgerOpbal.Text), Convert.ToInt32(1), Convert.ToInt32(1), 0, 0, false, "");
+                Comm.VoucherInsert(Convert.ToInt32(1), 1005, Global.FyStartDate, DateAndTime.Now.ToLocalTime(), 999, 999, 0, Convert.ToInt32(LedgerInfo.LID), LedgerInfo.LID.ToString(), "".ToString(), Convert.ToDouble(txtledgerOpbal.Text), 0, Convert.ToInt32(1), Convert.ToInt32(1), 0, 0, false, "");
+            }
+        }
+
         //Description :  Delete Data from Ledger table
         private void DeleteData()
         {

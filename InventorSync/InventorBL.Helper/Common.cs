@@ -30,33 +30,272 @@ namespace InventorSync.InventorBL.Helper
             DateChange
         }
 
-        public bool CheckUserPermission(string WindowName = "", PermissionType Permission = PermissionType.View)
+        public enum UserActivity
+        { 
+            new_Entry = 1,
+            UpdateEntry = 2,
+            Delete_Entry = 3,
+            CancelEntry = 4,
+            DisplayWindow = 5,
+            Printinvoice = 6,
+            DateChange = 7,
+            WaitForAuthorisation = 8,
+            LoggedIn = 9,
+            Loggedout = 10
+        }
+
+        public bool CheckUserPermission(UserActivity Activity, string WindowCaption, bool BlnSupressMessage = false, string CustomAccessString = "")
         {
-            try 
+            // If Exists in string=It is to be rejected
+            // User Actions exists in AccessString = This action is to rejected for this user
+            // CheckUserPermission = True
+            // Exit Function
+
+            if (Global.gblUserID == 1 | Global.gblUserID == 0)
             {
-                UspGetUserGroupMasterInfo GetuserInfo = new UspGetUserGroupMasterInfo();
-                clsUserGroup clsuser = new clsUserGroup();
-
-                sqlControl rs = new sqlControl();
-
-                String strAccessLevel = "";
-
-                DataTable dtLoad = new DataTable();
-                GetuserInfo.GroupID = Convert.ToDecimal(Global.gblUserGroupID);
-                GetuserInfo.TenantID = Convert.ToDecimal(Global.gblTenantID);
-                dtLoad = clsuser.GetUserGroupMaster(GetuserInfo);
-                if (dtLoad.Rows.Count > 0)
-                {
-                    strAccessLevel = dtLoad.Rows[0]["AccessLevel"].ToString();
-                }
                 return true;
             }
 
-            catch 
+            if (Global.gblUserGroupID == 1)
             {
+                return true;
+            }
+
+            //clsfeaturecontrol FC = new clsfeaturecontrol();
+
+            Common Comm = new Common();
+
+            DataTable dt = Comm.fnGetData("Select AccessLevel From tblUserGroupMaster Where ID=" + Global.gblUserGroupID.ToString()).Tables[0];
+
+            string MyMstrAccessString = "";
+
+            if (dt.Rows.Count > 0)
+                MyMstrAccessString = dt.Rows[0]["AccessLevel"].ToString();
+
+            if (Strings.Left(MyMstrAccessString, 1) != "Ü")
+                MyMstrAccessString = "^" + MyMstrAccessString.ToUpper();
+
+            MyMstrAccessString = Strings.Replace(MyMstrAccessString.ToUpper(), "Ü", "^");
+
+            if (Strings.Trim(CustomAccessString) != "")
+                MyMstrAccessString = Strings.Replace(Strings.UCase(CustomAccessString), "Ü", "^");
+
+            recheckrights:
+            if (Activity == UserActivity.new_Entry || Activity == UserActivity.UpdateEntry || Activity == UserActivity.Delete_Entry || Activity == UserActivity.CancelEntry)
+            {
+            }
+
+            if (WindowCaption == "0Key")
+            {
+                return true;
+            }
+            if (Strings.Trim(CustomAccessString) == "")
+            {
+                if ((Global.gblUserName.ToString() == "ADMIN" || Global.gblUserName.ToString() == "DIGIPOS"))
+                {
+                    return true;
+                }
+            }
+
+            if (Strings.Left(MyMstrAccessString, 1) != "><")
+                MyMstrAccessString = "><" + Strings.UCase(MyMstrAccessString);
+            MyMstrAccessString = Strings.UCase(MyMstrAccessString);
+            WindowCaption = Strings.UCase(WindowCaption);
+            if (Strings.InStr(1, MyMstrAccessString, "><" + WindowCaption + "|") == 0)
+            {
+                if (BlnSupressMessage == false)
+                    Comm.MessageboxToasted("User Permission Module", "User Permission denied for all Activities.");
+
                 return false;
             }
+
+            string Stractivity;
+            string[] SPLITSTR;
+            SPLITSTR = Strings.Split(Strings.UCase(MyMstrAccessString), "><" + WindowCaption + "|");
+            Stractivity = "|" + Strings.Left(SPLITSTR[1], Strings.InStr(1, SPLITSTR[1], "><") - 1);
+
+
+            if (Activity == UserActivity.Delete_Entry)
+            {
+                if (Strings.InStr(1, Stractivity, "|D") > 0)
+                {
+                    if (BlnSupressMessage == false)
+                        Interaction.MsgBox("User Permission denied for Deletion.", Constants.vbCritical);
+                    return false;
+                }
+            }
+            else if (Activity == UserActivity.CancelEntry)
+            {
+                if (Strings.InStr(1, Stractivity, "|C") > 0)
+                {
+                    if (BlnSupressMessage == false)
+                        Interaction.MsgBox("User Permission denied for Cancellation.", Constants.vbCritical);
+                    return false;
+                }
+            }
+            else if (Activity == UserActivity.UpdateEntry)
+            {
+                if (Strings.InStr(1, Stractivity, "|E") > 0)
+                {
+                    if (BlnSupressMessage == false)
+                        Interaction.MsgBox("User Permission denied for Updation.", Constants.vbCritical);
+                    return false;
+                }
+            }
+            else if (Activity == UserActivity.new_Entry)
+            {
+                if (Strings.InStr(1, Stractivity, "|N") > 0)
+                {
+                    if (BlnSupressMessage == false)
+                        Interaction.MsgBox("User Permission denied for Creating New.", Constants.vbCritical);
+                    return false;
+                }
+
+                if (Global.blnTrialExpired)
+                {
+                    Interaction.MsgBox("30 day Trial Period Expired. you can't create new entries", Constants.vbCritical, "Permission");
+                    return false;
+                }
+            }
+            else if (Activity == UserActivity.DateChange)
+            {
+                if (Strings.InStr(1, Stractivity, "|A") > 0)
+                    return false;
+            }
+            else if (Activity == UserActivity.Printinvoice)
+            {
+                if (Strings.InStr(1, Stractivity, "|P") > 0)
+                {
+                    if (BlnSupressMessage == false)
+                        Interaction.MsgBox("User Permission denied for printing.", Constants.vbCritical);
+                    return false;
+                }
+            }
+            else if (Activity == UserActivity.WaitForAuthorisation)
+            {
+                if (Strings.InStr(1, Stractivity, "|W") > 0)
+                    return false;
+            }
+            else if (Activity == UserActivity.DisplayWindow)
+            {
+                if (Strings.InStr(1, Stractivity, "|V") > 0)
+                {
+                    if (BlnSupressMessage == false)
+                        Interaction.MsgBox("User Permission denied for Updation.", Constants.vbCritical);
+                    return false;
+                }
+            }
+            
+            return true;
+
         }
+
+        public void writeuserlog(UserActivity useractivity, string NewData, string OldData, string ActionDescription, int VchTypeId, int ParentVchTypeId, string UniqueField, int RefID, string WindowName)
+        {
+            try
+            {
+                string StrAction = "";
+                sqlControl cn = new sqlControl();
+
+
+                switch (useractivity)
+                {
+                    case UserActivity.new_Entry:
+                        {
+                            StrAction = "Insert";
+                            break;
+                        }
+
+                    case UserActivity.UpdateEntry:
+                        {
+                            StrAction = "Update";
+                            break;
+                        }
+
+                    case UserActivity.Delete_Entry:
+                        {
+                            StrAction = "Delete";
+                            break;
+                        }
+
+                    case UserActivity.CancelEntry:
+                        {
+                            StrAction = "Cancel";
+                            break;
+                        }
+
+                    case UserActivity.DisplayWindow:
+                        {
+                            StrAction = "Dislpay";
+                            break;
+                        }
+
+                    case UserActivity.Printinvoice:
+                        {
+                            StrAction = "Print";
+                            break;
+                        }
+
+                    case UserActivity.DateChange:
+                        {
+                            StrAction = "DateChanged";
+                            break;
+                        }
+
+                    case UserActivity.WaitForAuthorisation:
+                        {
+                            StrAction = "Authorisation";
+                            break;
+                        }
+
+                    case UserActivity.LoggedIn:
+                        {
+                            StrAction = "LoggedIn";
+                            break;
+                        }
+
+                    case UserActivity.Loggedout:
+                        {
+                            StrAction = "Loggedout";
+                            break;
+                        }
+                }
+
+                cn.Execute(" exec dbo.fnInsertUserLog  '" + NewData.Replace("'", "''") + "','" + OldData.Replace("'", "''") + "','" + StrAction + "','" + ActionDescription.Replace("'", "''") + "', " + VchTypeId + " ," + ParentVchTypeId + ", '" + UniqueField + "' , " + RefID + ", " + Global.gblUserID + " ,'" + Global.ComputerName.Replace("'", "''") + "','" + WindowName.Replace("'", "''") + "'");
+            }
+            catch (Exception ex)
+            {
+                Interaction.MsgBox(ex.Message, MsgBoxStyle.Critical, "WrituserLog");
+            }
+        }
+
+        //public bool CheckUserPermission(string WindowName = "", PermissionType Permission = PermissionType.View)
+        //{
+        //    try 
+        //    {
+        //        UspGetUserGroupMasterInfo GetuserInfo = new UspGetUserGroupMasterInfo();
+        //        clsUserGroup clsuser = new clsUserGroup();
+
+        //        sqlControl rs = new sqlControl();
+
+        //        String strAccessLevel = "";
+
+        //        DataTable dtLoad = new DataTable();
+        //        GetuserInfo.GroupID = Convert.ToDecimal(Global.gblUserGroupID);
+        //        GetuserInfo.TenantID = Convert.ToDecimal(Global.gblTenantID);
+        //        dtLoad = clsuser.GetUserGroupMaster(GetuserInfo);
+        //        if (dtLoad.Rows.Count > 0)
+        //        {
+        //            strAccessLevel = dtLoad.Rows[0]["AccessLevel"].ToString();
+        //        }
+        //        return true;
+        //    }
+
+        //    catch 
+        //    {
+        //        return false;
+        //    }
+        //}
 
         public bool Transferdatabase(sqlControl cn, string SRCDbName, string DestDbName, string DestDbpath)
         {
@@ -1381,15 +1620,24 @@ namespace InventorSync.InventorBL.Helper
                 {
                     sQuery = "update startup.dbo.tblcompany set companyname='" + sValue + "' where companycode='" + AppSettings.CompanyCode + "'";
                     fnExecuteNonQuery(sQuery);
+
+                    sQuery = "update tblCompanyMaster set companyname='" + sValue + "' ";
+                    fnExecuteNonQuery(sQuery);
                 }
                 if (sKeyName == "FSTARTDATE")
                 {
                     sQuery = "update startup.dbo.tblcompany set fystartdate='" + sValue + "' where companycode='" + AppSettings.CompanyCode + "'";
                     fnExecuteNonQuery(sQuery);
+
+                    sQuery = "update tblCompanyMaster set fystartdate='" + sValue + "' ";
+                    fnExecuteNonQuery(sQuery);
                 }
                 if (sKeyName == "FENDDATE")
                 {
                     sQuery = "update startup.dbo.tblcompany set fyenddate='" + sValue + "' where companycode='" + AppSettings.CompanyCode + "'";
+                    fnExecuteNonQuery(sQuery);
+
+                    sQuery = "update tblCompanyMaster set fyenddate='" + sValue + "' ";
                     fnExecuteNonQuery(sQuery);
                 }
 
@@ -2242,22 +2490,22 @@ namespace InventorSync.InventorBL.Helper
             }
         }
 
-        public bool CheckUserPermissions()
-        {
-            try
-            {
-                bool returnvalue = false;
+        //public bool CheckUserPermissions()
+        //{
+        //    try
+        //    {
+        //        bool returnvalue = false;
 
-                sqlControl rs = new sqlControl();
+        //        sqlControl rs = new sqlControl();
 
-                return returnvalue;
-            }
-            catch (Exception ex)
-            {
-                Interaction.MsgBox(ex.Message + "Insert  to voucher function", MsgBoxStyle.Critical);
-                return false;
-            }
-        }
+        //        return returnvalue;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Interaction.MsgBox(ex.Message + "Insert  to voucher function", MsgBoxStyle.Critical);
+        //        return false;
+        //    }
+        //}
     }
 
 

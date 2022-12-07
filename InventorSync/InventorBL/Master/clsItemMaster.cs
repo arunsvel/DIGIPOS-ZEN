@@ -313,9 +313,8 @@ namespace InventorSync.InventorBL.Master
                     using (SqlDataAdapter sqlda = new SqlDataAdapter("UspGetHSNFromItemMaster", sqlcon))
                     {
                         sqlda.SelectCommand.CommandType = CommandType.StoredProcedure;
-                        sqlda.SelectCommand.Parameters.Add("@ItemID", SqlDbType.Decimal).Value = Info.ItemID;
                         sqlda.SelectCommand.Parameters.Add("@TenantID", SqlDbType.Decimal).Value = Info.TenantID;
-                        sqlda.SelectCommand.Parameters.Add("@HSNID", SqlDbType.Decimal).Value = Info.HSNID;
+                        sqlda.SelectCommand.Parameters.Add("@HSNCODE", SqlDbType.Decimal).Value = Info.HSNCODE;
                         sqlda.SelectCommand.Parameters.Add("@IGSTTaxPer", SqlDbType.Decimal).Value = Info.IGSTTaxPer;
                         sqlda.Fill(dtbl);
                     }

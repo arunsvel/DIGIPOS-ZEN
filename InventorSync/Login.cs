@@ -507,6 +507,7 @@ namespace InventorSync
                 if (DateTime.Today > Convert.ToDateTime("30-Jan-2023"))
                 {
                     MessageBox.Show("Trial period is expired. Exiting application. Please contact customer care.");
+                    Global.SetTrialExpired (true);
                     this.Close();
                     Environment.Exit(0);
                 }
@@ -721,7 +722,7 @@ namespace InventorSync
             {
                 DataSet ds = new DataSet();
                 TreeNode parentNode;
-                if (txtUsername.Text.Trim() == "DIGIPOS")
+                if (txtUsername.Text.Trim().ToUpper() == "DIGIPOS")
                     ds = Comm.fnGetData("SELECT tblCompany.CompanyID,tblCompany.CompanyCode,CompanyName FROM tblCompany, tblUsers WHERE tblCompany.CompanyID=tblUsers.CompanyID and tblCompany.ParentID=tblCompany.CompanyID ");
                 else
                     ds = Comm.fnGetData("SELECT tblCompany.CompanyID,tblCompany.CompanyCode,CompanyName FROM tblCompany, tblUsers WHERE tblCompany.CompanyID=tblUsers.CompanyID and tblCompany.ParentID=tblCompany.CompanyID and LTRIM(RTRIM(UserName)) = '" + txtUsername.Text.Trim() + "' AND LTRIM(RTRIM(Password)) = '" + txtPassword.Text.Trim() + "'");
@@ -882,21 +883,31 @@ namespace InventorSync
                 Properties.Settings.Default.ConnectionString = "Data Source=" + Properties.Settings.Default.server + ";Initial Catalog=" + tvwUserCompany.SelectedNode.Name + ";User ID=sa;Password=#infinitY@279";
 
                 AppSettings.CompanyCode = tvwUserCompany.SelectedNode.Name;
-                
-                DataTable dtUser = Comm.fnGetData("SELECT userid,username,groupid FROM tblUserMaster WHERE LTRIM(RTRIM(UserName)) = '" + txtUsername.Text.ToString() + "' AND LTRIM(RTRIM(pwd)) = '" + txtPassword.Text.ToString() + "'").Tables[0];
-                if (dtUser.Rows.Count > 0)
+
+                if (txtUsername.Text.Trim().ToUpper() == "DIGIPOS")
                 {
-                    Global.SetUserId(Convert.ToInt32(dtUser.Rows[0]["userid"]));
-                    Global.SetUserGroupId(Convert.ToInt32(dtUser.Rows[0]["groupid"]));
-                    Global.SetUserName(dtUser.Rows[0]["username"].ToString());
+                    Global.SetUserId(0);
+                    Global.SetUserGroupId(0);
+                    Global.SetUserName("DIGIPOS");
                 }
                 else
-                {
-                    MessageBox.Show("User name and password mismatch in local database and super user database.", "User Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                { 
+                    DataTable dtUser = Comm.fnGetData("SELECT userid,username,groupid FROM tblUserMaster WHERE LTRIM(RTRIM(UserName)) = '" + txtUsername.Text.ToString() + "' AND LTRIM(RTRIM(pwd)) = '" + txtPassword.Text.ToString() + "'").Tables[0];
+                    if (dtUser.Rows.Count > 0)
+                    {
+                        Global.SetUserId(Convert.ToInt32(dtUser.Rows[0]["userid"]));
+                        Global.SetUserGroupId(Convert.ToInt32(dtUser.Rows[0]["groupid"]));
+                        Global.SetUserName(dtUser.Rows[0]["username"].ToString());
+                    }
+                    else
+                    {
+                        MessageBox.Show("User name and password mismatch in local database and super user database.", "User Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        dtUser.Dispose();
+                        return;
+                    }
+                    dtUser.Dispose();
                 }
 
-                dtUser.Dispose();
 
                 using (SqlConnection cn = new SqlConnection(Properties.Settings.Default.ConnectionString))
                 {

@@ -408,7 +408,6 @@ D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\pt\Microsoft.ReportVi
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.csproj.AssemblyReference.cache
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.Controls.MsgToast.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.Controls.ToastForm.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.Forms.FirstRun.resources
@@ -424,6 +423,7 @@ D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.Forms.fr
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.Forms.frmDetailedSearch.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.frmBoardRateUpdator.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.frmGstReport.resources
+D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.frmHSN.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.frmPriceListUpdator.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.frmPurchaseReturnReport.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.frmReceipt.resources
@@ -482,3 +482,4 @@ D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.applicat
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.csproj.CopyComplete
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.exe
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.pdb
+D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\InventorSync.csproj.AssemblyReference.cache

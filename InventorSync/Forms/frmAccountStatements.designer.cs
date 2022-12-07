@@ -414,7 +414,7 @@ namespace InventorSync
             this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel3, 4);
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.12195F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.87805F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel3.Controls.Add(this.dgvDetails, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 2);
@@ -483,6 +483,7 @@ namespace InventorSync
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 397);
             this.panel1.TabIndex = 8;
+            this.panel1.Visible = false;
             // 
             // lstCostCentre
             // 

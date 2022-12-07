@@ -121,6 +121,33 @@ namespace InventorSync
                     frmACC.BringToFront();
                     break;
 
+                case "DAYBOOKSUMMARY":
+                    frmAccountStatements frmDBS = new frmAccountStatements("DAYBOOKSUMMARY", this);
+                    frmDBS.Text = "DAYBOOK SUMMARY";
+                    frmDBS.MdiParent = this;
+                    frmDBS.Show();
+                    frmDBS.Focus();
+                    frmDBS.BringToFront();
+                    break;
+
+                case "TRIALBALANCE":
+                    frmAccountStatements frmTB = new frmAccountStatements("TRIALBALANCE", this);
+                    frmTB.Text = "TRIAL BALANCE";
+                    frmTB.MdiParent = this;
+                    frmTB.Show();
+                    frmTB.Focus();
+                    frmTB.BringToFront();
+                    break;
+
+                case "PROFIT&LOSS":
+                    frmAccountStatements frmPL = new frmAccountStatements("PROFIT&LOSS", this);
+                    frmPL.Text = "PROFIT AND LOSS";
+                    frmPL.MdiParent = this;
+                    frmPL.Show();
+                    frmPL.Focus();
+                    frmPL.BringToFront();
+                    break;
+
                 case "GSTR1":
                     frmGstReport frmGSTR1 = new frmGstReport();
                     frmGSTR1.Text = "CREATE COMPANY";
@@ -963,6 +990,27 @@ namespace InventorSync
         }
 
         private void daybookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem t = (ToolStripMenuItem)sender;
+            OpenMenu(t.Text.ToString(), 0);
+
+        }
+
+        private void trialBalanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem t = (ToolStripMenuItem)sender;
+            OpenMenu(t.Text.ToString(), 0);
+
+        }
+
+        private void daybookSummaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem t = (ToolStripMenuItem)sender;
+            OpenMenu(t.Text.ToString(), 0);
+
+        }
+
+        private void profitLossToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
             OpenMenu(t.Text.ToString(), 0);

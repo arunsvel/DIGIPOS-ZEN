@@ -1354,6 +1354,7 @@ namespace InventorSync
                         else
                         {
                             btnNext.Enabled = true;
+                            iIDFromEditWindow = Convert.ToInt32(dInvId);
                             LoadData(Convert.ToInt32(dInvId));
                         }
                     }

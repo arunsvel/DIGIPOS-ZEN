@@ -54,32 +54,43 @@ namespace InventorSync
 
         private void btnshow_Click(object sender, EventArgs e)
         {
-            if(txtstafflist.Text=="")
+            try
             {
-                chkstaff.Checked = true;
-            }
-            if(txtVoucherTypeList.Text=="")
-            {
-                chkVoucher.Checked = true;
-            }
-            string Sql = "DROP VIEW vwpurchase";
-            SqlConnection conn = new SqlConnection(constr);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(Sql, conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            string Fname = "Cash Desk";
-            DateTime FD = Convert.ToDateTime(dtpFD.Text);
-            DateTime TD = Convert.ToDateTime(dtpTD.Text);
-            string Sql1 = "create view vwpurchase as select InvNo,InvDate,tblCashDeskItems.ID,Name,tblVchType.VchType,MOP,PaymentType,tblCashDeskItems.Amount,BillAmount from tblCashDeskdetails join tblCashDeskItems on tblCashDeskItems.ID=tblCashDeskdetails.id join tblSales ON tblSales.InvId=tblCashDeskdetails.InvID join tblEmployee on tblEmployee.EmpID =tblSales.SalesManID join tblVchType on tblVchType.VchTypeID=tblSales.VchTypeID where tblSales.VchTypeID in (" + lblVoucherIds.Text + ") and tblSales.SalesManID in (" + lblstaffIds.Text + ") and InvDate BETWEEN '" + FD.ToString("dd-MMM-yyyy") + "' and '" + TD.ToString("dd-MMM-yyyy") + "'  ";
 
-            SqlConnection conn1 = new SqlConnection(constr);
-            conn1.Open();
-            SqlCommand cmd1 = new SqlCommand(Sql1, conn1);
-            cmd1.ExecuteNonQuery();
-            conn1.Close();
-            new frmReportView1(Fname,"" , "", "", FD.ToString(), TD.ToString(), this.MdiParent, "", "").Show();
+                if (txtstafflist.Text == "")
+                {
+                    chkstaff.Checked = true;
+                }
+                if (txtVoucherTypeList.Text == "")
+                {
+                    chkVoucher.Checked = true;
+                }
+                string Sql = "DROP VIEW vwpurchase";
+                SqlConnection conn = new SqlConnection(constr);
+                conn.Open();
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(Sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                { }
 
+                conn.Close();
+                string Fname = "Cash Desk";
+                DateTime FD = Convert.ToDateTime(dtpFD.Text);
+                DateTime TD = Convert.ToDateTime(dtpTD.Text);
+                string Sql1 = "create view vwpurchase as select InvNo,InvDate,tblCashDeskItems.ID,Name,tblVchType.VchType,MOP,PaymentType,tblCashDeskItems.Amount,BillAmount from tblCashDeskdetails join tblCashDeskItems on tblCashDeskItems.ID=tblCashDeskdetails.id join tblSales ON tblSales.InvId=tblCashDeskdetails.InvID join tblEmployee on tblEmployee.EmpID =tblSales.SalesManID join tblVchType on tblVchType.VchTypeID=tblSales.VchTypeID where tblSales.VchTypeID in (" + lblVoucherIds.Text + ") and tblSales.SalesManID in (" + lblstaffIds.Text + ") and InvDate BETWEEN '" + FD.ToString("dd-MMM-yyyy") + "' and '" + TD.ToString("dd-MMM-yyyy") + "'  ";
+
+                SqlConnection conn1 = new SqlConnection(constr);
+                conn1.Open();
+                SqlCommand cmd1 = new SqlCommand(Sql1, conn1);
+                cmd1.ExecuteNonQuery();
+                conn1.Close();
+                new frmReportView1(Fname, "", "", "", FD.ToString(), TD.ToString(), this.MdiParent, "", "").Show();
+            }
+            catch
+            { }
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)

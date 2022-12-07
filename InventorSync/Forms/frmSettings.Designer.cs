@@ -613,7 +613,6 @@ namespace InventorSync
             this.tbtnBarcode.ActiveState = activeStateCollection2;
             this.tbtnBarcode.CanApplyTheme = false;
             this.tbtnBarcode.CanOverrideStyle = true;
-            this.tbtnBarcode.Enabled = false;
             this.tbtnBarcode.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tbtnBarcode.ForeColor = System.Drawing.Color.Black;
             inactiveStateCollection2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -815,7 +814,6 @@ namespace InventorSync
             this.tbtnAdvanced.ActiveState = activeStateCollection5;
             this.tbtnAdvanced.CanApplyTheme = false;
             this.tbtnAdvanced.CanOverrideStyle = true;
-            this.tbtnAdvanced.Enabled = false;
             this.tbtnAdvanced.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tbtnAdvanced.ForeColor = System.Drawing.Color.Black;
             inactiveStateCollection5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));

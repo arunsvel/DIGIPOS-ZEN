@@ -91,7 +91,6 @@ namespace InventorSync
 
             panel1.Visible = false;
 
-            AddColumnsToGrid(dgvDetails);
             ClearControls();
         }
 
@@ -112,8 +111,6 @@ namespace InventorSync
         {
             try
             {
-                AddColumnsToGrid(dgvDetails);
-
                 Application.DoEvents();
 
                 this.tlpMain.ColumnStyles[1].SizeType = SizeType.Absolute;
@@ -145,8 +142,16 @@ namespace InventorSync
             {
                 switch(mReportType)
                 {
+                    case "DAYBOOKSUMMARY":
+                        DAYBOOKSUMMARY();
+
+                        break;
                     case "DAYBOOK":
                         dayBook();
+
+                        break;
+                    case "TRIALBALANCE":
+                        trialbalance();
 
                         break;
                     case null:
@@ -205,18 +210,1019 @@ namespace InventorSync
             }
         }
         
+        private void DAYBOOKSUMMARY()
+        {
+            try
+            {
+                dgvDetails.Columns.Clear();
+                tgsDetailed.Visible = true;
+
+                lblHeading.Text = "Day Book between " + dtpfrom.Value.ToString("dd/MMM/yyyy") + " and " + dtpfrom.Value.ToString("dd/MMM/yyyy");
+
+                string strCCIDsql = Comm.GetCheckedData(lstCostCentre);
+                string StrCCSQL1 = "";
+                if (strCCIDsql != "")
+                    StrCCSQL1 = strCCIDsql.Replace("and", "") + " AND ";
+
+                DataGridViewTextBoxColumn myDate = new DataGridViewTextBoxColumn();
+                myDate.HeaderText = "Date";
+                myDate.Name = "Date";
+                myDate.ReadOnly = true;
+                myDate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                myDate.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                myDate.SortMode = DataGridViewColumnSortMode.NotSortable;
+                myDate.DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                dgvDetails.Columns.Add(myDate);
+
+                DataGridViewTextBoxColumn vchType = new DataGridViewTextBoxColumn();
+                vchType.HeaderText = "Vchtype";
+                vchType.Name = "Vchtype";
+                vchType.ReadOnly = true;
+                vchType.SortMode = DataGridViewColumnSortMode.NotSortable;
+                vchType.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                vchType.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvDetails.Columns.Add(vchType);
+
+                DataGridViewTextBoxColumn VchNo = new DataGridViewTextBoxColumn();
+                VchNo.HeaderText = "VchNo";
+                VchNo.Name = "VchNo";
+                VchNo.ReadOnly = true;
+                VchNo.SortMode = DataGridViewColumnSortMode.NotSortable;
+                VchNo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                VchNo.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvDetails.Columns.Add(VchNo);
+
+                DataGridViewTextBoxColumn DebitSub = new DataGridViewTextBoxColumn();
+                DebitSub.HeaderText = "Debit";
+                DebitSub.Name = "DebitSub";
+                DebitSub.ReadOnly = true;
+                DebitSub.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                DebitSub.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                DebitSub.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvDetails.Columns.Add(DebitSub);
+
+                DataGridViewTextBoxColumn CreditSub = new DataGridViewTextBoxColumn();
+                CreditSub.HeaderText = "Credit";
+                CreditSub.Name = "CreditSub";
+                CreditSub.ReadOnly = true;
+                CreditSub.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                CreditSub.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                CreditSub.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvDetails.Columns.Add(CreditSub);
+
+                DataGridViewTextBoxColumn DrillDownID = new DataGridViewTextBoxColumn();
+                DrillDownID.HeaderText = "DrillDownID";
+                DrillDownID.Name = "DrillDownID";
+                DrillDownID.ReadOnly = true;
+                DrillDownID.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownID.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownID.Visible = false;
+                dgvDetails.Columns.Add(DrillDownID);
+
+                DataGridViewTextBoxColumn DrillDownType = new DataGridViewTextBoxColumn();
+                DrillDownType.HeaderText = "DrillDownType";
+                DrillDownType.Name = "DrillDownType";
+                DrillDownType.ReadOnly = true;
+                DrillDownType.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownType.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownType.Visible = false;
+                dgvDetails.Columns.Add(DrillDownType);
+
+                DataGridViewTextBoxColumn nature = new DataGridViewTextBoxColumn();
+                nature.HeaderText = "Nature";
+                nature.Name = "Nature";
+                nature.ReadOnly = true;
+                nature.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownType.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                nature.Visible = false;
+                dgvDetails.Columns.Add(nature);
+
+                double AmountD = 0;
+                double AmountC = 0;
+                double CashBalance = 0;
+
+                sqlControl Rs = new sqlControl();
+
+                double SubTotalDebit = 0;
+                double SubTotalCredit = 0;
+                double SubBalance = 0;
+
+                tgsDetailed.Visible = false;
+
+                Rs.Open("SELECT        TOP (100) PERCENT dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC, dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration  FROM   dbo.tblVoucher INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE tblvoucher.optional=0 and   (dbo.tblVoucher.LedgerID = 3 AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "')  " + StrCCSQL1 + " and tblVoucher.vchtypeid not in (1005)  GROUP BY dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration  having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + 
+                        " Union " + 
+                        "SELECT        TOP (100) PERCENT dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC, dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration  FROM   dbo.tblVoucher INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE tblvoucher.optional=0 and   (dbo.tblVoucher.LedgerID <> 3) " + StrCCSQL1 + " AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "' and tblVoucher.vchtypeid not in (1005)  GROUP BY dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.mynarration having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " ORDER BY dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo,dbo.tblVoucher.mynarration, AmountD ");
+
+                Font MySubTotalFont = new Font("Segoe UI", 10, FontStyle.Bold);
+                double DebitVal = 0;
+                double CreditVal = 0;
+                {
+                    DateTime PrevDate = dtpfrom.Value; //.ToString("dd/MMM/YYYY");
+                    SubTotalCredit = 0;
+                    SubTotalDebit = 0;
+
+                    int PrevVchtypeID = 0;
+                    int PrevRefID = 0;
+
+                    double VchAmountC = 0;
+                    double VchAmountD = 0;
+
+                    while (!Rs.eof())
+                    {
+                        if (PrevDate != Convert.ToDateTime(Rs.fields("VchDate")))
+                        {
+                            PrevDate = Convert.ToDateTime(Rs.fields("VchDate"));
+
+                            dgvDetails.Rows.Add("");
+                            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = SubTotalDebit;
+                            dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = SubTotalCredit;
+                            dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                            dgvDetails.Rows.Add("");
+
+                            SubBalance = SubTotalDebit - SubTotalCredit;
+                            SubTotalDebit = 0;
+                            SubTotalCredit = 0;
+
+                            if (SubBalance != 0)
+                            {
+                                dgvDetails.Rows.Add("");
+                                dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = Convert.ToDateTime(Rs.fields("VchDate")).ToString("dd /MMM/yyyy");
+                                if (SubBalance > 0)
+                                    dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(Math.Abs(SubBalance)), true);
+                                else
+                                    dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(Math.Abs(SubBalance)), true);
+                                SubTotalDebit = SubTotalDebit + Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
+                                SubTotalCredit = SubTotalCredit + Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
+
+                                dgvDetails["Balance", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD - AmountC, true) + Interaction.IIf(Comm.ToDouble(AmountD - AmountC) > 0, " Dr", " Cr");
+                            }
+                        }
+
+                        if (tgsDetailed.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive)
+                        {
+                            if (PrevVchtypeID != 0 && PrevRefID != 0)
+                            {
+                                if (PrevVchtypeID != Comm.ToInt32(Rs.fields("VchtypeID")) || PrevRefID != Comm.ToInt32(Rs.fields("refID")))
+                                {
+                                    VchAmountC = 0;
+                                    VchAmountD = 0;
+
+                                    dgvDetails.Rows.Add("");
+                                }
+                                else if ((PrevVchtypeID == Comm.ToInt32(Rs.fields("VchtypeID")) && PrevRefID == Comm.ToInt32(Rs.fields("refID")))
+                                         && (VchAmountC > 0 && Comm.ToInt32(Rs.fields("AmountD")) > 0))
+                                {
+                                    VchAmountC = 0;
+                                    VchAmountD = 0;
+
+                                    dgvDetails.Rows.Add("");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            VchAmountC = 0;
+                            VchAmountD = 0;
+
+                            dgvDetails.Rows.Add("");
+                        }
+
+                        VchAmountC += Comm.ToDouble(Rs.fields("AmountC"));
+                        VchAmountD += Comm.ToDouble(Rs.fields("AmountD"));
+
+
+                        dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = Convert.ToDateTime(Rs.fields("VchDate")).ToString("dd/MMM/yyyy");
+                        dgvDetails["Vchtype", dgvDetails.Rows.Count - 1].Value = Rs.fields("Vchtype");
+                        dgvDetails["VchNo", dgvDetails.Rows.Count - 1].Value = Rs.fields("Vchno");
+                        dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(VchAmountC, true);
+                        dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(VchAmountD, true);
+                        dgvDetails["DrillDownID", dgvDetails.Rows.Count - 1].Value = Rs.fields("refID");
+                        dgvDetails["DrillDownType", dgvDetails.Rows.Count - 1].Value = Rs.fields("vchtypeID");
+                        dgvDetails["Nature", dgvDetails.Rows.Count - 1].Value = "Opentrans";
+
+                        PrevVchtypeID = Comm.ToInt32(Rs.fields("VchtypeID"));
+                        PrevRefID = Comm.ToInt32(Rs.fields("refID"));
+
+                        SubTotalDebit = SubTotalDebit + Comm.ToDouble(Rs.fields("AmountC")); // Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
+                        SubTotalCredit = SubTotalCredit + Comm.ToDouble(Rs.fields("AmountD")); // Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
+
+                        AmountD = AmountD + Comm.ToDouble(Rs.fields("AmountC")); // Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
+                        AmountC = AmountC + Comm.ToDouble(Rs.fields("AmountD")); // Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
+                        //dgvDetails["Balance", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD - AmountC, true) + Interaction.IIf(Comm.ToDouble(AmountD - AmountC) > 0, " Dr", " Cr");
+
+                        Rs.MoveNext();
+                    }
+                }
+
+                dgvDetails.Rows.Add("");
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(SubTotalDebit, true);
+                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(SubTotalCredit, true);
+                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                dgvDetails.Rows.Add("");
+
+                dgvDetails.Rows.Add("");
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = "=============";
+                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = "=============";
+
+                dgvDetails.Rows.Add("");
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD, true);
+                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountC, true);
+                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+
+
+                dgvDetails.Rows.Add("");
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = "=============";
+                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = "=============";
+
+                dgvDetails.Rows.Add("");
+                if (Comm.ToDouble(AmountD - AmountC) > 0)
+                    dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(AmountD - AmountC), true);
+                else
+                    dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Math.Abs(Comm.ToDouble(AmountD - AmountC)), true);
+
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+
+                dgvDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void dayBook()
         {
-            dgvDetails.Columns.Clear();
-            tgsDetailed.Visible = true;
-            
-            lblHeading.Text = "Day Book between " + dtpfrom.Value.ToString("dd/MMM/yyyy") + " and " + dtpfrom.Value.ToString("dd/MMM/yyyy");
+            try
+            {
+                dgvDetails.Columns.Clear();
+                tgsDetailed.Visible = true;
+
+                lblHeading.Text = "Day Book between " + dtpfrom.Value.ToString("dd/MMM/yyyy") + " and " + dtpfrom.Value.ToString("dd/MMM/yyyy");
+
+                string strCCIDsql = Comm.GetCheckedData(lstCostCentre);
+                string StrCCSQL1 = "";
+                if (strCCIDsql != "")
+                    StrCCSQL1 = strCCIDsql.Replace("and", "") + " AND ";
+
+                DataGridViewTextBoxColumn myDate = new DataGridViewTextBoxColumn();
+                myDate.HeaderText = "Date";
+                myDate.Name = "Date";
+                myDate.ReadOnly = true;
+                myDate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                myDate.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                myDate.SortMode = DataGridViewColumnSortMode.NotSortable;
+                myDate.DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                dgvDetails.Columns.Add(myDate);
+
+                DataGridViewTextBoxColumn Particulars = new DataGridViewTextBoxColumn();
+                Particulars.HeaderText = "Particulars";
+                Particulars.Name = "Particulars";
+                Particulars.ReadOnly = true;
+                Particulars.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                Particulars.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                Particulars.SortMode = DataGridViewColumnSortMode.NotSortable;
+                Particulars.DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                dgvDetails.Columns.Add(Particulars);
+
+                DataGridViewTextBoxColumn vchType = new DataGridViewTextBoxColumn();
+                vchType.HeaderText = "Vchtype";
+                vchType.Name = "Vchtype";
+                vchType.ReadOnly = true;
+                vchType.SortMode = DataGridViewColumnSortMode.NotSortable;
+                vchType.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                vchType.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvDetails.Columns.Add(vchType);
+
+                DataGridViewTextBoxColumn VchNo = new DataGridViewTextBoxColumn();
+                VchNo.HeaderText = "VchNo";
+                VchNo.Name = "VchNo";
+                VchNo.ReadOnly = true;
+                VchNo.SortMode = DataGridViewColumnSortMode.NotSortable;
+                VchNo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                VchNo.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvDetails.Columns.Add(VchNo);
+
+                DataGridViewTextBoxColumn narration = new DataGridViewTextBoxColumn();
+                narration.HeaderText = "Narration";
+                narration.Name = "Narration";
+                narration.ReadOnly = true;
+                narration.SortMode = DataGridViewColumnSortMode.NotSortable;
+                narration.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                narration.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvDetails.Columns.Add(narration);
+
+                DataGridViewTextBoxColumn DebitSub = new DataGridViewTextBoxColumn();
+                DebitSub.HeaderText = "Debit";
+                DebitSub.Name = "DebitSub";
+                DebitSub.ReadOnly = true;
+                DebitSub.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                DebitSub.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                DebitSub.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvDetails.Columns.Add(DebitSub);
+
+                DataGridViewTextBoxColumn CreditSub = new DataGridViewTextBoxColumn();
+                CreditSub.HeaderText = "Credit";
+                CreditSub.Name = "CreditSub";
+                CreditSub.ReadOnly = true;
+                CreditSub.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                CreditSub.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                CreditSub.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvDetails.Columns.Add(CreditSub);
+
+                DataGridViewTextBoxColumn Balance = new DataGridViewTextBoxColumn();
+                Balance.HeaderText = "Balance";
+                Balance.Name = "Balance";
+                Balance.ReadOnly = true;
+                Balance.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                Balance.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                Balance.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvDetails.Columns.Add(Balance);
+
+                DataGridViewTextBoxColumn DrillDownID = new DataGridViewTextBoxColumn();
+                DrillDownID.HeaderText = "DrillDownID";
+                DrillDownID.Name = "DrillDownID";
+                DrillDownID.ReadOnly = true;
+                DrillDownID.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownID.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownID.Visible = false;
+                dgvDetails.Columns.Add(DrillDownID);
+
+                DataGridViewTextBoxColumn DrillDownType = new DataGridViewTextBoxColumn();
+                DrillDownType.HeaderText = "DrillDownType";
+                DrillDownType.Name = "DrillDownType";
+                DrillDownType.ReadOnly = true;
+                DrillDownType.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownType.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownType.Visible = false;
+                dgvDetails.Columns.Add(DrillDownType);
+
+                DataGridViewTextBoxColumn nature = new DataGridViewTextBoxColumn();
+                nature.HeaderText = "Nature";
+                nature.Name = "Nature";
+                nature.ReadOnly = true;
+                nature.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownType.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                nature.Visible = false;
+                dgvDetails.Columns.Add(nature);
+
+                double AmountD = 0;
+                double AmountC = 0;
+                double CashBalance = 0;
+
+                if (dtpfrom.Value.Date == Global.FyStartDate.Date)
+                    CashBalance = CashBalance + GetLedgerBalance(3, dtpfrom.Value.Date, dtpfrom.Value.Date, "1005");
+                else if (dtpfrom.Value.Date < Global.FyStartDate.Date)
+                    CashBalance = GetLedgerBalance(3, dtpfrom.Value.Date.AddDays(-1), dtpfrom.Value.Date.AddDays(-1), "");
+                else if (dtpfrom.Value.Date > Global.FyStartDate)
+                    CashBalance = GetLedgerBalance(3, dtpfrom.Value.Date.AddDays(-1), dtpfrom.Value.Date.AddDays(-1), "");
+                sqlControl Rs = new sqlControl();
+
+                double SubTotalDebit = 0;
+                double SubTotalCredit = 0;
+                double SubBalance = 0;
+
+                if (tgsDetailed.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active)
+                    Rs.Open("SELECT        TOP (100) PERCENT dbo.tblledger.laliasname as AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC, dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblledger.AccountGroupID as CheckID,dbo.tblledger.lid as AccountGroupID  FROM            dbo.tblledger inner join dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.LedgerID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE tblledger.lid <> 0 and tblvoucher.optional=0 and   (dbo.tblVoucher.LedgerID = 3 AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "')  " + strCCIDsql + " and tblVoucher.vchtypeid not in(1005)  GROUP BY dbo.tblledger.lid, dbo.tblledger.laliasname, dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration ,dbo.tblledger.AccountGroupID  having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " Union " + " SELECT        TOP (100) PERCENT dbo.tblledger.laliasname as AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC,  dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblledger.AccountGroupID as CheckID,dbo.tblledger.lid as AccountGroupID  FROM            dbo.tblledger INNER JOIN dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.LedgerID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE    tblledger.lid <> 0 and tblvoucher.optional=0 and    (dbo.tblVoucher.LedgerID <> 3) " + StrCCSQL1 + " AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "' and tblVoucher.vchtypeid not in(1005) GROUP BY dbo.tblledger.lid, dbo.tblledger.laliasname, dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration ,dbo.tblledger.AccountGroupID  having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " ORDER BY dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.vchtypeid, dbo.tblVoucher.VchNo, dbo.tblVoucher.mynarration, AmountD ");
+                else
+                    Rs.Open("SELECT        TOP (100) PERCENT dbo.tblAccountGroup.AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC, dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblAccountGroup.AccountGroupID as CheckID,dbo.tblAccountGroup.AccountGroupID  FROM            dbo.tblAccountGroup INNER JOIN dbo.tblLedger ON dbo.tblAccountGroup.AccountGroupID = dbo.tblLedger.AccountGroupID and tblLedger.LID <> 0 INNER JOIN  dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.LedgerID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE tblvoucher.optional=0 and   (dbo.tblVoucher.LedgerID = 3 AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "')  " + StrCCSQL1 + " and tblVoucher.vchtypeid not in(1005)  GROUP BY dbo.tblAccountGroup.AccountGroup, dbo.tblAccountGroup.AccountGroupID, dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration  having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " Union " + " SELECT        TOP (100) PERCENT dbo.tblAccountGroup.AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC,  dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblAccountGroup.AccountGroupID as CheckID,dbo.tblAccountGroup.AccountGroupID  FROM            dbo.tblAccountGroup INNER JOIN dbo.tblLedger ON dbo.tblAccountGroup.AccountGroupID = dbo.tblLedger.AccountGroupID and tblLedger.LID <> 0 INNER JOIN dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.LedgerID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE    tblvoucher.optional=0 and    (dbo.tblVoucher.LedgerID <> 3) " + StrCCSQL1 + " AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "' and tblVoucher.vchtypeid not in(1005) GROUP BY dbo.tblAccountGroup.AccountGroup, dbo.tblAccountGroup.AccountGroupID, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.mynarration having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " ORDER BY dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo,dbo.tblVoucher.mynarration, AmountD ");
+
+                Font MySubTotalFont = new Font("Segoe UI", 10, FontStyle.Bold);
+                double DebitVal = 0;
+                double CreditVal = 0;
+                {
+                    var withBlock = dgvDetails;
+                    dgvDetails.Rows.Add("");
+                    dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = dtpfrom.Value.ToString("dd/MMM/yyyy");
+                    dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = "Opening Balance Of Cash";
+
+                    if (CashBalance > 0)
+                    {
+                        dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(Math.Abs(CashBalance)));
+                        DebitVal = DebitVal + Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
+                    }
+                    else
+                    {
+                        dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(Math.Abs(CashBalance)), true);
+                        CreditVal = CreditVal + Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
+                    }
+
+                    dgvDetails["Balance", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(DebitVal - CreditVal, true) + Interaction.IIf(Comm.ToDouble(DebitVal - CreditVal) > 0, " Dr", " Cr");
+                    AmountD = AmountD + Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
+                    AmountC = AmountC + Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
+
+                    SubTotalDebit = SubTotalDebit + Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
+                    SubTotalCredit = SubTotalCredit + Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
+                    SubBalance = SubTotalDebit - SubTotalCredit;
+
+                    DateTime PrevDate = dtpfrom.Value; //.ToString("dd/MMM/YYYY");
+                    SubTotalCredit = 0;
+                    SubTotalDebit = 0;
+
+                    int PrevVchtypeID = 0;
+                    int PrevRefID = 0;
+
+                    double VchAmountC = 0;
+                    double VchAmountD = 0;
+
+                    string AccountGroup = "";
+
+                    while (!Rs.eof())
+                    {
+                        if (Comm.ToDouble(Rs.fields("checkid")) != 17)
+                        {
+                            if (PrevDate != Convert.ToDateTime(Rs.fields("VchDate")))
+                            {
+                                PrevDate = Convert.ToDateTime(Rs.fields("VchDate"));
+
+                                dgvDetails.Rows.Add("");
+                                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = SubTotalDebit;
+                                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = SubTotalCredit;
+                                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                                dgvDetails.Rows.Add("");
+
+                                SubBalance = SubTotalDebit - SubTotalCredit;
+                                SubTotalDebit = 0;
+                                SubTotalCredit = 0;
+
+                                if (SubBalance != 0)
+                                {
+                                    dgvDetails.Rows.Add("");
+                                    dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = Convert.ToDateTime(Rs.fields("VchDate")).ToString("dd /MMM/yyyy");
+                                    dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = "Opening Balance Of Cash";
+                                    if (SubBalance > 0)
+                                        dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(Math.Abs(SubBalance)), true);
+                                    else
+                                        dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(Math.Abs(SubBalance)), true);
+                                    SubTotalDebit = SubTotalDebit + Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
+                                    SubTotalCredit = SubTotalCredit + Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
+
+                                    dgvDetails["Balance", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD - AmountC, true) + Interaction.IIf(Comm.ToDouble(AmountD - AmountC) > 0, " Dr", " Cr");
+                                }
+                            }
+
+                            if (tgsDetailed.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive)
+                            {
+                                if (PrevVchtypeID != 0 && PrevRefID != 0)
+                                {
+                                    if (PrevVchtypeID != Comm.ToInt32(Rs.fields("VchtypeID")) || PrevRefID != Comm.ToInt32(Rs.fields("refID")))
+                                    {
+                                        VchAmountC = 0;
+                                        VchAmountD = 0;
+                                        AccountGroup = "";
+
+                                        dgvDetails.Rows.Add("");
+                                    }
+                                    else if ((PrevVchtypeID == Comm.ToInt32(Rs.fields("VchtypeID")) && PrevRefID == Comm.ToInt32(Rs.fields("refID")))
+                                             && (VchAmountC > 0 && Comm.ToInt32(Rs.fields("AmountD")) > 0))
+                                    {
+                                        VchAmountC = 0;
+                                        VchAmountD = 0;
+                                        AccountGroup = "";
+
+                                        dgvDetails.Rows.Add("");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                VchAmountC = 0;
+                                VchAmountD = 0;
+                                AccountGroup = "";
+
+                                dgvDetails.Rows.Add("");
+                            }
+
+                            VchAmountC += Comm.ToDouble(Rs.fields("AmountC"));
+                            VchAmountD += Comm.ToDouble(Rs.fields("AmountD"));
+
+                            if (AccountGroup != "")
+                                AccountGroup += ",";
+
+                            AccountGroup += Rs.fields("AccountGroup");
+
+                            dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = Convert.ToDateTime(Rs.fields("VchDate")).ToString("dd/MMM/yyyy");
+                            dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = AccountGroup;
+                            dgvDetails["Vchtype", dgvDetails.Rows.Count - 1].Value = Rs.fields("Vchtype");
+                            dgvDetails["VchNo", dgvDetails.Rows.Count - 1].Value = Rs.fields("Vchno");
+                            dgvDetails["Narration", dgvDetails.Rows.Count - 1].Value = Rs.fields("mynarration");
+                            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(VchAmountC, true);
+                            dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(VchAmountD, true);
+                            dgvDetails["DrillDownID", dgvDetails.Rows.Count - 1].Value = Rs.fields("refID");
+                            dgvDetails["DrillDownType", dgvDetails.Rows.Count - 1].Value = Rs.fields("vchtypeID");
+                            dgvDetails["Nature", dgvDetails.Rows.Count - 1].Value = "Opentrans";
+
+                            PrevVchtypeID = Comm.ToInt32(Rs.fields("VchtypeID"));
+                            PrevRefID = Comm.ToInt32(Rs.fields("refID"));
+
+                            SubTotalDebit = SubTotalDebit + Comm.ToDouble(Rs.fields("AmountC")); // Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
+                            SubTotalCredit = SubTotalCredit + Comm.ToDouble(Rs.fields("AmountD")); // Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
+
+                            AmountD = AmountD + Comm.ToDouble(Rs.fields("AmountC")); // Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
+                            AmountC = AmountC + Comm.ToDouble(Rs.fields("AmountD")); // Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
+                            dgvDetails["Balance", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD - AmountC, true) + Interaction.IIf(Comm.ToDouble(AmountD - AmountC) > 0, " Dr", " Cr");
+                        }
+                        Rs.MoveNext();
+                    }
+                }
+
+                dgvDetails.Rows.Add("");
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(SubTotalDebit, true);
+                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(SubTotalCredit, true);
+                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                dgvDetails.Rows.Add("");
+
+                dgvDetails.Rows.Add("");
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = "=============";
+                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = "=============";
+
+                dgvDetails.Rows.Add("");
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD, true);
+                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountC, true);
+                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+
+
+                dgvDetails.Rows.Add("");
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = "=============";
+                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = "=============";
+
+                dgvDetails.Rows.Add("");
+                if (Comm.ToDouble(AmountD - AmountC) > 0)
+                    dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(AmountD - AmountC), true);
+                else
+                    dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Math.Abs(Comm.ToDouble(AmountD - AmountC)), true);
+                dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = "Closing Balance Of Cash";
+
+                dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+
+
+                dgvDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch(Exception ex)
+            {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public double GetStockValue(DateTime fromDate, bool blnisOpening, string StrCCID)
+        {
+            if (blnisOpening == false)
+            {
+                try
+                {
+                    if (Strings.Trim(StrCCID) != "")
+                    {
+                        if (Strings.Right(StrCCID, 1) == ",")
+                            StrCCID = Strings.Left(StrCCID, Strings.Len(StrCCID) - 1);
+                    }
+                    if (Strings.Trim(StrCCID) != "")
+                        StrCCID = " where ccid in (" + StrCCID + ") ";
+
+                    sqlControl Rs = new sqlControl();
+                    string SQl;
+                    double TOTALVALUEnew = 0;
+                    Rs.Open("Select sum(qtyin * CostRateExcl)-sum(qtyout * CostRateExcl) as Clsstk from tblstockhistory " + StrCCID + " and VchDate <= '" + fromDate.ToString("dd/MMM/yyyy") + "' ");
+                    if (!Rs.eof())
+                    {
+                        TOTALVALUEnew = Comm.ToDouble(Rs.fields("Clsstk"));
+                    }
+                    
+                    return TOTALVALUEnew;
+
+                }
+                catch (Exception ex)
+                {
+                    Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return 0;
+                }
+            }
+            else
+            {
+                try
+                {
+                    double TOTALVALUE = 0;
+                    int IntOpening = 0;
+                    if (blnisOpening == true)
+                        IntOpening = 1;
+
+                    int i = 0;
+
+                    sqlControl Rs = new sqlControl();
+                    string SQl;
+                    string[] CCIDS;
+                    if (Strings.InStr(1, StrCCID, ",") > 0)
+                        CCIDS = Strings.Split(StrCCID, ",");
+                    else
+                        CCIDS = Strings.Split(StrCCID + ",", ",");
+
+                    for (i = 0; i <= Information.UBound(CCIDS); i++)
+                    {
+                        if (CCIDS[i] == "" & i != 0)
+                            break;
+
+                        Rs.Open("Select sum(qtyin * CostRateExcl)-sum(qtyout * CostRateExcl) as Clsstk from tblstockhistory Where VchDate <= '" + fromDate.ToString("dd/MMM/yyyy") + "' " + StrCCID + " ");
+                        if (!Rs.eof())
+                        {
+                            TOTALVALUE += Comm.ToDouble(Rs.fields("Clsstk"));
+                        }
+
+                        //string Connstring = Properties.Settings.Default.ConnectionString;
+                        //using (SqlConnection Connection = new SqlConnection(Connstring))
+                        //{
+                        //    Connection.Open();
+                        //    SqlCommand Command = new SqlCommand("OpeningStock", Connection);
+                        //    Command.CommandType = CommandType.StoredProcedure;
+                        //    Command.Parameters.AddWithValue("@blnisOpening", IntOpening);
+                        //    Command.Parameters.AddWithValue("@CCIDs", CCIDS[i]);
+                        //    Command.Parameters.AddWithValue("@VchDate", Strings.Format(fromDate, "dd-MMM-yyyy"));
+                        //    Command.CommandTimeout = 0;
+                        //    SqlParameter PramCOIDRet = new SqlParameter();
+                        //    PramCOIDRet.ParameterName = "@TotalStockValue";
+                        //    PramCOIDRet.SqlDbType = SqlDbType.Float;
+                        //    PramCOIDRet.Size = 800;
+                        //    PramCOIDRet.Direction = ParameterDirection.Output;
+                        //    Command.Parameters.Add(PramCOIDRet);
+                        //    Command.ExecuteNonQuery();
+                        //    TOTALVALUE = 0;
+
+                        //    TOTALVALUE = Command.Parameters("@TotalStockValue").Value;
+                        //}
+                        //GetStockValue = GetStockValue + Comm.ToDouble(TOTALVALUE);
+
+                        if (CCIDS[i] == "")
+                            break;
+                    }
+
+                    return TOTALVALUE;
+                }
+                catch (Exception ex)
+                {
+                    Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return 0;
+                }
+            }
+        }
+
+        private void trialbalance()
+        {
+            try
+            {
+                dgvDetails.Columns.Clear();
+                DataGridViewTextBoxColumn Particulars = new DataGridViewTextBoxColumn();
+                tgsDetailed.Visible = true;
+                lblHeading.Text = "Trial Balance between " + dtpfrom.Value.ToString("dd/MMM/yyyy") + "  and " + dtpto.Value.ToString("dd/MMM/yyyy");
+                Particulars.HeaderText = "Particulars";
+                Particulars.Name = "Particulars";
+                Particulars.ReadOnly = true;
+                Particulars.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                Particulars.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                Particulars.SortMode = DataGridViewColumnSortMode.NotSortable;
+                Particulars.DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                dgvDetails.Columns.Add(Particulars);
+
+                string strCCIDsql = Comm.GetCheckedData(lstCostCentre);
+                string StrCCSQL1 = "";
+                if (strCCIDsql != "")
+                    StrCCSQL1 = strCCIDsql.Replace("and", "") + " AND ";
+
+                DataGridViewTextBoxColumn DebitSub = new DataGridViewTextBoxColumn();
+                DebitSub.HeaderText = "DebitSub";
+                DebitSub.Name = "DebitSub";
+                DebitSub.ReadOnly = true;
+                DebitSub.SortMode = DataGridViewColumnSortMode.NotSortable;
+                DebitSub.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                DebitSub.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvDetails.Columns.Add(DebitSub);
+
+                DataGridViewTextBoxColumn DebitGroupTotal = new DataGridViewTextBoxColumn();
+                DebitGroupTotal.HeaderText = "Debit";
+                DebitGroupTotal.Name = "DebitGroupTotal";
+                DebitGroupTotal.SortMode = DataGridViewColumnSortMode.NotSortable;
+                DebitGroupTotal.ReadOnly = true;
+                DebitGroupTotal.DefaultCellStyle.Font = new Font("Tahoma", Convert.ToSingle(9), FontStyle.Bold);
+                DebitGroupTotal.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                DebitGroupTotal.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvDetails.Columns.Add(DebitGroupTotal);
+
+
+
+
+                DataGridViewTextBoxColumn CreditSub = new DataGridViewTextBoxColumn();
+                CreditSub.HeaderText = "CreditSub";
+                CreditSub.Name = "CreditSub";
+                CreditSub.ReadOnly = true;
+                CreditSub.SortMode = DataGridViewColumnSortMode.NotSortable;
+                CreditSub.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                CreditSub.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                dgvDetails.Columns.Add(CreditSub);
+
+                DataGridViewTextBoxColumn CreditGroupTotal = new DataGridViewTextBoxColumn();
+                CreditGroupTotal.HeaderText = "Credit";
+                CreditGroupTotal.Name = "CreditGroupTotal";
+                CreditGroupTotal.ReadOnly = true;
+                CreditGroupTotal.SortMode = DataGridViewColumnSortMode.NotSortable;
+                CreditGroupTotal.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                CreditGroupTotal.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                CreditGroupTotal.DefaultCellStyle.Font = new Font("Tahoma", Convert.ToSingle(9), FontStyle.Bold);
+                dgvDetails.Columns.Add(CreditGroupTotal);
+
+                DataGridViewTextBoxColumn DrillDownID = new DataGridViewTextBoxColumn();
+                DrillDownID.HeaderText = "DrillDownID";
+                DrillDownID.Name = "DrillDownID";
+                DrillDownID.ReadOnly = true;
+                DrillDownID.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownID.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownID.Visible = false;
+                dgvDetails.Columns.Add(DrillDownID);
+
+                DataGridViewTextBoxColumn DrillDownType = new DataGridViewTextBoxColumn();
+                DrillDownType.HeaderText = "DrillDownType";
+                DrillDownType.Name = "DrillDownType";
+                DrillDownType.ReadOnly = true;
+                DrillDownType.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownType.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownType.Visible = false;
+                DrillDownType.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvDetails.Columns.Add(DrillDownType);
+
+                DataGridViewTextBoxColumn nature = new DataGridViewTextBoxColumn();
+                nature.HeaderText = "Nature";
+                nature.Name = "Nature";
+                nature.ReadOnly = true;
+                nature.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DrillDownType.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                nature.Visible = false;
+                dgvDetails.Columns.Add(nature);
+
+                if (tgsDetailed.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive)
+                {
+                    CreditSub.Visible = false;
+                    DebitSub.Visible = false;
+                }
+                else
+                {
+                    CreditSub.Visible = true;
+                    DebitSub.Visible = true;
+                }
+
+                sqlControl rs = new sqlControl();
+                sqlControl rs1 = new sqlControl();
+
+                //dgvSettings.CurrentCell = dgvSettings.Rows(2).Cells(0);
+
+                // Two functions
+                double OpeningBalance = 0;
+                double OpStockBalance = 0;
+
+                double AmountD = 0;
+                double AmountC = 0;
+                dgvDetails.Rows.Add("==");
+
+                string MstrDatecriteria;
+
+                if (dtpfrom.Value == Global.FyStartDate)
+                    MstrDatecriteria = "and vchdate between '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' and '" + dtpto.Value.ToString("dd/MMM/yyyy") + "'";
+                else
+                    MstrDatecriteria = "and vchdate between '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' and '" + dtpto.Value.ToString("dd/MMM/yyyy") + "'";
+
+                if (dtpfrom.Value <= Global.FyStartDate)
+                {
+                    sqlControl rsOp = new sqlControl();
+                    // difference In opening Balance
+                    rsOp.Open("select sum(AmountC-AmountD) as Total from tblvoucher where 1=1 " + StrCCSQL1 + " AND Optional=0    and vchtypeid=1005 and  LedgerID=999 ");
+                    if (!rsOp.eof())
+                    {
+                        if (rsOp.fields("Total") != null)
+                            OpeningBalance = Comm.ToDouble(rsOp.fields("Total").ToString());
+                    }
+                    // 'opening stock balance
+                    //string CCIDString = getcheckeditemdataSpecial(LstCostCentre);
+                    OpStockBalance = Comm.ToDouble(GetStockValue(dtpfrom.Value, true, strCCIDsql));
+                }
+                else
+                    OpeningBalance = 0;
+
+                dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = "OPENING STOCK";
+
+                if (Comm.ToDouble(OpStockBalance) < 0)
+                    dgvDetails["CreditGroupTotal", dgvDetails.Rows.Count - 1].Value = Comm.FormatAmt(Math.Abs(OpStockBalance), AppSettings.CurrDecimalFormat);
+                else
+                    dgvDetails["DebitGroupTotal", dgvDetails.Rows.Count - 1].Value = Comm.FormatAmt(OpStockBalance, AppSettings.CurrDecimalFormat);
+
+                dgvDetails.Rows.Add("==");
+
+                if (Math.Abs(OpeningBalance + OpStockBalance) != 0)
+                {
+                    dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = "Diff In Op Balance";
+
+                    if (Comm.ToDouble(OpeningBalance + OpStockBalance) < 0)
+                        dgvDetails["DebitGroupTotal", dgvDetails.Rows.Count - 1].Value = Comm.FormatAmt(Math.Abs(OpeningBalance + OpStockBalance), AppSettings.CurrDecimalFormat);
+                    else
+                        dgvDetails["CreditGroupTotal", dgvDetails.Rows.Count - 1].Value = Comm.FormatAmt(Math.Abs(OpeningBalance + OpStockBalance), AppSettings.CurrDecimalFormat);
+
+                    // End If
+                    dgvDetails.Rows.Add("==");
+                }
+                else
+                {
+                }
+
+                FillAccountGroupTB(6, true, "Direct Expense", false);
+
+                FillAccountGroupTB(7, true, "Direct Income");
+
+                FillAccountGroupTB(9, true, "InDirect Expense");
+                FillAccountGroupTB(1, true, "InDirect Income");
+
+                FillAccountGroupTB(2, true, "Current Asset");
+                FillAccountGroupTB(3, true, "Current Liability");
+
+                FillAccountGroupTB(24, true, "Capital");
+                FillAccountGroupTB(5, true, "LongTerm Liability");
+
+                FillAccountGroupTB(8, true, "Fixed Asset");
+
+
+                int i = 0;
+
+
+
+                for (i = 0; i <= dgvDetails.Rows.Count - 1; i++)
+                {
+                    AmountD = AmountD + Comm.ToDouble(dgvDetails["DebitGroupTotal", i].Value);
+                    AmountC = AmountC + Comm.ToDouble(dgvDetails["CreditGroupTotal", i].Value);
+                }
+                dgvDetails.Rows.Add("");
+                dgvDetails["DebitGroupTotal", dgvDetails.Rows.Count - 1].Value = AmountD;
+                dgvDetails["CreditGroupTotal", dgvDetails.Rows.Count - 1].Value = AmountC;
+                dgvDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                Interaction.MsgBox(ex.Message);
+            }
+        }
+
+        public bool FillAccountGroupTB(long AccountgroupID, bool BlnFirstLevel, string groupName = "", bool BlnTotaltype = false, bool FORCEDETAILEDVIEW = false)
+        {
+            try
+            {
+                this.Visible = true;
+                if (dgvDetails.Columns.Count == 0)
+                    InitialiseGridforDrilling();
+
+                string MstrDatecriteria;
+
+                if (dtpfrom.Value == Global.FyStartDate)
+                    MstrDatecriteria = "and vchdate between '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' and '" + dtpto.Value.ToString("dd/MMM/yyyy") + "'";
+                else
+                    MstrDatecriteria = "and vchdate between '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' and '" + dtpto.Value.ToString("dd/MMM/yyyy") + "'";
+
+                sqlControl rs = new sqlControl();
+                string StrSqbQry = "";
+
+                string strCCIDsql = "";
+                strCCIDsql = Comm.GetCheckedData(lstCostCentre);
+                if (strCCIDsql != "")
+                    strCCIDsql = " and CCID IN (" + strCCIDsql + ") ";
+
+                if (BlnFirstLevel)
+                    StrSqbQry = " OR tblAccountgroup.AccountGroupID = " + AccountgroupID;
+
+                sqlControl rs1 = new sqlControl();
+                rs1.Open(" select Sum(Amountd-Amountc) as Amount,AccountGroup as GroupName,ParentID,tblAccountgroup.AccountGroupID,HID from tblVoucher,tblLedger,tblAccountgroup where " + " tblVoucher.LedgerID = tblLedger.lid  and optional = 0 And tblAccountgroup.Accountgroupid = tblLedger.Accountgroupid   " + strCCIDsql + MstrDatecriteria + " and (ParentID = " + AccountgroupID + StrSqbQry + " ) " + " group by AccountGroup,ParentID,tblAccountgroup.AccountGroupID,HID  ");
+
+                rs.Open("select DISTINCT SortOrder,nature,TBLaCCOUNTgroup.accountGroup as GroupName,tblAccountgroup.AccountGroupID,HID,len(HID) from  " + " tblAccountgroup  " + " Where (ParentID = " + AccountgroupID + StrSqbQry + " )  group by SortOrder,nature,TBLaCCOUNTgroup.accountGroup,ParentID,tblAccountgroup.AccountGroupID,HID,Len(HID) order by len(HID),SortOrder ");
+
+                {
+                    var withBlock = dgvDetails;
+                    if (BlnFirstLevel && rs.eof())
+                    {
+                        dgvDetails["Particulars", withBlock.Rows.Count - 1].Value = groupName.ToUpper();
+                        dgvDetails.Rows.Add("");
+                    }
+                    else if (BlnFirstLevel && rs.eof() == false)
+                    {
+                        bool BlnParentExists = false;
+                        while (!rs.eof())
+                        {
+                            if (Comm.ToInt32(rs.fields("AccountgroupID")) == AccountgroupID)
+                            {
+                                BlnParentExists = true; break;
+                            }
+                            rs.MoveNext();
+                        }
+                        if (BlnParentExists == false)
+                            dgvDetails["Particulars", withBlock.Rows.Count - 1].Value = Strings.UCase(groupName);
+                    }
+                    // 0,1,2,5,6 are shown columns
+                    // dgvDetails.Rows.Add("==")
+                    if (rs.RecordCount > 0)
+                        rs.MoveFirst();
+                    while (!rs.eof())
+                    {
+                        this.Visible = true;
+                        {
+                            var withBlock1 = dgvDetails;
+                            dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = Comm.ToInt32(rs.fields("AccountgroupID")) == AccountgroupID ? "" : new string(' ', rs.fields("HID").ToString().Length) + rs.fields("groupName");
+                            dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Style.Font = new Font("Tahoma", Convert.ToSingle(9), FontStyle.Bold);
+                            dgvDetails["DrillDownID", dgvDetails.Rows.Count - 1].Value = rs.fields("AccountgroupID");
+                            dgvDetails["DrillDownType", dgvDetails.Rows.Count - 1].Value = "AccountGROUP";
+                            dgvDetails["Nature", dgvDetails.Rows.Count - 1].Value = "Accountgroup".ToUpper();
+
+                            if (rs1.RecordCount > 0)
+                                rs1.MoveFirst();
+                            rs1.Find("AccountGroupID", rs.fields("AccountgroupID").ToString(), true);
+                            if (rs1.eof() == false)
+                            {
+                                if (Comm.ToDouble(rs1.fields("Amount")) > 0)
+                                    dgvDetails["DebitGroupTotal", dgvDetails.Rows.Count - 1].Value = Comm.FormatAmt(Comm.ToDouble(rs1.fields("Amount")), AppSettings.CurrDecimalFormat);
+                                else
+                                    dgvDetails["CreditGroupTotal", dgvDetails.Rows.Count - 1].Value = Comm.FormatAmt(Comm.ToDouble(Math.Abs(Comm.ToDouble(rs1.fields("Amount")))), AppSettings.CurrDecimalFormat);
+                            }
+                            dgvDetails.Rows.Add("--");
+
+                            if (tgsDetailed.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active || FORCEDETAILEDVIEW == true)
+                                FillTrialBalanceLedger(Comm.ToInt32(rs.fields("AccountgroupID")), new string(' ', rs.fields("HID").Length), rs.fields("Nature"));
+                            if (AccountgroupID != Comm.ToDouble(rs.fields("AccountgroupID")))
+                                FillAccountGroupTB(Comm.ToInt32(rs.fields("AccountgroupID")), false, "", false);
+                            // FillAccountGroupTB rs!AccountGroupId, msg, False
+
+                            rs.MoveNext();
+                        }
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+        }
+
+        private void FillTrialBalanceLedger(int AccountgroupID, string StrSpacing, string AccountgroupNature = "")
+        {
+            string MstrDatecriteria;
+
+            if (dtpfrom.Value == Global.FyStartDate)
+                MstrDatecriteria = "and vchdate between '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' and '" + dtpto.Value.ToString("dd/MMM/yyyy") + "'";
+            else
+                MstrDatecriteria = "and vchdate between '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' and '" + dtpto.Value.ToString("dd/MMM/yyyy") + "'";
 
             string strCCIDsql = Comm.GetCheckedData(lstCostCentre);
+
             string StrCCSQL1 = "";
             if (strCCIDsql != "")
                 StrCCSQL1 = strCCIDsql.Replace("and", "") + " AND ";
 
+            // 1,2,5,6
+            sqlControl rs = new sqlControl();
+            rs.Open("Select LID,lAliasName as Name,Sum(AmountD-Amountc) as Amount from tblVoucher,tblLedger where  tblVoucher.LedgerID = tblLedger.LID " + MstrDatecriteria + strCCIDsql + " and optional = 0 and AccountgroupID=" + AccountgroupID + " group By lAliasName,LID having round(Sum(AmountD-Amountc),4) <>0 order by lAliasName  ");
+            {
+                var withBlock = dgvDetails;
+                while (!rs.eof())
+                {
+                    // ====================================================================
+                    withBlock["Particulars", withBlock.Rows.Count - 1].Value = StrSpacing + " ○ " + rs.fields("Name").ToLower();
+                    withBlock["Particulars", dgvDetails.Rows.Count - 1].Style.Font = new Font("Tahoma", Convert.ToSingle(12), FontStyle.Italic);
+                    if (Comm.ToDouble(rs.fields("Amount")) > 0)
+                        withBlock["DebitSub", withBlock.Rows.Count - 1].Value = Comm.FormatAmt(Comm.ToDouble(rs.fields("Amount")), AppSettings.CurrDecimalFormat);
+                    else
+                        withBlock["CreditSub", withBlock.Rows.Count - 1].Value = Comm.FormatAmt(Math.Abs(Comm.ToDouble(rs.fields("Amount"))), AppSettings.CurrDecimalFormat);
+                    withBlock["DrillDownID", withBlock.Rows.Count - 1].Value = rs.fields("LID");
+
+                    withBlock["Nature", withBlock.Rows.Count - 1].Value = "LEDGER";
+
+                    if (Strings.Trim(AccountgroupNature) != "")
+                        withBlock["DrillDownType", withBlock.Rows.Count - 1].Value = AccountgroupNature;
+                    dgvDetails.Rows.Add("");
+                    // ====================================================================
+                    rs.MoveNext();
+                }
+            }
+            return;
+        }
+
+        public void InitialiseGridforDrilling()
+        {
+            dgvDetails.Columns.Clear();
+            tgsDetailed.Visible = true;
+            //lblCaption.Text = "Ledger between " + Comm.FormatAmt(dtpfrom.Value, "dd/MMM/yyyy") + "  and " + Comm.FormatAmt(dtpto.Value, "dd/MMM/yyyy");
             DataGridViewTextBoxColumn myDate = new DataGridViewTextBoxColumn();
             myDate.HeaderText = "Date";
             myDate.Name = "Date";
@@ -237,11 +1243,11 @@ namespace InventorSync
             Particulars.DefaultCellStyle.BackColor = Color.LightSkyBlue;
             dgvDetails.Columns.Add(Particulars);
 
+
             DataGridViewTextBoxColumn vchType = new DataGridViewTextBoxColumn();
             vchType.HeaderText = "Vchtype";
             vchType.Name = "Vchtype";
             vchType.ReadOnly = true;
-            vchType.SortMode = DataGridViewColumnSortMode.NotSortable;
             vchType.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             vchType.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvDetails.Columns.Add(vchType);
@@ -250,19 +1256,21 @@ namespace InventorSync
             VchNo.HeaderText = "VchNo";
             VchNo.Name = "VchNo";
             VchNo.ReadOnly = true;
-            VchNo.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // VchNo.DefaultCellStyle.Font = New Font("Tahoma", Convert.ToSingle(My.Settings.FontSize), FontStyle.Bold)
             VchNo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             VchNo.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvDetails.Columns.Add(VchNo);
+
 
             DataGridViewTextBoxColumn narration = new DataGridViewTextBoxColumn();
             narration.HeaderText = "Narration";
             narration.Name = "Narration";
             narration.ReadOnly = true;
-            narration.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // VchNo.DefaultCellStyle.Font = New Font("Tahoma", Convert.ToSingle(My.Settings.FontSize), FontStyle.Bold)
             narration.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             narration.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvDetails.Columns.Add(narration);
+
 
             DataGridViewTextBoxColumn DebitSub = new DataGridViewTextBoxColumn();
             DebitSub.HeaderText = "Debit";
@@ -270,8 +1278,8 @@ namespace InventorSync
             DebitSub.ReadOnly = true;
             DebitSub.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             DebitSub.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            DebitSub.SortMode = DataGridViewColumnSortMode.NotSortable;
             dgvDetails.Columns.Add(DebitSub);
+
 
             DataGridViewTextBoxColumn CreditSub = new DataGridViewTextBoxColumn();
             CreditSub.HeaderText = "Credit";
@@ -279,7 +1287,6 @@ namespace InventorSync
             CreditSub.ReadOnly = true;
             CreditSub.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             CreditSub.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            CreditSub.SortMode = DataGridViewColumnSortMode.NotSortable;
             dgvDetails.Columns.Add(CreditSub);
 
             DataGridViewTextBoxColumn Balance = new DataGridViewTextBoxColumn();
@@ -288,8 +1295,11 @@ namespace InventorSync
             Balance.ReadOnly = true;
             Balance.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Balance.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Balance.SortMode = DataGridViewColumnSortMode.NotSortable;
             dgvDetails.Columns.Add(Balance);
+
+
+
+
 
             DataGridViewTextBoxColumn DrillDownID = new DataGridViewTextBoxColumn();
             DrillDownID.HeaderText = "DrillDownID";
@@ -318,220 +1328,7 @@ namespace InventorSync
             nature.Visible = false;
             dgvDetails.Columns.Add(nature);
 
-            double AmountD = 0;
-            double AmountC = 0;
-            double CashBalance = 0;
-
-            if (dtpfrom.Value.Date == Global.FyStartDate.Date)
-                CashBalance = CashBalance + GetLedgerBalance(3, dtpfrom.Value.Date, dtpfrom.Value.Date, "1005");
-            else if (dtpfrom.Value.Date < Global.FyStartDate.Date)
-                CashBalance = GetLedgerBalance(3, dtpfrom.Value.Date.AddDays(-1), dtpfrom.Value.Date.AddDays(-1), "");
-            else if (dtpfrom.Value.Date > Global.FyStartDate)
-                CashBalance = GetLedgerBalance(3, dtpfrom.Value.Date.AddDays(-1), dtpfrom.Value.Date.AddDays(-1), "");
-            sqlControl Rs = new sqlControl();
-
-            double SubTotalDebit = 0;
-            double SubTotalCredit = 0;
-            double SubBalance = 0;
-
-            if (tgsDetailed.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active)
-                Rs.Open("SELECT        TOP (100) PERCENT dbo.tblledger.laliasname as AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC, dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblledger.AccountGroupID as CheckID,dbo.tblledger.lid as AccountGroupID  FROM            dbo.tblledger inner join dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.LedgerID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE tblledger.lid <> 0 and tblvoucher.optional=0 and   (dbo.tblVoucher.LedgerID = 3 AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "')  " + strCCIDsql + " and tblVoucher.vchtypeid not in(1005)  GROUP BY dbo.tblledger.lid, dbo.tblledger.laliasname, dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration ,dbo.tblledger.AccountGroupID  having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " Union " + " SELECT        TOP (100) PERCENT dbo.tblledger.laliasname as AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC,  dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblledger.AccountGroupID as CheckID,dbo.tblledger.lid as AccountGroupID  FROM            dbo.tblledger INNER JOIN dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.LedgerID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE    tblledger.lid <> 0 and tblvoucher.optional=0 and    (dbo.tblVoucher.LedgerID <> 3) " + StrCCSQL1 + " AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "' and tblVoucher.vchtypeid not in(1005) GROUP BY dbo.tblledger.lid, dbo.tblledger.laliasname, dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration ,dbo.tblledger.AccountGroupID  having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " ORDER BY dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.vchtypeid, dbo.tblVoucher.VchNo, dbo.tblVoucher.mynarration, AmountD ");
-            else
-                Rs.Open("SELECT        TOP (100) PERCENT dbo.tblAccountGroup.AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC, dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblAccountGroup.AccountGroupID as CheckID,dbo.tblAccountGroup.AccountGroupID  FROM            dbo.tblAccountGroup INNER JOIN dbo.tblLedger ON dbo.tblAccountGroup.AccountGroupID = dbo.tblLedger.AccountGroupID and tblLedger.LID <> 0 INNER JOIN  dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.LedgerID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE tblvoucher.optional=0 and   (dbo.tblVoucher.LedgerID = 3 AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "')  " + StrCCSQL1 + " and tblVoucher.vchtypeid not in(1005)  GROUP BY dbo.tblAccountGroup.AccountGroup, dbo.tblAccountGroup.AccountGroupID, dbo.tblVoucher.VchDate, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration  having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " Union " + " SELECT        TOP (100) PERCENT dbo.tblAccountGroup.AccountGroup, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo, SUM(dbo.tblVoucher.AmountD) AS AmountD, SUM(dbo.tblVoucher.AmountC) AS AmountC,  dbo.tblVoucher.RefID, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.mynarration,dbo.tblAccountGroup.AccountGroupID as CheckID,dbo.tblAccountGroup.AccountGroupID  FROM            dbo.tblAccountGroup INNER JOIN dbo.tblLedger ON dbo.tblAccountGroup.AccountGroupID = dbo.tblLedger.AccountGroupID and tblLedger.LID <> 0 INNER JOIN dbo.tblVoucher ON dbo.tblLedger.LID = dbo.tblVoucher.LedgerID INNER JOIN dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID WHERE    tblvoucher.optional=0 and    (dbo.tblVoucher.LedgerID <> 3) " + StrCCSQL1 + " AND VCHDATE BETWEEN  '" + dtpfrom.Value.ToString("dd/MMM/yyyy") + "' AND '" + dtpto.Value.ToString("dd/MMM/yyyy") + "' and tblVoucher.vchtypeid not in(1005) GROUP BY dbo.tblAccountGroup.AccountGroup, dbo.tblAccountGroup.AccountGroupID, dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchTypeID, dbo.tblVchType.VchType, dbo.tblVoucher.VchNo, dbo.tblVoucher.RefID, dbo.tblVoucher.mynarration having Sum(dbo.tblvoucher.amountd) - Sum(dbo.tblvoucher.amountc) <> 0 " + " ORDER BY dbo.tblVoucher.VchDate, dbo.tblVoucher.vchTime, dbo.tblVoucher.VchNo,dbo.tblVoucher.mynarration, AmountD ");
-
-            Font MySubTotalFont = new Font("Segoe UI", 10, FontStyle.Bold);
-            double DebitVal = 0;
-            double CreditVal = 0;
-            {
-                var withBlock = dgvDetails;
-                dgvDetails.Rows.Add("");
-                dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = dtpfrom.Value.ToString("dd/MMM/yyyy");
-                dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = "Opening Balance Of Cash";
-
-                if (CashBalance > 0)
-                {
-                    dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(Math.Abs(CashBalance)));
-                    DebitVal = DebitVal + Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
-                }
-                else
-                {
-                    dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(Math.Abs(CashBalance)), true);
-                    CreditVal = CreditVal + Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
-                }
-
-                dgvDetails["Balance", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(DebitVal - CreditVal, true) + Interaction.IIf(Comm.ToDouble(DebitVal - CreditVal) > 0, " Dr", " Cr");
-                AmountD = AmountD + Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
-                AmountC = AmountC + Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
-
-                SubTotalDebit = SubTotalDebit + Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
-                SubTotalCredit = SubTotalCredit + Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
-                SubBalance = SubTotalDebit - SubTotalCredit;
-
-                DateTime PrevDate = dtpfrom.Value; //.ToString("dd/MMM/YYYY");
-                SubTotalCredit = 0;
-                SubTotalDebit = 0;
-
-                int PrevVchtypeID = 0;
-                int PrevRefID = 0;
-
-                double VchAmountC = 0;
-                double VchAmountD = 0;
-
-                string AccountGroup = "";
-
-                while (!Rs.eof())
-                {
-                    if (Comm.ToDouble(Rs.fields("checkid")) != 17)
-                    {
-                        if (PrevDate != Convert.ToDateTime(Rs.fields("VchDate")))
-                        {
-                            PrevDate = Convert.ToDateTime(Rs.fields("VchDate"));
-
-                            dgvDetails.Rows.Add("");
-                            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = SubTotalDebit;
-                            dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = SubTotalCredit;
-                            dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
-                            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
-                            dgvDetails.Rows.Add("");
-
-                            SubBalance = SubTotalDebit - SubTotalCredit;
-                            SubTotalDebit = 0;
-                            SubTotalCredit = 0;
-
-                            if (SubBalance != 0)
-                            {
-                                dgvDetails.Rows.Add("");
-                                dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = Convert.ToDateTime(Rs.fields("VchDate")).ToString("dd /MMM/yyyy");
-                                dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = "Opening Balance Of Cash";
-                                if (SubBalance > 0)
-                                    dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(Math.Abs(SubBalance)), true);
-                                else
-                                    dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(Math.Abs(SubBalance)), true);
-                                SubTotalDebit = SubTotalDebit + Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
-                                SubTotalCredit = SubTotalCredit + Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
-
-                                dgvDetails["Balance", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD - AmountC, true) + Interaction.IIf(Comm.ToDouble(AmountD - AmountC) > 0, " Dr", " Cr");
-                            }
-                        }
-
-                        if (tgsDetailed.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive)
-                        {
-                            if (PrevVchtypeID != 0 && PrevRefID != 0)
-                            {
-                                if (PrevVchtypeID != Comm.ToInt32(Rs.fields("VchtypeID")) || PrevRefID != Comm.ToInt32(Rs.fields("refID")))
-                                {
-                                    VchAmountC = 0;
-                                    VchAmountD = 0;
-                                    AccountGroup = "";
-
-                                    dgvDetails.Rows.Add("");
-                                }
-                                else if ((PrevVchtypeID == Comm.ToInt32(Rs.fields("VchtypeID")) && PrevRefID == Comm.ToInt32(Rs.fields("refID")))
-                                         && (VchAmountC > 0 && Comm.ToInt32(Rs.fields("AmountD")) > 0))
-                                {
-                                    VchAmountC = 0;
-                                    VchAmountD = 0;
-                                    AccountGroup = "";
-
-                                    dgvDetails.Rows.Add("");
-                                }
-                            }
-                        }
-                        else
-                        {
-                            VchAmountC = 0;
-                            VchAmountD = 0;
-                            AccountGroup = "";
-
-                            dgvDetails.Rows.Add("");
-                        }
-
-                        VchAmountC += Comm.ToDouble(Rs.fields("AmountC"));
-                        VchAmountD += Comm.ToDouble(Rs.fields("AmountD"));
-
-                        if (AccountGroup != "") 
-                            AccountGroup += ",";
-                        
-                        AccountGroup += Rs.fields("AccountGroup");
-
-                        dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = Convert.ToDateTime(Rs.fields("VchDate")).ToString("dd/MMM/yyyy");
-                        dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = AccountGroup;
-                        dgvDetails["Vchtype", dgvDetails.Rows.Count - 1].Value = Rs.fields("Vchtype");
-                        dgvDetails["VchNo", dgvDetails.Rows.Count - 1].Value = Rs.fields("Vchno");
-                        dgvDetails["Narration", dgvDetails.Rows.Count - 1].Value = Rs.fields("mynarration");
-                        dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(VchAmountC, true);
-                        dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(VchAmountD, true);
-                        dgvDetails["DrillDownID", dgvDetails.Rows.Count - 1].Value = Rs.fields("refID");
-                        dgvDetails["DrillDownType", dgvDetails.Rows.Count - 1].Value = Rs.fields("vchtypeID");
-                        dgvDetails["Nature", dgvDetails.Rows.Count - 1].Value = "Opentrans";
-
-                        PrevVchtypeID = Comm.ToInt32(Rs.fields("VchtypeID"));
-                        PrevRefID = Comm.ToInt32(Rs.fields("refID"));
-
-                        SubTotalDebit = SubTotalDebit + Comm.ToDouble(Rs.fields("AmountC")); // Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
-                        SubTotalCredit = SubTotalCredit + Comm.ToDouble(Rs.fields("AmountD")); // Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
-
-                        AmountD = AmountD + Comm.ToDouble(Rs.fields("AmountC")); // Comm.ToDouble(dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value);
-                        AmountC = AmountC + Comm.ToDouble(Rs.fields("AmountD")); // Comm.ToDouble(dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value);
-                        dgvDetails["Balance", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD - AmountC, true) + Interaction.IIf(Comm.ToDouble(AmountD - AmountC) > 0, " Dr", " Cr");
-                    }
-                    Rs.MoveNext();
-                }
-
-                //if (tgsDetailed.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive)
-                //{
-                //    if (VchAmountC != 0 || VchAmountD != 0)
-                //    {
-                //        dgvDetails["Date", dgvDetails.Rows.Count - 1].Value = Convert.ToDateTime(Rs.fields("VchDate")).ToString("dd/MMM/yyyy");
-                //        dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = AccountGroup;
-                //        dgvDetails["Vchtype", dgvDetails.Rows.Count - 1].Value = Rs.fields("Vchtype");
-                //        dgvDetails["VchNo", dgvDetails.Rows.Count - 1].Value = Rs.fields("Vchno");
-                //        dgvDetails["Narration", dgvDetails.Rows.Count - 1].Value = Rs.fields("mynarration");
-                //        dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(VchAmountD, true);
-                //        dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(VchAmountC, true);
-                //        dgvDetails["DrillDownID", dgvDetails.Rows.Count - 1].Value = Rs.fields("refID");
-                //        dgvDetails["DrillDownType", dgvDetails.Rows.Count - 1].Value = Rs.fields("vchtypeID");
-                //        dgvDetails["Nature", dgvDetails.Rows.Count - 1].Value = "Opentrans";
-                //    }
-                //}
-            }
-
-            dgvDetails.Rows.Add("");
-            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(SubTotalDebit, true);
-            dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(SubTotalCredit, true);
-            dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
-            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
-            dgvDetails.Rows.Add("");
-
-            dgvDetails.Rows.Add("");
-            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = "=============";
-            dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = "=============";
-
-            dgvDetails.Rows.Add("");
-            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD, true);
-            dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountC, true);
-            dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
-            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
-
-
-            dgvDetails.Rows.Add("");
-            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = "=============";
-            dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = "=============";
-
-            dgvDetails.Rows.Add("");
-            if (Comm.ToDouble(AmountD - AmountC) > 0)
-                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(AmountD - AmountC), true);
-            else
-                dgvDetails["CreditSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Math.Abs(Comm.ToDouble(AmountD - AmountC)), true);
-            dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Value = "Daybook Balance";
-
-            dgvDetails["Particulars", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
-            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
-            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
-
-
-            dgvDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+            tgsDetailed.Visible = false;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -691,176 +1488,17 @@ namespace InventorSync
 
         #region "METHODS ----------------------------------------------- >>"
 
-        //Description : Seting Value to the Given Column, Row Indexes to Grid Cell
-        private void SetValueOut(int iCellIndex, string sValue, string sConvertType = "")
-        {
-            if (dgvDetails.Rows.Count > 0)
-            {
-                if (sConvertType.ToUpper() == "CURR_FLOAT")
-                {
-                    if (sValue == "") sValue = "0";
-                    //Commented and Added By Dipu on 17-Feb-2022 ------------- >>
-                    dgvDetails.Rows[dgvDetails.CurrentRow.Index].Cells[iCellIndex].Value = Comm.chkChangeValuetoZero(Comm.FormatValue(Comm.ToDouble(sValue)));
-                    //Commented and Added By Dipu on 17-Feb-2022 ------------- >>
-
-                    this.dgvDetails.Columns[dgvDetails.CurrentCell.ColumnIndex].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-                }
-                else if (sConvertType.ToUpper() == "QTY_FLOAT")
-                {
-                    if (sValue == "") sValue = "0";
-                    dgvDetails.Rows[dgvDetails.CurrentRow.Index].Cells[iCellIndex].Value = Comm.chkChangeValuetoZero(Comm.FormatValue(Comm.ToDouble(sValue), false));
-                    this.dgvDetails.Columns[dgvDetails.CurrentCell.ColumnIndex].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-                }
-                else if (sConvertType.ToUpper() == "PERC_FLOAT")
-                {
-                    if (sValue == "") sValue = "0";
-                    dgvDetails.Rows[dgvDetails.CurrentRow.Index].Cells[iCellIndex].Value = Comm.chkChangeValuetoZero(Comm.ToDecimal(sValue).ToString("#.00"));
-                    this.dgvDetails.Columns[dgvDetails.CurrentCell.ColumnIndex].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-                }
-                else if (sConvertType.ToUpper() == "DATE")
-                {
-                    dgvDetails.Rows[dgvDetails.CurrentRow.Index].Cells[iCellIndex].Value = Convert.ToDateTime(sValue).ToString("dd/MMM/yyyy");
-                }
-                else
-                    dgvDetails.Rows[dgvDetails.CurrentRow.Index].Cells[iCellIndex].Value = Comm.chkChangeValuetoZero(sValue);
-            }
-        }
-
-        //Description : Setting Value to Tag of the cells of Grid using the Given Column and Row Indexes
-        private void setTagOut(int iCellIndex, string sTag, string sConvertType = "")
-        {
-            if (sConvertType.ToUpper() == "FLOAT")
-            {
-                if (sTag == "") sTag = "0";
-                dgvDetails.Rows[dgvDetails.CurrentRow.Index].Cells[iCellIndex].Tag = Comm.ToDecimal(sTag).ToString("#.00");
-            }
-            else if (sConvertType.ToUpper() == "DATE")
-            {
-                dgvDetails.Rows[dgvDetails.CurrentRow.Index].Cells[iCellIndex].Tag = Convert.ToDateTime(sTag).ToString("dd/MMM/yyyy");
-            }
-            else
-                dgvDetails.Rows[dgvDetails.CurrentRow.Index].Cells[iCellIndex].Tag = sTag;
-        }
-
-        //Description : Function Polymorphism for Seting the Value to Grid Asper Parameters Given
-        private void SetValueOut(int iCellIndex, int iRowIndex, string sValue, string sConvertType = "")
-        {
-            dgvDetails.Rows[iRowIndex].Cells[iCellIndex].Value = Comm.chkChangeValuetoZero(sValue);
-        }
-
-        //Description : Check the conditions of Supplier While Entered or Non Entred
-        private bool CheckIsValidSupplier()
-        {
-            DataTable dtSupp = new DataTable();
-            bool bResult = true;
-
-                dtSupp = Comm.fnGetData("SELECT * FROM tblLedger WHERE LID = 100").Tables[0];
-                if (dtSupp.Rows.Count > 0)
-                {
-                    bResult = true;
-                }
-                else
-                    bResult = false;
-
-            return bResult;
-        }
-
         //Description : Clear the Form and Grid 
         private void ClearControls()
         {
             dgvDetails.Rows.Clear();
             dgvDetails.Refresh();
+
+            dgvDetails.Columns.Clear();
+            dgvDetails.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cSlNo", HeaderText = "Sl.No", Width = 50 }); //1
+
             dgvDetails.Rows.Add();
-            dgvDetails.CurrentCell = dgvDetails[1, 0];
-        }
-
-        //Description : Function Polymorphism of SetTag
-        private void SetTagOut(int iCellIndex, int iRowIndex, string sTag, string sConvertType = "")
-        {
-            if (sConvertType.ToUpper() == "PERC_FLOAT")
-                dgvDetails.Rows[iRowIndex].Cells[iCellIndex].Tag = Comm.ToDecimal(sTag).ToString("#.00");
-            else
-                dgvDetails.Rows[iRowIndex].Cells[iCellIndex].Tag = sTag;
-        }
-
-        //Description : Initializing the Columns in The Grid
-        private void AddColumnsToGrid(DataGridView dgvStock)
-        {
-            dgvStock.Columns.Clear();
-
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cSlNo", HeaderText = "Sl.No", Width = 50, ReadOnly = true }); //1
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "CItemCode", HeaderText = "Item Code", Width = 130 }); //1
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "CItemName", HeaderText = "Item Name", Width = 200, ReadOnly = true }); //2
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "CUnit", ReadOnly = true, Visible = true, HeaderText = "Unit", Width = 50 }); //3
-            //Commented and added By Dipu on 23-Feb-2022 ------------- >>
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cBarCode", HeaderText = "Batch Code", Width = 200 }); //4
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "CExpiry", HeaderText = "Expiry Date", Width = 120 }); //5
-            
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cPrate", HeaderText = "PRate", Width = 80 }); //7
-
-            if (AppSettings.TaxMode == 2) //GST
-                dgvStock.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "cRateinclusive", HeaderText = "Rate Inc.", Width = 80, ReadOnly = true }); //20
-            else
-                dgvStock.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "cRateinclusive", HeaderText = "Rate Inc.", Visible = false, Width = 80, ReadOnly = true }); //20
-
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cQty", HeaderText = "Qty", Width = 80 }); //8
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cGrossAmt", HeaderText = "Gross Amt", Width = 80, ReadOnly = true }); //23
-
-                dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cDiscPer", HeaderText = "Discount %", ReadOnly = true, Visible = false, Width = 80 }); //24
-                dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cDiscAmount", HeaderText = "Discount Amt", ReadOnly = true, Visible = false, Width = 80 }); //25
-
-                dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cBillDisc", HeaderText = "Bill Discount", Width = 80, ReadOnly = true, Visible = false }); //26
-
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cCrate", HeaderText = "CRate", Width = 80, ReadOnly = true }); //27
-
-            if (AppSettings.TaxMode == 2) //GST
-                dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cCRateWithTax", HeaderText = "CRate With Tax", Width = 80, ReadOnly = true }); //28
-            else
-                dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cCRateWithTax", HeaderText = "CRate With Tax", Visible=false, Width = 80, ReadOnly = true }); //28
-
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "ctaxable", HeaderText = "Taxable", Width = 80, ReadOnly = true }); //29
-
-                dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "ctax", HeaderText = "Tax", Width = 80, ReadOnly = true, Visible = false }); //31
-                dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cIGST", HeaderText = "IGST", Width = 80, ReadOnly = true, Visible = false }); //32
-                dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cSGST", HeaderText = "SGST", Width = 80, ReadOnly = true, Visible = false }); //33
-                dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cCGST", HeaderText = "CGST", Width = 80, ReadOnly = true, Visible = false }); //34
-
-            
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cNetAmount", HeaderText = "Net Amt", Width = 100, ReadOnly = true, Visible = false }); //35
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cItemID", HeaderText = "ItemID", Visible = false, Width = 80, ReadOnly = true }); //36
-
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cGrossValueAfterRateDiscount", HeaderText = "Gross Val", Visible = false, ReadOnly = true }); //37
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cNonTaxable", HeaderText = "Non Taxable", Visible = false, ReadOnly = true }); //38
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cCCessPer", HeaderText = "Cess %", Visible = false, ReadOnly = true }); //39
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cCCompCessQty", HeaderText = "Comp Cess Qty", Visible = false, ReadOnly = true }); //40
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cFloodCessPer", HeaderText = "Flood Cess %", Visible = false, ReadOnly = true }); //41
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cFloodCessAmt", HeaderText = "Flood Cess Amt", Visible = false, ReadOnly = true }); //42
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cStockMRP", HeaderText = "Stock MRP", Visible = false, ReadOnly = true }); //43
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cAgentCommPer", HeaderText = "Agent Comm. %", Visible = false, ReadOnly = true }); //44
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cCoolie", HeaderText = "Coolie", Visible = false, ReadOnly = true }); //45
-            dgvStock.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "cBlnOfferItem", HeaderText = "Offer Item", Visible = false, ReadOnly = true }); //46
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cStrOfferDetails", HeaderText = "Offer Det.", Visible = false, ReadOnly = true }); //47
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cBatchMode", HeaderText = "Batch Mode", Visible = false, ReadOnly = true }); //48
-            dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cID", HeaderText = "ID", Visible = false, ReadOnly = true });
-            dgvStock.Columns.Add(new DataGridViewImageColumn() { Name = "cImgDel", HeaderText="", Image = Properties.Resources.Delete_24_P4, Width=40, ReadOnly = true });
-            dgvStock.Columns.Add(new DataGridViewImageColumn() { Name = "cBatchUnique", HeaderText="", Image = Properties.Resources.Delete_24_P4, Width=40, Visible = false, ReadOnly = true });
-
-            //Dipoos 21-03-2022
-            //if (iIDFromEditWindow==0)
-            //dgvStock.Rows.Add(2);
-            //else
-
-            dgvStock.Rows.Add(1);
-
-            foreach (DataGridViewRow row in dgvStock.Rows)
-            {
-                dgvStock.Rows[row.Index].Cells[0].Value = string.Format("{0}  ", row.Index + 1).ToString();
-            }
-
-            foreach (DataGridViewColumn col in dgvStock.Columns)
-            {
-                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
+            dgvDetails.CurrentCell = dgvDetails[0, 0];
         }
 
         private void button4_Click(object sender, EventArgs e)

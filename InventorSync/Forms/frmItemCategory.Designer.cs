@@ -147,7 +147,7 @@
             // 
             this.tlpMain.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tlpMain.ColumnCount = 1;
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 559F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 669F));
             this.tlpMain.Controls.Add(this.tlpHeader, 0, 0);
             this.tlpMain.Controls.Add(this.gboxMain, 0, 1);
             this.tlpMain.Controls.Add(this.lblFooter, 0, 2);

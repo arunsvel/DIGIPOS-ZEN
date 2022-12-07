@@ -2661,6 +2661,79 @@ namespace InventorSync
 
             try
             {
+                sQuery = @"update tblbrand set brandName='DEFAULT', brandShortName='DEFAULT' where brandID = 1";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"alter table tblhsncode add [TenantID] [numeric](18, 0) NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [HSNType] [varchar](200) NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add 	[CGSTTaxPer] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add 	[SGSTTaxPer] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [IGSTTaxPer] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [CessPer] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [CompCessQty] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [HID] [int] IDENTITY(1,1) NOT NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [CGSTTaxPer1] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [SGSTTaxPer1] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [IGSTTaxPer1] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [CGSTTaxPer2] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [SGSTTaxPer2] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [IGSTTaxPer2] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [CGSTTaxPer3] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [SGSTTaxPer3] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [IGSTTaxPer3] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [CGSTTaxPer4] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [SGSTTaxPer4] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tblhsncode add [IGSTTaxPer4] [float] NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
                 sQuery = @"alter table tblsales add coolie decimal";
                 Comm.fnExecuteNonQuery(sQuery, false);
             }
@@ -2845,6 +2918,23 @@ namespace InventorSync
             }
             catch
             { }
+
+            try
+            {
+                sQuery = @"INSERT INTO [dbo].[tblLedger] ([LID],[LName],[LAliasName],[GroupName],[Type],[OpBalance],[AppearIn],[Address],[CreditDays],[Phone],[TaxNo],[AccountGroupID]
+                        ,[RouteID],[Area],[Notes],[TargetAmt],[SMSSchID],[Email],[MobileNo],[DiscPer],[InterestPer],[DummyLName],[BlnBank],[CurrencyID]
+                        ,[AreaID],[PLID],[ActiveStatus],[EmailAddress],[EntryDate],[blnBillWise],[CustomerCardID],[TDSPer],[DOB],[StateID],[CCIDS]
+                        ,[CurrentBalance],[LedgerName],[LedgerCode],[BlnWallet],[blnCoupon],[TransComn],[BlnSmsWelcome],[DLNO],[TDS],[LedgerNameUnicode]
+                        ,[LedgerAliasNameUnicode],[ContactPerson],[TaxParameter],[TaxParameterType],[HSNCODE],[CGSTTaxPer],[SGSTTaxPer],[IGSTTaxPer]
+                        ,[HSNID],[BankAccountNo],[BankIFSCCode],[BankNote],[WhatsAppNo],[SystemName],[UserID],[LastUpdateDate],[LastUpdateTime],[TenantID]
+                        ,[GSTType],[AgentID],[FAX])
+                        VALUES (58,'COOLIE','COOLIE','InDirect Expense','Cr',0,NULL,'',0,'','',9,NULL,'NONE', '', 0,NULL,NULL,'',NULL ,NULL, '', NULL ,0,1,0,1,'',NULL ,NULL ,0,NULL ,NULL ,NULL, '' ,NULL ,'COOLIE','COOLIE',NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,'COOLIE','COOLIE',NULL ,'DEFAULT',NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,1,NULL ,NULL,NULL)";
+
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
             try
             {
                 sQuery = @"INSERT INTO [dbo].[tblVchType]
@@ -3992,9 +4082,9 @@ namespace InventorSync
                             VALUES (2,'BANK',4)";
                 Comm.fnExecuteNonQuery(sQuery, false);
 
-                sQuery = @"INSERT INTO tblCashDeskMaster(PaymentID,PaymentType,LedgerID)
-                            VALUES (3,'CREDIT',0)";
-                Comm.fnExecuteNonQuery(sQuery, false);
+                //sQuery = @"INSERT INTO tblCashDeskMaster(PaymentID,PaymentType,LedgerID)
+                //            VALUES (3,'CREDIT',0)";
+                //Comm.fnExecuteNonQuery(sQuery, false);
             }
             catch
             { }
@@ -4004,6 +4094,239 @@ namespace InventorSync
         private void CreateViewsAndProcudures()
         {
             string sQuery = "";
+
+            try
+            {
+                sQuery = @"DROP PROCEDURE [dbo].[UspGetHSNFromItemMaster] ";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+            try
+            {
+                sQuery = @"CREATE PROCEDURE [dbo].[UspGetHSNFromItemMaster] ( 
+                        @TenantID		NUMERIC(18,0), 
+                        @HSNCODE		NUMERIC(18,0), 
+                        @IGSTTaxPer     NUMERIC(18,0) ) 
+                        AS  
+                        BEGIN 
+	                        IF @HSNCODE <> 0  
+	                        BEGIN 
+		                        SELECT Distinct HSNCODE,IGSTTaxPer as IGSTTaxPer,SGSTTaxPer as SGSTTaxPer,CGSTTaxPer as CGSTTaxPer, CessPer 
+		                        FROM tblHSNCode I 
+		                        WHERE HSNCODE=@HSNCODE AND IGSTTaxPer=@IGSTTaxPer AND I.TenantID = @TenantID  
+	                        END  
+	                        ELSE  
+		                        BEGIN 
+		                        IF @HSNCODE <> 0  
+		                        BEGIN 
+			                        SELECT Distinct HSNCODE,IGSTTaxPer,CessPer,CGSTTaxPer,SGSTTaxPer 
+			                        FROM tblHSNCode I 
+			                        WHERE I.TenantID = @TenantID AND HSNCODE=@HSNCODE AND IGSTTaxPer=@IGSTTaxPer  
+		                        END  
+		                        ELSE  
+		                        BEGIN 
+			                        SELECT Distinct HSNCODE as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %] 
+			                        FROM tblHSNCode I 
+			                        WHERE I.TenantID = @TenantID 
+		                        END  
+	                        END  
+                        END ";
+
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"DROP PROCEDURE [dbo].[UspGetHSN] ";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+            try
+            {
+                sQuery = @"CREATE PROCEDURE [dbo].[UspGetHSN](
+	                        @HID		NUMERIC   (18,0),
+	                        @TenantID		NUMERIC   (18,0))
+                        AS
+                        BEGIN
+                             IF @HID <> 0 
+                             BEGIN
+                                 SELECT * FROM tblHSNCode
+                                 WHERE HID = @HID AND TenantID = @TenantID
+		                         ORDER BY HSNCODE ASC
+                             END
+                             ELSE
+                             BEGIN
+		                        SELECT *
+		                        FROM tblColor WHERE TenantID = @TenantID
+		                        ORDER BY ColorName ASC
+		
+                             END
+                        END";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"DROP PROCEDURE [dbo].[UspLedgerInsert] ";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+            try
+            {
+                sQuery = @"CREATE PROCEDURE [dbo].[UspLedgerInsert](
+                             @LID    DECIMAL,
+                             @LName    VARCHAR  (50),
+                             @LAliasName    VARCHAR  (50),
+                             @GroupName    VARCHAR  (50),
+                             @Type    VARCHAR  (50),
+                             @OpBalance    FLOAT,
+                             @AppearIn    VARCHAR  (50)=null,
+                             @Address    VARCHAR  (500),
+                             @CreditDays    VARCHAR  (50)=null,
+                             @Phone    VARCHAR  (50)=null,
+                             @TaxNo    VARCHAR  (50),
+                             @AccountGroupID    DECIMAL,
+                             @RouteID    DECIMAL,
+                             @Area    VARCHAR  (50)=null,
+                             @Notes    VARCHAR  (2000)=null,
+                             @TargetAmt    FLOAT,
+                             @SMSSchID    NUMERIC  (18,0),
+                             @Email    VARCHAR  (100),
+                             @MobileNo    VARCHAR  (100),
+                             @DiscPer    FLOAT,
+                             @InterestPer    FLOAT,
+                             @DummyLName    VARCHAR  (500)=NULL,
+                             @BlnBank    NUMERIC  (18,0),
+                             @CurrencyID    NUMERIC  (18,0),
+                             @AreaID    NUMERIC  (18,0),
+                             @PLID    NUMERIC  (18,0),
+                             @ActiveStatus    NUMERIC  (18,0),
+                             @EmailAddress    VARCHAR  (100)=NULL,
+                             @EntryDate    DATETIME,
+                             @blnBillWise    NUMERIC  (18,0),
+                             @CustomerCardID    NUMERIC  (18,0),
+                             @TDSPer    FLOAT,
+                             @CurrentBalance    FLOAT,
+                             @StateID    NUMERIC  (18,0),
+                             @CCIDS    VARCHAR  (100)=NULL,
+                             @DOB    DATETIME,
+                             --@LedgerName    VARCHAR  (50),
+                             --@LedgerCode    VARCHAR  (50),
+                             @BlnWallet    NUMERIC  (18,0),
+                             @blnCoupon    NUMERIC  (18,0),
+                             @TransComn    NUMERIC  (18,0),
+                             @BlnSmsWelcome    NUMERIC  (18,0),
+                             @DLNO    VARCHAR  (50)=NULL,
+                             @TDS    FLOAT,
+                             @LedgerNameUnicode    NVARCHAR  (50)=NULL,
+                             @LedgerAliasNameUnicode    NVARCHAR  (50)=NULL,
+                             @ContactPerson    VARCHAR  (50)=NULL,
+                             @TaxParameter    VARCHAR  (50)=NULL,
+                             @TaxParameterType    VARCHAR  (50)=NULL,
+                             @HSNCODE    VARCHAR  (50)=NULL,
+                             @CGSTTaxPer    FLOAT,
+                             @SGSTTaxPer    FLOAT,
+                             @IGSTTaxPer    FLOAT,
+                             --@HSNID    NUMERIC  (18,0)=1,
+                             @BankAccountNo    NUMERIC  (18,0),
+                             @BankIFSCCode    VARCHAR  (50)=NULL,
+                             @BankNote    VARCHAR  (100)=NULL,
+                             @WhatsAppNo    NUMERIC  (18,0),
+                             @SystemName    VARCHAR  (50),
+                             @UserID    NUMERIC  (18,0),
+                             @LastUpdateDate    DATETIME,
+                             @LastUpdateTime    DATETIME,
+                             @TenantID   NUMERIC  (18,0),
+                             @Action             INT=0,
+	                         @GSTType VARCHAR  (50),
+	                         @AgentID NUMERIC  (18,0)
+                        )
+                        AS
+                        BEGIN
+                        DECLARE @RetResult      INT
+                        DECLARE @TransType		CHAR(1)
+                        BEGIN TRY
+                        BEGIN TRANSACTION;
+                        IF @Action = 0
+                        BEGIN
+                             --INSERT INTO tblLedger(LID,LName,LAliasName,GroupName,Type,OpBalance,AppearIn,Address,CreditDays,Phone,TaxNo,AccountGroupID,RouteID,Area,Notes,TargetAmt,SMSSchID,Email,MobileNo,DiscPer,InterestPer,DummyLName,BlnBank,CurrencyID,AreaID,PLID,ActiveStatus,EmailAddress,EntryDate,blnBillWise,CustomerCardID,TDSPer,DOB,StateID,CCIDS,CurrentBalance,LedgerName,LedgerCode,BlnWallet,blnCoupon,TransComn,BlnSmsWelcome,DLNO,TDS,LedgerNameUnicode,LedgerAliasNameUnicode,ContactPerson,TaxParameter,TaxParameterType,HSNCODE,CGSTTaxPer,SGSTTaxPer,IGSTTaxPer,HSNID,BankAccountNo,BankIFSCCode,BankNote,WhatsAppNo,SystemName,UserID,LastUpdateDate,LastUpdateTime,TenantID)
+                             --VALUES(@LID,@LName,@LAliasName,@GroupName,@Type,@OpBalance,@AppearIn,@Address,@CreditDays,@Phone,@TaxNo,@AccountGroupID,@RouteID,@Area,@Notes,@TargetAmt,@SMSSchID,@Email,@MobileNo,@DiscPer,@InterestPer,@DummyLName,@BlnBank,@CurrencyID,@AreaID,@PLID,@ActiveStatus,@EmailAddress,@EntryDate,@blnBillWise,@CustomerCardID,@TDSPer,@DOB,@StateID,@CCIDS,@CurrentBalance,@LedgerName,@LedgerCode,@BlnWallet,@blnCoupon,@TransComn,@BlnSmsWelcome,@DLNO,@TDS,@LedgerNameUnicode,@LedgerAliasNameUnicode,@ContactPerson,@TaxParameter,@TaxParameterType,@HSNCODE,@CGSTTaxPer,@SGSTTaxPer,@IGSTTaxPer,@HSNID,@BankAccountNo,@BankIFSCCode,@BankNote,@WhatsAppNo,@SystemName,@UserID,@LastUpdateDate,@LastUpdateTime,@TenantID)
+    
+                            INSERT INTO tblLedger(LID,LName,LAliasName,GroupName,Type,OpBalance,AppearIn,Address,CreditDays,Phone,TaxNo,AccountGroupID,RouteID,Area,Notes,TargetAmt,SMSSchID,Email,MobileNo,DiscPer,InterestPer,DummyLName,BlnBank,CurrencyID,AreaID,PLID,ActiveStatus,EmailAddress,EntryDate,blnBillWise,CustomerCardID,TDSPer,DOB,StateID,CCIDS,CurrentBalance,BlnWallet,blnCoupon,TransComn,BlnSmsWelcome,DLNO,TDS,LedgerNameUnicode,LedgerAliasNameUnicode,ContactPerson,TaxParameter,TaxParameterType,HSNCODE,CGSTTaxPer,SGSTTaxPer,IGSTTaxPer,BankAccountNo,BankIFSCCode,BankNote,WhatsAppNo,SystemName,UserID,LastUpdateDate,LastUpdateTime,TenantID,GSTType,AgentID)
+                             VALUES(@LID,@LName,@LAliasName,@GroupName,@Type,@OpBalance,@AppearIn,@Address,@CreditDays,@Phone,@TaxNo,@AccountGroupID,@RouteID,@Area,@Notes,@TargetAmt,@SMSSchID,@Email,@MobileNo,@DiscPer,@InterestPer,@DummyLName,@BlnBank,@CurrencyID,@AreaID,@PLID,@ActiveStatus,@EmailAddress,@EntryDate,@blnBillWise,@CustomerCardID,@TDSPer,@DOB,@StateID,@CCIDS,@CurrentBalance,@BlnWallet,@blnCoupon,@TransComn,@BlnSmsWelcome,@DLNO,@TDS,@LedgerNameUnicode,@LedgerAliasNameUnicode,@ContactPerson,@TaxParameter,@TaxParameterType,@HSNCODE,@CGSTTaxPer,@SGSTTaxPer,@IGSTTaxPer,@BankAccountNo,@BankIFSCCode,@BankNote,@WhatsAppNo,@SystemName,@UserID,@LastUpdateDate,@LastUpdateTime,@TenantID,@GSTType,@AgentID)
+ 
+	
+	                         SET @RetResult = 1;
+	                          SET @TransType = 'S';
+                        END
+                        IF @Action = 1
+                        BEGIN
+	                        IF @LID > 1000
+                             BEGIN
+		                         --UPDATE tblLedger SET LName=@LName,LAliasName=@LAliasName,GroupName=@GroupName,Type=@Type,OpBalance=@OpBalance,AppearIn=@AppearIn,Address=@Address,CreditDays=@CreditDays,Phone=@Phone,TaxNo=@TaxNo,AccountGroupID=@AccountGroupID,RouteID=@RouteID,Area=@Area,Notes=@Notes,TargetAmt=@TargetAmt,SMSSchID=@SMSSchID,Email=@Email,MobileNo=@MobileNo,DiscPer=@DiscPer,InterestPer=@InterestPer,DummyLName=@DummyLName,BlnBank=@BlnBank,CurrencyID=@CurrencyID,AreaID=@AreaID,PLID=@PLID,ActiveStatus=@ActiveStatus,EmailAddress=@EmailAddress,EntryDate=@EntryDate,blnBillWise=@blnBillWise,CustomerCardID=@CustomerCardID,TDSPer=@TDSPer,DOB=@DOB,StateID=@StateID,CCIDS=@CCIDS,CurrentBalance=@CurrentBalance,LedgerName=@LedgerName,LedgerCode=@LedgerCode,BlnWallet=@BlnWallet,blnCoupon=@blnCoupon,TransComn=@TransComn,BlnSmsWelcome=@BlnSmsWelcome,DLNO=@DLNO,TDS=@TDS,LedgerNameUnicode=@LedgerNameUnicode,LedgerAliasNameUnicode=@LedgerAliasNameUnicode,ContactPerson=@ContactPerson,TaxParameter=@TaxParameter,TaxParameterType=@TaxParameterType,HSNCODE=@HSNCODE,CGSTTaxPer=@CGSTTaxPer,SGSTTaxPer=@SGSTTaxPer,IGSTTaxPer=@IGSTTaxPer,HSNID=@HSNID,BankAccountNo=@BankAccountNo,BankIFSCCode=@BankIFSCCode,BankNote=@BankNote,WhatsAppNo=@WhatsAppNo,SystemName=@SystemName,UserID=@UserID,LastUpdateDate=@LastUpdateDate,LastUpdateTime=@LastUpdateTime,TenantID=@TenantID
+		                         UPDATE tblLedger SET LName=@LName,LAliasName=@LAliasName,GroupName=@GroupName,Type=@Type,OpBalance=@OpBalance,AppearIn=@AppearIn,Address=@Address,CreditDays=@CreditDays,Phone=@Phone,TaxNo=@TaxNo,AccountGroupID=@AccountGroupID,RouteID=@RouteID,Area=@Area,Notes=@Notes,TargetAmt=@TargetAmt,SMSSchID=@SMSSchID,Email=@Email,MobileNo=@MobileNo,DiscPer=@DiscPer,InterestPer=@InterestPer,DummyLName=@DummyLName,BlnBank=@BlnBank,CurrencyID=@CurrencyID,AreaID=@AreaID,PLID=@PLID,ActiveStatus=@ActiveStatus,EmailAddress=@EmailAddress,EntryDate=@EntryDate,blnBillWise=@blnBillWise,CustomerCardID=@CustomerCardID,TDSPer=@TDSPer,DOB=@DOB,StateID=@StateID,CCIDS=@CCIDS,CurrentBalance=@CurrentBalance,BlnWallet=@BlnWallet,blnCoupon=@blnCoupon,TransComn=@TransComn,BlnSmsWelcome=@BlnSmsWelcome,DLNO=@DLNO,TDS=@TDS,LedgerNameUnicode=@LedgerNameUnicode,LedgerAliasNameUnicode=@LedgerAliasNameUnicode,ContactPerson=@ContactPerson,TaxParameter=@TaxParameter,TaxParameterType=@TaxParameterType,HSNCODE=@HSNCODE,CGSTTaxPer=@CGSTTaxPer,SGSTTaxPer=@SGSTTaxPer,IGSTTaxPer=@IGSTTaxPer,BankAccountNo=@BankAccountNo,BankIFSCCode=@BankIFSCCode,BankNote=@BankNote,WhatsAppNo=@WhatsAppNo,SystemName=@SystemName,UserID=@UserID,LastUpdateDate=@LastUpdateDate,LastUpdateTime=@LastUpdateTime,TenantID=@TenantID,GSTType=@GSTType,AgentID=@AgentID
+		                         WHERE LID=@LID
+		                         SET @RetResult = 1;
+		                         SET @TransType = 'E';
+	                         END
+	                         ELSE
+	                         BEGIN
+		                         UPDATE tblLedger SET Type=@Type,OpBalance=@OpBalance 
+		                         WHERE LID=@LID
+
+		                         SET @RetResult = -1;
+		                         SET @TransType = 'F';
+	                         END
+                        END
+                        IF @Action = 2
+                        BEGIN
+	                        IF @LID > 1000
+                             BEGIN
+		                         DELETE FROM tblLedger WHERE LID=@LID
+
+		                         SET @RetResult = 0;
+		                         SET @TransType = 'D';
+	                         END
+	                         ELSE
+	                         BEGIN
+		                         SET @RetResult = -1;
+		                         SET @TransType = 'F';
+	                         END
+                        END
+                        COMMIT TRANSACTION;
+
+                        IF @RetResult <> -1
+	                        SELECT @RetResult as SqlSpResult,@LID as TransID,@TransType as TransactType
+                        ELSE
+	                        SELECT -1 as SqlSpResult, -1 AS ErrorNumber, 'TRANSACTION FAILED' AS ErrorState, 'CRITICAL' AS ErrorSeverity,
+		                        'UspLedgerInsert' AS ErrorProcedure, -1 AS ErrorLine, 'DEFAULT LEDGERS CANNOT BE EDITED OR DELETED' AS ErrorMessage;
+
+                        END TRY
+                        BEGIN CATCH
+                        ROLLBACK;
+                        SELECT
+                        - 1 as SqlSpResult,
+                        ERROR_NUMBER() AS ErrorNumber,
+                        ERROR_STATE() AS ErrorState,
+                        ERROR_SEVERITY() AS ErrorSeverity,
+                        ERROR_PROCEDURE() AS ErrorProcedure,
+                        ERROR_LINE() AS ErrorLine,
+                        ERROR_MESSAGE() AS ErrorMessage;
+                        END CATCH;
+                        END
+
+                        ";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
 
             try
             {
@@ -6114,8 +6437,8 @@ namespace InventorSync
             try
             {
                 sQuery = @"CREATE VIEW [dbo].[vwBoardRatePLU]
-AS
-  SELECT TOP (100) PERCENT dbo.tblitemmaster.itemid,
+                        AS
+                          SELECT TOP (100) PERCENT dbo.tblitemmaster.itemid,
                            dbo.tblitemmaster.itemcode,
                            dbo.tblitemmaster.itemname,
                            dbo.tblstock.batchunique, dbo.tblStock.BatchCode, 
