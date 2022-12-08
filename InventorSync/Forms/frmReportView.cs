@@ -50,7 +50,7 @@ namespace InventorSync.Forms
                 label1.Text = strFormName + " Report";
                 label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Cost Center :" + strcost + ",Voucher Type:" + strVchtype + "";
                 //this.WindowState = FormWindowState.Maximized;
-                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwpurchase ORDER BY INVDATE,referenceautono,INVNO", Properties.Settings.Default.ConnectionString);
+                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwpurchase ORDER BY INVDATE,referenceautono,INVNO", DigiposZen.Properties.Settings.Default.ConnectionString);
                 DataSet ds = new DataSet();
                 da.Fill(ds, "vwpurchase");
                 dataGridView1.DataSource = ds.Tables["vwpurchase"].DefaultView;

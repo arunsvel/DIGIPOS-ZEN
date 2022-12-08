@@ -229,7 +229,7 @@ namespace InventorSync
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+            this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
             this.btnClose.Location = new System.Drawing.Point(1228, 2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
@@ -243,7 +243,7 @@ namespace InventorSync
             this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
+            this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
             this.btnMinimize.Location = new System.Drawing.Point(1128, 2);
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMinimize.Name = "btnMinimize";
@@ -519,7 +519,7 @@ namespace InventorSync
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefresh.ForeColor = System.Drawing.Color.Black;
-            this.btnRefresh.Image = global::InventorSync.Properties.Resources.refresh_removebg1;
+            this.btnRefresh.Image = global::DigiposZen.Properties.Resources.refresh_removebg1;
             this.btnRefresh.Location = new System.Drawing.Point(1212, 2);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRefresh.Name = "btnRefresh";

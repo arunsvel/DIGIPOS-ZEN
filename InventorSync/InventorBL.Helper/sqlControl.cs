@@ -20,7 +20,7 @@ namespace InventorSync.InventorBL.Helper
 {
     public class sqlControl
     {
-        private SqlConnection cn = new SqlConnection(); // (Properties.Settings.Default.ConnectionString)
+        private SqlConnection cn = new SqlConnection(); // (DigiposZen.Properties.Settings.Default.ConnectionString)
         // Private mTransaction As SqlTransaction
         // Private mblnBeginTrans As Boolean
         // Private mblnCommitTrans As Boolean
@@ -146,14 +146,14 @@ namespace InventorSync.InventorBL.Helper
         // class initialising
         public sqlControl()
         {
-            MyConnectionString = Properties.Settings.Default.ConnectionString;
+            MyConnectionString = DigiposZen.Properties.Settings.Default.ConnectionString;
 
             if (Global.mycn == null)
-                Global.Setmycn(Properties.Settings.Default.ConnectionString);
+                Global.Setmycn(DigiposZen.Properties.Settings.Default.ConnectionString);
             if (Global.mycn.ConnectionString == null)
-                Global.Setmycn(Properties.Settings.Default.ConnectionString);
+                Global.Setmycn(DigiposZen.Properties.Settings.Default.ConnectionString);
             if (Global.mycn.ConnectionString == "")
-                Global.Setmycn(Properties.Settings.Default.ConnectionString);
+                Global.Setmycn(DigiposZen.Properties.Settings.Default.ConnectionString);
             if (Global.mycn.ConnectionString != null)
             {
                 if (Global.mycn.ConnectionString != "")
@@ -256,7 +256,7 @@ namespace InventorSync.InventorBL.Helper
             try
             {
                 SqlCommand Cmd11;
-                // cn = New SqlConnection(Properties.Settings.Default.ConnectionString)
+                // cn = New SqlConnection(DigiposZen.Properties.Settings.Default.ConnectionString)
                 // cn.Open()
                 Cmd11 = new SqlCommand(s, cn);
                 Cmd11.CommandType = CommandType.StoredProcedure;
@@ -391,7 +391,7 @@ namespace InventorSync.InventorBL.Helper
         {
             DataTable drr = new DataTable();
             SqlCommand Cmd11;
-            // cn = New SqlConnection(Properties.Settings.Default.ConnectionString)
+            // cn = New SqlConnection(DigiposZen.Properties.Settings.Default.ConnectionString)
             // cn.Open()
             Cmd11 = new SqlCommand(s, cn);
             Cmd11.CommandType = CommandType.StoredProcedure;
@@ -641,7 +641,7 @@ namespace InventorSync.InventorBL.Helper
             try
             {
                 SqlCommand Cmd11;
-                cn = new SqlConnection(Properties.Settings.Default.ConnectionString);
+                cn = new SqlConnection(DigiposZen.Properties.Settings.Default.ConnectionString);
                 cn.Open();
                 Cmd11 = new SqlCommand(s, cn);
                 Cmd11.CommandType = CommandType.StoredProcedure;

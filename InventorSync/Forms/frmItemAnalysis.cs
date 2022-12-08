@@ -57,9 +57,9 @@ namespace InventorSync
 
                 lblRefresh.ForeColor = Color.Black;
 
-                lblRefresh.Image = global::InventorSync.Properties.Resources.refresh_removebg1;
-                btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
-                btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+                lblRefresh.Image = global::DigiposZen.Properties.Resources.refresh_removebg1;
+                btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+                btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
 
             }
             catch (Exception ex)

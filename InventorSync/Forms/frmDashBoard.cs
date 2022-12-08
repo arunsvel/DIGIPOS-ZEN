@@ -21,7 +21,7 @@ namespace InventorSync
         {
             InitializeComponent();
         }
-        string constr = Properties.Settings.Default.ConnectionString; // @"Data Source = GAMERADICTION\DIGIPOS; Initial Catalog = DigiposDemo; User ID = sa; Password =#infinitY@279";
+        string constr = DigiposZen.Properties.Settings.Default.ConnectionString; // @"Data Source = GAMERADICTION\DIGIPOS; Initial Catalog = DigiposDemo; User ID = sa; Password =#infinitY@279";
 
         private void frmDashBoard_Load(object sender, EventArgs e)
         {
@@ -166,7 +166,7 @@ namespace InventorSync
         }
         private static DataTable GetData(string query)
         {
-            string constr = Properties.Settings.Default.ConnectionString; //@"Data Source = //GAMERADICTION\DIGIPOS; Initial Catalog = DigiposDemo; User ID = sa; Password =#infinitY@279";
+            string constr = DigiposZen.Properties.Settings.Default.ConnectionString; //@"Data Source = //GAMERADICTION\DIGIPOS; Initial Catalog = DigiposDemo; User ID = sa; Password =#infinitY@279";
 
             using (SqlConnection con = new SqlConnection(constr))
             {

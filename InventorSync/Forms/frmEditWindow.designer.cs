@@ -1265,7 +1265,7 @@ namespace InventorSync
             this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Image = global::InventorSync.Properties.Resources.refresh_removebg1;
+            this.btnRefresh.Image = global::DigiposZen.Properties.Resources.refresh_removebg1;
             this.btnRefresh.Location = new System.Drawing.Point(763, 2);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRefresh.Name = "btnRefresh";
@@ -1349,7 +1349,7 @@ namespace InventorSync
             this.btnCancelDeactive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCancelDeactive.FlatAppearance.BorderSize = 0;
             this.btnCancelDeactive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelDeactive.Image = global::InventorSync.Properties.Resources.archive123;
+            this.btnCancelDeactive.Image = global::DigiposZen.Properties.Resources.archive123;
             this.btnCancelDeactive.Location = new System.Drawing.Point(243, 2);
             this.btnCancelDeactive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelDeactive.Name = "btnCancelDeactive";
@@ -1363,7 +1363,7 @@ namespace InventorSync
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Image = global::InventorSync.Properties.Resources.delete340402;
+            this.btnDelete.Image = global::DigiposZen.Properties.Resources.delete340402;
             this.btnDelete.Location = new System.Drawing.Point(163, 2);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
@@ -1377,7 +1377,7 @@ namespace InventorSync
             this.btnEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Image = global::InventorSync.Properties.Resources.edit_3;
+            this.btnEdit.Image = global::DigiposZen.Properties.Resources.edit_3;
             this.btnEdit.Location = new System.Drawing.Point(83, 2);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
@@ -1390,7 +1390,7 @@ namespace InventorSync
             this.btnNew.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnNew.FlatAppearance.BorderSize = 0;
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNew.Image = global::InventorSync.Properties.Resources.plus_1;
+            this.btnNew.Image = global::DigiposZen.Properties.Resources.plus_1;
             this.btnNew.Location = new System.Drawing.Point(3, 2);
             this.btnNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNew.Name = "btnNew";
@@ -1404,7 +1404,7 @@ namespace InventorSync
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+            this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
             this.btnClose.Location = new System.Drawing.Point(923, 2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
@@ -1432,7 +1432,7 @@ namespace InventorSync
             this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
+            this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
             this.btnMinimize.Location = new System.Drawing.Point(843, 2);
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMinimize.Name = "btnMinimize";

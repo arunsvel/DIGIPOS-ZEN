@@ -88,6 +88,8 @@
             this.daybookSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.daybookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trialBalanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.profitLossToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.balancesheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmTools = new System.Windows.Forms.ToolStripMenuItem();
             this.companySettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.applicationSettingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,11 +103,13 @@
             this.userGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmConnectionDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.profitLossToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -122,7 +126,8 @@
             this.accountsToolStripMenuItem,
             this.tsmTools,
             this.userToolStripMenuItem,
-            this.tsmHelp});
+            this.tsmHelp,
+            this.tsmConnectionDetails});
             this.menuMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuMain.Location = new System.Drawing.Point(0, 40);
             this.menuMain.MdiWindowListItem = this.tsmTransactions;
@@ -584,7 +589,8 @@
             this.daybookSummaryToolStripMenuItem,
             this.daybookToolStripMenuItem,
             this.trialBalanceToolStripMenuItem,
-            this.profitLossToolStripMenuItem});
+            this.profitLossToolStripMenuItem,
+            this.balancesheetToolStripMenuItem});
             this.accountsToolStripMenuItem.Name = "accountsToolStripMenuItem";
             this.accountsToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.accountsToolStripMenuItem.Text = "Accounts";
@@ -592,23 +598,37 @@
             // daybookSummaryToolStripMenuItem
             // 
             this.daybookSummaryToolStripMenuItem.Name = "daybookSummaryToolStripMenuItem";
-            this.daybookSummaryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.daybookSummaryToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
             this.daybookSummaryToolStripMenuItem.Text = "Daybook Summary";
             this.daybookSummaryToolStripMenuItem.Click += new System.EventHandler(this.daybookSummaryToolStripMenuItem_Click);
             // 
             // daybookToolStripMenuItem
             // 
             this.daybookToolStripMenuItem.Name = "daybookToolStripMenuItem";
-            this.daybookToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.daybookToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
             this.daybookToolStripMenuItem.Text = "Daybook";
             this.daybookToolStripMenuItem.Click += new System.EventHandler(this.daybookToolStripMenuItem_Click);
             // 
             // trialBalanceToolStripMenuItem
             // 
             this.trialBalanceToolStripMenuItem.Name = "trialBalanceToolStripMenuItem";
-            this.trialBalanceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.trialBalanceToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
             this.trialBalanceToolStripMenuItem.Text = "Trial Balance";
             this.trialBalanceToolStripMenuItem.Click += new System.EventHandler(this.trialBalanceToolStripMenuItem_Click);
+            // 
+            // profitLossToolStripMenuItem
+            // 
+            this.profitLossToolStripMenuItem.Name = "profitLossToolStripMenuItem";
+            this.profitLossToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+            this.profitLossToolStripMenuItem.Text = "Profit && Loss";
+            this.profitLossToolStripMenuItem.Click += new System.EventHandler(this.profitLossToolStripMenuItem_Click);
+            // 
+            // balancesheetToolStripMenuItem
+            // 
+            this.balancesheetToolStripMenuItem.Name = "balancesheetToolStripMenuItem";
+            this.balancesheetToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+            this.balancesheetToolStripMenuItem.Text = "Balance Sheet";
+            this.balancesheetToolStripMenuItem.Click += new System.EventHandler(this.balancesheetToolStripMenuItem_Click);
             // 
             // tsmTools
             // 
@@ -707,15 +727,34 @@
             // 
             // tsmHelp
             // 
+            this.tsmHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
             this.tsmHelp.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsmHelp.Name = "tsmHelp";
             this.tsmHelp.Size = new System.Drawing.Size(50, 24);
             this.tsmHelp.Text = "&Help";
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(150, 26);
+            this.toolStripMenuItem1.Text = "About Us";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // tsmConnectionDetails
+            // 
+            this.tsmConnectionDetails.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsmConnectionDetails.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsmConnectionDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmConnectionDetails.Image")));
+            this.tsmConnectionDetails.Name = "tsmConnectionDetails";
+            this.tsmConnectionDetails.Size = new System.Drawing.Size(34, 24);
+            this.tsmConnectionDetails.Text = "ConnectionDetails";
+            this.tsmConnectionDetails.Click += new System.EventHandler(this.tsmConnectionDetails_Click);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(246)))), ((int)(((byte)(238)))));
-            this.panel1.BackgroundImage = global::InventorSync.Properties.Resources.WallPvaper2;
+            this.panel1.BackgroundImage = global::DigiposZen.Properties.Resources.WallPvaper2;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.btnMinimize);
             this.panel1.Controls.Add(this.btnClose);
@@ -732,7 +771,7 @@
             this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
+            this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
             this.btnMinimize.Location = new System.Drawing.Point(1319, -6);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(53, 47);
@@ -746,7 +785,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+            this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
             this.btnClose.Location = new System.Drawing.Point(1376, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(41, 32);
@@ -759,27 +798,30 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe Fluent Icons", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label1.Image = global::InventorSync.Properties.Resources.BANNER;
+            this.label1.Image = global::DigiposZen.Properties.Resources.BANNER;
             this.label1.Location = new System.Drawing.Point(3, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(267, 23);
             this.label1.TabIndex = 1;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // profitLossToolStripMenuItem
+            // label2
             // 
-            this.profitLossToolStripMenuItem.Name = "profitLossToolStripMenuItem";
-            this.profitLossToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.profitLossToolStripMenuItem.Text = "Profit && Loss";
-            this.profitLossToolStripMenuItem.Click += new System.EventHandler(this.profitLossToolStripMenuItem_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1140, 91);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "label2";
             // 
             // frmMDI
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.BackgroundImage = global::InventorSync.Properties.Resources.Wallpaper_BG_2_V4;
+            this.BackgroundImage = global::DigiposZen.Properties.Resources.Wallpaper_BG_2_V4;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1426, 657);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.menuMain);
             this.Controls.Add(this.panel1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -883,6 +925,10 @@
         private System.Windows.Forms.ToolStripMenuItem daybookSummaryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trialBalanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem profitLossToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem balancesheetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmConnectionDetails;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

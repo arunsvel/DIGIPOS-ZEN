@@ -84,11 +84,11 @@ namespace InventorSync
                 lblDelete.ForeColor = Color.Black;
                 lblFind.ForeColor = Color.Black;
 
-                btnSave.Image = global::InventorSync.Properties.Resources.save240402;
-                btnDelete.Image = global::InventorSync.Properties.Resources.delete340402;
-                btnFind.Image = global::InventorSync.Properties.Resources.find_finalised_3030;
-                btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
-                btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+                btnSave.Image = global::DigiposZen.Properties.Resources.save240402;
+                btnDelete.Image = global::DigiposZen.Properties.Resources.delete340402;
+                btnFind.Image = global::DigiposZen.Properties.Resources.find_finalised_3030;
+                btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+                btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
             }
             catch (Exception ex)
             {
@@ -621,7 +621,7 @@ namespace InventorSync
                     this.txtHSNCode.TextChanged -= this.txtHSNCode_TextChanged;
                     if (txtHSNCode.Text == "") txtHSNCode.Text = "~";
                     this.txtHSNCode.TextChanged += this.txtHSNCode_TextChanged;
-                    string sQuery = "SELECT DISTINCT Top 25 ISNULL( Convert(Varchar(18),HSNCODE),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere,HSNCODE as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNCODE  FROM tblHSNCode where  HSNCODE > 0 AND TenantID=" + Global.gblTenantID + " ";
+                    string sQuery = "SELECT DISTINCT Top 25 ISNULL( Convert(Varchar(18),HSNCODE),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere,HSNCODE as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNCODE  FROM tblHSNCode where  HID > 0 AND TenantID=" + Global.gblTenantID + " ";
                     new frmCompactSearch(GetFromHSNCodeSearch, sQuery, "AnyWhere|Convert(varchar(50),HSNCODE)|Convert(varchar(50),IGSTTaxPer)|Convert(varchar(50),CessPer)", txtHSNCode.Location.X + 750, txtHSNCode.Location.Y + 30, 3, 0, txtHSNCode.Text, 4, 0, "ORDER BY HSNCODE ASC", 0, 0, "HSN Code Search ...", 0, "200,80,80,0", true, "HSNCode", 0, true, this.MdiParent).ShowDialog();
                   
                         this.txtHSNCode.TextChanged -= this.txtHSNCode_TextChanged;
@@ -1865,7 +1865,7 @@ namespace InventorSync
             //string sQuery = "SELECT DISTINCT Top 25 ISNULL( Convert(Varchar(18),HSNID),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere,HSNID as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNID  FROM tblItemMaster where ActiveStatus = 1 AND HSNID > 0 AND TenantID=" + Global.gblTenantID + "";
             //new frmCompactSearch(GetFromHSNCodeSearch, sQuery, "AnyWhere|HSN Code|IGST %|Cess %|HSNID", txtHSNCode.Location.X + 750, txtHSNCode.Location.Y + 30, 3, 0, txtHSNCode.Text, 4, 0, "ORDER BY HSNID ASC", 0, 0, "HSN Code Search ...", 0, "200,80,80,0", true, "HSNCode", 0, true).ShowDialog();
 
-            string sQuery = "SELECT DISTINCT Top 25 ISNULL( Convert(Varchar(18),HSNCODE),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere, HSNCODE as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNCODE,HID  FROM tblHSNCode WHERE  HSNCODE > 0  AND TenantID=" + Global.gblTenantID + " ";
+            string sQuery = "SELECT DISTINCT ISNULL( Convert(Varchar(18),HSNCODE),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere, HSNCODE as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNCODE,HID  FROM tblHSNCode WHERE  HID > 0  AND TenantID=" + Global.gblTenantID + " ";
             new frmCompactSearch(GetFromHSNCodeSearch, sQuery, "AnyWhere|Convert(varchar(50),HSNCODE)|Convert(varchar(50),IGSTTaxPer)|Convert(varchar(50),CessPer)", txtHSNCode.Location.X + 750, txtHSNCode.Location.Y + 30,3 , 0, txtHSNCode.Text, 4, 0, "ORDER BY HSNCODE ASC", 0, 0, "HSN Code Search ...", 0, "200,80,80,0", true, "HSNCode", 0, true, this.MdiParent).ShowDialog();
             if (cboIGSTPerc.Text == "0")
             {
@@ -6405,7 +6405,7 @@ namespace InventorSync
             
             //this.BackgroundImage = ScaleByPercent(picBackground.Image, 120);
 
-            //BackgroundImage = global::InventorSync.Properties.Resources.WallpaperVioletGradient;
+            //BackgroundImage = global::DigiposZen.Properties.Resources.WallpaperVioletGradient;
             //picBackground.Visible = true;
         }
 

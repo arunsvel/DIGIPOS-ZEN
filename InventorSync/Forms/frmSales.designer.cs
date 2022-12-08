@@ -2066,7 +2066,7 @@ namespace InventorSync
             this.radioButton4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radioButton4.FlatAppearance.BorderSize = 0;
             this.radioButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton4.Image = global::InventorSync.Properties.Resources.desk;
+            this.radioButton4.Image = global::DigiposZen.Properties.Resources.desk;
             this.radioButton4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.radioButton4.Location = new System.Drawing.Point(234, 3);
             this.radioButton4.Name = "radioButton4";

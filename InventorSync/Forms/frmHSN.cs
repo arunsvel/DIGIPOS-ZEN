@@ -60,11 +60,11 @@ namespace InventorSync
                 lblDelete.Font = new Font("Tahoma", 10, FontStyle.Regular, GraphicsUnit.Point);
                 lblFind.Font = new Font("Tahoma", 10, FontStyle.Regular, GraphicsUnit.Point);
 
-                btnSave.Image = global::InventorSync.Properties.Resources.save240402;
-                btnDelete.Image = global::InventorSync.Properties.Resources.delete340402;
-                btnFind.Image = global::InventorSync.Properties.Resources.find_finalised_3030;
-                btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
-                btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+                btnSave.Image = global::DigiposZen.Properties.Resources.save240402;
+                btnDelete.Image = global::DigiposZen.Properties.Resources.delete340402;
+                btnFind.Image = global::DigiposZen.Properties.Resources.find_finalised_3030;
+                btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+                btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
 
                 cmbBTaxClass.Items.Clear();
                 if (AppSettings.AVAILABLETAXPER == null)
@@ -653,7 +653,7 @@ namespace InventorSync
                 return false;
             }
             string a="select * from tblHSNCode where HSNCODE = '"+txtHSNCode.Text+"' and IGSTTaxPer = '"+cmbBTaxClass.Text+"'";
-            SqlDataAdapter da1 = new SqlDataAdapter("select * from tblHSNCode where HSNCODE='"+txtHSNCode.Text+"'  and IGSTTaxPer='"+cmbBTaxClass.Text+"'", Properties.Settings.Default.ConnectionString);
+            SqlDataAdapter da1 = new SqlDataAdapter("select * from tblHSNCode where HSNCODE='"+txtHSNCode.Text+"'  and IGSTTaxPer='"+cmbBTaxClass.Text+"'", DigiposZen.Properties.Settings.Default.ConnectionString);
             DataTable dt3 = new DataTable();
             da1.Fill(dt3);
 

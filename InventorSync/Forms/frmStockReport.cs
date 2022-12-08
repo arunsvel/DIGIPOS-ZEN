@@ -32,8 +32,8 @@ namespace InventorSync.Forms
 
                 lblHeading.Font = new Font("Tahoma", 21, FontStyle.Regular, GraphicsUnit.Pixel);
 
-                btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
-                btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+                btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+                btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
 
             }
             catch (Exception ex)
@@ -47,7 +47,7 @@ namespace InventorSync.Forms
 
         }
         #region "VARIABLES --------------------------------------------- >>"
-        string constr = Properties.Settings.Default.ConnectionString; //@"Data Source=NAHUM\DIGIPOS;Initial Catalog=DemoDB;Persist Security Info=True;User ID=sa;Password=#infinitY@279;Integrated Security=true";
+        string constr = DigiposZen.Properties.Settings.Default.ConnectionString; //@"Data Source=NAHUM\DIGIPOS;Initial Catalog=DemoDB;Persist Security Info=True;User ID=sa;Password=#infinitY@279;Integrated Security=true";
         //string constr = @"Data Source=GAMERADICTION\DIGIPOS;Initial Catalog=DemoDB;Persist Security Info=True;User ID=sa;Password=#infinitY@279;Integrated Security=true";
         clsCostCentre clsccntr = new clsCostCentre();
         clsJsonVoucherType clsVchType = new clsJsonVoucherType();

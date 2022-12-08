@@ -1,0 +1,15 @@
+08-Dec-2022 13:19:18
+EventTarget:DAYBOOKSUMMARY
+Column named CreditSub cannot be found.
+Parameter name: columnName
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+08-Dec-2022 18:11:45
+EventTarget:InsertUpdateDeleteHSNMaster
+Could not find stored procedure 'UspHSNMasterInsert'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------

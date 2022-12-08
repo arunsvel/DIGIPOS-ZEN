@@ -57,11 +57,11 @@ namespace InventorSync
 
                 lblHeading.Font = new Font("Tahoma", 21, FontStyle.Regular, GraphicsUnit.Pixel);
 
-                btnSave.Image = global::InventorSync.Properties.Resources.save240402;
-                btnDelete.Image = global::InventorSync.Properties.Resources.delete340402;
-                btnFind.Image = global::InventorSync.Properties.Resources.find_finalised_3030;
-                btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
-                btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+                btnSave.Image = global::DigiposZen.Properties.Resources.save240402;
+                btnDelete.Image = global::DigiposZen.Properties.Resources.delete340402;
+                btnFind.Image = global::DigiposZen.Properties.Resources.find_finalised_3030;
+                btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+                btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
 
             }
             catch (Exception ex)

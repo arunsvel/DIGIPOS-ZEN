@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace InventorSync {
+namespace DigiposZen {
     
     
     /// <summary>
@@ -1089,7 +1089,7 @@ namespace InventorSync {
         }
     }
 }
-namespace InventorSync.DigiposDemoDataSetTableAdapters {
+namespace DigiposZen.DigiposDemoDataSetTableAdapters {
     
     
     /// <summary>
@@ -1250,7 +1250,7 @@ namespace InventorSync.DigiposDemoDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::InventorSync.Properties.Settings.Default.DigiposDemoConnectionString;
+            this._connection.ConnectionString = global::DigiposZen.Properties.Settings.Default.DigiposDemoConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

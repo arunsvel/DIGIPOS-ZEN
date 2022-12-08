@@ -2115,7 +2115,7 @@ namespace InventorSync.Forms
             this.radioButton4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radioButton4.FlatAppearance.BorderSize = 0;
             this.radioButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton4.Image = global::InventorSync.Properties.Resources.desk;
+            this.radioButton4.Image = global::DigiposZen.Properties.Resources.desk;
             this.radioButton4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.radioButton4.Location = new System.Drawing.Point(234, 3);
             this.radioButton4.Name = "radioButton4";
@@ -2332,7 +2332,7 @@ namespace InventorSync.Forms
             // 
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+            this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
             this.btnClose.Location = new System.Drawing.Point(1221, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(49, 33);
@@ -2343,7 +2343,7 @@ namespace InventorSync.Forms
             // 
             this.btnMenu.FlatAppearance.BorderSize = 0;
             this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenu.Image = global::InventorSync.Properties.Resources.menu_hamburger2;
+            this.btnMenu.Image = global::DigiposZen.Properties.Resources.menu_hamburger2;
             this.btnMenu.Location = new System.Drawing.Point(1169, 3);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(46, 33);
@@ -2355,7 +2355,7 @@ namespace InventorSync.Forms
             // 
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                        this.btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
+                        this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
             this.btnMinimize.Location = new System.Drawing.Point(1109, 3);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(54, 33);
@@ -2366,7 +2366,7 @@ namespace InventorSync.Forms
             // 
             this.btnFind.FlatAppearance.BorderSize = 0;
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFind.Image = global::InventorSync.Properties.Resources.find_finalised_3030;
+            this.btnFind.Image = global::DigiposZen.Properties.Resources.find_finalised_3030;
             this.btnFind.Location = new System.Drawing.Point(1045, 3);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(54, 33);
@@ -2377,7 +2377,7 @@ namespace InventorSync.Forms
             // 
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Image = global::InventorSync.Properties.Resources.delete340402;
+            this.btnDelete.Image = global::DigiposZen.Properties.Resources.delete340402;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDelete.Location = new System.Drawing.Point(938, 3);
             this.btnDelete.Name = "btnDelete";

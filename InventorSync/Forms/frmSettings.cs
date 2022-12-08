@@ -47,8 +47,8 @@ namespace InventorSync
 
                 lblHeading.Font = new Font("Tahoma", 21, FontStyle.Regular, GraphicsUnit.Pixel);
 
-                btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
-                btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+                btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+                btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
 
             }
             catch (Exception ex)
@@ -2734,6 +2734,102 @@ namespace InventorSync
 
             try
             {
+                sQuery = @"UPDATE tblhsncode SET [TenantID] = 1 WHERE [TenantID] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [HSNType] = 'GOODS' WHERE [HSNType] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [CGSTTaxPer] = 0 WHERE [CGSTTaxPer] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [SGSTTaxPer] = 0 WHERE [SGSTTaxPer] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [IGSTTaxPer] = 0 WHERE [IGSTTaxPer] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [CessPer] = 0 WHERE [CessPer] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [CompCessQty] = 0 WHERE [CompCessQty] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [CGSTTaxPer1] = 0 WHERE [CGSTTaxPer1] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [SGSTTaxPer1] = 0 WHERE [SGSTTaxPer1] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [IGSTTaxPer1] = 0 WHERE [IGSTTaxPer1] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [CGSTTaxPer2] = 0 WHERE [CGSTTaxPer2] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [SGSTTaxPer2] = 0 WHERE [SGSTTaxPer2] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [IGSTTaxPer2] = 0 WHERE [IGSTTaxPer2] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [CGSTTaxPer3] = 0 WHERE [CGSTTaxPer3] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [SGSTTaxPer3] = 0 WHERE [SGSTTaxPer3] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [IGSTTaxPer3] = 0 WHERE [IGSTTaxPer3] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [CGSTTaxPer4] = 0 WHERE [CGSTTaxPer4] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [SGSTTaxPer4] = 0 WHERE [SGSTTaxPer4] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [IGSTTaxPer4] = 0 WHERE [IGSTTaxPer4] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"UPDATE tblhsncode SET [HID] = HSNID WHERE [HID] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                try
+                {
+                    sQuery = @"UPDATE tblhsncode SET [HID] = HSNCODE WHERE [HID] IS NULL";
+                    Comm.fnExecuteNonQuery(sQuery, false);
+                }
+                catch
+                { }
+
+                sQuery = @"UPDATE tblhsncode SET [HID] = 0 WHERE [HID] IS NULL";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"INSERT INTO [dbo].[tblHSNCode]
+                        ([HSNID],[HSNCODE],[HSNDECRIPTION],[TaxClassID],[StockOrService],[TaxClassID1],[TaxClassID2],[TaxClassID3],[TaxClassID4],[ValueStartSB1]
+                        ,[ValueStartSB2],[ValueStartSB3],[ValueStartSB4],[ValueEndSB1],[ValueEndSB2],[ValueEndSB3],[ValueEndSB4],[blnSlabSystem],[slabtaxString]
+                        ,[HSNCODEUnique],[NoofTaxClass],[SystemName],[UserID],[LastUpdateDate],[LastUpdateTime],[HSNType],[CGSTTaxPer],[SGSTTaxPer],[IGSTTaxPer]
+                        ,[CessPer],[CompCessQty],[CGSTTaxPer1],[SGSTTaxPer1],[IGSTTaxPer1],[CGSTTaxPer2],[SGSTTaxPer2],[IGSTTaxPer2],[CGSTTaxPer3],[SGSTTaxPer3]
+                        ,[IGSTTaxPer3],[CGSTTaxPer4],[SGSTTaxPer4],[IGSTTaxPer4],[TenantID])
+                        Select  distinct  [HSNID],[HSNID] as [HSNCODE],[HSNID] as [HSNDECRIPTION],0 as [TaxClassID],'GOODS' AS [StockOrService],0 as [TaxClassID1]
+                        ,0 as [TaxClassID2],0 as [TaxClassID3],0 as [TaxClassID4],0 as [ValueStartSB1],0 as [ValueStartSB2],0 as [ValueStartSB3],0 as [ValueStartSB4]
+                        ,0 as [ValueEndSB1],0 as [ValueEndSB2],0 as [ValueEndSB3],0 as [ValueEndSB4],0 as [blnSlabSystem],'' as [slabtaxString],[HSNID] as [HSNCODEUnique]
+                        ,1 as [NoofTaxClass],'' as [SystemName],1 as [UserID],'' as [LastUpdateDate],'' as [LastUpdateTime],'GOODS' AS [HSNType],[CGSTTaxPer]
+                        ,[SGSTTaxPer],[IGSTTaxPer],[CessPer],[CompCessQty],0 as [CGSTTaxPer1],0 as [SGSTTaxPer1],0 as [IGSTTaxPer1],0 as [CGSTTaxPer2],0 as [SGSTTaxPer2]
+                        ,0 as [IGSTTaxPer2],0 as [CGSTTaxPer3],0 as [SGSTTaxPer3],0 as [IGSTTaxPer3],0 as [CGSTTaxPer4],0 as [SGSTTaxPer4],0 as [IGSTTaxPer4], [TenantID] 
+                        From tblItemmaster";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
                 sQuery = @"alter table tblsales add coolie decimal";
                 Comm.fnExecuteNonQuery(sQuery, false);
             }
@@ -4094,6 +4190,185 @@ namespace InventorSync
         private void CreateViewsAndProcudures()
         {
             string sQuery = "";
+
+            try
+            {
+                sQuery = @"DROP PROCEDURE [dbo].[UspHSNMasterInsert] ";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+            try
+            {
+                sQuery = @"CREATE PROCEDURE [dbo].[UspHSNMasterInsert](
+                             @HID  NUMERIC  (18,0),
+                             @HSNCODE  VARCHAR  (50),
+                             @HSNDECRIPTION    VARCHAR  (50),
+	                         @HSNType        VARCHAR  (50),
+                             @CGSTTaxPer FLOAT,
+                             @SGSTTaxPer  FLOAT,
+                             @IGSTTaxPer  FLOAT,
+                             @CessPer   FLOAT,
+                             @CompCessQty  FLOAT,
+	                         @CGSTTaxPer1 FLOAT,
+                             @SGSTTaxPer1 FLOAT,
+                             @IGSTTaxPer1 FLOAT,
+                             @CGSTTaxPer2 FLOAT,
+                             @SGSTTaxPer2 FLOAT,
+                             @IGSTTaxPer2 FLOAT,
+                             @CGSTTaxPer3 FLOAT,
+                             @SGSTTaxPer3 FLOAT,
+                             @IGSTTaxPer3 FLOAT,
+                             @CGSTTaxPer4 FLOAT,
+                             @SGSTTaxPer4 FLOAT,
+                             @IGSTTaxPer4 FLOAT,
+	                         @ValueStartSB1  NUMERIC  (18,0),
+                             @ValueStartSB2  NUMERIC  (18,0),
+                             @ValueStartSB3  NUMERIC  (18,0),
+                             @ValueStartSB4  NUMERIC  (18,0),
+                             @ValueEndSB1 NUMERIC  (18,0),
+                             @ValueEndSB2 NUMERIC  (18,0),
+                             @ValueEndSB3 NUMERIC  (18,0),
+                             @ValueEndSB4 NUMERIC  (18,0),
+	                         @blnSlabSystem NUMERIC  (18,0),
+                             @TenantID   NUMERIC  (18,0),
+                        @Action             INT=0
+                        )
+                        AS
+                        BEGIN
+                        DECLARE @RetResult      INT
+                        BEGIN TRY
+                        BEGIN TRANSACTION;
+                        IF @Action = 0
+                        BEGIN
+                             INSERT INTO tblHSNCode(
+	                         HSNID,
+	                         HSNCODE,
+	                         HSNDECRIPTION,
+	                         HSNType,
+                             CGSTTaxPer ,
+                             SGSTTaxPer  ,
+                             IGSTTaxPer  ,
+                             CessPer   ,
+                             CompCessQty  ,
+	                         CGSTTaxPer1 ,
+                             SGSTTaxPer1 ,
+                             IGSTTaxPer1 ,
+                             CGSTTaxPer2 ,
+                             SGSTTaxPer2 ,
+                             IGSTTaxPer2 ,
+                             CGSTTaxPer3 ,
+                             SGSTTaxPer3 ,
+                             IGSTTaxPer3 ,
+                             CGSTTaxPer4 ,
+                             SGSTTaxPer4 ,
+                             IGSTTaxPer4 ,
+	                         ValueStartSB1  ,
+                             ValueStartSB2  ,
+                             ValueStartSB3  ,
+                             ValueStartSB4  ,
+                             ValueEndSB1 ,
+                             ValueEndSB2 ,
+                             ValueEndSB3 ,
+                             ValueEndSB4 ,
+	                         blnSlabSystem,
+	                         TenantID)
+                             VALUES(
+	                         @HID,
+	                         @HSNCODE,
+	                         @HSNDECRIPTION,
+	                         @HSNType,
+                             @CGSTTaxPer ,
+                             @SGSTTaxPer  ,
+                             @IGSTTaxPer  ,
+                             @CessPer   ,
+                             @CompCessQty  ,
+	                         @CGSTTaxPer1 ,
+                             @SGSTTaxPer1 ,
+                             @IGSTTaxPer1 ,
+                             @CGSTTaxPer2 ,
+                             @SGSTTaxPer2 ,
+                             @IGSTTaxPer2 ,
+                             @CGSTTaxPer3 ,
+                             @SGSTTaxPer3 ,
+                             @IGSTTaxPer3 ,
+                             @CGSTTaxPer4 ,
+                             @SGSTTaxPer4 ,
+                             @IGSTTaxPer4 ,
+	                         @ValueStartSB1  ,
+                             @ValueStartSB2  ,
+                             @ValueStartSB3  ,
+                             @ValueStartSB4  ,
+                             @ValueEndSB1 ,
+                             @ValueEndSB2 ,
+                             @ValueEndSB3 ,
+                             @ValueEndSB4 ,
+	                         @blnSlabSystem,
+	                         @TenantID )
+                             SET @RetResult = 1;
+                        END
+                        IF @Action = 1
+                        BEGIN
+                             UPDATE tblHSNCode SET 
+	                         HSNID=@HID,
+	                         HSNCODE=@HSNCODE,
+	                         HSNDECRIPTION=@HSNDECRIPTION,
+	                         HSNType=@HSNType,
+                             CGSTTaxPer=@CGSTTaxPer ,
+                             SGSTTaxPer=@SGSTTaxPer  ,
+                             IGSTTaxPer=@IGSTTaxPer  ,
+                             CessPer =@CessPer   ,
+                             CompCessQty=@CompCessQty  ,
+	                         CGSTTaxPer1=@CGSTTaxPer1 ,
+                             SGSTTaxPer1=@SGSTTaxPer1 ,
+                             IGSTTaxPer1=@IGSTTaxPer1 ,
+                             CGSTTaxPer2=@CGSTTaxPer2 ,
+                             SGSTTaxPer2=@SGSTTaxPer2 ,
+                             IGSTTaxPer2=@IGSTTaxPer2 ,
+                             CGSTTaxPer3=@CGSTTaxPer3 ,
+                             SGSTTaxPer3=@SGSTTaxPer3 ,
+                             IGSTTaxPer3=@IGSTTaxPer3 ,
+                             CGSTTaxPer4=@CGSTTaxPer4 ,
+                             SGSTTaxPer4=@SGSTTaxPer4 ,
+                             IGSTTaxPer4=@IGSTTaxPer4 ,
+	                         ValueStartSB1=@ValueStartSB1  ,
+                             ValueStartSB2=@ValueStartSB2  ,
+                             ValueStartSB3=@ValueStartSB3  ,
+                             ValueStartSB4=@ValueStartSB4  ,
+                             ValueEndSB1=@ValueEndSB1 ,
+                             ValueEndSB2=@ValueEndSB2 ,
+                             ValueEndSB3=@ValueEndSB3 ,
+                             ValueEndSB4=@ValueEndSB4 ,
+	                         blnSlabSystem=@blnSlabSystem,
+	                         TenantID=@TenantID
+                             WHERE HID=@HID
+                             SET @RetResult = 1;
+                        END
+                        IF @Action = 2
+                        BEGIN
+                             DELETE FROM tblHSNCode WHERE HID=@HID
+                             SET @RetResult = 0;
+                        END
+                        COMMIT TRANSACTION;
+                        SELECT @RetResult as SqlSpResult
+                        END TRY
+                        BEGIN CATCH
+                        ROLLBACK;
+                        SELECT
+                        - 1 as SqlSpResult,
+                        ERROR_NUMBER() AS ErrorNumber,
+                        ERROR_STATE() AS ErrorState,
+                        ERROR_SEVERITY() AS ErrorSeverity,
+                        ERROR_PROCEDURE() AS ErrorProcedure,
+                        ERROR_LINE() AS ErrorLine,
+                        ERROR_MESSAGE() AS ErrorMessage;
+                        END CATCH;
+                        END";
+
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
 
             try
             {
@@ -16375,6 +16650,23 @@ namespace InventorSync
                 if (MessageBox.Show("Do you like to activate all tax parameter ledgers", "DB Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     sQuery = @"update tblledger set ActiveStatus = 1 where TaxParameter <> 'DEFAULT' and TaxParameter <> ''";
+
+                    Comm.fnExecuteNonQuery(sQuery, false);
+                }
+            }
+            catch
+            { }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string sQuery = "";
+
+            try
+            {
+                if (MessageBox.Show("Do you like to change default pricelist for cash customer", "DB Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    sQuery = @"UPDATE TBLLEDGER SET PLID=1 WHERE LID=1000";
 
                     Comm.fnExecuteNonQuery(sQuery, false);
                 }

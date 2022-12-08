@@ -43,8 +43,8 @@ namespace InventorSync
 
                 lblHeading.Font = new Font("Tahoma", 21, FontStyle.Regular, GraphicsUnit.Pixel);
 
-                btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
-                btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+                btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+                btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
 
             }
             catch (Exception ex)
@@ -62,7 +62,7 @@ namespace InventorSync
         }
 
         #region "VARIABLES --------------------------------------------- >>"
-        string constr = @"Data Source=DESKTOP-THO19HQ\DIGIPOS;Initial Catalog=DigiposDemo;User ID=sa;Password=#infinitY@279";//Properties.Settings.Default.ConnectionString; //
+        string constr = @"Data Source=DESKTOP-THO19HQ\DIGIPOS;Initial Catalog=DigiposDemo;User ID=sa;Password=#infinitY@279";//DigiposZen.Properties.Settings.Default.ConnectionString; //
         bool dragging = false;
         int xOffset = 0, yOffset = 0;
         Common Comm = new Common();

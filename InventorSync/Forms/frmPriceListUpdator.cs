@@ -69,12 +69,12 @@ namespace InventorSync
                 lblSave.ForeColor = Color.Black;
                 lblFind.ForeColor = Color.Black;
 
-                btnprev.Image = global::InventorSync.Properties.Resources.fast_backwards;
-                btnNext.Image = global::InventorSync.Properties.Resources.fast_forward;
-                btnSave.Image = global::InventorSync.Properties.Resources.save240402;
-                btnFind.Image = global::InventorSync.Properties.Resources.find_finalised_3030;
-                btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
-                btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+                btnprev.Image = global::DigiposZen.Properties.Resources.fast_backwards;
+                btnNext.Image = global::DigiposZen.Properties.Resources.fast_forward;
+                btnSave.Image = global::DigiposZen.Properties.Resources.save240402;
+                btnFind.Image = global::DigiposZen.Properties.Resources.find_finalised_3030;
+                btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+                btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
 
             }
             catch (Exception ex)
@@ -126,7 +126,7 @@ namespace InventorSync
         bool dragging = false;
         int xOffset = 0, yOffset = 0, d=0;
         string strSelectedLedgerName = "";
-        string constr = Properties.Settings.Default.ConnectionString;
+        string constr = DigiposZen.Properties.Settings.Default.ConnectionString;
         //static int namesCount = Enum.GetNames(typeof(LedgerIndexes)).Length;
         Common Comm = new Common();
 
@@ -1734,7 +1734,7 @@ namespace InventorSync
             this.dgvItems.Columns.Add(new DataGridViewTextBoxColumn() { Name = "SRate5", HeaderText = AppSettings.SRate5Name, Width = 130});
             this.dgvItems.Columns.Add(new DataGridViewTextBoxColumn() { Name = "ItemID", HeaderText = "ItemID", Width = 130, Visible = false });
             this.dgvItems.Columns.Add(new DataGridViewTextBoxColumn() { Name = "SrateCalcMode", HeaderText = "SrateCalcMode", Width = 130, Visible = false });
-            this.dgvItems.Columns.Add(new DataGridViewImageColumn() { Name = "cImgDel", HeaderText = "", Image = Properties.Resources.Delete_24_P4, Width = 40 });
+            this.dgvItems.Columns.Add(new DataGridViewImageColumn() { Name = "cImgDel", HeaderText = "", Image = DigiposZen.Properties.Resources.Delete_24_P4, Width = 40 });
 
             dgvItems.Rows.Add(1);
 

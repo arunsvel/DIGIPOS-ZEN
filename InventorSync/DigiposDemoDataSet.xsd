@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DigiposDemoConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DigiposDemoConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.InventorSync.Properties.Settings.GlobalReference.Default.DigiposDemoConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DigiposDemoConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DigiposDemoConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DigiposZen.Properties.Settings.GlobalReference.Default.DigiposDemoConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tblAccountGroupTableAdapter" GeneratorDataComponentClassName="tblAccountGroupTableAdapter" Name="tblAccountGroup" UserDataComponentName="tblAccountGroupTableAdapter">
@@ -63,7 +63,7 @@
   <xs:element name="DigiposDemoDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DigiposDemoDataSet" msprop:Generator_UserDSName="DigiposDemoDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="tblAccountGroup" msprop:Generator_TableClassName="tblAccountGroupDataTable" msprop:Generator_TableVarName="tabletblAccountGroup" msprop:Generator_TablePropName="tblAccountGroup" msprop:Generator_RowDeletingName="tblAccountGroupRowDeleting" msprop:Generator_RowChangingName="tblAccountGroupRowChanging" msprop:Generator_RowEvHandlerName="tblAccountGroupRowChangeEventHandler" msprop:Generator_RowDeletedName="tblAccountGroupRowDeleted" msprop:Generator_UserTableName="tblAccountGroup" msprop:Generator_RowChangedName="tblAccountGroupRowChanged" msprop:Generator_RowEvArgName="tblAccountGroupRowChangeEvent" msprop:Generator_RowClassName="tblAccountGroupRow">
+        <xs:element name="tblAccountGroup" msprop:Generator_TableClassName="tblAccountGroupDataTable" msprop:Generator_TableVarName="tabletblAccountGroup" msprop:Generator_RowChangedName="tblAccountGroupRowChanged" msprop:Generator_TablePropName="tblAccountGroup" msprop:Generator_RowDeletingName="tblAccountGroupRowDeleting" msprop:Generator_RowChangingName="tblAccountGroupRowChanging" msprop:Generator_RowEvHandlerName="tblAccountGroupRowChangeEventHandler" msprop:Generator_RowDeletedName="tblAccountGroupRowDeleted" msprop:Generator_RowClassName="tblAccountGroupRow" msprop:Generator_UserTableName="tblAccountGroup" msprop:Generator_RowEvArgName="tblAccountGroupRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AccountGroupID" msprop:Generator_ColumnVarNameInTable="columnAccountGroupID" msprop:Generator_ColumnPropNameInRow="AccountGroupID" msprop:Generator_ColumnPropNameInTable="AccountGroupIDColumn" msprop:Generator_UserColumnName="AccountGroupID" type="xs:int" />

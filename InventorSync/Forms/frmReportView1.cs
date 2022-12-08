@@ -73,7 +73,7 @@ namespace InventorSync.Forms
                     string a = "";
 
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Cost Center :" + strcost + ",Voucher Type:" + strVchtype + "";
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwpurchase ORDER BY [Invoice No],[Invoice Date]", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwpurchase ORDER BY [Invoice No],[Invoice Date]", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwpurchase");
                     dataGridView1.DataSource = ds.Tables["vwpurchase"].DefaultView;
@@ -97,7 +97,7 @@ namespace InventorSync.Forms
                     string b = a.Remove(a.Length - 1, 1);
                  
                     string sql = "select * from vwpurchase  union all SELECT " + b + "  FROM vwpurchase ORDER BY AutoNum";
-                    SqlDataAdapter da1 = new SqlDataAdapter(sql, Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da1 = new SqlDataAdapter(sql, DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds1 = new DataSet();
                     da1.Fill(ds1, "vwpurchase");
                     dataGridView1.DataSource = ds1.Tables["vwpurchase"].DefaultView;
@@ -112,7 +112,7 @@ namespace InventorSync.Forms
                 if (strFormName == "Stock Rol")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type :" + strproduct + ",Manufacture :" + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("select tblItemMaster.ItemName as [Item Name],QOH,tblItemMaster.ROL from tblItemMaster join vwstock on tblItemMaster.ItemCode=vwstock.[item code] where ROL>=QOH and ROL!=0 order by [Item Name]", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("select tblItemMaster.ItemName as [Item Name],QOH,tblItemMaster.ROL from tblItemMaster join vwstock on tblItemMaster.ItemCode=vwstock.[item code] where ROL>=QOH and ROL!=0 order by [Item Name]", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -126,7 +126,7 @@ namespace InventorSync.Forms
                     string sumcolumn = "";
                     label2.Text = "Item Name:" + stritem + ", DATE:" + strFrom /*+ ",TO DATE:" + strTo*/ ;
                     label1.Text = strFormName + " Report";
-                    SqlConnection con1 = new SqlConnection(Properties.Settings.Default.ConnectionString);
+                    SqlConnection con1 = new SqlConnection(DigiposZen.Properties.Settings.Default.ConnectionString);
                     con1.Open();
                     SqlCommand cmd1 = new SqlCommand("select sum(QtyIn-QtyOut)   from tblStockHistory   where ItemID in (select ItemID from tblItemmaster where  ItemName='" + stritem + "') and VchDate < '" + strFrom + "'", con1);
                     using (SqlDataReader reader = cmd1.ExecuteReader())
@@ -136,7 +136,7 @@ namespace InventorSync.Forms
                             firstcolumn = reader[0].ToString();
                         }
                     }
-                    SqlConnection con2 = new SqlConnection(Properties.Settings.Default.ConnectionString);
+                    SqlConnection con2 = new SqlConnection(DigiposZen.Properties.Settings.Default.ConnectionString);
                     con2.Open();
                     SqlCommand cmd2 = new SqlCommand("select sum(QtyIn-QtyOut)   from tblStockHistory   where ItemID in (select ItemID from vwstock join tblItemMaster on vwstock.[Item Code]=tblItemMaster.ItemCode)", con1);
                     using (SqlDataReader reader1 = cmd2.ExecuteReader())
@@ -146,7 +146,7 @@ namespace InventorSync.Forms
                             sumcolumn = reader1[0].ToString();
                         }
                     }
-                    using (SqlConnection con = new SqlConnection(Properties.Settings.Default.ConnectionString))
+                    using (SqlConnection con = new SqlConnection(DigiposZen.Properties.Settings.Default.ConnectionString))
                     {
                         using (SqlCommand cmd = new SqlCommand(" select * from vwstock order by vchdate", con))
                         {
@@ -203,7 +203,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Stock Value")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type : " + strproduct + ",Manufacture : " + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock order by [Item Name]", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock order by [Item Name]", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -226,7 +226,7 @@ namespace InventorSync.Forms
                     string b = a.Remove(a.Length - 1, 1);
 
                     string sql = "select * from vwstock  union all SELECT " + b + "  FROM vwstock ORDER BY [Item Name]";
-                    SqlDataAdapter da1 = new SqlDataAdapter(sql, Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da1 = new SqlDataAdapter(sql, DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds1 = new DataSet();
                     da1.Fill(ds1, "vwpurchase");
                     dataGridView1.DataSource = ds1.Tables["vwpurchase"].DefaultView;
@@ -240,7 +240,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Stock Moq")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type : " + strproduct + ",Manufacture : " + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("select tblItemMaster.ItemName as [Item Name],QOH,Minqty as MOQ from tblItemMaster join vwstock on tblItemMaster.ItemCode=vwstock.[item code] where Minqty>=QOH AND Minqty !=0 order by [Item Name]", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("select tblItemMaster.ItemName as [Item Name],QOH,Minqty as MOQ from tblItemMaster join vwstock on tblItemMaster.ItemCode=vwstock.[item code] where Minqty>=QOH AND Minqty !=0 order by [Item Name]", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -251,7 +251,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Stock Zero")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type : " + strproduct + ",Manufacture : " + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("select tblItemMaster.ItemName as [Item Name],QOH,Minqty as MOQ from tblItemMaster join vwstock on tblItemMaster.ItemCode=vwstock.[item code] where QOH=0 order by [Item Name]", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("select tblItemMaster.ItemName as [Item Name],QOH,Minqty as MOQ from tblItemMaster join vwstock on tblItemMaster.ItemCode=vwstock.[item code] where QOH=0 order by [Item Name]", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -261,7 +261,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Fast Moving")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type : " + strproduct + ",Manufacture : " + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("select  CCName as CostCenter,ItemCode,ItemName,UnitName,sum(QtyOut) as [Sale Qty] from tblStockHistory join tblItemMaster on tblStockHistory.ItemID=tblItemMaster.ItemID join tblCostCentre on tblStockHistory.CCID=tblCostCentre.CCID join tblUnit on tblItemMaster.UNITID=tblUnit.UnitID join tblVchType on tblStockHistory.VchType=tblVchType.VchType where tblVchType.ParentID=1 group by CCName,ItemCode,ItemName,UnitName,QtyOut order by [Sale Qty] DESC ", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("select  CCName as CostCenter,ItemCode,ItemName,UnitName,sum(QtyOut) as [Sale Qty] from tblStockHistory join tblItemMaster on tblStockHistory.ItemID=tblItemMaster.ItemID join tblCostCentre on tblStockHistory.CCID=tblCostCentre.CCID join tblUnit on tblItemMaster.UNITID=tblUnit.UnitID join tblVchType on tblStockHistory.VchType=tblVchType.VchType where tblVchType.ParentID=1 group by CCName,ItemCode,ItemName,UnitName,QtyOut order by [Sale Qty] DESC ", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -271,7 +271,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Slow Moving")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type : " + strproduct + ",Manufacture : " + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("select  CCName as CostCenter,ItemCode,ItemName,UnitName,sum(QtyOut) as [Sale Qty] from tblStockHistory join tblItemMaster on tblStockHistory.ItemID=tblItemMaster.ItemID join tblCostCentre on tblStockHistory.CCID=tblCostCentre.CCID join tblUnit on tblItemMaster.UNITID=tblUnit.UnitID join tblVchType on tblStockHistory.VchType=tblVchType.VchType where tblVchType.ParentID=1 group by CCName,ItemCode,ItemName,UnitName,QtyOut order by [Sale Qty] ASC ", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("select  CCName as CostCenter,ItemCode,ItemName,UnitName,sum(QtyOut) as [Sale Qty] from tblStockHistory join tblItemMaster on tblStockHistory.ItemID=tblItemMaster.ItemID join tblCostCentre on tblStockHistory.CCID=tblCostCentre.CCID join tblUnit on tblItemMaster.UNITID=tblUnit.UnitID join tblVchType on tblStockHistory.VchType=tblVchType.VchType where tblVchType.ParentID=1 group by CCName,ItemCode,ItemName,UnitName,QtyOut order by [Sale Qty] ASC ", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -281,7 +281,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Non Moving")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type : " + strproduct + ",Manufacture : " + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("select  CCName as CostCenter,ItemCode,ItemName,UnitName,sum(QtyOut) as SQty from tblStockHistory join tblItemMaster on tblStockHistory.ItemID=tblItemMaster.ItemID join tblCostCentre on tblStockHistory.CCID=tblCostCentre.CCID join tblUnit on tblItemMaster.UNITID=tblUnit.UnitID join tblVchType on tblStockHistory.VchType=tblVchType.VchType where tblVchType.ParentID=1 and Qtyout=0 group by CCName,ItemCode,ItemName,UnitName,QtyOut order by tblItemMaster.ItemName", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("select  CCName as CostCenter,ItemCode,ItemName,UnitName,sum(QtyOut) as SQty from tblStockHistory join tblItemMaster on tblStockHistory.ItemID=tblItemMaster.ItemID join tblCostCentre on tblStockHistory.CCID=tblCostCentre.CCID join tblUnit on tblItemMaster.UNITID=tblUnit.UnitID join tblVchType on tblStockHistory.VchType=tblVchType.VchType where tblVchType.ParentID=1 and Qtyout=0 group by CCName,ItemCode,ItemName,UnitName,QtyOut order by tblItemMaster.ItemName", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -291,7 +291,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Supplier Wise ROL")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type : " + strproduct + ",Manufacture : " + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock where ROL>=QOH AND ROL!=0", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock where ROL>=QOH AND ROL!=0", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -301,7 +301,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Supplier Items")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type : " + strproduct + ",Manufacture : " + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock order by QOH ASC", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock order by QOH ASC", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -309,7 +309,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Stock Expiry")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type : " + strproduct + ",Manufacture : " + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock order by Expiry ASC", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock order by Expiry ASC", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -319,7 +319,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Stock Movement")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo;
-                    SqlDataAdapter da = new SqlDataAdapter(mSql, Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter(mSql, DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -329,7 +329,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Stock Movement Detail")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type" + strproduct + ",Manufacture" + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter(mSql, Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter(mSql, DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -339,7 +339,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Stock Movement Item Wise")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type" + strproduct + ",Manufacture" + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter(mSql, Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter(mSql, DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -349,7 +349,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Repacking Daybook")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type" + strproduct + ",Manufacture" + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock ORDER BY INVDATE,INVNO", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock ORDER BY INVDATE,INVNO", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 
@@ -371,7 +371,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Finished Goods")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type" + strproduct + ",Manufacture" + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 
@@ -394,7 +394,7 @@ namespace InventorSync.Forms
                 else if (strFormName == "Raw Material")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type" + strproduct + ",Manufacture" + strmnf;
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vwstock", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 
@@ -426,7 +426,7 @@ namespace InventorSync.Forms
 
 
 
-                    using (SqlConnection con = new SqlConnection(Properties.Settings.Default.ConnectionString))
+                    using (SqlConnection con = new SqlConnection(DigiposZen.Properties.Settings.Default.ConnectionString))
                     {
                         using (SqlCommand cmd = new SqlCommand("SELECT dbo.tblVoucher.VchNo AS VOUCHER_NO,  " +
                         "  dbo.tblVoucher.VchDate AS VOUCHER_DATE, dbo.tblAccountGroup.AccountGroup AS AccountGroup," +
@@ -496,7 +496,7 @@ namespace InventorSync.Forms
                     DateTime TD = Convert.ToDateTime(strTo);
 
 
-                    using (SqlConnection con = new SqlConnection(Properties.Settings.Default.ConnectionString))
+                    using (SqlConnection con = new SqlConnection(DigiposZen.Properties.Settings.Default.ConnectionString))
                     {
                         using (SqlCommand cmd = new SqlCommand(" SELECT dbo.tblVoucher.VchNo AS VOUCHER_NO, " +
                         "  dbo.tblVoucher.VchDate AS VAUCHER_DATE, dbo.tblAccountGroup.AccountGroup AS ACCOUNT_GROUP," +
@@ -562,7 +562,7 @@ namespace InventorSync.Forms
 
                     int amt = Int16.Parse(stramt);
 
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT L1.LAliasName as LEDGER_NAME,L1.Address as ADDRESS,MobileNo as MOBILE_NO,ABS(SUM(AmountD)-SUM(AmountC))AS BALANCE, CASE WHEN ((SUM(AmountD)-SUM(AmountC))> '0') THEN 'DR' ELSE 'CR' END AS  _  FROM dbo.tblAccountGroup INNER JOIN dbo.tblLedger as L1 ON dbo.tblAccountGroup.AccountGroupID = L1.AccountGroupID INNER JOIN dbo.tblVoucher ON L1.LID = dbo.tblVoucher.LedgerID INNER JOIN    dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID LEFT OUTER JOIN dbo.tblEmployee ON dbo.tblVoucher.SalesManID = dbo.tblEmployee.EmpID WHERE ISNULL(tblAccountGroup.activestatus, 1) = 1 and tblVoucher.Optional = 0  AND  L1.AccountGroupID = 11 GROUP BY L1.LAliasName, L1.Address, MobileNo having(SUM(AmountD) - SUM(AmountC)) >=" + amt + "", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT L1.LAliasName as LEDGER_NAME,L1.Address as ADDRESS,MobileNo as MOBILE_NO,ABS(SUM(AmountD)-SUM(AmountC))AS BALANCE, CASE WHEN ((SUM(AmountD)-SUM(AmountC))> '0') THEN 'DR' ELSE 'CR' END AS  _  FROM dbo.tblAccountGroup INNER JOIN dbo.tblLedger as L1 ON dbo.tblAccountGroup.AccountGroupID = L1.AccountGroupID INNER JOIN dbo.tblVoucher ON L1.LID = dbo.tblVoucher.LedgerID INNER JOIN    dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID LEFT OUTER JOIN dbo.tblEmployee ON dbo.tblVoucher.SalesManID = dbo.tblEmployee.EmpID WHERE ISNULL(tblAccountGroup.activestatus, 1) = 1 and tblVoucher.Optional = 0  AND  L1.AccountGroupID = 11 GROUP BY L1.LAliasName, L1.Address, MobileNo having(SUM(AmountD) - SUM(AmountC)) >=" + amt + "", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -573,7 +573,7 @@ namespace InventorSync.Forms
                 {
 
                     int amt = Int16.Parse(stramt);
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT L1.LAliasName as LEDGER_NAME,L1.Address as ADDRESS,MobileNo as MOBILE_NO,ABS(SUM(AmountD)-SUM(AmountC)) AS BALANCE, CASE WHEN ((SUM(AmountD)-SUM(AmountC))> '0') THEN 'DR' ELSE 'CR' END AS _  FROM dbo.tblAccountGroup INNER JOIN dbo.tblLedger as L1 ON dbo.tblAccountGroup.AccountGroupID = L1.AccountGroupID INNER JOIN dbo.tblVoucher ON L1.LID = dbo.tblVoucher.LedgerID INNER JOIN    dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID LEFT OUTER JOIN dbo.tblEmployee ON dbo.tblVoucher.SalesManID = dbo.tblEmployee.EmpID WHERE ISNULL(tblAccountGroup.activestatus, 1) = 1 and tblVoucher.Optional = 0  AND  L1.AccountGroupID = 10 and Area='" + strArea + "' GROUP BY L1.LAliasName, L1.Address, MobileNo having(SUM(AmountD) - SUM(AmountC)) >=" + amt + " ", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT L1.LAliasName as LEDGER_NAME,L1.Address as ADDRESS,MobileNo as MOBILE_NO,ABS(SUM(AmountD)-SUM(AmountC)) AS BALANCE, CASE WHEN ((SUM(AmountD)-SUM(AmountC))> '0') THEN 'DR' ELSE 'CR' END AS _  FROM dbo.tblAccountGroup INNER JOIN dbo.tblLedger as L1 ON dbo.tblAccountGroup.AccountGroupID = L1.AccountGroupID INNER JOIN dbo.tblVoucher ON L1.LID = dbo.tblVoucher.LedgerID INNER JOIN    dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID LEFT OUTER JOIN dbo.tblEmployee ON dbo.tblVoucher.SalesManID = dbo.tblEmployee.EmpID WHERE ISNULL(tblAccountGroup.activestatus, 1) = 1 and tblVoucher.Optional = 0  AND  L1.AccountGroupID = 10 and Area='" + strArea + "' GROUP BY L1.LAliasName, L1.Address, MobileNo having(SUM(AmountD) - SUM(AmountC)) >=" + amt + " ", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds = new DataSet();
                     da.Fill(ds, "vwstock");
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
@@ -584,10 +584,10 @@ namespace InventorSync.Forms
                 else if (strFormName == "Cash Desk")
                 {
 
-                    SqlDataAdapter da1 = new SqlDataAdapter(" select  string_agg (PaymentType, ',') as PaymentType  from tblCashDeskMaster", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da1 = new SqlDataAdapter(" select  string_agg (PaymentType, ',') as PaymentType  from tblCashDeskMaster", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataTable dt3 = new DataTable();
                     da1.Fill(dt3);
-                    SqlDataAdapter da = new SqlDataAdapter("select * from vwpurchase  PIVOT(AVG(amount) FOR PaymentType in (" + dt3.Rows[0]["PaymentType"].ToString() + ")) AS PivotTable  order by ID", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("select * from vwpurchase  PIVOT(AVG(amount) FOR PaymentType in (" + dt3.Rows[0]["PaymentType"].ToString() + ")) AS PivotTable  order by ID", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 

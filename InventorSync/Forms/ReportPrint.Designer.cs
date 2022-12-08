@@ -31,8 +31,8 @@ namespace InventorSync.Forms
         {
             this.components = new System.ComponentModel.Container();
             this.tblAccountGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.digiposDemoDataSet = new InventorSync.DigiposDemoDataSet();
-            this.tblAccountGroupTableAdapter = new InventorSync.DigiposDemoDataSetTableAdapters.tblAccountGroupTableAdapter();
+            this.digiposDemoDataSet = new DigiposZen.DigiposDemoDataSet();
+            this.tblAccountGroupTableAdapter = new DigiposZen.DigiposDemoDataSetTableAdapters.tblAccountGroupTableAdapter();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.tblAccountGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digiposDemoDataSet)).BeginInit();
@@ -78,9 +78,9 @@ namespace InventorSync.Forms
         }
 
         #endregion
-        private DigiposDemoDataSet digiposDemoDataSet;
+        private DigiposZen.DigiposDemoDataSet digiposDemoDataSet;
         private System.Windows.Forms.BindingSource tblAccountGroupBindingSource;
-        private DigiposDemoDataSetTableAdapters.tblAccountGroupTableAdapter tblAccountGroupTableAdapter;
+        private DigiposZen.DigiposDemoDataSetTableAdapters.tblAccountGroupTableAdapter tblAccountGroupTableAdapter;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

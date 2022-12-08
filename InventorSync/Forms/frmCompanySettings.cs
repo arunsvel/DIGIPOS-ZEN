@@ -54,9 +54,9 @@ namespace InventorSync.Forms
 
                 lblSave.ForeColor = Color.Black;
 
-                btnSave.Image = global::InventorSync.Properties.Resources.save240402;
-                btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
-                btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+                btnSave.Image = global::DigiposZen.Properties.Resources.save240402;
+                btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+                btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
 
                 controlsToMove.Add(this);
                 controlsToMove.Add(this.lblHeading);//Add whatever controls here you want to move the form when it is clicked and dragged

@@ -2490,23 +2490,65 @@ namespace InventorSync.InventorBL.Helper
             }
         }
 
-        //public bool CheckUserPermissions()
-        //{
-        //    try
-        //    {
-        //        bool returnvalue = false;
+        public void GridDefaultsStyleAccounts(DataGridView dvg)
+        {
+            try
+            {
+                // R:210, G:189, B:172
+                // R:132, G:180, B:130
+                // R:241, G:241, B:229
+                // R:218, G:222, B:187
+                // R:233, G:206, B:179
+                // R:189, G:196, B:129
+                // R:234, G:212, B:191
+                dvg.EnableHeadersVisualStyles = false;
 
-        //        sqlControl rs = new sqlControl();
+                DataGridViewCellStyle rowStyle;
+                rowStyle = dvg.Rows[0].HeaderCell.Style;
+                rowStyle.BackColor = Color.FromArgb(210, 189, 172);
+                rowStyle.ForeColor = Color.Black;
+                dvg.Rows[0].HeaderCell.Style = rowStyle;
 
-        //        return returnvalue;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Interaction.MsgBox(ex.Message + "Insert  to voucher function", MsgBoxStyle.Critical);
-        //        return false;
-        //    }
-        //}
+                // R:241, G:241, B:229
+                //dvg.DefaultCellStyle.SelectionBackColor = My.Settings.MyContrastColor;
+                //dvg.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+                // Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default
+                // value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
+                dvg.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty;
+
+                // Set the background color for all rows and for alternating rows. 
+                // The value for alternating rows overrides the value for all rows. 
+                dvg.RowsDefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255); // R:218, G:222, B:187
+                                                                                    // R:189, G:196, B:129
+                dvg.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(255, 255, 240); // Color.FromArgb(189, 196, 129)
+
+                // Set the row and column header styles.
+
+                dvg.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dvg.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+                dvg.RowHeadersVisible = false;
+                dvg.BackgroundColor = Color.FromArgb(255, 255, 255);
+
+                int CustomColWidth;
+                try
+                {
+                    CustomColWidth = (dvg.Width - 20) / (dvg.Columns.GetColumnCount(DataGridViewElementStates.Visible));
+                }
+                catch
+                {
+                    CustomColWidth = 30;
+                }
+
+                if (dvg.ColumnCount > 1)
+                {
+                    for (var i = 1; i <= dvg.ColumnCount - 1; i++)
+                        dvg.Columns[i].Width = CustomColWidth;
+                }
+            }
+            catch 
+            {
+            }
+        }
     }
-
-
 }

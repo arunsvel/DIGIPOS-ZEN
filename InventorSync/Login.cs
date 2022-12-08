@@ -139,8 +139,8 @@ namespace InventorSync
             //        cboSecondaryServer.Text = LogSett.SECOSERVERNAME;
             //        cboTimeZone.Text = LogSett.TIMEZONE;
 
-            //        Properties.Settings.Default.server = cboPrimaryServer.Text.ToString(); //fso.FileOperation(Application.StartupPath + "Resources\\Config.ini", true);
-            //        Properties.Settings.Default.ConnectionString = "Data Source=" + cboPrimaryServer.Text.ToString() + ";Initial Catalog=DIGIPOSDEMO;User ID=sa;Password=#infinitY@279";
+            //        DigiposZen.Properties.Settings.Default.server = cboPrimaryServer.Text.ToString(); //fso.FileOperation(Application.StartupPath + "Resources\\Config.ini", true);
+            //        DigiposZen.Properties.Settings.Default.ConnectionString = "Data Source=" + cboPrimaryServer.Text.ToString() + ";Initial Catalog=DIGIPOSDEMO;User ID=sa;Password=#infinitY@279";
 
 
             //        MakeViewForUserDatabase();
@@ -623,8 +623,8 @@ namespace InventorSync
 
                 ClsFileOperation fso = new ClsFileOperation();
 
-                Properties.Settings.Default.server = cboPrimaryServer.Text.ToString(); //fso.FileOperation(Application.StartupPath + "Resources\\Config.ini", true);
-                Properties.Settings.Default.ConnectionString = "Data Source=" + Properties.Settings.Default.server + ";Initial Catalog=Startup;User ID=sa;Password=#infinitY@279";
+                DigiposZen.Properties.Settings.Default.server = cboPrimaryServer.Text.ToString(); //fso.FileOperation(Application.StartupPath + "Resources\\Config.ini", true);
+                DigiposZen.Properties.Settings.Default.ConnectionString = "Data Source=" + DigiposZen.Properties.Settings.Default.server + ";Initial Catalog=Startup;User ID=sa;Password=#infinitY@279";
 
                 if (sUserName == "digipos" && sPwd == "praesidium") //means protection in latin
                 {
@@ -879,8 +879,8 @@ namespace InventorSync
 
                 SaveServerSettings();
 
-                Properties.Settings.Default.server = cboPrimaryServer.Text.ToString();
-                Properties.Settings.Default.ConnectionString = "Data Source=" + Properties.Settings.Default.server + ";Initial Catalog=" + tvwUserCompany.SelectedNode.Name + ";User ID=sa;Password=#infinitY@279";
+                DigiposZen.Properties.Settings.Default.server = cboPrimaryServer.Text.ToString();
+                DigiposZen.Properties.Settings.Default.ConnectionString = "Data Source=" + DigiposZen.Properties.Settings.Default.server + ";Initial Catalog=" + tvwUserCompany.SelectedNode.Name + ";User ID=sa;Password=#infinitY@279";
 
                 AppSettings.CompanyCode = tvwUserCompany.SelectedNode.Name;
 
@@ -909,7 +909,7 @@ namespace InventorSync
                 }
 
 
-                using (SqlConnection cn = new SqlConnection(Properties.Settings.Default.ConnectionString))
+                using (SqlConnection cn = new SqlConnection(DigiposZen.Properties.Settings.Default.ConnectionString))
                 {
                     using (SqlCommand sqlCmd = new SqlCommand("Select FyStartDate, FyEndDate From tblCompanyMaster", cn))
                     {
@@ -996,8 +996,8 @@ namespace InventorSync
                     cboSecondaryServer.Text = LogSett.SECOSERVERNAME;
                     cboTimeZone.Text = LogSett.TIMEZONE;
 
-                    Properties.Settings.Default.server = cboPrimaryServer.Text.ToString(); //fso.FileOperation(Application.StartupPath + "Resources\\Config.ini", true);
-                    Properties.Settings.Default.ConnectionString = "Data Source=" + cboPrimaryServer.Text.ToString() + ";Initial Catalog=DIGIPOSDEMO;User ID=sa;Password=#infinitY@279";
+                    DigiposZen.Properties.Settings.Default.server = cboPrimaryServer.Text.ToString(); //fso.FileOperation(Application.StartupPath + "Resources\\Config.ini", true);
+                    DigiposZen.Properties.Settings.Default.ConnectionString = "Data Source=" + cboPrimaryServer.Text.ToString() + ";Initial Catalog=DIGIPOSDEMO;User ID=sa;Password=#infinitY@279";
 
 
                     ReadWriteLoginCredentials(false);

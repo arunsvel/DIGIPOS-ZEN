@@ -274,8 +274,8 @@ namespace InventorSync
             this.FooterHeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label84 = new System.Windows.Forms.Label();
             this.ToolTipVoucher = new System.Windows.Forms.ToolTip(this.components);
-            this.tblAccountGroupTableAdapter = new InventorSync.DigiposDemoDataSetTableAdapters.tblAccountGroupTableAdapter();
-            this.digiposDemoDataSet = new InventorSync.DigiposDemoDataSet();
+            this.tblAccountGroupTableAdapter = new DigiposZen.DigiposDemoDataSetTableAdapters.tblAccountGroupTableAdapter();
+            this.digiposDemoDataSet = new DigiposZen.DigiposDemoDataSet();
             this.tblAccountGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label88 = new System.Windows.Forms.Label();
@@ -456,7 +456,7 @@ namespace InventorSync
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Image = global::InventorSync.Properties.Resources.save240402;
+            this.btnSave.Image = global::DigiposZen.Properties.Resources.save240402;
             this.btnSave.Location = new System.Drawing.Point(4, 4);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
@@ -470,7 +470,7 @@ namespace InventorSync
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+            this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
             this.btnClose.Location = new System.Drawing.Point(929, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(59, 61);
@@ -483,7 +483,7 @@ namespace InventorSync
             this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
+            this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
             this.btnMinimize.Location = new System.Drawing.Point(864, 3);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(59, 61);
@@ -544,7 +544,7 @@ namespace InventorSync
             this.rdoPrint.FlatAppearance.BorderSize = 0;
             this.rdoPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdoPrint.ForeColor = System.Drawing.Color.Black;
-            this.rdoPrint.Image = global::InventorSync.Properties.Resources.printer_finalised;
+            this.rdoPrint.Image = global::DigiposZen.Properties.Resources.printer_finalised;
             this.rdoPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.rdoPrint.Location = new System.Drawing.Point(3, 353);
             this.rdoPrint.Name = "rdoPrint";
@@ -2768,7 +2768,7 @@ namespace InventorSync
             // 
             // btnRestore
             // 
-            this.btnRestore.Image = global::InventorSync.Properties.Resources.refresh_removebg1;
+            this.btnRestore.Image = global::DigiposZen.Properties.Resources.refresh_removebg1;
             this.btnRestore.Location = new System.Drawing.Point(632, 14);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(40, 34);
@@ -3415,8 +3415,8 @@ namespace InventorSync
         private System.Windows.Forms.DataGridViewTextBoxColumn SingleItemHeight;
         private System.Windows.Forms.DataGridViewTextBoxColumn FooterHeight;
         private System.Windows.Forms.Label label84;
-        private DigiposDemoDataSetTableAdapters.tblAccountGroupTableAdapter tblAccountGroupTableAdapter;
-        private DigiposDemoDataSet digiposDemoDataSet;
+        private DigiposZen.DigiposDemoDataSetTableAdapters.tblAccountGroupTableAdapter tblAccountGroupTableAdapter;
+        private DigiposZen.DigiposDemoDataSet digiposDemoDataSet;
         private System.Windows.Forms.BindingSource tblAccountGroupBindingSource;
         private System.Windows.Forms.GroupBox GrbBoardRate;
         private System.Windows.Forms.Label label85;

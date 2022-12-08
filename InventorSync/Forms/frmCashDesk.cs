@@ -40,7 +40,7 @@ namespace InventorSync.Forms
                     btnAdd.Visible = false;
                     label4.Visible = false;
                     flpPaymentModes.Visible = false;
-                    SqlDataAdapter da1 = new SqlDataAdapter("SELECT L1.LAliasName as LEDGER_NAME,L1.Address as ADDRESS,MobileNo as MOBILE_NO,ABS(SUM(AmountD)-SUM(AmountC))AS BALANCE, CASE WHEN ((SUM(AmountD)-SUM(AmountC))> '0') THEN 'DR' ELSE 'CR' END AS  _  FROM dbo.tblAccountGroup INNER JOIN dbo.tblLedger as L1 ON dbo.tblAccountGroup.AccountGroupID = L1.AccountGroupID INNER JOIN dbo.tblVoucher ON L1.LID = dbo.tblVoucher.LedgerID INNER JOIN    dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID LEFT OUTER JOIN dbo.tblEmployee ON dbo.tblVoucher.SalesManID = dbo.tblEmployee.EmpID WHERE ISNULL(tblAccountGroup.activestatus, 1) = 1 and tblVoucher.Optional = 0  AND  L1.AccountGroupID = 11 AND LedgerID='" + mcashdesk.LedgerID + "' GROUP BY L1.LAliasName, L1.Address, MobileNo", Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da1 = new SqlDataAdapter("SELECT L1.LAliasName as LEDGER_NAME,L1.Address as ADDRESS,MobileNo as MOBILE_NO,ABS(SUM(AmountD)-SUM(AmountC))AS BALANCE, CASE WHEN ((SUM(AmountD)-SUM(AmountC))> '0') THEN 'DR' ELSE 'CR' END AS  _  FROM dbo.tblAccountGroup INNER JOIN dbo.tblLedger as L1 ON dbo.tblAccountGroup.AccountGroupID = L1.AccountGroupID INNER JOIN dbo.tblVoucher ON L1.LID = dbo.tblVoucher.LedgerID INNER JOIN    dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID LEFT OUTER JOIN dbo.tblEmployee ON dbo.tblVoucher.SalesManID = dbo.tblEmployee.EmpID WHERE ISNULL(tblAccountGroup.activestatus, 1) = 1 and tblVoucher.Optional = 0  AND  L1.AccountGroupID = 11 AND LedgerID='" + mcashdesk.LedgerID + "' GROUP BY L1.LAliasName, L1.Address, MobileNo", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataTable dt3 = new DataTable();
                     da1.Fill(dt3);
 
@@ -388,7 +388,7 @@ namespace InventorSync.Forms
 
                 //string d = "select PaymentType,Amount,PaymentID,LedgerID from tblCashDeskItems join tblCashDeskdetails on tblCashDeskItems.id =tblCashDeskdetails.id where InvID=" + mcashdesk.InvID + "";
 
-                SqlDataAdapter da = new SqlDataAdapter("select PaymentType,PaymentID,LedgerID,Amount,BillAmount,PreviousBalance,TotalOutstanting,CurrentReceipt,CurrentBalance from tblCashDeskItems join tblCashDeskdetails on tblCashDeskItems.id =tblCashDeskdetails.id where InvID=" + mcashdesk.InvID + "", Properties.Settings.Default.ConnectionString);
+                SqlDataAdapter da = new SqlDataAdapter("select PaymentType,PaymentID,LedgerID,Amount,BillAmount,PreviousBalance,TotalOutstanting,CurrentReceipt,CurrentBalance from tblCashDeskItems join tblCashDeskdetails on tblCashDeskItems.id =tblCashDeskdetails.id where InvID=" + mcashdesk.InvID + "", DigiposZen.Properties.Settings.Default.ConnectionString);
                 DataTable dt1 = new DataTable();
                 da.Fill(dt1);
                 if (dt1.Rows.Count > 0)

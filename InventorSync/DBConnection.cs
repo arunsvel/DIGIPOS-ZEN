@@ -27,7 +27,7 @@ namespace InventorSync
                 //DESKTOP-CKAPAK6\\DIGIPOS
                 //DigiposDemo
 
-                SqlConnection SqlConn = new SqlConnection(Properties.Settings.Default.ConnectionString);
+                SqlConnection SqlConn = new SqlConnection(DigiposZen.Properties.Settings.Default.ConnectionString);
                 if (SqlConn.State == System.Data.ConnectionState.Closed || SqlConn.State == System.Data.ConnectionState.Broken)
                     SqlConn.Open();
 

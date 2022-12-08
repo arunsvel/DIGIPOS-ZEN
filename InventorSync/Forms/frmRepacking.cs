@@ -85,18 +85,18 @@ namespace InventorSync
                 lblInvDate.ForeColor = Color.Black;
                 lblReferenceNo.ForeColor = Color.Black;
 
-                btnprev.Image = global::InventorSync.Properties.Resources.fast_backwards;
-                btnNext.Image = global::InventorSync.Properties.Resources.fast_forward;
-                btnSave.Image = global::InventorSync.Properties.Resources.save240402;
-                btnPause.Image = global::InventorSync.Properties.Resources.pause_button;
-                btnPrint.Image = global::InventorSync.Properties.Resources.printer_finalised;
-                btnArchive.Image = global::InventorSync.Properties.Resources.archive123;
-                btnDelete.Image = global::InventorSync.Properties.Resources.delete340402;
-                btnFind.Image = global::InventorSync.Properties.Resources.find_finalised_3030;
-                btnMenu.Image = global::InventorSync.Properties.Resources.menu_hamburger;
-                btnSettings.Image = global::InventorSync.Properties.Resources.settings_finalised;
-                btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
-                btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+                btnprev.Image = global::DigiposZen.Properties.Resources.fast_backwards;
+                btnNext.Image = global::DigiposZen.Properties.Resources.fast_forward;
+                btnSave.Image = global::DigiposZen.Properties.Resources.save240402;
+                btnPause.Image = global::DigiposZen.Properties.Resources.pause_button;
+                btnPrint.Image = global::DigiposZen.Properties.Resources.printer_finalised;
+                btnArchive.Image = global::DigiposZen.Properties.Resources.archive123;
+                btnDelete.Image = global::DigiposZen.Properties.Resources.delete340402;
+                btnFind.Image = global::DigiposZen.Properties.Resources.find_finalised_3030;
+                btnMenu.Image = global::DigiposZen.Properties.Resources.menu_hamburger;
+                btnSettings.Image = global::DigiposZen.Properties.Resources.settings_finalised;
+                btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+                btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
             }
             catch
             { }
@@ -5493,8 +5493,8 @@ namespace InventorSync
             dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cStrOfferDetails", HeaderText = "Offer Det.", Visible = false, ReadOnly = true }); //47
             dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cBatchMode", HeaderText = "Batch Mode", Visible = false, ReadOnly = true }); //48
             dgvStock.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cID", HeaderText = "ID", Visible = false, ReadOnly = true });
-            dgvStock.Columns.Add(new DataGridViewImageColumn() { Name = "cImgDel", HeaderText="", Image = Properties.Resources.Delete_24_P4, Width=40, ReadOnly = true });
-            dgvStock.Columns.Add(new DataGridViewImageColumn() { Name = "cBatchUnique", HeaderText="", Image = Properties.Resources.Delete_24_P4, Width=40, Visible = false, ReadOnly = true });
+            dgvStock.Columns.Add(new DataGridViewImageColumn() { Name = "cImgDel", HeaderText="", Image = DigiposZen.Properties.Resources.Delete_24_P4, Width=40, ReadOnly = true });
+            dgvStock.Columns.Add(new DataGridViewImageColumn() { Name = "cBatchUnique", HeaderText="", Image = DigiposZen.Properties.Resources.Delete_24_P4, Width=40, Visible = false, ReadOnly = true });
 
             //Dipoos 21-03-2022
             //if (iIDFromEditWindow==0)

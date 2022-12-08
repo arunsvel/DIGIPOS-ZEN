@@ -112,6 +112,15 @@ namespace InventorSync
 
             switch (MenuName)
             {
+                //case "CONNECTIONDETAILS":
+                //    frmAccountStatements frmACC = new frmAccountStatements("DAYBOOK", this);
+                //    frmACC.Text = "DAYBOOK";
+                //    frmACC.MdiParent = this;
+                //    frmACC.Show();
+                //    frmACC.Focus();
+                //    frmACC.BringToFront();
+                //    break;
+
                 case "DAYBOOK":
                     frmAccountStatements frmACC = new frmAccountStatements("DAYBOOK", this);
                     frmACC.Text = "DAYBOOK";
@@ -139,13 +148,22 @@ namespace InventorSync
                     frmTB.BringToFront();
                     break;
 
-                case "PROFIT&LOSS":
-                    frmAccountStatements frmPL = new frmAccountStatements("PROFIT&LOSS", this);
+                case "PROFITLOSS":
+                    frmAccountStatements frmPL = new frmAccountStatements("PROFITLOSS", this);
                     frmPL.Text = "PROFIT AND LOSS";
                     frmPL.MdiParent = this;
                     frmPL.Show();
                     frmPL.Focus();
                     frmPL.BringToFront();
+                    break;
+
+                case "BALANCESHEET":
+                    frmAccountStatements frmBS = new frmAccountStatements("BALANCESHEET", this);
+                    frmBS.Text = "BALANCE SHEET";
+                    frmBS.MdiParent = this;
+                    frmBS.Show();
+                    frmBS.Focus();
+                    frmBS.BringToFront();
                     break;
 
                 case "GSTR1":
@@ -1015,6 +1033,27 @@ namespace InventorSync
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
             OpenMenu(t.Text.ToString(), 0);
 
+        }
+
+        private void balancesheetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem t = (ToolStripMenuItem)sender;
+            OpenMenu(t.Text.ToString(), 0);
+
+        }
+
+        private void tsmConnectionDetails_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem t = (ToolStripMenuItem)sender;
+            OpenMenu(t.Text.ToString(), 0);
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AboutBoxUs ab = new AboutBoxUs();
+
+            ab.ShowDialog();
         }
     }
 }

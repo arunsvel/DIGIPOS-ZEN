@@ -36,7 +36,7 @@ namespace InventorSync.Forms
             {
                 reportViewer1.LocalReport.ReportPath = Application.StartupPath + "\\PrintScheme\\" + strPrintScheme;
                 DataSet dsr = new DataSet();
-                string constr = Properties.Settings.Default.ConnectionString;
+                string constr = DigiposZen.Properties.Settings.Default.ConnectionString;
                 SqlConnection conn = new SqlConnection(constr);
 
 

@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="InventorSync.exe" size="8618496">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="InventorSync.exe" size="8949248">
       <assemblyIdentity name="InventorSync" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>E/Pp/B2AOtC4E7pSF9w55FrifVX3mnSx0eDsqwMSb/0=</dsig:DigestValue>
+        <dsig:DigestValue>UxsdKRczncJJtDqdKPPGfI2/2xNda8usiIvFxlQMLRw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

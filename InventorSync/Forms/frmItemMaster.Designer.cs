@@ -350,7 +350,7 @@ namespace InventorSync
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Image = global::InventorSync.Properties.Resources.save240402;
+            this.btnSave.Image = global::DigiposZen.Properties.Resources.save240402;
             this.btnSave.Location = new System.Drawing.Point(3, 3);
             this.btnSave.Name = "btnSave";
             this.tlpHeader.SetRowSpan(this.btnSave, 2);
@@ -364,7 +364,7 @@ namespace InventorSync
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Image = global::InventorSync.Properties.Resources.delete340402;
+            this.btnDelete.Image = global::DigiposZen.Properties.Resources.delete340402;
             this.btnDelete.Location = new System.Drawing.Point(80, 3);
             this.btnDelete.Name = "btnDelete";
             this.tlpHeader.SetRowSpan(this.btnDelete, 2);
@@ -409,7 +409,7 @@ namespace InventorSync
             this.btnFind.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFind.FlatAppearance.BorderSize = 0;
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFind.Image = global::InventorSync.Properties.Resources.find_finalised_3030;
+            this.btnFind.Image = global::DigiposZen.Properties.Resources.find_finalised_3030;
             this.btnFind.Location = new System.Drawing.Point(157, 3);
             this.btnFind.Name = "btnFind";
             this.tlpHeader.SetRowSpan(this.btnFind, 2);
@@ -423,7 +423,7 @@ namespace InventorSync
             this.btnMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnMenu.FlatAppearance.BorderSize = 0;
             this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenu.Image = global::InventorSync.Properties.Resources.menu_hamburger2;
+            this.btnMenu.Image = global::DigiposZen.Properties.Resources.menu_hamburger2;
             this.btnMenu.Location = new System.Drawing.Point(634, 3);
             this.btnMenu.Name = "btnMenu";
             this.tlpHeader.SetRowSpan(this.btnMenu, 2);
@@ -437,7 +437,7 @@ namespace InventorSync
             this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
+            this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
             this.btnMinimize.Location = new System.Drawing.Point(694, 3);
             this.btnMinimize.Name = "btnMinimize";
             this.tlpHeader.SetRowSpan(this.btnMinimize, 2);
@@ -451,7 +451,7 @@ namespace InventorSync
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+            this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
             this.btnClose.Location = new System.Drawing.Point(754, 3);
             this.btnClose.Name = "btnClose";
             this.tlpHeader.SetRowSpan(this.btnClose, 2);
@@ -3052,7 +3052,7 @@ namespace InventorSync
             // 
             // btnCtrlSave
             // 
-            this.btnCtrlSave.Image = global::InventorSync.Properties.Resources.Save4040;
+            this.btnCtrlSave.Image = global::DigiposZen.Properties.Resources.Save4040;
             this.btnCtrlSave.Location = new System.Drawing.Point(265, 567);
             this.btnCtrlSave.Name = "btnCtrlSave";
             this.btnCtrlSave.Size = new System.Drawing.Size(62, 54);

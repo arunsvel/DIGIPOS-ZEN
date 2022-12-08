@@ -84,11 +84,11 @@ namespace InventorSync
                 rdoUser.ForeColor = Color.Black;
                 rdoStockAnalysis.ForeColor = Color.Black;
 
-                btnNew.Image = global::InventorSync.Properties.Resources.plus_1;
-                btnCancelDeactive.Image = global::InventorSync.Properties.Resources.archive123;
-                btnDelete.Image = global::InventorSync.Properties.Resources.delete340402;
-                btnMinimize.Image = global::InventorSync.Properties.Resources.minimize_finalised;
-                btnClose.Image = global::InventorSync.Properties.Resources.logout_Final;
+                btnNew.Image = global::DigiposZen.Properties.Resources.plus_1;
+                btnCancelDeactive.Image = global::DigiposZen.Properties.Resources.archive123;
+                btnDelete.Image = global::DigiposZen.Properties.Resources.delete340402;
+                btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+                btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
             }
             catch
             { }

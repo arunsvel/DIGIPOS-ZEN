@@ -892,7 +892,7 @@
             // pnlUserCompany
             // 
             this.pnlUserCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(73)))), ((int)(((byte)(75)))));
-            this.pnlUserCompany.BackgroundImage = global::InventorSync.Properties.Resources.Colour_combo2_Op2__1_;
+            this.pnlUserCompany.BackgroundImage = global::DigiposZen.Properties.Resources.Colour_combo2_Op2__1_;
             this.pnlUserCompany.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlUserCompany.Controls.Add(this.btnBacktoLogin);
             this.pnlUserCompany.Controls.Add(this.groupBox1);

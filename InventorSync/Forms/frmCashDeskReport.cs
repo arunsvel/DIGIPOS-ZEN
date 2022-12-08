@@ -38,7 +38,7 @@ namespace InventorSync
         clsVoucherType clsvr = new clsVoucherType();
         clsCostCentre clsccntr = new clsCostCentre();
 
-        string constr = Properties.Settings.Default.ConnectionString; //@"Data Source=NAHUM\DIGIPOS;Initial Catalog=DemoDB;Persist Security Info=True;User ID=sa;Password=#infinitY@279;Integrated Security=true";
+        string constr = DigiposZen.Properties.Settings.Default.ConnectionString; //@"Data Source=NAHUM\DIGIPOS;Initial Catalog=DemoDB;Persist Security Info=True;User ID=sa;Password=#infinitY@279;Integrated Security=true";
 
         private void frmCashDeskReport_Load(object sender, EventArgs e)
         {
