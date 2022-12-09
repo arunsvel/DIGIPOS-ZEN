@@ -1,4 +1,4 @@
-﻿namespace InventorSync.Forms
+﻿namespace DigiposZen.Forms
 {
     partial class frmCompactSearch
     {

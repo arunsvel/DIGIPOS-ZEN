@@ -1,12 +1,13 @@
-﻿using InventorSync.Forms;
-using InventorSync.InventorBL.Helper;
+﻿using DigiposZen.Forms;
+using DigiposZen.Forms;
+using DigiposZen.InventorBL.Helper;
 using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace InventorSync
+namespace DigiposZen
 {
     public partial class frmMDI : Form
     {
@@ -79,6 +80,7 @@ namespace InventorSync
         private void MDI_Load(object sender, EventArgs e)
         {
             //this.WindowState = FormWindowState.Maximized;
+            frmConnectionProperties frmcn = new frmConnectionProperties();
         }
 
         private void brandToolStripMenuItem_Click(object sender, EventArgs e)
@@ -262,6 +264,13 @@ namespace InventorSync
                     frmBCode.Show();
                     frmBCode.Focus();
                     frmBCode.BringToFront();
+                    break;
+                case "HSN":
+                    frmHSN frmhsn = new frmHSN(0, false);
+                    frmhsn.MdiParent = this;
+                    frmhsn.Show();
+                    frmhsn.Focus();
+                    frmhsn.BringToFront();
                     break;
                 case "CATEGORY":
                     frmItemCategory frmCat = new frmItemCategory(0, false);
@@ -1054,6 +1063,13 @@ namespace InventorSync
             AboutBoxUs ab = new AboutBoxUs();
 
             ab.ShowDialog();
+        }
+
+        private void hsnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem t = (ToolStripMenuItem)sender;
+            OpenMenu(t.Text.ToString(), 0);
+
         }
     }
 }

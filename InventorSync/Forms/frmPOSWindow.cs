@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InventorSync.Forms
+namespace DigiposZen.Forms
 {
     public partial class frmPOSWindow : Form, IMessageFilter
     {

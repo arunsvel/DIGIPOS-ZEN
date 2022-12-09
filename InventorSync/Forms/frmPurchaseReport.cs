@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Master;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
-using InventorSync.Forms;
-using InventorSync.JsonClass;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
+using DigiposZen.Forms;
+using DigiposZen.JsonClass;
 using System.Data.SqlClient;
-using InventorSync.InventorBL.Accounts;
+using DigiposZen.InventorBL.Accounts;
 using Microsoft.VisualBasic;
 using System.Drawing;
 
-namespace InventorSync
+namespace DigiposZen
 {
     public partial class frmPurchaseReport : Form
     {

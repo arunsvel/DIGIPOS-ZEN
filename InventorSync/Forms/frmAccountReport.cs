@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Master;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
-using InventorSync.Forms;
-using InventorSync.JsonClass;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
+using DigiposZen.Forms;
+using DigiposZen.JsonClass;
 using System.Data.SqlClient;
-using InventorSync.InventorBL.Accounts;
+using DigiposZen.InventorBL.Accounts;
 using Microsoft.VisualBasic;
 using System.Drawing;
 
-namespace InventorSync
+namespace DigiposZen
 {
     public partial class frmAccountReport : Form
     {
@@ -968,7 +968,7 @@ namespace InventorSync
             else if (clsVchType.ParentID == 9)
                 strCondition = " and  accountgroupid in (16,17) ";
 
-            string sQuery = "SELECT LedgerCode + LedgerName + MobileNo + Email + TaxNo AS anywhere, LedgerCode, LedgerName, MobileNo, CurBal, Email, TaxNo, LID " +
+            string sQuery = "SELECT LedgerCode + LedgerName + MobileNo + Email + TaxNo AS anywhere, LedgerCode, LedgerName, MobileNo, iif(CurBal > 0, cast(abs(CurBal) as varchar) + ' DR', cast(abs(CurBal) as varchar) + ' CR') as CurBal, Email, TaxNo, LID " +
                     " FROM     vwLedger   Where isnull(ActiveStatus, 1) = 1 " + strCondition;
             frmDetailedSearch2 frmN = new frmDetailedSearch2(GetFromLedgerSearch, sQuery, "Anywhere|LedgerCode|LedgerName", this.Left + 155, this.Top + 20, 7, 0,"", 7, 0, "ORDER BY LedgerCode ASC", 0, 0, "Ledger Search...", 0, "250,250,150,150,150,150,0", true, "frmLedger", 20);
             frmN.MdiParent = this.MdiParent;

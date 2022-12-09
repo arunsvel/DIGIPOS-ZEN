@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Master;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
 using Syncfusion.Windows.Forms.Tools;
-using InventorSync.Forms;
+using DigiposZen.Forms;
 using System.Runtime.InteropServices;
 
-namespace InventorSync
+namespace DigiposZen
 {
     // ======================================================== >>
     // Description:Agent Master
@@ -895,7 +895,8 @@ namespace InventorSync
         {
             Common cmbfill = new Common();
             DataTable dtLedger = new DataTable();
-            dtLedger = Comm.fnGetData("SELECT -2 as  LID,'<None>' as LName FROM tblLedger UNION SELECT -1 as  LID,' <AutoCrerateLedger> ' as LName FROM tblLedger UNION SELECT DISTINCT LID as LID,LName as LName FROM tblLedger where TenantID =" + Global.gblTenantID + " ORDER BY LID").Tables[0];
+            //fill ledgers from current liability because this is a payable ledger acting similar to supplier
+            dtLedger = Comm.fnGetData("SELECT -2 as  LID,'<None>' as LName FROM tblLedger UNION SELECT -1 as  LID,' <AutoCrerateLedger> ' as LName FROM tblLedger UNION SELECT DISTINCT LID as LID,LName as LName FROM tblLedger, tblAccountGroup where tblLedger.accountgroupid=tblAccountGroup.accountgroupid and tblAccountGroup.parentid=3 and TenantID =" + Global.gblTenantID + " ORDER BY LID").Tables[0];
             if (dtLedger.Rows.Count > 0)
             {
                 Comm.LoadControl(cmbAgentLederName, dtLedger, "", false, false, "LName", "LID");

@@ -1,0 +1,5 @@
+Start16:38
+Select ParentID From tblVchtype Where isnull(ActiveStatus,0)=1 and VchtypeID=0
+The connection is broken and recovery is not possible.  The client driver attempted to recover the connection one or more times and all attempts failed.  Increase the value of ConnectRetryCount to increase the number of recovery attempts.
+
+End

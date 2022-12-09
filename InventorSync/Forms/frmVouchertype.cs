@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Master;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
 using Syncfusion.WinForms.Controls;
-using InventorSync.Forms;
+using DigiposZen.Forms;
 using Newtonsoft.Json;
 using System.Collections;
-using InventorSync.JsonClass;
+using DigiposZen.JsonClass;
 using System.Runtime.InteropServices;
 using System.IO;
 
-namespace InventorSync
+namespace DigiposZen
 {
     public partial class frmVouchertype : Form, IMessageFilter
     {

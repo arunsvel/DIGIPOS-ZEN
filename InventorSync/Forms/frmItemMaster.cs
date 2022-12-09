@@ -7,22 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Master;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
 using Syncfusion.Windows.Forms.Tools;
 using Syncfusion.WinForms.Controls;
-using InventorSync.Forms;
+using DigiposZen.Forms;
 using Syncfusion.Windows.Forms;
 using System.Collections;
-using InventorSync.JsonClass;
+using DigiposZen.JsonClass;
 using Newtonsoft.Json;
 using System.Runtime.InteropServices;
 using Microsoft.VisualBasic;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 
-namespace InventorSync
+namespace DigiposZen
 {
     public partial class frmItemMaster : Form //, IMessageFilter
     {
@@ -621,7 +621,7 @@ namespace InventorSync
                     this.txtHSNCode.TextChanged -= this.txtHSNCode_TextChanged;
                     if (txtHSNCode.Text == "") txtHSNCode.Text = "~";
                     this.txtHSNCode.TextChanged += this.txtHSNCode_TextChanged;
-                    string sQuery = "SELECT DISTINCT Top 25 ISNULL( Convert(Varchar(18),HSNCODE),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere,HSNCODE as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNCODE  FROM tblHSNCode where  HID > 0 AND TenantID=" + Global.gblTenantID + " ";
+                    string sQuery = "SELECT DISTINCT Top 25 ISNULL( Convert(Varchar(18),HSNCODE),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere,HSNCODE as [HSN Code],hsnid,IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNCODE  FROM tblHSNCode where  HID > 0 AND TenantID=" + Global.gblTenantID + " ";
                     new frmCompactSearch(GetFromHSNCodeSearch, sQuery, "AnyWhere|Convert(varchar(50),HSNCODE)|Convert(varchar(50),IGSTTaxPer)|Convert(varchar(50),CessPer)", txtHSNCode.Location.X + 750, txtHSNCode.Location.Y + 30, 3, 0, txtHSNCode.Text, 4, 0, "ORDER BY HSNCODE ASC", 0, 0, "HSN Code Search ...", 0, "200,80,80,0", true, "HSNCode", 0, true, this.MdiParent).ShowDialog();
                   
                         this.txtHSNCode.TextChanged -= this.txtHSNCode_TextChanged;
@@ -1865,7 +1865,7 @@ namespace InventorSync
             //string sQuery = "SELECT DISTINCT Top 25 ISNULL( Convert(Varchar(18),HSNID),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere,HSNID as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNID  FROM tblItemMaster where ActiveStatus = 1 AND HSNID > 0 AND TenantID=" + Global.gblTenantID + "";
             //new frmCompactSearch(GetFromHSNCodeSearch, sQuery, "AnyWhere|HSN Code|IGST %|Cess %|HSNID", txtHSNCode.Location.X + 750, txtHSNCode.Location.Y + 30, 3, 0, txtHSNCode.Text, 4, 0, "ORDER BY HSNID ASC", 0, 0, "HSN Code Search ...", 0, "200,80,80,0", true, "HSNCode", 0, true).ShowDialog();
 
-            string sQuery = "SELECT DISTINCT ISNULL( Convert(Varchar(18),HSNCODE),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere, HSNCODE as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNCODE,HID  FROM tblHSNCode WHERE  HID > 0  AND TenantID=" + Global.gblTenantID + " ";
+            string sQuery = "SELECT DISTINCT ISNULL( Convert(Varchar(18),HSNCODE),0) +ISNULL( Convert(Varchar(4),IGSTTaxPer),0) +ISNULL( Convert(Varchar(4),CessPer),0) as AnyWhere, HSNCODE as [HSN Code],hsnid,IGSTTaxPer as [IGST %],CessPer as [Cess %],HSNCODE,HID  FROM tblHSNCode WHERE  HID > 0  AND TenantID=" + Global.gblTenantID + " ";
             new frmCompactSearch(GetFromHSNCodeSearch, sQuery, "AnyWhere|Convert(varchar(50),HSNCODE)|Convert(varchar(50),IGSTTaxPer)|Convert(varchar(50),CessPer)", txtHSNCode.Location.X + 750, txtHSNCode.Location.Y + 30,3 , 0, txtHSNCode.Text, 4, 0, "ORDER BY HSNCODE ASC", 0, 0, "HSN Code Search ...", 0, "200,80,80,0", true, "HSNCode", 0, true, this.MdiParent).ShowDialog();
             if (cboIGSTPerc.Text == "0")
             {
@@ -3979,7 +3979,8 @@ namespace InventorSync
             if (sCompSearchData[0].ToString() == "NOTEXIST")
             {
                 this.txtHSNCode.TextChanged -= this.txtHSNCode_TextChanged;
-                txtHSNCode.Text = sCompSearchData[1].ToString();
+                txtHSNCode.Text = ""; // sCompSearchData[1].ToString();
+                txtHSNCode.Tag = ""; // sCompSearchData[2].ToString();
                 this.txtHSNCode.TextChanged += this.txtHSNCode_TextChanged;
 
                 //cboIGSTPerc.Text = "0";
@@ -4017,6 +4018,7 @@ namespace InventorSync
                         {
                             this.txtHSNCode.TextChanged -= this.txtHSNCode_TextChanged;
                             txtHSNCode.Text = dtHSN.Rows[0]["HSNCODE"].ToString();
+                            txtHSNCode.Tag = dtHSN.Rows[0]["HSNID"].ToString();
                             this.txtHSNCode.TextChanged += this.txtHSNCode_TextChanged;
 
                             cboIGSTPerc.Text = Convert.ToDecimal(dtHSN.Rows[0]["IGSTTaxPer"].ToString()).ToString();
@@ -4468,7 +4470,8 @@ namespace InventorSync
                 if (dtLoad.Rows[0]["DGroupID"].ToString() != "")
                     cboDiscGroup.SelectedValue = Convert.ToDecimal(dtLoad.Rows[0]["DGroupID"].ToString());
                 this.txtHSNCode.TextChanged -= this.txtHSNCode_TextChanged;
-                txtHSNCode.Text = dtLoad.Rows[0]["HSNID"].ToString();
+                txtHSNCode.Tag = dtLoad.Rows[0]["HSNID"].ToString();
+                txtHSNCode.Text = dtLoad.Rows[0]["HSNCODE"].ToString();
                 if (txtHSNCode.Text == "0")
                     txtHSNCode.Text = "";
                 this.txtHSNCode.TextChanged += this.txtHSNCode_TextChanged;
@@ -4894,7 +4897,7 @@ namespace InventorSync
                 itemInsertInfo.FinishedGoodID = 0;
                 itemInsertInfo.MinRate = Convert.ToDecimal(Comm.Val(txtMinRate.Text));
                 itemInsertInfo.MaxRate = Convert.ToDecimal(Comm.Val(txtMaxRate.Text));
-                itemInsertInfo.HSNID = Comm.ToDecimal(txtHSNCode.Text);
+                itemInsertInfo.HSNID = Comm.ToDecimal(txtHSNCode.Tag);
                 itemInsertInfo.iCatDiscPer = dCatDiscPer;
                 itemInsertInfo.IPGDiscPer = 0;
                 itemInsertInfo.ImanDiscPer = dManfDiscPer;

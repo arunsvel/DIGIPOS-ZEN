@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-using InventorSync.InventorBL.Helper;
+using DigiposZen.InventorBL.Helper;
 
-namespace InventorSync.InventorBL.Master
+namespace DigiposZen.InventorBL.Master
 {
     public class clsManufacturer : DBConnection
     {

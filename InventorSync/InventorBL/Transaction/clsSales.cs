@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
-using InventorSync.JsonClass;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
+using DigiposZen.JsonClass;
 using Newtonsoft.Json;
 using System.Collections;
 
-namespace InventorSync.InventorBL.Transaction
+namespace DigiposZen.InventorBL.Transaction
 {
     public class clsSales : DBConnection
     {

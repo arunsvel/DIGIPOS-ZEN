@@ -13,10 +13,10 @@ using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Helper;
+using DigiposZen.InventorBL.Helper;
 using System.Data;
 
-namespace InventorSync.InventorBL.Helper
+namespace DigiposZen.InventorBL.Helper
 {
     public class sqlControl
     {

@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
 using System.Drawing;
-using InventorSync.InventorBL.Helper;
+using DigiposZen.InventorBL.Helper;
 
 public class Printing : IDisposable
 {

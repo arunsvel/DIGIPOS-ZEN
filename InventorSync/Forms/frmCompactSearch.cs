@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Helper;
+using DigiposZen.InventorBL.Helper;
 
-namespace InventorSync.Forms
+namespace DigiposZen.Forms
 {
     public partial class frmCompactSearch : Form
     {

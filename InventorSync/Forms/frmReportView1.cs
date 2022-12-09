@@ -9,9 +9,9 @@ using System.Text;
 using System.Windows.Forms;
 
 
-using InventorSync.InventorBL.Helper;
+using DigiposZen.InventorBL.Helper;
 
-namespace InventorSync.Forms
+namespace DigiposZen.Forms
 {
     public partial class frmReportView1 : Form
     {
@@ -441,7 +441,7 @@ namespace InventorSync.Forms
                         "  vchdate BETWEEN '" + FD.ToString("dd-MMM-yyyy") + "'  AND '" + TD.ToString("dd-MMM-yyyy") + "'" +
                         " GROUP BY dbo.tblVoucher.VchNo, dbo.tblVoucher.VchDate, dbo.tblAccountGroup.AccountGroup," +
                         " L1.LAliasName,dbo.tblVchType.VchType, dbo.tblVoucher.Mynarration, dbo.tblEmployee.Name" +
-                        " ", con))
+                        " ORDER BY dbo.tblVoucher.VchDate,  dbo.tblVoucher.VchNo ", con))
                         //having(SUM(isnull(dbo.tblVoucher.AmountD, 0)) - SUM(isnull(dbo.tblVoucher.AmountC, 0))) <> 0 
                         {
                             cmd.CommandType = CommandType.Text;
@@ -469,13 +469,11 @@ namespace InventorSync.Forms
 
                                     if (sum - sum1 < 0)
                                     {
-                                        dt.Rows.Add("", newdate, "", "", "", "", "Balance :- " + (sum - sum1) + "_CR");
-
-
+                                        dt.Rows.Add("", newdate, "", "", "", "", "Balance : " + Math.Abs(sum - sum1) + " CR");
                                     }
                                     else
                                     {
-                                        dt.Rows.Add("", newdate, "", "", "", "", "Balance :- " + (sum - sum1) + "_DR");
+                                        dt.Rows.Add("", newdate, "", "", "", "", "Balance : " + Math.Abs(sum1 - sum) + " DR");
                                     }
 
                                 }
@@ -511,7 +509,7 @@ namespace InventorSync.Forms
                         " And vchdate BETWEEN '" + FD.ToString("dd-MMM-yyyy") + "'  AND '" + TD.ToString("dd-MMM-yyyy") + "'" +
                         " GROUP BY dbo.tblVoucher.VchNo, dbo.tblVoucher.VchDate, dbo.tblAccountGroup.AccountGroup," +
                         " L1.LAliasName,dbo.tblVchType.VchType, dbo.tblVoucher.Mynarration, dbo.tblEmployee.Name" +
-                        " having(SUM(isnull(dbo.tblVoucher.AmountD, 0)) - SUM(isnull(dbo.tblVoucher.AmountC, 0))) <> 0", con))
+                        " having(SUM(isnull(dbo.tblVoucher.AmountD, 0)) - SUM(isnull(dbo.tblVoucher.AmountC, 0))) <> 0 ORDER BY dbo.tblVoucher.VchDate,  dbo.tblVoucher.VchNo ", con))
                         {
                             cmd.CommandType = CommandType.Text;
                             using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
@@ -538,18 +536,12 @@ namespace InventorSync.Forms
 
                                     if (sum - sum1 < 0)
                                     {
-                                        dt.Rows.Add("", newdate, "", "", "", "", "Balance :- " + (sum - sum1) + "_CR");
-
-
+                                        dt.Rows.Add("", newdate, "", "", "", "", "Balance : " + Math.Abs(sum - sum1) + " CR");
                                     }
                                     else
                                     {
-
-                                        dt.Rows.Add("", newdate, "", "", "", "", "Balance :- " + (sum - sum1) + "_DR");
-
+                                        dt.Rows.Add("", newdate, "", "", "", "", "Balance : " + Math.Abs(sum1 - sum) + " DR");
                                     }
-
-
                                 }
                             }
                         }

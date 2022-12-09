@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InventorSync.InventorBL.Helper
+namespace DigiposZen.InventorBL.Helper
 {
     public class clsTheme
     {

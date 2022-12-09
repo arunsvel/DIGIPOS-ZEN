@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InventorSync.Forms
+namespace DigiposZen.Forms
 {
     partial class AboutBoxUs : Form
     {

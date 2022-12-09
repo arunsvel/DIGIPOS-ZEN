@@ -7,23 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.Forms;
-using InventorSync.InventorBL.Master;
-using InventorSync.InventorBL.Accounts;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
+using DigiposZen.Forms;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.InventorBL.Accounts;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
 using Syncfusion.WinForms.DataGrid;
-using InventorSync.JsonClass;
+using DigiposZen.JsonClass;
 using Newtonsoft.Json;
 using DataRow = System.Data.DataRow;
-using InventorSync.InventorBL.Transaction;
+using DigiposZen.InventorBL.Transaction;
 using System.Collections;
 using Microsoft.VisualBasic;
 using System.Runtime.InteropServices;
 using System.Data.SqlClient;
 using System.IO;
 
-namespace InventorSync
+namespace DigiposZen
 {
 
     public partial class frmStockOutVoucherNew : Form, IMessageFilter
@@ -2283,7 +2283,10 @@ namespace InventorSync
             {
                 if (this.ActiveControl != null)
                     if (this.ActiveControl.Name == cboAgent.Name.ToString())
+                    {
                         GetAgentDiscountAsperVoucherType();
+
+                    }
             }
             catch
             {
@@ -4638,6 +4641,7 @@ namespace InventorSync
                     dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.cCrate)].Value = Comm.FormatValue(Convert.ToDouble(dtGetPurDetail.Rows[i]["CRate"].ToString()), true);
                     dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.cCRateWithTax)].Value = Comm.FormatValue(Convert.ToDouble(dtGetPurDetail.Rows[i]["CRateWithTax"].ToString()), true);
                     dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.cItemID)].Value = dtGetPurDetail.Rows[i]["ItemId"].ToString();
+                    dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.CItemName)].Tag = dtGetPurDetail.Rows[i]["ItemId"].ToString();
                     dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.ctaxPer)].Value = Comm.FormatValue(Convert.ToDouble(dtGetPurDetail.Rows[i]["TaxPer"].ToString()), true);
                     this.dgvSales.Columns[GetEnum(gridColIndexes.ctaxPer)].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.ctax)].Value = Comm.FormatValue(Convert.ToDouble(dtGetPurDetail.Rows[i]["TaxAmount"].ToString()), true);
@@ -5056,11 +5060,10 @@ namespace InventorSync
                                     VoucherInsertSalesEntry(AccountDetails);
 
                                     Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(lblLID.Text.ToString()), Convert.ToDecimal(lblLID.Text.ToString()), 0, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), Convert.ToDouble(lblBillAmount.Text.ToString()), 0, Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
-                                    
-                                    
+
                                     foreach (clsCashDeskDetail cd in RetCashDesk.PaymentDetails)
                                     {
-                                        Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(lblLID.Text.ToString()), 0, Convert.ToDecimal(lblLID.Text.ToString()), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(lblBillAmount.Text.ToString()), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                                        Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(lblLID.Text.ToString()), 0, Convert.ToDecimal(lblLID.Text.ToString()), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Convert.ToDouble(cd.Amount.ToString()), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
                                         Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Convert.ToDecimal(cd.LedgerID.ToString()), Convert.ToDecimal(cd.LedgerID.ToString()), 0, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), Convert.ToDouble(cd.Amount.ToString()), 0, Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
                                     }
                                 }
@@ -5291,6 +5294,10 @@ namespace InventorSync
                 //COOLIE 
                 Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 58, 0, 58, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Comm.ToDouble(txtCoolie.Text), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
 
+                //AGENT COMMISSION
+                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 59, 59, 0, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), Comm.ToDouble(lblAgentCommissionTotal.Text), 0, Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), Comm.ToDecimal(cboAgent.Tag.ToString()), 0, Comm.ToDecimal(cboAgent.Tag.ToString()), Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Comm.ToDouble(lblAgentCommissionTotal.Text), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+
                 //other exp 
                 Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 22, 0, 22, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Comm.ToDouble(txtOtherExp.Text), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
 
@@ -5465,18 +5472,26 @@ namespace InventorSync
         //Description : Agent Discount Asper Voucher Settings Value
         private void GetAgentDiscountAsperVoucherType()
         {
-            DataTable dtAgentDisc = new DataTable();
+            //DataTable dtAgentDisc = new DataTable();
+
+            sqlControl rs = new sqlControl();
+            rs.Open("SELECT ISNULL(AgentDiscount,0) as AgentDiscount,LID,blnPOstAccounts FROM tblAgent WHERE AgentID = " + Comm.ToInt32(cboAgent.SelectedValue) + " AND TenantID = " + Global.gblTenantID + "");
+            if (!rs.eof())
+            {
+                cboAgent.Tag = Comm.ToInt32(rs.fields("LID")).ToString();
+            }
 
             if (clsVchType.BillWiseDiscFillXtraDiscFromValue == 2) //Agent Discount
             {
                 if (Convert.ToInt32(cboAgent.SelectedValue) >= 0)
                 {
-                    dtAgentDisc = Comm.fnGetData("SELECT ISNULL(AgentDiscount,0) as AgentDiscount FROM tblAgent WHERE AgentID = " + Convert.ToInt32(cboAgent.SelectedValue) + " AND TenantID = " + Global.gblTenantID + "").Tables[0];
-                    if (dtAgentDisc.Rows.Count > 0)
+                    //dtAgentDisc = Comm.fnGetData("SELECT ISNULL(AgentDiscount,0) as AgentDiscount FROM tblAgent WHERE AgentID = " + Convert.ToInt32(cboAgent.SelectedValue) + " AND TenantID = " + Global.gblTenantID + "").Tables[0];
+                    //if (dtAgentDisc.Rows.Count > 0)
+                    if (!rs.eof())
                     {
                         txtDiscPerc.TextChanged -= txtDiscPerc_TextChanged;
                         txtDiscAmt.TextChanged -= txtDiscPerc_TextChanged;
-                        txtDiscPerc.Text = Comm.FormatValue(Convert.ToDouble(dtAgentDisc.Rows[0][0].ToString()), true, "#.00");
+                        txtDiscPerc.Text = Comm.FormatValue(Comm.ToDouble(rs.fields("AgentDiscount")), true, AppSettings.CurrDecimalFormat);
                         txtDiscPerc.Tag = "2";//0-Default, 1-Agent wise, 2-supplier disc
                         txtDiscPerc.TextChanged += txtDiscPerc_TextChanged;
                         txtDiscAmt.TextChanged += txtDiscPerc_TextChanged;
@@ -6554,7 +6569,7 @@ namespace InventorSync
         {
             if (dgvSales.Rows[dgvSales.CurrentCell.RowIndex].Cells[GetEnum(gridColIndexes.CItemName)].Tag == null) return;
             if  (dgvSales.Rows[dgvSales.CurrentCell.RowIndex].Cells[GetEnum(gridColIndexes.CItemName)].Tag.ToString() == "") return;
-            if  (Convert.ToInt32(dgvSales.Rows[dgvSales.CurrentCell.RowIndex].Cells[GetEnum(gridColIndexes.CItemName)].Tag.ToString()) <= 0) return;
+            if  (Comm.ToInt32(dgvSales.Rows[dgvSales.CurrentCell.RowIndex].Cells[GetEnum(gridColIndexes.CItemName)].Tag.ToString()) <= 0) return;
 
             int rowIndex = dgvSales.CurrentCell.RowIndex;
             dgvSales.Rows.RemoveAt(rowIndex);

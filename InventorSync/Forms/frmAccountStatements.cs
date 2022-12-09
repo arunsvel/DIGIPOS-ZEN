@@ -7,24 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.Forms;
-using InventorSync.InventorBL.Master;
-using InventorSync.InventorBL.Accounts;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
+using DigiposZen.Forms;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.InventorBL.Accounts;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
 using Syncfusion.WinForms.DataGrid;
-using InventorSync.JsonClass;
+using DigiposZen.JsonClass;
 using Newtonsoft.Json;
 using DataRow = System.Data.DataRow;
-using InventorSync.InventorBL.Transaction;
+using DigiposZen.InventorBL.Transaction;
 using System.Collections;
 using Microsoft.VisualBasic;
 using System.Runtime.InteropServices;
 using System.Data.SqlClient;
 
-namespace InventorSync
+namespace DigiposZen
 {
-
     public partial class frmAccountStatements : Form, IMessageFilter
     {
         //=============================================================================
@@ -341,9 +340,9 @@ namespace InventorSync
                             PrevDate = Convert.ToDateTime(Rs.fields("VchDate"));
 
                             dgvDetails.Rows.Add("");
-                            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = SubTotalDebit;
-                            dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
-                            dgvDetails.Rows.Add("");
+                            //dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = SubTotalDebit;
+                            //dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                            //dgvDetails.Rows.Add("");
 
                             SubBalance = SubTotalDebit; //- SubTotalCredit;
                             SubTotalDebit = 0;
@@ -409,28 +408,28 @@ namespace InventorSync
                     }
                 }
 
-                dgvDetails.Rows.Add("");
-                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(SubTotalDebit, true);
-                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
-                dgvDetails.Rows.Add("");
+                //dgvDetails.Rows.Add("");
+                //dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(SubTotalDebit, true);
+                //dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                //dgvDetails.Rows.Add("");
 
-                dgvDetails.Rows.Add("");
-                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = "=============";
+                //dgvDetails.Rows.Add("");
+                //dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = "=============";
 
-                dgvDetails.Rows.Add("");
-                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD, true);
-                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                //dgvDetails.Rows.Add("");
+                //dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(AmountD, true);
+                //dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
 
 
-                dgvDetails.Rows.Add("");
-                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = "=============";
+                //dgvDetails.Rows.Add("");
+                //dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = "=============";
 
-                dgvDetails.Rows.Add("");
+                //dgvDetails.Rows.Add("");
 
-                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(AmountD), true);
+                //dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Value = Comm.FormatValue(Comm.ToDouble(AmountD), true);
 
-                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
-                dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                //dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
+                //dgvDetails["DebitSub", dgvDetails.Rows.Count - 1].Style.Font = MySubTotalFont;
 
                 dgvDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }

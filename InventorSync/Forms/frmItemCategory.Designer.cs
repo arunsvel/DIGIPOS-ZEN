@@ -1,4 +1,4 @@
-﻿namespace InventorSync
+﻿namespace DigiposZen
 {
     partial class frmItemCategory
     {

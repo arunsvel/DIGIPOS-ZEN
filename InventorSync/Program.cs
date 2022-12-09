@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Syncfusion.WinForms;
 
-namespace InventorSync
+namespace DigiposZen
 {
     static class Program
     {

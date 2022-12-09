@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Master;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
 using System.Runtime.InteropServices;
 using System.Data.SqlClient;
 
-namespace InventorSync
+namespace DigiposZen
 {
     // ======================================================== >>
     // Description:Color Creation
@@ -185,6 +185,9 @@ namespace InventorSync
                         }
                     }
                 }
+
+                cmbHsnType.SelectedIndex = 0;
+
                 CtrlPassed = Controlpassed;
                 if (CtrlPassed != null && iIDFromEditWindow == 0)
                 {
@@ -216,7 +219,11 @@ namespace InventorSync
                 btnDelete.Enabled = false;
             }
             txtHSNCode.Focus();
-            txtHSNCode.SelectAll();
+            //txtHSNCode.SelectAll();
+
+            txtHSNCode.SelectionStart = txtHSNCode.Text.Length;
+            txtHSNCode.SelectionLength = 0;
+
             Cursor.Current = Cursors.Default;
         }
 
@@ -289,7 +296,12 @@ namespace InventorSync
                     Application.DoEvents();
                     Cursor.Current = Cursors.Default;
                 }
-                txtHSNCode.Select();
+                //txtHSNCode.Select();
+
+                txtHSNCode.Focus();
+
+                txtHSNCode.SelectionStart = txtHSNCode.Text.Length;
+                txtHSNCode.SelectionLength = 0;
             }
             catch (Exception ex)
             {
@@ -742,7 +754,7 @@ namespace InventorSync
                 HSNmasterInfo.HSNCODE = txtHSNCode.Text;
                 DataTable dtUspColor = new DataTable();
                 HSNmasterInfo.HSNDECRIPTION = txtDescription.Text;
-                HSNmasterInfo.HSNType =cmbHsnType.Text;
+                HSNmasterInfo.HSNType = cmbHsnType.Text;
                 HSNmasterInfo.IGSTTaxPer = Convert.ToDecimal(cmbBTaxClass.Text);
                 HSNmasterInfo.CGSTTaxPer = Convert.ToDecimal(cmbBTaxClass.Text) / 2;
                 HSNmasterInfo.SGSTTaxPer = Convert.ToDecimal(cmbBTaxClass.Text) / 2;
@@ -800,7 +812,7 @@ namespace InventorSync
                         {
                             MessageBox.Show("Duplicate Entry , User has restricted to enter duplicate values in the HSNCODE (" + txtHSNCode.Text + ")", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txtHSNCode.Focus();
-                            txtHSNCode.SelectAll();
+                            //txtHSNCode.SelectAll();
                         }
                         else
                             MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);

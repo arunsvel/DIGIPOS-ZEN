@@ -1,5 +1,5 @@
 ﻿
-namespace InventorSync.Forms
+namespace DigiposZen.Forms
 {
     partial class ReportPrint
     {
@@ -55,7 +55,7 @@ namespace InventorSync.Forms
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "InventorSync.Forms.Report1.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "DigiposZen.Forms.Report1.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;

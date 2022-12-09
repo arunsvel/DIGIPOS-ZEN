@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Master;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
 using System.Runtime.InteropServices;
-using InventorSync.JsonClass;
-using InventorSync.InventorBL.Accounts;
-using InventorSync.Forms;
+using DigiposZen.JsonClass;
+using DigiposZen.InventorBL.Accounts;
+using DigiposZen.Forms;
 
-namespace InventorSync
+namespace DigiposZen
 {
     // ======================================================== >>
     // Description:Color Creation

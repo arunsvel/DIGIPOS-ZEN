@@ -1,4 +1,4 @@
-﻿using InventorSync.InventorBL.Helper;
+﻿using DigiposZen.InventorBL.Helper;
 using DigiposZen.Properties;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InventorSync.Forms
+namespace DigiposZen.Forms
 {
     public partial class FirstRun : Form
     {

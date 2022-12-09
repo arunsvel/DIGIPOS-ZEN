@@ -1,5 +1,5 @@
 ﻿
-namespace InventorSync
+namespace DigiposZen
 {
     partial class frmStockOutVoucherNew
     {
@@ -1553,7 +1553,7 @@ namespace InventorSync
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.77519F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.22481F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 510F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 513F));
             this.tableLayoutPanel4.Controls.Add(this.label31, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 84);
@@ -1574,7 +1574,7 @@ namespace InventorSync
             this.label31.Location = new System.Drawing.Point(20, 0);
             this.label31.Margin = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(94, 28);
+            this.label31.Size = new System.Drawing.Size(57, 28);
             this.label31.TabIndex = 2;
             this.label31.Text = "Item Detail Table:";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
 
-namespace InventorSync.InventorBL.Master
+namespace DigiposZen.InventorBL.Master
 {
     public class clsSizeMaster : DBConnection
     {

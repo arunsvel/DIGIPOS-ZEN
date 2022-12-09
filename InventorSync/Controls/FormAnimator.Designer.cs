@@ -1,4 +1,4 @@
-﻿namespace InventorSync.Controls
+﻿namespace DigiposZen.Controls
 {
     partial class FormAnimator
     {

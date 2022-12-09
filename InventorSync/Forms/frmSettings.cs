@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
-using InventorSync.InventorBL.Master;
-using InventorSync.Forms;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.Forms;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
 
-namespace InventorSync
+namespace DigiposZen
 {
 	public partial class frmSettings : Form, IMessageFilter
     {
@@ -3033,6 +3033,22 @@ namespace InventorSync
 
             try
             {
+                sQuery = @"INSERT INTO [dbo].[tblLedger] ([LID],[LName],[LAliasName],[GroupName],[Type],[OpBalance],[AppearIn],[Address],[CreditDays],[Phone],[TaxNo],[AccountGroupID]
+                        ,[RouteID],[Area],[Notes],[TargetAmt],[SMSSchID],[Email],[MobileNo],[DiscPer],[InterestPer],[DummyLName],[BlnBank],[CurrencyID]
+                        ,[AreaID],[PLID],[ActiveStatus],[EmailAddress],[EntryDate],[blnBillWise],[CustomerCardID],[TDSPer],[DOB],[StateID],[CCIDS]
+                        ,[CurrentBalance],[LedgerName],[LedgerCode],[BlnWallet],[blnCoupon],[TransComn],[BlnSmsWelcome],[DLNO],[TDS],[LedgerNameUnicode]
+                        ,[LedgerAliasNameUnicode],[ContactPerson],[TaxParameter],[TaxParameterType],[HSNCODE],[CGSTTaxPer],[SGSTTaxPer],[IGSTTaxPer]
+                        ,[HSNID],[BankAccountNo],[BankIFSCCode],[BankNote],[WhatsAppNo],[SystemName],[UserID],[LastUpdateDate],[LastUpdateTime],[TenantID]
+                        ,[GSTType],[AgentID],[FAX])
+                        VALUES (59,'AGENT COMMISSION','AGENT COMMISSION','Direct Expense','Cr',0,NULL,'',0,'','',6,NULL,'NONE', '', 0,NULL,NULL,'',NULL ,NULL, '', NULL ,0,1,0,1,'',NULL ,NULL ,0,NULL ,NULL ,NULL, '' ,NULL ,'AGENT COMMISSION','AGENT COMMISSION',NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,'AGENT COMMISSION','AGENT COMMISSION',NULL ,'DEFAULT',NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,1,NULL ,NULL,NULL)";
+
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
                 sQuery = @"INSERT INTO [dbo].[tblVchType]
                             ([VchTypeID],[VchType],[ShortKey],[EasyKey],[SortOrder],[ActiveStatus],[ParentID],[Description],[numberingCode],[Prefix],[Sufix],[ItemClassIDS]
                             ,[CreditGroupIDs],[DebitGroupIDs],[ProductTypeIDs],[GeneralSettings],[NegativeBalance],[RoundOffBlock],[RoundOffMode],[ItemClassIDS2],[SecondaryCCIDS]
@@ -4190,6 +4206,173 @@ namespace InventorSync
         private void CreateViewsAndProcudures()
         {
             string sQuery = "";
+
+            try
+            {
+                sQuery = @"DROP PROCEDURE [dbo].[UspGetItemMaster] ";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+            try
+            {
+                sQuery = @"ALTER PROCEDURE [dbo].[UspGetItemMaster] (@ItemID   NUMERIC (18, 0),
+                                          @TenantID NUMERIC (18, 0))
+                            AS
+                              BEGIN
+                                  DECLARE @CatIDsNames VARCHAR(1000)
+                                  DECLARE @CatIDs VARCHAR(1000)
+
+                                  IF @ItemID <> 0
+                                    BEGIN
+                                        SELECT @CatIDs = categoryids
+                                        FROM   tblitemmaster
+                                        WHERE  itemid = @ItemID
+                                               AND tenantid = @TenantID
+
+                                        SELECT @CatIDsNames = COALESCE(@CatIDsNames + ',', '') + category
+                                        FROM   tblcategories
+                                        WHERE  tenantid = @TenantID
+                                               AND ',' + @CatIDs + ',' LIKE '%,' + CONVERT(VARCHAR(50),
+                                                                            categoryid
+                                                                            )
+                                                                            +
+                                                                            ',%';
+
+                                        SELECT I.itemid,
+                                               itemcode,
+                                               itemname,
+                                               I.categoryid,
+                                               description,
+                                               Isnull(I.prate, 0)          AS PRate,
+                                               Isnull(sratecalcmode, 0)    AS SrateCalcMode,
+                                               crateavg,
+				                               CostRateInc,
+				                               CostRateExcl,
+                                               srate1per,
+                                               I.srate1,
+                                               srate2per,
+                                               I.srate2,
+                                               srate3per,
+                                               I.srate3,
+                                               I.srate4,
+                                               srate4per,
+                                               I.srate5,
+                                               srate5per,
+                                               Isnull(I.mrp, 0)            AS MRP,
+                                               rol,
+                                               rack,
+                                               manufacturer,
+                                               activestatus,
+                                               intlocal,
+                                               producttype,
+                                               producttypeid,
+                                               ledgerid,
+                                               I.unitid,
+                                               notes,
+                                               agentcommper,
+                                               blnexpiryitem,
+                                               coolie,
+                                               finishedgoodid,
+                                               minrate,
+                                               maxrate,
+                                               pluno,
+                                               i.hsnid,
+				                               h.HSNCODE,
+                                               icatdiscper,
+                                               ipgdiscper,
+                                               imandiscper,
+                                               itemnameunicode,
+                                               minqty,
+                                               mnfid,
+                                               pgid,
+                                               itemcodeunicode,
+                                               upc,
+                                               batchmode,
+                                               blnexpiry,
+                                               qty,
+                                               maxqty,
+                                               intnoorweight,
+                                               I.systemname,
+                                               I.userid,
+                                               I.lastupdatedate,
+                                               I.lastupdatetime,
+                                               I.tenantid,
+                                               blncessontax,
+                                               i.compcessqty,
+                                               i.cgsttaxper,
+                                               i.sgsttaxper,
+                                               i.igsttaxper,
+                                               i.cessper,
+                                               vat,
+                                               categoryids,
+                                               colorids,
+                                               sizeids,
+                                               branddisper,
+                                               dgroupid,
+                                               dgroupdisper,
+                                               @CatIDsNames                AS Categories,
+                                               U.unitshortname             AS [Unit],
+                                               Isnull(batchcode, 0)        AS BatchCode,
+                                               brandid,
+                                               Isnull(altunitid, 0)        AS AltUnitID,
+                                               Isnull(convfactor, 0)       AS ConvFactor,
+                                               Isnull(shelflife, 0)        AS Shelflife,
+                                               Isnull(srateinclusive, 0)   AS SRateInclusive,
+                                               Isnull(prateinclusive, 0)   AS PRateInclusive,
+                                               Isnull(slabsys, 0)          AS Slabsystem,
+                                               batchmode,
+                                               Isnull(discper, 0)          AS DiscPer,
+                                               S.batchunique,
+                                               S.stockid,
+                                               Isnull(departmentid, 0)     AS DepartmentID,
+                                               Isnull(i.compcessqty, 0)      AS CompCessQty,
+                                               Isnull(defaultexpindays, 0) AS DefaultExpInDays
+                                        FROM   tblitemmaster I
+                                               INNER JOIN tblcategories C
+                                                       ON C.categoryid = I.categoryid
+                                               LEFT JOIN tblunit U
+                                                      ON U.unitid = I.unitid
+                                                         AND U.tenantid = @TenantID
+                                               LEFT JOIN tblHSNCode h
+                                                      ON h.HSNID = I.HSNID 
+                                                         AND h.tenantid = @TenantID
+                                               LEFT JOIN tblstock S
+                                                      ON S.itemid = I.itemid
+                                        WHERE  I.itemid = @ItemID
+                                               AND I.tenantid = @TenantID
+                                    END
+                                  ELSE
+                                    BEGIN
+                                        SELECT I.itemid,
+                                               itemcode             AS [Item Code],
+                                               itemname             AS [Item],
+                                               U.unitshortname      AS [Unit],
+                                               C.category,
+                                               description,
+                                               I.mrp,
+                                               hsnid                AS [HSN Code],
+                                               ( CASE
+                                                   WHEN activestatus = 1 THEN 'Active'
+                                                   ELSE 'In Active'
+                                                 END )              AS Status,
+                                               Isnull(batchcode, 0) AS BatchCode
+                                        FROM   tblitemmaster I
+                                               INNER JOIN tblcategories C
+                                                       ON C.categoryid = I.categoryid
+                                               LEFT JOIN tblunit U
+                                                      ON U.unitid = I.unitid
+                                                         AND U.tenantid = @TenantID
+                                               LEFT JOIN tblstock S
+                                                      ON S.itemid = I.itemid
+                                        WHERE  I.tenantid = @TenantID
+                                    END
+                              END ";
+
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
 
             try
             {

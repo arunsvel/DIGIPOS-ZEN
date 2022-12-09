@@ -1,4 +1,4 @@
-﻿namespace InventorSync.Usercontol
+﻿namespace DigiposZen.Usercontol
 {
     partial class CompactCheckListSearch
     {

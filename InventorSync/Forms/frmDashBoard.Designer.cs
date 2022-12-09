@@ -1,5 +1,5 @@
 ﻿
-namespace InventorSync
+namespace DigiposZen
 {
     partial class frmDashBoard
     {

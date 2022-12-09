@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Helper;
+using DigiposZen.InventorBL.Helper;
 using Newtonsoft.Json;
 using System.IO;
-using InventorSync.Forms;
+using DigiposZen.Forms;
 using System.Data.SqlClient;
 
-namespace InventorSync
+namespace DigiposZen
 {
     public partial class Login : Form
     {

@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Helper;
-using InventorSync.InventorBL.Master;
-using InventorSync.Info;
-using InventorSync.InventorBL.Accounts;
-using InventorSync.InventorBL.Transaction;
-using InventorSync.JsonClass;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.Info;
+using DigiposZen.InventorBL.Accounts;
+using DigiposZen.InventorBL.Transaction;
+using DigiposZen.JsonClass;
 using System.Data.SqlClient;
 using Newtonsoft.Json;
 using System.Reflection;
@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 
 //using Syncfusion.WinForms.DataGrid;
 
-namespace InventorSync
+namespace DigiposZen
 {
     public partial class frmEditWindow : Form, IMessageFilter
     {
@@ -3086,29 +3086,41 @@ namespace InventorSync
                 {
                     if (ITransParentID == 2) // PURCHASE
                     {
-                        //DialogResult dlgResult12 = MessageBox.Show("Are you sure to delete Purchase Invoice No [" + GetSelectedRowData("Invoice No") + " ] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                        //if (dlgResult12.Equals(DialogResult.Yes))
-                        //{
-                        //    if (dlgResult12 == DialogResult.Yes)
-                        //    {
-                          
                         int iSelectedID = GetSelectedRowID("InvId");
-                                frmStockInVoucherNew frm = new frmStockInVoucherNew(itvwSelectedNodeID, iSelectedID, true, this.MdiParent);
-                                frm.MdiParent = this.MdiParent;
-                                frm.Show();
+                        frmStockInVoucherNew frm = new frmStockInVoucherNew(itvwSelectedNodeID, iSelectedID, true, this.MdiParent);
+                        frm.MdiParent = this.MdiParent;
+                        frm.Show();
                         if (frm.DeleteVoucher() == true)
                         {
                             RemoveGridRowAfterDelete();
                         }
-
-                                //PurchaseDelete(GetSelectedRowID("InvId"), itvwSelectedNodeID);
-                                //}
-                                //}
                     }
                     else if (ITransParentID == 1) // sales
                     {
                         int iSelectedID = GetSelectedRowID("InvId");
                         frmStockOutVoucherNew frm = new frmStockOutVoucherNew(itvwSelectedNodeID, iSelectedID, true, this.MdiParent);
+                        frm.MdiParent = this.MdiParent;
+                        frm.Show();
+                        if (frm.DeleteVoucher() == true)
+                        {
+                            RemoveGridRowAfterDelete();
+                        }
+                    }
+                    else if (ITransParentID == 3) // sales return
+                    {
+                        int iSelectedID = GetSelectedRowID("InvId");
+                        frmStockOutVoucherNew frm = new frmStockOutVoucherNew(itvwSelectedNodeID, iSelectedID, true, this.MdiParent);
+                        frm.MdiParent = this.MdiParent;
+                        frm.Show();
+                        if (frm.DeleteVoucher() == true)
+                        {
+                            RemoveGridRowAfterDelete();
+                        }
+                    }
+                    else if (ITransParentID == 4) // PURCHASE return
+                    {
+                        int iSelectedID = GetSelectedRowID("InvId");
+                        frmStockInVoucherNew frm = new frmStockInVoucherNew(itvwSelectedNodeID, iSelectedID, true, this.MdiParent);
                         frm.MdiParent = this.MdiParent;
                         frm.Show();
                         if (frm.DeleteVoucher() == true)

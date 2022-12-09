@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace InventorSync.InventorBL.Helper
+namespace DigiposZen.InventorBL.Helper
 {
     public class SqlQueryBuilder
     {

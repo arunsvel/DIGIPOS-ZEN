@@ -7,22 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.Forms;
-using InventorSync.InventorBL.Master;
-using InventorSync.InventorBL.Accounts;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
+using DigiposZen.Forms;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.InventorBL.Accounts;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
 using Syncfusion.WinForms.DataGrid;
-using InventorSync.JsonClass;
+using DigiposZen.JsonClass;
 using Newtonsoft.Json;
 using DataRow = System.Data.DataRow;
-using InventorSync.InventorBL.Transaction;
+using DigiposZen.InventorBL.Transaction;
 using System.Collections;
 using Microsoft.VisualBasic;
 using System.Runtime.InteropServices;
 using System.Data.SqlClient;
 
-namespace InventorSync
+namespace DigiposZen
 {
 
     public partial class frmPhysicalStock : Form, IMessageFilter

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace InventorSync.Forms
+namespace DigiposZen.Forms
 {
     public partial class frmCompactCheckedListSearch : Form
     {

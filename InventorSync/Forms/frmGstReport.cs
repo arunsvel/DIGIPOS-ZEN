@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 
-using InventorSync.InventorBL.Helper;
+using DigiposZen.InventorBL.Helper;
 
 using System.Data.SqlClient;
 
@@ -12,7 +12,7 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 
-namespace InventorSync
+namespace DigiposZen
 {
     public partial class frmGstReport : Form
     {

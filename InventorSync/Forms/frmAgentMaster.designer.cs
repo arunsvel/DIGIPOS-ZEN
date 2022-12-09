@@ -1,5 +1,5 @@
 ﻿
-namespace InventorSync
+namespace DigiposZen
 {
     partial class frmAgentMaster
     {
@@ -551,9 +551,9 @@ namespace InventorSync
             this.label11.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(405, 262);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(168, 21);
+            this.label11.Size = new System.Drawing.Size(303, 21);
             this.label11.TabIndex = 82;
-            this.label11.Text = "Agent Ledger Name :";
+            this.label11.Text = "Agent Ledger Name (Current Liability) :";
             // 
             // txtEmail
             // 

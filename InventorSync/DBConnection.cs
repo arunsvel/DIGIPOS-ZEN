@@ -7,7 +7,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace InventorSync
+namespace DigiposZen
 {
     public class DBConnection
     {

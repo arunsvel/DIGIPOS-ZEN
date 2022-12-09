@@ -12,10 +12,10 @@ using System.Reflection;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.IO.Compression;
-using InventorSync.Info;
-using InventorSync.InventorBL.Master;
+using DigiposZen.Info;
+using DigiposZen.InventorBL.Master;
 
-namespace InventorSync.InventorBL.Helper
+namespace DigiposZen.InventorBL.Helper
 {
     public class Common : DBConnection
     {
@@ -42,6 +42,48 @@ namespace InventorSync.InventorBL.Helper
             WaitForAuthorisation = 8,
             LoggedIn = 9,
             Loggedout = 10
+        }
+
+        public double GetLedgerBalance(long LedgerID, DateTime AsOnDate, DateTime StartDate = default(DateTime), string VchtypeID = "", string strCCIDsql = "")
+        {
+            try
+            {
+                double returnvalue = 0;
+                sqlControl rs = new sqlControl();
+                string StrSqlDate = "";
+                string strVchtypeID = "";
+                if (Strings.Len(VchtypeID) > 0)
+                {
+                    if (Conversion.Val(VchtypeID) > 0)
+                        strVchtypeID = " And vchTypeID In(" + VchtypeID + ") ";
+                }
+
+                if (Strings.InStr(1, StartDate.ToString(), "00") > 1)
+                    StrSqlDate = " And vchDate <='" + AsOnDate.ToString("dd/MMM/yyyy") + "'";
+                else
+                    StrSqlDate = " and vchDate between '" + AsOnDate.ToString("dd/MMM/yyyy") + "' and '" + StartDate.ToString("dd/MMM/yyyy") + "'";
+                // =================
+
+
+                string StrCCSQL1 = "";
+                if (strCCIDsql != "")
+                    StrCCSQL1 = strCCIDsql.Replace("and", "") + " AND ";
+
+                rs.Open("Select Sum(AmountD)-Sum(AmountC) as Balance from tblVoucher where " + StrCCSQL1 + " Optional=0  " + strVchtypeID + " and LedgerID=" + LedgerID + StrSqlDate);
+
+                if (!rs.eof())
+                {
+                    if (rs.fields("Balance") != null)
+                        returnvalue = ToDouble(rs.fields("Balance"));
+                }
+                return returnvalue;
+            }
+            catch (Exception ex)
+            {
+                WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return 0;
+            }
         }
 
         public bool CheckUserPermission(UserActivity Activity, string WindowCaption, bool BlnSupressMessage = false, string CustomAccessString = "")

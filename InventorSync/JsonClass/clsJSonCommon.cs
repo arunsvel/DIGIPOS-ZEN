@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Data.SqlClient;
 using System.Data;
-using InventorSync.InventorBL.Helper;
-using InventorSync.InventorBL.Master;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.InventorBL.Master;
 using Microsoft.VisualBasic;
 
-namespace InventorSync.JsonClass
+namespace DigiposZen.JsonClass
 {
     public class clsJSonCommon
     {

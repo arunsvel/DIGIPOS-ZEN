@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DigiposZen")]
-[assembly: AssemblyDescription("Digipos is a simple invoice billing software with advanced sales, inventory and accounting management. Its built-in operational controls with several primary and intelligent MIS reports. Our products are designed to make your vitality easier. In addition to being a very efficient POS software, our products provide various powerful functionalities. These functionalities will enable you to manage your business most easily & effectively. The key functionalities include management of sales, purchases, inventory, taxation, financial accounting, suppliers, employees, and customers. Our retail billing software also handles manufacturing needs with BOM (bill of material), customer relationship management and printing of barcode stickers. Moreover, our products have integrated text messaging and emailing.")]
+[assembly: AssemblyTitle("Digipos Zen")]
+[assembly: AssemblyDescription("Digipos Zen is a simple invoice billing software with advanced sales, inventory and accounting management. Its built-in operational controls with several primary and intelligent MIS reports. Our products are designed to make your vitality easier. In addition to being a very efficient POS software, our products provide various powerful functionalities. These functionalities will enable you to manage your business most easily & effectively. The key functionalities include management of sales, purchases, inventory, taxation, financial accounting, suppliers, employees, and customers. Our retail billing software also handles manufacturing needs with BOM (bill of material), customer relationship management and printing of barcode stickers. Moreover, our products have integrated text messaging and emailing.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("DIGIPOS BUSINESS SOLUTIONS PVT LTD")]
-[assembly: AssemblyProduct("DigiposZen")]
+[assembly: AssemblyProduct("Digipos Zen")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("DIGIPOS BUSINESS SOLUTIONS PVT LTD")]
 [assembly: AssemblyCulture("")]

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 
 
-namespace InventorSync.Usercontol
+namespace DigiposZen.Usercontol
 {
     public partial class CompactCheckListSearch : UserControl
     {

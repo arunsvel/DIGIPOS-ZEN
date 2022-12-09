@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace InventorSync.Controls
+namespace DigiposZen.Controls
 {
     public partial class ToastForm : Form
     {

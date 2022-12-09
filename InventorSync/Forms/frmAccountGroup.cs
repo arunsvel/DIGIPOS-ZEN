@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Accounts;
-using InventorSync.InventorBL.Master;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
+using DigiposZen.InventorBL.Accounts;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
 using System.Runtime.InteropServices;
 using Syncfusion.Windows.Forms.Tools;
 
-namespace InventorSync
+namespace DigiposZen
 {
     // ======================================================== >>
     // Description:Tax Mode Creation

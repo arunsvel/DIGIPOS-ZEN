@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InventorSync.InventorBL.Transaction
+namespace DigiposZen.InventorBL.Transaction
 {
     public class clsCashDesk
     {

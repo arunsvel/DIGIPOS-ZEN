@@ -1,5 +1,5 @@
-﻿using InventorSync.InventorBL.Helper;
-using InventorSync.InventorBL.Transaction;
+﻿using DigiposZen.InventorBL.Helper;
+using DigiposZen.InventorBL.Transaction;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InventorSync.Forms
+namespace DigiposZen.Forms
 {
     public partial class frmCashDesk : Form
     {
@@ -39,31 +39,29 @@ namespace InventorSync.Forms
                     txtAmount.Visible = false;
                     btnAdd.Visible = false;
                     label4.Visible = false;
-                    flpPaymentModes.Visible = false;
-                    SqlDataAdapter da1 = new SqlDataAdapter("SELECT L1.LAliasName as LEDGER_NAME,L1.Address as ADDRESS,MobileNo as MOBILE_NO,ABS(SUM(AmountD)-SUM(AmountC))AS BALANCE, CASE WHEN ((SUM(AmountD)-SUM(AmountC))> '0') THEN 'DR' ELSE 'CR' END AS  _  FROM dbo.tblAccountGroup INNER JOIN dbo.tblLedger as L1 ON dbo.tblAccountGroup.AccountGroupID = L1.AccountGroupID INNER JOIN dbo.tblVoucher ON L1.LID = dbo.tblVoucher.LedgerID INNER JOIN    dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID LEFT OUTER JOIN dbo.tblEmployee ON dbo.tblVoucher.SalesManID = dbo.tblEmployee.EmpID WHERE ISNULL(tblAccountGroup.activestatus, 1) = 1 and tblVoucher.Optional = 0  AND  L1.AccountGroupID = 11 AND LedgerID='" + mcashdesk.LedgerID + "' GROUP BY L1.LAliasName, L1.Address, MobileNo", DigiposZen.Properties.Settings.Default.ConnectionString);
-                    DataTable dt3 = new DataTable();
-                    da1.Fill(dt3);
+                    //SqlDataAdapter da1 = new SqlDataAdapter("SELECT L1.LAliasName as LEDGER_NAME,L1.Address as ADDRESS,MobileNo as MOBILE_NO,ABS(SUM(AmountD)-SUM(AmountC))AS BALANCE, CASE WHEN ((SUM(AmountD)-SUM(AmountC))> '0') THEN 'DR' ELSE 'CR' END AS  _  FROM dbo.tblAccountGroup INNER JOIN dbo.tblLedger as L1 ON dbo.tblAccountGroup.AccountGroupID = L1.AccountGroupID INNER JOIN dbo.tblVoucher ON L1.LID = dbo.tblVoucher.LedgerID INNER JOIN    dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID LEFT OUTER JOIN dbo.tblEmployee ON dbo.tblVoucher.SalesManID = dbo.tblEmployee.EmpID WHERE ISNULL(tblAccountGroup.activestatus, 1) = 1 and tblVoucher.Optional = 0  AND  L1.AccountGroupID = 11 AND LedgerID='" + mcashdesk.LedgerID + "' GROUP BY L1.LAliasName, L1.Address, MobileNo", DigiposZen.Properties.Settings.Default.ConnectionString);
+                    //DataTable dt3 = new DataTable();
+                    //da1.Fill(dt3);
+                    //if (dt3.Rows.Count > 0 && dt3.Rows[0]["BALANCE"].ToString()=="")
+                    //{
+                    //    txtPreviousBalance.Text = dt3.Rows[0]["BALANCE"].ToString();
+                    //}
+                    //else
+                    //{
+                    //    txtPreviousBalance.Text = "0";
+                    //}
 
-                    if (dt3.Rows.Count > 0 && dt3.Rows[0]["BALANCE"].ToString()=="")
-                    {
-                        txtPreviousBalance.Text = dt3.Rows[0]["BALANCE"].ToString();
-                    }
-                    else
-                    {
-                        txtPreviousBalance.Text = "0";
-                    }
+                    txtPreviousBalance.Text = Comm.GetLedgerBalance(Comm.ToInt32(mcashdesk.LedgerID), DateTime.Today).ToString();
                 }
                 else if (mcashdesk.MOP == "Cash")
                 {
                     panel5.Visible = false;
                     lblMop.Text = "CASH";
-                    flpPaymentModes.Visible = false;
                 }
                 else if (mcashdesk.MOP == "Mixed")
                 {
                     panel5.Visible = false;
                     lblMop.Text = "CASH";
-                    flpPaymentModes.Visible = true;
                 }
                 int[] myCurrencies = { 1, 2, 5, 10, 20, 50, 100, 200, 500, 2000 };
 
@@ -103,122 +101,116 @@ namespace InventorSync.Forms
 
                 int i = 1;
 
-
                 try
                 {
-                    if (mcashdesk.BillAmount > 0)
+                    while (PropIncr <= 9)
                     {
-                        while (PropIncr <= 9)
-                        {
-                            if (PropIncr >= 9) break;
+                        if (PropIncr >= 9) break;
 
-                            if (ProposedAmounts[PropIncr - 1] == 2000) break;
-                            if (ProposedAmounts[PropIncr - 1] > 2000)
+                        if (ProposedAmounts[PropIncr - 1] == 2000) break;
+                        if (ProposedAmounts[PropIncr - 1] > 2000)
+                        {
+
+                            if (ProposedAmounts[PropIncr - 1] % 500 == 0)
+                                break;
+                        }
+                     
+                        ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+
+                        ConvDigit = Comm.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
+                        if (ConvDigit == 1)
+                        {
+                            CurrentCurrency = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+                            CurrencyCheck = Comm.ToInt32(ProposedAmounts[PropIncr - 1].ToString().Substring(ProposedAmounts[PropIncr - 1].ToString().Length - i, i));
+                            CurrentCurrency = CurrentCurrency - CurrencyCheck;
+
+                            CurrencyCheck = CurrencyCheck + ((2 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 2
+
+                            if (CurrencyCheck == 1000 && ProposedAmounts[PropIncr - 1] < 1000) // || CurrencyCheck == 10000 || CurrencyCheck == 100000 || CurrencyCheck == 1000000 || CurrencyCheck == 10000000 || CurrencyCheck == 100000000 || CurrencyCheck == 1000000000)
+                                CurrencyCheck = CurrencyCheck * 2;
+
+                            ProposedAmounts[PropIncr] = SeparatedAmount + CurrentCurrency + CurrencyCheck; // ProposedAmounts[PropIncr - 1] + ((2 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 2
+
+                            if (ProposedAmounts[PropIncr] == 2000) break;
+                            if (ProposedAmounts[PropIncr] > 2000)
                             {
-                                if (ProposedAmounts[PropIncr - 1] % 500 == 0)
+                                if (ProposedAmounts[PropIncr] % 500 == 0)
                                     break;
                             }
-                            //if (i >= ProposedAmounts[PropIncr - 1].ToString().Length) break;
 
-                            //Digit that is to be converted
+                            PropIncr++;
+                            if (PropIncr >= 9) break;
 
                             ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-
                             ConvDigit = Comm.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
-                            if (ConvDigit == 1)
+                        }
+                        if (ConvDigit >= 2 && ConvDigit < 5)
+                        {
+                            CurrentCurrency = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+                            CurrencyCheck = Comm.ToInt32(ProposedAmounts[PropIncr - 1].ToString().Substring(ProposedAmounts[PropIncr - 1].ToString().Length - i, i));
+                            CurrentCurrency = CurrentCurrency - CurrencyCheck;
+
+                            CurrencyCheck = CurrencyCheck + ((5 * ConvFactor) - (ConvDigit * ConvFactor));
+
+                            if (CurrencyCheck == 1000 && ProposedAmounts[PropIncr - 1] < 1000)
+                                CurrencyCheck = CurrencyCheck * 2;
+
+                            ProposedAmounts[PropIncr] = SeparatedAmount + CurrentCurrency + CurrencyCheck; // ProposedAmounts[PropIncr - 1] + ((5 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 5
+
+                            if (ProposedAmounts[PropIncr] == 2000) break;
+                            if (ProposedAmounts[PropIncr] > 2000)
                             {
-                                CurrentCurrency = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-                                CurrencyCheck = Comm.ToInt32(ProposedAmounts[PropIncr - 1].ToString().Substring(ProposedAmounts[PropIncr - 1].ToString().Length - i, i));
-                                CurrentCurrency = CurrentCurrency - CurrencyCheck;
-
-                                CurrencyCheck = CurrencyCheck + ((2 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 2
-
-                                if (CurrencyCheck == 1000 && ProposedAmounts[PropIncr - 1] < 1000) // || CurrencyCheck == 10000 || CurrencyCheck == 100000 || CurrencyCheck == 1000000 || CurrencyCheck == 10000000 || CurrencyCheck == 100000000 || CurrencyCheck == 1000000000)
-                                    CurrencyCheck = CurrencyCheck * 2;
-
-                                ProposedAmounts[PropIncr] = SeparatedAmount + CurrentCurrency + CurrencyCheck; // ProposedAmounts[PropIncr - 1] + ((2 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 2
-
-                                if (ProposedAmounts[PropIncr] == 2000) break;
-                                if (ProposedAmounts[PropIncr] > 2000)
-                                {
-                                    if (ProposedAmounts[PropIncr] % 500 == 0)
-                                        break;
-                                }
-
-                                PropIncr++;
-                                if (PropIncr >= 9) break;
-
-                                ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-                                ConvDigit = Comm.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
-                            }
-                            if (ConvDigit >= 2 && ConvDigit < 5)
-                            {
-                                CurrentCurrency = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-                                CurrencyCheck = Comm.ToInt32(ProposedAmounts[PropIncr - 1].ToString().Substring(ProposedAmounts[PropIncr - 1].ToString().Length - i, i));
-                                CurrentCurrency = CurrentCurrency - CurrencyCheck;
-
-                                CurrencyCheck = CurrencyCheck + ((5 * ConvFactor) - (ConvDigit * ConvFactor));
-
-                                if (CurrencyCheck == 1000 && ProposedAmounts[PropIncr - 1] < 1000)
-                                    CurrencyCheck = CurrencyCheck * 2;
-
-                                ProposedAmounts[PropIncr] = SeparatedAmount + CurrentCurrency + CurrencyCheck; // ProposedAmounts[PropIncr - 1] + ((5 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 5
-
-                                if (ProposedAmounts[PropIncr] == 2000) break;
-                                if (ProposedAmounts[PropIncr] > 2000)
-                                {
-                                    if (ProposedAmounts[PropIncr] % 500 == 0)
-                                        break;
-                                }
-
-                                PropIncr++;
-                                if (PropIncr >= 9) break;
-
-                                ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-                                ConvDigit = Comm.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
-                            }
-                            if (ConvDigit >= 5 && ConvDigit < 10)
-                            {
-                                CurrentCurrency = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-                                CurrencyCheck = Comm.ToInt32(ProposedAmounts[PropIncr - 1].ToString().Substring(ProposedAmounts[PropIncr - 1].ToString().Length - i, i));
-                                CurrentCurrency = CurrentCurrency - CurrencyCheck;
-
-                                CurrencyCheck = CurrencyCheck + ((10 * ConvFactor) - (ConvDigit * ConvFactor));
-
-                                if (CurrencyCheck == 1000 && ProposedAmounts[PropIncr - 1] < 1000)
-                                    CurrencyCheck = CurrencyCheck * 2;
-
-                                ProposedAmounts[PropIncr] = SeparatedAmount + CurrentCurrency + CurrencyCheck; // ProposedAmounts[PropIncr - 1] + ((10 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 0
-
-                                if (ProposedAmounts[PropIncr] == 2000) break;
-                                if (ProposedAmounts[PropIncr] > 2000)
-                                {
-                                    if (ProposedAmounts[PropIncr] % 500 == 0)
-                                        break;
-                                }
-
-                                PropIncr++;
-                                if (PropIncr >= 9) break;
-
-                                ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
-                                ConvDigit = Comm.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
-                            }
-
-                            if (ProposedAmounts[PropIncr - 1] > 2000)
-                            {
-                                if (ProposedAmounts[PropIncr - 1] % 500 == 0)
+                                if (ProposedAmounts[PropIncr] % 500 == 0)
                                     break;
                             }
 
-
-                            //if (ProposedAmounts[PropIncr - 1] % 500 == 0)
-                            //    break;
-                            //When the digit is rounded to 10, then i is incremented so that next time loop runs 2 digits will be separated
-                            i++;
-                            ConvFactor *= 10;
-
+                            PropIncr++;
                             if (PropIncr >= 9) break;
+
+                            ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+                            ConvDigit = Comm.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
                         }
+                        if (ConvDigit >= 5 && ConvDigit < 10)
+                        {
+                            CurrentCurrency = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+                            CurrencyCheck = Comm.ToInt32(ProposedAmounts[PropIncr - 1].ToString().Substring(ProposedAmounts[PropIncr - 1].ToString().Length - i, i));
+                            CurrentCurrency = CurrentCurrency - CurrencyCheck;
+
+                            CurrencyCheck = CurrencyCheck + ((10 * ConvFactor) - (ConvDigit * ConvFactor));
+
+                            if (CurrencyCheck == 1000 && ProposedAmounts[PropIncr - 1] < 1000)
+                                CurrencyCheck = CurrencyCheck * 2;
+
+                            ProposedAmounts[PropIncr] = SeparatedAmount + CurrentCurrency + CurrencyCheck; // ProposedAmounts[PropIncr - 1] + ((10 * ConvFactor) - (ConvDigit * ConvFactor)); //lastdigit will become 0
+
+                            if (ProposedAmounts[PropIncr] == 2000) break;
+                            if (ProposedAmounts[PropIncr] > 2000)
+                            {
+                                if (ProposedAmounts[PropIncr] % 500 == 0)
+                                    break;
+                            }
+
+                            PropIncr++;
+                            if (PropIncr >= 9) break;
+
+                            ConvertingAmount = ProposedAmounts[PropIncr - 1] - SeparatedAmount;
+                            ConvDigit = Comm.ToInt32(ConvertingAmount.ToString().Substring(ConvertingAmount.ToString().Length - i, 1));
+                        }
+
+                        if (ProposedAmounts[PropIncr - 1] > 2000)
+                        {
+                            if (ProposedAmounts[PropIncr - 1] % 500 == 0)
+                                break;
+                        }
+
+
+                        //if (ProposedAmounts[PropIncr - 1] % 500 == 0)
+                        //    break;
+                        //When the digit is rounded to 10, then i is incremented so that next time loop runs 2 digits will be separated
+                        i++;
+                        ConvFactor *= 10;
+
+                        if (PropIncr >= 9) break;
                     }
                 }
                 catch (Exception ex)
@@ -302,10 +294,6 @@ namespace InventorSync.Forms
 
                 txtTotal.Text = "0";
 
-
-
-
-
                 string commandText = "Select PaymentID,PaymentType,LedgerID From tblCashDeskMaster ORDER BY PaymentID";
 
                 DataTable dt = Comm.fnGetData(commandText).Tables[0];
@@ -313,32 +301,67 @@ namespace InventorSync.Forms
                 int btnName = 0;
                 if (dt.Rows.Count > 0)
                 {
-                    btnName++;
-
-                    int PosY = 5;
-                    int rowCount = -1;
-                    int numOfRows = dt.Rows.Count;
-                    for (i = 0; i < numOfRows; i++)
+                    if (mcashdesk.MOP == "Cash" || mcashdesk.MOP == "Credit")
                     {
-                        string btnText = "";
-                        rowCount++;
-                        //foreach (DataRow row in dt.Rows)
+                        btnName++;
+
+                        int PosY1 = 5;
+                        int rowCount1 = -1;
+                        int numOfRows1 = dt.Rows.Count;
+                        for (i = 0; i < numOfRows1; i++)
                         {
-                            btnText = dt.Rows[rowCount]["PaymentType"].ToString();
+                            string btnText = "";
+                            rowCount1++;
+                            //foreach (DataRow row in dt.Rows)
+                            {
+                                btnText = dt.Rows[rowCount1]["PaymentType"].ToString();
+                            }
+                            Button button = new Button();
+                            button.Enabled = true;
+                            button.Text = btnText;
+                            button.BackColor = Color.LightBlue;
+                            button.ForeColor = Color.LightPink;
+                            button.Width = 130;
+                            button.Height = 40;
+                            button.Name = "btn_" + dt.Rows[rowCount1]["PaymentID"].ToString();
+                            button.Tag = dt.Rows[rowCount1]["LedgerID"].ToString();
+                            button.Font = new Font("Tahoma", 11);
+                            button.Click += Button_Click;
+                            button.Enabled = false;
+                            flpPaymentModes.Controls.Add(button);
+                            PosY1 += 65;
                         }
-                        Button button = new Button();
-                        button.Enabled = true;
-                        button.Text = btnText;
-                        button.BackColor = Color.DimGray;
-                        button.ForeColor = Color.White;
-                        button.Width = 150;
-                        button.Height = 50;
-                        button.Name = "btn_" + dt.Rows[rowCount]["PaymentID"].ToString();
-                        button.Tag = dt.Rows[rowCount]["LedgerID"].ToString();
-                        button.Font = new Font("Georgia", 14);
-                        button.Click += Button_Click;
-                        flpPaymentModes.Controls.Add(button);
-                        PosY += 65;
+
+                    }
+                    else
+                    {
+                        btnName++;
+
+                        int PosY = 5;
+                        int rowCount = -1;
+                        int numOfRows = dt.Rows.Count;
+                        for (i = 0; i < numOfRows; i++)
+                        {
+                            string btnText = "";
+                            rowCount++;
+                            //foreach (DataRow row in dt.Rows)
+                            {
+                                btnText = dt.Rows[rowCount]["PaymentType"].ToString();
+                            }
+                            Button button = new Button();
+                            button.Enabled = true;
+                            button.Text = btnText;
+                            button.BackColor = Color.LightSteelBlue;
+                            button.ForeColor = Color.Black;
+                            button.Width = 130;
+                            button.Height = 40;
+                            button.Name = "btn_" + dt.Rows[rowCount]["PaymentID"].ToString();
+                            button.Tag = dt.Rows[rowCount]["LedgerID"].ToString();
+                            button.Font = new Font("Tahoma", 11);
+                            button.Click += Button_Click;
+                            flpPaymentModes.Controls.Add(button);
+                            PosY += 65;
+                        }
                     }
 
                     if (flpPaymentModes.Controls.Count > 0)
@@ -351,8 +374,8 @@ namespace InventorSync.Forms
 
                 var deleteButton = new DataGridViewButtonColumn();
                 deleteButton.Name = "dataGridViewDeleteButton";
-                deleteButton.Text = "X";
-                deleteButton.Width = 60;
+                deleteButton.Text = "*";
+                deleteButton.Width = 13;
                 deleteButton.UseColumnTextForButtonValue = true;
                 this.dgvPayments.Columns.Add(deleteButton);
 
@@ -384,11 +407,12 @@ namespace InventorSync.Forms
                 decimal c = a + b;
                 txtOutstanting.Text = c.ToString();
                 txtAmount.Text = txtBillAmount.Text;
+                
 
 
-                //string d = "select PaymentType,Amount,PaymentID,LedgerID from tblCashDeskItems join tblCashDeskdetails on tblCashDeskItems.id =tblCashDeskdetails.id where InvID=" + mcashdesk.InvID + "";
+                string d = "select PaymentType,Amount from tblCashDeskItems join tblCashDeskdetails on tblCashDeskItems.id =tblCashDeskdetails.id where InvID=" + mcashdesk.InvID + "";
 
-                SqlDataAdapter da = new SqlDataAdapter("select PaymentType,PaymentID,LedgerID,Amount,BillAmount,PreviousBalance,TotalOutstanting,CurrentReceipt,CurrentBalance from tblCashDeskItems join tblCashDeskdetails on tblCashDeskItems.id =tblCashDeskdetails.id where InvID=" + mcashdesk.InvID + "", DigiposZen.Properties.Settings.Default.ConnectionString);
+                SqlDataAdapter da = new SqlDataAdapter("select PaymentType,Amount,BillAmount,PreviousBalance,TotalOutstanting,CurrentReceipt,CurrentBalance from tblCashDeskItems join tblCashDeskdetails on tblCashDeskItems.id =tblCashDeskdetails.id where InvID=" + mcashdesk.InvID + "", DigiposZen.Properties.Settings.Default.ConnectionString);
                 DataTable dt1 = new DataTable();
                 da.Fill(dt1);
                 if (dt1.Rows.Count > 0)
@@ -407,26 +431,14 @@ namespace InventorSync.Forms
                         {
                             for (int j = 0; j < dt1.Rows.Count; j++)
                             {
-                                History_addGrid(dt1.Rows[j]["PaymentType"].ToString(), dt1.Rows[j]["Amount"].ToString(), "", dt1.Rows[j]["PaymentID"].ToString(), dt1.Rows[j]["LedgerID"].ToString());
+                                History_addGrid(dt1.Rows[j]["PaymentType"].ToString(), dt1.Rows[j]["Amount"].ToString(), "", 3.ToString(), 0.ToString());
                             }
 
-                            //        panel2.Visible = false;
-                            //        panel5.Visible = false;
-                            //        btnOk.Visible = false;
-                            //        btnAdd.Visible = false;
-                            //        lblBalance.Visible = false;
-                            //        flpPaymentModes.Visible = false;
-                            //        dgvPayments.Columns[2].Visible = false;
-                            //        label4.Visible = false;
-                            //        txtAmount.Visible = false;
-                            //        lblMop.Visible = false;
-
-
-                            //    }
-                            //}
                         }
                     }
                 }
+                txtAmount.SelectAll();
+
             }
             catch (Exception ex)
             {
@@ -440,6 +452,15 @@ namespace InventorSync.Forms
             
             lblMop.Text = buttonName;
             lblMop.Tag = button.Name.Replace("btn_", "");
+           if(button.Text==lblMop.Text)
+            {
+                button.BackColor = Color.White;
+
+            }
+           else
+            {
+                button.BackColor=Color.LightSteelBlue;
+            }
             txtAmount.Tag = button.Tag;
             if (dgvPayments.Rows.Count == 0)
             {
@@ -588,7 +609,14 @@ namespace InventorSync.Forms
                 }
                 else
                 {
-                    txtAmount.Text = txtAmount.Text + 8;
+                    if (txtAmount.SelectionLength == txtAmount.Text.Length)
+                    {
+                        txtAmount.Text = 8.ToString();
+                    }
+                    else
+                    {
+                        txtAmount.Text = txtAmount.Text + 8;
+                    }
                 }
                
             }
@@ -608,7 +636,14 @@ namespace InventorSync.Forms
                 }
                 else
                 {
-                    txtAmount.Text = txtAmount.Text + 1;
+                    if (txtAmount.SelectionLength == txtAmount.Text.Length)
+                    {
+                        txtAmount.Text = 1.ToString();
+                    }
+                    else
+                    {
+                        txtAmount.Text = txtAmount.Text + 1;
+                    }
                 }
             }
             catch (Exception ex)
@@ -627,7 +662,14 @@ namespace InventorSync.Forms
                 }
                 else
                 {
-                    txtAmount.Text = txtAmount.Text + 2;
+                    if (txtAmount.SelectionLength == txtAmount.Text.Length)
+                    {
+                        txtAmount.Text = 2.ToString();
+                    }
+                    else
+                    {
+                        txtAmount.Text = txtAmount.Text + 2;
+                    }
                 }
             }
             catch (Exception ex)
@@ -646,7 +688,14 @@ namespace InventorSync.Forms
                 }
                 else
                 {
-                    txtAmount.Text = txtAmount.Text + 3;
+                    if (txtAmount.SelectionLength == txtAmount.Text.Length)
+                    {
+                        txtAmount.Text = 3.ToString();
+                    }
+                    else
+                    {
+                        txtAmount.Text = txtAmount.Text + 3;
+                    }
                 }
             }
             catch (Exception ex)
@@ -665,7 +714,14 @@ namespace InventorSync.Forms
                 }
                 else
                 {
-                    txtAmount.Text = txtAmount.Text + 4;
+                    if (txtAmount.SelectionLength == txtAmount.Text.Length)
+                    {
+                        txtAmount.Text = 4.ToString();
+                    }
+                    else
+                    {
+                        txtAmount.Text = txtAmount.Text + 4;
+                    }
                 }
             }
             catch (Exception ex)
@@ -684,7 +740,14 @@ namespace InventorSync.Forms
                 }
                 else
                 {
-                    txtAmount.Text = txtAmount.Text + 5;
+                    if (txtAmount.SelectionLength == txtAmount.Text.Length)
+                    {
+                        txtAmount.Text = 5.ToString();
+                    }
+                    else
+                    {
+                        txtAmount.Text = txtAmount.Text + 5;
+                    }
                 }
             }
             catch (Exception ex)
@@ -703,7 +766,14 @@ namespace InventorSync.Forms
                 }
                 else
                 {
-                    txtAmount.Text = txtAmount.Text + 6;
+                    if (txtAmount.SelectionLength == txtAmount.Text.Length)
+                    {
+                        txtAmount.Text = 6.ToString();
+                    }
+                    else
+                    {
+                        txtAmount.Text = txtAmount.Text + 6;
+                    }
                 }
             }
             catch (Exception ex)
@@ -722,7 +792,14 @@ namespace InventorSync.Forms
                 }
                 else
                 {
-                    txtAmount.Text = txtAmount.Text + 7;
+                    if (txtAmount.SelectionLength == txtAmount.Text.Length)
+                    {
+                        txtAmount.Text = 7.ToString();
+                    }
+                    else
+                    {
+                        txtAmount.Text = txtAmount.Text + 7;
+                    }
                 }
             }
             catch (Exception ex)
@@ -741,7 +818,14 @@ namespace InventorSync.Forms
                 }
                 else
                 {
-                    txtAmount.Text = txtAmount.Text + 9;
+                    if (txtAmount.SelectionLength == txtAmount.Text.Length)
+                    {
+                        txtAmount.Text = 9.ToString();
+                    }
+                    else
+                    {
+                        txtAmount.Text = txtAmount.Text + 9;
+                    }
                 }
             }
             catch (Exception ex)
@@ -826,7 +910,14 @@ namespace InventorSync.Forms
                 }
                 else
                 {
-                    txtAmount.Text = txtAmount.Text + "0";
+                    if (txtAmount.SelectionLength == txtAmount.Text.Length)
+                    {
+                        txtAmount.Text = 0.ToString();
+                    }
+                    else
+                    {
+                        txtAmount.Text = txtAmount.Text + "0";
+                    }
                    
                 }
             }
@@ -898,7 +989,6 @@ namespace InventorSync.Forms
         {
             try
             {
-
                 DataGridViewRow newRow = new DataGridViewRow();
                 newRow.CreateCells(dgvPayments);
 
@@ -1008,7 +1098,21 @@ namespace InventorSync.Forms
                     //this condition works when the gpay, phonepay etc is selected, there they won't click the add button
                     if ((Comm.ToDecimal(txtBillAmount.Text) - (Comm.ToDecimal(txtTotal.Text))) > 0 && (Comm.ToDecimal(txtAmount.Text))< (Comm.ToDecimal(txtBillAmount.Text)))
                     {
-                        MessageBox.Show("Settled amount is less than billamount");
+                        if (mcashdesk.LedgerID > 1000)
+                        {
+                            
+                            DialogResult dlgResult = MessageBox.Show("Shortage Amount of RS " + txtShortage.Text + " Credited to Customer", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                            if (dlgResult.Equals(DialogResult.Yes))
+                            {
+                                clsCashDeskDetail cdd = new clsCashDeskDetail("Credit".ToUpper(), 0, 0, Comm.ToDecimal(txtBillAmount.Text), Comm.ToDecimal(txtPreviousBalance.Text), Comm.ToDecimal(txtOutstanting.Text), Comm.ToDecimal(txtCurrentReceipt.Text), Comm.ToDecimal(txtShortage.Text));
+                                mcashdesk.PaymentDetails.Add(cdd);
+                                Dataposs();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Settled amount is less than billamount");
+                        }
                     }
                     else
                     {
@@ -1031,7 +1135,7 @@ namespace InventorSync.Forms
                             if (mcashdesk.PaymentDetails != null) mcashdesk.PaymentDetails.Clear();
                             for (int i = 0; i < dgvPayments.Rows.Count; i++)
                             {
-                                clsCashDeskDetail cdd = new clsCashDeskDetail(dgvPayments[0, i].Value.ToString(), Comm.ToInt32(dgvPayments[3, i].Value.ToString()), Comm.ToInt32(dgvPayments[4, i].Value.ToString()), Comm.ToInt32(dgvPayments[1, i].Value.ToString()), 0,0,0,0);
+                                clsCashDeskDetail cdd = new clsCashDeskDetail(dgvPayments[0, i].Value.ToString(), Comm.ToInt32(dgvPayments[3, i].Value.ToString()), Comm.ToInt32(dgvPayments[4, i].Value.ToString()), Comm.ToInt32(dgvPayments[1, i].Value.ToString()),0,0,0,0);
                                 mcashdesk.PaymentDetails.Add(cdd);
                             }
                         }
@@ -1040,7 +1144,7 @@ namespace InventorSync.Forms
                             if (mcashdesk.PaymentDetails != null) mcashdesk.PaymentDetails.Clear();
                             for (int i = 0; i < dgvPayments.Rows.Count; i++)
                             {
-                                clsCashDeskDetail cdd = new clsCashDeskDetail(dgvPayments[0, i].Value.ToString(), Comm.ToInt32(dgvPayments[3, i].Value.ToString()), Comm.ToInt32(dgvPayments[4, i].Value.ToString()), Comm.ToInt32(dgvPayments[1, i].Value.ToString()),0,0,0,0);
+                                clsCashDeskDetail cdd = new clsCashDeskDetail(dgvPayments[0, i].Value.ToString(), 1, 3, Comm.ToInt32(dgvPayments[1, i].Value.ToString()),0,0,0,0);
                                 mcashdesk.PaymentDetails.Add(cdd);
                             }
                         }
@@ -1065,7 +1169,7 @@ namespace InventorSync.Forms
                             }
                             else if (lblMop.Text == "Credit")
                             {
-                                clsCashDeskDetail cdd = new clsCashDeskDetail("Credit".ToUpper(), 0, Comm.ToInt32(mcashdesk.LedgerID), Comm.ToDecimal(txtBillAmount.Text), Comm.ToDecimal(txtPreviousBalance.Text), Comm.ToDecimal(txtOutstanting.Text), Comm.ToDecimal(txtCurrentReceipt.Text), Comm.ToDecimal(txtCurrentBalance.Text));
+                                clsCashDeskDetail cdd = new clsCashDeskDetail("Credit".ToUpper(), 0, 0, Comm.ToDecimal(txtBillAmount.Text), Comm.ToDecimal(txtPreviousBalance.Text), Comm.ToDecimal(txtOutstanting.Text), Comm.ToDecimal(txtCurrentReceipt.Text), Comm.ToDecimal(txtCurrentBalance.Text));
                                 mcashdesk.PaymentDetails.Add(cdd);
                                 Dataposs();
                             }
@@ -1150,6 +1254,8 @@ namespace InventorSync.Forms
                                 if ((ba - a) > 0)
                                 {
                                     txtAmount.Text = (ba - a).ToString();
+                                    txtAmount.Focus();
+                                    txtAmount.SelectAll();
                                 }
                                 else
                                 {
@@ -1232,7 +1338,14 @@ namespace InventorSync.Forms
                 }
                 else
                 {
-                    txtAmount.Text = txtAmount.Text + "00";
+                    if (txtAmount.SelectionLength == txtAmount.Text.Length)
+                    {
+                        txtAmount.Text = 00.ToString();
+                    }
+                    else
+                    {
+                        txtAmount.Text = txtAmount.Text + "00";
+                    }
                 }
             }
             catch (Exception ex)
@@ -1243,25 +1356,40 @@ namespace InventorSync.Forms
 
         private void txtAmount_TextChanged(object sender, EventArgs e)
         {
-            decimal t = 0;
-            if (txtAmount.Text == "")
+            if (txtAmount.Text != "0.00")
             {
-                 t = Comm.ToDecimal("0");
-            }
-            else
-            {
-                 t = Comm.ToDecimal(txtAmount.Text);
-            }
-            decimal a = Comm.ToDecimal(txtBillAmount.Text);
+                decimal t = 0;
+                if (txtAmount.Text == "")
+                {
+                    t = Comm.ToDecimal("0");
+                }
+                else
+                {
+                    t = Comm.ToDecimal(txtAmount.Text);
+                }
+                decimal a = Comm.ToDecimal(txtBillAmount.Text);
 
-            decimal b = t - a;
-            if (b > 0)
-            {
-                lblBalance.Text = "Balance : " + b;
-            }
-            else
-            {
-                lblBalance.Text = "Balance : 0";
+                decimal b = t - a;
+                if (txtShortage.Text == "")
+                {
+                    lblBalance.Text = "Balance : " + b;
+                }
+                else
+                {
+                    decimal x = 0;
+                    if (txtAmount.Text == "")
+                    {
+                        x = Comm.ToDecimal("0");
+                    }
+                    else
+                    {
+                        x = Comm.ToDecimal(txtAmount.Text);
+                    }
+                    decimal y = Comm.ToDecimal(txtShortage.Text);
+
+                    decimal Z = x - y;
+                    lblBalance.Text = "Balance : " + Z;
+                }
             }
         }
 
@@ -1278,6 +1406,17 @@ namespace InventorSync.Forms
             {
                 e.Handled = true;
             }
+        }
+
+        private void txtTotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmCashDesk_Shown(object sender, EventArgs e)
+        {
+            txtAmount.Focus();
+            txtAmount.SelectAll();
         }
     }
 }

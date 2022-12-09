@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventorSync.InventorBL.Master;
-using InventorSync.InventorBL.Helper;
-using InventorSync.Info;
-using InventorSync.Forms;
+using DigiposZen.InventorBL.Master;
+using DigiposZen.InventorBL.Helper;
+using DigiposZen.Info;
+using DigiposZen.Forms;
 using Syncfusion.Windows.Forms.Tools;
 using System.Runtime.InteropServices;
 
-namespace InventorSync
+namespace DigiposZen
 {
     public partial class frmUser : Form, IMessageFilter
     {

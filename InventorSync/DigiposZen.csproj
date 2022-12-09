@@ -7,7 +7,7 @@
     <ProjectGuid>{D0F313BB-E926-4E55-9889-804005F18A6F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>DigiposZen</RootNamespace>
-    <AssemblyName>DigiposZen</AssemblyName>
+    <AssemblyName>Digipos Zen</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -67,7 +67,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>InventorSync.Program</StartupObject>
+    <StartupObject>DigiposZen.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
