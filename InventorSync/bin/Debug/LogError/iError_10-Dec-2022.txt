@@ -1,0 +1,49 @@
+10-Dec-2022 14:12:21
+EventTarget:GetItemMaster
+Could not find stored procedure 'UspGetItemMaster'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+10-Dec-2022 14:15:32
+EventTarget:GetItemMaster
+Could not find stored procedure 'UspGetItemMaster'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+10-Dec-2022 14:16:26
+EventTarget:GetItemMaster
+Could not find stored procedure 'UspGetItemMaster'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+10-Dec-2022 16:03:46
+EventTarget:dgvPurchase_CellEndEdit
+Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+10-Dec-2022 16:06:08
+EventTarget:dgvPurchase_CellEndEdit
+Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+10-Dec-2022 16:06:15
+EventTarget:dgvPurchase_CellEndEdit
+Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+10-Dec-2022 16:07:52
+EventTarget:dgvPurchase_CellEndEdit
+Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------

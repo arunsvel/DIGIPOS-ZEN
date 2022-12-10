@@ -686,6 +686,8 @@ namespace DigiposZen
                     SetValue(GetEnum(GridColIndexes.cDiscPer), Comm.FormatAmt(dResult, ""), "");
                     dgvPurchase.CellEndEdit += dgvPurchase_CellEndEdit;
 
+                    //dgvPurchase.EndEdit();
+
                     SendKeys.Send("{up}");
                     SendKeys.Send("{right}");
                 }
@@ -866,7 +868,11 @@ namespace DigiposZen
                 }
                 else if (e.ColumnIndex == GetEnum(GridColIndexes.cDiscAmount))
                 {
-                    dgvPurchase.CurrentCell = dgvPurchase[GetEnum(GridColIndexes.CItemCode), e.RowIndex + 1];
+                    //dgvPurchase.CurrentCell = dgvPurchase[GetEnum(GridColIndexes.CItemCode), e.RowIndex + 1];
+                    dgvPurchase.BeginInvoke(new MethodInvoker(delegate ()
+                    {
+                        dgvPurchase.CurrentCell = dgvPurchase[GetEnum(GridColIndexes.CItemCode), e.RowIndex + 1];
+                    }));
                 }
                 else if (e.ColumnIndex >= GetEnum(GridColIndexes.cSRate1Per) && e.ColumnIndex < GetEnum(GridColIndexes.cDiscAmount))
                 {
@@ -4490,6 +4496,9 @@ namespace DigiposZen
             clsJPMinfo.LedgerId = Comm.ToDecimal(lblLID.Text);
             clsJPMinfo.Party = txtSupplier.Text.Replace("'", "''");
             clsJPMinfo.Discount = Comm.ToDecimal(txtDiscAmt.Text);
+            clsJPMinfo.dSteadyBillDiscPerc = Convert.ToDecimal(dSteadyBillDiscPerc);
+            clsJPMinfo.dSteadyBillDiscAmt = Convert.ToDecimal(dSteadyBillDiscAmt);
+
             clsJPMinfo.TaxAmt = Comm.ToDecimal(txtTaxAmt.Text);
             clsJPMinfo.GrossAmt = Comm.ToDecimal(txtGrossAmt.Text);
             clsJPMinfo.QtyTotal = Comm.ToDecimal(lblQtyTotal.Text);
@@ -5302,10 +5311,18 @@ namespace DigiposZen
                     lblQtyTotal.Text = Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("QtyTotal")));
                     //lblFreeTotal.Text = Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("FreeTotal")));
                     txtItemDiscTot.Text = Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("ItemDiscountTotal")));
+
+                    dSteadyBillDiscAmt = Comm.ToDecimal(Convert.ToString(rs.fields("Discount")));
+                    dSteadyBillDiscPerc = 0;
+
                     this.txtDiscPerc.TextChanged -= this.txtDiscPerc_TextChanged;
                     txtDiscPerc.Text = Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("DiscPer")));
                     this.txtDiscPerc.TextChanged += this.txtDiscPerc_TextChanged;
-                    Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("Discount")));
+                    
+                    this.txtDiscAmt.TextChanged -= this.txtDiscPerc_TextChanged;
+                    txtDiscAmt.Text = Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("Discount")));
+                    this.txtDiscAmt.TextChanged += this.txtDiscPerc_TextChanged;
+
                     txtTaxable.Text = Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("Taxable")));
                     txtNonTaxable.Text = Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("NonTaxable")));
                     txtTaxAmt.Text = Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("TaxAmt")));

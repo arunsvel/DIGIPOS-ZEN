@@ -1783,6 +1783,7 @@ namespace DigiposZen
 
                     for (int x = 0; x < chkfield.CheckedItems.Count; x++)
                     {
+                        //TaxAmt as [Tax Amount],GrossAmt as [Gross Amount],ItemDiscountTotal as [Item Discount Total],NonTaxable as [Non Taxable],Taxable,CGSTTaxPer as [CGST Tax Per],CGSTTaxAmt as [CGST Tax Amt],SGSTTaxPer as [SGST Tax Per],SGSTTaxAmt as [SGST Tax Amt],IGSTTaxPer as[IGST Tax Per],IGSTTaxAmt as [IGST Tax Amt],CashDiscount as [Cash Discount],OtherExpense as [Other Expense],NetAmount as [Net Amount],RoundOff as [Round Off] ,BillAmt as [Bill Amount] 
                         if (chkfield.GetItemText(chkfield.CheckedItems[x]) == "Qty" || chkfield.GetItemText(chkfield.CheckedItems[x]) == "Rate" || chkfield.GetItemText(chkfield.CheckedItems[x]) == "MRP")
                         {
                             s = s + "tblSalesItem." + chkfield.GetItemText(chkfield.CheckedItems[x]) + ",";
@@ -1939,6 +1940,7 @@ namespace DigiposZen
                             s = s + chkfield.GetItemText(chkfield.CheckedItems[x]) + ",";
                         }
                         
+
 
                     }
 
@@ -2199,6 +2201,7 @@ namespace DigiposZen
                         {
                             sqlSupplier = " tblSales.LedgerId = " + Conversion.Val(lblLID.Text) + "  AND ";
                         }
+                        //TaxAmt as [Tax Amount],GrossAmt as [Gross Amount],ItemDiscountTotal as [Item Discount Total],NonTaxable as [Non Taxable],Taxable,CGSTTaxPer as [CGST Tax Per],CGSTTaxAmt as [CGST Tax Amt],SGSTTaxPer as [SGST Tax Per],SGSTTaxAmt as [SGST Tax Amt],IGSTTaxPer as[IGST Tax Per],IGSTTaxAmt as [IGST Tax Amt],CashDiscount as [Cash Discount],OtherExpense as [Other Expense],NetAmount as [Net Amount],RoundOff as [Round Off] ,BillAmt as [Bill Amount] 
 
                         string Sql1 = "create view vwpurchase as SELECT " + d +
                                          " " +

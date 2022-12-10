@@ -10,12 +10,15 @@ using System.Windows.Forms;
 
 
 using DigiposZen.InventorBL.Helper;
+using Microsoft.VisualBasic;
 
 namespace DigiposZen.Forms
 {
     public partial class frmReportView1 : Form
     {
         string mSql = "";
+
+        Common Comm = new Common();
 
         public frmReportView1(string sFormName = "", string vchtype = "", string cost = "", string Ledger = "", string from = "", string to = "", object MDIParent = null, string sql1 = "", string amt = "", string ids = "", string area = "", string supplier = "", string product = "", string mnf = "",string item ="" )
         {
@@ -68,7 +71,7 @@ namespace DigiposZen.Forms
                 dataGridView1.ReadOnly = true;
 
                 label1.Text = strFormName + " Report";
-                if (strFormName == "Sales Daybook" || strFormName == "Sales Detail Daybook" || strFormName == "Sales Hsncode Wise" || strFormName == "Sales Item Wise" || strFormName == "Sales Tax split" || strFormName == "Purchase Daybook" || strFormName == "Purchase Detail Daybook" || strFormName == "Purchase Hsncode Wise" || strFormName == "Purchase Item Wise" || strFormName == "Purchase Tax split" || strFormName == "Sales Discount" || strFormName == "Purchase Return Daybook" || strFormName == "Purchase Return Daybook Details" || strFormName == "Purchase Return Hsncode Wise" || strFormName == "Purchase Return Tax split" || strFormName == "Purchase Return Item Wise" || strFormName == "Sales Return Daybook" || strFormName == "Sales Return Daybook Details" || strFormName == "Sales Return Hsncode Wise" || strFormName == "Sales Return Item Wise" || strFormName == "Sales Return Tax split" || strFormName == "Sales Return Discount"|| strFormName == "Delivery Note Daybook"|| strFormName == "Delivery Note Detail Daybook"|| strFormName == "Delivery Note Item Wise" || strFormName == "Receipt Note Daybook"|| strFormName == "Receipt Note Detail Daybook"|| strFormName == "Receipt Note Item Wise")
+                if (strFormName == "Sales Daybook" || strFormName == "Sales Detail Daybook" || strFormName == "Sales Hsncode Wise" || strFormName == "Sales Item Wise" || strFormName == "Sales Tax split" || strFormName == "Purchase Daybook" || strFormName == "Purchase Detail Daybook" || strFormName == "Purchase Hsncode Wise" || strFormName == "Purchase Item Wise" || strFormName == "Purchase Tax split" || strFormName == "Sales Discount" || strFormName == "Purchase Return Daybook" || strFormName == "Purchase Return Daybook Details" || strFormName == "Purchase Return Hsncode Wise" || strFormName == "Purchase Return Tax split" || strFormName == "Purchase Return Item Wise" || strFormName == "Sales Return Daybook" || strFormName == "Sales Return Daybook Details" || strFormName == "Sales Return Hsncode Wise" || strFormName == "Sales Return Item Wise" || strFormName == "Sales Return Tax split" || strFormName == "Sales Return Discount" || strFormName == "Delivery Note Daybook" || strFormName == "Delivery Note Detail Daybook" || strFormName == "Delivery Note Item Wise" || strFormName == "Receipt Note Daybook" || strFormName == "Receipt Note Detail Daybook" || strFormName == "Receipt Note Item Wise")
                 {
                     string a = "";
 
@@ -86,16 +89,16 @@ namespace DigiposZen.Forms
                         if (columnName == "Tax Amount " || columnName == "Gross Amount" || columnName == "Item Discount" || columnName == "Qty" || columnName == "ItemDiscount Total" || columnName == "Non Taxable" || columnName == "Taxable" || columnName == "CGSTTotal" || columnName == "SGSTTotal" || columnName == "IGSTTotal" || columnName == "FloodCess Total" || columnName == "CashDiscount" || columnName == "OtherExpense" || columnName == "Net Amount" || columnName == "NetAmount" || columnName == "RoundOff" || columnName == "Bill Amount")
                         {
                             a = a + "cast(sum([" + columnName + "])as numeric(36,2)) as N" + i + ",";
-                            
+
                         }
                         else
                         {
                             a = a + " Null as N" + i + ",";
                         }
-                        
+
                     }
                     string b = a.Remove(a.Length - 1, 1);
-                 
+
                     string sql = "select * from vwpurchase  union all SELECT " + b + "  FROM vwpurchase ORDER BY AutoNum";
                     SqlDataAdapter da1 = new SqlDataAdapter(sql, DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataSet ds1 = new DataSet();
@@ -345,7 +348,7 @@ namespace DigiposZen.Forms
                     dataGridView1.DataSource = ds.Tables["vwstock"].DefaultView;
                     label1.Text = strFormName + " Report";
                 }
-                
+
                 else if (strFormName == "Repacking Daybook")
                 {
                     label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",Prduct Type" + strproduct + ",Manufacture" + strmnf;
@@ -356,7 +359,7 @@ namespace DigiposZen.Forms
                     dataGridView1.DataSource = dt;
                     label1.Text = strFormName + " Report";
                     dt.Rows.Add();
-                    dataGridView1.Rows[dataGridView1.Rows.Count-1].Cells[0].Value = "Total:-";
+                    dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0].Value = "Total:-";
 
                     for (int i = 2; i < dataGridView1.Columns.Count; i++)
                     {
@@ -579,51 +582,85 @@ namespace DigiposZen.Forms
                     SqlDataAdapter da1 = new SqlDataAdapter(" select  string_agg (PaymentType, ',') as PaymentType  from tblCashDeskMaster", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataTable dt3 = new DataTable();
                     da1.Fill(dt3);
-                    SqlDataAdapter da = new SqlDataAdapter("select * from vwpurchase  PIVOT(AVG(amount) FOR PaymentType in (" + dt3.Rows[0]["PaymentType"].ToString() + ")) AS PivotTable  order by ID", DigiposZen.Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da = new SqlDataAdapter("select * from vwpurchase  PIVOT(AVG(amount) FOR PaymentType in (" + dt3.Rows[0]["PaymentType"].ToString() + ",CREDIT)) AS PivotTable  order by ID", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-
-                    dataGridView1.DataSource = dt;
-                    dataGridView1.Columns["ID"].Visible = false;
-                 
-                    label1.Text = strFormName + " Report";
-                    label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",LEDGER :" + strLedger;
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    if (dt.Rows.Count > 0)
                     {
-                        
-                        foreach (DataGridViewCell item in row.Cells)
-                        {
-                            if (item.Value == null || item.Value == DBNull.Value || String.IsNullOrWhiteSpace(item.Value.ToString()))
-                            {
-                                
-                                item.Value = "0";
+                        double[] Total = new double[dt.Columns.Count];
 
+                        dataGridView1.Columns.Clear();
+                        for (int i = 0; i < dt.Columns.Count; i++)
+                        {
+                            dataGridView1.Columns.Add(dt.Columns[i].ColumnName, dt.Columns[i].ColumnName);
+                            if (i > 5)
+                            {
+                                dataGridView1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                             }
                         }
-                    }
-                    dt.Rows.Add();
-
-
-                   dataGridView1.Rows[dataGridView1.Rows.Count-1].Cells[0].Value = "Total:-";
-
-                    for (int i = 6; i < dataGridView1.Columns.Count; i++)
-                    {
-                        int total = 0;
-                        for (int j = 0; j < dataGridView1.Rows.Count - 1; j++)
+                        for (int i = 0; i < dt.Rows.Count; i++)
                         {
-                            total += Convert.ToInt32(dataGridView1.Rows[j].Cells[i].Value);
+                            dataGridView1.Rows.Add();
+                            for (int j = 0; j < dt.Columns.Count; j++)
+                            {
+                                if (j > 5)
+                                {
+                                    dataGridView1[j, i].Value = Comm.FormatAmt(Comm.ToDouble(dt.Rows[i][j]), AppSettings.CurrDecimalFormat);
+                                    Total[j] += Comm.ToDouble(dataGridView1[j, i].Value);
+                                }
+                                else
+                                {
+                                    dataGridView1[j, i].Value = dt.Rows[i][j];
+                                }
+                            }
                         }
-                        dataGridView1.Rows[dataGridView1.Rows.Count-1 ].Cells[i].Value = total;
+
+                        dataGridView1.Rows.Add();
+                        dataGridView1[5, dataGridView1.RowCount - 1].Value = "Total : ";
+                        for (int i = 6; i < dt.Columns.Count; i++)
+                        {
+                            dataGridView1[i, dataGridView1.RowCount - 1].Value = Comm.FormatAmt(Comm.ToDouble(Total[i]), AppSettings.CurrDecimalFormat);
+                        }
+
+                        //     dataGridView1.DataSource = dt;
+                        //     dataGridView1.Columns["ID"].Visible = false;
+
+                        // label1.Text = strFormName + " Report";
+                        // label2.Text = "FROM DATE:" + strFrom + ",TO DATE:" + strTo + ",LEDGER :" + strLedger;
+                        // foreach (DataGridViewRow row in dataGridView1.Rows)
+                        // {
+                        //     foreach (DataGridViewCell item in row.Cells)
+                        //     {
+                        //         if (item.Value == null || item.Value == DBNull.Value || String.IsNullOrWhiteSpace(item.Value.ToString()))
+                        //         {
+                        //             item.Value = "0";
+                        //         }
+                        //     }
+                        // }
+                        // dt.Rows.Add();
+
+
+                        //dataGridView1.Rows[dataGridView1.Rows.Count-1].Cells[0].Value = "Total:-";
+
+                        // for (int i = 6; i < dataGridView1.Columns.Count; i++)
+                        // {
+                        //     int total = 0;
+                        //     for (int j = 0; j < dataGridView1.Rows.Count - 1; j++)
+                        //     {
+                        //         total += Convert.ToInt32(dataGridView1.Rows[j].Cells[i].Value);
+                        //     }
+                        //     dataGridView1.Rows[dataGridView1.Rows.Count-1 ].Cells[i].Value = total;
+                        // }
                     }
-                }
-                for (int i = 0; i < dataGridView1.ColumnCount; i++)
-                {
-                    string columnName = dataGridView1.Columns[i].Name;
+                    for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                    {
+                        string columnName = dataGridView1.Columns[i].Name;
 
 
 
-                    this.dataGridView1.Columns[columnName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        this.dataGridView1.Columns[columnName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
+                    }
                 }
             }
             catch (Exception ex)
@@ -632,6 +669,58 @@ namespace DigiposZen.Forms
 
             }
             
+        }
+
+        private void FillReportManual(DataTable dt, string NumberFormatCols = "", string DateFormatCols = "", string SumCols = "")
+        {
+            try
+            {
+                NumberFormatCols = "," + NumberFormatCols + ",";
+                DateFormatCols = "," + DateFormatCols + ",";
+                SumCols = "," + SumCols + ",";
+
+                if (dt.Rows.Count > 0)
+                {
+                    double[] Total = new double[dt.Columns.Count];
+
+                    dataGridView1.Columns.Clear();
+                    for (int i = 0; i < dt.Columns.Count; i++)
+                    {
+                        dataGridView1.Columns.Add(dt.Columns[i].ColumnName, dt.Columns[i].ColumnName);
+                        if (i > 5)
+                        {
+                            dataGridView1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        }
+                    }
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        dataGridView1.Rows.Add();
+                        for (int j = 0; j < dt.Columns.Count; j++)
+                        {
+                            if (j > 5)
+                            {
+                                dataGridView1[j, i].Value = Comm.FormatAmt(Comm.ToDouble(dt.Rows[i][j]), AppSettings.CurrDecimalFormat);
+                                Total[j] += Comm.ToDouble(dataGridView1[j, i].Value);
+                            }
+                            else
+                            {
+                                dataGridView1[j, i].Value = dt.Rows[i][j];
+                            }
+                        }
+                    }
+
+                    dataGridView1.Rows.Add();
+                    dataGridView1[5, dataGridView1.RowCount - 1].Value = "Total : ";
+                    for (int i = 6; i < dt.Columns.Count; i++)
+                    {
+                        dataGridView1[i, dataGridView1.RowCount - 1].Value = Comm.FormatAmt(Comm.ToDouble(Total[i]), AppSettings.CurrDecimalFormat);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void saveToolStripButton_Click(object sender, EventArgs e)

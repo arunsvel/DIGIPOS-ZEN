@@ -693,7 +693,6 @@ namespace DigiposZen
             // 
             // tlpHeading
             // 
-            this.tlpHeading.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.tlpHeading.ColumnCount = 10;
             this.tlpHeading.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
             this.tlpHeading.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
@@ -751,7 +750,7 @@ namespace DigiposZen
             this.tlpHeading.SetColumnSpan(this.lblHeading, 5);
             this.lblHeading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblHeading.Font = new System.Drawing.Font("Tahoma", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeading.ForeColor = System.Drawing.Color.White;
+            this.lblHeading.ForeColor = System.Drawing.Color.Black;
             this.lblHeading.Location = new System.Drawing.Point(312, 0);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.lblHeading.Name = "lblHeading";
@@ -775,7 +774,6 @@ namespace DigiposZen
             this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmGstReport_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmGstReport_KeyDown);
             this.tabPage9.ResumeLayout(false);

@@ -4216,7 +4216,7 @@ namespace DigiposZen
             { }
             try
             {
-                sQuery = @"ALTER PROCEDURE [dbo].[UspGetItemMaster] (@ItemID   NUMERIC (18, 0),
+                sQuery = @"CREATE PROCEDURE [dbo].[UspGetItemMaster] (@ItemID   NUMERIC (18, 0),
                                           @TenantID NUMERIC (18, 0))
                             AS
                               BEGIN
@@ -4564,32 +4564,32 @@ namespace DigiposZen
             {
                 sQuery = @"CREATE PROCEDURE [dbo].[UspGetHSNFromItemMaster] ( 
                         @TenantID		NUMERIC(18,0), 
-                        @HSNCODE		NUMERIC(18,0), 
+						@HSNCODE		NUMERIC(18,0), 
                         @IGSTTaxPer     NUMERIC(18,0) ) 
                         AS  
                         BEGIN 
 	                        IF @HSNCODE <> 0  
 	                        BEGIN 
-		                        SELECT Distinct HSNCODE,IGSTTaxPer as IGSTTaxPer,SGSTTaxPer as SGSTTaxPer,CGSTTaxPer as CGSTTaxPer, CessPer 
+		                        SELECT Distinct HSNCODE,HSNID,IGSTTaxPer as IGSTTaxPer,SGSTTaxPer as SGSTTaxPer,CGSTTaxPer as CGSTTaxPer, CessPer 
 		                        FROM tblHSNCode I 
-		                        WHERE HSNCODE=@HSNCODE AND IGSTTaxPer=@IGSTTaxPer AND I.TenantID = @TenantID  
+		                        WHERE HSNID=@HSNCODE AND I.TenantID = @TenantID  
 	                        END  
 	                        ELSE  
 		                        BEGIN 
 		                        IF @HSNCODE <> 0  
 		                        BEGIN 
-			                        SELECT Distinct HSNCODE,IGSTTaxPer,CessPer,CGSTTaxPer,SGSTTaxPer 
+			                        SELECT Distinct HSNCODE,HSNID,IGSTTaxPer,CessPer,CGSTTaxPer,SGSTTaxPer 
 			                        FROM tblHSNCode I 
-			                        WHERE I.TenantID = @TenantID AND HSNCODE=@HSNCODE AND IGSTTaxPer=@IGSTTaxPer  
+			                        WHERE I.TenantID = @TenantID AND HSNID=@HSNCODE 
 		                        END  
 		                        ELSE  
 		                        BEGIN 
-			                        SELECT Distinct HSNCODE as [HSN Code],IGSTTaxPer as [IGST %],CessPer as [Cess %] 
+			                        SELECT Distinct HSNCODE as [HSN Code],HSNID,IGSTTaxPer as [IGST %],CessPer as [Cess %] 
 			                        FROM tblHSNCode I 
 			                        WHERE I.TenantID = @TenantID 
 		                        END  
 	                        END  
-                        END ";
+                        END  ";
 
                 Comm.fnExecuteNonQuery(sQuery, false);
             }

@@ -5308,7 +5308,7 @@ namespace DigiposZen
                 if (Comm.ToDecimal(txtRoundOff.Text.ToString()) > 0)
                     Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 51, 0, 51, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), 0, Comm.ToDouble(txtRoundOff.Text.ToString()), Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
                 else
-                    Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 51, 51, 0, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), Comm.ToDouble(txtRoundOff.Text.ToString()), 0, Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
+                    Comm.VoucherInsert(Convert.ToInt32(cboCostCentre.SelectedValue.ToString()), vchtypeID, dtpInvDate.Value, DateAndTime.Now.ToLocalTime(), 51, 51, 0, Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsPM.clsJsonPMInfo_.InvNo, txtNarration.Text.ToString(), Math.Abs(Comm.ToDouble(txtRoundOff.Text.ToString())), 0, Convert.ToInt32(cboAgent.SelectedValue.ToString()), Convert.ToInt32(cboSalesStaff.SelectedValue.ToString()), 0, 0, false, txtNarration.Text.ToString());
 
                 for (int i = 0; i < 100; i++)
                 {
@@ -6353,7 +6353,7 @@ namespace DigiposZen
                                     if (dgvSales.Rows[dgvSales.CurrentRow.Index].Cells[GetEnum(gridColIndexes.CExpiry)].Visible == true)
                                         dgvSales.CurrentCell = dgvSales.Rows[dgvSales.CurrentRow.Index].Cells[GetEnum(gridColIndexes.CExpiry)];
                                     else if (dgvSales.Rows[dgvSales.CurrentRow.Index].Cells[GetEnum(gridColIndexes.cQty)].Visible == true)
-                                        dgvSales.CurrentCell = dgvSales.Rows[dgvSales.CurrentRow.Index].Cells[GetEnum(gridColIndexes.cMRP)];
+                                        dgvSales.CurrentCell = dgvSales.Rows[dgvSales.CurrentRow.Index].Cells[GetEnum(gridColIndexes.cQty)];
                                     dgvSales.Focus();
                                     dgvSales.CellEndEdit += dgvSales_CellEndEdit;
 

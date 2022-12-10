@@ -169,8 +169,8 @@ namespace DigiposZen
                     break;
 
                 case "GSTR1":
-                    frmGstReport frmGSTR1 = new frmGstReport();
-                    frmGSTR1.Text = "CREATE COMPANY";
+                    frmGstReport frmGSTR1 = new frmGstReport(this);
+                    frmGSTR1.Text = "GSTR1";
                     frmGSTR1.MdiParent = this;
                     frmGSTR1.Show();
                     frmGSTR1.Focus();

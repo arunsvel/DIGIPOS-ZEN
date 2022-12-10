@@ -80,7 +80,7 @@ namespace DigiposZen
                 string Fname = "Cash Desk";
                 DateTime FD = Convert.ToDateTime(dtpFD.Text);
                 DateTime TD = Convert.ToDateTime(dtpTD.Text);
-                string Sql1 = "create view vwpurchase as select InvNo,InvDate,tblCashDeskItems.ID,Name,tblVchType.VchType,MOP,PaymentType,tblCashDeskItems.Amount,BillAmount from tblCashDeskdetails join tblCashDeskItems on tblCashDeskItems.ID=tblCashDeskdetails.id join tblSales ON tblSales.InvId=tblCashDeskdetails.InvID join tblEmployee on tblEmployee.EmpID =tblSales.SalesManID join tblVchType on tblVchType.VchTypeID=tblSales.VchTypeID where tblSales.VchTypeID in (" + lblVoucherIds.Text + ") and tblSales.SalesManID in (" + lblstaffIds.Text + ") and InvDate BETWEEN '" + FD.ToString("dd-MMM-yyyy") + "' and '" + TD.ToString("dd-MMM-yyyy") + "'  ";
+                string Sql1 = "create view vwpurchase as select InvNo,InvDate,tblCashDeskItems.ID,Name,tblVchType.VchType,MOP,PaymentType,cast(format(tblCashDeskItems.Amount, 'F2', 'en-us') as float) as Amount,BillAmount from tblCashDeskdetails join tblCashDeskItems on tblCashDeskItems.ID=tblCashDeskdetails.id join tblSales ON tblSales.InvId=tblCashDeskdetails.InvID join tblEmployee on tblEmployee.EmpID =tblSales.SalesManID join tblVchType on tblVchType.VchTypeID=tblSales.VchTypeID where tblSales.VchTypeID in (" + lblVoucherIds.Text + ") and tblSales.SalesManID in (" + lblstaffIds.Text + ") and InvDate BETWEEN '" + FD.ToString("dd-MMM-yyyy") + "' and '" + TD.ToString("dd-MMM-yyyy") + "'  ";
 
                 SqlConnection conn1 = new SqlConnection(constr);
                 conn1.Open();

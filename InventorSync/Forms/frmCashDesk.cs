@@ -1100,7 +1100,6 @@ namespace DigiposZen.Forms
                     {
                         if (mcashdesk.LedgerID > 1000)
                         {
-                            
                             DialogResult dlgResult = MessageBox.Show("Shortage Amount of RS " + txtShortage.Text + " Credited to Customer", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                             if (dlgResult.Equals(DialogResult.Yes))
                             {
@@ -1127,10 +1126,15 @@ namespace DigiposZen.Forms
 
                 if (blnsettle == true)
                 {
-
                     if (dgvPayments.Rows.Count > 0)
                     {
-                        if (lblMop.Text == "CASH")
+                        if (mcashdesk.MOP.ToUpper() == "CASH")
+                        {
+                            clsCashDeskDetail cdd = new clsCashDeskDetail(lblMop.Text.ToUpper(), 1, 3, Comm.ToDecimal(txtBillAmount.Text), 0, 0, 0, 0);
+                            mcashdesk.PaymentDetails.Add(cdd);
+                            Dataposs();
+                        }
+                        else if (lblMop.Text == "CASH")
                         {
                             if (mcashdesk.PaymentDetails != null) mcashdesk.PaymentDetails.Clear();
                             for (int i = 0; i < dgvPayments.Rows.Count; i++)
@@ -1154,8 +1158,13 @@ namespace DigiposZen.Forms
                     {
                         if (lblMop.Tag.ToString()=="")
                         {
-
-                            if (lblMop.Text == "CASH")
+                            if (mcashdesk.MOP.ToUpper() == "CASH")
+                            {
+                                clsCashDeskDetail cdd = new clsCashDeskDetail(lblMop.Text.ToUpper(), 1, 3, Comm.ToDecimal(txtBillAmount.Text), 0, 0, 0, 0);
+                                mcashdesk.PaymentDetails.Add(cdd);
+                                Dataposs();
+                            }
+                            else if (lblMop.Text == "CASH")
                             {
                                 clsCashDeskDetail cdd = new clsCashDeskDetail(lblMop.Text.ToUpper(), 1, 3, Comm.ToDecimal(txtBillAmount.Text),0,0,0,0);
                                 mcashdesk.PaymentDetails.Add(cdd);

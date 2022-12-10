@@ -16,12 +16,17 @@ namespace DigiposZen
 {
     public partial class frmGstReport : Form
     {
-        public frmGstReport()
+        public frmGstReport(object MDIParent = null)
         {
             InitializeComponent();
-            
+
+            frmMDI form = (frmMDI)MDIParent;
+            this.MdiParent = form;
+            int l = form.ClientSize.Width - 10; //(this.MdiParent.ClientSize.Width - this.Width) / 2;
+            int t = form.ClientSize.Height - 80; //((this.MdiParent.ClientSize.Height - this.Height) / 2) - 30;
+            this.SetBounds(5, 0, l, t);
         }
-        string conn = @"Data Source = GAMERADICTION\DIGIPOS; Initial Catalog = DigiposDemo; User ID = sa; Password =#infinitY@279";
+        string conn = DigiposZen.Properties.Settings.Default.ConnectionString; //@"Data Source = GAMERADICTION\DIGIPOS; Initial Catalog = DigiposDemo; User ID = sa; Password =#infinitY@279";
        
         private void frmGstReport_Load(object sender, EventArgs e)
         {
@@ -158,7 +163,7 @@ namespace DigiposZen
             {
                 using (SqlConnection con = new SqlConnection(conn))
                 {
-                    using (SqlCommand cmd = new SqlCommand("select 'OE' as Type,BillAmt as [Invoice Value] ,(StateCode + '-' + State ) as [Place Of Supply],'' as [Applicable % of Tax Rate],TaxPer as [Rate],ITaxableAmount as [Taxable Value],IcessAmt as [Cess Amount],'' as [E-commerce GSTIN] from tblSales join tblSalesItem on tblSales.InvId=tblSalesItem.InvID join tblStates on tblSales.StateID=tblStates.StateId join tblVchType on tblSales.VchTypeID=tblVchType.VchTypeID where invdate BETWEEN '" + FD.ToString("dd-MMM-yyyy") + "' and '" + TD.ToString("dd-MMM-yyyy") + "' and GSTType='b2c' and ParentID='1' and tblSales.StateId='32' and CountryID ='21' and tblSales.VchTypeID='" + cmbVoucherType.SelectedValue + "' order by InvDate,InvNo", con))
+                    using (SqlCommand cmd = new SqlCommand("select 'OE' as Type,SUM(BillAmt) as [Invoice Value] ,(StateCode + '-' + State ) as [Place Of Supply],'' as [Applicable % of Tax Rate],TaxPer as [Rate],SUM(ITaxableAmount) as [Taxable Value],SUM(IcessAmt) as [Cess Amount],'' as [E-commerce GSTIN] from tblSales join tblSalesItem on tblSales.InvId=tblSalesItem.InvID join tblStates on tblSales.StateID=tblStates.StateId join tblVchType on tblSales.VchTypeID=tblVchType.VchTypeID where invdate BETWEEN '" + FD.ToString("dd-MMM-yyyy") + "' and '" + TD.ToString("dd-MMM-yyyy") + "' and GSTType='b2c' and ParentID='1' and tblSales.StateId='32' and CountryID ='21' and tblSales.VchTypeID='" + cmbVoucherType.SelectedValue + "' GROUP BY StateCode + '-' + State,TaxPer order by StateCode + '-' + State,TaxPer", con))
                     {
                         cmd.CommandType = CommandType.Text;
                         using (SqlDataAdapter sda = new SqlDataAdapter(cmd))

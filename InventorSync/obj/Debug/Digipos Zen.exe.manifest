@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Digipos Zen.exe" size="9093632">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Digipos Zen.exe" size="9095680">
       <assemblyIdentity name="Digipos Zen" version="2.3.0.9" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>tq/BvKsSzPVV/TEvVsUEeHcIK5ueWLTccNJHj1/41ys=</dsig:DigestValue>
+        <dsig:DigestValue>zH40zcLiPQLrkVD6RxNzR1dTU6gRaQGXuoubcc4ax2M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
