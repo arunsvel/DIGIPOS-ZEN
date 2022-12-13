@@ -473,6 +473,36 @@ namespace DigiposZen.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap execute {
+            get {
+                object obj = ResourceManager.GetObject("execute", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap execute_1 {
+            get {
+                object obj = ResourceManager.GetObject("execute_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap export_csv {
+            get {
+                object obj = ResourceManager.GetObject("export-csv", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fa1f36a3_1dc7_4473_b4e1_e4710539fdc4 {
             get {
                 object obj = ResourceManager.GetObject("fa1f36a3-1dc7-4473-b4e1-e4710539fdc4", resourceCulture);
@@ -793,6 +823,16 @@ namespace DigiposZen.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap play {
+            get {
+                object obj = ResourceManager.GetObject("play", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap plus {
             get {
                 object obj = ResourceManager.GetObject("plus", resourceCulture);
@@ -946,6 +986,16 @@ namespace DigiposZen.Properties {
         internal static System.Drawing.Bitmap search_Colorful {
             get {
                 object obj = ResourceManager.GetObject("search_Colorful", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_icon_png_9970_16X16 {
+            get {
+                object obj = ResourceManager.GetObject("search-icon-png-9970_16X16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -273,7 +273,7 @@ namespace DigiposZen
             this.tlpMain.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tlpMain.ColumnCount = 2;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 829F));
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 428F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 431F));
             this.tlpMain.Controls.Add(this.tlpHeader, 0, 0);
             this.tlpMain.Controls.Add(this.gboxMain, 0, 1);
             this.tlpMain.Controls.Add(this.lblFooter, 0, 2);
@@ -285,7 +285,7 @@ namespace DigiposZen
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpMain.Size = new System.Drawing.Size(831, 826);
+            this.tlpMain.Size = new System.Drawing.Size(888, 826);
             this.tlpMain.TabIndex = 0;
             // 
             // tlpHeader
@@ -336,7 +336,7 @@ namespace DigiposZen
             // 
             this.lblSave.AutoSize = true;
             this.lblSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSave.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSave.ForeColor = System.Drawing.Color.Black;
             this.lblSave.Location = new System.Drawing.Point(3, 63);
             this.lblSave.Name = "lblSave";
@@ -344,6 +344,7 @@ namespace DigiposZen
             this.lblSave.TabIndex = 1000;
             this.lblSave.Text = "Save";
             this.lblSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSave.Click += new System.EventHandler(this.lblSave_Click);
             // 
             // btnSave
             // 
@@ -395,7 +396,7 @@ namespace DigiposZen
             // 
             this.lblDelete.AutoSize = true;
             this.lblDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDelete.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelete.ForeColor = System.Drawing.Color.Black;
             this.lblDelete.Location = new System.Drawing.Point(80, 63);
             this.lblDelete.Name = "lblDelete";
@@ -403,6 +404,7 @@ namespace DigiposZen
             this.lblDelete.TabIndex = 1000;
             this.lblDelete.Text = "Delete";
             this.lblDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDelete.Click += new System.EventHandler(this.lblDelete_Click);
             // 
             // btnFind
             // 
@@ -464,7 +466,7 @@ namespace DigiposZen
             // 
             this.lblFind.AutoSize = true;
             this.lblFind.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblFind.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFind.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFind.ForeColor = System.Drawing.Color.Black;
             this.lblFind.Location = new System.Drawing.Point(157, 63);
             this.lblFind.Name = "lblFind";
@@ -472,6 +474,7 @@ namespace DigiposZen
             this.lblFind.TabIndex = 1000;
             this.lblFind.Text = "Find";
             this.lblFind.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFind.Click += new System.EventHandler(this.lblFind_Click);
             // 
             // radioButton3
             // 
@@ -539,6 +542,7 @@ namespace DigiposZen
             this.button11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.Black;
             this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
             this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -549,6 +553,7 @@ namespace DigiposZen
             this.button11.Text = "Tutorial";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Visible = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // togglebtnActive
             // 
@@ -560,7 +565,7 @@ namespace DigiposZen
             this.togglebtnActive.ActiveState = activeStateCollection1;
             this.tlpHeader.SetColumnSpan(this.togglebtnActive, 2);
             this.togglebtnActive.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.togglebtnActive.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.togglebtnActive.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.togglebtnActive.ForeColor = System.Drawing.Color.Black;
             inactiveStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             inactiveStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
@@ -589,7 +594,7 @@ namespace DigiposZen
             this.label44.AutoSize = true;
             this.tlpHeader.SetColumnSpan(this.label44, 2);
             this.label44.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label44.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label44.ForeColor = System.Drawing.Color.Black;
             this.label44.Location = new System.Drawing.Point(594, 63);
             this.label44.Name = "label44";
@@ -597,6 +602,7 @@ namespace DigiposZen
             this.label44.TabIndex = 1000;
             this.label44.Text = "Active Status";
             this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label44.Click += new System.EventHandler(this.label44_Click);
             // 
             // gboxMain
             // 
@@ -753,10 +759,10 @@ namespace DigiposZen
             // lblCompCessPer
             // 
             this.lblCompCessPer.AutoSize = true;
-            this.lblCompCessPer.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompCessPer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompCessPer.Location = new System.Drawing.Point(212, 125);
             this.lblCompCessPer.Name = "lblCompCessPer";
-            this.lblCompCessPer.Size = new System.Drawing.Size(120, 21);
+            this.lblCompCessPer.Size = new System.Drawing.Size(107, 18);
             this.lblCompCessPer.TabIndex = 77;
             this.lblCompCessPer.Text = "Comp Cess %:";
             // 
@@ -790,10 +796,10 @@ namespace DigiposZen
             // chkSlabSysytem
             // 
             this.chkSlabSysytem.AutoSize = true;
-            this.chkSlabSysytem.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSlabSysytem.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSlabSysytem.Location = new System.Drawing.Point(254, 155);
             this.chkSlabSysytem.Name = "chkSlabSysytem";
-            this.chkSlabSysytem.Size = new System.Drawing.Size(122, 25);
+            this.chkSlabSysytem.Size = new System.Drawing.Size(110, 22);
             this.chkSlabSysytem.TabIndex = 8;
             this.chkSlabSysytem.Text = "Slab System";
             this.chkSlabSysytem.UseVisualStyleBackColor = true;
@@ -803,10 +809,10 @@ namespace DigiposZen
             // chkPRateIncl
             // 
             this.chkPRateIncl.AutoSize = true;
-            this.chkPRateIncl.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPRateIncl.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkPRateIncl.Location = new System.Drawing.Point(134, 155);
             this.chkPRateIncl.Name = "chkPRateIncl";
-            this.chkPRateIncl.Size = new System.Drawing.Size(109, 25);
+            this.chkPRateIncl.Size = new System.Drawing.Size(99, 22);
             this.chkPRateIncl.TabIndex = 7;
             this.chkPRateIncl.Text = "P.Rate Inc";
             this.chkPRateIncl.UseVisualStyleBackColor = true;
@@ -815,10 +821,10 @@ namespace DigiposZen
             // chkSRateIncl
             // 
             this.chkSRateIncl.AutoSize = true;
-            this.chkSRateIncl.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSRateIncl.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSRateIncl.Location = new System.Drawing.Point(10, 155);
             this.chkSRateIncl.Name = "chkSRateIncl";
-            this.chkSRateIncl.Size = new System.Drawing.Size(109, 25);
+            this.chkSRateIncl.Size = new System.Drawing.Size(99, 22);
             this.chkSRateIncl.TabIndex = 6;
             this.chkSRateIncl.Text = "S.Rate Inc";
             this.chkSRateIncl.UseVisualStyleBackColor = true;
@@ -845,10 +851,10 @@ namespace DigiposZen
             // lblCessPer
             // 
             this.lblCessPer.AutoSize = true;
-            this.lblCessPer.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCessPer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCessPer.Location = new System.Drawing.Point(268, 84);
             this.lblCessPer.Name = "lblCessPer";
-            this.lblCessPer.Size = new System.Drawing.Size(73, 21);
+            this.lblCessPer.Size = new System.Drawing.Size(64, 18);
             this.lblCessPer.TabIndex = 55;
             this.lblCessPer.Text = "Cess %:";
             // 
@@ -873,10 +879,10 @@ namespace DigiposZen
             // lblSGSTPer
             // 
             this.lblSGSTPer.AutoSize = true;
-            this.lblSGSTPer.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSGSTPer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSGSTPer.Location = new System.Drawing.Point(136, 84);
             this.lblSGSTPer.Name = "lblSGSTPer";
-            this.lblSGSTPer.Size = new System.Drawing.Size(77, 21);
+            this.lblSGSTPer.Size = new System.Drawing.Size(69, 18);
             this.lblSGSTPer.TabIndex = 53;
             this.lblSGSTPer.Text = "SGST %:";
             // 
@@ -901,10 +907,10 @@ namespace DigiposZen
             // lblCGSTPer
             // 
             this.lblCGSTPer.AutoSize = true;
-            this.lblCGSTPer.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCGSTPer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCGSTPer.Location = new System.Drawing.Point(6, 84);
             this.lblCGSTPer.Name = "lblCGSTPer";
-            this.lblCGSTPer.Size = new System.Drawing.Size(78, 21);
+            this.lblCGSTPer.Size = new System.Drawing.Size(70, 18);
             this.lblCGSTPer.TabIndex = 51;
             this.lblCGSTPer.Text = "CGST %:";
             // 
@@ -933,20 +939,20 @@ namespace DigiposZen
             // lblIGSTPer
             // 
             this.lblIGSTPer.AutoSize = true;
-            this.lblIGSTPer.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIGSTPer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIGSTPer.Location = new System.Drawing.Point(329, 24);
             this.lblIGSTPer.Name = "lblIGSTPer";
-            this.lblIGSTPer.Size = new System.Drawing.Size(74, 21);
+            this.lblIGSTPer.Size = new System.Drawing.Size(67, 18);
             this.lblIGSTPer.TabIndex = 49;
             this.lblIGSTPer.Text = "IGST %:";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(3, 24);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(224, 21);
+            this.label27.Size = new System.Drawing.Size(200, 18);
             this.label27.TabIndex = 11;
             this.label27.Text = "HSN code/ Commodity Code:";
             // 
@@ -1048,20 +1054,20 @@ namespace DigiposZen
             // lblSR5
             // 
             this.lblSR5.AutoSize = true;
-            this.lblSR5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSR5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSR5.Location = new System.Drawing.Point(310, 139);
             this.lblSR5.Name = "lblSR5";
-            this.lblSR5.Size = new System.Drawing.Size(79, 21);
+            this.lblSR5.Size = new System.Drawing.Size(69, 18);
             this.lblSR5.TabIndex = 45;
             this.lblSR5.Text = "S Rate 5:";
             // 
             // lblSR5Perc
             // 
             this.lblSR5Perc.AutoSize = true;
-            this.lblSR5Perc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSR5Perc.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSR5Perc.Location = new System.Drawing.Point(228, 138);
             this.lblSR5Perc.Name = "lblSR5Perc";
-            this.lblSR5Perc.Size = new System.Drawing.Size(27, 21);
+            this.lblSR5Perc.Size = new System.Drawing.Size(23, 18);
             this.lblSR5Perc.TabIndex = 46;
             this.lblSR5Perc.Text = "%";
             // 
@@ -1104,20 +1110,20 @@ namespace DigiposZen
             // lblSR4
             // 
             this.lblSR4.AutoSize = true;
-            this.lblSR4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSR4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSR4.Location = new System.Drawing.Point(91, 139);
             this.lblSR4.Name = "lblSR4";
-            this.lblSR4.Size = new System.Drawing.Size(79, 21);
+            this.lblSR4.Size = new System.Drawing.Size(69, 18);
             this.lblSR4.TabIndex = 41;
             this.lblSR4.Text = "S Rate 4:";
             // 
             // lblSR4Perc
             // 
             this.lblSR4Perc.AutoSize = true;
-            this.lblSR4Perc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSR4Perc.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSR4Perc.Location = new System.Drawing.Point(7, 138);
             this.lblSR4Perc.Name = "lblSR4Perc";
-            this.lblSR4Perc.Size = new System.Drawing.Size(27, 21);
+            this.lblSR4Perc.Size = new System.Drawing.Size(23, 18);
             this.lblSR4Perc.TabIndex = 42;
             this.lblSR4Perc.Text = "%";
             // 
@@ -1160,20 +1166,20 @@ namespace DigiposZen
             // lblSR3
             // 
             this.lblSR3.AutoSize = true;
-            this.lblSR3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSR3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSR3.Location = new System.Drawing.Point(310, 85);
             this.lblSR3.Name = "lblSR3";
-            this.lblSR3.Size = new System.Drawing.Size(79, 21);
+            this.lblSR3.Size = new System.Drawing.Size(69, 18);
             this.lblSR3.TabIndex = 37;
             this.lblSR3.Text = "S Rate 3:";
             // 
             // lblSR3Perc
             // 
             this.lblSR3Perc.AutoSize = true;
-            this.lblSR3Perc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSR3Perc.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSR3Perc.Location = new System.Drawing.Point(228, 84);
             this.lblSR3Perc.Name = "lblSR3Perc";
-            this.lblSR3Perc.Size = new System.Drawing.Size(27, 21);
+            this.lblSR3Perc.Size = new System.Drawing.Size(23, 18);
             this.lblSR3Perc.TabIndex = 38;
             this.lblSR3Perc.Text = "%";
             // 
@@ -1216,10 +1222,10 @@ namespace DigiposZen
             // lblSR2
             // 
             this.lblSR2.AutoSize = true;
-            this.lblSR2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSR2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSR2.Location = new System.Drawing.Point(90, 85);
             this.lblSR2.Name = "lblSR2";
-            this.lblSR2.Size = new System.Drawing.Size(79, 21);
+            this.lblSR2.Size = new System.Drawing.Size(69, 18);
             this.lblSR2.TabIndex = 33;
             this.lblSR2.Text = "S Rate 2:";
             this.lblSR2.Click += new System.EventHandler(this.lblSR2_Click);
@@ -1227,10 +1233,10 @@ namespace DigiposZen
             // lblSR2Perc
             // 
             this.lblSR2Perc.AutoSize = true;
-            this.lblSR2Perc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSR2Perc.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSR2Perc.Location = new System.Drawing.Point(6, 84);
             this.lblSR2Perc.Name = "lblSR2Perc";
-            this.lblSR2Perc.Size = new System.Drawing.Size(27, 21);
+            this.lblSR2Perc.Size = new System.Drawing.Size(23, 18);
             this.lblSR2Perc.TabIndex = 34;
             this.lblSR2Perc.Text = "%";
             // 
@@ -1273,20 +1279,20 @@ namespace DigiposZen
             // lblSR1
             // 
             this.lblSR1.AutoSize = true;
-            this.lblSR1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSR1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSR1.Location = new System.Drawing.Point(310, 26);
             this.lblSR1.Name = "lblSR1";
-            this.lblSR1.Size = new System.Drawing.Size(74, 21);
+            this.lblSR1.Size = new System.Drawing.Size(64, 18);
             this.lblSR1.TabIndex = 30;
             this.lblSR1.Text = "S Rate1:";
             // 
             // lblSR1Perc
             // 
             this.lblSR1Perc.AutoSize = true;
-            this.lblSR1Perc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSR1Perc.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSR1Perc.Location = new System.Drawing.Point(257, 26);
             this.lblSR1Perc.Name = "lblSR1Perc";
-            this.lblSR1Perc.Size = new System.Drawing.Size(27, 21);
+            this.lblSR1Perc.Size = new System.Drawing.Size(23, 18);
             this.lblSR1Perc.TabIndex = 30;
             this.lblSR1Perc.Text = "%";
             // 
@@ -1310,10 +1316,10 @@ namespace DigiposZen
             // lblMRP
             // 
             this.lblMRP.AutoSize = true;
-            this.lblMRP.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMRP.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMRP.Location = new System.Drawing.Point(90, 26);
             this.lblMRP.Name = "lblMRP";
-            this.lblMRP.Size = new System.Drawing.Size(49, 21);
+            this.lblMRP.Size = new System.Drawing.Size(42, 18);
             this.lblMRP.TabIndex = 28;
             this.lblMRP.Text = "MRP:";
             // 
@@ -1337,10 +1343,10 @@ namespace DigiposZen
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(7, 26);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 21);
+            this.label15.Size = new System.Drawing.Size(56, 18);
             this.label15.TabIndex = 26;
             this.label15.Text = "P Rate:";
             // 
@@ -1728,7 +1734,7 @@ namespace DigiposZen
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 20);
@@ -1738,11 +1744,11 @@ namespace DigiposZen
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Red;
             this.label9.Location = new System.Drawing.Point(123, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(19, 20);
+            this.label9.Size = new System.Drawing.Size(16, 18);
             this.label9.TabIndex = 77;
             this.label9.Text = "*";
             // 
@@ -1787,7 +1793,7 @@ namespace DigiposZen
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 20);
@@ -1797,11 +1803,11 @@ namespace DigiposZen
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Red;
             this.label5.Location = new System.Drawing.Point(123, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(19, 20);
+            this.label5.Size = new System.Drawing.Size(16, 18);
             this.label5.TabIndex = 76;
             this.label5.Text = "*";
             // 
@@ -1862,11 +1868,11 @@ namespace DigiposZen
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Red;
             this.label10.Location = new System.Drawing.Point(123, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(19, 20);
+            this.label10.Size = new System.Drawing.Size(16, 18);
             this.label10.TabIndex = 78;
             this.label10.Text = "*";
             // 
@@ -1874,7 +1880,7 @@ namespace DigiposZen
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 20);
@@ -1957,7 +1963,7 @@ namespace DigiposZen
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(3, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(129, 20);
@@ -2021,7 +2027,7 @@ namespace DigiposZen
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 20);
@@ -2031,11 +2037,11 @@ namespace DigiposZen
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Red;
             this.label12.Location = new System.Drawing.Point(63, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(19, 20);
+            this.label12.Size = new System.Drawing.Size(16, 18);
             this.label12.TabIndex = 79;
             this.label12.Text = "*";
             // 
@@ -2111,7 +2117,7 @@ namespace DigiposZen
             // 
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(3, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 20);
@@ -2160,7 +2166,7 @@ namespace DigiposZen
             // 
             this.lblColor.AutoSize = true;
             this.lblColor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblColor.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblColor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblColor.Location = new System.Drawing.Point(3, 0);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(59, 20);
@@ -2237,7 +2243,7 @@ namespace DigiposZen
             // 
             this.lblSize.AutoSize = true;
             this.lblSize.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSize.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSize.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSize.Location = new System.Drawing.Point(3, 0);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(54, 20);
@@ -2314,7 +2320,7 @@ namespace DigiposZen
             // 
             this.lblBrand.AutoSize = true;
             this.lblBrand.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBrand.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBrand.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBrand.Location = new System.Drawing.Point(3, 0);
             this.lblBrand.Name = "lblBrand";
             this.lblBrand.Size = new System.Drawing.Size(74, 20);
@@ -2396,7 +2402,7 @@ namespace DigiposZen
             this.lblDiscGroup.AutoSize = true;
             this.tlpDisc.SetColumnSpan(this.lblDiscGroup, 2);
             this.lblDiscGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDiscGroup.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiscGroup.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscGroup.Location = new System.Drawing.Point(3, 0);
             this.lblDiscGroup.Name = "lblDiscGroup";
             this.lblDiscGroup.Size = new System.Drawing.Size(110, 20);
@@ -2496,7 +2502,7 @@ namespace DigiposZen
             // 
             this.lblDep.AutoSize = true;
             this.lblDep.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDep.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDep.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDep.Location = new System.Drawing.Point(3, 0);
             this.lblDep.Name = "lblDep";
             this.lblDep.Size = new System.Drawing.Size(114, 20);
@@ -2556,10 +2562,10 @@ namespace DigiposZen
             // lblDesc
             // 
             this.lblDesc.AutoSize = true;
-            this.lblDesc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesc.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDesc.Location = new System.Drawing.Point(3, 0);
             this.lblDesc.Name = "lblDesc";
-            this.lblDesc.Size = new System.Drawing.Size(100, 20);
+            this.lblDesc.Size = new System.Drawing.Size(83, 18);
             this.lblDesc.TabIndex = 33;
             this.lblDesc.Text = "Description:";
             // 
@@ -2598,7 +2604,7 @@ namespace DigiposZen
             // 
             this.lblAgentComm.AutoSize = true;
             this.lblAgentComm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblAgentComm.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgentComm.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAgentComm.Location = new System.Drawing.Point(3, 0);
             this.lblAgentComm.Name = "lblAgentComm";
             this.lblAgentComm.Size = new System.Drawing.Size(119, 20);
@@ -2660,7 +2666,7 @@ namespace DigiposZen
             // 
             this.label16.AutoSize = true;
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label16.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(3, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(74, 20);
@@ -2705,7 +2711,7 @@ namespace DigiposZen
             // 
             this.label20.AutoSize = true;
             this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label20.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(3, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(119, 20);
@@ -2732,7 +2738,7 @@ namespace DigiposZen
             // 
             this.label40.AutoSize = true;
             this.label40.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label40.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.Location = new System.Drawing.Point(3, 0);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(77, 20);
@@ -2777,7 +2783,7 @@ namespace DigiposZen
             // 
             this.label17.AutoSize = true;
             this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label17.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(3, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(77, 20);
@@ -2842,7 +2848,7 @@ namespace DigiposZen
             // 
             this.label23.AutoSize = true;
             this.label23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label23.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(3, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(77, 20);
@@ -2891,7 +2897,7 @@ namespace DigiposZen
             // 
             this.label29.AutoSize = true;
             this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label29.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(3, 0);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(77, 20);
@@ -2952,6 +2958,7 @@ namespace DigiposZen
             // lblFooter
             // 
             this.lblFooter.BackColor = System.Drawing.Color.Transparent;
+            this.lblFooter.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFooter.ForeColor = System.Drawing.Color.Black;
             this.lblFooter.Location = new System.Drawing.Point(4, 805);
             this.lblFooter.Name = "lblFooter";
@@ -2975,7 +2982,7 @@ namespace DigiposZen
             this.grpShowControls.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpShowControls.Location = new System.Drawing.Point(834, 103);
             this.grpShowControls.Name = "grpShowControls";
-            this.grpShowControls.Size = new System.Drawing.Size(422, 698);
+            this.grpShowControls.Size = new System.Drawing.Size(425, 698);
             this.grpShowControls.TabIndex = 13;
             this.grpShowControls.TabStop = false;
             // 
@@ -3131,7 +3138,7 @@ namespace DigiposZen
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(833, 828);
+            this.ClientSize = new System.Drawing.Size(890, 828);
             this.ControlBox = false;
             this.Controls.Add(this.picBackground);
             this.Controls.Add(this.tlpMain);

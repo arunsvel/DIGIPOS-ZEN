@@ -76,9 +76,9 @@ namespace DigiposZen
                 //Comm.LoadBGImage(this, picBackground);
 
                 lblHeading.Font = new Font("Tahoma", 21, FontStyle.Regular, GraphicsUnit.Pixel);
-                lblSave.Font = new Font("Tahoma", 10, FontStyle.Regular, GraphicsUnit.Point);
-                lblDelete.Font = new Font("Tahoma", 10, FontStyle.Regular, GraphicsUnit.Point);
-                lblFind.Font = new Font("Tahoma", 10, FontStyle.Regular, GraphicsUnit.Point);
+                lblSave.Font = new Font("Tahoma", 9, FontStyle.Regular, GraphicsUnit.Point);
+                lblDelete.Font = new Font("Tahoma", 9, FontStyle.Regular, GraphicsUnit.Point);
+                lblFind.Font = new Font("Tahoma", 9, FontStyle.Regular, GraphicsUnit.Point);
 
                 lblSave.ForeColor = Color.Black;
                 lblDelete.ForeColor = Color.Black;
@@ -110,11 +110,7 @@ namespace DigiposZen
                 iIDFromEditWindow = iItemID;
                 bFromEditWindowItem = bFromEditWindow;
                 ApplicationSettings();
-                //if (tlpRack.Visible == false)
-                //if (tlpColor.Visible == false)
-                //    tlpDisc.Size = new Size(250, 55);
-                //else
-                //    tlpDisc.Size = new Size(125, 55);
+
                 ShowControlCheckboxList();
                 LoadControlCheckboxList();
                 SetShowHideValue();
@@ -296,7 +292,7 @@ namespace DigiposZen
         clsDepartment clsDept = new clsDepartment();
 
         DataTable dtCheckBox = new DataTable();
-        DataTable dtCheckList = new DataTable();
+        //DataTable dtCheckList = new DataTable();
 
         bool dragging = false;
         int xOffset = 0;
@@ -5371,190 +5367,190 @@ namespace DigiposZen
             dtCheckBox.Rows.Add(dRow7);
 
             DataRow dRow8 = dtCheckBox.NewRow();
-            dRow8[0] = "Show Coolie per Qty";
-            dRow8[1] = "blnShowCooliePerQty";
-            dRow8[2] = CheckState.Unchecked;
+            dRow8[0] = "Disc Group";
+            dRow8[1] = "blnShowDiscGroup";
+            dRow8[2] = CheckState.Checked;
             dtCheckBox.Rows.Add(dRow8);
 
             DataRow dRow9 = dtCheckBox.NewRow();
-            dRow9[0] = "Show ROL";
-            dRow9[1] = "blnShowROL";
-            dRow9[2] = CheckState.Checked;
+            dRow9[0] = "Show Coolie per Qty";
+            dRow9[1] = "blnShowCooliePerQty";
+            dRow9[2] = CheckState.Unchecked;
             dtCheckBox.Rows.Add(dRow9);
 
             DataRow dRow10 = dtCheckBox.NewRow();
-            dRow10[0] = "Show MOQ";
-            dRow10[1] = "blnShowMOQ";
-            dRow10[2] = CheckState.Unchecked;
+            dRow10[0] = "Show ROL";
+            dRow10[1] = "blnShowROL";
+            dRow10[2] = CheckState.Checked;
             dtCheckBox.Rows.Add(dRow10);
 
             DataRow dRow11 = dtCheckBox.NewRow();
-            dRow11[0] = "Show Min.Rate";
-            dRow11[1] = "blnShowMinRate";
+            dRow11[0] = "Show MOQ";
+            dRow11[1] = "blnShowMOQ";
             dRow11[2] = CheckState.Unchecked;
             dtCheckBox.Rows.Add(dRow11);
 
             DataRow dRow12 = dtCheckBox.NewRow();
-            dRow12[0] = "Show Max. Rate";
-            dRow12[1] = "blnShowMaxRate";
+            dRow12[0] = "Show Min.Rate";
+            dRow12[1] = "blnShowMinRate";
             dRow12[2] = CheckState.Unchecked;
             dtCheckBox.Rows.Add(dRow12);
 
             DataRow dRow13 = dtCheckBox.NewRow();
-            dRow13[0] = "Show Slab System";
-            dRow13[1] = "blnShowSlabSystem";
+            dRow13[0] = "Show Max. Rate";
+            dRow13[1] = "blnShowMaxRate";
             dRow13[2] = CheckState.Unchecked;
             dtCheckBox.Rows.Add(dRow13);
 
             DataRow dRow14 = dtCheckBox.NewRow();
-            dRow14[0] = "Show Shelf Life";
-            dRow14[1] = "blnShowShelfLife";
+            dRow14[0] = "Show Slab System";
+            dRow14[1] = "blnShowSlabSystem";
             dRow14[2] = CheckState.Unchecked;
             dtCheckBox.Rows.Add(dRow14);
 
             DataRow dRow15 = dtCheckBox.NewRow();
-            dRow15[0] = "Show Alter Unit";
-            dRow15[1] = "blnShowAlterUnit";
+            dRow15[0] = "Show Shelf Life";
+            dRow15[1] = "blnShowShelfLife";
             dRow15[2] = CheckState.Unchecked;
             dtCheckBox.Rows.Add(dRow15);
 
             DataRow dRow16 = dtCheckBox.NewRow();
-            dRow16[0] = "Show Product Class";
-            dRow16[1] = "blnShowProductClass";
+            dRow16[0] = "Show Alter Unit";
+            dRow16[1] = "blnShowAlterUnit";
             dRow16[2] = CheckState.Unchecked;
             dtCheckBox.Rows.Add(dRow16);
 
             DataRow dRow17 = dtCheckBox.NewRow();
-            dRow17[0] = "Memmorize Category";
-            dRow17[1] = "blnMemmorizeCategory";
-            dRow17[2] = CheckState.Checked;
+            dRow17[0] = "Show Product Class";
+            dRow17[1] = "blnShowProductClass";
+            dRow17[2] = CheckState.Unchecked;
             dtCheckBox.Rows.Add(dRow17);
 
             DataRow dRow18 = dtCheckBox.NewRow();
-            dRow18[0] = "Memmorize Manufacturer";
-            dRow18[1] = "blnMemmorizeManufacturer";
+            dRow18[0] = "Memmorize Category";
+            dRow18[1] = "blnMemmorizeCategory";
             dRow18[2] = CheckState.Checked;
             dtCheckBox.Rows.Add(dRow18);
 
             DataRow dRow19 = dtCheckBox.NewRow();
-            dRow19[0] = "Memmorize Unit";
-            dRow19[1] = "blnMemmorizeUnit";
+            dRow19[0] = "Memmorize Manufacturer";
+            dRow19[1] = "blnMemmorizeManufacturer";
             dRow19[2] = CheckState.Checked;
             dtCheckBox.Rows.Add(dRow19);
 
             DataRow dRow20 = dtCheckBox.NewRow();
-            dRow20[0] = "Memmorize Rack";
-            dRow20[1] = "blnMemmorizeRack";
+            dRow20[0] = "Memmorize Unit";
+            dRow20[1] = "blnMemmorizeUnit";
             dRow20[2] = CheckState.Checked;
             dtCheckBox.Rows.Add(dRow20);
 
+            DataRow dRow21 = dtCheckBox.NewRow();
+            dRow21[0] = "Memmorize Rack";
+            dRow21[1] = "blnMemmorizeRack";
+            dRow21[2] = CheckState.Checked;
+            dtCheckBox.Rows.Add(dRow21);
+
             if (AppSettings.NeedColor == true)
             {
-                DataRow dRow21 = dtCheckBox.NewRow();
-                dRow21[0] = "Memmorize Color";
-                dRow21[1] = "blnMemmorizeColor";
-                dRow21[2] = CheckState.Unchecked;
-                dtCheckBox.Rows.Add(dRow21);
-            }
-            if (AppSettings.NeedSize == true)
-            {
                 DataRow dRow22 = dtCheckBox.NewRow();
-                dRow22[0] = "Memmorize Size";
-                dRow22[1] = "blnMemmorizeSize";
+                dRow22[0] = "Memmorize Color";
+                dRow22[1] = "blnMemmorizeColor";
                 dRow22[2] = CheckState.Unchecked;
                 dtCheckBox.Rows.Add(dRow22);
             }
-            if (AppSettings.NeedBrand == true)
+            if (AppSettings.NeedSize == true)
             {
                 DataRow dRow23 = dtCheckBox.NewRow();
-                dRow23[0] = "Memmorize Brand";
-                dRow23[1] = "blnMemmorizeBrand";
-                dRow23[2] = CheckState.Checked;
+                dRow23[0] = "Memmorize Size";
+                dRow23[1] = "blnMemmorizeSize";
+                dRow23[2] = CheckState.Unchecked;
                 dtCheckBox.Rows.Add(dRow23);
             }
-
-            DataRow dRow24 = dtCheckBox.NewRow();
-            dRow24[0] = "Memmorize Disc. Group";
-            dRow24[1] = "blnMemmorizeDiscGroup";
-            dRow24[2] = CheckState.Checked;
-            dtCheckBox.Rows.Add(dRow24);
+            if (AppSettings.NeedBrand == true)
+            {
+                DataRow dRow24 = dtCheckBox.NewRow();
+                dRow24[0] = "Memmorize Brand";
+                dRow24[1] = "blnMemmorizeBrand";
+                dRow24[2] = CheckState.Checked;
+                dtCheckBox.Rows.Add(dRow24);
+            }
 
             DataRow dRow25 = dtCheckBox.NewRow();
-            dRow25[0] = "Memmorize Department";
-            dRow25[1] = "blnMemmorizeDepartment";
+            dRow25[0] = "Memmorize Disc. Group";
+            dRow25[1] = "blnMemmorizeDiscGroup";
             dRow25[2] = CheckState.Checked;
             dtCheckBox.Rows.Add(dRow25);
 
-            if (AppSettings.TaxEnabled == true)
-            {
-                DataRow dRow26 = dtCheckBox.NewRow();
-                dRow26[0] = "Memmorize HSN Code and Tax";
-                dRow26[1] = "blnMemmorizeHSNCode";
-                dRow26[2] = CheckState.Unchecked;
-                dtCheckBox.Rows.Add(dRow26);
-            }
+            DataRow dRow26 = dtCheckBox.NewRow();
+            dRow26[0] = "Memmorize Department";
+            dRow26[1] = "blnMemmorizeDepartment";
+            dRow26[2] = CheckState.Checked;
+            dtCheckBox.Rows.Add(dRow26);
+
             if (AppSettings.TaxEnabled == true)
             {
                 DataRow dRow27 = dtCheckBox.NewRow();
-                dRow27[0] = "Memmorize S.Rate Inc";
-                dRow27[1] = "blnMemmorizeSRateInc";
-                dRow27[2] = CheckState.Checked;
+                dRow27[0] = "Memmorize HSN Code and Tax";
+                dRow27[1] = "blnMemmorizeHSNCode";
+                dRow27[2] = CheckState.Unchecked;
                 dtCheckBox.Rows.Add(dRow27);
             }
             if (AppSettings.TaxEnabled == true)
             {
                 DataRow dRow28 = dtCheckBox.NewRow();
-                dRow28[0] = "Memmorize PRate Inc";
-                dRow28[1] = "blnMemmorizePRateInc";
+                dRow28[0] = "Memmorize S.Rate Inc";
+                dRow28[1] = "blnMemmorizeSRateInc";
                 dRow28[2] = CheckState.Checked;
                 dtCheckBox.Rows.Add(dRow28);
             }
-
-            DataRow dRow29 = dtCheckBox.NewRow();
-            dRow29[0] = "Memmorize BatchCode Mode";
-            dRow29[1] = "blnMemmorizeBatchCodeMode";
-            dRow29[2] = CheckState.Checked;
-            dtCheckBox.Rows.Add(dRow29);
+            if (AppSettings.TaxEnabled == true)
+            {
+                DataRow dRow29 = dtCheckBox.NewRow();
+                dRow29[0] = "Memmorize PRate Inc";
+                dRow29[1] = "blnMemmorizePRateInc";
+                dRow29[2] = CheckState.Checked;
+                dtCheckBox.Rows.Add(dRow29);
+            }
 
             DataRow dRow30 = dtCheckBox.NewRow();
-            dRow30[0] = "Memmorize Shelf life";
-            dRow30[1] = "blnMemmorizeShelflife";
+            dRow30[0] = "Memmorize BatchCode Mode";
+            dRow30[1] = "blnMemmorizeBatchCodeMode";
             dRow30[2] = CheckState.Checked;
             dtCheckBox.Rows.Add(dRow30);
 
             DataRow dRow31 = dtCheckBox.NewRow();
-            dRow31[0] = "BatchMode - None";
-            dRow31[1] = "blnBatchModeNone";
+            dRow31[0] = "Memmorize Shelf life";
+            dRow31[1] = "blnMemmorizeShelflife";
             dRow31[2] = CheckState.Checked;
             dtCheckBox.Rows.Add(dRow31);
 
             DataRow dRow32 = dtCheckBox.NewRow();
-            dRow32[0] = "BatchMode - MNF";
-            dRow32[1] = "blnBatchModeMNF";
+            dRow32[0] = "BatchMode - None";
+            dRow32[1] = "blnBatchModeNone";
             dRow32[2] = CheckState.Checked;
             dtCheckBox.Rows.Add(dRow32);
 
             DataRow dRow33 = dtCheckBox.NewRow();
-            dRow33[0] = "BatchMode - AUTO";
-            dRow33[1] = "blnBatchModeAUTO";
+            dRow33[0] = "BatchMode - MNF";
+            dRow33[1] = "blnBatchModeMNF";
             dRow33[2] = CheckState.Checked;
             dtCheckBox.Rows.Add(dRow33);
 
             DataRow dRow34 = dtCheckBox.NewRow();
-            dRow34[0] = "BatchMode - WM";
-            dRow34[1] = "blnBatchModeWM";
+            dRow34[0] = "BatchMode - AUTO";
+            dRow34[1] = "blnBatchModeAUTO";
             dRow34[2] = CheckState.Checked;
             dtCheckBox.Rows.Add(dRow34);
+
+            DataRow dRow35 = dtCheckBox.NewRow();
+            dRow35[0] = "BatchMode - WM";
+            dRow35[1] = "blnBatchModeWM";
+            dRow35[2] = CheckState.Checked;
+            dtCheckBox.Rows.Add(dRow35);
 
             this.chklstShowControl.DataSource = dtCheckBox;
             this.chklstShowControl.DisplayMember = "strDescription";
             this.chklstShowControl.ValueMember = "strKeyName";
-
-
-            //foreach (int i in chklstShowControl.Items)
-            //{
-            //    chklstShowControl.SetItemCheckState(i, CheckState.Checked);
-            //}
 
             //Default Check
             int RowIndex=0;
@@ -5584,15 +5580,13 @@ namespace DigiposZen
                 RowIndex = RowIndex + 1;
             if (AppSettings.NeedBrand == true)
                 chklstShowControl.SetItemCheckState(22 - RowIndex, CheckState.Checked);//Brand
+
             chklstShowControl.SetItemCheckState(23 - RowIndex, CheckState.Checked);//DiscGroup
             chklstShowControl.SetItemCheckState(24 - RowIndex, CheckState.Checked);//Depart
-            //if (AppSettings.TaxEnabled == false)
-            //    RowIndex = RowIndex + 1;
             chklstShowControl.SetItemCheckState(26 - RowIndex, CheckState.Checked);//SR Inclu
             chklstShowControl.SetItemCheckState(27 - RowIndex, CheckState.Checked);//PR Inclu
             chklstShowControl.SetItemCheckState(28 - RowIndex, CheckState.Checked);//Batch
             chklstShowControl.SetItemCheckState(29 - RowIndex, CheckState.Checked);//ShelfLife
-
         }
         //Description : Save Checkbox List for Show/Hide Controls to Json 
         private void SaveControlCheckboxList()
@@ -5655,57 +5649,35 @@ namespace DigiposZen
             {
                 string strJson = "";
                 decimal IMParentID = 502;
-                strJson = Comm.fnGetData("SELECT ISNULL(VchJson,'') as VchJson FROM tblVchType WHERE ParentID = " + IMParentID + "").Tables[0].Rows[0][0].ToString();
-                if (strJson != "")
-                {
-                    List<clsJsonItemMasterChkbxListctrlInfo> lstchklistCtrlinfo = JsonConvert.DeserializeObject<List<clsJsonItemMasterChkbxListctrlInfo>>(strJson);
+                //strJson = Comm.fnGetData("SELECT ISNULL(VchJson,'') as VchJson FROM tblVchType WHERE ParentID = " + IMParentID + "").Tables[0].Rows[0][0].ToString();
+                //if (strJson != "")
+                //{
+                //    List<clsJsonItemMasterChkbxListctrlInfo> lstchklistCtrlinfo = JsonConvert.DeserializeObject<List<clsJsonItemMasterChkbxListctrlInfo>>(strJson);
+                    
+                //    dtCheckList = lstchklistCtrlinfo.ToDataTable();
 
-                    dtCheckList = lstchklistCtrlinfo.ToDataTable();
+                //    int RowsCount = lstchklistCtrlinfo.Count;
+                    int RowsCount = dtCheckBox.Rows.Count;
 
-                    int RowsCount = lstchklistCtrlinfo.Count;
-
-                    //if (AppSettings.NeedColor == false)
-                    //{
-                    //    RowsCount = RowsCount - 1;//Show Color
-                    //    RowsCount = RowsCount - 1;//Memmorize Color
-                    //}
-                    //if (AppSettings.NeedSize == false)
-                    //{
-                    //    RowsCount = RowsCount - 1;//Show Size
-                    //    RowsCount = RowsCount - 1;//Memmorize Color
-                    //}
-                    //if (AppSettings.NeedAgent == false)
-                    //{
-                    //    RowsCount = RowsCount - 1;//Show Agent
-                    //}
-                    //if (AppSettings.NeedBrand == false)
-                    //    RowsCount = RowsCount - 1;//Memmorize Brand
-                    //if (AppSettings.TaxEnabled == false)
-                    //{
-                    //    RowsCount = RowsCount - 1;//Memmorize Hsncode and Tax
-                    //    RowsCount = RowsCount - 1;//Memmorize SRate Inclusive
-                    //    RowsCount = RowsCount - 1;//Memmorize PRate Inclusive
-                    //}
-
-                    if (dtCheckList.Rows.Count > 0)
+                    if (dtCheckBox.Rows.Count > 0)
                     {
                         for (int i = 0; i < RowsCount; i++)
                         {
                             foreach (var item in chklstShowControl.Items)
                             {
-                                if (dtCheckList.Rows.Count > i)
+                                if (dtCheckBox.Rows.Count > i)
                                 {
                                     var row = (item as DataRowView).Row;
-                                    if (dtCheckList.Rows[i][1].ToString().ToUpper() == row["strKeyName"].ToString().ToUpper())
+                                    if (dtCheckBox.Rows[i][1].ToString().ToUpper() == row["strKeyName"].ToString().ToUpper())
                                     {
-                                        chklstShowControl.SetItemChecked(i, Convert.ToBoolean(dtCheckList.Rows[i][2].ToString()));
+                                        chklstShowControl.SetItemChecked(i, Convert.ToBoolean(dtCheckBox.Rows[i][2].ToString()));
                                         break;
                                     }
                                 }
                             }
                         }
                     }
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -5774,86 +5746,90 @@ namespace DigiposZen
                 RowsCount = RowsCount - 1;//Memmorize PRate Inclusive
             }
 
-            if (dtCheckList.Rows.Count > 0)
+            if (dtCheckBox.Rows.Count > 0)
             {
-                RowsCount = dtCheckList.Rows.Count;
+                RowsCount = dtCheckBox.Rows.Count;
 
                 for (int i = 0; i < RowsCount; i++)
                 {
-                    if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWRACK" && chklstShowControl.GetItemChecked(i) == false)
+                    if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWRACK" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         tlpRack.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWCOLOR" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWCOLOR" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         tlpColor.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWSIZE" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWSIZE" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         tlpSize.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWDEPARTMENT" && chklstShowControl.GetItemChecked(i) == false)//blnBatchModeNone
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWDEPARTMENT" && chklstShowControl.GetItemChecked(i) == false)//blnBatchModeNone
                     {
                         tlpDepart.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWDESCRIPTION" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWDESCRIPTION" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         tlpDesc.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWAGENTCOMMISION" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWAGENTCOMMISION" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         tlpAgent.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWDISCPER" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWDISCPER" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         tlpDiscPer.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWCOOLIEPERQTY" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "blnShowDiscGroup".ToUpper() && chklstShowControl.GetItemChecked(i) == false)
+                    {
+                        tlpDisc.Visible = false;
+                    }
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWCOOLIEPERQTY" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         tlpCoolie.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWROL" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWROL" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         tlpRol.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWMOQ" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWMOQ" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         tlpMoq.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWMINRATE" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWMINRATE" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         tlpMinRt.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWMAXRATE" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWMAXRATE" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         tlpMaxRt.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWSLABSYSTEM" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWSLABSYSTEM" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         chkSlabSysytem.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWSHELFLIFE" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWSHELFLIFE" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         lblshelflife.Visible = false;
                         txtshelflife.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNRATECHECK" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNRATECHECK" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         mBLNRATECHECK = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "blnSRateInc".ToUpper() && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "blnSRateInc".ToUpper() && chklstShowControl.GetItemChecked(i) == false)
                     {
                         mBLNSrateInc = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "blnPRateInc".ToUpper() && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "blnPRateInc".ToUpper() && chklstShowControl.GetItemChecked(i) == false)
                     {
                         mBLNPrateInc = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWALTERUNIT" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWALTERUNIT" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         grpUnitDetails.Visible = false;
                     }
-                    else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWPRODUCTCLASS" && chklstShowControl.GetItemChecked(i) == false)
+                    else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNSHOWPRODUCTCLASS" && chklstShowControl.GetItemChecked(i) == false)
                     {
                         grpProductClass.Visible = false;
                     }
@@ -5883,13 +5859,13 @@ namespace DigiposZen
              if (AppSettings.NeedAgent == false)
                 Memmorizeindex = Memmorizeindex - 1;
 
-            if (dtCheckList.Rows.Count > 0)
+            if (dtCheckBox.Rows.Count > 0)
             {
                 for (int i = Memmorizeindex; i < chklstShowControl.Items.Count; i++)
                 {
-                    if (dtCheckList.Rows.Count > i)
+                    if (dtCheckBox.Rows.Count > i)
                     {
-                        if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZECATEGORY" && chklstShowControl.GetItemChecked(i) == false)
+                        if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZECATEGORY" && chklstShowControl.GetItemChecked(i) == false)
                         {
                             this.txtCategoryList.TextChanged -= this.txtCategoryList_TextChanged;
                             txtCategoryList.Clear();
@@ -5898,57 +5874,57 @@ namespace DigiposZen
                             lblCategoryIds.Text = "";
                             GetFromCheckedList("");
                         }
-                        else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEMANUFACTURER" && chklstShowControl.GetItemChecked(i) == false)
+                        else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEMANUFACTURER" && chklstShowControl.GetItemChecked(i) == false)
                         {
                             txtManufacturer.TextChanged -= this.txtManufacturer_TextChanged;
                             txtManufacturer.Clear();
                             txtManufacturer.TextChanged += this.txtManufacturer_TextChanged;
                             txtManufacturer.Tag = 1;
                         }
-                        else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEUNIT" && chklstShowControl.GetItemChecked(i) == false)
+                        else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEUNIT" && chklstShowControl.GetItemChecked(i) == false)
                         {
                             cboUnit.SelectedIndex = 0;
                             cboUnit.Tag = 1;
                             cboUnit.SelectedValue = 1;
 
                         }
-                        else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZERACK" && chklstShowControl.GetItemChecked(i) == false)
+                        else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZERACK" && chklstShowControl.GetItemChecked(i) == false)
                         {
                             this.txtRack.TextChanged -= this.txtRack_TextChanged;
                             txtRack.Text = "";
                             this.txtRack.TextChanged += this.txtRack_TextChanged;
                         }
-                        else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZECOLOR" && chklstShowControl.GetItemChecked(i) == false)
+                        else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZECOLOR" && chklstShowControl.GetItemChecked(i) == false)
                         {
                             txtColor.Clear();
                             txtColor.Tag = 1;
                             GetFromCheckedListColor("1");
                         }
-                        else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZESIZE" && chklstShowControl.GetItemChecked(i) == false)
+                        else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZESIZE" && chklstShowControl.GetItemChecked(i) == false)
                         {
                             txtSize.Clear();
                             txtSize.Tag = 1;
                             GetFromCheckedListSize("1");
                         }
-                        else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEBRAND" && chklstShowControl.GetItemChecked(i) == false)
+                        else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEBRAND" && chklstShowControl.GetItemChecked(i) == false)
                         {
                             cboBrand.SelectedIndex = 0;
                             cboBrand.Tag = 1;
                             cboBrand.SelectedValue = 1;
                         }
-                        else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEDISCGROUP" && chklstShowControl.GetItemChecked(i) == false)
+                        else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEDISCGROUP" && chklstShowControl.GetItemChecked(i) == false)
                         {
                             cboDiscGroup.Tag = 1;
                             cboDiscGroup.SelectedValue = 1;
                         }
-                        else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEDEPARTMENT" && chklstShowControl.GetItemChecked(i) == false)
+                        else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEDEPARTMENT" && chklstShowControl.GetItemChecked(i) == false)
                         {
                             cboDepmnt.SelectedIndex = 0;
                             cboDepmnt.Text = "";
                             cboDepmnt.Tag = 1;
                             cboDepmnt.SelectedValue = 1;
                         }
-                        else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEHSNCODE" && chklstShowControl.GetItemChecked(i) == false)
+                        else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEHSNCODE" && chklstShowControl.GetItemChecked(i) == false)
                         {
                             this.txtHSNCode.TextChanged -= this.txtHSNCode_TextChanged;
                             txtHSNCode.Clear();
@@ -5959,19 +5935,11 @@ namespace DigiposZen
                             txtCessPerc.Clear();
                             chkSlabSysytem.Checked = false;
                         }
-                        //else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZESRATEINC" && chklstShowControl.GetItemChecked(i) == false)
-                        //{
-                        //    chkSRateIncl.Checked = false;
-                        //}
-                        //else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEPRATEINC" && chklstShowControl.GetItemChecked(i) == false)
-                        //{
-                        //    chkPRateIncl.Checked = false;
-                        //}
-                        else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEBATCHCODEMODE" && chklstShowControl.GetItemChecked(i) == false)
+                        else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZEBATCHCODEMODE" && chklstShowControl.GetItemChecked(i) == false)
                         {
                             cboBMode.SelectedIndex = -1;
                         }
-                        else if (dtCheckList.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZESHELFLIFE" && chklstShowControl.GetItemChecked(i) == false)
+                        else if (dtCheckBox.Rows[i]["strKeyName"].ToString().ToUpper() == "BLNMEMMORIZESHELFLIFE" && chklstShowControl.GetItemChecked(i) == false)
                         {
                             txtshelflife.Text = "0";
                         }
@@ -6448,6 +6416,31 @@ namespace DigiposZen
             {
 
             }
+        }
+
+        private void label44_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFind_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSave_Click(object sender, EventArgs e)
+        {
+
         }
 
         public bool PreFilterMessage(ref Message m)

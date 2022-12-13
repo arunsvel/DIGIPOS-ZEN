@@ -31,6 +31,7 @@ namespace DigiposZen
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDepartment));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
@@ -48,6 +49,11 @@ namespace DigiposZen
             this.gboxMain = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlShowSearch = new System.Windows.Forms.Panel();
+            this.dgvShowItemSearch = new System.Windows.Forms.DataGridView();
+            this.clmItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmShow = new System.Windows.Forms.DataGridViewImageColumn();
             this.lblDescription1 = new System.Windows.Forms.Label();
             this.txtDescription1 = new System.Windows.Forms.TextBox();
             this.lblDepartmentName = new System.Windows.Forms.Label();
@@ -72,18 +78,13 @@ namespace DigiposZen
             this.comboDropDown4 = new Syncfusion.Windows.Forms.Tools.ComboDropDown();
             this.label47 = new System.Windows.Forms.Label();
             this.toolTipState = new System.Windows.Forms.ToolTip(this.components);
-            this.dgvShowItemSearch = new System.Windows.Forms.DataGridView();
-            this.clmItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmShow = new System.Windows.Forms.DataGridViewImageColumn();
             this.tlpMain.SuspendLayout();
             this.tlpHeading.SuspendLayout();
             this.gboxMain.SuspendLayout();
             this.pnlShowSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowItemSearch)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboDropDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowItemSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpMain
@@ -147,7 +148,7 @@ namespace DigiposZen
             // 
             this.lblSave.AutoSize = true;
             this.lblSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSave.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSave.ForeColor = System.Drawing.Color.Black;
             this.lblSave.Location = new System.Drawing.Point(4, 84);
             this.lblSave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -194,7 +195,7 @@ namespace DigiposZen
             // 
             this.lblDelete.AutoSize = true;
             this.lblDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDelete.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelete.ForeColor = System.Drawing.Color.Black;
             this.lblDelete.Location = new System.Drawing.Point(84, 84);
             this.lblDelete.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -238,7 +239,7 @@ namespace DigiposZen
             // 
             this.lblFind.AutoSize = true;
             this.lblFind.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblFind.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFind.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFind.ForeColor = System.Drawing.Color.Black;
             this.lblFind.Location = new System.Drawing.Point(164, 84);
             this.lblFind.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -254,6 +255,7 @@ namespace DigiposZen
             this.btnYtubeTutorial.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnYtubeTutorial.FlatAppearance.BorderSize = 0;
             this.btnYtubeTutorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYtubeTutorial.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnYtubeTutorial.ForeColor = System.Drawing.Color.Black;
             this.btnYtubeTutorial.Image = ((System.Drawing.Image)(resources.GetObject("btnYtubeTutorial.Image")));
             this.btnYtubeTutorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -331,11 +333,11 @@ namespace DigiposZen
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(180, 17);
+            this.label9.Location = new System.Drawing.Point(162, 34);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(19, 21);
+            this.label9.Size = new System.Drawing.Size(16, 18);
             this.label9.TabIndex = 106;
             this.label9.Text = "*";
             // 
@@ -349,19 +351,91 @@ namespace DigiposZen
             this.pnlShowSearch.Size = new System.Drawing.Size(395, 227);
             this.pnlShowSearch.TabIndex = 4;
             // 
+            // dgvShowItemSearch
+            // 
+            this.dgvShowItemSearch.AllowUserToAddRows = false;
+            this.dgvShowItemSearch.AllowUserToDeleteRows = false;
+            this.dgvShowItemSearch.BackgroundColor = System.Drawing.Color.White;
+            this.dgvShowItemSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvShowItemSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmItemId,
+            this.clmItemName,
+            this.clmItemCode,
+            this.clmShow});
+            this.dgvShowItemSearch.Location = new System.Drawing.Point(3, 6);
+            this.dgvShowItemSearch.Name = "dgvShowItemSearch";
+            this.dgvShowItemSearch.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShowItemSearch.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvShowItemSearch.RowHeadersVisible = false;
+            this.dgvShowItemSearch.RowHeadersWidth = 51;
+            this.dgvShowItemSearch.RowTemplate.Height = 24;
+            this.dgvShowItemSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvShowItemSearch.Size = new System.Drawing.Size(387, 213);
+            this.dgvShowItemSearch.TabIndex = 3;
+            // 
+            // clmItemId
+            // 
+            this.clmItemId.DataPropertyName = "DepartmentID";
+            this.clmItemId.HeaderText = "DepartmentID";
+            this.clmItemId.MinimumWidth = 6;
+            this.clmItemId.Name = "clmItemId";
+            this.clmItemId.ReadOnly = true;
+            this.clmItemId.Visible = false;
+            this.clmItemId.Width = 10;
+            // 
+            // clmItemName
+            // 
+            this.clmItemName.DataPropertyName = "Department";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmItemName.DefaultCellStyle = dataGridViewCellStyle1;
+            this.clmItemName.HeaderText = "Department";
+            this.clmItemName.MinimumWidth = 6;
+            this.clmItemName.Name = "clmItemName";
+            this.clmItemName.ReadOnly = true;
+            this.clmItemName.Width = 200;
+            // 
+            // clmItemCode
+            // 
+            this.clmItemCode.DataPropertyName = "Description";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmItemCode.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clmItemCode.HeaderText = "Description";
+            this.clmItemCode.MinimumWidth = 6;
+            this.clmItemCode.Name = "clmItemCode";
+            this.clmItemCode.ReadOnly = true;
+            this.clmItemCode.Width = 125;
+            // 
+            // clmShow
+            // 
+            this.clmShow.HeaderText = "Show";
+            this.clmShow.Image = ((System.Drawing.Image)(resources.GetObject("clmShow.Image")));
+            this.clmShow.MinimumWidth = 6;
+            this.clmShow.Name = "clmShow";
+            this.clmShow.ReadOnly = true;
+            this.clmShow.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmShow.Width = 6;
+            // 
             // lblDescription1
             // 
             this.lblDescription1.AutoSize = true;
-            this.lblDescription1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription1.Location = new System.Drawing.Point(17, 107);
             this.lblDescription1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescription1.Name = "lblDescription1";
-            this.lblDescription1.Size = new System.Drawing.Size(100, 21);
+            this.lblDescription1.Size = new System.Drawing.Size(83, 18);
             this.lblDescription1.TabIndex = 99;
             this.lblDescription1.Text = "Description:";
             // 
             // txtDescription1
             // 
+            this.txtDescription1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescription1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription1.Location = new System.Drawing.Point(22, 132);
             this.txtDescription1.Margin = new System.Windows.Forms.Padding(4);
@@ -377,16 +451,17 @@ namespace DigiposZen
             // lblDepartmentName
             // 
             this.lblDepartmentName.AutoSize = true;
-            this.lblDepartmentName.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDepartmentName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDepartmentName.Location = new System.Drawing.Point(19, 34);
             this.lblDepartmentName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDepartmentName.Name = "lblDepartmentName";
-            this.lblDepartmentName.Size = new System.Drawing.Size(153, 21);
+            this.lblDepartmentName.Size = new System.Drawing.Size(135, 18);
             this.lblDepartmentName.TabIndex = 95;
             this.lblDepartmentName.Text = "Department Name:";
             // 
             // txtDepartmentName
             // 
+            this.txtDepartmentName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDepartmentName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDepartmentName.Location = new System.Drawing.Point(22, 59);
             this.txtDepartmentName.Margin = new System.Windows.Forms.Padding(4);
@@ -595,13 +670,13 @@ namespace DigiposZen
             // comboDropDown4
             // 
             this.comboDropDown4.BackColor = System.Drawing.Color.White;
-            this.comboDropDown4.BeforeTouchSize = new System.Drawing.Size(347, 29);
+            this.comboDropDown4.BeforeTouchSize = new System.Drawing.Size(347, 27);
             this.comboDropDown4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboDropDown4.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboDropDown4.Location = new System.Drawing.Point(668, 754);
             this.comboDropDown4.Margin = new System.Windows.Forms.Padding(4);
             this.comboDropDown4.Name = "comboDropDown4";
-            this.comboDropDown4.Size = new System.Drawing.Size(347, 29);
+            this.comboDropDown4.Size = new System.Drawing.Size(347, 27);
             this.comboDropDown4.Style = Syncfusion.Windows.Forms.VisualStyle.Metro;
             this.comboDropDown4.TabIndex = 24;
             // 
@@ -609,6 +684,7 @@ namespace DigiposZen
             // 
             this.label47.BackColor = System.Drawing.Color.Transparent;
             this.label47.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label47.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label47.ForeColor = System.Drawing.Color.Black;
             this.label47.Location = new System.Drawing.Point(4, 373);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -617,69 +693,6 @@ namespace DigiposZen
             this.label47.TabIndex = 0;
             this.label47.Text = "Keyboard Shortcuts : - F3 Find,F5 Save, F7 Delete, Esc Close ";
             this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dgvShowItemSearch
-            // 
-            this.dgvShowItemSearch.AllowUserToAddRows = false;
-            this.dgvShowItemSearch.AllowUserToDeleteRows = false;
-            this.dgvShowItemSearch.BackgroundColor = System.Drawing.Color.White;
-            this.dgvShowItemSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowItemSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmItemId,
-            this.clmItemName,
-            this.clmItemCode,
-            this.clmShow});
-            this.dgvShowItemSearch.Location = new System.Drawing.Point(3, 6);
-            this.dgvShowItemSearch.Name = "dgvShowItemSearch";
-            this.dgvShowItemSearch.ReadOnly = true;
-            this.dgvShowItemSearch.RowHeadersVisible = false;
-            this.dgvShowItemSearch.RowHeadersWidth = 51;
-            this.dgvShowItemSearch.RowTemplate.Height = 24;
-            this.dgvShowItemSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvShowItemSearch.Size = new System.Drawing.Size(387, 213);
-            this.dgvShowItemSearch.TabIndex = 3;
-            // 
-            // clmItemId
-            // 
-            this.clmItemId.DataPropertyName = "DepartmentID";
-            this.clmItemId.HeaderText = "DepartmentID";
-            this.clmItemId.MinimumWidth = 6;
-            this.clmItemId.Name = "clmItemId";
-            this.clmItemId.ReadOnly = true;
-            this.clmItemId.Visible = false;
-            this.clmItemId.Width = 10;
-            // 
-            // clmItemName
-            // 
-            this.clmItemName.DataPropertyName = "Department";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmItemName.DefaultCellStyle = dataGridViewCellStyle1;
-            this.clmItemName.HeaderText = "Department";
-            this.clmItemName.MinimumWidth = 6;
-            this.clmItemName.Name = "clmItemName";
-            this.clmItemName.ReadOnly = true;
-            this.clmItemName.Width = 200;
-            // 
-            // clmItemCode
-            // 
-            this.clmItemCode.DataPropertyName = "Description";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmItemCode.DefaultCellStyle = dataGridViewCellStyle2;
-            this.clmItemCode.HeaderText = "Description";
-            this.clmItemCode.MinimumWidth = 6;
-            this.clmItemCode.Name = "clmItemCode";
-            this.clmItemCode.ReadOnly = true;
-            this.clmItemCode.Width = 125;
-            // 
-            // clmShow
-            // 
-            this.clmShow.HeaderText = "Show";
-            this.clmShow.Image = ((System.Drawing.Image)(resources.GetObject("clmShow.Image")));
-            this.clmShow.MinimumWidth = 6;
-            this.clmShow.Name = "clmShow";
-            this.clmShow.ReadOnly = true;
-            this.clmShow.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmShow.Width = 6;
             // 
             // frmDepartment
             // 
@@ -703,10 +716,10 @@ namespace DigiposZen
             this.gboxMain.ResumeLayout(false);
             this.gboxMain.PerformLayout();
             this.pnlShowSearch.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowItemSearch)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboDropDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowItemSearch)).EndInit();
             this.ResumeLayout(false);
 
         }

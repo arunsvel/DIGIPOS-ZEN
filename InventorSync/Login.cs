@@ -632,6 +632,7 @@ namespace DigiposZen
                     Global.SetUserId(0);
                     Global.SetUserGroupId(0);
                     Global.SetUserName("DIGIPOS");
+                    Global.SetSystemName("Standard");
 
                     return true;
                 }
@@ -922,7 +923,10 @@ namespace DigiposZen
                         Global.SetFyEndDate(Convert.ToDateTime(dt.Rows[0]["FyEndDate"].ToString()));
                     }
                 }
-                
+
+                Comm.DBUpdate();
+                Comm.CreateViewsAndProcudures();
+
                 this.Close();
             }
             catch (Exception ex)

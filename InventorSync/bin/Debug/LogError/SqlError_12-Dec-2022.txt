@@ -1,0 +1,45 @@
+12-Dec-2022 17:05:52
+ERROR_NUMBER:547
+ERROR_STATE:0
+ERROR_SEVERITY:16
+ERROR_PROCEDURE:UspItemMasterInsert
+ERROR_LINE:476
+ERROR_MESSAGE:The DELETE statement conflicted with the REFERENCE constraint "FK_tblStockHistory_tblStock". The conflict occurred in database "NA123", table "dbo.tblStockHistory", column 'BatchUnique'.
+User Name: ADMIN
+------------------------------------------------------------------------------
+12-Dec-2022 17:05:59
+ERROR_NUMBER:547
+ERROR_STATE:0
+ERROR_SEVERITY:16
+ERROR_PROCEDURE:UspItemMasterInsert
+ERROR_LINE:476
+ERROR_MESSAGE:The DELETE statement conflicted with the REFERENCE constraint "FK_tblStockHistory_tblStock". The conflict occurred in database "NA123", table "dbo.tblStockHistory", column 'BatchUnique'.
+User Name: ADMIN
+------------------------------------------------------------------------------
+12-Dec-2022 17:06:55
+ERROR_NUMBER:547
+ERROR_STATE:0
+ERROR_SEVERITY:16
+ERROR_PROCEDURE:UspItemMasterInsert
+ERROR_LINE:476
+ERROR_MESSAGE:The DELETE statement conflicted with the REFERENCE constraint "FK_tblStockHistory_tblStock". The conflict occurred in database "NA123", table "dbo.tblStockHistory", column 'BatchUnique'.
+User Name: ADMIN
+------------------------------------------------------------------------------
+12-Dec-2022 17:07:45
+ERROR_NUMBER:547
+ERROR_STATE:0
+ERROR_SEVERITY:16
+ERROR_PROCEDURE:UspItemMasterInsert
+ERROR_LINE:481
+ERROR_MESSAGE:The DELETE statement conflicted with the REFERENCE constraint "FK_tblStockHistory_tblStock". The conflict occurred in database "NA123", table "dbo.tblStockHistory", column 'BatchUnique'.
+User Name: ADMIN
+------------------------------------------------------------------------------
+12-Dec-2022 17:07:50
+ERROR_NUMBER:547
+ERROR_STATE:0
+ERROR_SEVERITY:16
+ERROR_PROCEDURE:UspItemMasterInsert
+ERROR_LINE:481
+ERROR_MESSAGE:The DELETE statement conflicted with the REFERENCE constraint "FK_tblStockHistory_tblStock". The conflict occurred in database "NA123", table "dbo.tblStockHistory", column 'BatchUnique'.
+User Name: ADMIN
+------------------------------------------------------------------------------

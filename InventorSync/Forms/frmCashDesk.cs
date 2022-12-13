@@ -30,7 +30,6 @@ namespace DigiposZen.Forms
         {
             try
             {
-
                 lblMop.Tag = "";
                 lblMop.Text = mcashdesk.MOP;
                 if (mcashdesk.MOP == "Credit")
@@ -39,17 +38,10 @@ namespace DigiposZen.Forms
                     txtAmount.Visible = false;
                     btnAdd.Visible = false;
                     label4.Visible = false;
-                    //SqlDataAdapter da1 = new SqlDataAdapter("SELECT L1.LAliasName as LEDGER_NAME,L1.Address as ADDRESS,MobileNo as MOBILE_NO,ABS(SUM(AmountD)-SUM(AmountC))AS BALANCE, CASE WHEN ((SUM(AmountD)-SUM(AmountC))> '0') THEN 'DR' ELSE 'CR' END AS  _  FROM dbo.tblAccountGroup INNER JOIN dbo.tblLedger as L1 ON dbo.tblAccountGroup.AccountGroupID = L1.AccountGroupID INNER JOIN dbo.tblVoucher ON L1.LID = dbo.tblVoucher.LedgerID INNER JOIN    dbo.tblVchType ON dbo.tblVoucher.VchTypeID = dbo.tblVchType.VchTypeID LEFT OUTER JOIN dbo.tblEmployee ON dbo.tblVoucher.SalesManID = dbo.tblEmployee.EmpID WHERE ISNULL(tblAccountGroup.activestatus, 1) = 1 and tblVoucher.Optional = 0  AND  L1.AccountGroupID = 11 AND LedgerID='" + mcashdesk.LedgerID + "' GROUP BY L1.LAliasName, L1.Address, MobileNo", DigiposZen.Properties.Settings.Default.ConnectionString);
-                    //DataTable dt3 = new DataTable();
-                    //da1.Fill(dt3);
-                    //if (dt3.Rows.Count > 0 && dt3.Rows[0]["BALANCE"].ToString()=="")
-                    //{
-                    //    txtPreviousBalance.Text = dt3.Rows[0]["BALANCE"].ToString();
-                    //}
-                    //else
-                    //{
-                    //    txtPreviousBalance.Text = "0";
-                    //}
+
+                    flpPaymentModes.Visible = false;
+                    this.tableLayoutPanel2.ColumnStyles[0].SizeType = SizeType.Absolute;
+                    this.tableLayoutPanel2.ColumnStyles[0].Width = 10;
 
                     txtPreviousBalance.Text = Comm.GetLedgerBalance(Comm.ToInt32(mcashdesk.LedgerID), DateTime.Today).ToString();
                 }
@@ -57,6 +49,10 @@ namespace DigiposZen.Forms
                 {
                     panel5.Visible = false;
                     lblMop.Text = "CASH";
+
+                    flpPaymentModes.Visible = false;
+                    this.tableLayoutPanel2.ColumnStyles[0].SizeType = SizeType.Absolute;
+                    this.tableLayoutPanel2.ColumnStyles[0].Width = 10;
                 }
                 else if (mcashdesk.MOP == "Mixed")
                 {

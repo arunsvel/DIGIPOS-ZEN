@@ -116,7 +116,7 @@
             this.lblSave.AutoSize = true;
             this.lblSave.BackColor = System.Drawing.Color.Transparent;
             this.lblSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSave.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSave.ForeColor = System.Drawing.Color.Black;
             this.lblSave.Location = new System.Drawing.Point(3, 68);
             this.lblSave.Name = "lblSave";
@@ -173,7 +173,7 @@
             this.lblDelete.AutoSize = true;
             this.lblDelete.BackColor = System.Drawing.Color.Transparent;
             this.lblDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDelete.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelete.ForeColor = System.Drawing.Color.Black;
             this.lblDelete.Location = new System.Drawing.Point(63, 68);
             this.lblDelete.Name = "lblDelete";
@@ -215,7 +215,7 @@
             this.lblFind.AutoSize = true;
             this.lblFind.BackColor = System.Drawing.Color.Transparent;
             this.lblFind.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblFind.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFind.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFind.ForeColor = System.Drawing.Color.Black;
             this.lblFind.Location = new System.Drawing.Point(123, 68);
             this.lblFind.Name = "lblFind";
@@ -231,7 +231,7 @@
             this.btnYtubeTutorial.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnYtubeTutorial.FlatAppearance.BorderSize = 0;
             this.btnYtubeTutorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnYtubeTutorial.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnYtubeTutorial.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnYtubeTutorial.ForeColor = System.Drawing.Color.Black;
             this.btnYtubeTutorial.Image = ((System.Drawing.Image)(resources.GetObject("btnYtubeTutorial.Image")));
             this.btnYtubeTutorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -280,11 +280,11 @@
             // lblMand1
             // 
             this.lblMand1.AutoSize = true;
-            this.lblMand1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMand1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMand1.ForeColor = System.Drawing.Color.Red;
-            this.lblMand1.Location = new System.Drawing.Point(184, 17);
+            this.lblMand1.Location = new System.Drawing.Point(174, 17);
             this.lblMand1.Name = "lblMand1";
-            this.lblMand1.Size = new System.Drawing.Size(19, 21);
+            this.lblMand1.Size = new System.Drawing.Size(16, 18);
             this.lblMand1.TabIndex = 78;
             this.lblMand1.Text = "*";
             // 
@@ -299,6 +299,7 @@
             // 
             // txtManfShortName
             // 
+            this.txtManfShortName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtManfShortName.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtManfShortName.Location = new System.Drawing.Point(22, 98);
             this.txtManfShortName.MaxLength = 50;
@@ -313,25 +314,26 @@
             // lblManfShort
             // 
             this.lblManfShort.AutoSize = true;
-            this.lblManfShort.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblManfShort.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblManfShort.Location = new System.Drawing.Point(22, 74);
             this.lblManfShort.Name = "lblManfShort";
-            this.lblManfShort.Size = new System.Drawing.Size(206, 21);
+            this.lblManfShort.Size = new System.Drawing.Size(183, 18);
             this.lblManfShort.TabIndex = 73;
             this.lblManfShort.Text = "Manufacturer Short Name:";
             // 
             // lblManufacture
             // 
             this.lblManufacture.AutoSize = true;
-            this.lblManufacture.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblManufacture.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblManufacture.Location = new System.Drawing.Point(22, 17);
             this.lblManufacture.Name = "lblManufacture";
-            this.lblManufacture.Size = new System.Drawing.Size(162, 21);
+            this.lblManufacture.Size = new System.Drawing.Size(144, 18);
             this.lblManufacture.TabIndex = 69;
             this.lblManufacture.Text = "Manufacturer Name:";
             // 
             // txtDiscountPerc
             // 
+            this.txtDiscountPerc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiscountPerc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiscountPerc.Location = new System.Drawing.Point(22, 154);
             this.txtDiscountPerc.MaxLength = 5;
@@ -346,6 +348,7 @@
             // 
             // txtManufacture
             // 
+            this.txtManufacture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtManufacture.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtManufacture.Location = new System.Drawing.Point(22, 41);
             this.txtManufacture.MaxLength = 50;
@@ -361,10 +364,10 @@
             // lblManfDisc
             // 
             this.lblManfDisc.AutoSize = true;
-            this.lblManfDisc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblManfDisc.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblManfDisc.Location = new System.Drawing.Point(22, 131);
             this.lblManfDisc.Name = "lblManfDisc";
-            this.lblManfDisc.Size = new System.Drawing.Size(103, 21);
+            this.lblManfDisc.Size = new System.Drawing.Size(88, 18);
             this.lblManfDisc.TabIndex = 71;
             this.lblManfDisc.Text = "Discount %:";
             // 

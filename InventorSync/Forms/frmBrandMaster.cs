@@ -52,9 +52,9 @@ namespace DigiposZen
                 //Comm.LoadBGImage(this, picBackground);
 
                 lblHeading.Font = new Font("Tahoma", 21, FontStyle.Regular, GraphicsUnit.Pixel);
-                lblSave.Font = new Font("Tahoma", 10, FontStyle.Regular, GraphicsUnit.Point);
-                lblDelete.Font = new Font("Tahoma", 10, FontStyle.Regular, GraphicsUnit.Point);
-                lblFind.Font = new Font("Tahoma", 10, FontStyle.Regular, GraphicsUnit.Point);
+                lblSave.Font = new Font("Tahoma", 9, FontStyle.Regular, GraphicsUnit.Point);
+                lblDelete.Font = new Font("Tahoma", 9, FontStyle.Regular, GraphicsUnit.Point);
+                lblFind.Font = new Font("Tahoma", 9, FontStyle.Regular, GraphicsUnit.Point);
 
                 lblSave.ForeColor = Color.Black;
                 lblDelete.ForeColor = Color.Black;

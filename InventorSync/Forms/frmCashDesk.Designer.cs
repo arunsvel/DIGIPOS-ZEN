@@ -60,6 +60,15 @@ namespace DigiposZen.Forms
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblHeading = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.txtCurrentBalance = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtCurrentReceipt = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtOutstanting = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtPreviousBalance = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnno00 = new System.Windows.Forms.Button();
             this.btnC = new System.Windows.Forms.Button();
             this.btnno0 = new System.Windows.Forms.Button();
@@ -84,15 +93,6 @@ namespace DigiposZen.Forms
             this.btnno6 = new System.Windows.Forms.Button();
             this.btnno4 = new System.Windows.Forms.Button();
             this.btnno5 = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.txtCurrentBalance = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtCurrentReceipt = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtOutstanting = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtPreviousBalance = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -111,25 +111,14 @@ namespace DigiposZen.Forms
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel2.ColumnCount = 14;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.12322F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.87678F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 168F));
-            this.tableLayoutPanel2.Controls.Add(this.panel3, 6, 2);
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.75726F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.24274F));
+            this.tableLayoutPanel2.Controls.Add(this.panel3, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.flpPaymentModes, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.panel4, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 7, 2);
+            this.tableLayoutPanel2.Controls.Add(this.panel2, 2, 2);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 5);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -158,7 +147,7 @@ namespace DigiposZen.Forms
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.dgvPayments);
             this.panel3.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(209, 41);
+            this.panel3.Location = new System.Drawing.Point(201, 41);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(348, 424);
             this.panel3.TabIndex = 11;
@@ -400,10 +389,9 @@ namespace DigiposZen.Forms
             // 
             // flpPaymentModes
             // 
-            this.tableLayoutPanel2.SetColumnSpan(this.flpPaymentModes, 6);
             this.flpPaymentModes.Location = new System.Drawing.Point(3, 41);
             this.flpPaymentModes.Name = "flpPaymentModes";
-            this.flpPaymentModes.Size = new System.Drawing.Size(200, 424);
+            this.flpPaymentModes.Size = new System.Drawing.Size(192, 424);
             this.flpPaymentModes.TabIndex = 39;
             // 
             // panel4
@@ -411,7 +399,7 @@ namespace DigiposZen.Forms
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.BackgroundImage = global::DigiposZen.Properties.Resources.WallPvaper2;
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableLayoutPanel2.SetColumnSpan(this.panel4, 15);
+            this.tableLayoutPanel2.SetColumnSpan(this.panel4, 4);
             this.panel4.Controls.Add(this.lblHeading);
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
@@ -421,14 +409,14 @@ namespace DigiposZen.Forms
             // 
             // lblHeading
             // 
-            this.lblHeading.AutoSize = true;
             this.lblHeading.BackColor = System.Drawing.Color.Transparent;
+            this.lblHeading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblHeading.Font = new System.Drawing.Font("Tahoma", 15F);
             this.lblHeading.ForeColor = System.Drawing.Color.White;
-            this.lblHeading.Location = new System.Drawing.Point(415, 0);
+            this.lblHeading.Location = new System.Drawing.Point(0, 0);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(127, 30);
+            this.lblHeading.Size = new System.Drawing.Size(947, 31);
             this.lblHeading.TabIndex = 3;
             this.lblHeading.Text = "Cash Desk";
             this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -436,7 +424,6 @@ namespace DigiposZen.Forms
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel2.SetColumnSpan(this.panel2, 7);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.btnno00);
             this.panel2.Controls.Add(this.btnC);
@@ -462,10 +449,103 @@ namespace DigiposZen.Forms
             this.panel2.Controls.Add(this.btnno6);
             this.panel2.Controls.Add(this.btnno4);
             this.panel2.Controls.Add(this.btnno5);
-            this.panel2.Location = new System.Drawing.Point(563, 41);
+            this.panel2.Location = new System.Drawing.Point(561, 41);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(387, 424);
             this.panel2.TabIndex = 10;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.txtCurrentBalance);
+            this.panel5.Controls.Add(this.label9);
+            this.panel5.Controls.Add(this.txtCurrentReceipt);
+            this.panel5.Controls.Add(this.label8);
+            this.panel5.Controls.Add(this.txtOutstanting);
+            this.panel5.Controls.Add(this.label7);
+            this.panel5.Controls.Add(this.txtPreviousBalance);
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Location = new System.Drawing.Point(2, 5);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(384, 159);
+            this.panel5.TabIndex = 46;
+            // 
+            // txtCurrentBalance
+            // 
+            this.txtCurrentBalance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtCurrentBalance.Location = new System.Drawing.Point(175, 94);
+            this.txtCurrentBalance.Name = "txtCurrentBalance";
+            this.txtCurrentBalance.ReadOnly = true;
+            this.txtCurrentBalance.Size = new System.Drawing.Size(199, 28);
+            this.txtCurrentBalance.TabIndex = 7;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label9.Location = new System.Drawing.Point(3, 100);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(138, 21);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Current Balance  ";
+            // 
+            // txtCurrentReceipt
+            // 
+            this.txtCurrentReceipt.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtCurrentReceipt.Location = new System.Drawing.Point(175, 65);
+            this.txtCurrentReceipt.Name = "txtCurrentReceipt";
+            this.txtCurrentReceipt.Size = new System.Drawing.Size(199, 28);
+            this.txtCurrentReceipt.TabIndex = 5;
+            this.txtCurrentReceipt.TextChanged += new System.EventHandler(this.txtCurrentReceipt_TextChanged);
+            this.txtCurrentReceipt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCurrentReceipt_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label8.Location = new System.Drawing.Point(2, 69);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(146, 21);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Current Receipt    ";
+            // 
+            // txtOutstanting
+            // 
+            this.txtOutstanting.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtOutstanting.Location = new System.Drawing.Point(175, 34);
+            this.txtOutstanting.Name = "txtOutstanting";
+            this.txtOutstanting.ReadOnly = true;
+            this.txtOutstanting.Size = new System.Drawing.Size(199, 28);
+            this.txtOutstanting.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label7.Location = new System.Drawing.Point(1, 41);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(145, 21);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Total Outstanting ";
+            // 
+            // txtPreviousBalance
+            // 
+            this.txtPreviousBalance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtPreviousBalance.Location = new System.Drawing.Point(175, 5);
+            this.txtPreviousBalance.Name = "txtPreviousBalance";
+            this.txtPreviousBalance.ReadOnly = true;
+            this.txtPreviousBalance.Size = new System.Drawing.Size(199, 28);
+            this.txtPreviousBalance.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label6.Location = new System.Drawing.Point(2, 11);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(145, 21);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Previous Balance  ";
             // 
             // btnno00
             // 
@@ -802,99 +882,6 @@ namespace DigiposZen.Forms
             this.btnno5.UseVisualStyleBackColor = false;
             this.btnno5.Click += new System.EventHandler(this.btnno5_Click);
             // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.txtCurrentBalance);
-            this.panel5.Controls.Add(this.label9);
-            this.panel5.Controls.Add(this.txtCurrentReceipt);
-            this.panel5.Controls.Add(this.label8);
-            this.panel5.Controls.Add(this.txtOutstanting);
-            this.panel5.Controls.Add(this.label7);
-            this.panel5.Controls.Add(this.txtPreviousBalance);
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Location = new System.Drawing.Point(2, 5);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(384, 159);
-            this.panel5.TabIndex = 46;
-            // 
-            // txtCurrentBalance
-            // 
-            this.txtCurrentBalance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txtCurrentBalance.Location = new System.Drawing.Point(175, 94);
-            this.txtCurrentBalance.Name = "txtCurrentBalance";
-            this.txtCurrentBalance.ReadOnly = true;
-            this.txtCurrentBalance.Size = new System.Drawing.Size(199, 28);
-            this.txtCurrentBalance.TabIndex = 7;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label9.Location = new System.Drawing.Point(3, 100);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(138, 21);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Current Balance  ";
-            // 
-            // txtCurrentReceipt
-            // 
-            this.txtCurrentReceipt.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txtCurrentReceipt.Location = new System.Drawing.Point(175, 65);
-            this.txtCurrentReceipt.Name = "txtCurrentReceipt";
-            this.txtCurrentReceipt.Size = new System.Drawing.Size(199, 28);
-            this.txtCurrentReceipt.TabIndex = 5;
-            this.txtCurrentReceipt.TextChanged += new System.EventHandler(this.txtCurrentReceipt_TextChanged);
-            this.txtCurrentReceipt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCurrentReceipt_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label8.Location = new System.Drawing.Point(2, 69);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(146, 21);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Current Receipt    ";
-            // 
-            // txtOutstanting
-            // 
-            this.txtOutstanting.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txtOutstanting.Location = new System.Drawing.Point(175, 34);
-            this.txtOutstanting.Name = "txtOutstanting";
-            this.txtOutstanting.ReadOnly = true;
-            this.txtOutstanting.Size = new System.Drawing.Size(199, 28);
-            this.txtOutstanting.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label7.Location = new System.Drawing.Point(1, 41);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(145, 21);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Total Outstanting ";
-            // 
-            // txtPreviousBalance
-            // 
-            this.txtPreviousBalance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txtPreviousBalance.Location = new System.Drawing.Point(175, 5);
-            this.txtPreviousBalance.Name = "txtPreviousBalance";
-            this.txtPreviousBalance.ReadOnly = true;
-            this.txtPreviousBalance.Size = new System.Drawing.Size(199, 28);
-            this.txtPreviousBalance.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label6.Location = new System.Drawing.Point(2, 11);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(145, 21);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Previous Balance  ";
-            // 
             // frmCashDesk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -917,7 +904,6 @@ namespace DigiposZen.Forms
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayments)).EndInit();
             this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();

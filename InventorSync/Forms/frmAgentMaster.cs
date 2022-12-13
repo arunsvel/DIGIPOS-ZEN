@@ -56,9 +56,9 @@ namespace DigiposZen
                     //Comm.LoadBGImage(this, picBackground);
 
                     lblHeading.Font = new Font("Tahoma", 21, FontStyle.Regular, GraphicsUnit.Pixel);
-                    lblSave.Font = new Font("Tahoma", 10, FontStyle.Regular, GraphicsUnit.Point);
-                    lblDelete.Font = new Font("Tahoma", 10, FontStyle.Regular, GraphicsUnit.Point);
-                    lblFind.Font = new Font("Tahoma", 10, FontStyle.Regular, GraphicsUnit.Point);
+                    lblSave.Font = new Font("Tahoma", 9, FontStyle.Regular, GraphicsUnit.Point);
+                    lblDelete.Font = new Font("Tahoma", 9, FontStyle.Regular, GraphicsUnit.Point);
+                    lblFind.Font = new Font("Tahoma", 9, FontStyle.Regular, GraphicsUnit.Point);
 
                     lblSave.ForeColor = Color.Black;
                     lblDelete.ForeColor = Color.Black;
@@ -896,7 +896,7 @@ namespace DigiposZen
             Common cmbfill = new Common();
             DataTable dtLedger = new DataTable();
             //fill ledgers from current liability because this is a payable ledger acting similar to supplier
-            dtLedger = Comm.fnGetData("SELECT -2 as  LID,'<None>' as LName FROM tblLedger UNION SELECT -1 as  LID,' <AutoCrerateLedger> ' as LName FROM tblLedger UNION SELECT DISTINCT LID as LID,LName as LName FROM tblLedger, tblAccountGroup where tblLedger.accountgroupid=tblAccountGroup.accountgroupid and tblAccountGroup.parentid=3 and TenantID =" + Global.gblTenantID + " ORDER BY LID").Tables[0];
+            dtLedger = Comm.fnGetData("SELECT -2 as  LID,'<None>' as LName FROM tblLedger UNION SELECT -1 as  LID,' <AutoCrerateLedger> ' as LName FROM tblLedger UNION SELECT DISTINCT LID as LID,LName as LName FROM tblLedger, tblAccountGroup where tblLedger.accountgroupid=tblAccountGroup.accountgroupid and tblAccountGroup.parentid=3 and tblAccountGroup.TenantID =" + Global.gblTenantID + " and tblLedger.TenantID =" + Global.gblTenantID + " ORDER BY LID").Tables[0];
             if (dtLedger.Rows.Count > 0)
             {
                 Comm.LoadControl(cmbAgentLederName, dtLedger, "", false, false, "LName", "LID");

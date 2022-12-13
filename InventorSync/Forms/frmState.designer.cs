@@ -95,11 +95,11 @@ namespace DigiposZen
             this.tlpMain.Margin = new System.Windows.Forms.Padding(4);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 3;
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 136F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpMain.Size = new System.Drawing.Size(885, 410);
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tlpMain.Size = new System.Drawing.Size(885, 462);
             this.tlpMain.TabIndex = 7;
             // 
             // tlpHeading
@@ -129,10 +129,10 @@ namespace DigiposZen
             this.tlpHeading.Margin = new System.Windows.Forms.Padding(0);
             this.tlpHeading.Name = "tlpHeading";
             this.tlpHeading.RowCount = 3;
-            this.tlpHeading.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tlpHeading.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
-            this.tlpHeading.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tlpHeading.Size = new System.Drawing.Size(891, 121);
+            this.tlpHeading.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tlpHeading.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tlpHeading.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tlpHeading.Size = new System.Drawing.Size(891, 136);
             this.tlpHeading.TabIndex = 1;
             this.tlpHeading.TabStop = true;
             this.tlpHeading.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tlpHeading_MouseDown);
@@ -144,12 +144,12 @@ namespace DigiposZen
             this.lblSave.AutoSize = true;
             this.lblSave.BackColor = System.Drawing.Color.Transparent;
             this.lblSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSave.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSave.ForeColor = System.Drawing.Color.Black;
-            this.lblSave.Location = new System.Drawing.Point(4, 84);
+            this.lblSave.Location = new System.Drawing.Point(4, 95);
             this.lblSave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSave.Name = "lblSave";
-            this.lblSave.Size = new System.Drawing.Size(72, 37);
+            this.lblSave.Size = new System.Drawing.Size(72, 42);
             this.lblSave.TabIndex = 7;
             this.lblSave.Text = "Save";
             this.lblSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -164,7 +164,7 @@ namespace DigiposZen
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.tlpHeading.SetRowSpan(this.btnDelete, 2);
-            this.btnDelete.Size = new System.Drawing.Size(72, 76);
+            this.btnDelete.Size = new System.Drawing.Size(72, 87);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -174,12 +174,12 @@ namespace DigiposZen
             this.lblDelete.AutoSize = true;
             this.lblDelete.BackColor = System.Drawing.Color.Transparent;
             this.lblDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDelete.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelete.ForeColor = System.Drawing.Color.Black;
-            this.lblDelete.Location = new System.Drawing.Point(84, 84);
+            this.lblDelete.Location = new System.Drawing.Point(84, 95);
             this.lblDelete.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDelete.Name = "lblDelete";
-            this.lblDelete.Size = new System.Drawing.Size(72, 37);
+            this.lblDelete.Size = new System.Drawing.Size(72, 42);
             this.lblDelete.TabIndex = 7;
             this.lblDelete.Text = "Delete";
             this.lblDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -194,7 +194,7 @@ namespace DigiposZen
             this.btnFind.Margin = new System.Windows.Forms.Padding(4);
             this.btnFind.Name = "btnFind";
             this.tlpHeading.SetRowSpan(this.btnFind, 2);
-            this.btnFind.Size = new System.Drawing.Size(72, 76);
+            this.btnFind.Size = new System.Drawing.Size(72, 87);
             this.btnFind.TabIndex = 6;
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
@@ -209,7 +209,7 @@ namespace DigiposZen
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.tlpHeading.SetRowSpan(this.btnClose, 2);
-            this.btnClose.Size = new System.Drawing.Size(72, 76);
+            this.btnClose.Size = new System.Drawing.Size(72, 87);
             this.btnClose.TabIndex = 9;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -219,12 +219,12 @@ namespace DigiposZen
             this.lblFind.AutoSize = true;
             this.lblFind.BackColor = System.Drawing.Color.Transparent;
             this.lblFind.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblFind.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFind.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFind.ForeColor = System.Drawing.Color.Black;
-            this.lblFind.Location = new System.Drawing.Point(164, 84);
+            this.lblFind.Location = new System.Drawing.Point(164, 95);
             this.lblFind.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFind.Name = "lblFind";
-            this.lblFind.Size = new System.Drawing.Size(72, 37);
+            this.lblFind.Size = new System.Drawing.Size(72, 42);
             this.lblFind.TabIndex = 7;
             this.lblFind.Text = "Find";
             this.lblFind.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -236,13 +236,14 @@ namespace DigiposZen
             this.btnYtubeTutorial.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnYtubeTutorial.FlatAppearance.BorderSize = 0;
             this.btnYtubeTutorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYtubeTutorial.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnYtubeTutorial.ForeColor = System.Drawing.Color.Black;
             this.btnYtubeTutorial.Image = ((System.Drawing.Image)(resources.GetObject("btnYtubeTutorial.Image")));
             this.btnYtubeTutorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnYtubeTutorial.Location = new System.Drawing.Point(244, 88);
+            this.btnYtubeTutorial.Location = new System.Drawing.Point(244, 99);
             this.btnYtubeTutorial.Margin = new System.Windows.Forms.Padding(4);
             this.btnYtubeTutorial.Name = "btnYtubeTutorial";
-            this.btnYtubeTutorial.Size = new System.Drawing.Size(125, 29);
+            this.btnYtubeTutorial.Size = new System.Drawing.Size(125, 34);
             this.btnYtubeTutorial.TabIndex = 10;
             this.btnYtubeTutorial.Text = "Tutorial";
             this.btnYtubeTutorial.UseVisualStyleBackColor = false;
@@ -257,7 +258,7 @@ namespace DigiposZen
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(4);
             this.btnMinimize.Name = "btnMinimize";
             this.tlpHeading.SetRowSpan(this.btnMinimize, 2);
-            this.btnMinimize.Size = new System.Drawing.Size(72, 76);
+            this.btnMinimize.Size = new System.Drawing.Size(72, 87);
             this.btnMinimize.TabIndex = 8;
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
@@ -272,7 +273,7 @@ namespace DigiposZen
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.tlpHeading.SetRowSpan(this.btnSave, 2);
-            this.btnSave.Size = new System.Drawing.Size(72, 76);
+            this.btnSave.Size = new System.Drawing.Size(72, 87);
             this.btnSave.TabIndex = 4;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -287,7 +288,7 @@ namespace DigiposZen
             this.lblHeading.Location = new System.Drawing.Point(267, 0);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(27, 0, 27, 0);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(437, 37);
+            this.lblHeading.Size = new System.Drawing.Size(437, 42);
             this.lblHeading.TabIndex = 7;
             this.lblHeading.Text = "State";
             this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -325,33 +326,33 @@ namespace DigiposZen
             this.gboxMain.Controls.Add(this.comboDropDown4);
             this.gboxMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gboxMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gboxMain.Location = new System.Drawing.Point(27, 121);
+            this.gboxMain.Location = new System.Drawing.Point(27, 136);
             this.gboxMain.Margin = new System.Windows.Forms.Padding(27, 0, 27, 0);
             this.gboxMain.Name = "gboxMain";
             this.gboxMain.Padding = new System.Windows.Forms.Padding(4);
-            this.gboxMain.Size = new System.Drawing.Size(837, 264);
+            this.gboxMain.Size = new System.Drawing.Size(837, 298);
             this.gboxMain.TabIndex = 0;
             this.gboxMain.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(131, 76);
+            this.label1.Location = new System.Drawing.Point(118, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(19, 21);
+            this.label1.Size = new System.Drawing.Size(16, 18);
             this.label1.TabIndex = 120;
             this.label1.Text = "*";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(126, 19);
+            this.label9.Location = new System.Drawing.Point(112, 21);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(19, 21);
+            this.label9.Size = new System.Drawing.Size(16, 18);
             this.label9.TabIndex = 119;
             this.label9.Text = "*";
             // 
@@ -359,10 +360,10 @@ namespace DigiposZen
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(478, 23);
+            this.panel1.Location = new System.Drawing.Point(478, 26);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(334, 222);
+            this.panel1.Size = new System.Drawing.Size(334, 250);
             this.panel1.TabIndex = 8;
             // 
             // cboStateType
@@ -393,7 +394,7 @@ namespace DigiposZen
             "Polity",
             "Domain",
             "Territory"});
-            this.cboStateType.Location = new System.Drawing.Point(22, 159);
+            this.cboStateType.Location = new System.Drawing.Point(22, 179);
             this.cboStateType.MaxLength = 100;
             this.cboStateType.Name = "cboStateType";
             this.cboStateType.Size = new System.Drawing.Size(278, 29);
@@ -406,18 +407,19 @@ namespace DigiposZen
             // lblStateName
             // 
             this.lblStateName.AutoSize = true;
-            this.lblStateName.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStateName.Location = new System.Drawing.Point(19, 77);
+            this.lblStateName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStateName.Location = new System.Drawing.Point(19, 87);
             this.lblStateName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStateName.Name = "lblStateName";
-            this.lblStateName.Size = new System.Drawing.Size(103, 21);
+            this.lblStateName.Size = new System.Drawing.Size(91, 18);
             this.lblStateName.TabIndex = 99;
             this.lblStateName.Text = "State Name:";
             // 
             // txtStateName
             // 
+            this.txtStateName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStateName.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStateName.Location = new System.Drawing.Point(22, 100);
+            this.txtStateName.Location = new System.Drawing.Point(22, 112);
             this.txtStateName.Margin = new System.Windows.Forms.Padding(4);
             this.txtStateName.MaxLength = 500;
             this.txtStateName.Name = "txtStateName";
@@ -435,7 +437,7 @@ namespace DigiposZen
             this.cboCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCountry.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCountry.FormattingEnabled = true;
-            this.cboCountry.Location = new System.Drawing.Point(22, 217);
+            this.cboCountry.Location = new System.Drawing.Point(22, 244);
             this.cboCountry.Margin = new System.Windows.Forms.Padding(4);
             this.cboCountry.Name = "cboCountry";
             this.cboCountry.Size = new System.Drawing.Size(278, 29);
@@ -449,29 +451,30 @@ namespace DigiposZen
             // lblStateType
             // 
             this.lblStateType.AutoSize = true;
-            this.lblStateType.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStateType.Location = new System.Drawing.Point(20, 135);
+            this.lblStateType.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStateType.Location = new System.Drawing.Point(20, 152);
             this.lblStateType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStateType.Name = "lblStateType";
-            this.lblStateType.Size = new System.Drawing.Size(96, 21);
+            this.lblStateType.Size = new System.Drawing.Size(86, 18);
             this.lblStateType.TabIndex = 97;
             this.lblStateType.Text = "State Type:";
             // 
             // lblStateCode
             // 
             this.lblStateCode.AutoSize = true;
-            this.lblStateCode.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStateCode.Location = new System.Drawing.Point(19, 17);
+            this.lblStateCode.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStateCode.Location = new System.Drawing.Point(19, 19);
             this.lblStateCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStateCode.Name = "lblStateCode";
-            this.lblStateCode.Size = new System.Drawing.Size(97, 21);
+            this.lblStateCode.Size = new System.Drawing.Size(85, 18);
             this.lblStateCode.TabIndex = 95;
             this.lblStateCode.Text = "State Code:";
             // 
             // txtStateCode
             // 
+            this.txtStateCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStateCode.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStateCode.Location = new System.Drawing.Point(22, 42);
+            this.txtStateCode.Location = new System.Drawing.Point(22, 47);
             this.txtStateCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtStateCode.MaxLength = 50;
             this.txtStateCode.Name = "txtStateCode";
@@ -485,11 +488,11 @@ namespace DigiposZen
             // lblCountry
             // 
             this.lblCountry.AutoSize = true;
-            this.lblCountry.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCountry.Location = new System.Drawing.Point(20, 193);
+            this.lblCountry.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountry.Location = new System.Drawing.Point(20, 217);
             this.lblCountry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(73, 21);
+            this.lblCountry.Size = new System.Drawing.Size(64, 18);
             this.lblCountry.TabIndex = 96;
             this.lblCountry.Text = "Country:";
             // 
@@ -498,7 +501,7 @@ namespace DigiposZen
             this.textBox20.BackColor = System.Drawing.SystemColors.Window;
             this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox20.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox20.Location = new System.Drawing.Point(285, 671);
+            this.textBox20.Location = new System.Drawing.Point(285, 755);
             this.textBox20.Margin = new System.Windows.Forms.Padding(4);
             this.textBox20.Name = "textBox20";
             this.textBox20.Size = new System.Drawing.Size(167, 28);
@@ -509,7 +512,7 @@ namespace DigiposZen
             this.textBox30.BackColor = System.Drawing.SystemColors.Window;
             this.textBox30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox30.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox30.Location = new System.Drawing.Point(187, 671);
+            this.textBox30.Location = new System.Drawing.Point(187, 755);
             this.textBox30.Margin = new System.Windows.Forms.Padding(4);
             this.textBox30.Name = "textBox30";
             this.textBox30.Size = new System.Drawing.Size(90, 28);
@@ -520,7 +523,7 @@ namespace DigiposZen
             this.textBox28.BackColor = System.Drawing.SystemColors.Window;
             this.textBox28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox28.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox28.Location = new System.Drawing.Point(355, 746);
+            this.textBox28.Location = new System.Drawing.Point(355, 839);
             this.textBox28.Margin = new System.Windows.Forms.Padding(4);
             this.textBox28.Name = "textBox28";
             this.textBox28.Size = new System.Drawing.Size(102, 28);
@@ -531,7 +534,7 @@ namespace DigiposZen
             this.textBox29.BackColor = System.Drawing.SystemColors.Window;
             this.textBox29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox29.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox29.Location = new System.Drawing.Point(244, 746);
+            this.textBox29.Location = new System.Drawing.Point(244, 839);
             this.textBox29.Margin = new System.Windows.Forms.Padding(4);
             this.textBox29.Name = "textBox29";
             this.textBox29.Size = new System.Drawing.Size(98, 28);
@@ -541,7 +544,7 @@ namespace DigiposZen
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(355, 718);
+            this.label41.Location = new System.Drawing.Point(355, 808);
             this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(75, 21);
@@ -553,7 +556,7 @@ namespace DigiposZen
             this.textBox23.BackColor = System.Drawing.SystemColors.Window;
             this.textBox23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox23.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox23.Location = new System.Drawing.Point(21, 671);
+            this.textBox23.Location = new System.Drawing.Point(21, 755);
             this.textBox23.Margin = new System.Windows.Forms.Padding(4);
             this.textBox23.Name = "textBox23";
             this.textBox23.Size = new System.Drawing.Size(155, 28);
@@ -563,7 +566,7 @@ namespace DigiposZen
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(244, 718);
+            this.label42.Location = new System.Drawing.Point(244, 808);
             this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(76, 21);
@@ -575,7 +578,7 @@ namespace DigiposZen
             this.textBox26.BackColor = System.Drawing.SystemColors.Window;
             this.textBox26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox26.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox26.Location = new System.Drawing.Point(132, 746);
+            this.textBox26.Location = new System.Drawing.Point(132, 839);
             this.textBox26.Margin = new System.Windows.Forms.Padding(4);
             this.textBox26.Name = "textBox26";
             this.textBox26.Size = new System.Drawing.Size(102, 28);
@@ -586,7 +589,7 @@ namespace DigiposZen
             this.textBox27.BackColor = System.Drawing.SystemColors.Window;
             this.textBox27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox27.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox27.Location = new System.Drawing.Point(21, 746);
+            this.textBox27.Location = new System.Drawing.Point(21, 839);
             this.textBox27.Margin = new System.Windows.Forms.Padding(4);
             this.textBox27.Name = "textBox27";
             this.textBox27.Size = new System.Drawing.Size(98, 28);
@@ -596,7 +599,7 @@ namespace DigiposZen
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(132, 718);
+            this.label39.Location = new System.Drawing.Point(132, 808);
             this.label39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(57, 21);
@@ -607,7 +610,7 @@ namespace DigiposZen
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(21, 718);
+            this.label40.Location = new System.Drawing.Point(21, 808);
             this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(51, 21);
@@ -621,11 +624,11 @@ namespace DigiposZen
             this.groupBox6.Controls.Add(this.label37);
             this.groupBox6.Controls.Add(this.textBox25);
             this.groupBox6.Controls.Add(this.label38);
-            this.groupBox6.Location = new System.Drawing.Point(495, 670);
+            this.groupBox6.Location = new System.Drawing.Point(495, 754);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Size = new System.Drawing.Size(524, 70);
+            this.groupBox6.Size = new System.Drawing.Size(524, 79);
             this.groupBox6.TabIndex = 59;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Unit";
@@ -635,7 +638,7 @@ namespace DigiposZen
             this.textBox24.BackColor = System.Drawing.SystemColors.Window;
             this.textBox24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox24.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox24.Location = new System.Drawing.Point(400, 20);
+            this.textBox24.Location = new System.Drawing.Point(400, 22);
             this.textBox24.Margin = new System.Windows.Forms.Padding(4);
             this.textBox24.Name = "textBox24";
             this.textBox24.Size = new System.Drawing.Size(91, 28);
@@ -645,7 +648,7 @@ namespace DigiposZen
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(293, 22);
+            this.label37.Location = new System.Drawing.Point(293, 25);
             this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(72, 21);
@@ -657,7 +660,7 @@ namespace DigiposZen
             this.textBox25.BackColor = System.Drawing.SystemColors.Window;
             this.textBox25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox25.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox25.Location = new System.Drawing.Point(125, 20);
+            this.textBox25.Location = new System.Drawing.Point(125, 22);
             this.textBox25.Margin = new System.Windows.Forms.Padding(4);
             this.textBox25.Name = "textBox25";
             this.textBox25.Size = new System.Drawing.Size(154, 28);
@@ -667,7 +670,7 @@ namespace DigiposZen
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(12, 22);
+            this.label38.Location = new System.Drawing.Point(12, 25);
             this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(81, 21);
@@ -678,7 +681,7 @@ namespace DigiposZen
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(496, 754);
+            this.label45.Location = new System.Drawing.Point(496, 848);
             this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(110, 21);
@@ -688,13 +691,13 @@ namespace DigiposZen
             // comboDropDown4
             // 
             this.comboDropDown4.BackColor = System.Drawing.Color.White;
-            this.comboDropDown4.BeforeTouchSize = new System.Drawing.Size(347, 29);
+            this.comboDropDown4.BeforeTouchSize = new System.Drawing.Size(347, 27);
             this.comboDropDown4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboDropDown4.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.comboDropDown4.Location = new System.Drawing.Point(668, 754);
+            this.comboDropDown4.Location = new System.Drawing.Point(668, 848);
             this.comboDropDown4.Margin = new System.Windows.Forms.Padding(4);
             this.comboDropDown4.Name = "comboDropDown4";
-            this.comboDropDown4.Size = new System.Drawing.Size(347, 29);
+            this.comboDropDown4.Size = new System.Drawing.Size(347, 27);
             this.comboDropDown4.Style = Syncfusion.Windows.Forms.VisualStyle.Metro;
             this.comboDropDown4.TabIndex = 24;
             // 
@@ -703,21 +706,22 @@ namespace DigiposZen
             this.label47.BackColor = System.Drawing.Color.Transparent;
             this.label47.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label47.ForeColor = System.Drawing.Color.Black;
-            this.label47.Location = new System.Drawing.Point(4, 385);
+            this.label47.Location = new System.Drawing.Point(4, 434);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(883, 25);
+            this.label47.Size = new System.Drawing.Size(883, 28);
             this.label47.TabIndex = 0;
             this.label47.Text = "Keyboard Shortcuts : - F5 Save, F7 Delete, Esc Close ";
             this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmState
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(887, 412);
+            this.ClientSize = new System.Drawing.Size(887, 464);
             this.Controls.Add(this.tlpMain);
+            this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "frmState";

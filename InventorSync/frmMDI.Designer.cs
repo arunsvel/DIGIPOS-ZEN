@@ -35,6 +35,7 @@
             this.itemMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manufacturerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hsnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,7 +110,7 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.hsnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.advancedSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -165,70 +166,77 @@
             this.dISCGROUPToolStripMenuItem});
             this.tsmItemMaster.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsmItemMaster.Name = "tsmItemMaster";
-            this.tsmItemMaster.Size = new System.Drawing.Size(224, 26);
+            this.tsmItemMaster.Size = new System.Drawing.Size(203, 26);
             this.tsmItemMaster.Text = "Item Master";
             this.tsmItemMaster.Click += new System.EventHandler(this.tsmManufacturer_Click);
             // 
             // itemMasterToolStripMenuItem
             // 
             this.itemMasterToolStripMenuItem.Name = "itemMasterToolStripMenuItem";
-            this.itemMasterToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.itemMasterToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.itemMasterToolStripMenuItem.Text = "&Item";
             this.itemMasterToolStripMenuItem.Click += new System.EventHandler(this.itemMasterToolStripMenuItem_Click);
             // 
             // categoryToolStripMenuItem
             // 
             this.categoryToolStripMenuItem.Name = "categoryToolStripMenuItem";
-            this.categoryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.categoryToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.categoryToolStripMenuItem.Text = "&Category";
             this.categoryToolStripMenuItem.Click += new System.EventHandler(this.categoryToolStripMenuItem_Click);
             // 
             // manufacturerToolStripMenuItem
             // 
             this.manufacturerToolStripMenuItem.Name = "manufacturerToolStripMenuItem";
-            this.manufacturerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.manufacturerToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.manufacturerToolStripMenuItem.Text = "&Manufacturer";
             this.manufacturerToolStripMenuItem.Click += new System.EventHandler(this.manufacturerToolStripMenuItem_Click);
+            // 
+            // hsnToolStripMenuItem
+            // 
+            this.hsnToolStripMenuItem.Name = "hsnToolStripMenuItem";
+            this.hsnToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.hsnToolStripMenuItem.Text = "HSN";
+            this.hsnToolStripMenuItem.Click += new System.EventHandler(this.hsnToolStripMenuItem_Click);
             // 
             // brandToolStripMenuItem
             // 
             this.brandToolStripMenuItem.Name = "brandToolStripMenuItem";
-            this.brandToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.brandToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.brandToolStripMenuItem.Text = "&Brand";
             this.brandToolStripMenuItem.Click += new System.EventHandler(this.brandToolStripMenuItem_Click);
             // 
             // sizeToolStripMenuItem
             // 
             this.sizeToolStripMenuItem.Name = "sizeToolStripMenuItem";
-            this.sizeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.sizeToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.sizeToolStripMenuItem.Text = "&Size";
             this.sizeToolStripMenuItem.Click += new System.EventHandler(this.sizeToolStripMenuItem_Click);
             // 
             // colourToolStripMenuItem
             // 
             this.colourToolStripMenuItem.Name = "colourToolStripMenuItem";
-            this.colourToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.colourToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.colourToolStripMenuItem.Text = "&Colour";
             this.colourToolStripMenuItem.Click += new System.EventHandler(this.colourToolStripMenuItem_Click);
             // 
             // unitToolStripMenuItem
             // 
             this.unitToolStripMenuItem.Name = "unitToolStripMenuItem";
-            this.unitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.unitToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.unitToolStripMenuItem.Text = "&Unit";
             this.unitToolStripMenuItem.Click += new System.EventHandler(this.unitToolStripMenuItem_Click);
             // 
             // itemDepartmenttoolStripMenuItem
             // 
             this.itemDepartmenttoolStripMenuItem.Name = "itemDepartmenttoolStripMenuItem";
-            this.itemDepartmenttoolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.itemDepartmenttoolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.itemDepartmenttoolStripMenuItem.Text = "&Stock Department";
             this.itemDepartmenttoolStripMenuItem.Click += new System.EventHandler(this.itemDepartmenttoolStripMenuItem_Click);
             // 
             // dISCGROUPToolStripMenuItem
             // 
             this.dISCGROUPToolStripMenuItem.Name = "dISCGROUPToolStripMenuItem";
-            this.dISCGROUPToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.dISCGROUPToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.dISCGROUPToolStripMenuItem.Text = "Disc Group";
             this.dISCGROUPToolStripMenuItem.Click += new System.EventHandler(this.dISCGROUPToolStripMenuItem_Click);
             // 
@@ -245,7 +253,7 @@
             this.uPIMasterToolStripMenuItem});
             this.tsmCategory.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsmCategory.Name = "tsmCategory";
-            this.tsmCategory.Size = new System.Drawing.Size(224, 26);
+            this.tsmCategory.Size = new System.Drawing.Size(203, 26);
             this.tsmCategory.Text = "&Accounts Master";
             // 
             // ledgerToolStripMenuItem
@@ -310,7 +318,7 @@
             this.departmentToolStripMenuItem});
             this.tsmDepartment.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsmDepartment.Name = "tsmDepartment";
-            this.tsmDepartment.Size = new System.Drawing.Size(224, 26);
+            this.tsmDepartment.Size = new System.Drawing.Size(203, 26);
             this.tsmDepartment.Text = "&Employee Master";
             // 
             // employeeCategoryToolStripMenuItem
@@ -343,7 +351,7 @@
             this.stateToolStripMenuItem,
             this.taxModeToolStripMenuItem});
             this.companyMasterToolStripMenuItem.Name = "companyMasterToolStripMenuItem";
-            this.companyMasterToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.companyMasterToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.companyMasterToolStripMenuItem.Text = "Company Master";
             // 
             // voucherTypeToolStripMenuItem
@@ -378,12 +386,12 @@
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(200, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -637,7 +645,8 @@
             this.companySettingsToolStripMenuItem,
             this.barcodeManagerToolStripMenuItem,
             this.toolStripSeparator2,
-            this.backupManagerToolStripMenuItem});
+            this.backupManagerToolStripMenuItem,
+            this.advancedSearchToolStripMenuItem});
             this.tsmTools.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsmTools.Name = "tsmTools";
             this.tsmTools.Size = new System.Drawing.Size(57, 24);
@@ -652,7 +661,7 @@
             this.createCompanyToolStripMenuItem,
             this.companyManagerToolStripMenuItem});
             this.companySettingsToolStripMenuItem.Name = "companySettingsToolStripMenuItem";
-            this.companySettingsToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.companySettingsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.companySettingsToolStripMenuItem.Text = "Company Settings";
             // 
             // applicationSettingsToolStripMenuItem1
@@ -687,19 +696,19 @@
             // barcodeManagerToolStripMenuItem
             // 
             this.barcodeManagerToolStripMenuItem.Name = "barcodeManagerToolStripMenuItem";
-            this.barcodeManagerToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.barcodeManagerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.barcodeManagerToolStripMenuItem.Text = "Barcode Manager";
             this.barcodeManagerToolStripMenuItem.Click += new System.EventHandler(this.barcodeManagerToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(205, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
             // 
             // backupManagerToolStripMenuItem
             // 
             this.backupManagerToolStripMenuItem.Name = "backupManagerToolStripMenuItem";
-            this.backupManagerToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.backupManagerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.backupManagerToolStripMenuItem.Text = "Backup Manager";
             // 
             // userToolStripMenuItem
@@ -806,12 +815,12 @@
             this.label1.TabIndex = 1;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // hsnToolStripMenuItem
+            // advancedSearchToolStripMenuItem
             // 
-            this.hsnToolStripMenuItem.Name = "hsnToolStripMenuItem";
-            this.hsnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.hsnToolStripMenuItem.Text = "HSN";
-            this.hsnToolStripMenuItem.Click += new System.EventHandler(this.hsnToolStripMenuItem_Click);
+            this.advancedSearchToolStripMenuItem.Name = "advancedSearchToolStripMenuItem";
+            this.advancedSearchToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.advancedSearchToolStripMenuItem.Text = "Advanced Search";
+            this.advancedSearchToolStripMenuItem.Click += new System.EventHandler(this.advancedSearchToolStripMenuItem_Click);
             // 
             // frmMDI
             // 
@@ -927,6 +936,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmConnectionDetails;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem hsnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem advancedSearchToolStripMenuItem;
     }
 }
 

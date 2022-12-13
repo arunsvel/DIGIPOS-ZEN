@@ -6870,6 +6870,7 @@ namespace DigiposZen
 
             foreach (DataGridViewColumn col in dgvSales.Columns)
             {
+                col.HeaderCell.Style.Font = new Font("Tahoma", 9, FontStyle.Regular);
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
@@ -7219,6 +7220,10 @@ namespace DigiposZen
             try
             {
                 SaveGridSettings();
+
+                sqlControl rs = new sqlControl();
+
+                rs.Execute("Update tblVchType Set InvScheme1 = '" + cboInvScheme1.SelectedItem.ToString() + "' Where VchTypeID='" + vchtypeID + "' ");
 
             }
             catch (Exception ex)

@@ -1,0 +1,5 @@
+Start17:30
+EXEC spTaxLedgerInsert 5.00,0,2.50,2.50,5.00,0.00,0.00
+The connection was recovered and rowcount in the first query is not available. Please execute another query to get a valid rowcount.
+
+End

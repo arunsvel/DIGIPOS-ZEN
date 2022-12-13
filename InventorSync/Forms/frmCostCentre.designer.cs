@@ -138,7 +138,7 @@ namespace DigiposZen
             // 
             this.lblSave.AutoSize = true;
             this.lblSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSave.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSave.ForeColor = System.Drawing.Color.Black;
             this.lblSave.Location = new System.Drawing.Point(4, 84);
             this.lblSave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -185,7 +185,7 @@ namespace DigiposZen
             // 
             this.lblDelete.AutoSize = true;
             this.lblDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDelete.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelete.ForeColor = System.Drawing.Color.Black;
             this.lblDelete.Location = new System.Drawing.Point(84, 84);
             this.lblDelete.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -229,7 +229,7 @@ namespace DigiposZen
             // 
             this.lblFind.AutoSize = true;
             this.lblFind.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblFind.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFind.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFind.ForeColor = System.Drawing.Color.Black;
             this.lblFind.Location = new System.Drawing.Point(164, 84);
             this.lblFind.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -245,6 +245,7 @@ namespace DigiposZen
             this.btnYtubeTutorial.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnYtubeTutorial.FlatAppearance.BorderSize = 0;
             this.btnYtubeTutorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYtubeTutorial.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnYtubeTutorial.ForeColor = System.Drawing.Color.Black;
             this.btnYtubeTutorial.Image = ((System.Drawing.Image)(resources.GetObject("btnYtubeTutorial.Image")));
             this.btnYtubeTutorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -322,11 +323,11 @@ namespace DigiposZen
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(180, 17);
+            this.label9.Location = new System.Drawing.Point(164, 30);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(19, 21);
+            this.label9.Size = new System.Drawing.Size(16, 18);
             this.label9.TabIndex = 106;
             this.label9.Text = "*";
             // 
@@ -342,24 +343,26 @@ namespace DigiposZen
             // lblDescription1
             // 
             this.lblDescription1.AutoSize = true;
-            this.lblDescription1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription1.Location = new System.Drawing.Point(17, 80);
+            this.lblDescription1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription1.Location = new System.Drawing.Point(22, 108);
             this.lblDescription1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescription1.Name = "lblDescription1";
-            this.lblDescription1.Size = new System.Drawing.Size(100, 21);
+            this.lblDescription1.Size = new System.Drawing.Size(83, 18);
             this.lblDescription1.TabIndex = 99;
             this.lblDescription1.Text = "Description:";
             // 
             // txtDescription1
             // 
+            this.txtDescription1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescription1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription1.Location = new System.Drawing.Point(22, 105);
+            this.txtDescription1.Location = new System.Drawing.Point(22, 133);
             this.txtDescription1.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescription1.MaxLength = 500;
             this.txtDescription1.Name = "txtDescription1";
             this.txtDescription1.Size = new System.Drawing.Size(392, 26);
             this.txtDescription1.TabIndex = 1;
             this.txtDescription1.Click += new System.EventHandler(this.txtDescription1_Click);
+            this.txtDescription1.TextChanged += new System.EventHandler(this.txtDescription1_TextChanged);
             this.txtDescription1.Enter += new System.EventHandler(this.txtDescription1_Enter);
             this.txtDescription1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDescription1_KeyDown);
             this.txtDescription1.Leave += new System.EventHandler(this.txtDescription1_Leave);
@@ -367,24 +370,26 @@ namespace DigiposZen
             // lblCostCentreName
             // 
             this.lblCostCentreName.AutoSize = true;
-            this.lblCostCentreName.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCostCentreName.Location = new System.Drawing.Point(19, 17);
+            this.lblCostCentreName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostCentreName.Location = new System.Drawing.Point(22, 30);
             this.lblCostCentreName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCostCentreName.Name = "lblCostCentreName";
-            this.lblCostCentreName.Size = new System.Drawing.Size(151, 21);
+            this.lblCostCentreName.Size = new System.Drawing.Size(134, 18);
             this.lblCostCentreName.TabIndex = 95;
             this.lblCostCentreName.Text = "Cost Centre Name:";
             // 
             // txtCostCentreName
             // 
+            this.txtCostCentreName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCostCentreName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCostCentreName.Location = new System.Drawing.Point(22, 42);
+            this.txtCostCentreName.Location = new System.Drawing.Point(22, 55);
             this.txtCostCentreName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCostCentreName.MaxLength = 20;
             this.txtCostCentreName.Name = "txtCostCentreName";
             this.txtCostCentreName.Size = new System.Drawing.Size(392, 26);
             this.txtCostCentreName.TabIndex = 0;
             this.txtCostCentreName.Click += new System.EventHandler(this.txtCostCentreName_Click);
+            this.txtCostCentreName.TextChanged += new System.EventHandler(this.txtCostCentreName_TextChanged);
             this.txtCostCentreName.Enter += new System.EventHandler(this.txtCostCentreName_Enter);
             this.txtCostCentreName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             this.txtCostCentreName.Leave += new System.EventHandler(this.txtCostCentreName_Leave);
@@ -584,13 +589,13 @@ namespace DigiposZen
             // comboDropDown4
             // 
             this.comboDropDown4.BackColor = System.Drawing.Color.White;
-            this.comboDropDown4.BeforeTouchSize = new System.Drawing.Size(347, 29);
+            this.comboDropDown4.BeforeTouchSize = new System.Drawing.Size(347, 27);
             this.comboDropDown4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboDropDown4.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboDropDown4.Location = new System.Drawing.Point(668, 754);
             this.comboDropDown4.Margin = new System.Windows.Forms.Padding(4);
             this.comboDropDown4.Name = "comboDropDown4";
-            this.comboDropDown4.Size = new System.Drawing.Size(347, 29);
+            this.comboDropDown4.Size = new System.Drawing.Size(347, 27);
             this.comboDropDown4.Style = Syncfusion.Windows.Forms.VisualStyle.Metro;
             this.comboDropDown4.TabIndex = 24;
             // 
@@ -598,6 +603,7 @@ namespace DigiposZen
             // 
             this.label47.BackColor = System.Drawing.Color.Transparent;
             this.label47.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label47.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label47.ForeColor = System.Drawing.Color.Black;
             this.label47.Location = new System.Drawing.Point(4, 342);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);

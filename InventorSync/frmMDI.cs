@@ -26,6 +26,11 @@ namespace DigiposZen
 
             LoadTransMenu();
 
+            if (AppSettings.BLNBARCODE == false)
+            {
+                barcodeManagerToolStripMenuItem.Visible = false;
+            }
+
         }
 
         private void LoadTransMenu()
@@ -122,6 +127,14 @@ namespace DigiposZen
                 //    frmACC.Focus();
                 //    frmACC.BringToFront();
                 //    break;
+
+                case "ADVANCEDSEARCH":
+                    frmCommadWindow frmcmd = new frmCommadWindow();
+                    frmcmd.MdiParent = this;
+                    frmcmd.Show();
+                    frmcmd.Focus();
+                    frmcmd.BringToFront();
+                    break;
 
                 case "DAYBOOK":
                     frmAccountStatements frmACC = new frmAccountStatements("DAYBOOK", this);
@@ -1066,6 +1079,13 @@ namespace DigiposZen
         }
 
         private void hsnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem t = (ToolStripMenuItem)sender;
+            OpenMenu(t.Text.ToString(), 0);
+
+        }
+
+        private void advancedSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
             OpenMenu(t.Text.ToString(), 0);

@@ -53,7 +53,7 @@ namespace DigiposZen
                 //Comm.LoadBGImage(this, picBackground);
 
                 lblHeading.Font = new Font("Tahoma", 21, FontStyle.Regular, GraphicsUnit.Pixel);
-                lblSave.Font = new Font("Tahoma", 10, FontStyle.Regular, GraphicsUnit.Point);
+                lblSave.Font = new Font("Tahoma", 9, FontStyle.Regular, GraphicsUnit.Point);
 
                 lblSave.ForeColor = Color.Black;
 
@@ -417,6 +417,17 @@ namespace DigiposZen
             }
             return false;
         }
+
+        private void txtDescription1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCostCentreName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private bool IsValidate()
         {
             if (txtCostCentreName.Text.Trim() == "")

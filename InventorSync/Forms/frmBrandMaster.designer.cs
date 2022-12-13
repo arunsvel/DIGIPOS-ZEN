@@ -30,6 +30,7 @@ namespace DigiposZen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBrandMaster));
@@ -37,6 +38,11 @@ namespace DigiposZen
             this.gboxMain = new System.Windows.Forms.GroupBox();
             this.lblMand1 = new System.Windows.Forms.Label();
             this.pnlShowSearch = new System.Windows.Forms.Panel();
+            this.dgvShowItemSearch = new System.Windows.Forms.DataGridView();
+            this.clmItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmShow = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtBrandShortName = new System.Windows.Forms.TextBox();
             this.lblBrandshortname = new System.Windows.Forms.Label();
             this.lblBrand = new System.Windows.Forms.Label();
@@ -74,18 +80,13 @@ namespace DigiposZen
             this.btnMinimize = new System.Windows.Forms.Button();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.lblFooter = new System.Windows.Forms.Label();
-            this.dgvShowItemSearch = new System.Windows.Forms.DataGridView();
-            this.clmItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmShow = new System.Windows.Forms.DataGridViewImageColumn();
             this.gboxMain.SuspendLayout();
             this.pnlShowSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowItemSearch)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboDropDown4)).BeginInit();
             this.tlpHeader.SuspendLayout();
             this.tlpMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowItemSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // gboxMain
@@ -127,11 +128,11 @@ namespace DigiposZen
             // lblMand1
             // 
             this.lblMand1.AutoSize = true;
-            this.lblMand1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMand1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMand1.ForeColor = System.Drawing.Color.Red;
-            this.lblMand1.Location = new System.Drawing.Point(135, 19);
+            this.lblMand1.Location = new System.Drawing.Point(125, 17);
             this.lblMand1.Name = "lblMand1";
-            this.lblMand1.Size = new System.Drawing.Size(19, 21);
+            this.lblMand1.Size = new System.Drawing.Size(16, 18);
             this.lblMand1.TabIndex = 79;
             this.lblMand1.Text = "*";
             // 
@@ -146,8 +147,74 @@ namespace DigiposZen
             this.pnlShowSearch.Size = new System.Drawing.Size(372, 221);
             this.pnlShowSearch.TabIndex = 3;
             // 
+            // dgvShowItemSearch
+            // 
+            this.dgvShowItemSearch.AllowUserToAddRows = false;
+            this.dgvShowItemSearch.AllowUserToDeleteRows = false;
+            this.dgvShowItemSearch.BackgroundColor = System.Drawing.Color.White;
+            this.dgvShowItemSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvShowItemSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmItemId,
+            this.clmItemName,
+            this.clmItemCode,
+            this.clmShow});
+            this.dgvShowItemSearch.Location = new System.Drawing.Point(3, 3);
+            this.dgvShowItemSearch.Name = "dgvShowItemSearch";
+            this.dgvShowItemSearch.ReadOnly = true;
+            this.dgvShowItemSearch.RowHeadersVisible = false;
+            this.dgvShowItemSearch.RowHeadersWidth = 51;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvShowItemSearch.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvShowItemSearch.RowTemplate.Height = 24;
+            this.dgvShowItemSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvShowItemSearch.Size = new System.Drawing.Size(364, 213);
+            this.dgvShowItemSearch.TabIndex = 1;
+            // 
+            // clmItemId
+            // 
+            this.clmItemId.DataPropertyName = "brandID";
+            this.clmItemId.HeaderText = "BrandID";
+            this.clmItemId.MinimumWidth = 6;
+            this.clmItemId.Name = "clmItemId";
+            this.clmItemId.ReadOnly = true;
+            this.clmItemId.Visible = false;
+            this.clmItemId.Width = 10;
+            // 
+            // clmItemName
+            // 
+            this.clmItemName.DataPropertyName = "brandName";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmItemName.DefaultCellStyle = dataGridViewCellStyle1;
+            this.clmItemName.HeaderText = "Brand Name";
+            this.clmItemName.MinimumWidth = 6;
+            this.clmItemName.Name = "clmItemName";
+            this.clmItemName.ReadOnly = true;
+            this.clmItemName.Width = 225;
+            // 
+            // clmItemCode
+            // 
+            this.clmItemCode.DataPropertyName = "brandShortName";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmItemCode.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clmItemCode.HeaderText = "Brand Short Name";
+            this.clmItemCode.MinimumWidth = 6;
+            this.clmItemCode.Name = "clmItemCode";
+            this.clmItemCode.ReadOnly = true;
+            this.clmItemCode.Width = 125;
+            // 
+            // clmShow
+            // 
+            this.clmShow.HeaderText = "Show";
+            this.clmShow.Image = ((System.Drawing.Image)(resources.GetObject("clmShow.Image")));
+            this.clmShow.MinimumWidth = 6;
+            this.clmShow.Name = "clmShow";
+            this.clmShow.ReadOnly = true;
+            this.clmShow.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmShow.Width = 6;
+            // 
             // txtBrandShortName
             // 
+            this.txtBrandShortName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBrandShortName.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBrandShortName.Location = new System.Drawing.Point(22, 107);
             this.txtBrandShortName.Margin = new System.Windows.Forms.Padding(4);
@@ -163,27 +230,28 @@ namespace DigiposZen
             // lblBrandshortname
             // 
             this.lblBrandshortname.AutoSize = true;
-            this.lblBrandshortname.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBrandshortname.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBrandshortname.Location = new System.Drawing.Point(22, 84);
             this.lblBrandshortname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBrandshortname.Name = "lblBrandshortname";
-            this.lblBrandshortname.Size = new System.Drawing.Size(151, 21);
+            this.lblBrandshortname.Size = new System.Drawing.Size(134, 18);
             this.lblBrandshortname.TabIndex = 73;
             this.lblBrandshortname.Text = "Brand Short Name:";
             // 
             // lblBrand
             // 
             this.lblBrand.AutoSize = true;
-            this.lblBrand.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBrand.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBrand.Location = new System.Drawing.Point(22, 17);
             this.lblBrand.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBrand.Name = "lblBrand";
-            this.lblBrand.Size = new System.Drawing.Size(107, 21);
+            this.lblBrand.Size = new System.Drawing.Size(95, 18);
             this.lblBrand.TabIndex = 69;
             this.lblBrand.Text = "Brand Name:";
             // 
             // txtDiscountPerc
             // 
+            this.txtDiscountPerc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiscountPerc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiscountPerc.Location = new System.Drawing.Point(22, 174);
             this.txtDiscountPerc.Margin = new System.Windows.Forms.Padding(4);
@@ -199,6 +267,7 @@ namespace DigiposZen
             // 
             // txtBrand
             // 
+            this.txtBrand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBrand.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBrand.Location = new System.Drawing.Point(22, 42);
             this.txtBrand.Margin = new System.Windows.Forms.Padding(4);
@@ -216,11 +285,11 @@ namespace DigiposZen
             // lblDiscount
             // 
             this.lblDiscount.AutoSize = true;
-            this.lblDiscount.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiscount.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscount.Location = new System.Drawing.Point(22, 150);
             this.lblDiscount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDiscount.Name = "lblDiscount";
-            this.lblDiscount.Size = new System.Drawing.Size(103, 21);
+            this.lblDiscount.Size = new System.Drawing.Size(88, 18);
             this.lblDiscount.TabIndex = 71;
             this.lblDiscount.Text = "Discount %:";
             // 
@@ -419,13 +488,13 @@ namespace DigiposZen
             // comboDropDown4
             // 
             this.comboDropDown4.BackColor = System.Drawing.Color.White;
-            this.comboDropDown4.BeforeTouchSize = new System.Drawing.Size(347, 29);
+            this.comboDropDown4.BeforeTouchSize = new System.Drawing.Size(347, 27);
             this.comboDropDown4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboDropDown4.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboDropDown4.Location = new System.Drawing.Point(668, 754);
             this.comboDropDown4.Margin = new System.Windows.Forms.Padding(4);
             this.comboDropDown4.Name = "comboDropDown4";
-            this.comboDropDown4.Size = new System.Drawing.Size(347, 29);
+            this.comboDropDown4.Size = new System.Drawing.Size(347, 27);
             this.comboDropDown4.Style = Syncfusion.Windows.Forms.VisualStyle.Metro;
             this.comboDropDown4.TabIndex = 24;
             // 
@@ -469,7 +538,7 @@ namespace DigiposZen
             // 
             this.lblSave.AutoSize = true;
             this.lblSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSave.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSave.ForeColor = System.Drawing.Color.Black;
             this.lblSave.Location = new System.Drawing.Point(4, 84);
             this.lblSave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -528,7 +597,7 @@ namespace DigiposZen
             // 
             this.lblDelete.AutoSize = true;
             this.lblDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDelete.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelete.ForeColor = System.Drawing.Color.Black;
             this.lblDelete.Location = new System.Drawing.Point(84, 84);
             this.lblDelete.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -572,7 +641,7 @@ namespace DigiposZen
             // 
             this.lblFind.AutoSize = true;
             this.lblFind.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblFind.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFind.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFind.ForeColor = System.Drawing.Color.Black;
             this.lblFind.Location = new System.Drawing.Point(164, 84);
             this.lblFind.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -588,6 +657,7 @@ namespace DigiposZen
             this.btnYtubeTutorial.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnYtubeTutorial.FlatAppearance.BorderSize = 0;
             this.btnYtubeTutorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYtubeTutorial.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnYtubeTutorial.ForeColor = System.Drawing.Color.Black;
             this.btnYtubeTutorial.Image = ((System.Drawing.Image)(resources.GetObject("btnYtubeTutorial.Image")));
             this.btnYtubeTutorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -638,6 +708,7 @@ namespace DigiposZen
             // 
             this.lblFooter.BackColor = System.Drawing.Color.Transparent;
             this.lblFooter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblFooter.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFooter.ForeColor = System.Drawing.Color.Black;
             this.lblFooter.Location = new System.Drawing.Point(4, 375);
             this.lblFooter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -646,69 +717,6 @@ namespace DigiposZen
             this.lblFooter.TabIndex = 4;
             this.lblFooter.Text = "Keyboard Shortcuts : - F3 Find, F5 Save, F7 Delete, Esc Close ";
             this.lblFooter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dgvShowItemSearch
-            // 
-            this.dgvShowItemSearch.AllowUserToAddRows = false;
-            this.dgvShowItemSearch.AllowUserToDeleteRows = false;
-            this.dgvShowItemSearch.BackgroundColor = System.Drawing.Color.White;
-            this.dgvShowItemSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowItemSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmItemId,
-            this.clmItemName,
-            this.clmItemCode,
-            this.clmShow});
-            this.dgvShowItemSearch.Location = new System.Drawing.Point(3, 3);
-            this.dgvShowItemSearch.Name = "dgvShowItemSearch";
-            this.dgvShowItemSearch.ReadOnly = true;
-            this.dgvShowItemSearch.RowHeadersVisible = false;
-            this.dgvShowItemSearch.RowHeadersWidth = 51;
-            this.dgvShowItemSearch.RowTemplate.Height = 24;
-            this.dgvShowItemSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvShowItemSearch.Size = new System.Drawing.Size(364, 213);
-            this.dgvShowItemSearch.TabIndex = 1;
-            // 
-            // clmItemId
-            // 
-            this.clmItemId.DataPropertyName = "brandID";
-            this.clmItemId.HeaderText = "BrandID";
-            this.clmItemId.MinimumWidth = 6;
-            this.clmItemId.Name = "clmItemId";
-            this.clmItemId.ReadOnly = true;
-            this.clmItemId.Visible = false;
-            this.clmItemId.Width = 10;
-            // 
-            // clmItemName
-            // 
-            this.clmItemName.DataPropertyName = "brandName";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmItemName.DefaultCellStyle = dataGridViewCellStyle1;
-            this.clmItemName.HeaderText = "Brand Name";
-            this.clmItemName.MinimumWidth = 6;
-            this.clmItemName.Name = "clmItemName";
-            this.clmItemName.ReadOnly = true;
-            this.clmItemName.Width = 225;
-            // 
-            // clmItemCode
-            // 
-            this.clmItemCode.DataPropertyName = "brandShortName";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmItemCode.DefaultCellStyle = dataGridViewCellStyle2;
-            this.clmItemCode.HeaderText = "Brand Short Name";
-            this.clmItemCode.MinimumWidth = 6;
-            this.clmItemCode.Name = "clmItemCode";
-            this.clmItemCode.ReadOnly = true;
-            this.clmItemCode.Width = 125;
-            // 
-            // clmShow
-            // 
-            this.clmShow.HeaderText = "Show";
-            this.clmShow.Image = ((System.Drawing.Image)(resources.GetObject("clmShow.Image")));
-            this.clmShow.MinimumWidth = 6;
-            this.clmShow.Name = "clmShow";
-            this.clmShow.ReadOnly = true;
-            this.clmShow.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmShow.Width = 6;
             // 
             // frmBrandMaster
             // 
@@ -732,13 +740,13 @@ namespace DigiposZen
             this.gboxMain.ResumeLayout(false);
             this.gboxMain.PerformLayout();
             this.pnlShowSearch.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowItemSearch)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboDropDown4)).EndInit();
             this.tlpHeader.ResumeLayout(false);
             this.tlpHeader.PerformLayout();
             this.tlpMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowItemSearch)).EndInit();
             this.ResumeLayout(false);
 
         }

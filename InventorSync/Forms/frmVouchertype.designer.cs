@@ -49,6 +49,9 @@ namespace DigiposZen
             Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection6 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
             Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection6 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
             Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection6 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection7 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection7 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection7 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection8 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
             Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection8 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
             Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection8 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
@@ -75,9 +78,6 @@ namespace DigiposZen
             Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection15 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection7 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection7 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection7 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.label48 = new System.Windows.Forms.Label();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
@@ -148,6 +148,12 @@ namespace DigiposZen
             this.label28 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label91 = new System.Windows.Forms.Label();
+            this.tbtnPriceList = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.label88 = new System.Windows.Forms.Label();
+            this.cboDefaultPriceList = new System.Windows.Forms.ComboBox();
+            this.label89 = new System.Windows.Forms.Label();
+            this.label90 = new System.Windows.Forms.Label();
             this.lblBarcodeModeDefault = new System.Windows.Forms.Label();
             this.cboDefaultBarcodeMode = new System.Windows.Forms.ComboBox();
             this.lblBarcodeModeDescription = new System.Windows.Forms.Label();
@@ -278,12 +284,6 @@ namespace DigiposZen
             this.digiposDemoDataSet = new DigiposZen.DigiposDemoDataSet();
             this.tblAccountGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.label88 = new System.Windows.Forms.Label();
-            this.cboDefaultPriceList = new System.Windows.Forms.ComboBox();
-            this.label89 = new System.Windows.Forms.Label();
-            this.label90 = new System.Windows.Forms.Label();
-            this.label91 = new System.Windows.Forms.Label();
-            this.tbtnPriceList = new Syncfusion.Windows.Forms.Tools.ToggleButton();
             this.tlpMain.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.togglebtnActive)).BeginInit();
@@ -301,6 +301,7 @@ namespace DigiposZen
             ((System.ComponentModel.ISupportInitialize)(this.dgvFeatures)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbtnPriceList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbtnTaxInclusive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbtnAgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbtnSalesStaff)).BeginInit();
@@ -319,7 +320,6 @@ namespace DigiposZen
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrintSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digiposDemoDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblAccountGroupBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbtnPriceList)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpMain
@@ -705,11 +705,11 @@ namespace DigiposZen
             // tblpForms
             // 
             this.tblpForms.ColumnCount = 7;
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11F));
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1000F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 700F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 308F));
             this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11F));
             this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tblpForms.Controls.Add(this.groupBox6, 0, 0);
@@ -749,9 +749,9 @@ namespace DigiposZen
             this.groupBox6.Controls.Add(this.label61);
             this.groupBox6.Controls.Add(this.label62);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.Location = new System.Drawing.Point(13, 3);
+            this.groupBox6.Location = new System.Drawing.Point(703, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(4, 623);
+            this.groupBox6.Size = new System.Drawing.Size(3, 623);
             this.groupBox6.TabIndex = 37;
             this.groupBox6.TabStop = false;
             // 
@@ -1337,9 +1337,9 @@ namespace DigiposZen
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.label28);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(34, 3);
+            this.groupBox2.Location = new System.Drawing.Point(728, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(4, 623);
+            this.groupBox2.Size = new System.Drawing.Size(2, 623);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
@@ -1403,9 +1403,9 @@ namespace DigiposZen
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(44, 3);
+            this.groupBox1.Location = new System.Drawing.Point(736, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(994, 623);
+            this.groupBox1.Size = new System.Drawing.Size(302, 623);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -1456,6 +1456,87 @@ namespace DigiposZen
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(736, 578);
             this.panel3.TabIndex = 71;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label91.Location = new System.Drawing.Point(480, 316);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(152, 21);
+            this.label91.TabIndex = 112;
+            this.label91.Text = "Lock with Selection";
+            // 
+            // tbtnPriceList
+            // 
+            activeStateCollection7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(211)))), ((int)(((byte)(102)))));
+            activeStateCollection7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(211)))), ((int)(((byte)(102)))));
+            activeStateCollection7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection7.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            activeStateCollection7.Text = "ON";
+            this.tbtnPriceList.ActiveState = activeStateCollection7;
+            this.tbtnPriceList.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbtnPriceList.ForeColor = System.Drawing.Color.Black;
+            inactiveStateCollection7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            inactiveStateCollection7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
+            inactiveStateCollection7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            inactiveStateCollection7.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            inactiveStateCollection7.Text = "OFF";
+            this.tbtnPriceList.InactiveState = inactiveStateCollection7;
+            this.tbtnPriceList.Location = new System.Drawing.Point(505, 341);
+            this.tbtnPriceList.MinimumSize = new System.Drawing.Size(52, 20);
+            this.tbtnPriceList.Name = "tbtnPriceList";
+            this.tbtnPriceList.Size = new System.Drawing.Size(108, 29);
+            sliderCollection7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            sliderCollection7.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection7.InactiveBackColor = System.Drawing.Color.Black;
+            sliderCollection7.InactiveHoverColor = System.Drawing.Color.Black;
+            this.tbtnPriceList.Slider = sliderCollection7;
+            this.tbtnPriceList.TabIndex = 111;
+            this.tbtnPriceList.Text = "toggleButton1";
+            this.tbtnPriceList.ThemeName = "Office2016Black";
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label88.Location = new System.Drawing.Point(113, 337);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(116, 21);
+            this.label88.TabIndex = 110;
+            this.label88.Text = "Default Value:";
+            // 
+            // cboDefaultPriceList
+            // 
+            this.cboDefaultPriceList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDefaultPriceList.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDefaultPriceList.FormattingEnabled = true;
+            this.cboDefaultPriceList.Location = new System.Drawing.Point(238, 332);
+            this.cboDefaultPriceList.Name = "cboDefaultPriceList";
+            this.cboDefaultPriceList.Size = new System.Drawing.Size(183, 29);
+            this.cboDefaultPriceList.TabIndex = 109;
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Location = new System.Drawing.Point(96, 291);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(611, 34);
+            this.label89.TabIndex = 108;
+            this.label89.Text = "Default pricelist when opening voucher. If locked pricelist won\'t be changed on c" +
+    "ustomer selection. \r\nIf not locked, pricelist can be changed.\r\n";
+            // 
+            // label90
+            // 
+            this.label90.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.label90.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label90.Location = new System.Drawing.Point(96, 250);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(544, 29);
+            this.label90.TabIndex = 107;
+            this.label90.Text = "Default PriceList";
+            this.label90.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblBarcodeModeDefault
             // 
@@ -1921,9 +2002,9 @@ namespace DigiposZen
             this.groupBox4.Controls.Add(this.label49);
             this.groupBox4.Controls.Add(this.label50);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(23, 3);
+            this.groupBox4.Location = new System.Drawing.Point(712, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(5, 623);
+            this.groupBox4.Size = new System.Drawing.Size(10, 623);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             // 
@@ -2275,7 +2356,7 @@ namespace DigiposZen
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(4, 623);
+            this.groupBox3.Size = new System.Drawing.Size(694, 623);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             // 
@@ -2318,7 +2399,7 @@ namespace DigiposZen
             this.pnlSecondaryCC.Controls.Add(this.cboDefaultCostCenterSecondary);
             this.pnlSecondaryCC.Controls.Add(this.label65);
             this.pnlSecondaryCC.Controls.Add(this.label23);
-            this.pnlSecondaryCC.Location = new System.Drawing.Point(15, 544);
+            this.pnlSecondaryCC.Location = new System.Drawing.Point(15, 488);
             this.pnlSecondaryCC.Name = "pnlSecondaryCC";
             this.pnlSecondaryCC.Size = new System.Drawing.Size(558, 64);
             this.pnlSecondaryCC.TabIndex = 85;
@@ -2415,7 +2496,7 @@ namespace DigiposZen
             inactiveStateCollection15.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             inactiveStateCollection15.Text = "OFF";
             this.tbtnPrimaryCCenter.InactiveState = inactiveStateCollection15;
-            this.tbtnPrimaryCCenter.Location = new System.Drawing.Point(402, 500);
+            this.tbtnPrimaryCCenter.Location = new System.Drawing.Point(402, 444);
             this.tbtnPrimaryCCenter.MinimumSize = new System.Drawing.Size(52, 20);
             this.tbtnPrimaryCCenter.Name = "tbtnPrimaryCCenter";
             this.tbtnPrimaryCCenter.Size = new System.Drawing.Size(108, 29);
@@ -2440,12 +2521,13 @@ namespace DigiposZen
             this.label68.Size = new System.Drawing.Size(240, 17);
             this.label68.TabIndex = 83;
             this.label68.Text = "Basic Settings of a transaction window";
+            this.label68.Visible = false;
             // 
             // label66
             // 
             this.label66.AutoSize = true;
             this.label66.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label66.Location = new System.Drawing.Point(162, 477);
+            this.label66.Location = new System.Drawing.Point(162, 421);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(158, 21);
             this.label66.TabIndex = 81;
@@ -2455,7 +2537,7 @@ namespace DigiposZen
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(383, 479);
+            this.label17.Location = new System.Drawing.Point(383, 423);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(152, 21);
             this.label17.TabIndex = 75;
@@ -2465,7 +2547,7 @@ namespace DigiposZen
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(41, 503);
+            this.label18.Location = new System.Drawing.Point(41, 447);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(116, 21);
             this.label18.TabIndex = 76;
@@ -2476,7 +2558,7 @@ namespace DigiposZen
             this.cboDefaultCostCenterPrimary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDefaultCostCenterPrimary.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDefaultCostCenterPrimary.FormattingEnabled = true;
-            this.cboDefaultCostCenterPrimary.Location = new System.Drawing.Point(166, 500);
+            this.cboDefaultCostCenterPrimary.Location = new System.Drawing.Point(166, 444);
             this.cboDefaultCostCenterPrimary.Name = "cboDefaultCostCenterPrimary";
             this.cboDefaultCostCenterPrimary.Size = new System.Drawing.Size(183, 29);
             this.cboDefaultCostCenterPrimary.TabIndex = 74;
@@ -2487,7 +2569,7 @@ namespace DigiposZen
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(24, 454);
+            this.label19.Location = new System.Drawing.Point(24, 398);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(496, 17);
             this.label19.TabIndex = 72;
@@ -2498,7 +2580,7 @@ namespace DigiposZen
             // 
             this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.label20.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(24, 421);
+            this.label20.Location = new System.Drawing.Point(24, 365);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(544, 29);
             this.label20.TabIndex = 71;
@@ -2509,7 +2591,7 @@ namespace DigiposZen
             // 
             this.lblTransIds.AutoSize = true;
             this.lblTransIds.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransIds.Location = new System.Drawing.Point(228, 374);
+            this.lblTransIds.Location = new System.Drawing.Point(464, 329);
             this.lblTransIds.Name = "lblTransIds";
             this.lblTransIds.Size = new System.Drawing.Size(0, 21);
             this.lblTransIds.TabIndex = 70;
@@ -2518,11 +2600,12 @@ namespace DigiposZen
             // txtCusrsorNavList
             // 
             this.txtCusrsorNavList.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCusrsorNavList.Location = new System.Drawing.Point(28, 374);
+            this.txtCusrsorNavList.Location = new System.Drawing.Point(471, 326);
             this.txtCusrsorNavList.MaxLength = 1000;
             this.txtCusrsorNavList.Name = "txtCusrsorNavList";
-            this.txtCusrsorNavList.Size = new System.Drawing.Size(499, 28);
+            this.txtCusrsorNavList.Size = new System.Drawing.Size(102, 28);
             this.txtCusrsorNavList.TabIndex = 7;
+            this.txtCusrsorNavList.Visible = false;
             this.txtCusrsorNavList.Enter += new System.EventHandler(this.txtCusrsorNavList_Enter);
             this.txtCusrsorNavList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCusrsorNavList_KeyDown);
             this.txtCusrsorNavList.Leave += new System.EventHandler(this.txtCusrsorNavList_Leave);
@@ -2531,11 +2614,12 @@ namespace DigiposZen
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(24, 354);
+            this.label24.Location = new System.Drawing.Point(270, 326);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(194, 21);
             this.label24.TabIndex = 69;
             this.label24.Text = "Cursor Navigation Order:";
+            this.label24.Visible = false;
             // 
             // label36
             // 
@@ -2547,6 +2631,7 @@ namespace DigiposZen
             this.label36.TabIndex = 50;
             this.label36.Text = "Other Settings";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label36.Visible = false;
             // 
             // txtSortOrder
             // 
@@ -3076,87 +3161,6 @@ namespace DigiposZen
             this.tblAccountGroupBindingSource.DataMember = "tblAccountGroup";
             this.tblAccountGroupBindingSource.DataSource = this.digiposDemoDataSet;
             // 
-            // label88
-            // 
-            this.label88.AutoSize = true;
-            this.label88.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label88.Location = new System.Drawing.Point(113, 337);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(116, 21);
-            this.label88.TabIndex = 110;
-            this.label88.Text = "Default Value:";
-            // 
-            // cboDefaultPriceList
-            // 
-            this.cboDefaultPriceList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDefaultPriceList.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboDefaultPriceList.FormattingEnabled = true;
-            this.cboDefaultPriceList.Location = new System.Drawing.Point(238, 332);
-            this.cboDefaultPriceList.Name = "cboDefaultPriceList";
-            this.cboDefaultPriceList.Size = new System.Drawing.Size(183, 29);
-            this.cboDefaultPriceList.TabIndex = 109;
-            // 
-            // label89
-            // 
-            this.label89.AutoSize = true;
-            this.label89.Location = new System.Drawing.Point(96, 291);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(611, 34);
-            this.label89.TabIndex = 108;
-            this.label89.Text = "Default pricelist when opening voucher. If locked pricelist won\'t be changed on c" +
-    "ustomer selection. \r\nIf not locked, pricelist can be changed.\r\n";
-            // 
-            // label90
-            // 
-            this.label90.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.label90.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label90.Location = new System.Drawing.Point(96, 250);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(544, 29);
-            this.label90.TabIndex = 107;
-            this.label90.Text = "Default PriceList";
-            this.label90.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label91
-            // 
-            this.label91.AutoSize = true;
-            this.label91.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label91.Location = new System.Drawing.Point(480, 316);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(152, 21);
-            this.label91.TabIndex = 112;
-            this.label91.Text = "Lock with Selection";
-            // 
-            // tbtnPriceList
-            // 
-            activeStateCollection7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(211)))), ((int)(((byte)(102)))));
-            activeStateCollection7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(211)))), ((int)(((byte)(102)))));
-            activeStateCollection7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection7.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            activeStateCollection7.Text = "ON";
-            this.tbtnPriceList.ActiveState = activeStateCollection7;
-            this.tbtnPriceList.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbtnPriceList.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            inactiveStateCollection7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            inactiveStateCollection7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            inactiveStateCollection7.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            inactiveStateCollection7.Text = "OFF";
-            this.tbtnPriceList.InactiveState = inactiveStateCollection7;
-            this.tbtnPriceList.Location = new System.Drawing.Point(505, 341);
-            this.tbtnPriceList.MinimumSize = new System.Drawing.Size(52, 20);
-            this.tbtnPriceList.Name = "tbtnPriceList";
-            this.tbtnPriceList.Size = new System.Drawing.Size(108, 29);
-            sliderCollection7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            sliderCollection7.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection7.InactiveBackColor = System.Drawing.Color.Black;
-            sliderCollection7.InactiveHoverColor = System.Drawing.Color.Black;
-            this.tbtnPriceList.Slider = sliderCollection7;
-            this.tbtnPriceList.TabIndex = 111;
-            this.tbtnPriceList.Text = "toggleButton1";
-            this.tbtnPriceList.ThemeName = "Office2016Black";
-            // 
             // frmVouchertype
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3197,6 +3201,7 @@ namespace DigiposZen
             this.groupBox1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbtnPriceList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbtnTaxInclusive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbtnAgent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbtnSalesStaff)).EndInit();
@@ -3222,7 +3227,6 @@ namespace DigiposZen
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrintSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digiposDemoDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblAccountGroupBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbtnPriceList)).EndInit();
             this.ResumeLayout(false);
 
         }

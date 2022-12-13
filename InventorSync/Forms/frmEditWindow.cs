@@ -1532,6 +1532,48 @@ namespace DigiposZen
                         frm.MdiParent = this.MdiParent;
                         frm.Show();
                     }
+                    else if (ITransParentID == 1) // PURCHASE
+                    {
+                        frmStockOutVoucherNew frm = new frmStockOutVoucherNew(itvwSelectedNodeID, 0, false, this.MdiParent);
+                        frm.MdiParent = this.MdiParent;
+                        frm.Show();
+                    }
+                    else if (ITransParentID == 3) // PURCHAE RETURN
+                    {
+                        frmStockOutVoucherNew frm = new frmStockOutVoucherNew(itvwSelectedNodeID, 0, false, this.MdiParent);
+                        frm.MdiParent = this.MdiParent;
+                        frm.Show();
+                    }
+                    else if (ITransParentID == 5) // RECEIPT NOTE
+                    {
+                        frmStockOutVoucherNew frm = new frmStockOutVoucherNew(itvwSelectedNodeID, 0, false, this.MdiParent);
+                        frm.MdiParent = this.MdiParent;
+                        frm.Show();
+                    }
+                    else if (ITransParentID == 7) // RECEIPT 
+                    {
+                        frmReceipt frm = new frmReceipt(itvwSelectedNodeID, 0, false, this.MdiParent);
+                        frm.MdiParent = this.MdiParent;
+                        frm.Show();
+                    }
+                    else if (ITransParentID == 8) // RECEIPT 
+                    {
+                        frmReceipt frm = new frmReceipt(itvwSelectedNodeID, 0, false, this.MdiParent);
+                        frm.MdiParent = this.MdiParent;
+                        frm.Show();
+                    }
+                    else if (ITransParentID == 9) // RECEIPT 
+                    {
+                        frmReceipt frm = new frmReceipt(itvwSelectedNodeID, 0, false, this.MdiParent);
+                        frm.MdiParent = this.MdiParent;
+                        frm.Show();
+                    }
+                    else if (ITransParentID == 10) // RECEIPT 
+                    {
+                        frmReceipt frm = new frmReceipt(itvwSelectedNodeID, 0, false, this.MdiParent);
+                        frm.MdiParent = this.MdiParent;
+                        frm.Show();
+                    }
                 }
             }
         }

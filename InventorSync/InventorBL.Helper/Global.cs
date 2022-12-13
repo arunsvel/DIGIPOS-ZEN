@@ -21,7 +21,7 @@ namespace DigiposZen.InventorBL.Helper
             SetUserId(1);
             SetUserGroupId(1);
             SetSuperUserId(1);
-            SetMessageCaption("Inventor");
+            SetMessageCaption("DIGIPOS");
             SetSystemName("Standard");
             SetFormBorderColor(Color.FromArgb(64,64,64));
         }
