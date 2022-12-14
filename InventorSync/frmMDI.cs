@@ -28,7 +28,7 @@ namespace DigiposZen
 
             if (AppSettings.BLNBARCODE == false)
             {
-                barcodeManagerToolStripMenuItem.Visible = false;
+                barcodePrintToolStripMenuItem.Visible = false;
             }
 
         }
@@ -271,6 +271,14 @@ namespace DigiposZen
                     frmEdit.BringToFront();
                     break;
                 case "BARCODEMANAGER":
+                    frmBarcodeManager frmBM = new frmBarcodeManager(this);
+                    frmBM.Text = "Barcode Manager";
+                    frmBM.MdiParent = this;
+                    frmBM.Show();
+                    frmBM.Focus();
+                    frmBM.BringToFront();
+                    break;
+                case "BARCODEPRINT":
                     frmBarcode frmBCode = new frmBarcode(2,0,"","",this);
                     frmBCode.Text = "Barcode Manager";
                     frmBCode.MdiParent = this;
@@ -871,13 +879,6 @@ namespace DigiposZen
 
         }
 
-        private void barcodeManagerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
-
-        }
-
         private void analysisReportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
@@ -1086,6 +1087,20 @@ namespace DigiposZen
         }
 
         private void advancedSearchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem t = (ToolStripMenuItem)sender;
+            OpenMenu(t.Text.ToString(), 0);
+
+        }
+
+        private void barcodePrintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem t = (ToolStripMenuItem)sender;
+            OpenMenu(t.Text.ToString(), 0);
+
+        }
+
+        private void barcodeManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
             OpenMenu(t.Text.ToString(), 0);

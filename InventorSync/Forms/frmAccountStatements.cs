@@ -781,9 +781,10 @@ namespace DigiposZen
                         StrCCID = " where ccid in (" + StrCCID + ") ";
 
                     sqlControl Rs = new sqlControl();
-                    string SQl;
+                    string SQl = "";
                     double TOTALVALUEnew = 0;
-                    Rs.Open("Select sum(qtyin * CostRateExcl)-sum(qtyout * CostRateExcl) as Clsstk from tblstockhistory Where VchDate <= '" + fromDate.ToString("dd/MMM/yyyy") + "' " + StrCCID + " ");
+                    //Rs.Open("Select sum(qtyin * CostRateExcl)-sum(qtyout * CostRateExcl) as Clsstk from tblstockhistory Where VchDate <= '" + fromDate.ToString("dd/MMM/yyyy") + "' " + StrCCID + " ");
+                    Rs.Open("Select ((sum(qtyin) - sum(qtyout)) * (sum(qtyin*tblStockHistory.CostRateExcl) / iif(sum(qtyin)=0,1,sum(qtyin)))) as Clsstk from tblstockhistory Where VchDate <= '" + fromDate.ToString("dd/MMM/yyyy") + "' " + StrCCID + " ");
                     if (!Rs.eof())
                     {
                         TOTALVALUEnew = Comm.ToDouble(Rs.fields("Clsstk"));

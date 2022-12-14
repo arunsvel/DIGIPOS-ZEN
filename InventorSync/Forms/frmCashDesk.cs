@@ -1099,7 +1099,11 @@ namespace DigiposZen.Forms
                             DialogResult dlgResult = MessageBox.Show("Shortage Amount of RS " + txtShortage.Text + " Credited to Customer", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                             if (dlgResult.Equals(DialogResult.Yes))
                             {
-                                clsCashDeskDetail cdd = new clsCashDeskDetail("Credit".ToUpper(), 0, 0, Comm.ToDecimal(txtBillAmount.Text), Comm.ToDecimal(txtPreviousBalance.Text), Comm.ToDecimal(txtOutstanting.Text), Comm.ToDecimal(txtCurrentReceipt.Text), Comm.ToDecimal(txtShortage.Text));
+                                //clsCashDeskDetail cdd = new clsCashDeskDetail("Credit".ToUpper(), 0, 0, Comm.ToDecimal(txtBillAmount.Text), Comm.ToDecimal(txtPreviousBalance.Text), Comm.ToDecimal(txtOutstanting.Text), Comm.ToDecimal(txtCurrentReceipt.Text), Comm.ToDecimal(txtShortage.Text));
+                                //mcashdesk.PaymentDetails.Add(cdd);
+                                //Dataposs();
+
+                                clsCashDeskDetail cdd = new clsCashDeskDetail(lblMop.Text.ToUpper(), 1, 3, Comm.ToDecimal(txtTotal.Text), 0, 0, 0, Comm.ToDecimal(txtShortage.Text));
                                 mcashdesk.PaymentDetails.Add(cdd);
                                 Dataposs();
                             }

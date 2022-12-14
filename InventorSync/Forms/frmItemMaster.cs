@@ -5649,14 +5649,14 @@ namespace DigiposZen
             {
                 string strJson = "";
                 decimal IMParentID = 502;
-                //strJson = Comm.fnGetData("SELECT ISNULL(VchJson,'') as VchJson FROM tblVchType WHERE ParentID = " + IMParentID + "").Tables[0].Rows[0][0].ToString();
-                //if (strJson != "")
-                //{
-                //    List<clsJsonItemMasterChkbxListctrlInfo> lstchklistCtrlinfo = JsonConvert.DeserializeObject<List<clsJsonItemMasterChkbxListctrlInfo>>(strJson);
-                    
-                //    dtCheckList = lstchklistCtrlinfo.ToDataTable();
+                strJson = Comm.fnGetData("SELECT ISNULL(VchJson,'') as VchJson FROM tblVchType WHERE ParentID = " + IMParentID + "").Tables[0].Rows[0][0].ToString();
+                if (strJson != "")
+                {
+                    List<clsJsonItemMasterChkbxListctrlInfo> lstchklistCtrlinfo = JsonConvert.DeserializeObject<List<clsJsonItemMasterChkbxListctrlInfo>>(strJson);
 
-                //    int RowsCount = lstchklistCtrlinfo.Count;
+                    dtCheckBox = lstchklistCtrlinfo.ToDataTable();
+
+                    //int RowsCount = lstchklistCtrlinfo.Count;
                     int RowsCount = dtCheckBox.Rows.Count;
 
                     if (dtCheckBox.Rows.Count > 0)
@@ -5677,7 +5677,7 @@ namespace DigiposZen
                             }
                         }
                     }
-                //}
+                }
             }
             catch (Exception ex)
             {

@@ -97,9 +97,10 @@
             this.companySettingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.createCompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.companyManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.barcodeManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.barcodePrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.backupManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.advancedSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -110,7 +111,7 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.advancedSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.barcodeManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -643,6 +644,7 @@
             // 
             this.tsmTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.companySettingsToolStripMenuItem,
+            this.barcodePrintToolStripMenuItem,
             this.barcodeManagerToolStripMenuItem,
             this.toolStripSeparator2,
             this.backupManagerToolStripMenuItem,
@@ -693,12 +695,12 @@
             this.companyManagerToolStripMenuItem.Text = "Company Manager";
             this.companyManagerToolStripMenuItem.Visible = false;
             // 
-            // barcodeManagerToolStripMenuItem
+            // barcodePrintToolStripMenuItem
             // 
-            this.barcodeManagerToolStripMenuItem.Name = "barcodeManagerToolStripMenuItem";
-            this.barcodeManagerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.barcodeManagerToolStripMenuItem.Text = "Barcode Manager";
-            this.barcodeManagerToolStripMenuItem.Click += new System.EventHandler(this.barcodeManagerToolStripMenuItem_Click);
+            this.barcodePrintToolStripMenuItem.Name = "barcodePrintToolStripMenuItem";
+            this.barcodePrintToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.barcodePrintToolStripMenuItem.Text = "Barcode Print";
+            this.barcodePrintToolStripMenuItem.Click += new System.EventHandler(this.barcodePrintToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -710,6 +712,13 @@
             this.backupManagerToolStripMenuItem.Name = "backupManagerToolStripMenuItem";
             this.backupManagerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.backupManagerToolStripMenuItem.Text = "Backup Manager";
+            // 
+            // advancedSearchToolStripMenuItem
+            // 
+            this.advancedSearchToolStripMenuItem.Name = "advancedSearchToolStripMenuItem";
+            this.advancedSearchToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.advancedSearchToolStripMenuItem.Text = "Advanced Search";
+            this.advancedSearchToolStripMenuItem.Click += new System.EventHandler(this.advancedSearchToolStripMenuItem_Click);
             // 
             // userToolStripMenuItem
             // 
@@ -815,12 +824,12 @@
             this.label1.TabIndex = 1;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // advancedSearchToolStripMenuItem
+            // barcodeManagerToolStripMenuItem
             // 
-            this.advancedSearchToolStripMenuItem.Name = "advancedSearchToolStripMenuItem";
-            this.advancedSearchToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.advancedSearchToolStripMenuItem.Text = "Advanced Search";
-            this.advancedSearchToolStripMenuItem.Click += new System.EventHandler(this.advancedSearchToolStripMenuItem_Click);
+            this.barcodeManagerToolStripMenuItem.Name = "barcodeManagerToolStripMenuItem";
+            this.barcodeManagerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.barcodeManagerToolStripMenuItem.Text = "Barcode Manager";
+            this.barcodeManagerToolStripMenuItem.Click += new System.EventHandler(this.barcodeManagerToolStripMenuItem_Click);
             // 
             // frmMDI
             // 
@@ -903,7 +912,7 @@
         private System.Windows.Forms.ToolStripMenuItem costCentreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem taxModeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem barcodeManagerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem barcodePrintToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem purchaseReturnReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salesReturnReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
@@ -937,6 +946,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem hsnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem advancedSearchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem barcodeManagerToolStripMenuItem;
     }
 }
 

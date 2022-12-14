@@ -95,11 +95,11 @@ namespace DigiposZen
             this.tlpMain.Margin = new System.Windows.Forms.Padding(4);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 3;
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 136F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tlpMain.Size = new System.Drawing.Size(885, 462);
+            this.tlpMain.Size = new System.Drawing.Size(885, 417);
             this.tlpMain.TabIndex = 7;
             // 
             // tlpHeading
@@ -130,9 +130,9 @@ namespace DigiposZen
             this.tlpHeading.Name = "tlpHeading";
             this.tlpHeading.RowCount = 3;
             this.tlpHeading.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tlpHeading.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tlpHeading.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tlpHeading.Size = new System.Drawing.Size(891, 136);
+            this.tlpHeading.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tlpHeading.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tlpHeading.Size = new System.Drawing.Size(891, 88);
             this.tlpHeading.TabIndex = 1;
             this.tlpHeading.TabStop = true;
             this.tlpHeading.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tlpHeading_MouseDown);
@@ -141,15 +141,13 @@ namespace DigiposZen
             // 
             // lblSave
             // 
-            this.lblSave.AutoSize = true;
             this.lblSave.BackColor = System.Drawing.Color.Transparent;
-            this.lblSave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSave.ForeColor = System.Drawing.Color.Black;
-            this.lblSave.Location = new System.Drawing.Point(4, 95);
+            this.lblSave.Location = new System.Drawing.Point(4, 57);
             this.lblSave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSave.Name = "lblSave";
-            this.lblSave.Size = new System.Drawing.Size(72, 42);
+            this.lblSave.Size = new System.Drawing.Size(72, 25);
             this.lblSave.TabIndex = 7;
             this.lblSave.Text = "Save";
             this.lblSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -164,22 +162,20 @@ namespace DigiposZen
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.tlpHeading.SetRowSpan(this.btnDelete, 2);
-            this.btnDelete.Size = new System.Drawing.Size(72, 87);
+            this.btnDelete.Size = new System.Drawing.Size(72, 49);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // lblDelete
             // 
-            this.lblDelete.AutoSize = true;
             this.lblDelete.BackColor = System.Drawing.Color.Transparent;
-            this.lblDelete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelete.ForeColor = System.Drawing.Color.Black;
-            this.lblDelete.Location = new System.Drawing.Point(84, 95);
+            this.lblDelete.Location = new System.Drawing.Point(84, 57);
             this.lblDelete.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDelete.Name = "lblDelete";
-            this.lblDelete.Size = new System.Drawing.Size(72, 42);
+            this.lblDelete.Size = new System.Drawing.Size(72, 25);
             this.lblDelete.TabIndex = 7;
             this.lblDelete.Text = "Delete";
             this.lblDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -194,7 +190,7 @@ namespace DigiposZen
             this.btnFind.Margin = new System.Windows.Forms.Padding(4);
             this.btnFind.Name = "btnFind";
             this.tlpHeading.SetRowSpan(this.btnFind, 2);
-            this.btnFind.Size = new System.Drawing.Size(72, 87);
+            this.btnFind.Size = new System.Drawing.Size(72, 49);
             this.btnFind.TabIndex = 6;
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
@@ -209,22 +205,20 @@ namespace DigiposZen
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.tlpHeading.SetRowSpan(this.btnClose, 2);
-            this.btnClose.Size = new System.Drawing.Size(72, 87);
+            this.btnClose.Size = new System.Drawing.Size(72, 49);
             this.btnClose.TabIndex = 9;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblFind
             // 
-            this.lblFind.AutoSize = true;
             this.lblFind.BackColor = System.Drawing.Color.Transparent;
-            this.lblFind.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblFind.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFind.ForeColor = System.Drawing.Color.Black;
-            this.lblFind.Location = new System.Drawing.Point(164, 95);
+            this.lblFind.Location = new System.Drawing.Point(164, 57);
             this.lblFind.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFind.Name = "lblFind";
-            this.lblFind.Size = new System.Drawing.Size(72, 42);
+            this.lblFind.Size = new System.Drawing.Size(72, 25);
             this.lblFind.TabIndex = 7;
             this.lblFind.Text = "Find";
             this.lblFind.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -233,17 +227,16 @@ namespace DigiposZen
             // 
             this.btnYtubeTutorial.BackColor = System.Drawing.Color.Transparent;
             this.btnYtubeTutorial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnYtubeTutorial.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnYtubeTutorial.FlatAppearance.BorderSize = 0;
             this.btnYtubeTutorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnYtubeTutorial.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnYtubeTutorial.ForeColor = System.Drawing.Color.Black;
             this.btnYtubeTutorial.Image = ((System.Drawing.Image)(resources.GetObject("btnYtubeTutorial.Image")));
             this.btnYtubeTutorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnYtubeTutorial.Location = new System.Drawing.Point(244, 99);
+            this.btnYtubeTutorial.Location = new System.Drawing.Point(244, 61);
             this.btnYtubeTutorial.Margin = new System.Windows.Forms.Padding(4);
             this.btnYtubeTutorial.Name = "btnYtubeTutorial";
-            this.btnYtubeTutorial.Size = new System.Drawing.Size(125, 34);
+            this.btnYtubeTutorial.Size = new System.Drawing.Size(125, 21);
             this.btnYtubeTutorial.TabIndex = 10;
             this.btnYtubeTutorial.Text = "Tutorial";
             this.btnYtubeTutorial.UseVisualStyleBackColor = false;
@@ -258,7 +251,7 @@ namespace DigiposZen
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(4);
             this.btnMinimize.Name = "btnMinimize";
             this.tlpHeading.SetRowSpan(this.btnMinimize, 2);
-            this.btnMinimize.Size = new System.Drawing.Size(72, 87);
+            this.btnMinimize.Size = new System.Drawing.Size(72, 49);
             this.btnMinimize.TabIndex = 8;
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
@@ -273,7 +266,7 @@ namespace DigiposZen
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.tlpHeading.SetRowSpan(this.btnSave, 2);
-            this.btnSave.Size = new System.Drawing.Size(72, 87);
+            this.btnSave.Size = new System.Drawing.Size(72, 49);
             this.btnSave.TabIndex = 4;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -283,7 +276,7 @@ namespace DigiposZen
             this.lblHeading.AutoSize = true;
             this.lblHeading.BackColor = System.Drawing.Color.Transparent;
             this.lblHeading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHeading.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeading.Font = new System.Drawing.Font("Tahoma", 13.8F);
             this.lblHeading.ForeColor = System.Drawing.Color.Black;
             this.lblHeading.Location = new System.Drawing.Point(267, 0);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(27, 0, 27, 0);
@@ -326,11 +319,11 @@ namespace DigiposZen
             this.gboxMain.Controls.Add(this.comboDropDown4);
             this.gboxMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gboxMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gboxMain.Location = new System.Drawing.Point(27, 136);
+            this.gboxMain.Location = new System.Drawing.Point(27, 88);
             this.gboxMain.Margin = new System.Windows.Forms.Padding(27, 0, 27, 0);
             this.gboxMain.Name = "gboxMain";
             this.gboxMain.Padding = new System.Windows.Forms.Padding(4);
-            this.gboxMain.Size = new System.Drawing.Size(837, 298);
+            this.gboxMain.Size = new System.Drawing.Size(837, 301);
             this.gboxMain.TabIndex = 0;
             this.gboxMain.TabStop = false;
             // 
@@ -706,7 +699,7 @@ namespace DigiposZen
             this.label47.BackColor = System.Drawing.Color.Transparent;
             this.label47.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label47.ForeColor = System.Drawing.Color.Black;
-            this.label47.Location = new System.Drawing.Point(4, 434);
+            this.label47.Location = new System.Drawing.Point(4, 389);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(883, 28);
@@ -719,7 +712,7 @@ namespace DigiposZen
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(887, 464);
+            this.ClientSize = new System.Drawing.Size(887, 419);
             this.Controls.Add(this.tlpMain);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

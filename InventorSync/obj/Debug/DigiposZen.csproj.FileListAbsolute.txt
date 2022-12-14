@@ -175,6 +175,7 @@ D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Forms.frmC
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.frmCashDeskMaster.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.frmCashDeskReport.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.frmColorMaster.resources
+D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Forms.frmBarcodeManager.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Forms.frmCommadWindow.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Forms.frmCompanySettings.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Forms.frmConnectionProperties.resources

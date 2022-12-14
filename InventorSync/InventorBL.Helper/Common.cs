@@ -4800,6 +4800,7 @@ namespace DigiposZen.InventorBL.Helper
                                 DELETE FROM [dbo].[tblColor] where ColorID > 1
                                 DELETE FROM [dbo].[tblSize] where SizeID > 1
                                 DELETE FROM [dbo].[tblCategories] where CategoryID > 1
+                                DELETE FROM [dbo].[tblHSNCode] where HSNID > 1
                                 DELETE FROM [dbo].[tblCostCentre] where CCID > 1
                                 DELETE FROM [dbo].[tblDepartment] where DepartmentID > 2
                                 DELETE FROM [dbo].[tblLedger] where LID > 1000

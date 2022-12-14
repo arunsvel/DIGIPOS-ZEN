@@ -579,7 +579,7 @@ namespace DigiposZen.Forms
                 else if (strFormName == "Cash Desk")
                 {
 
-                    SqlDataAdapter da1 = new SqlDataAdapter(" select  string_agg (PaymentType, ',') as PaymentType  from tblCashDeskMaster", DigiposZen.Properties.Settings.Default.ConnectionString);
+                    SqlDataAdapter da1 = new SqlDataAdapter(" select  string_agg ('['+PaymentType+']', ',') as PaymentType  from tblCashDeskMaster", DigiposZen.Properties.Settings.Default.ConnectionString);
                     DataTable dt3 = new DataTable();
                     da1.Fill(dt3);
                     SqlDataAdapter da = new SqlDataAdapter("select * from vwpurchase  PIVOT(AVG(amount) FOR PaymentType in (" + dt3.Rows[0]["PaymentType"].ToString() + ",CREDIT)) AS PivotTable  order by ID", DigiposZen.Properties.Settings.Default.ConnectionString);

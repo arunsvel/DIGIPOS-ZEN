@@ -31,11 +31,11 @@ namespace DigiposZen
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemMaster));
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection3 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection3 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection3 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
             this.lblSave = new System.Windows.Forms.Label();
@@ -273,7 +273,7 @@ namespace DigiposZen
             this.tlpMain.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tlpMain.ColumnCount = 2;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 829F));
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 431F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 433F));
             this.tlpMain.Controls.Add(this.tlpHeader, 0, 0);
             this.tlpMain.Controls.Add(this.gboxMain, 0, 1);
             this.tlpMain.Controls.Add(this.lblFooter, 0, 2);
@@ -285,7 +285,7 @@ namespace DigiposZen
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpMain.Size = new System.Drawing.Size(888, 826);
+            this.tlpMain.Size = new System.Drawing.Size(1194, 826);
             this.tlpMain.TabIndex = 0;
             // 
             // tlpHeader
@@ -380,7 +380,7 @@ namespace DigiposZen
             this.lblHeading.BackColor = System.Drawing.Color.Transparent;
             this.tlpHeader.SetColumnSpan(this.lblHeading, 4);
             this.lblHeading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHeading.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeading.Font = new System.Drawing.Font("Tahoma", 13.8F);
             this.lblHeading.ForeColor = System.Drawing.Color.Black;
             this.lblHeading.Location = new System.Drawing.Point(251, 0);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(20, 0, 20, 0);
@@ -557,32 +557,32 @@ namespace DigiposZen
             // 
             // togglebtnActive
             // 
-            activeStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.ForeColor = System.Drawing.Color.Navy;
-            activeStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.Text = "ON";
-            this.togglebtnActive.ActiveState = activeStateCollection1;
+            activeStateCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection3.ForeColor = System.Drawing.Color.Navy;
+            activeStateCollection3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection3.Text = "ON";
+            this.togglebtnActive.ActiveState = activeStateCollection3;
             this.tlpHeader.SetColumnSpan(this.togglebtnActive, 2);
             this.togglebtnActive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.togglebtnActive.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.togglebtnActive.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            inactiveStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            inactiveStateCollection1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            inactiveStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            inactiveStateCollection1.Text = "OFF";
-            this.togglebtnActive.InactiveState = inactiveStateCollection1;
+            inactiveStateCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            inactiveStateCollection3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            inactiveStateCollection3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            inactiveStateCollection3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            inactiveStateCollection3.Text = "OFF";
+            this.togglebtnActive.InactiveState = inactiveStateCollection3;
             this.togglebtnActive.Location = new System.Drawing.Point(694, 66);
             this.togglebtnActive.MinimumSize = new System.Drawing.Size(52, 20);
             this.togglebtnActive.Name = "togglebtnActive";
             this.togglebtnActive.Size = new System.Drawing.Size(132, 29);
-            sliderCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            sliderCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection1.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            sliderCollection1.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.togglebtnActive.Slider = sliderCollection1;
+            sliderCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            sliderCollection3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection3.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            sliderCollection3.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.togglebtnActive.Slider = sliderCollection3;
             this.togglebtnActive.TabIndex = 8;
             this.togglebtnActive.Text = "Active Status";
             this.togglebtnActive.ThemeName = "Office2016Black";
@@ -683,8 +683,8 @@ namespace DigiposZen
             // clmItemName
             // 
             this.clmItemName.DataPropertyName = "ItemName";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmItemName.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmItemName.DefaultCellStyle = dataGridViewCellStyle5;
             this.clmItemName.HeaderText = "Item Name";
             this.clmItemName.MinimumWidth = 6;
             this.clmItemName.Name = "clmItemName";
@@ -694,8 +694,8 @@ namespace DigiposZen
             // clmItemCode
             // 
             this.clmItemCode.DataPropertyName = "ItemCode";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmItemCode.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmItemCode.DefaultCellStyle = dataGridViewCellStyle6;
             this.clmItemCode.HeaderText = "Item Code";
             this.clmItemCode.MinimumWidth = 6;
             this.clmItemCode.Name = "clmItemCode";
@@ -731,7 +731,7 @@ namespace DigiposZen
             this.grpTaxDetails.Controls.Add(this.cboIGSTPerc);
             this.grpTaxDetails.Controls.Add(this.lblIGSTPer);
             this.grpTaxDetails.Controls.Add(this.label27);
-            this.grpTaxDetails.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpTaxDetails.Font = new System.Drawing.Font("Tahoma", 9F);
             this.grpTaxDetails.Location = new System.Drawing.Point(3, 21);
             this.grpTaxDetails.Name = "grpTaxDetails";
             this.grpTaxDetails.Size = new System.Drawing.Size(403, 183);
@@ -743,11 +743,11 @@ namespace DigiposZen
             // 
             this.txtCompCessPer.BackColor = System.Drawing.SystemColors.Window;
             this.txtCompCessPer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCompCessPer.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCompCessPer.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtCompCessPer.Location = new System.Drawing.Point(338, 121);
             this.txtCompCessPer.MaxLength = 5;
             this.txtCompCessPer.Name = "txtCompCessPer";
-            this.txtCompCessPer.Size = new System.Drawing.Size(56, 28);
+            this.txtCompCessPer.Size = new System.Drawing.Size(56, 26);
             this.txtCompCessPer.TabIndex = 5;
             this.txtCompCessPer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCompCessPer.Enter += new System.EventHandler(this.txtCompCsePer_Enter);
@@ -780,11 +780,11 @@ namespace DigiposZen
             // 
             this.txtHSNCode.BackColor = System.Drawing.SystemColors.Window;
             this.txtHSNCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHSNCode.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHSNCode.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtHSNCode.Location = new System.Drawing.Point(7, 47);
             this.txtHSNCode.MaxLength = 18;
             this.txtHSNCode.Name = "txtHSNCode";
-            this.txtHSNCode.Size = new System.Drawing.Size(311, 28);
+            this.txtHSNCode.Size = new System.Drawing.Size(311, 26);
             this.txtHSNCode.TabIndex = 0;
             this.txtHSNCode.TextChanged += new System.EventHandler(this.txtHSNCode_TextChanged);
             this.txtHSNCode.Enter += new System.EventHandler(this.txtHSNCode_Enter);
@@ -834,11 +834,11 @@ namespace DigiposZen
             // 
             this.txtCessPerc.BackColor = System.Drawing.SystemColors.Window;
             this.txtCessPerc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCessPerc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCessPerc.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtCessPerc.Location = new System.Drawing.Point(339, 84);
             this.txtCessPerc.MaxLength = 4;
             this.txtCessPerc.Name = "txtCessPerc";
-            this.txtCessPerc.Size = new System.Drawing.Size(56, 28);
+            this.txtCessPerc.Size = new System.Drawing.Size(56, 26);
             this.txtCessPerc.TabIndex = 4;
             this.txtCessPerc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCessPerc.Click += new System.EventHandler(this.txtCessPerc_Click);
@@ -862,12 +862,12 @@ namespace DigiposZen
             // 
             this.txtSGSTPerc.BackColor = System.Drawing.SystemColors.Window;
             this.txtSGSTPerc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSGSTPerc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSGSTPerc.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtSGSTPerc.Location = new System.Drawing.Point(214, 84);
             this.txtSGSTPerc.MaxLength = 4;
             this.txtSGSTPerc.Name = "txtSGSTPerc";
             this.txtSGSTPerc.ReadOnly = true;
-            this.txtSGSTPerc.Size = new System.Drawing.Size(51, 28);
+            this.txtSGSTPerc.Size = new System.Drawing.Size(51, 26);
             this.txtSGSTPerc.TabIndex = 3;
             this.txtSGSTPerc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSGSTPerc.Click += new System.EventHandler(this.txtSGSTPerc_Click);
@@ -890,12 +890,12 @@ namespace DigiposZen
             // 
             this.txtCGSTPerc.BackColor = System.Drawing.SystemColors.Window;
             this.txtCGSTPerc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCGSTPerc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCGSTPerc.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtCGSTPerc.Location = new System.Drawing.Point(84, 84);
             this.txtCGSTPerc.MaxLength = 4;
             this.txtCGSTPerc.Name = "txtCGSTPerc";
             this.txtCGSTPerc.ReadOnly = true;
-            this.txtCGSTPerc.Size = new System.Drawing.Size(51, 28);
+            this.txtCGSTPerc.Size = new System.Drawing.Size(51, 26);
             this.txtCGSTPerc.TabIndex = 2;
             this.txtCGSTPerc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCGSTPerc.Click += new System.EventHandler(this.txtCGSTPerc_Click);
@@ -919,14 +919,14 @@ namespace DigiposZen
             this.cboIGSTPerc.BackColor = System.Drawing.SystemColors.Window;
             this.cboIGSTPerc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboIGSTPerc.Enabled = false;
-            this.cboIGSTPerc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboIGSTPerc.Font = new System.Drawing.Font("Tahoma", 9F);
             this.cboIGSTPerc.Items.AddRange(new object[] {
             "0",
             "5"});
             this.cboIGSTPerc.Location = new System.Drawing.Point(339, 47);
             this.cboIGSTPerc.MaxLength = 4;
             this.cboIGSTPerc.Name = "cboIGSTPerc";
-            this.cboIGSTPerc.Size = new System.Drawing.Size(56, 29);
+            this.cboIGSTPerc.Size = new System.Drawing.Size(56, 26);
             this.cboIGSTPerc.TabIndex = 1;
             this.cboIGSTPerc.SelectedIndexChanged += new System.EventHandler(this.cboIGSTPerc_SelectedIndexChanged);
             this.cboIGSTPerc.TextChanged += new System.EventHandler(this.txtIGSTPerc_TextChanged);
@@ -985,7 +985,7 @@ namespace DigiposZen
             this.grpPriceDetails.Controls.Add(this.txtPRate);
             this.grpPriceDetails.Controls.Add(this.label15);
             this.grpPriceDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.grpPriceDetails.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpPriceDetails.Font = new System.Drawing.Font("Tahoma", 9F);
             this.grpPriceDetails.Location = new System.Drawing.Point(3, 210);
             this.grpPriceDetails.Name = "grpPriceDetails";
             this.grpPriceDetails.Size = new System.Drawing.Size(403, 191);
@@ -998,7 +998,7 @@ namespace DigiposZen
             this.cboCalc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboCalc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboCalc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCalc.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCalc.Font = new System.Drawing.Font("Tahoma", 9F);
             this.cboCalc.FormattingEnabled = true;
             this.cboCalc.Items.AddRange(new object[] {
             "+ PRate",
@@ -1006,7 +1006,7 @@ namespace DigiposZen
             "+ CRate"});
             this.cboCalc.Location = new System.Drawing.Point(172, 49);
             this.cboCalc.Name = "cboCalc";
-            this.cboCalc.Size = new System.Drawing.Size(79, 24);
+            this.cboCalc.Size = new System.Drawing.Size(79, 26);
             this.cboCalc.TabIndex = 2;
             this.cboCalc.SelectionChangeCommitted += new System.EventHandler(this.cboCalc_SelectionChangeCommitted);
             this.cboCalc.Click += new System.EventHandler(this.cboCalc_Click);
@@ -1018,11 +1018,11 @@ namespace DigiposZen
             // 
             this.txtSRate5.BackColor = System.Drawing.SystemColors.Window;
             this.txtSRate5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSRate5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSRate5.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtSRate5.Location = new System.Drawing.Point(310, 162);
             this.txtSRate5.MaxLength = 22;
             this.txtSRate5.Name = "txtSRate5";
-            this.txtSRate5.Size = new System.Drawing.Size(77, 28);
+            this.txtSRate5.Size = new System.Drawing.Size(77, 26);
             this.txtSRate5.TabIndex = 12;
             this.txtSRate5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSRate5.Click += new System.EventHandler(this.txtSRate5_Click);
@@ -1037,11 +1037,11 @@ namespace DigiposZen
             // 
             this.txtPerc5.BackColor = System.Drawing.SystemColors.Window;
             this.txtPerc5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPerc5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPerc5.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtPerc5.Location = new System.Drawing.Point(232, 162);
             this.txtPerc5.MaxLength = 6;
             this.txtPerc5.Name = "txtPerc5";
-            this.txtPerc5.Size = new System.Drawing.Size(72, 28);
+            this.txtPerc5.Size = new System.Drawing.Size(72, 26);
             this.txtPerc5.TabIndex = 11;
             this.txtPerc5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPerc5.Click += new System.EventHandler(this.txtPerc5_Click);
@@ -1075,11 +1075,11 @@ namespace DigiposZen
             // 
             this.txtSRate4.BackColor = System.Drawing.SystemColors.Window;
             this.txtSRate4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSRate4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSRate4.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtSRate4.Location = new System.Drawing.Point(91, 162);
             this.txtSRate4.MaxLength = 22;
             this.txtSRate4.Name = "txtSRate4";
-            this.txtSRate4.Size = new System.Drawing.Size(77, 28);
+            this.txtSRate4.Size = new System.Drawing.Size(77, 26);
             this.txtSRate4.TabIndex = 10;
             this.txtSRate4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSRate4.Click += new System.EventHandler(this.txtSRate4_Click);
@@ -1093,11 +1093,11 @@ namespace DigiposZen
             // 
             this.txtPerc4.BackColor = System.Drawing.SystemColors.Window;
             this.txtPerc4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPerc4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPerc4.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtPerc4.Location = new System.Drawing.Point(8, 162);
             this.txtPerc4.MaxLength = 6;
             this.txtPerc4.Name = "txtPerc4";
-            this.txtPerc4.Size = new System.Drawing.Size(76, 28);
+            this.txtPerc4.Size = new System.Drawing.Size(76, 26);
             this.txtPerc4.TabIndex = 9;
             this.txtPerc4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPerc4.Click += new System.EventHandler(this.txtPerc4_Click);
@@ -1131,11 +1131,11 @@ namespace DigiposZen
             // 
             this.txtSRate3.BackColor = System.Drawing.SystemColors.Window;
             this.txtSRate3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSRate3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSRate3.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtSRate3.Location = new System.Drawing.Point(310, 108);
             this.txtSRate3.MaxLength = 22;
             this.txtSRate3.Name = "txtSRate3";
-            this.txtSRate3.Size = new System.Drawing.Size(77, 28);
+            this.txtSRate3.Size = new System.Drawing.Size(77, 26);
             this.txtSRate3.TabIndex = 8;
             this.txtSRate3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSRate3.Click += new System.EventHandler(this.txtSRate3_Click);
@@ -1149,11 +1149,11 @@ namespace DigiposZen
             // 
             this.txtPerc3.BackColor = System.Drawing.SystemColors.Window;
             this.txtPerc3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPerc3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPerc3.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtPerc3.Location = new System.Drawing.Point(232, 108);
             this.txtPerc3.MaxLength = 6;
             this.txtPerc3.Name = "txtPerc3";
-            this.txtPerc3.Size = new System.Drawing.Size(72, 28);
+            this.txtPerc3.Size = new System.Drawing.Size(72, 26);
             this.txtPerc3.TabIndex = 7;
             this.txtPerc3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPerc3.Click += new System.EventHandler(this.txtPerc3_Click);
@@ -1187,11 +1187,11 @@ namespace DigiposZen
             // 
             this.txtSRate2.BackColor = System.Drawing.SystemColors.Window;
             this.txtSRate2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSRate2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSRate2.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtSRate2.Location = new System.Drawing.Point(90, 108);
             this.txtSRate2.MaxLength = 22;
             this.txtSRate2.Name = "txtSRate2";
-            this.txtSRate2.Size = new System.Drawing.Size(77, 28);
+            this.txtSRate2.Size = new System.Drawing.Size(77, 26);
             this.txtSRate2.TabIndex = 6;
             this.txtSRate2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSRate2.Click += new System.EventHandler(this.txtSRate2_Click);
@@ -1205,11 +1205,11 @@ namespace DigiposZen
             // 
             this.txtPerc2.BackColor = System.Drawing.SystemColors.Window;
             this.txtPerc2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPerc2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPerc2.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtPerc2.Location = new System.Drawing.Point(7, 108);
             this.txtPerc2.MaxLength = 6;
             this.txtPerc2.Name = "txtPerc2";
-            this.txtPerc2.Size = new System.Drawing.Size(77, 28);
+            this.txtPerc2.Size = new System.Drawing.Size(77, 26);
             this.txtPerc2.TabIndex = 5;
             this.txtPerc2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPerc2.Click += new System.EventHandler(this.txtPerc2_Click);
@@ -1244,11 +1244,11 @@ namespace DigiposZen
             // 
             this.txtSRate1.BackColor = System.Drawing.SystemColors.Window;
             this.txtSRate1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSRate1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSRate1.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtSRate1.Location = new System.Drawing.Point(310, 49);
             this.txtSRate1.MaxLength = 22;
             this.txtSRate1.Name = "txtSRate1";
-            this.txtSRate1.Size = new System.Drawing.Size(77, 28);
+            this.txtSRate1.Size = new System.Drawing.Size(77, 26);
             this.txtSRate1.TabIndex = 4;
             this.txtSRate1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSRate1.Click += new System.EventHandler(this.txtSRate1_Click);
@@ -1262,11 +1262,11 @@ namespace DigiposZen
             // 
             this.txtPerc1.BackColor = System.Drawing.SystemColors.Window;
             this.txtPerc1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPerc1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPerc1.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtPerc1.Location = new System.Drawing.Point(257, 49);
             this.txtPerc1.MaxLength = 6;
             this.txtPerc1.Name = "txtPerc1";
-            this.txtPerc1.Size = new System.Drawing.Size(47, 28);
+            this.txtPerc1.Size = new System.Drawing.Size(47, 26);
             this.txtPerc1.TabIndex = 3;
             this.txtPerc1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPerc1.Click += new System.EventHandler(this.txtPerc1_Click);
@@ -1300,11 +1300,11 @@ namespace DigiposZen
             // 
             this.txtMRP.BackColor = System.Drawing.SystemColors.Window;
             this.txtMRP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMRP.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMRP.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtMRP.Location = new System.Drawing.Point(90, 49);
             this.txtMRP.MaxLength = 22;
             this.txtMRP.Name = "txtMRP";
-            this.txtMRP.Size = new System.Drawing.Size(77, 28);
+            this.txtMRP.Size = new System.Drawing.Size(77, 26);
             this.txtMRP.TabIndex = 1;
             this.txtMRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtMRP.Click += new System.EventHandler(this.txtMRP_Click);
@@ -1327,11 +1327,11 @@ namespace DigiposZen
             // 
             this.txtPRate.BackColor = System.Drawing.SystemColors.Window;
             this.txtPRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPRate.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPRate.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtPRate.Location = new System.Drawing.Point(7, 49);
             this.txtPRate.MaxLength = 22;
             this.txtPRate.Name = "txtPRate";
-            this.txtPRate.Size = new System.Drawing.Size(77, 28);
+            this.txtPRate.Size = new System.Drawing.Size(77, 26);
             this.txtPRate.TabIndex = 0;
             this.txtPRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPRate.Click += new System.EventHandler(this.txtPRate_Click);
@@ -1355,10 +1355,10 @@ namespace DigiposZen
             this.gpTaxInclExcl.BackColor = System.Drawing.Color.Transparent;
             this.gpTaxInclExcl.Controls.Add(this.dgvTaxIncl);
             this.gpTaxInclExcl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gpTaxInclExcl.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gpTaxInclExcl.Font = new System.Drawing.Font("Tahoma", 9F);
             this.gpTaxInclExcl.Location = new System.Drawing.Point(3, 407);
             this.gpTaxInclExcl.Name = "gpTaxInclExcl";
-            this.gpTaxInclExcl.Size = new System.Drawing.Size(403, 270);
+            this.gpTaxInclExcl.Size = new System.Drawing.Size(403, 289);
             this.gpTaxInclExcl.TabIndex = 20;
             this.gpTaxInclExcl.TabStop = false;
             this.gpTaxInclExcl.Text = "Tax Inclusive/Exclusive Rates";
@@ -1370,12 +1370,12 @@ namespace DigiposZen
             this.dgvTaxIncl.BackgroundColor = System.Drawing.Color.White;
             this.dgvTaxIncl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTaxIncl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTaxIncl.Location = new System.Drawing.Point(3, 24);
+            this.dgvTaxIncl.Location = new System.Drawing.Point(3, 22);
             this.dgvTaxIncl.Name = "dgvTaxIncl";
             this.dgvTaxIncl.RowHeadersVisible = false;
             this.dgvTaxIncl.RowHeadersWidth = 51;
             this.dgvTaxIncl.RowTemplate.Height = 24;
-            this.dgvTaxIncl.Size = new System.Drawing.Size(397, 243);
+            this.dgvTaxIncl.Size = new System.Drawing.Size(397, 264);
             this.dgvTaxIncl.TabIndex = 0;
             // 
             // grpBatchDetails
@@ -1394,7 +1394,7 @@ namespace DigiposZen
             this.grpBatchDetails.Controls.Add(this.txtBarcode);
             this.grpBatchDetails.Controls.Add(this.label34);
             this.grpBatchDetails.Controls.Add(this.label33);
-            this.grpBatchDetails.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpBatchDetails.Font = new System.Drawing.Font("Tahoma", 9F);
             this.grpBatchDetails.Location = new System.Drawing.Point(412, 3);
             this.grpBatchDetails.Name = "grpBatchDetails";
             this.grpBatchDetails.Size = new System.Drawing.Size(401, 188);
@@ -1405,10 +1405,10 @@ namespace DigiposZen
             // lbldefaultExpdt
             // 
             this.lbldefaultExpdt.AutoSize = true;
-            this.lbldefaultExpdt.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldefaultExpdt.Font = new System.Drawing.Font("Tahoma", 9F);
             this.lbldefaultExpdt.Location = new System.Drawing.Point(130, 156);
             this.lbldefaultExpdt.Name = "lbldefaultExpdt";
-            this.lbldefaultExpdt.Size = new System.Drawing.Size(182, 21);
+            this.lbldefaultExpdt.Size = new System.Drawing.Size(160, 18);
             this.lbldefaultExpdt.TabIndex = 81;
             this.lbldefaultExpdt.Text = "Default Expiry In Days:";
             // 
@@ -1417,11 +1417,11 @@ namespace DigiposZen
             this.txtDefaultExpDays.BackColor = System.Drawing.SystemColors.Window;
             this.txtDefaultExpDays.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDefaultExpDays.Enabled = false;
-            this.txtDefaultExpDays.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDefaultExpDays.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtDefaultExpDays.Location = new System.Drawing.Point(330, 153);
             this.txtDefaultExpDays.MaxLength = 6;
             this.txtDefaultExpDays.Name = "txtDefaultExpDays";
-            this.txtDefaultExpDays.Size = new System.Drawing.Size(61, 28);
+            this.txtDefaultExpDays.Size = new System.Drawing.Size(61, 26);
             this.txtDefaultExpDays.TabIndex = 80;
             this.txtDefaultExpDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDefaultExpDays.Click += new System.EventHandler(this.txtDefaultExpDays_Click);
@@ -1433,10 +1433,10 @@ namespace DigiposZen
             // lblshelflife
             // 
             this.lblshelflife.AutoSize = true;
-            this.lblshelflife.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblshelflife.Font = new System.Drawing.Font("Tahoma", 9F);
             this.lblshelflife.Location = new System.Drawing.Point(181, 124);
             this.lblshelflife.Name = "lblshelflife";
-            this.lblshelflife.Size = new System.Drawing.Size(131, 21);
+            this.lblshelflife.Size = new System.Drawing.Size(114, 18);
             this.lblshelflife.TabIndex = 79;
             this.lblshelflife.Text = "Shelf Life(days):";
             // 
@@ -1462,10 +1462,10 @@ namespace DigiposZen
             // chkExpiryItem
             // 
             this.chkExpiryItem.AutoSize = true;
-            this.chkExpiryItem.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkExpiryItem.Location = new System.Drawing.Point(13, 124);
+            this.chkExpiryItem.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.chkExpiryItem.Location = new System.Drawing.Point(13, 131);
             this.chkExpiryItem.Name = "chkExpiryItem";
-            this.chkExpiryItem.Size = new System.Drawing.Size(132, 25);
+            this.chkExpiryItem.Size = new System.Drawing.Size(116, 22);
             this.chkExpiryItem.TabIndex = 5;
             this.chkExpiryItem.Text = "Enable Expiry";
             this.chkExpiryItem.UseVisualStyleBackColor = true;
@@ -1478,11 +1478,11 @@ namespace DigiposZen
             this.txtshelflife.BackColor = System.Drawing.SystemColors.Window;
             this.txtshelflife.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtshelflife.Enabled = false;
-            this.txtshelflife.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtshelflife.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtshelflife.Location = new System.Drawing.Point(330, 121);
             this.txtshelflife.MaxLength = 6;
             this.txtshelflife.Name = "txtshelflife";
-            this.txtshelflife.Size = new System.Drawing.Size(61, 28);
+            this.txtshelflife.Size = new System.Drawing.Size(61, 26);
             this.txtshelflife.TabIndex = 6;
             this.txtshelflife.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtshelflife.Click += new System.EventHandler(this.txtshelflife_Click);
@@ -1495,9 +1495,10 @@ namespace DigiposZen
             // rdoWeight
             // 
             this.rdoWeight.AutoSize = true;
+            this.rdoWeight.Font = new System.Drawing.Font("Tahoma", 9F);
             this.rdoWeight.Location = new System.Drawing.Point(338, 88);
             this.rdoWeight.Name = "rdoWeight";
-            this.rdoWeight.Size = new System.Drawing.Size(52, 25);
+            this.rdoWeight.Size = new System.Drawing.Size(48, 22);
             this.rdoWeight.TabIndex = 4;
             this.rdoWeight.Text = "KG";
             this.rdoWeight.UseVisualStyleBackColor = true;
@@ -1506,9 +1507,10 @@ namespace DigiposZen
             // rdoNo
             // 
             this.rdoNo.AutoSize = true;
+            this.rdoNo.Font = new System.Drawing.Font("Tahoma", 9F);
             this.rdoNo.Location = new System.Drawing.Point(229, 88);
             this.rdoNo.Name = "rdoNo";
-            this.rdoNo.Size = new System.Drawing.Size(59, 25);
+            this.rdoNo.Size = new System.Drawing.Size(54, 22);
             this.rdoNo.TabIndex = 3;
             this.rdoNo.Text = "Nos";
             this.rdoNo.UseVisualStyleBackColor = true;
@@ -1519,11 +1521,11 @@ namespace DigiposZen
             // 
             this.txtPLUNo.BackColor = System.Drawing.SystemColors.Window;
             this.txtPLUNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPLUNo.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPLUNo.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtPLUNo.Location = new System.Drawing.Point(14, 93);
             this.txtPLUNo.Name = "txtPLUNo";
             this.txtPLUNo.ReadOnly = true;
-            this.txtPLUNo.Size = new System.Drawing.Size(165, 28);
+            this.txtPLUNo.Size = new System.Drawing.Size(165, 26);
             this.txtPLUNo.TabIndex = 2;
             this.txtPLUNo.Click += new System.EventHandler(this.txtPLUNo_Click);
             this.txtPLUNo.Enter += new System.EventHandler(this.txtPLUNo_Enter);
@@ -1534,10 +1536,10 @@ namespace DigiposZen
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Font = new System.Drawing.Font("Tahoma", 9F);
             this.label36.Location = new System.Drawing.Point(9, 71);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(69, 21);
+            this.label36.Size = new System.Drawing.Size(61, 18);
             this.label36.TabIndex = 30;
             this.label36.Text = "PLU No:";
             // 
@@ -1545,11 +1547,11 @@ namespace DigiposZen
             // 
             this.txtBarcode.BackColor = System.Drawing.SystemColors.Window;
             this.txtBarcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBarcode.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBarcode.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtBarcode.Location = new System.Drawing.Point(185, 40);
             this.txtBarcode.MaxLength = 20;
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(206, 28);
+            this.txtBarcode.Size = new System.Drawing.Size(206, 26);
             this.txtBarcode.TabIndex = 1;
             this.txtBarcode.Click += new System.EventHandler(this.txtBarcode_Click);
             this.txtBarcode.Enter += new System.EventHandler(this.txtBarcode_Enter);
@@ -1559,20 +1561,20 @@ namespace DigiposZen
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Font = new System.Drawing.Font("Tahoma", 9F);
             this.label34.Location = new System.Drawing.Point(185, 17);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(78, 21);
+            this.label34.Size = new System.Drawing.Size(68, 18);
             this.label34.TabIndex = 28;
             this.label34.Text = "BarCode:";
             // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Font = new System.Drawing.Font("Tahoma", 9F);
             this.label33.Location = new System.Drawing.Point(10, 18);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(123, 21);
+            this.label33.Size = new System.Drawing.Size(109, 18);
             this.label33.TabIndex = 27;
             this.label33.Text = "BarCode Mode:";
             // 
@@ -1583,7 +1585,7 @@ namespace DigiposZen
             this.grpUnitDetails.Controls.Add(this.txtUnitCFactor);
             this.grpUnitDetails.Controls.Add(this.label37);
             this.grpUnitDetails.Controls.Add(this.label38);
-            this.grpUnitDetails.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpUnitDetails.Font = new System.Drawing.Font("Tahoma", 9F);
             this.grpUnitDetails.Location = new System.Drawing.Point(412, 197);
             this.grpUnitDetails.Name = "grpUnitDetails";
             this.grpUnitDetails.Size = new System.Drawing.Size(401, 50);
@@ -1596,11 +1598,11 @@ namespace DigiposZen
             this.cboAlterUnit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboAlterUnit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboAlterUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAlterUnit.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboAlterUnit.Font = new System.Drawing.Font("Tahoma", 9F);
             this.cboAlterUnit.FormattingEnabled = true;
             this.cboAlterUnit.Location = new System.Drawing.Point(99, 18);
             this.cboAlterUnit.Name = "cboAlterUnit";
-            this.cboAlterUnit.Size = new System.Drawing.Size(98, 29);
+            this.cboAlterUnit.Size = new System.Drawing.Size(98, 26);
             this.cboAlterUnit.TabIndex = 1;
             this.cboAlterUnit.Click += new System.EventHandler(this.cboAlterUnit_Click);
             this.cboAlterUnit.Enter += new System.EventHandler(this.cboAlterUnit_Enter);
@@ -1611,11 +1613,11 @@ namespace DigiposZen
             // 
             this.txtUnitCFactor.BackColor = System.Drawing.SystemColors.Window;
             this.txtUnitCFactor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUnitCFactor.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnitCFactor.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtUnitCFactor.Location = new System.Drawing.Point(330, 18);
             this.txtUnitCFactor.MaxLength = 22;
             this.txtUnitCFactor.Name = "txtUnitCFactor";
-            this.txtUnitCFactor.Size = new System.Drawing.Size(61, 28);
+            this.txtUnitCFactor.Size = new System.Drawing.Size(61, 26);
             this.txtUnitCFactor.TabIndex = 2;
             this.txtUnitCFactor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtUnitCFactor.Click += new System.EventHandler(this.txtUnitCFactor_Click);
@@ -1628,20 +1630,20 @@ namespace DigiposZen
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Font = new System.Drawing.Font("Tahoma", 9F);
             this.label37.Location = new System.Drawing.Point(212, 18);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(109, 21);
+            this.label37.Size = new System.Drawing.Size(97, 18);
             this.label37.TabIndex = 30;
             this.label37.Text = "Conv. Factor:";
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Font = new System.Drawing.Font("Tahoma", 9F);
             this.label38.Location = new System.Drawing.Point(9, 18);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(87, 21);
+            this.label38.Size = new System.Drawing.Size(72, 18);
             this.label38.TabIndex = 28;
             this.label38.Text = "Alter Unit:";
             // 
@@ -1650,7 +1652,7 @@ namespace DigiposZen
             this.grpProductClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(240)))));
             this.grpProductClass.Controls.Add(this.cboProductClass);
             this.grpProductClass.Controls.Add(this.lblProdClass);
-            this.grpProductClass.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpProductClass.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpProductClass.Location = new System.Drawing.Point(412, 253);
             this.grpProductClass.Name = "grpProductClass";
             this.grpProductClass.Size = new System.Drawing.Size(406, 63);
@@ -1661,11 +1663,11 @@ namespace DigiposZen
             // 
             this.cboProductClass.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboProductClass.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboProductClass.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboProductClass.Font = new System.Drawing.Font("Tahoma", 9F);
             this.cboProductClass.FormattingEnabled = true;
             this.cboProductClass.Location = new System.Drawing.Point(133, 23);
             this.cboProductClass.Name = "cboProductClass";
-            this.cboProductClass.Size = new System.Drawing.Size(259, 29);
+            this.cboProductClass.Size = new System.Drawing.Size(259, 26);
             this.cboProductClass.TabIndex = 3;
             this.cboProductClass.Click += new System.EventHandler(this.cboProductClass_Click);
             this.cboProductClass.Enter += new System.EventHandler(this.cboProductClass_Enter);
@@ -1676,10 +1678,10 @@ namespace DigiposZen
             // lblProdClass
             // 
             this.lblProdClass.AutoSize = true;
-            this.lblProdClass.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProdClass.Font = new System.Drawing.Font("Tahoma", 9F);
             this.lblProdClass.Location = new System.Drawing.Point(2, 23);
             this.lblProdClass.Name = "lblProdClass";
-            this.lblProdClass.Size = new System.Drawing.Size(116, 21);
+            this.lblProdClass.Size = new System.Drawing.Size(100, 18);
             this.lblProdClass.TabIndex = 25;
             this.lblProdClass.Text = "Product Class:";
             // 
@@ -1757,11 +1759,11 @@ namespace DigiposZen
             this.txtItemName.BackColor = System.Drawing.SystemColors.Window;
             this.txtItemName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tlpItemName.SetColumnSpan(this.txtItemName, 4);
-            this.txtItemName.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemName.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtItemName.Location = new System.Drawing.Point(3, 23);
             this.txtItemName.MaxLength = 50;
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(328, 28);
+            this.txtItemName.Size = new System.Drawing.Size(328, 26);
             this.txtItemName.TabIndex = 1;
             this.txtItemName.Click += new System.EventHandler(this.txtItemName_Click);
             this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
@@ -1817,11 +1819,11 @@ namespace DigiposZen
             this.txtItemCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tlpItemCode.SetColumnSpan(this.txtItemCode, 4);
             this.txtItemCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtItemCode.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemCode.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtItemCode.Location = new System.Drawing.Point(3, 23);
             this.txtItemCode.MaxLength = 50;
             this.txtItemCode.Name = "txtItemCode";
-            this.txtItemCode.Size = new System.Drawing.Size(328, 28);
+            this.txtItemCode.Size = new System.Drawing.Size(328, 26);
             this.txtItemCode.TabIndex = 3;
             this.txtItemCode.Click += new System.EventHandler(this.txtItemCode_Click);
             this.txtItemCode.Enter += new System.EventHandler(this.txtItemCode_Enter);
@@ -1851,13 +1853,14 @@ namespace DigiposZen
             // 
             // txtCategoryList
             // 
+            this.txtCategoryList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tlpCategory.SetColumnSpan(this.txtCategoryList, 4);
             this.txtCategoryList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCategoryList.Font = new System.Drawing.Font("Tahoma", 10.2F);
+            this.txtCategoryList.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtCategoryList.Location = new System.Drawing.Point(3, 23);
             this.txtCategoryList.MaxLength = 50;
             this.txtCategoryList.Name = "txtCategoryList";
-            this.txtCategoryList.Size = new System.Drawing.Size(328, 28);
+            this.txtCategoryList.Size = new System.Drawing.Size(328, 26);
             this.txtCategoryList.TabIndex = 7;
             this.txtCategoryList.Click += new System.EventHandler(this.txtCategoryList_Click);
             this.txtCategoryList.TextChanged += new System.EventHandler(this.txtCategoryList_TextChanged);
@@ -1946,11 +1949,11 @@ namespace DigiposZen
             this.txtManufacturer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tlpManufacture.SetColumnSpan(this.txtManufacturer, 4);
             this.txtManufacturer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtManufacturer.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtManufacturer.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtManufacturer.Location = new System.Drawing.Point(3, 23);
             this.txtManufacturer.MaxLength = 50;
             this.txtManufacturer.Name = "txtManufacturer";
-            this.txtManufacturer.Size = new System.Drawing.Size(328, 28);
+            this.txtManufacturer.Size = new System.Drawing.Size(328, 26);
             this.txtManufacturer.TabIndex = 10;
             this.txtManufacturer.Click += new System.EventHandler(this.txtManufacturer_Click);
             this.txtManufacturer.TextChanged += new System.EventHandler(this.txtManufacturer_TextChanged);
@@ -2067,11 +2070,11 @@ namespace DigiposZen
             this.tlpUnit.SetColumnSpan(this.cboUnit, 4);
             this.cboUnit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboUnit.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboUnit.Font = new System.Drawing.Font("Tahoma", 9F);
             this.cboUnit.FormattingEnabled = true;
             this.cboUnit.Location = new System.Drawing.Point(3, 23);
             this.cboUnit.Name = "cboUnit";
-            this.cboUnit.Size = new System.Drawing.Size(160, 29);
+            this.cboUnit.Size = new System.Drawing.Size(160, 26);
             this.cboUnit.TabIndex = 13;
             this.cboUnit.Click += new System.EventHandler(this.sfcboUnit_Click);
             this.cboUnit.Enter += new System.EventHandler(this.sfcboUnit_Enter);
@@ -2130,11 +2133,11 @@ namespace DigiposZen
             this.txtRack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tlpRack.SetColumnSpan(this.txtRack, 4);
             this.txtRack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtRack.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRack.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtRack.Location = new System.Drawing.Point(3, 23);
             this.txtRack.MaxLength = 18;
             this.txtRack.Name = "txtRack";
-            this.txtRack.Size = new System.Drawing.Size(160, 28);
+            this.txtRack.Size = new System.Drawing.Size(160, 26);
             this.txtRack.TabIndex = 16;
             this.txtRack.Click += new System.EventHandler(this.txtRack_Click);
             this.txtRack.TextChanged += new System.EventHandler(this.txtRack_TextChanged);
@@ -2208,10 +2211,10 @@ namespace DigiposZen
             // 
             this.tlpColor.SetColumnSpan(this.txtColor, 4);
             this.txtColor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtColor.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtColor.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtColor.Location = new System.Drawing.Point(3, 23);
             this.txtColor.Name = "txtColor";
-            this.txtColor.Size = new System.Drawing.Size(160, 28);
+            this.txtColor.Size = new System.Drawing.Size(160, 26);
             this.txtColor.TabIndex = 19;
             this.txtColor.Click += new System.EventHandler(this.txtColor_Click);
             this.txtColor.TextChanged += new System.EventHandler(this.txtColor_TextChanged);
@@ -2285,10 +2288,10 @@ namespace DigiposZen
             // 
             this.tlpSize.SetColumnSpan(this.txtSize, 4);
             this.txtSize.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSize.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSize.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtSize.Location = new System.Drawing.Point(3, 23);
             this.txtSize.Name = "txtSize";
-            this.txtSize.Size = new System.Drawing.Size(160, 28);
+            this.txtSize.Size = new System.Drawing.Size(160, 26);
             this.txtSize.TabIndex = 22;
             this.txtSize.Click += new System.EventHandler(this.txtSize_Click);
             this.txtSize.Enter += new System.EventHandler(this.txtSize_Enter);
@@ -2365,11 +2368,11 @@ namespace DigiposZen
             this.tlpBrand.SetColumnSpan(this.cboBrand, 4);
             this.cboBrand.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboBrand.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboBrand.Font = new System.Drawing.Font("Tahoma", 9F);
             this.cboBrand.FormattingEnabled = true;
             this.cboBrand.Location = new System.Drawing.Point(3, 23);
             this.cboBrand.Name = "cboBrand";
-            this.cboBrand.Size = new System.Drawing.Size(160, 29);
+            this.cboBrand.Size = new System.Drawing.Size(160, 26);
             this.cboBrand.TabIndex = 25;
             this.cboBrand.Click += new System.EventHandler(this.sfcboBrand_Click);
             this.cboBrand.Enter += new System.EventHandler(this.sfcboBrand_Enter);
@@ -2448,11 +2451,11 @@ namespace DigiposZen
             this.tlpDisc.SetColumnSpan(this.cboDiscGroup, 4);
             this.cboDiscGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboDiscGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDiscGroup.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDiscGroup.Font = new System.Drawing.Font("Tahoma", 9F);
             this.cboDiscGroup.FormattingEnabled = true;
             this.cboDiscGroup.Location = new System.Drawing.Point(3, 23);
             this.cboDiscGroup.Name = "cboDiscGroup";
-            this.cboDiscGroup.Size = new System.Drawing.Size(160, 29);
+            this.cboDiscGroup.Size = new System.Drawing.Size(160, 26);
             this.cboDiscGroup.TabIndex = 28;
             this.cboDiscGroup.Click += new System.EventHandler(this.sfcboDiscGroup_Click);
             this.cboDiscGroup.Enter += new System.EventHandler(this.sfcboDiscGroup_Enter);
@@ -2486,11 +2489,11 @@ namespace DigiposZen
             this.tlpDepart.SetColumnSpan(this.cboDepmnt, 4);
             this.cboDepmnt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboDepmnt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDepmnt.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDepmnt.Font = new System.Drawing.Font("Tahoma", 9F);
             this.cboDepmnt.FormattingEnabled = true;
             this.cboDepmnt.Location = new System.Drawing.Point(3, 23);
             this.cboDepmnt.Name = "cboDepmnt";
-            this.cboDepmnt.Size = new System.Drawing.Size(328, 29);
+            this.cboDepmnt.Size = new System.Drawing.Size(328, 26);
             this.cboDepmnt.TabIndex = 31;
             this.cboDepmnt.Click += new System.EventHandler(this.cboDepmnt_Click);
             this.cboDepmnt.Enter += new System.EventHandler(this.cboDepmnt_Enter);
@@ -2572,7 +2575,7 @@ namespace DigiposZen
             // txtDescription
             // 
             this.tlpDesc.SetColumnSpan(this.txtDescription, 4);
-            this.txtDescription.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtDescription.Location = new System.Drawing.Point(3, 23);
             this.txtDescription.MaxLength = 999;
             this.txtDescription.Multiline = true;
@@ -2617,11 +2620,11 @@ namespace DigiposZen
             this.txtAgentCommision.BackColor = System.Drawing.SystemColors.Window;
             this.txtAgentCommision.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAgentCommision.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtAgentCommision.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgentCommision.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtAgentCommision.Location = new System.Drawing.Point(3, 23);
             this.txtAgentCommision.MaxLength = 6;
             this.txtAgentCommision.Name = "txtAgentCommision";
-            this.txtAgentCommision.Size = new System.Drawing.Size(119, 28);
+            this.txtAgentCommision.Size = new System.Drawing.Size(119, 26);
             this.txtAgentCommision.TabIndex = 37;
             this.txtAgentCommision.Click += new System.EventHandler(this.txtAgentCommision_Click);
             this.txtAgentCommision.Enter += new System.EventHandler(this.txtAgentCommision_Enter);
@@ -2650,11 +2653,11 @@ namespace DigiposZen
             this.txtDiscPerc.BackColor = System.Drawing.SystemColors.Window;
             this.txtDiscPerc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiscPerc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDiscPerc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiscPerc.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtDiscPerc.Location = new System.Drawing.Point(3, 23);
             this.txtDiscPerc.MaxLength = 6;
             this.txtDiscPerc.Name = "txtDiscPerc";
-            this.txtDiscPerc.Size = new System.Drawing.Size(74, 28);
+            this.txtDiscPerc.Size = new System.Drawing.Size(74, 26);
             this.txtDiscPerc.TabIndex = 40;
             this.txtDiscPerc.Click += new System.EventHandler(this.txtDiscPerc_Click);
             this.txtDiscPerc.Enter += new System.EventHandler(this.txtDiscPerc_Enter);
@@ -2695,11 +2698,11 @@ namespace DigiposZen
             this.txtCoolie.BackColor = System.Drawing.SystemColors.Window;
             this.txtCoolie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCoolie.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCoolie.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCoolie.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtCoolie.Location = new System.Drawing.Point(3, 23);
             this.txtCoolie.MaxLength = 22;
             this.txtCoolie.Name = "txtCoolie";
-            this.txtCoolie.Size = new System.Drawing.Size(119, 28);
+            this.txtCoolie.Size = new System.Drawing.Size(119, 26);
             this.txtCoolie.TabIndex = 43;
             this.txtCoolie.Click += new System.EventHandler(this.txtCoolie_Click);
             this.txtCoolie.Enter += new System.EventHandler(this.txtCoolie_Enter);
@@ -2750,11 +2753,11 @@ namespace DigiposZen
             this.txtROL.BackColor = System.Drawing.SystemColors.Window;
             this.txtROL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtROL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtROL.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtROL.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtROL.Location = new System.Drawing.Point(3, 23);
             this.txtROL.MaxLength = 22;
             this.txtROL.Name = "txtROL";
-            this.txtROL.Size = new System.Drawing.Size(77, 28);
+            this.txtROL.Size = new System.Drawing.Size(77, 26);
             this.txtROL.TabIndex = 46;
             this.txtROL.Click += new System.EventHandler(this.txtROL_Click);
             this.txtROL.Enter += new System.EventHandler(this.txtROL_Enter);
@@ -2795,11 +2798,11 @@ namespace DigiposZen
             this.txtMOQ.BackColor = System.Drawing.SystemColors.Window;
             this.txtMOQ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMOQ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMOQ.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMOQ.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtMOQ.Location = new System.Drawing.Point(3, 23);
             this.txtMOQ.MaxLength = 22;
             this.txtMOQ.Name = "txtMOQ";
-            this.txtMOQ.Size = new System.Drawing.Size(77, 28);
+            this.txtMOQ.Size = new System.Drawing.Size(77, 26);
             this.txtMOQ.TabIndex = 49;
             this.txtMOQ.Click += new System.EventHandler(this.txtMOQ_Click);
             this.txtMOQ.Enter += new System.EventHandler(this.txtMOQ_Enter);
@@ -2831,11 +2834,11 @@ namespace DigiposZen
             this.txtMinRate.BackColor = System.Drawing.SystemColors.Window;
             this.txtMinRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMinRate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMinRate.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMinRate.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtMinRate.Location = new System.Drawing.Point(3, 23);
             this.txtMinRate.MaxLength = 22;
             this.txtMinRate.Name = "txtMinRate";
-            this.txtMinRate.Size = new System.Drawing.Size(77, 28);
+            this.txtMinRate.Size = new System.Drawing.Size(77, 26);
             this.txtMinRate.TabIndex = 52;
             this.txtMinRate.Click += new System.EventHandler(this.txtMinRate_Click);
             this.txtMinRate.Enter += new System.EventHandler(this.txtMinRate_Enter);
@@ -2880,11 +2883,11 @@ namespace DigiposZen
             this.txtMaxRate.BackColor = System.Drawing.SystemColors.Window;
             this.txtMaxRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMaxRate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMaxRate.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaxRate.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtMaxRate.Location = new System.Drawing.Point(3, 23);
             this.txtMaxRate.MaxLength = 22;
             this.txtMaxRate.Name = "txtMaxRate";
-            this.txtMaxRate.Size = new System.Drawing.Size(77, 28);
+            this.txtMaxRate.Size = new System.Drawing.Size(77, 26);
             this.txtMaxRate.TabIndex = 55;
             this.txtMaxRate.Click += new System.EventHandler(this.txtMaxRate_Click);
             this.txtMaxRate.Enter += new System.EventHandler(this.txtMaxRate_Enter);
@@ -2958,6 +2961,7 @@ namespace DigiposZen
             // lblFooter
             // 
             this.lblFooter.BackColor = System.Drawing.Color.Transparent;
+            this.lblFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblFooter.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFooter.ForeColor = System.Drawing.Color.Black;
             this.lblFooter.Location = new System.Drawing.Point(4, 805);
@@ -2982,7 +2986,7 @@ namespace DigiposZen
             this.grpShowControls.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpShowControls.Location = new System.Drawing.Point(834, 103);
             this.grpShowControls.Name = "grpShowControls";
-            this.grpShowControls.Size = new System.Drawing.Size(425, 698);
+            this.grpShowControls.Size = new System.Drawing.Size(427, 698);
             this.grpShowControls.TabIndex = 13;
             this.grpShowControls.TabStop = false;
             // 
@@ -3049,9 +3053,10 @@ namespace DigiposZen
             // chkAll
             // 
             this.chkAll.AutoSize = true;
+            this.chkAll.Font = new System.Drawing.Font("Tahoma", 9F);
             this.chkAll.Location = new System.Drawing.Point(7, 41);
             this.chkAll.Name = "chkAll";
-            this.chkAll.Size = new System.Drawing.Size(51, 25);
+            this.chkAll.Size = new System.Drawing.Size(43, 22);
             this.chkAll.TabIndex = 17;
             this.chkAll.Text = "All";
             this.chkAll.UseVisualStyleBackColor = true;
@@ -3070,6 +3075,7 @@ namespace DigiposZen
             // chklstShowControl
             // 
             this.chklstShowControl.CheckOnClick = true;
+            this.chklstShowControl.Font = new System.Drawing.Font("Tahoma", 9F);
             this.chklstShowControl.FormattingEnabled = true;
             this.chklstShowControl.Location = new System.Drawing.Point(5, 73);
             this.chklstShowControl.Name = "chklstShowControl";
@@ -3097,7 +3103,7 @@ namespace DigiposZen
             // label13
             // 
             this.label13.BackColor = System.Drawing.Color.DimGray;
-            this.label13.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Tahoma", 10F);
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(0, 8);
             this.label13.Margin = new System.Windows.Forms.Padding(20, 0, 20, 0);
@@ -3105,7 +3111,7 @@ namespace DigiposZen
             this.label13.Size = new System.Drawing.Size(314, 29);
             this.label13.TabIndex = 14;
             this.label13.Text = "Quick Settings";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ToolTipItemMaster
             // 
@@ -3138,7 +3144,7 @@ namespace DigiposZen
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(890, 828);
+            this.ClientSize = new System.Drawing.Size(1196, 828);
             this.ControlBox = false;
             this.Controls.Add(this.picBackground);
             this.Controls.Add(this.tlpMain);

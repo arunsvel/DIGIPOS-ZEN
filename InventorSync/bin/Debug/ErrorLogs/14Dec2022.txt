@@ -1,0 +1,21 @@
+Start15:06
+Select cast((sum(qtyin) - sum(qtyout)) * (sum(qtyin*tblStockHistory.CostRateExcl) / iif(sum(qtyin)=0,1,sum(qtyin))) as Clsstk from tblstockhistory Where VchDate <= '14-Dec-2022'  
+Incorrect syntax near the keyword 'from'.
+
+EndStart15:07
+Select cast((sum(qtyin) - sum(qtyout)) * (sum(qtyin*tblStockHistory.CostRateExcl) / iif(sum(qtyin)=0,1,sum(qtyin))) as Clsstk from tblstockhistory Where VchDate <= '13-Dec-2022'  
+Incorrect syntax near the keyword 'from'.
+
+EndStart15:07
+Select ((sum(qtyin) - sum(qtyout)) * (sum(qtyin*tblStockHistory.CostRateExcl) / iif(sum(qtyin)=0,1,sum(qtyin))) as Clsstk from tblstockhistory Where VchDate <= '14-Dec-2022'  
+Incorrect syntax near the keyword 'as'.
+
+EndStart15:11
+Select ((sum(qtyin) - sum(qtyout)) * (sum(qtyin*tblStockHistory.CostRateExcl) / iif(sum(qtyin)=0,1,sum(qtyin)))) as Clsstk from tblstockhistory Where VchDate <= '13-Dec-2022'  
+A transport-level error has occurred when receiving results from the server. (provider: TCP Provider, error: 0 - The semaphore timeout period has expired.)
+
+EndStart16:05
+Select ParentID From tblVchtype Where isnull(ActiveStatus,0)=1 and VchtypeID=0
+A transport-level error has occurred when receiving results from the server. (provider: TCP Provider, error: 0 - The semaphore timeout period has expired.)
+
+End
