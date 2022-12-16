@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DigiposZen.InventorBL.Helper;
+using DigiposZen.JsonClass;
 
 namespace DigiposZen.Forms
 {
@@ -27,20 +28,192 @@ namespace DigiposZen.Forms
         private HashSet<Control> controlsToMove = new HashSet<Control>();
 
         Common Comm = new Common();
+        clsJSonCommon JSonComm = new clsJSonCommon();
 
-        public frmBarcodeManager(object MDIParent = null)
+        clsJsonVoucherType clsVchType = new clsJsonVoucherType();
+        clsGetStockInVoucherSettings clsVchTypeFeatures = new clsGetStockInVoucherSettings();
+
+        bool bFromEditBarCodeMgr = false;
+
+        int iIDFromEditWindow = 0;
+        int vchtypeID = 0;
+
+        public frmBarcodeManager(int iVchTpeId = 0, int iTransID = 0, bool bFromEdit = false, object MDIParent = null)
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            controlsToMove.Add(this);
-            controlsToMove.Add(this.lblHeading);//Add whatever controls here you want to move the form when it is clicked and dragged
+                controlsToMove.Add(this);
+                controlsToMove.Add(this.lblHeading);//Add whatever controls here you want to move the form when it is clicked and dragged
 
-            frmMDI form = (frmMDI)MDIParent;
-            this.MdiParent = form;
-            int l = form.ClientSize.Width - 10; //(this.MdiParent.ClientSize.Width - this.Width) / 2;
-            int t = form.ClientSize.Height - 80; //((this.MdiParent.ClientSize.Height - this.Height) / 2) - 30;
-            this.SetBounds(5, 0, l, t);
+                frmMDI form = (frmMDI)MDIParent;
+                this.MdiParent = form;
+                int l = form.ClientSize.Width - 10; //(this.MdiParent.ClientSize.Width - this.Width) / 2;
+                int t = form.ClientSize.Height - 80; //((this.MdiParent.ClientSize.Height - this.Height) / 2) - 30;
+                this.SetBounds(5, 0, l, t);
 
+                cmbDisplayStyle.SelectedIndex = 0;
+
+                clsVchType = JSonComm.GetVoucherType(iVchTpeId);
+                clsVchTypeFeatures = JSonComm.GetVoucherTypeGeneralSettings(iVchTpeId, 1);
+
+                bFromEditBarCodeMgr = bFromEdit;
+                iIDFromEditWindow = iTransID;
+                vchtypeID = iVchTpeId;
+
+                if (iTransID != 0)
+                {
+                    //FillCostCentre();
+
+                    //SetTransactionsthatVarying();
+
+                    iIDFromEditWindow = Convert.ToInt32(iTransID);
+
+                    //txtInvAutoNo.Select();
+                }
+                //else
+                    //SetTransactionsthatVarying();
+            }
+            catch (Exception ex)
+            {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
+
+        //Description : Setting Default Transactional Settings to the form
+        private void SetTransactionDefaults()
+        {
+
+            try
+            {
+                if (clsVchType == null)
+                {
+                    MessageBox.Show("Voucher settings incorrect for the voucher. Please correct the settings and open the voucher again.", "Sales Settings", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            try
+            {
+                if (Comm.ConvertI32(clsVchType.TransactionNumberingValue) == 0) // Auto Locked
+                {
+                    if (iIDFromEditWindow == 0) //New
+                    {
+                        txtInvAutoNo.Text = Comm.gfnGetNextSerialNo("tblSales", "AutoNum", " VchTypeID=" + vchtypeID).ToString();
+                        txtInvAutoNo.Tag = 0;
+                    }
+                    txtInvAutoNo.ReadOnly = true;
+                    txtPrefix.ReadOnly = true;
+                }
+                else if (Comm.ConvertI32(clsVchType.TransactionNumberingValue) == 1) // Auto Editable
+                {
+                    if (iIDFromEditWindow == 0) //New
+                    {
+                        //txtInvAutoNo.Text = Comm.gfnGetNextSerialNo("tblSales", "AutoNum").ToString();
+                        txtInvAutoNo.Text = Comm.gfnGetNextSerialNo("tblSales", "AutoNum", " VchTypeID=" + vchtypeID).ToString();
+                        txtInvAutoNo.Tag = 0;
+                    }
+
+                    txtInvAutoNo.ReadOnly = false;
+                    txtPrefix.ReadOnly = false;
+                }
+                else
+                {
+                    txtInvAutoNo.Tag = 0;
+                    txtInvAutoNo.ReadOnly = false;
+                    txtPrefix.ReadOnly = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            try
+            {
+                if (clsVchType.TransactionPrefix != "") // Transactoin Prefix
+                {
+                    txtPrefix.Text = clsVchType.TransactionPrefix.Trim();
+                    txtPrefix.Visible = true;
+                }
+                else
+                    txtPrefix.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            try
+            {
+                if (clsVchType.blnSaleStaffLockWSel == 1)
+                    cboSalesStaff.Enabled = false;
+                else
+                    cboSalesStaff.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //Description : Setting Transactions that Varying to the form
+        private void SetTransactionsthatVarying()
+        {
+            try
+            {
+                if (clsVchType == null)
+                {
+                    MessageBox.Show("Voucher settings incorrect for the voucher. Please correct the settings and open the voucher again.", "Sales Settings", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            try
+            {
+                cboCostCentre.SelectedValue = Comm.ConvertI32(clsVchType.PrimaryCCValue);
+                cboSalesStaff.SelectedValue = Comm.ConvertI32(clsVchType.DefaultSaleStaffValue);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //Description : Setting asper Application Settings
+        private void SetApplicationSettings()
+        {
+            try
+            {
+                if (AppSettings.NeedCostCenter == true)
+                {
+                    lblCostCenter.Visible = true;
+                    cboCostCentre.Visible = true;
+                }
+                else
+                {
+                    lblCostCenter.Visible = false;
+                    cboCostCentre.Visible = true;
+                }
+
+                dtpInvDate.MinDate = AppSettings.FinYearStart;
+                dtpInvDate.MaxDate = AppSettings.FinYearEnd;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -53,133 +226,18 @@ namespace DigiposZen.Forms
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void Search(bool blnMoveForward = true)
-        {
-            try
-            {
-                int rowstartindex = 0;
-                int colstartindex = 0;
-
-                bool blnMatchCase = false;
-                bool blnExactWord = false;
-
-                if (chkMatchCase.CheckState == CheckState.Checked)
-                    blnMatchCase = true;
-                if (chkExactWordOnly.CheckState == CheckState.Checked)
-                    blnExactWord = true;
-
-                string SearchString = txtSearch.Text.ToString();
-                string CellValue = "";
-                
-                if (blnMatchCase == false) //If search and to be searhed in same case it will be searched
-                    SearchString = SearchString.ToUpper();
-
-                if (DgvData != null)
-                {
-                    if (DgvData.RowCount > 0)
-                    {
-                        if (DgvData.CurrentCell != null)
-                        {
-                            if (DgvData.CurrentCell.RowIndex >= 0)
-                            {
-                                rowstartindex = DgvData.CurrentCell.RowIndex;
-                            }
-                            if (DgvData.CurrentCell.ColumnIndex >= 0)
-                            {
-                                colstartindex = DgvData.CurrentCell.ColumnIndex;
-                            }
-                        }
-                    }
-                }
-
-                bool blnFound = false;
-
-                if (blnMoveForward == true)
-                {
-                    for (int i = rowstartindex; i < DgvData.Rows.Count - 1; i++)
-                    {
-                        if (blnFound == true) break;
-                        for (int j = colstartindex; j < DgvData.Columns.Count - 1; j++)
-                        {
-                            //If search and CellValue in same case it will be matched
-                            //string comparison is case sensitive
-                            CellValue = DgvData[j, i].Value.ToString();
-                            if (blnMatchCase == false)
-                                CellValue = DgvData[j, i].Value.ToString().ToUpper();
-
-                            if (blnExactWord == true)
-                            {
-                                if (CellValue == SearchString)
-                                {
-                                    DgvData.CurrentCell = DgvData[j, i];
-                                    blnFound = true;
-                                    break;
-                                }
-                            }
-                            else
-                            {
-                                if (CellValue.Contains(SearchString) == true)
-                                {
-                                    DgvData.CurrentCell = DgvData[j, i];
-                                    blnFound = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    for (int i = rowstartindex; i >= 0; i--)
-                    {
-                        if (blnFound == true) break;
-                        for (int j = colstartindex; j >= 0; j--)
-                        {
-                            //If search and CellValue in same case it will be matched
-                            //string comparison is case sensitive
-                            CellValue = DgvData[j, i].Value.ToString();
-                            if (blnMatchCase == false)
-                                CellValue = DgvData[j, i].Value.ToString().ToUpper();
-
-                            if (blnExactWord == true)
-                            {
-                                if (CellValue == SearchString)
-                                {
-                                    DgvData.CurrentCell = DgvData[j, i];
-                                    blnFound = true;
-                                    break;
-                                }
-                            }
-                            else
-                            {
-                                if (CellValue.Contains(SearchString) == true)
-                                {
-                                    DgvData.CurrentCell = DgvData[j, i];
-                                    blnFound = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (blnFound == false)
-                {
-                    MessageBox.Show("Finished search. No more occurance found for search text.", "Advanced Search", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch
-            { }
-        }
-
         private void btnSearchFwd_Click(object sender, EventArgs e)
         {
-            Search(true);
+            DataGridViewCell Cell = Comm.Search(DgvData, txtSearch.Text.ToString(), true, chkMatchCase.CheckState, chkExactWordOnly.CheckState);
+            if (Cell != null)
+                DgvData.CurrentCell = Cell;
         }
 
         private void btnSearchBwd_Click(object sender, EventArgs e)
         {
-            Search(false);
+            DataGridViewCell Cell = Comm.Search(DgvData, txtSearch.Text.ToString(), false, chkMatchCase.CheckState, chkExactWordOnly.CheckState);
+            if (Cell != null)
+                DgvData.CurrentCell = Cell;
         }
 
         public bool PreFilterMessage(ref Message m)
@@ -212,8 +270,11 @@ namespace DigiposZen.Forms
             try
             {
                 string whereSQL = "";
-                if (txtSearch.Text != "")
-                    whereSQL = " and  dbo.tblItemMaster.ItemCode + dbo.tblItemMaster.ItemName + dbo.tblStock.BatchUnique like '%" + txtSearch.Text + "%' ";
+
+                DgvData.DataSource = null;
+
+                if (txtFillSearch.Text != "")
+                    whereSQL = " and  dbo.tblItemMaster.ItemCode + dbo.tblItemMaster.ItemName + dbo.tblStock.BatchUnique like '%" + txtFillSearch.Text + "%' ";
                 this.Cursor = Cursors.AppStarting;
                 btnFillData.Enabled = false;
 
@@ -229,36 +290,34 @@ namespace DigiposZen.Forms
 
                     case "ORPHAN BATCHES":
                         {
-                            QuerySQL = "and  ItemStockID in(SELECT  [ItemStockID]   FROM [tblStock]   where BatchUnique  not in(Select BatchUnique from tblItemHistory) ";
+                            QuerySQL = " and  StockID in (SELECT  [StockID]   FROM  [tblStock]   where BatchUnique  not in (Select BatchUnique from tblStockHistory) ";
                             break;
                         }
 
                     case "NEGATIVE /ZERO QTY BATCHES":
                         {
-                            QuerySQL = " and isnull(tblStock.qty,0)<=0 ";
+                            QuerySQL = " and isnull(tblStock.qty,0) <= 0 ";
                             break;
                         }
 
                     case "ACTIVE BATCHES":
                         {
-                            QuerySQL = " and isnull(tblStock.ActiveStatus,0)=1 ";
+                            QuerySQL = " and isnull(tblStock.StockActiveStatus, 0) = 1 ";
                             break;
                         }
 
                     case "DEACTIVE BATCHES":
                         {
-                            QuerySQL = " and isnull(tblStock.ActiveStatus,0)=0 ";
+                            QuerySQL = " and isnull(tblStock.StockActiveStatus, 1) = 0 ";
                             break;
                         }
                 }
 
-                string SQL = @" SELECT   dbo.tblItemMaster.ItemID, dbo.tblStock.StockID,  dbo.tblItemMaster.ItemCode, dbo.tblItemMaster.ItemName, dbo.tblStock.BatchUnique,tblStock.qoh AS Qty, 
-                    CONVERT(DECIMAL(20," + AppSettings.QtyDecimals + "), dbo.tblStock.Prate ) as Prate, CONVERT(DECIMAL(20," + AppSettings.QtyDecimals + "), dbo.tblStock.CostRateExcl ) as Crate,CONVERT(DECIMAL(20," + AppSettings.QtyDecimals + "), dbo.tblStock.MRP ) as MRP, isnull(tblStock.StockActiveStatus ,1) as ActiveStatus    FROM    dbo.tblItemMaster INNER JOIN    dbo.tblStock ON dbo.tblItemMaster.ItemID = dbo.tblStock.ItemID  WHERE  (dbo.tblItemMaster.ActiveStatus = 1) " + whereSQL + QuerySQL + "   ORDER BY dbo.tblItemMaster.ItemCode, dbo.tblItemMaster.ItemName ";
+                string SQL = @" SELECT   dbo.tblItemMaster.ItemID, dbo.tblStock.StockID,  dbo.tblItemMaster.ItemCode, dbo.tblItemMaster.ItemName, dbo.tblStock.BatchUnique,
+                    CONVERT(DECIMAL(20," + AppSettings.QtyDecimals + "), dbo.tblStock.qoh) AS Qty, CONVERT(DECIMAL(20," + AppSettings.CurrencyDecimals + "), dbo.tblStock.Prate ) as Prate, CONVERT(DECIMAL(20," + AppSettings.CurrencyDecimals + "), dbo.tblStock.CostRateExcl ) as Crate,CONVERT(DECIMAL(20," + AppSettings.CurrencyDecimals + "), dbo.tblStock.MRP ) as MRP, isnull(tblStock.StockActiveStatus, 1) as OldStatus, isnull(tblStock.StockActiveStatus, 1) as ActiveStatus        FROM    dbo.tblItemMaster INNER JOIN    dbo.tblStock ON dbo.tblItemMaster.ItemID = dbo.tblStock.ItemID  WHERE  (dbo.tblItemMaster.ActiveStatus = 1) " + whereSQL + QuerySQL + "   ORDER BY dbo.tblItemMaster.ItemCode, dbo.tblItemMaster.ItemName ";
                 DgvData.Rows.Clear();
                 DgvData.Columns.Clear();
                 DgvData.DataSource = Comm.fnGetData(SQL).Tables[0];
-
-                
 
                 //loadcontrol(DgvData, SQL);
 
@@ -266,12 +325,20 @@ namespace DigiposZen.Forms
                 {
                     DgvData.Columns.Insert(DgvData.Columns.Count - 1, new DataGridViewCheckBoxColumn());
 
+                    DgvData.Columns[0].Visible = false;
                     DgvData.Columns[1].Visible = false;
-                    DgvData.Columns[2].Visible = false;
+                    //DgvData.Columns[2].Visible = false;
                     DgvData.Columns[DgvData.Columns.Count - 1].Visible = false;
+                    DgvData.Columns[DgvData.Columns.Count - 3].Visible = false;
                     DgvData.Columns[DgvData.Columns.Count - 2].HeaderText = "Active Status";
+                    DgvData.Columns[DgvData.Columns.Count - 3].HeaderText = "Old Status";
 
-                    DgvData.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
+                    //DgvData.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
+
+                    //foreach (DataGridViewColumn col in DgvData.Columns)
+                    //{
+                    //    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    //}
 
                     int i = 0;
                     foreach (DataGridViewRow row in DgvData.Rows)
@@ -294,6 +361,12 @@ namespace DigiposZen.Forms
                 btnFillData.Enabled = true;
                 DgvData.Cursor = Cursors.Default;
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            sqlControl rs = new sqlControl();
+            
         }
     }
 }

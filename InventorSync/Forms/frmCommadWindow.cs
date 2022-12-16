@@ -123,7 +123,6 @@ namespace DigiposZen.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -137,7 +136,7 @@ namespace DigiposZen.Forms
 
         }
 
-        private void Search(bool blnMoveForward = true)
+/*        private void Search(bool blnMoveForward = true)
         {
             try
             {
@@ -195,18 +194,24 @@ namespace DigiposZen.Forms
                             {
                                 if (CellValue == SearchString)
                                 {
-                                    DgvData.CurrentCell = DgvData[j, i];
-                                    blnFound = true;
-                                    break;
+                                    if (DgvData[j, i].Visible == true)
+                                    {
+                                        DgvData.CurrentCell = DgvData[j, i];
+                                        blnFound = true;
+                                        break;
+                                    }
                                 }
                             }
                             else
                             {
                                 if (CellValue.Contains(SearchString) == true)
                                 {
-                                    DgvData.CurrentCell = DgvData[j, i];
-                                    blnFound = true;
-                                    break;
+                                    if (DgvData[j, i].Visible == true)
+                                    {
+                                        DgvData.CurrentCell = DgvData[j, i];
+                                        blnFound = true;
+                                        break;
+                                    }
                                 }
                             }
                         }
@@ -255,15 +260,20 @@ namespace DigiposZen.Forms
             catch
             { }
         }
+*/
 
         private void btnSearchFwd_Click(object sender, EventArgs e)
         {
-            Search(true);
+            DataGridViewCell Cell = Comm.Search(DgvData, txtSearch.Text.ToString(), true, chkMatchCase.CheckState, chkExactWordOnly.CheckState);
+            if (Cell != null)
+                DgvData.CurrentCell = Cell;
         }
 
         private void btnSearchBwd_Click(object sender, EventArgs e)
         {
-            Search(false);
+            DataGridViewCell Cell = Comm.Search(DgvData, txtSearch.Text.ToString(), false, chkMatchCase.CheckState, chkExactWordOnly.CheckState);
+            if (Cell != null)
+                DgvData.CurrentCell = Cell;
         }
     }
 }

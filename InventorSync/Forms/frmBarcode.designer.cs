@@ -30,10 +30,10 @@ namespace DigiposZen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection2 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBarcode));
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblHeading = new System.Windows.Forms.Label();
@@ -168,7 +168,7 @@ namespace DigiposZen
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel2.Controls.Add(this.lblHeading, 6, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnMenu, 11, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnMinimize, 12, 0);
@@ -199,9 +199,9 @@ namespace DigiposZen
             this.lblHeading.Location = new System.Drawing.Point(413, 0);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(400, 59);
+            this.lblHeading.Size = new System.Drawing.Size(399, 59);
             this.lblHeading.TabIndex = 2;
-            this.lblHeading.Text = "Barcode Manager";
+            this.lblHeading.Text = "Barcode Print";
             this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnMenu
@@ -210,7 +210,7 @@ namespace DigiposZen
             this.btnMenu.FlatAppearance.BorderSize = 0;
             this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenu.Image = global::DigiposZen.Properties.Resources.menu_hamburger2;
-            this.btnMenu.Location = new System.Drawing.Point(947, 2);
+            this.btnMenu.Location = new System.Drawing.Point(946, 2);
             this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMenu.Name = "btnMenu";
             this.tableLayoutPanel2.SetRowSpan(this.btnMenu, 2);
@@ -224,7 +224,7 @@ namespace DigiposZen
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
-            this.btnMinimize.Location = new System.Drawing.Point(1025, 2);
+            this.btnMinimize.Location = new System.Drawing.Point(1024, 2);
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMinimize.Name = "btnMinimize";
             this.tableLayoutPanel2.SetRowSpan(this.btnMinimize, 2);
@@ -239,7 +239,7 @@ namespace DigiposZen
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
-            this.btnClose.Location = new System.Drawing.Point(1096, 2);
+            this.btnClose.Location = new System.Drawing.Point(1095, 2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
             this.tableLayoutPanel2.SetRowSpan(this.btnClose, 2);
@@ -254,7 +254,7 @@ namespace DigiposZen
             this.btnSettings.FlatAppearance.BorderSize = 0;
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Image = global::DigiposZen.Properties.Resources.settings_finalised;
-            this.btnSettings.Location = new System.Drawing.Point(881, 2);
+            this.btnSettings.Location = new System.Drawing.Point(880, 2);
             this.btnSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSettings.Name = "btnSettings";
             this.tableLayoutPanel2.SetRowSpan(this.btnSettings, 2);
@@ -271,7 +271,7 @@ namespace DigiposZen
             this.button11.ForeColor = System.Drawing.Color.White;
             this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
             this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(844, 0);
+            this.button11.Location = new System.Drawing.Point(843, 0);
             this.button11.Margin = new System.Windows.Forms.Padding(0);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(26, 27);
@@ -356,19 +356,19 @@ namespace DigiposZen
             // 
             // toggleWidthSettings
             // 
-            activeStateCollection2.Text = "Auto Width Settings";
-            this.toggleWidthSettings.ActiveState = activeStateCollection2;
+            activeStateCollection1.Text = "Auto Width Settings";
+            this.toggleWidthSettings.ActiveState = activeStateCollection1;
             this.toggleWidthSettings.Font = new System.Drawing.Font("Tahoma", 10.2F);
             this.toggleWidthSettings.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            inactiveStateCollection2.Text = "Manual Width Settings";
-            this.toggleWidthSettings.InactiveState = inactiveStateCollection2;
+            inactiveStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            inactiveStateCollection1.Text = "Manual Width Settings";
+            this.toggleWidthSettings.InactiveState = inactiveStateCollection1;
             this.toggleWidthSettings.Location = new System.Drawing.Point(9, 51);
             this.toggleWidthSettings.Margin = new System.Windows.Forms.Padding(4);
             this.toggleWidthSettings.MinimumSize = new System.Drawing.Size(69, 25);
             this.toggleWidthSettings.Name = "toggleWidthSettings";
             this.toggleWidthSettings.Size = new System.Drawing.Size(325, 32);
-            this.toggleWidthSettings.Slider = sliderCollection2;
+            this.toggleWidthSettings.Slider = sliderCollection1;
             this.toggleWidthSettings.TabIndex = 13;
             this.toggleWidthSettings.Text = "toggleButton2";
             this.toggleWidthSettings.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
@@ -454,7 +454,7 @@ namespace DigiposZen
             this.tabControl1.Location = new System.Drawing.Point(3, 64);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1170, 666);
+            this.tabControl1.Size = new System.Drawing.Size(1170, 674);
             this.tabControl1.TabIndex = 13;
             // 
             // tpgBarcode
@@ -478,13 +478,13 @@ namespace DigiposZen
             this.tpgBarcode.Location = new System.Drawing.Point(4, 30);
             this.tpgBarcode.Name = "tpgBarcode";
             this.tpgBarcode.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgBarcode.Size = new System.Drawing.Size(1162, 632);
+            this.tpgBarcode.Size = new System.Drawing.Size(1162, 640);
             this.tpgBarcode.TabIndex = 0;
             this.tpgBarcode.Text = "Barcode Search";
             // 
             // btnPrintDirect
             // 
-            this.btnPrintDirect.Location = new System.Drawing.Point(951, 595);
+            this.btnPrintDirect.Location = new System.Drawing.Point(951, 588);
             this.btnPrintDirect.Name = "btnPrintDirect";
             this.btnPrintDirect.Size = new System.Drawing.Size(167, 37);
             this.btnPrintDirect.TabIndex = 19;
@@ -494,7 +494,7 @@ namespace DigiposZen
             // 
             // btnBarcodeSettings
             // 
-            this.btnBarcodeSettings.Location = new System.Drawing.Point(766, 595);
+            this.btnBarcodeSettings.Location = new System.Drawing.Point(766, 588);
             this.btnBarcodeSettings.Name = "btnBarcodeSettings";
             this.btnBarcodeSettings.Size = new System.Drawing.Size(167, 37);
             this.btnBarcodeSettings.TabIndex = 18;
@@ -504,7 +504,7 @@ namespace DigiposZen
             // 
             // btnPreview
             // 
-            this.btnPreview.Location = new System.Drawing.Point(584, 595);
+            this.btnPreview.Location = new System.Drawing.Point(584, 588);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(167, 37);
             this.btnPreview.TabIndex = 17;
@@ -550,17 +550,17 @@ namespace DigiposZen
             // 
             this.dgvBarcodeDetails.BackgroundColor = System.Drawing.Color.White;
             this.dgvBarcodeDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBarcodeDetails.Location = new System.Drawing.Point(11, 173);
+            this.dgvBarcodeDetails.Location = new System.Drawing.Point(11, 164);
             this.dgvBarcodeDetails.Name = "dgvBarcodeDetails";
             this.dgvBarcodeDetails.RowHeadersWidth = 51;
-            this.dgvBarcodeDetails.Size = new System.Drawing.Size(1150, 413);
+            this.dgvBarcodeDetails.Size = new System.Drawing.Size(1144, 410);
             this.dgvBarcodeDetails.TabIndex = 15;
             this.dgvBarcodeDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBarcodeDetails_CellClick);
             this.dgvBarcodeDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBarcodeDetails_CellContentClick);
             // 
             // btnFill
             // 
-            this.btnFill.Location = new System.Drawing.Point(914, 136);
+            this.btnFill.Location = new System.Drawing.Point(914, 125);
             this.btnFill.Name = "btnFill";
             this.btnFill.Size = new System.Drawing.Size(72, 35);
             this.btnFill.TabIndex = 14;
@@ -571,7 +571,7 @@ namespace DigiposZen
             // txtInvoiceNumber
             // 
             this.txtInvoiceNumber.FormattingEnabled = true;
-            this.txtInvoiceNumber.Location = new System.Drawing.Point(570, 140);
+            this.txtInvoiceNumber.Location = new System.Drawing.Point(570, 129);
             this.txtInvoiceNumber.Name = "txtInvoiceNumber";
             this.txtInvoiceNumber.Size = new System.Drawing.Size(338, 29);
             this.txtInvoiceNumber.TabIndex = 9;
@@ -581,7 +581,7 @@ namespace DigiposZen
             // lblBarcodeDetails
             // 
             this.lblBarcodeDetails.AutoSize = true;
-            this.lblBarcodeDetails.Location = new System.Drawing.Point(8, 147);
+            this.lblBarcodeDetails.Location = new System.Drawing.Point(8, 136);
             this.lblBarcodeDetails.Name = "lblBarcodeDetails";
             this.lblBarcodeDetails.Size = new System.Drawing.Size(127, 21);
             this.lblBarcodeDetails.TabIndex = 8;
@@ -590,7 +590,7 @@ namespace DigiposZen
             // lblInvoice
             // 
             this.lblInvoice.AutoSize = true;
-            this.lblInvoice.Location = new System.Drawing.Point(567, 120);
+            this.lblInvoice.Location = new System.Drawing.Point(567, 109);
             this.lblInvoice.Name = "lblInvoice";
             this.lblInvoice.Size = new System.Drawing.Size(126, 21);
             this.lblInvoice.TabIndex = 7;
@@ -599,7 +599,7 @@ namespace DigiposZen
             // cmbVoucherType
             // 
             this.cmbVoucherType.FormattingEnabled = true;
-            this.cmbVoucherType.Location = new System.Drawing.Point(570, 79);
+            this.cmbVoucherType.Location = new System.Drawing.Point(570, 68);
             this.cmbVoucherType.Name = "cmbVoucherType";
             this.cmbVoucherType.Size = new System.Drawing.Size(416, 29);
             this.cmbVoucherType.TabIndex = 6;
@@ -608,7 +608,7 @@ namespace DigiposZen
             // lblVoucherType
             // 
             this.lblVoucherType.AutoSize = true;
-            this.lblVoucherType.Location = new System.Drawing.Point(567, 57);
+            this.lblVoucherType.Location = new System.Drawing.Point(567, 46);
             this.lblVoucherType.Name = "lblVoucherType";
             this.lblVoucherType.Size = new System.Drawing.Size(111, 21);
             this.lblVoucherType.TabIndex = 5;
@@ -617,7 +617,7 @@ namespace DigiposZen
             // rdbSearchSearchInvoice
             // 
             this.rdbSearchSearchInvoice.AutoSize = true;
-            this.rdbSearchSearchInvoice.Location = new System.Drawing.Point(557, 24);
+            this.rdbSearchSearchInvoice.Location = new System.Drawing.Point(557, 13);
             this.rdbSearchSearchInvoice.Name = "rdbSearchSearchInvoice";
             this.rdbSearchSearchInvoice.Size = new System.Drawing.Size(139, 25);
             this.rdbSearchSearchInvoice.TabIndex = 4;
@@ -626,7 +626,7 @@ namespace DigiposZen
             // 
             // txtSearchBarcode
             // 
-            this.txtSearchBarcode.Location = new System.Drawing.Point(52, 79);
+            this.txtSearchBarcode.Location = new System.Drawing.Point(52, 68);
             this.txtSearchBarcode.Name = "txtSearchBarcode";
             this.txtSearchBarcode.Size = new System.Drawing.Size(370, 28);
             this.txtSearchBarcode.TabIndex = 3;
@@ -637,7 +637,7 @@ namespace DigiposZen
             // lblSearchBatchCode
             // 
             this.lblSearchBatchCode.AutoSize = true;
-            this.lblSearchBatchCode.Location = new System.Drawing.Point(49, 57);
+            this.lblSearchBatchCode.Location = new System.Drawing.Point(49, 46);
             this.lblSearchBatchCode.Name = "lblSearchBatchCode";
             this.lblSearchBatchCode.Size = new System.Drawing.Size(70, 21);
             this.lblSearchBatchCode.TabIndex = 2;
@@ -646,7 +646,7 @@ namespace DigiposZen
             // rdbSearchBarcode
             // 
             this.rdbSearchBarcode.AutoSize = true;
-            this.rdbSearchBarcode.Location = new System.Drawing.Point(52, 24);
+            this.rdbSearchBarcode.Location = new System.Drawing.Point(52, 13);
             this.rdbSearchBarcode.Name = "rdbSearchBarcode";
             this.rdbSearchBarcode.Size = new System.Drawing.Size(148, 25);
             this.rdbSearchBarcode.TabIndex = 1;
@@ -669,7 +669,7 @@ namespace DigiposZen
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.87248F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.12752F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 263F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 264F));
             this.tableLayoutPanel1.Controls.Add(this.panel3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
@@ -701,9 +701,9 @@ namespace DigiposZen
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.lblSettings);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(895, 3);
+            this.panel3.Location = new System.Drawing.Point(894, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(258, 620);
+            this.panel3.Size = new System.Drawing.Size(259, 620);
             this.panel3.TabIndex = 1;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -902,7 +902,7 @@ namespace DigiposZen
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(278, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(611, 620);
+            this.panel1.Size = new System.Drawing.Size(610, 620);
             this.panel1.TabIndex = 0;
             // 
             // chkFileName
@@ -996,7 +996,7 @@ namespace DigiposZen
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sales";
+            this.Text = "Barcode Print";
             this.Load += new System.EventHandler(this.frmStockVoucher_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmStockInVoucherNew_KeyDown);
             this.tlpMain.ResumeLayout(false);

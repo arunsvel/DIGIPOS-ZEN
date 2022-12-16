@@ -127,8 +127,6 @@ namespace DigiposZen
                 clsVchType = JSonComm.GetVoucherType(iVchTpeId);
                 clsVchTypeFeatures = JSonComm.GetVoucherTypeGeneralSettings(iVchTpeId, 1);
 
-
-
                 AddColumnsToGrid();
                 ClearControls();
 
@@ -249,7 +247,6 @@ namespace DigiposZen
         clsGetStockInVoucherSettings clsVchTypeFeatures = new clsGetStockInVoucherSettings();
 
         private StockOutGridColIndexes gridColIndexes = new StockOutGridColIndexes();
-
 
         enum GridBottomColumns
         {

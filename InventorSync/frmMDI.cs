@@ -41,7 +41,7 @@ namespace DigiposZen
             DataTable dtTreeView = new DataTable();
             ToolStripMenuItem parentNode = new ToolStripMenuItem();
 
-            dtTreeView = Comm.fnGetData("SELECT VchTypeID,VchType,ParentID,SystemName,UserID,LastUpdateDate,LastUpdateTime,TenantID FROM tblVchType WHERE ((VchTypeID BETWEEN 1 and 500) OR (VchTypeID >= 1005)) AND ParentID=VchTypeID AND isnull(ActiveStatus,0)=1 ").Tables[0];
+            dtTreeView = Comm.fnGetData("SELECT VchTypeID,VchType,ParentID,SystemName,UserID,LastUpdateDate,LastUpdateTime,TenantID FROM tblVchType WHERE ((VchTypeID BETWEEN 1 and 500) OR (VchTypeID >= 1005)) AND ParentID=VchTypeID AND isnull(ActiveStatus,0)=1 Order by SortOrder, VchType ").Tables[0];
             if (dtTreeView.Rows.Count > 0)
             {
                 foreach (DataRow dr in dtTreeView.Rows)
@@ -53,7 +53,21 @@ namespace DigiposZen
                     trans.Click += new EventHandler(MenuItemClickHandler);
 
                     DataTable dtgetData = new DataTable();
-                    dtgetData = Comm.fnGetData("SELECT VchTypeID,VchType,ParentID,SystemName,UserID,LastUpdateDate,LastUpdateTime,TenantID FROM tblVchType WHERE ((VchTypeID BETWEEN 1 and 500) OR (VchTypeID >= 1005)) AND (ParentID <> VchTypeID) AND isnull(ActiveStatus,0)=1 AND ParentID =" + dr["VchTypeID"].ToString() + " ORDER BY VchTypeID Desc").Tables[0];
+                    dtgetData = Comm.fnGetData("SELECT VchTypeID,VchType,ParentID,SystemName,UserID,LastUpdateDate,LastUpdateTime,TenantID FROM tblVchType WHERE ((VchTypeID BETWEEN 1 and 500) OR (VchTypeID >= 1005)) AND (ParentID <> VchTypeID) AND isnull(ActiveStatus,0)=1 AND ParentID =" + dr["VchTypeID"].ToString() + " ORDER BY SortOrder, VchType Desc").Tables[0];
+
+                    if (dtgetData.Rows.Count > 0)
+                    {
+                        //Opening parent voucher if sub voucher is added to menu list is disabled
+                        trans.Click -= new EventHandler(MenuItemClickHandler);
+
+                        ToolStripMenuItem submenu = new ToolStripMenuItem();
+
+                        submenu.Text = dr["VchType"].ToString();
+                        submenu.Tag = Convert.ToInt32(dr["VchTypeID"].ToString());
+                        submenu.Click += new EventHandler(MenuItemClickHandler);
+
+                        trans.DropDownItems.Add(submenu);
+                    }
 
                     foreach (DataRow dr1 in dtgetData.Rows)
                     {
@@ -75,10 +89,7 @@ namespace DigiposZen
                 ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
                 // Take some action based on the data in clickedItem
 
-
                 OpenMenu("", Convert.ToInt32(clickedItem.Tag.ToString()));
-
-
             }
         }
 
@@ -269,14 +280,6 @@ namespace DigiposZen
                     frmEdit.Show();
                     frmEdit.Focus();
                     frmEdit.BringToFront();
-                    break;
-                case "BARCODEMANAGER":
-                    frmBarcodeManager frmBM = new frmBarcodeManager(this);
-                    frmBM.Text = "Barcode Manager";
-                    frmBM.MdiParent = this;
-                    frmBM.Show();
-                    frmBM.Focus();
-                    frmBM.BringToFront();
                     break;
                 case "BARCODEPRINT":
                     frmBarcode frmBCode = new frmBarcode(2,0,"","",this);
@@ -565,6 +568,12 @@ namespace DigiposZen
                     ParentVchtypeID = Convert.ToInt32(rs.fields("ParentID").ToString());
                     switch (ParentVchtypeID)
                     {
+                        case 100: //Barcode Manager
+                            frmBarcodeManager frmBCM = new frmBarcodeManager(VchtypeID, 0, false, this);
+                            frmBCM.Show();
+                            frmBCM.BringToFront();
+                            break;
+
                         case 1: //Sales
                             frmStockOutVoucherNew frmSale = new frmStockOutVoucherNew(VchtypeID, 0, false, this);
                             frmSale.Show();
@@ -1105,6 +1114,34 @@ namespace DigiposZen
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
             OpenMenu(t.Text.ToString(), 0);
 
+        }
+
+        private void minimizeAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form childForm in MdiChildren)
+            {
+                childForm.WindowState = FormWindowState.Minimized;
+            }
+        }
+
+        private void maximizeAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form childForm in MdiChildren)
+            {
+                childForm.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int x = 1;
+            int y = 1;
+            foreach (Form f in MdiChildren)
+            {
+                f.Location = new Point(x, y);
+                x += 25;
+                y += 25;
+            }
         }
     }
 }

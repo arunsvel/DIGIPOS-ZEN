@@ -244,3 +244,4 @@ D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\Digipos Zen.applicati
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.csproj.CopyComplete
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\Digipos Zen.exe
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\Digipos Zen.pdb
+D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.csproj.AssemblyReference.cache

@@ -44,6 +44,169 @@ namespace DigiposZen.InventorBL.Helper
             Loggedout = 10
         }
 
+        public DataGridViewCell Search(DataGridView DgvData, string SearchString = "", bool blnMoveForward = true, CheckState MatchCase = CheckState.Unchecked, CheckState ExactWordOnly = CheckState.Unchecked)
+        {
+            try
+            {
+                if (SearchString == "") return null;
+
+                int rowstartindex = 0;
+                int colstartindex = 0;
+
+                bool blnMatchCase = false;
+                bool blnExactWord = false;
+
+                bool blnFound = false;
+                DataGridViewCell Cell = null;
+
+                if (MatchCase == CheckState.Checked)
+                    blnMatchCase = true;
+                if (ExactWordOnly == CheckState.Checked)
+                    blnExactWord = true;
+
+                string CellValue = "";
+
+                if (blnMatchCase == false) //If search and to be searhed in same case it will be searched
+                    SearchString = SearchString.ToUpper();
+
+                if (DgvData != null)
+                {
+                    if (DgvData.RowCount > 0)
+                    {
+                        if (DgvData.CurrentCell != null)
+                        {
+                            if (DgvData.CurrentCell.RowIndex >= 0)
+                            {
+                                rowstartindex = DgvData.CurrentCell.RowIndex;
+                            }
+                            if (DgvData.CurrentCell.ColumnIndex >= 0)
+                            {
+                                colstartindex = DgvData.CurrentCell.ColumnIndex;
+                            }
+                        }
+                    }
+                }
+
+                if (blnMoveForward == true)
+                {
+                    if (colstartindex != 0 || rowstartindex != 0)
+                        colstartindex += 1;
+                }
+                else
+                {
+                    if (colstartindex != 0 || rowstartindex != 0)
+                    {
+                        colstartindex -= 1;
+                    }
+                    else if (colstartindex == 0 && rowstartindex == 0)
+                    {
+                        rowstartindex = DgvData.RowCount - 1;
+                        colstartindex = DgvData.ColumnCount - 1;
+                    }
+                }
+
+                if (colstartindex < 0) colstartindex = 0;
+
+                if (blnMoveForward == true)
+                {
+                    for (int i = rowstartindex; i < DgvData.Rows.Count - 1; i++)
+                    {
+                        if (blnFound == true) break;
+                        for (int j = colstartindex; j < DgvData.Columns.Count - 1; j++)
+                        {
+                            //If search and CellValue in same case it will be matched
+                            //string comparison is case sensitive
+                            CellValue = DgvData[j, i].Value.ToString();
+                            if (blnMatchCase == false)
+                                CellValue = DgvData[j, i].Value.ToString().ToUpper();
+
+                            if (blnExactWord == true)
+                            {
+                                if (CellValue == SearchString)
+                                {
+                                    if (DgvData[j, i].Visible == true)
+                                    {
+                                        //DgvData.CurrentCell = DgvData[j, i];
+                                        blnFound = true;
+                                        return DgvData[j, i];
+                                        //break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (CellValue.Contains(SearchString) == true)
+                                {
+                                    if (DgvData[j, i].Visible == true)
+                                    {
+                                        //DgvData.CurrentCell = DgvData[j, i];
+                                        blnFound = true;
+                                        return DgvData[j, i];
+                                        //break;
+                                    }
+                                }
+                            }
+                        }
+                        colstartindex = 0;
+                    }
+                }
+                else
+                {
+                    for (int i = rowstartindex; i >= 0; i--)
+                    {
+                        if (blnFound == true) break;
+                        for (int j = colstartindex; j >= 0; j--)
+                        {
+                            //If search and CellValue in same case it will be matched
+                            //string comparison is case sensitive
+                            CellValue = DgvData[j, i].Value.ToString();
+                            if (blnMatchCase == false)
+                                CellValue = DgvData[j, i].Value.ToString().ToUpper();
+
+                            if (blnExactWord == true)
+                            {
+                                if (CellValue == SearchString)
+                                {
+                                    if (DgvData[j, i].Visible == true)
+                                    {
+                                        //DgvData.CurrentCell = DgvData[j, i];
+                                        blnFound = true;
+                                        return DgvData[j, i];
+                                        //break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (CellValue.Contains(SearchString) == true)
+                                {
+                                    if (DgvData[j, i].Visible == true)
+                                    {
+                                        //DgvData.CurrentCell = DgvData[j, i];
+                                        blnFound = true;
+                                        return DgvData[j, i];
+                                        //break;
+                                    }
+                                }
+                            }
+                        }
+                        colstartindex = DgvData.Columns.Count - 1;
+                    }
+                }
+
+                if (blnFound == false)
+                {
+                    MessageBox.Show("Finished search. No more occurance found for search text.", "Advanced Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return null;
+            }
+        }
+        
         public bool DBUpdate()
         {
             try
