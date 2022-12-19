@@ -207,27 +207,174 @@ namespace DigiposZen.InventorBL.Helper
             }
         }
         
-        public bool DBUpdate()
+        public bool DBUpdate(bool blnForcedUpdate = false)
         {
             try
             {
-                string strdt = "01/Jan/1999";
-                DateTime dt = DateTime.Today; //Last DBUpdateDateTime
-                strdt = RetieveFromDBInAppSettings(Global.gblTenantID, "DBUPDATEDATE");
-                if (strdt != null)
-                    if (strdt == "") strdt = "01/Jan/1999";
-                
-                dt = Convert.ToDateTime(strdt);
+                if (blnForcedUpdate == false)
+                {
+                    string strdt = "01/Jan/1999";
+                    DateTime dt = DateTime.Today; //Last DBUpdateDateTime
+                    strdt = RetieveFromDBInAppSettings(Global.gblTenantID, "DBUPDATEDATE");
+                    if (strdt != null)
+                        if (strdt == "") strdt = "01/Jan/1999";
 
-                if (dt == Convert.ToDateTime("13/Dec/2022"))
-                    return false;
+                    dt = Convert.ToDateTime(strdt);
 
-                SaveInAppSettings("DBUPDATEDATE", "13/Dec/2022");
+                    if (dt == Convert.ToDateTime("20/Dec/2022"))
+                        return false;
+
+                    SaveInAppSettings("DBUPDATEDATE", "20/Dec/2022");
+                }
             }
             catch
             { }
             
             string sQuery = "";
+
+            try
+            {
+                sQuery = @"update tblvchtype set vchjson = '{""TransactionName"":""Barcode Changer"",""ParentID"":88.0,""TransactionNumberingValue"":2.0,""TransactionPrefix"":"""",""ReferenceNumberingValue"":0.0,""ReferencePrefix"":""P"",""TransactinSortOrder"":1020.0,""CursorNavigationOrderList"":"""",""PrimaryCCValue"":1.0,""blnPrimaryLockWithSelection"":0.0,""SecondaryCCValue"":0.0,""blnSecondaryLockWithSelection"":0.0,""DefaultSearchMethodValue"":1.0,""blnUseSpaceforRateSearch"":0.0,""btnShowItmSearchByDefault"":1.0,""blnMovetoNextRowAfterSelection"":1.0,""blnHideNegativeorExpiredItmsfromMRRPSubWindow"":0.0,""MMRPSubWindowsSortModeValue"":1.0,""blnShowSearchWindowByDefault"":1.0,""blnBillWiseDiscPercentage"":0.0,""btnBillWiseDiscAmount"":1.0,""blnBillWiseDiscPercentageandAmt"":0.0,""BillWiseDiscFillXtraDiscFromValue"":1.0,""blnItmWiseDiscPercentage"":1.0,""blnItmWiseDiscAmount"":0.0,""blnItmWiseDiscPercentageandAmt"":0.0,""ItmWiseDiscFillXtraDiscFromValue"":1.0,""RoundOffMode"":4,""RoundOffBlock"":1.0,""blnRateDiscount"":1.0,""DefaultTaxModeValue"":3.0,""blnTaxModeLockWSel"":0.0,""DefaultModeofPaymentValue"":1.0,""blnModeofPaymentLockWSel"":0.0,""DefaultPriceList"":1.0,""blnPriceListLockWSel"":0.0,""DefaultSaleStaffValue"":1.0,""blnSaleStaffLockWSel"":0.0,""DefaultAgentValue"":1.0,""blnAgentLockWSel"":0.0,""DefaultTaxInclusiveValue"":1.0,""DefaultBarcodeMode"":0.0,""blnTaxInclusiveLockWSel"":0.0,""ProductClassList"":"""",""ItemCategoriesList"":"""",""CustomerSupplierAccGroupList"":"""",""DebitAccGroupList"":"""",""CreditAccGroupList"":"""",""ActiveStatus"":1,""PrintSettings"":"""",""BoardRateExportType"":0,""BoardRateQuery"":""SELECT TOP(1000) [ItemID] ,[ItemCode] ,[ItemName] ,[BatchUnique] ,[PLUNumber] ,[MRP] ,[SRATE1] ,[SRATE2] ,[SRATE3] ,[SRATE4] ,[SRATE5] ,[Unit] ,[Expiry]   FROM[vwBoardRatePLU] "",""BoardRateFileName"":""""}' Where parentid=88 and vchjson is null ";
+                fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"update tblvchtype set feauturesjson = '[]' Where parentid=88 and feauturesjson is null ";
+                fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"update tblvchtype set gridsettingsjson = '[{""blnVisible"":true,""sName"":""Sl.No"",""iWidth"":50,""sColName"":""cSlNo""},{""blnVisible"":true,""sName"":""Item Code"",""iWidth"":211,""sColName"":""CItemCode""},{""blnVisible"":true,""sName"":""Item Name"",""iWidth"":151,""sColName"":""CItemName""},{""blnVisible"":false,""sName"":""Unit"",""iWidth"":50,""sColName"":""CUnit""},{""blnVisible"":true,""sName"":""Batch Code"",""iWidth"":217,""sColName"":""cBarCode""},{""blnVisible"":false,""sName"":""Expiry Date"",""iWidth"":50,""sColName"":""CExpiry""},{""blnVisible"":true,""sName"":""MRP"",""iWidth"":88,""sColName"":""cMRP""},{""blnVisible"":true,""sName"":""PRate"",""iWidth"":110,""sColName"":""cPrate""},{""blnVisible"":false,""sName"":""Rate Inc."",""iWidth"":80,""sColName"":""cRateinclusive""},{""blnVisible"":true,""sName"":""Qty"",""iWidth"":50,""sColName"":""cQty""},{""blnVisible"":false,""sName"":""Free"",""iWidth"":50,""sColName"":""cFree""},{""blnVisible"":true,""sName"":""SRATE1 %"",""iWidth"":80,""sColName"":""cSRate1Per""},{""blnVisible"":true,""sName"":""SRATE1"",""iWidth"":80,""sColName"":""cSRate1""},{""blnVisible"":false,""sName"":""Disc Rs %"",""iWidth"":80,""sColName"":""cSRate2Per""},{""blnVisible"":false,""sName"":""Disc Rs"",""iWidth"":80,""sColName"":""cSRate2""},{""blnVisible"":false,""sName"":""SRate 3 %"",""iWidth"":80,""sColName"":""cSRate3Per""},{""blnVisible"":false,""sName"":""SRate 3"",""iWidth"":80,""sColName"":""cSRate3""},{""blnVisible"":false,""sName"":""WS %"",""iWidth"":80,""sColName"":""cSRate4Per""},{""blnVisible"":false,""sName"":""WS"",""iWidth"":80,""sColName"":""cSRate4""},{""blnVisible"":false,""sName"":""Retail Rs %"",""iWidth"":80,""sColName"":""cSRate5Per""},{""blnVisible"":false,""sName"":""Retail Rs"",""iWidth"":80,""sColName"":""cSRate5""},{""blnVisible"":true,""sName"":""Gross Amt"",""iWidth"":80,""sColName"":""cGrossAmt""},{""blnVisible"":true,""sName"":""Discount %"",""iWidth"":80,""sColName"":""cDiscPer""},{""blnVisible"":true,""sName"":""Discount Amt"",""iWidth"":80,""sColName"":""cDiscAmount""},{""blnVisible"":true,""sName"":""Bill Discount"",""iWidth"":80,""sColName"":""cBillDisc""},{""blnVisible"":true,""sName"":""CRate"",""iWidth"":70,""sColName"":""cCrate""},{""blnVisible"":false,""sName"":""CRate With Tax"",""iWidth"":50,""sColName"":""cCRateWithTax""},{""blnVisible"":true,""sName"":""Taxable"",""iWidth"":80,""sColName"":""ctaxable""},{""blnVisible"":true,""sName"":""Tax %"",""iWidth"":80,""sColName"":""ctaxPer""},{""blnVisible"":true,""sName"":""Tax"",""iWidth"":80,""sColName"":""ctax""},{""blnVisible"":true,""sName"":""IGST"",""iWidth"":80,""sColName"":""cIGST""},{""blnVisible"":true,""sName"":""SGST"",""iWidth"":80,""sColName"":""cSGST""},{""blnVisible"":true,""sName"":""CGST"",""iWidth"":80,""sColName"":""cCGST""},{""blnVisible"":true,""sName"":""Net Amt"",""iWidth"":181,""sColName"":""cNetAmount""},{""blnVisible"":false,""sName"":""ItemID"",""iWidth"":80,""sColName"":""cItemID""},{""blnVisible"":false,""sName"":""Gross Val"",""iWidth"":100,""sColName"":""cGrossValueAfterRateDiscount""},{""blnVisible"":false,""sName"":""Non Taxable"",""iWidth"":100,""sColName"":""cNonTaxable""},{""blnVisible"":false,""sName"":""Cess %"",""iWidth"":100,""sColName"":""cCCessPer""},{""blnVisible"":false,""sName"":""Comp Cess Qty"",""iWidth"":100,""sColName"":""cCCompCessQty""},{""blnVisible"":false,""sName"":""Flood Cess %"",""iWidth"":100,""sColName"":""cFloodCessPer""},{""blnVisible"":false,""sName"":""Flood Cess Amt"",""iWidth"":100,""sColName"":""cFloodCessAmt""},{""blnVisible"":false,""sName"":""Stock MRP"",""iWidth"":100,""sColName"":""cStockMRP""},{""blnVisible"":false,""sName"":""Agent Comm. %"",""iWidth"":100,""sColName"":""cAgentCommPer""},{""blnVisible"":false,""sName"":""Coolie"",""iWidth"":100,""sColName"":""cCoolie""},{""blnVisible"":false,""sName"":""Offer Item"",""iWidth"":100,""sColName"":""cBlnOfferItem""},{""blnVisible"":false,""sName"":""Offer Det."",""iWidth"":100,""sColName"":""cStrOfferDetails""},{""blnVisible"":false,""sName"":""Batch Mode"",""iWidth"":100,""sColName"":""cBatchMode""},{""blnVisible"":false,""sName"":""ID"",""iWidth"":100,""sColName"":""cID""},{""blnVisible"":false,""sName"":"""",""iWidth"":40,""sColName"":""cImgDel""}]' Where parentid=88 and gridsettingsjson is null ";
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"CREATE TABLE [dbo].[tblBarcodeManagerItemStatus](
+	                        [InvID] [numeric](18, 0) NOT NULL,
+	                        [ItemID] [numeric](18, 0) NOT NULL,
+	                        [StockID] [numeric](18, 0) NULL,
+	                        [BatchUnique] [varchar](200) NULL,
+	                        [Qty] [float] NULL,
+	                        [PRate] [numeric](18, 5) NULL,
+	                        [Crate] [numeric](18, 5) NULL,
+	                        [MRP] [numeric](18, 5) NULL,
+	                        [OldStatus] [int] NULL,
+	                        [NewStatus] [int] NULL,
+	                        [ID] [numeric](18, 0) IDENTITY(1,1) NOT NULL
+                        ) ON [PRIMARY]";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"ALTER TABLE [dbo].[tblBarcodeManagerItemStatus]  WITH CHECK ADD  CONSTRAINT [FK_tblBarcodeManagerItemStatus_tblBarcodeManager] FOREIGN KEY([InvID]) REFERENCES [dbo].[tblBarcodeManager] ([InvID])";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"ALTER TABLE [dbo].[tblBarcodeManagerItemStatus] CHECK CONSTRAINT [FK_tblBarcodeManagerItemStatus_tblBarcodeManager]";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"ALTER TABLE [dbo].[tblBarcodeManagerItemStatus]  WITH CHECK ADD  CONSTRAINT [FK_tblBarcodeManagerItemStatus_tblItemMaster] FOREIGN KEY([ItemID]) REFERENCES [dbo].[tblItemMaster] ([ItemID])";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"ALTER TABLE [dbo].[tblBarcodeManagerItemStatus] CHECK CONSTRAINT [FK_tblBarcodeManagerItemStatus_tblItemMaster]";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"CREATE TABLE [dbo].[tblBarcodeManager](
+	                        [InvID] [numeric](18, 0) NOT NULL,
+	                        [AutoNum] [numeric](18, 0) NOT NULL,
+	                        [InvNo] [varchar](50) NOT NULL,
+	                        [VchtypeID] [numeric](18, 0) NOT NULL,
+	                        [Prefix] [varchar](50) NULL,
+	                        [VchDate] [datetime] NOT NULL,
+	                        [CCID] [numeric](18, 0) NOT NULL,
+	                        [StaffID] [numeric](18, 0) NULL,
+	                        [TenantID] [numeric](18, 0) NULL,
+                            CONSTRAINT [PK_tblBarcodeManager] PRIMARY KEY CLUSTERED 
+                        (
+	                        [InvID] ASC
+                        ) ON [PRIMARY]
+                        ) ON [PRIMARY]";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"CREATE UNIQUE NONCLUSTERED INDEX [IX_tblBarcodeManager] ON [dbo].[tblBarcodeManager]
+                        (	[AutoNum] ASC,
+	                        [VchtypeID] ASC
+                        )ON [PRIMARY]";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"ALTER TABLE [dbo].[tblBarcodeManager]  WITH CHECK ADD  CONSTRAINT [FK_tblBarcodeManager_tblVchtype] FOREIGN KEY([VchtypeID])
+                            REFERENCES [dbo].[tblVchType] ([VchTypeID])";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"ALTER TABLE [dbo].[tblBarcodeManager] CHECK CONSTRAINT [FK_tblBarcodeManager_tblVchtype]";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"ALTER TABLE [dbo].[tblBarcodeManager]  WITH CHECK ADD  CONSTRAINT [FK_tblBarcodeManager_tblCostCentre] FOREIGN KEY([CCID])
+                            REFERENCES [dbo].[tblCostCentre] ([CCID])";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"ALTER TABLE [dbo].[tblBarcodeManager] CHECK CONSTRAINT [FK_tblBarcodeManager_tblCostCentre]";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
 
             try
             {
@@ -1782,6 +1929,37 @@ namespace DigiposZen.InventorBL.Helper
         public void CreateViewsAndProcudures()
         {
             string sQuery = "";
+
+            try
+            {
+                sQuery = @"DROP PROCEDURE [dbo].[fnInsertUserLog] ";
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+            try
+            {
+                sQuery = @"CREATE PROCEDURE  [dbo].[fnInsertUserLog] (@NewData Varchar(500),
+                        @OldData Varchar(500),
+                        @Action varchar(500),
+                        @ActionDescription varchar(500) ,
+                        @VchtypeId Int ,
+                        @parentVchtypeId int ,
+                        @UniqueFiledValue varchar(100)  , 
+                        @RefId int ,
+                        @UserId int ,
+                        @SystemName varchar(100) ,
+                        @WindowName Varchar(100) )  AS    BEGIN    Declare @Username varchar(50)  Declare @id int
+                        Declare @DateOf DateTime  Declare @Timeof DateTime   Set @DateOf = CONVERT (datetime,
+                        GETDATE())  Set @Timeof = CONVERT(VARCHAR(8),getdate(),114) 
+                        select @id = Max(id)+1 from tbluserLog   
+                        select @Username = username from tbluserMaster where userID = @UserId 
+                        Insert into tbluserLog (ID,OldData,NewData,DateOf,Timeof,[Action],ActionDescription,VchtypeId , parentVchtypeId,UniqueFiledValue,RefId,UserId , SystemName,WindowName,Username) values (@id,@OldData,@NewData,@DateOf,@Timeof,@Action,@ActionDescription,@VchtypeId , @parentVchtypeId,@UniqueFiledValue,@RefId,@UserId , @SystemName,@WindowName,@Username)     end ";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
 
             try
             {
@@ -4565,6 +4743,7 @@ namespace DigiposZen.InventorBL.Helper
    				                            ,Srate3Per  
    				                            ,Srate4Per  
    				                            ,Srate5Per  
+                                            ,id
    				                            )  
    			                            VALUES (  
    				                            @InvID  
@@ -4633,6 +4812,7 @@ namespace DigiposZen.InventorBL.Helper
    				                            ,@Srate3Per  
    				                            ,@Srate4Per  
    				                            ,@Srate5Per  
+   				                            ,@Id 
    				                            )  
    			                            SET @RetResult = 1;  
    		                            END  

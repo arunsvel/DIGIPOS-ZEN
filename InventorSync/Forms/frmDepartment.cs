@@ -26,6 +26,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -417,6 +420,8 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                        DeleteData();
+                       Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted" + Departmentinfo.Department, 521, 521, Departmentinfo.Department, Comm.ToInt32(Departmentinfo.DepartmentID), "Department");
+
                     }
                 }
                 else
@@ -542,6 +547,8 @@ namespace DigiposZen
                 txtDescription1.Text = dtLoad.Rows[0]["Description"].ToString();
                 iAction = 1;
             }
+            olddata = "Department:" + txtDepartmentName.Text + ",Description:" + txtDescription1;
+            oldvalue = txtDepartmentName.Text;
         }
         //Description:Save Date to Department table
         private void SaveData()
@@ -550,6 +557,8 @@ namespace DigiposZen
             string sRet = "";
             if (IsValidate() == true)
             {
+                newdata = "Department:" + txtDepartmentName.Text + ",Description:" + txtDescription1;
+
                 if (iAction == 0)
                 {
                     Departmentinfo.DepartmentID = Comm.gfnGetNextSerialNo("tblDepartment", "DepartmentID");
@@ -591,6 +600,16 @@ namespace DigiposZen
                             this.Close();
                         }
                         Comm.MessageboxToasted("Department", "Department Saved Successfully");
+                        if (iIDFromEditWindow > 0)
+                        {
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update Department to " + Departmentinfo.Department, 521, 521, Departmentinfo.Department, Comm.ToInt32(Departmentinfo.DepartmentID), "Department");
+                        }
+                        else
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + Departmentinfo.Department, 521, 521, Departmentinfo.Department, Comm.ToInt32(Departmentinfo.DepartmentID), "department");
+
+                        }
                     }
                 }
                 else
@@ -624,6 +643,16 @@ namespace DigiposZen
                         ClearAll();
                     }
                     Comm.MessageboxToasted("Department", "Department Saved Successfully");
+                    if (iIDFromEditWindow > 0)
+                    {
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update Department to " + Departmentinfo.Department, 521, 521, Departmentinfo.Department, Comm.ToInt32(Departmentinfo.DepartmentID), "Department");
+                    }
+                    else
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + Departmentinfo.Department, 521, 521, Departmentinfo.Department, Comm.ToInt32(Departmentinfo.DepartmentID), "department");
+
+                    }
                     if (bFromEditWindowDepartment == true)
                     {
                         this.Close();

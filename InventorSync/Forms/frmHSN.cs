@@ -28,6 +28,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -475,6 +478,9 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Deleted " + HSNmasterInfo.HSNCODE, 516, 516, HSNmasterInfo.HSNCODE, Comm.ToInt32(HSNmasterInfo.HID), "Hsncode");
+
+
                     }
                 }
                 else
@@ -731,12 +737,17 @@ namespace DigiposZen
                 }
 
             }
+            oldvalue = txtHSNCode.Text;
+            olddata = "HSNCODE:" + txtHSNCode.Text + ",HSNDECRIPTION:" + txtDescription.Text + ",IGSTTaxPer:" + cmbBTaxClass.Text + ",CessPer:" + txtCess.Text + ",CompCess:" + txtCompCess.Text + ",HSNType:" + cmbHsnType.Text;
+
         }
         //Description : Save and Update Functionalities to the Database
         private void SaveData()
         {
             if (IsValidate() == true)
             {
+                newdata = "HSNCODE:" + txtHSNCode + ",HSNDECRIPTION:" + txtDescription.Text + ",IGSTTaxPer:" + cmbBTaxClass.Text + ",CessPer:" + txtCess.Text + ",CompCess:" + txtCompCess.Text + ",HSNType:" + cmbHsnType.Text;
+
                 if (iIDFromEditWindow != 0)
                 {
                     iAction = 1;
@@ -840,6 +851,18 @@ namespace DigiposZen
 
                     }
                     Comm.MessageboxToasted("HSN Code", "HSN Code saved successfully");
+                    if (iIDFromEditWindow > 0)
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Hsncode to " + HSNmasterInfo.HSNCODE, 516, 516, HSNmasterInfo.HSNCODE, Comm.ToInt32(HSNmasterInfo.HID), "Hsncode");
+
+                    }
+                    else
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + HSNmasterInfo.HSNCODE, 516, 516, HSNmasterInfo.HSNCODE, Comm.ToInt32(HSNmasterInfo.HID), "Hsncode");
+
+                    }
                 }
             }
         }

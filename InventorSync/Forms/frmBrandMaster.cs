@@ -19,6 +19,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -516,7 +519,10 @@ namespace DigiposZen
                     DialogResult dlgResult = MessageBox.Show("Are you sure to delete Brand[" + txtBrand.Text + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
                     if (dlgResult == DialogResult.Yes)
                     {
+                      
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Deleted " + Brandinfo.brandName, 518, 518, Brandinfo.brandName, Comm.ToInt32(Brandinfo.brandID), "Brand");
+
                     }
                 }
                 else
@@ -646,12 +652,17 @@ namespace DigiposZen
                 txtDiscountPerc.Text = FormatValue(Convert.ToDouble(DiscPer), true, "#.00");
                 iAction = 1;
             }
+            olddata = "BrandName:" + txtBrand.Text + ",BrandShortName:" + txtBrandShortName + ",Discount%:" + txtDiscountPerc.Text;
+            oldvalue = txtBrand.Text;
+
         }
         //Description : Save and Update Functionalities to the Database
         private void SaveData()
         {
             if (IsValidate() == true)
             {
+                newdata = "BrandName:" + txtBrand.Text + ",BrandShortName:" + txtBrandShortName + ",Discount%:" + txtDiscountPerc.Text;
+
                 string[] strResult;
                 string strRet = "";
                 if (iAction == 0)
@@ -740,6 +751,18 @@ namespace DigiposZen
                       this.Close();
                    }
                    Comm.MessageboxToasted("Brand", "Brand saved successfully");
+                    if (iIDFromEditWindow > 0)
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Brand to " + Brandinfo.brandName, 0, 0, Brandinfo.brandName, Comm.ToInt32(Brandinfo.brandID), "Brand");
+
+                    }
+                    else
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + Brandinfo.brandName, 0, 0, Brandinfo.brandName, Comm.ToInt32(Brandinfo.brandID), "Brand");
+
+                    }
                 }
             }
         }

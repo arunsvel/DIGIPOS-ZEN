@@ -1,0 +1,74 @@
+Start16:57
+Insert Into tblBarcodeManager (InvID,AutoNum,InvNo,VchtypeID,Prefix,VchDate,CCID,StaffID) Values (0,1,'1',88,'','19-Dec-2022',,)
+Incorrect syntax near ','.
+
+EndStart17:02
+Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (0,401,260568,1ASD,1ASD,-3.00,10.00,10.00,100.00,1)
+Incorrect syntax near 'ASD'.
+
+EndStart17:02
+Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (0,229,260578,BAG WRANGLER,B407@690.00,1.00,300.00,300.00,690.00,1)
+Incorrect syntax near 'WRANGLER'.
+
+EndStart17:20
+Insert Into tblBarcodeManager (InvID,AutoNum,InvNo,VchtypeID,Prefix,VchDate,CCID,StaffID) Values (0,1,'1',88,'','19-Dec-2022',1,1)
+Violation of PRIMARY KEY constraint 'PK_tblBarcodeManager'. Cannot insert duplicate key in object 'dbo.tblBarcodeManager'. The duplicate key value is (0).
+The statement has been terminated.
+
+EndStart17:20
+Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (0,401,260568,'1ASD',1ASD,-3.00,10.00,10.00,1,1)
+Incorrect syntax near 'ASD'.
+
+EndStart17:20
+Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (0,229,260578,'BAG WRANGLER',B407@690.00,1.00,300.00,300.00,1,1)
+Incorrect syntax near '.00'.
+
+EndStart17:20
+Insert Into tblBarcodeManager (InvID,AutoNum,InvNo,VchtypeID,Prefix,VchDate,CCID,StaffID) Values (0,1,'1',88,'','19-Dec-2022',1,1)
+Violation of PRIMARY KEY constraint 'PK_tblBarcodeManager'. Cannot insert duplicate key in object 'dbo.tblBarcodeManager'. The duplicate key value is (0).
+The statement has been terminated.
+
+EndStart17:20
+Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (0,401,260568,'1ASD',1ASD,-3.00,10.00,10.00,1,1)
+Incorrect syntax near 'ASD'.
+
+EndStart17:20
+Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (0,229,260578,'BAG WRANGLER',B407@690.00,1.00,300.00,300.00,1,1)
+Incorrect syntax near '.00'.
+
+EndStart17:31
+Insert Into tblBarcodeManager (InvID,AutoNum,InvNo,VchtypeID,Prefix,VchDate,CCID,StaffID) Values (0,2,'2',88,'','19-Dec-2022',1,1)
+Violation of PRIMARY KEY constraint 'PK_tblBarcodeManager'. Cannot insert duplicate key in object 'dbo.tblBarcodeManager'. The duplicate key value is (0).
+The statement has been terminated.
+
+EndStart17:42
+Insert Into tblBarcodeManager (InvID,AutoNum,InvNo,VchtypeID,Prefix,VchDate,CCID,StaffID) Values (2,2,'2',88,'','19-Dec-2022',1,1)
+Cannot insert duplicate key row in object 'dbo.tblBarcodeManager' with unique index 'IX_tblBarcodeManager'. The duplicate key value is (2, 88).
+The statement has been terminated.
+
+EndStart17:42
+Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (2,401,260568,'1ASD',-3.00,10.00,10.00,100.00,1,0)
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_tblBarcodeManagerItemStatus_tblBarcodeManager". The conflict occurred in database "BFB", table "dbo.tblBarcodeManager", column 'InvID'.
+The statement has been terminated.
+
+EndStart17:42
+Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (2,229,260578,'B407@690.00',1.00,300.00,300.00,690.00,1,0)
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_tblBarcodeManagerItemStatus_tblBarcodeManager". The conflict occurred in database "BFB", table "dbo.tblBarcodeManager", column 'InvID'.
+The statement has been terminated.
+
+EndStart17:42
+Insert Into tblBarcodeManager (InvID,AutoNum,InvNo,VchtypeID,Prefix,VchDate,CCID,StaffID) Values (3,3,'3',88,'','19-Dec-2022',1,1)
+Cannot insert duplicate key row in object 'dbo.tblBarcodeManager' with unique index 'IX_tblBarcodeManager'. The duplicate key value is (3, 88).
+The statement has been terminated.
+
+EndStart17:42
+Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (3,401,260568,'1ASD',-3.00,10.00,10.00,100.00,1,0)
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_tblBarcodeManagerItemStatus_tblBarcodeManager". The conflict occurred in database "BFB", table "dbo.tblBarcodeManager", column 'InvID'.
+The statement has been terminated.
+
+EndStart17:42
+Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (3,229,260578,'B407@690.00',1.00,300.00,300.00,690.00,1,0)
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_tblBarcodeManagerItemStatus_tblBarcodeManager". The conflict occurred in database "BFB", table "dbo.tblBarcodeManager", column 'InvID'.
+The statement has been terminated.
+
+End

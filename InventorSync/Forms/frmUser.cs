@@ -29,6 +29,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -670,16 +673,20 @@ namespace DigiposZen
                     try
                     {
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + UserInfo.UserName, 512, 512, UserInfo.UserName, Comm.ToInt32(UserInfo.UserID), "User");
+
                     }
 
                     catch (Exception ex)
                     {
                         MessageBox.Show("Failed to Delete..." + "\n" + ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
+
                     finally
                     {
                         Cursor.Current = Cursors.Default;
                     }
+
                 }
             }
             else
@@ -893,6 +900,9 @@ namespace DigiposZen
                         toggleCountermgmt.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive;
                     
                     iAction = 1;
+                    oldvalue = txtUserName.Text;
+                    olddata = "UserName" + txtUserName.Text + ",Group:" + cboGroup.Text + ",Password:" + txtpwd.Text + ",HintQuestion:" + txtHintQuest.Text + ",HintAnswer:" + txtHintAnswer.Text + ",PIN:" + txtPin.Text + ",Ledger:" + cboLedger.Text + ",CostCenter:" + txtCCntr.Text;
+
                 }
                 Cursor.Current = Cursors.Default; ;
             }
@@ -906,7 +916,9 @@ namespace DigiposZen
         {
             if (IsValidate() == true)
             {
-                 string[] strResult;
+                newdata = "UserName" + txtUserName.Text + ",Group:" + cboGroup.Text + ",Password:" + txtpwd.Text + ",HintQuestion:" + txtHintQuest.Text + ",HintAnswer:" + txtHintAnswer.Text + ",PIN:" + txtPin.Text + ",Ledger:" + cboLedger.Text + ",CostCenter:" + txtCCntr.Text;
+
+                string[] strResult;
                  string strRet = "";
                  int iActive = 1;
                  int iActiveLogon = 0;
@@ -1008,6 +1020,18 @@ namespace DigiposZen
                               this.Close();
                           }
                     Comm.MessageboxToasted("User", "User saved successfully");
+                    if (iIDFromEditWindow > 0)
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " User to " + UserInfo.UserName, 512, 512, UserInfo.UserName, Comm.ToInt32(UserInfo.UserID), "User");
+
+                    }
+                    else
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + UserInfo.UserName, 512, 512, UserInfo.UserName, Comm.ToInt32(UserInfo.UserID), "User");
+
+                    }
                 }
             }
         }

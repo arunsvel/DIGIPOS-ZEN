@@ -19,6 +19,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -416,6 +419,8 @@ namespace DigiposZen
                     DialogResult dlgResult = MessageBox.Show("Are you sure to delete the Area [" + strSelectNodeName + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dlgResult.Equals(DialogResult.Yes))
                         DeleteData();
+                    Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + AreaInfo.Area, 521, 521, AreaInfo.Area, Comm.ToInt32(AreaInfo.AreaID), "Area");
+
                 }
                 else
                     MessageBox.Show("Default Area [" + strSelectNodeName + "] can't be deleted.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -530,15 +535,19 @@ namespace DigiposZen
             {
                 foreach (DataRow dr in dtTreeView.Rows)
                 {
+
                     parentNode = trvwParentArea.Nodes.Add(dr["AreaID"].ToString(), dr["Area"].ToString());
                     PopulateTreeView(Convert.ToInt32(dr["AreaID"].ToString()), parentNode);
+
                 }
                 trvwParentArea.ExpandAll();
+
             }
         }
         //Description : Get and Set Child Area in Treeview
         private void PopulateTreeView(int parentId, TreeNode parentNode)//Fill ChildNode
         {
+
             DataTable dtgetData = new DataTable();
             dtgetData = Comm.fnGetData("SELECT AreaID,Area,Remarks,ParentID,HID,SystemName,UserID,LastUpdateDate,LastUpdateTime,TenantID FROM tblArea WHERE ParentID=" + parentId + "").Tables[0];
             TreeNode childNode;
@@ -555,10 +564,12 @@ namespace DigiposZen
                 }
                 PopulateTreeView(Convert.ToInt32(dr["AreaID"].ToString()), childNode);
             }
+
         }
         //Description : Fill Data when Double Click on TreeView Node
         public void FillNodeData()
         {
+
             TreeNode tn = trvwParentArea.SelectedNode;
             iIDFromEditWindow = Convert.ToInt32(tn.Name);
             bFromEditWindowArea = true;
@@ -567,10 +578,12 @@ namespace DigiposZen
             bDirectDelete = true;
             txtArea.Focus();
             txtArea.SelectAll();
+
         }
         //Description : Get CategoryID When Double Click on Node
         private decimal GetAreaID()
         {
+
             AreaInfo.AreaID = iIDFromEditWindow;
             TreeNode tn = trvwParentArea.SelectedNode;
             if (Convert.ToInt32(tn.Name) == iIDFromEditWindow)
@@ -578,14 +591,17 @@ namespace DigiposZen
             else
                 AreaInfo.AreaID = Convert.ToInt32(tn.Name);
             return AreaInfo.AreaID;
+
         }
         //Description : Set Treeview Value as Default
         private void SetDefaultTreeview()
         {
+
             FillTreeview();
             decimal dAreaID = 1;
             string strAreaName = Comm.fnGetData("Select Area From tblArea Where AreaID = '" + dAreaID + "'").Tables[0].Rows[0][0].ToString();
             trvwParentArea.SelectedNode = Comm.GetNodeByText(trvwParentArea.Nodes, strAreaName);
+
         }
         //Description : Load Saved data from database from edit window
         private void LoadData(int iSelectedID = 0)
@@ -604,6 +620,9 @@ namespace DigiposZen
                     itvwParentID = Convert.ToInt32(dtLoad.Rows[0]["ParentID"].ToString());
                     iAction = 1;
                 }
+                oldvalue = txtArea.Text;
+                olddata = "Area:" + txtArea.Text + ",ParentId:" + itvwParentID + ",Remarks:" + txtRemarks.Text;
+
             }
             catch (Exception ex)
             {
@@ -615,6 +634,8 @@ namespace DigiposZen
         {
           if (IsValidate() == true)
           {
+            newdata = "Area:" + txtArea.Text + ",ParentId:" + itvwParentID + ",Remarks:" + txtRemarks.Text;
+
             string[] strResult;
             string strRet = "";
             string strtnds = ",0,";
@@ -629,6 +650,7 @@ namespace DigiposZen
                         itvwParentID = Convert.ToInt32(tn.Name);
                         strtnds = GetParentNodes(tn);
                     }
+
                 }
                 else
                     iAction = 1;
@@ -703,7 +725,15 @@ namespace DigiposZen
                            ClearAll();
                         SetDefaultTreeview();
                         Comm.MessageboxToasted("Area", "Area saved successfully");
+                        if (iIDFromEditWindow > 0)
+                        {
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Area to " + AreaInfo.Area, 521, 521, AreaInfo.Area, Comm.ToInt32(AreaInfo.AreaID), "ItemMaster");
+                        }
+                        else
+                        {
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AreaInfo.Area, 521, 521, AreaInfo.Area, Comm.ToInt32(AreaInfo.AreaID), "ItemMaster");
 
+                        }
                         if (bFromEditWindowArea == true && bDirectDelete == false)
                         {
                             this.Close();

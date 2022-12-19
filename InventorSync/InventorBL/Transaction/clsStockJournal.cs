@@ -398,7 +398,8 @@ namespace DigiposZen.InventorBL.Transaction
 
                             sqlDa.Fill(dsDtl);
 
-                            dtResult = dsDtl.Tables[0];
+                            //dtResult = dsDtl.Tables[0];
+                            dtResult = dsDtl.Tables[dsDtl.Tables.Count - 1];
                         }
                     }
                 }
@@ -552,7 +553,8 @@ namespace DigiposZen.InventorBL.Transaction
                         SpParam.Value = iAction;
 
                         sqlDa.Fill(dsDtl);
-                        dtResult = dsDtl.Tables[0];
+                        //dtResult = dsDtl.Tables[0];
+                        dtResult = dsDtl.Tables[dsDtl.Tables.Count - 1];
                     }
                 }
                 else if (iAction == 3)
@@ -705,7 +707,8 @@ namespace DigiposZen.InventorBL.Transaction
                         SpParam.Value = iAction;
 
                         sqlDa.Fill(dsDtl);
-                        dtResult = dsDtl.Tables[0];
+                        //dtResult = dsDtl.Tables[0];
+                        dtResult = dsDtl.Tables[dsDtl.Tables.Count - 1];
                     }
                 }
 

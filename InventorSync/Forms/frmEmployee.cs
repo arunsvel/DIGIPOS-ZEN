@@ -28,6 +28,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -563,6 +566,8 @@ namespace DigiposZen
                     try
                     {
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Deleted " + EmpInfo.EmpFname, 503, 503, EmpInfo.EmpFname, Comm.ToInt32(EmpInfo.EmpID), "Employee");
+
 
                     }
                     catch (Exception ex)
@@ -688,6 +693,9 @@ namespace DigiposZen
                     togglebtnActive.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive;
 
                 iAction = 1;
+                oldvalue = txtName.Text;
+                olddata = "Name:" + txtName.Text + ",Employee Code:" + txtEmployeeCode.Text + ",Address" + txtAddress.Text + ",Phone No:" + txtPhone.Text + ",Designation:" + cmbDesig.Text + ",EnrollNo:" + txtEnrollNo.Text;
+
             }
         }
         //Description : Save and Update Functionalities to the Database
@@ -695,6 +703,8 @@ namespace DigiposZen
         {
             if (IsValidate() == true)
             {
+                newdata = "Name:" + txtName.Text + ",Employee Code:" + txtEmployeeCode.Text + ",Address" + txtAddress.Text + ",Phone No:" + txtPhone.Text + ",Designation:" + cmbDesig.Text + ",EnrollNo:" + txtEnrollNo.Text;
+
                 string[] strResult;
                 string strRet = "";
                 if (iAction == 0)
@@ -807,9 +817,29 @@ namespace DigiposZen
                     else
                     {
                         Comm.MessageboxToasted("Employee", "Employee saved successfully");
+                        if (iIDFromEditWindow > 0)
+                        {
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Employee to " + EmpInfo.EmpFname, 503, 503, EmpInfo.EmpFname, Comm.ToInt32(EmpInfo.EmpID), "Employee");
+                        }
+                        else
+                        {
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + EmpInfo.EmpFname, 503, 503, EmpInfo.EmpFname, Comm.ToInt32(EmpInfo.EmpID), "Employee");
+
+                        }
                         ClearAll();
                     }
                     Comm.MessageboxToasted("Employee", "Employee saved successfully");
+
+                    if (iIDFromEditWindow > 0)
+                    {
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Employee to " + EmpInfo.EmpFname, 503, 503, EmpInfo.EmpFname, Comm.ToInt32(EmpInfo.EmpID), "Employee");
+                    }
+                    else
+                    {
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + EmpInfo.EmpFname, 503, 503, EmpInfo.EmpFname, Comm.ToInt32(EmpInfo.EmpID), "Employee");
+
+                    }
+
                     if (bFromEditWindowEmployee == true)
                     {
                         this.Close();

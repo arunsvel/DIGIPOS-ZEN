@@ -139,6 +139,7 @@ namespace DigiposZen
             this.txtLedger.Size = new System.Drawing.Size(587, 28);
             this.txtLedger.TabIndex = 72;
             this.txtLedger.Click += new System.EventHandler(this.txtColorHexCode_Click);
+            this.txtLedger.TextChanged += new System.EventHandler(this.txtLedger_TextChanged_1);
             this.txtLedger.Enter += new System.EventHandler(this.txtColorHexCode_Enter);
             this.txtLedger.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtColorHexCode_KeyDown);
             this.txtLedger.Leave += new System.EventHandler(this.txtColorHexCode_Leave);
@@ -597,7 +598,7 @@ namespace DigiposZen
             this.Name = "frmCashDeskMaster";
             this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Color Master ";
+            this.Text = "Cash Desk Master ";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmColorMaster_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmColorMaster_KeyDown);

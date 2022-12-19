@@ -1,0 +1,14 @@
+19-Dec-2022 12:35:03
+EventTarget:JsonSerialLizeAndDeserializeObject
+Could not convert string to decimal: 88.0,. Path 'ParentID', line 1, position 55.
+
+Newtonsoft.Json
+User Name: Administrator
+------------------------------------------------------------------------------
+19-Dec-2022 12:35:25
+EventTarget:JsonSerialLizeAndDeserializeObject
+Could not convert string to decimal: 88.0,. Path 'ParentID', line 1, position 55.
+
+Newtonsoft.Json
+User Name: Administrator
+------------------------------------------------------------------------------

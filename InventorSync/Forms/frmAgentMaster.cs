@@ -28,6 +28,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -783,6 +786,7 @@ namespace DigiposZen
                     try
                     {
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + AgentInfo.AgentCode, 501, 501, AgentInfo.AgentCode, Comm.ToInt32(AgentInfo.AgentID), "Agent");
 
                     }
                     catch (Exception ex)
@@ -1005,12 +1009,16 @@ namespace DigiposZen
                 cmbAgentLederName.SelectedValue = dtLoad.Rows[0]["LID"].ToString();
                 iAction = 1;
             }
+            olddata = "AgentCode:" + txtAgentCode.Text + ",AgentName:" + txtAgentName + ",ADDRESS:" + txtAddress.Text + ",Area:" + txtArea.Text + ",Phone:" + txtPhone.Text + ",Email:" + txtEmail.Text + ",Agent Ledger Name:" + cmbAgentLederName + ",Agent Discount:" + txtAgentDiscount.Text + ",Agent Commission:" + txtAgentCommission;
+            oldvalue = txtAgentCode.Text;
         }
         //Description : Save and Update Functionalities to the Database
         private void SaveData()
         {
             if (IsValidate() == true)
             {
+                newdata = "AgentCode:" + txtAgentCode.Text + ",AgentName:" + txtAgentName + ",ADDRESS:" + txtAddress.Text + ",Area:" + txtArea.Text + ",Phone:" + txtPhone.Text + ",Email:" + txtEmail.Text + ",Agent Ledger Name:" + cmbAgentLederName + ",Agent Discount:" + txtAgentDiscount.Text + ",Agent Commission:" + txtAgentCommission;
+
                 string[] strResult;
                 string strRet = "";
                 if (iAction == 0)
@@ -1146,6 +1154,15 @@ namespace DigiposZen
                     }
                     else
                         Comm.MessageboxToasted("Agent", "Agent saved successfully");
+                    if (iIDFromEditWindow > 0)
+                    {
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Agent to " + AgentInfo.AgentCode, 501, 501, AgentInfo.AgentCode, Comm.ToInt32(AgentInfo.AgentID), "Agent");
+                    }
+                    else
+                    {
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AgentInfo.AgentCode, 501, 501, AgentInfo.AgentCode, Comm.ToInt32(AgentInfo.AgentID), "Agent");
+
+                    }
                 }
                 else
                 {
@@ -1168,6 +1185,15 @@ namespace DigiposZen
                         toggleView();
                     }
                     Comm.MessageboxToasted("Agent", "Agent saved successfully");
+                    if (iIDFromEditWindow > 0)
+                    {
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Agent to " + AgentInfo.AgentCode, 501, 501, AgentInfo.AgentCode, Comm.ToInt32(AgentInfo.AgentID), "Agent");
+                    }
+                    else
+                    {
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AgentInfo.AgentCode, 501, 501, AgentInfo.AgentCode, Comm.ToInt32(AgentInfo.AgentID), "Agent");
+
+                    }
                     if (bFromEditWindowAgent == true)
                     {
                         this.Close();
@@ -1210,19 +1236,25 @@ namespace DigiposZen
                 strResult = strRet.Split('|');
                 if (Convert.ToInt32(strResult[0].ToString()) == -1)
                 {
+
                     if (strResult[1].ToString().ToUpper().Contains("THE DELETE STATEMENT CONFLICTED WITH THE REFERENCE CONSTRAINT"))
                         MessageBox.Show("Hey! There are entries Associated with this Agent [" + txtAgentName.Text + "] . Please Check.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
                         MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                 }
 
             }
             else
             {
                 if (Convert.ToInt32(strRet) == -1)
+
                     MessageBox.Show("Failed to Delete...", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
                 else
+
                     ClearAll();
+
             }
             if (bFromEditWindowAgent == true)
             {

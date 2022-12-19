@@ -26,6 +26,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -578,6 +581,8 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + ManfInfo.MnfName, 518, 518, ManfInfo.MnfName, Comm.ToInt32(ManfInfo.MnfID), "Manufacturer");
+
                     }
                 }
                 else
@@ -654,6 +659,7 @@ namespace DigiposZen
                 SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
                 return true;
             }
+
             return false;
         }
         private bool IsValidate()
@@ -712,6 +718,9 @@ namespace DigiposZen
                     txtDiscountPerc.Text = FormatValue(Comm.ToDouble(DiscPer), true, "#.00");
                     iAction = 1;
                 }
+                oldvalue = txtManufacture.Text;
+                olddata = "MnfName:" + txtManufacture.Text + ",MnfShortName:" + txtManfShortName.Text + ",Disc:" + txtDiscountPerc.Text;
+
             }
             catch (Exception ex)
             {
@@ -728,6 +737,8 @@ namespace DigiposZen
             {
                 if (IsValidate() == true)
                 {
+                    newdata = "MnfName:" + txtManufacture + ",MnfShortName:" + txtManfShortName.Text + ",Disc:" + txtDiscountPerc.Text;
+
                     string[] strResult;
                     string sRet = "";
                     DataTable dtUspMa = new DataTable();
@@ -800,6 +811,18 @@ namespace DigiposZen
                             ClearAll();
                         }
                         Comm.MessageboxToasted("Manufacture", "Manufacture saved successfully");
+                        if (iIDFromEditWindow > 0)
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Manufacture to " + ManfInfo.MnfName, 518, 518, ManfInfo.MnfName, Comm.ToInt32(ManfInfo.MnfID), "Manufacturer");
+
+                        }
+                        else
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + ManfInfo.MnfName, 518, 518, ManfInfo.MnfName, Comm.ToInt32(ManfInfo.MnfID), "Manufacturer");
+
+                        }
                     }
                 }
             }
@@ -841,6 +864,7 @@ namespace DigiposZen
                             MessageBox.Show("Hey! There are Items Associated with this Manufacturer [" + txtManufacture.Text + "] . Please Check", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         else
                             MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+
                 }
                 else
                 {
@@ -856,12 +880,14 @@ namespace DigiposZen
             }
             catch (Exception ex)
             {
+
                 MessageBox.Show(" Failed to Delete..." + "\n" + ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             finally
             {
             }
         }
+
         //Description : Clear Data from Form
         private void ClearAll()
         {

@@ -148,7 +148,7 @@
             // tblpLoginScreen
             // 
             this.tblpLoginScreen.ColumnCount = 2;
-            this.tblpLoginScreen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.tblpLoginScreen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1047F));
             this.tblpLoginScreen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpLoginScreen.Controls.Add(this.tblpJustLogin, 0, 0);
             this.tblpLoginScreen.Controls.Add(this.pnlUserCompany, 1, 0);
@@ -176,7 +176,7 @@
             this.tblpJustLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpJustLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             this.tblpJustLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
-            this.tblpJustLogin.Size = new System.Drawing.Size(6, 736);
+            this.tblpJustLogin.Size = new System.Drawing.Size(1041, 736);
             this.tblpJustLogin.TabIndex = 0;
             // 
             // lblIniitialize
@@ -185,7 +185,7 @@
             this.lblIniitialize.Font = new System.Drawing.Font("Tahoma", 12F);
             this.lblIniitialize.Location = new System.Drawing.Point(3, 678);
             this.lblIniitialize.Name = "lblIniitialize";
-            this.lblIniitialize.Size = new System.Drawing.Size(1, 58);
+            this.lblIniitialize.Size = new System.Drawing.Size(1035, 58);
             this.lblIniitialize.TabIndex = 4;
             this.lblIniitialize.Text = "Please wait while we initialize database";
             this.lblIniitialize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -196,7 +196,7 @@
             this.prgInitialize.Dock = System.Windows.Forms.DockStyle.Top;
             this.prgInitialize.Location = new System.Drawing.Point(3, 619);
             this.prgInitialize.Name = "prgInitialize";
-            this.prgInitialize.Size = new System.Drawing.Size(1, 56);
+            this.prgInitialize.Size = new System.Drawing.Size(1035, 56);
             this.prgInitialize.TabIndex = 3;
             this.prgInitialize.Visible = false;
             // 
@@ -206,7 +206,7 @@
             this.pnlJustLogin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlJustLogin.Location = new System.Drawing.Point(3, 103);
             this.pnlJustLogin.Name = "pnlJustLogin";
-            this.pnlJustLogin.Size = new System.Drawing.Size(1, 510);
+            this.pnlJustLogin.Size = new System.Drawing.Size(1035, 510);
             this.pnlJustLogin.TabIndex = 0;
             // 
             // pnlLogin
@@ -898,9 +898,9 @@
             this.pnlUserCompany.Controls.Add(this.groupBox1);
             this.pnlUserCompany.Controls.Add(this.tvwUserCompany);
             this.pnlUserCompany.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlUserCompany.Location = new System.Drawing.Point(15, 3);
+            this.pnlUserCompany.Location = new System.Drawing.Point(1050, 3);
             this.pnlUserCompany.Name = "pnlUserCompany";
-            this.pnlUserCompany.Size = new System.Drawing.Size(1281, 736);
+            this.pnlUserCompany.Size = new System.Drawing.Size(246, 736);
             this.pnlUserCompany.TabIndex = 3;
             // 
             // btnBacktoLogin

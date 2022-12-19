@@ -41,6 +41,15 @@ namespace DigiposZen.Forms
             this.btnClose = new System.Windows.Forms.Button();
             this.btnYtubeTutorial = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cboSalesStaff = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cboCostCentre = new System.Windows.Forms.ComboBox();
+            this.lblCostCenter = new System.Windows.Forms.Label();
+            this.txtPrefix = new System.Windows.Forms.TextBox();
+            this.txtInvAutoNo = new System.Windows.Forms.TextBox();
+            this.lblInvNo = new System.Windows.Forms.Label();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnprev = new System.Windows.Forms.Button();
             this.dtpInvDate = new System.Windows.Forms.DateTimePicker();
             this.lblInvDate = new System.Windows.Forms.Label();
             this.lblFooter = new System.Windows.Forms.Label();
@@ -59,15 +68,6 @@ namespace DigiposZen.Forms
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.DgvData = new System.Windows.Forms.DataGridView();
             this.tbpBarcodeChanger = new System.Windows.Forms.TabPage();
-            this.txtPrefix = new System.Windows.Forms.TextBox();
-            this.txtInvAutoNo = new System.Windows.Forms.TextBox();
-            this.lblInvNo = new System.Windows.Forms.Label();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnprev = new System.Windows.Forms.Button();
-            this.cboCostCentre = new System.Windows.Forms.ComboBox();
-            this.lblCostCenter = new System.Windows.Forms.Label();
-            this.cboSalesStaff = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.tlpMain.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -262,6 +262,112 @@ namespace DigiposZen.Forms
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1086, 45);
             this.panel2.TabIndex = 15;
+            // 
+            // cboSalesStaff
+            // 
+            this.cboSalesStaff.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboSalesStaff.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboSalesStaff.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSalesStaff.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboSalesStaff.FormattingEnabled = true;
+            this.cboSalesStaff.Location = new System.Drawing.Point(957, 8);
+            this.cboSalesStaff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cboSalesStaff.Name = "cboSalesStaff";
+            this.cboSalesStaff.Size = new System.Drawing.Size(111, 29);
+            this.cboSalesStaff.TabIndex = 35;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(857, 12);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(94, 21);
+            this.label14.TabIndex = 36;
+            this.label14.Text = "Sales Staff:";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // cboCostCentre
+            // 
+            this.cboCostCentre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboCostCentre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboCostCentre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCostCentre.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCostCentre.FormattingEnabled = true;
+            this.cboCostCentre.Location = new System.Drawing.Point(722, 8);
+            this.cboCostCentre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cboCostCentre.Name = "cboCostCentre";
+            this.cboCostCentre.Size = new System.Drawing.Size(116, 29);
+            this.cboCostCentre.TabIndex = 33;
+            // 
+            // lblCostCenter
+            // 
+            this.lblCostCenter.AutoSize = true;
+            this.lblCostCenter.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostCenter.Location = new System.Drawing.Point(613, 12);
+            this.lblCostCenter.Name = "lblCostCenter";
+            this.lblCostCenter.Size = new System.Drawing.Size(103, 21);
+            this.lblCostCenter.TabIndex = 34;
+            this.lblCostCenter.Text = "Cost Centre:";
+            this.lblCostCenter.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // txtPrefix
+            // 
+            this.txtPrefix.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrefix.Location = new System.Drawing.Point(192, 8);
+            this.txtPrefix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPrefix.Name = "txtPrefix";
+            this.txtPrefix.Size = new System.Drawing.Size(47, 28);
+            this.txtPrefix.TabIndex = 28;
+            this.txtPrefix.Visible = false;
+            // 
+            // txtInvAutoNo
+            // 
+            this.txtInvAutoNo.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInvAutoNo.Location = new System.Drawing.Point(192, 8);
+            this.txtInvAutoNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtInvAutoNo.MaxLength = 100;
+            this.txtInvAutoNo.Name = "txtInvAutoNo";
+            this.txtInvAutoNo.Size = new System.Drawing.Size(127, 28);
+            this.txtInvAutoNo.TabIndex = 29;
+            this.txtInvAutoNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtInvAutoNo.Leave += new System.EventHandler(this.txtInvAutoNo_Leave);
+            // 
+            // lblInvNo
+            // 
+            this.lblInvNo.AutoSize = true;
+            this.lblInvNo.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvNo.ForeColor = System.Drawing.Color.Black;
+            this.lblInvNo.Location = new System.Drawing.Point(19, 12);
+            this.lblInvNo.Name = "lblInvNo";
+            this.lblInvNo.Size = new System.Drawing.Size(132, 21);
+            this.lblInvNo.TabIndex = 30;
+            this.lblInvNo.Text = "Invoice Number:";
+            this.lblInvNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnNext
+            // 
+            this.btnNext.FlatAppearance.BorderSize = 0;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Image = global::DigiposZen.Properties.Resources.fast_forward;
+            this.btnNext.Location = new System.Drawing.Point(316, 7);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(28, 31);
+            this.btnNext.TabIndex = 31;
+            this.btnNext.UseVisualStyleBackColor = true;
+            // 
+            // btnprev
+            // 
+            this.btnprev.FlatAppearance.BorderSize = 0;
+            this.btnprev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnprev.Image = global::DigiposZen.Properties.Resources.fast_backwards;
+            this.btnprev.Location = new System.Drawing.Point(162, 7);
+            this.btnprev.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnprev.Name = "btnprev";
+            this.btnprev.Size = new System.Drawing.Size(28, 31);
+            this.btnprev.TabIndex = 32;
+            this.btnprev.UseVisualStyleBackColor = true;
             // 
             // dtpInvDate
             // 
@@ -480,111 +586,6 @@ namespace DigiposZen.Forms
             this.tbpBarcodeChanger.Size = new System.Drawing.Size(1368, 399);
             this.tbpBarcodeChanger.TabIndex = 1;
             this.tbpBarcodeChanger.Text = "Barcode Changer";
-            // 
-            // txtPrefix
-            // 
-            this.txtPrefix.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrefix.Location = new System.Drawing.Point(192, 8);
-            this.txtPrefix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtPrefix.Name = "txtPrefix";
-            this.txtPrefix.Size = new System.Drawing.Size(47, 28);
-            this.txtPrefix.TabIndex = 28;
-            this.txtPrefix.Visible = false;
-            // 
-            // txtInvAutoNo
-            // 
-            this.txtInvAutoNo.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvAutoNo.Location = new System.Drawing.Point(192, 8);
-            this.txtInvAutoNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtInvAutoNo.MaxLength = 100;
-            this.txtInvAutoNo.Name = "txtInvAutoNo";
-            this.txtInvAutoNo.Size = new System.Drawing.Size(127, 28);
-            this.txtInvAutoNo.TabIndex = 29;
-            this.txtInvAutoNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // lblInvNo
-            // 
-            this.lblInvNo.AutoSize = true;
-            this.lblInvNo.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvNo.ForeColor = System.Drawing.Color.Black;
-            this.lblInvNo.Location = new System.Drawing.Point(19, 12);
-            this.lblInvNo.Name = "lblInvNo";
-            this.lblInvNo.Size = new System.Drawing.Size(132, 21);
-            this.lblInvNo.TabIndex = 30;
-            this.lblInvNo.Text = "Invoice Number:";
-            this.lblInvNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnNext
-            // 
-            this.btnNext.FlatAppearance.BorderSize = 0;
-            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNext.Image = global::DigiposZen.Properties.Resources.fast_forward;
-            this.btnNext.Location = new System.Drawing.Point(316, 7);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(28, 31);
-            this.btnNext.TabIndex = 31;
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // btnprev
-            // 
-            this.btnprev.FlatAppearance.BorderSize = 0;
-            this.btnprev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnprev.Image = global::DigiposZen.Properties.Resources.fast_backwards;
-            this.btnprev.Location = new System.Drawing.Point(162, 7);
-            this.btnprev.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnprev.Name = "btnprev";
-            this.btnprev.Size = new System.Drawing.Size(28, 31);
-            this.btnprev.TabIndex = 32;
-            this.btnprev.UseVisualStyleBackColor = true;
-            // 
-            // cboCostCentre
-            // 
-            this.cboCostCentre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboCostCentre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboCostCentre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCostCentre.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboCostCentre.FormattingEnabled = true;
-            this.cboCostCentre.Location = new System.Drawing.Point(722, 8);
-            this.cboCostCentre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cboCostCentre.Name = "cboCostCentre";
-            this.cboCostCentre.Size = new System.Drawing.Size(116, 29);
-            this.cboCostCentre.TabIndex = 33;
-            // 
-            // lblCostCenter
-            // 
-            this.lblCostCenter.AutoSize = true;
-            this.lblCostCenter.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCostCenter.Location = new System.Drawing.Point(613, 12);
-            this.lblCostCenter.Name = "lblCostCenter";
-            this.lblCostCenter.Size = new System.Drawing.Size(103, 21);
-            this.lblCostCenter.TabIndex = 34;
-            this.lblCostCenter.Text = "Cost Centre:";
-            this.lblCostCenter.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // cboSalesStaff
-            // 
-            this.cboSalesStaff.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboSalesStaff.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboSalesStaff.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSalesStaff.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboSalesStaff.FormattingEnabled = true;
-            this.cboSalesStaff.Location = new System.Drawing.Point(957, 8);
-            this.cboSalesStaff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cboSalesStaff.Name = "cboSalesStaff";
-            this.cboSalesStaff.Size = new System.Drawing.Size(111, 29);
-            this.cboSalesStaff.TabIndex = 35;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(857, 12);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 21);
-            this.label14.TabIndex = 36;
-            this.label14.Text = "Sales Staff:";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // frmBarcodeManager
             // 

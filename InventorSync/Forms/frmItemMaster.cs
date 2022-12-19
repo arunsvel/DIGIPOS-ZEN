@@ -41,6 +41,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -581,10 +584,51 @@ namespace DigiposZen
                     cboBrand.Focus();
                     SendKeys.Send("+{F4}");
                 }
-                else
+                else if (cboDiscGroup.Visible == true)
                 {
                     cboDiscGroup.Focus();
                     SendKeys.Send("+{F4}");
+                }
+                else if (cboDepmnt.Visible == true)
+                {
+                    cboDepmnt.Focus();
+                    SendKeys.Send("{F4}");
+                }
+                else if (txtDescription.Visible == true)
+                {
+                    txtDescription.Focus();
+                }
+                else if (txtAgentCommision.Visible == true)
+                {
+                    txtAgentCommision.Focus();
+                }
+                else if (txtDiscPerc.Visible == true)
+                {
+                    txtDiscPerc.Focus();
+                }
+                else if (txtCoolie.Visible == true)
+                {
+                    txtCoolie.Focus();
+                }
+                else if (txtROL.Visible == true)
+                {
+                    txtROL.Focus();
+                }
+                else if (txtMOQ.Visible == true)
+                {
+                    txtMOQ.Focus();
+                }
+                else if (txtMinRate.Visible == true)
+                {
+                    txtMinRate.Focus();
+                }
+                else if (txtAgentCommision.Visible == true)
+                {
+                    txtMaxRate.Focus();
+                }
+                else if (txtHSNCode.Visible == true)
+                {
+                    txtHSNCode.Focus();
                 }
             }
             else if (e.KeyCode == Keys.F3)
@@ -1413,10 +1457,51 @@ namespace DigiposZen
                     cboBrand.Focus();
                     SendKeys.Send("{F4}");
                 }
-                else
+                else if (cboDiscGroup.Visible == true)
                 {
                     cboDiscGroup.Focus();
                     SendKeys.Send("{F4}");
+                }
+                else if (cboDepmnt.Visible == true)
+                {
+                    cboDepmnt.Focus();
+                    SendKeys.Send("{F4}");
+                }
+                else if (txtDescription.Visible == true)
+                {
+                    txtDescription.Focus();
+                }
+                else if (txtAgentCommision.Visible == true)
+                {
+                    txtAgentCommision.Focus();
+                }
+                else if (txtDiscPerc.Visible == true)
+                {
+                    txtDiscPerc.Focus();
+                }
+                else if (txtCoolie.Visible == true)
+                {
+                    txtCoolie.Focus();
+                }
+                else if (txtROL.Visible == true)
+                {
+                    txtROL.Focus();
+                }
+                else if (txtMOQ.Visible == true)
+                {
+                    txtMOQ.Focus();
+                }
+                else if (txtMinRate.Visible == true)
+                {
+                    txtMinRate.Focus();
+                }
+                else if (txtAgentCommision.Visible == true)
+                {
+                    txtMaxRate.Focus();
+                }
+                else if (txtHSNCode.Visible == true)
+                {
+                    txtHSNCode.Focus();
                 }
             }
         }
@@ -1573,8 +1658,43 @@ namespace DigiposZen
         {
             if (e.KeyData == Keys.Tab)
             {
-                e.IsInputKey = true;
-                txtRack.Focus();
+                //e.IsInputKey = true;
+                //txtRack.Focus();
+
+                //if (txtRack.Visible == true)
+                //{
+                //    txtRack.Focus();
+                //}
+                //else if (txtColor.Visible == true)
+                //{
+                //    txtColor.Focus();
+                //    SendKeys.Send("{DOWN}");
+                //}
+                //else if (txtSize.Visible == true)
+                //{
+                //    txtSize.Focus();
+                //    SendKeys.Send("{DOWN}");
+                //}
+                //else if (cboBrand.Visible == true)
+                //{
+                //    cboBrand.Focus();
+                //    SendKeys.Send("{F4}");
+                //}
+                //else if (cboDiscGroup.Visible == true)
+                //{
+                //    cboDiscGroup.Focus();
+                //    SendKeys.Send("{F4}");
+                //}
+                //else if (cboDepmnt.Visible == true)
+                //{
+                //    cboDepmnt.Focus();
+                //    SendKeys.Send("{F4}");
+                //}
+                //else if (txtDescription.Visible == true)
+                //{
+                //    txtDescription.Focus();
+                //    SendKeys.Send("{F4}");
+                //}
             }
         }
 
@@ -3223,6 +3343,8 @@ namespace DigiposZen
                 {
                     Cursor.Current = Cursors.WaitCursor;
                     DeleteData();
+                    Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Delete " + itemInsertInfo.ItemCode, 502, 502, itemInsertInfo.ItemCode, Comm.ToInt32(itemInsertInfo.ItemID), "ItemMaster");
+
                     Cursor.Current = Cursors.Default;
                 }
             }
@@ -4596,12 +4718,17 @@ namespace DigiposZen
                 cboDepmnt.Tag = dtLoad.Rows[0]["DepartmentID"].ToString();
                 txtDefaultExpDays.Text = dtLoad.Rows[0]["DefaultExpInDays"].ToString();
             }
+            oldvalue = txtItemName.Text;
+            olddata = "ItemName:" + txtItemName.Text + ",ItemCode:" + txtItemCode.Text + ",Category:" + txtCategoryList.Text + "Manufacture:" + txtManufacturer.Text + ",Unit:" + cboUnit.Text + ",Rack:" + txtRack.Text + ",colour:" + txtColor.Text + ",Size:" + txtSize.Text + ",Brand:" + cboBrand.Text + ",Discount Group:" + cboDiscGroup.Text + ",Department:" + cboDepmnt.Text + ",Description:" + txtDescription.Text + ",Agent Comistion:" + txtAgentCommision.Text + ",Discount%:" + txtDiscPerc.Text + ",coolie:" + txtCoolie.Text + ",ROL:" + txtROL.Text + ",MOQ:" + txtMOQ.Text + ",Min Ratet:" + txtMinRate.Text + ",Max Rate:" + txtMaxRate.Text + ",Hsncode:" + txtHSNCode.Text + ",PRate:" + txtPRate.Text + ",Mrp:" + txtMRP.Text + ",Srate1:" + txtSRate1.Text + ",Srate2:" + txtSRate2.Text + ",Srate3" + txtSRate3.Text + ",Srate4" + txtSRate4.Text + ",Srate5" + txtSRate5.Text;
+
         }
         //Description : Save and Update Functionalities to the Database
         private void SaveData()
         {
             if (ItemValidate() == true)
             {
+                newdata = "ItemName:" + txtItemName.Text + ",ItemCode:" + txtItemCode.Text + ",Category:" + txtCategoryList.Text + "Manufacture:" + txtManufacturer.Text + ",Unit:" + cboUnit.Text + ",Rack:" + txtRack.Text + ",colour:" + txtColor.Text + ",Size:" + txtSize.Text + ",Brand:" + cboBrand.Text + ",Discount Group:" + cboDiscGroup.Text + ",Department:" + cboDepmnt.Text + ",Description:" + txtDescription.Text + ",Agent Comistion:" + txtAgentCommision.Text + ",Discount%:" + txtDiscPerc.Text + ",coolie:" + txtCoolie.Text + ",ROL:" + txtROL.Text + ",MOQ:" + txtMOQ.Text + ",Min Ratet:" + txtMinRate.Text + ",Max Rate:" + txtMaxRate.Text + ",Hsncode:" + txtHSNCode.Text + ",PRate:" + txtPRate.Text + ",Mrp:" + txtMRP.Text + ",Srate1:" + txtSRate1.Text + ",Srate2:" + txtSRate2.Text + ",Srate3" + txtSRate3.Text + ",Srate4" + txtSRate4.Text + ",Srate5" + txtSRate5.Text;
+
                 int iActive = 0, iExpItem = 0, iIsIntNo = 0, iHSN = 0, iSRIncl = 0, iPRIncl = 0, iSlabsys = 0;
                 string strRet = "", sCatIds = "";
                 string[] strResult;
@@ -5050,6 +5177,16 @@ namespace DigiposZen
                         else
                             ClearFormControls();
                         Comm.MessageboxToasted("Item Master", "Item Saved Successfully");
+                        if (iIDFromEditWindow > 0)
+                        {
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Item to " + itemInsertInfo.ItemCode, 502, 502, itemInsertInfo.ItemCode, Comm.ToInt32(itemInsertInfo.ItemID), "ItemMaster");
+                        }
+                        else
+                        {
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + itemInsertInfo.ItemCode, 502, 502, itemInsertInfo.ItemCode, Comm.ToInt32(itemInsertInfo.ItemID), "ItemMaster");
+
+                        }
+
 
                     }
                 }
@@ -6439,6 +6576,11 @@ namespace DigiposZen
         }
 
         private void lblSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

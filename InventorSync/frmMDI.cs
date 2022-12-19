@@ -130,14 +130,14 @@ namespace DigiposZen
 
             switch (MenuName)
             {
-                //case "CONNECTIONDETAILS":
-                //    frmAccountStatements frmACC = new frmAccountStatements("DAYBOOK", this);
-                //    frmACC.Text = "DAYBOOK";
-                //    frmACC.MdiParent = this;
-                //    frmACC.Show();
-                //    frmACC.Focus();
-                //    frmACC.BringToFront();
-                //    break;
+                case "CONNECTIONDETAILS":
+                    frmConnectionProperties frmCP = new frmConnectionProperties();
+                    frmCP.Text = "User Profile";
+                    frmCP.MdiParent = this;
+                    frmCP.Show();
+                    frmCP.Focus();
+                    frmCP.BringToFront();
+                    break;
 
                 case "ADVANCEDSEARCH":
                     frmCommadWindow frmcmd = new frmCommadWindow();
@@ -616,6 +616,12 @@ namespace DigiposZen
                             frmRepack.BringToFront();
                             break;
 
+                        case 88: //Purchase
+                            frmBarcodeManager frmBM = new frmBarcodeManager(VchtypeID, 0, false, this);
+                            frmBM.Show();
+                            frmBM.BringToFront();
+                            break;
+
                         case 40: //board rate updator
                             frmBoardRateUpdator frmBRU = new frmBoardRateUpdator(VchtypeID, 0, false, this);
                             frmBRU.Show();
@@ -1077,7 +1083,7 @@ namespace DigiposZen
         private void tsmConnectionDetails_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            OpenMenu("CONNECTIONDETAILS", 0);
 
         }
 

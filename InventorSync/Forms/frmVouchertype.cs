@@ -2455,6 +2455,10 @@ namespace DigiposZen
 
                             break;
                         }
+                    case "88": //Barcode Changer
+                        {
+                            break;
+                        }
                     case "1005": //Opening
                         {
                             dt.Rows.Add("blnWarnifSRatelessthanPrate", "Warn If Sales Rate Is Less Than Purchase Rate");

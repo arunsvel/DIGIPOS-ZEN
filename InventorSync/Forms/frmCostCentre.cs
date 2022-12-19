@@ -27,6 +27,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -357,6 +360,9 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                        DeleteData();
+                       Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted" + CostCentrinfo.CCName, 518, 518, CostCentrinfo.CCName, Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
+
+
                     }
                 }
                 else
@@ -452,6 +458,9 @@ namespace DigiposZen
                 txtDescription1.Text = dtLoad.Rows[0]["Description1"].ToString();
                 iAction = 1;
             }
+            oldvalue = txtCostCentreName.Text;
+            olddata = "CostCentreName:" + txtCostCentreName.Text + ",Description1:" + txtDescription1.Text;
+
         }
         //Description:Save Date to Cost centre table
         private void SaveData()
@@ -460,6 +469,8 @@ namespace DigiposZen
             string sRet = "";
             if (IsValidate() == true)
             {
+                newdata = "CostCentreName:" + txtCostCentreName.Text + ",Description1:" + txtDescription1.Text;
+
                 if (iAction == 0)
                 {
                     CostCentrinfo.CCID = Comm.gfnGetNextSerialNo("tblCostCentre", "CCID");
@@ -504,6 +515,18 @@ namespace DigiposZen
                             this.Close();
                         }
                         Comm.MessageboxToasted("Cost Centre", "Cost Centre Saved Successfully");
+                        if (iIDFromEditWindow > 0)
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " CostCenter to " + CostCentrinfo.CCName, 507, 507, CostCentrinfo.CCName, Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
+
+                        }
+                        else
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + CostCentrinfo.CCName, 507, 507, CostCentrinfo.CCName, Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
+
+                        }
                     }
                 }
                 else
@@ -526,6 +549,18 @@ namespace DigiposZen
                         ClearAll();
                     }
                     Comm.MessageboxToasted("Cost Centre", "Cost Centre Saved Successfully");
+                    if (iIDFromEditWindow > 0)
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " CostCenter to " + CostCentrinfo.CCName, 507, 507, CostCentrinfo.CCName, Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
+
+                    }
+                    else
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + CostCentrinfo.CCName, 507, 507, CostCentrinfo.CCName, Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
+
+                    }
                     if (bFromEditWindowCostCentre == true)
                     {
                         this.Close();

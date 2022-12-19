@@ -27,6 +27,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -537,6 +540,8 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Deleted " + CategoryInfo.Category, 514, 514, CategoryInfo.Category, Comm.ToInt32(CategoryInfo.CategoryID), "Category");
+
                     }
                 }
                 else
@@ -741,10 +746,15 @@ namespace DigiposZen
                 itvwParentID = Convert.ToInt32(dtLoad.Rows[0]["ParentID"].ToString());
                 iAction = 1;
             }
+            oldvalue = txtCategoryName.Text;
+            olddata = "Category:" + txtCategoryName.Text + ",Discount %:" + txtDiscountPerc.Text + ",Parent Category:" + itvwParentID + ",Remarks:" + txtRemarks.Text;
+
         }
         //Description : Save and Update Functionalities to the Database
         private void SaveData()
         {
+            newdata = "Category:" + txtCategoryName.Text + ",Discount %:" + txtDiscountPerc.Text + ",Parent Category:" + itvwParentID + ",Remarks:" + txtRemarks.Text;
+
             if (IsValidate() == true)
             {
                 string strRet = "";
@@ -846,6 +856,15 @@ namespace DigiposZen
                                 SetDefaultTreeview();
                                 Cursor.Current = Cursors.WaitCursor;
                                 Comm.MessageboxToasted("Categories", "Category details saved successfully");
+                                if (iIDFromEditWindow > 0)
+                                {
+                                    Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "update "+oldvalue+" Catogery to " + CategoryInfo.Category, 514, 514, CategoryInfo.Category, Comm.ToInt32(CategoryInfo.CategoryID), "Category");
+
+                                }
+                                else
+                                {
+                                    Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created Category " + CategoryInfo.Category, 514, 514, CategoryInfo.Category, Comm.ToInt32(CategoryInfo.CategoryID), "Category");
+                                }
                                 Cursor.Current = Cursors.Default;
                             }
                         }

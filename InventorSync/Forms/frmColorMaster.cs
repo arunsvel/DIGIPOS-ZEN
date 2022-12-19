@@ -27,6 +27,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -327,6 +330,8 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + Colorinfo.ColorName, 518, 518, Colorinfo.ColorName, Comm.ToInt32(Colorinfo.ColorID), "Color");
+
                     }
                 }
                 else
@@ -391,10 +396,12 @@ namespace DigiposZen
                 MessageBox.Show("Failed to Close...." + "\n" + ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         #endregion
 
         #region "METHODS --------------------------------------------- >>"
         //Description : Validating the Mandatory Fields Before Save Functionality
+      
         public bool PreFilterMessage(ref Message m)
         {
             if (m.Msg == WM_LBUTTONDOWN &&
@@ -438,12 +445,17 @@ namespace DigiposZen
                 txtColorHexCode.Text = dtLoad.Rows[0]["ColorHexCode"].ToString();
                 iAction = 1;
             }
+            oldvalue = txtColorName.Text;
+            olddata = "ColorName:" + txtColorName.Text + ",ColorHexCode" + txtColorHexCode.Text;
+
         }
         //Description : Save and Update Functionalities to the Database
         private void SaveData()
         {
             if (IsValidate() == true)
             {
+                newdata = "ColorName:" + txtColorName.Text + ",ColorHexCode" + txtColorHexCode.Text;
+
                 string[] strResult;
                  string strRet = "";
                 if (iAction == 0)
@@ -496,6 +508,19 @@ namespace DigiposZen
                        
                     }
                     Comm.MessageboxToasted("Color", "Color saved successfully");
+
+                    if (iIDFromEditWindow > 0)
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Color to " + Colorinfo.ColorName, 518, 518, Colorinfo.ColorName, Comm.ToInt32(Colorinfo.ColorID), "Color");
+
+                    }
+                    else
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + Colorinfo.ColorName, 518, 518, Colorinfo.ColorName, Comm.ToInt32(Colorinfo.ColorID), "Color");
+
+                    }
                 }
             }
         }
@@ -520,8 +545,10 @@ namespace DigiposZen
                if (strRet.Length > 2)
                {
                   strResult = strRet.Split('|');
+
                   if (Convert.ToInt32(strResult[0].ToString()) == -1)
                   { 
+
                       MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                   }
                }
@@ -534,6 +561,7 @@ namespace DigiposZen
                }
                if (bFromEditWindowColor == true)
                {
+                    
                    this.Close();
                }
             }

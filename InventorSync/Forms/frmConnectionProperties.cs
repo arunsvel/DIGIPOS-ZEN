@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DigiposZen.InventorBL.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,11 @@ namespace DigiposZen.Forms
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmConnectionProperties_Load(object sender, EventArgs e)
+        {
+            lblSqlServer.Text = Global.SqlServerName;
         }
     }
 }

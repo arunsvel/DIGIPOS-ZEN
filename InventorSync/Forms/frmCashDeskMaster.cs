@@ -30,6 +30,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -151,7 +154,7 @@ namespace DigiposZen
 
             string sQuery = "SELECT LedgerCode + LedgerName + MobileNo + Email + TaxNo AS anywhere, LedgerCode, LedgerName, MobileNo, CurBal, Email, TaxNo, LID " +
                     " FROM     vwLedger   Where isnull(ActiveStatus, 1) = 1 " + strCondition;
-            frmDetailedSearch2 frmN = new frmDetailedSearch2(GetFromLedgerSearch, sQuery, "Anywhere|LedgerCode|LedgerName", this.Left + 155, this.Top + 20, 7, 0, "", 7, 0, "ORDER BY LedgerCode ASC", 0, 0, "Ledger Search...", 0, "250,250,150,150,150,150,0", true, "frmLedger", 20);
+            frmDetailedSearch2 frmN = new frmDetailedSearch2(GetFromLedgerSearch, sQuery, "Anywhere|LedgerCode|LedgerName", this.Left + 155, this.Top + 20, 7, 0, "", 7, 0, "ORDER BY LedgerCode ASC", 0, 0, "Ledger Search...", 0, "250,250,150,150,150,150,0", true, "frmLedger", 20, false, this.MdiParent, 7);
             frmN.MdiParent = this.MdiParent;
             frmN.Show();
 
@@ -446,6 +449,8 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + CashDeskinfo.PaymentType, 0, 0, CashDeskinfo.PaymentType, Comm.ToInt32(CashDeskinfo.PaymentID), "CASHDESK");
+
                     }
                 }
                 else
@@ -556,12 +561,17 @@ namespace DigiposZen
                 txtLedger.Text = dtLoad.Rows[0]["LedgerID"].ToString();
                 iAction = 1;
             }
+            oldvalue = txtPaymentType.Text;
+            olddata = "PaymentType:" + txtPaymentType.Text + ",Ledger" + txtLedger.Text;
+
         }
         //Description : Save and Update Functionalities to the Database
         private void SaveData()
         {
             if (IsValidate() == true)
             {
+                newdata = "PaymentType:" + txtPaymentType.Text + ",Ledger" + txtLedger.Text;
+
                 string[] strResult;
                 string strRet = "";
                 if (iAction == 0)
@@ -615,6 +625,18 @@ namespace DigiposZen
 
                     }
                     Comm.MessageboxToasted("", "Payment Type saved successfully");
+                    if (iIDFromEditWindow > 0)
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " CashDesk to " + CashDeskinfo.PaymentType, 0, 0, CashDeskinfo.PaymentType, Comm.ToInt32(CashDeskinfo.PaymentID), "CASHDESK");
+
+                    }
+                    else
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + CashDeskinfo.PaymentType, 0, 0, CashDeskinfo.PaymentType, Comm.ToInt32(CashDeskinfo.PaymentID), "CASHDESK");
+
+                    }
                 }
             }
         }
@@ -665,5 +687,18 @@ namespace DigiposZen
             txtPaymentType.Focus();
         }
         #endregion
+
+        private void txtLedger_TextChanged_1(object sender, EventArgs e)
+        {
+            toolTipColor.SetToolTip(txtLedger, "Please enter the  matched the Color HexCode");
+            string strCondition = "";
+            strCondition = " and  accountgroupid in (16) ";
+
+            string sQuery = "SELECT LedgerCode + LedgerName + MobileNo + Email + TaxNo AS anywhere, LedgerCode, LedgerName, MobileNo, CurBal, Email, TaxNo, LID " +
+                    " FROM     vwLedger   Where isnull(ActiveStatus, 1) = 1 " + strCondition;
+            frmDetailedSearch2 frmN = new frmDetailedSearch2(GetFromLedgerSearch, sQuery, "Anywhere|LedgerCode|LedgerName", this.Left + 155, this.Top + 20, 7, 0, "", 7, 0, "ORDER BY LedgerCode ASC", 0, 0, "Ledger Search...", 0, "250,250,150,150,150,150,0", true, "frmLedger", 20,false, this.MdiParent, 7);
+            frmN.MdiParent = this.MdiParent;
+            frmN.Show();
+        }
     }
 }

@@ -1936,7 +1936,7 @@ namespace DigiposZen
         {
             try
             {
-                Comm.DBUpdate();
+                Comm.DBUpdate(true);
                 Comm.CreateViewsAndProcudures();
                 Comm.MessageboxToasted("System Update", "Database Updated successfully");
             }

@@ -8,7 +8,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DigiposZen.Info;
 using DigiposZen.InventorBL.Helper;
+using DigiposZen.InventorBL.Master;
 using DigiposZen.JsonClass;
 
 namespace DigiposZen.Forms
@@ -29,6 +31,12 @@ namespace DigiposZen.Forms
 
         Common Comm = new Common();
         clsJSonCommon JSonComm = new clsJSonCommon();
+
+        UspGetEmployeeInfo GetEmpInfo = new UspGetEmployeeInfo();
+        UspGetCostCentreInfo GetCctinfo = new UspGetCostCentreInfo();
+
+        clsEmployee clsEmp = new clsEmployee();
+        clsCostCentre clscct = new clsCostCentre();
 
         clsJsonVoucherType clsVchType = new clsJsonVoucherType();
         clsGetStockInVoucherSettings clsVchTypeFeatures = new clsGetStockInVoucherSettings();
@@ -62,6 +70,9 @@ namespace DigiposZen.Forms
                 iIDFromEditWindow = iTransID;
                 vchtypeID = iVchTpeId;
 
+                FillCostCentre();
+                FillEmployee();
+
                 if (iTransID != 0)
                 {
                     //FillCostCentre();
@@ -73,7 +84,7 @@ namespace DigiposZen.Forms
                     //txtInvAutoNo.Select();
                 }
                 //else
-                    //SetTransactionsthatVarying();
+                //SetTransactionsthatVarying();
             }
             catch (Exception ex)
             {
@@ -83,21 +94,66 @@ namespace DigiposZen.Forms
             }
         }
 
-        //Description : Setting Default Transactional Settings to the form
-        private void SetTransactionDefaults()
+        //Description : Get Employee Details from Database
+        public DataTable GetEmployee(int iSelID = 0)
         {
+            GetEmpInfo.EmpID = iSelID;
+            GetEmpInfo.TenantID = Global.gblTenantID;
+            GetEmpInfo.blnSalesStaff = true;
+            return clsEmp.GetEmployee(GetEmpInfo);
+        }
 
+        //Description: Fill Employee Details from GetEmployee Method to Combobox
+        private void FillEmployee(int iSelID = 0)
+        {
+            DataTable dtEmp = new DataTable();
+            dtEmp = GetEmployee(0);
+            if (dtEmp.Rows.Count > 0)
+            {
+                Comm.LoadControl(cboSalesStaff, dtEmp, "", false, false, "Name", "EmpID");
+                if (iSelID != 0)
+                    cboSalesStaff.SelectedValue = iSelID;
+            }
+        }
+
+        //Description: Get Cost Centre Details from the Database
+        public DataTable GetCostCentre(int iSelID = 0)
+        {
+            GetCctinfo.CCID = iSelID;
+            GetCctinfo.TenantID = Global.gblTenantID;
+            return clscct.GetCostCentre(GetCctinfo);
+        }
+
+        //Description: Fill CostCentre from Get CostCentre Method
+        private void FillCostCentre(int iSelID = 0)
+        {
+            DataTable dtCct = new DataTable();
+            dtCct = GetCostCentre(0);
+            if (dtCct.Rows.Count > 0)
+            {
+                cboCostCentre.DataSource = dtCct;
+                cboCostCentre.DisplayMember = "Cost Centre Name";
+                cboCostCentre.ValueMember = "CCID";
+                if (iSelID != 0)
+                    cboCostCentre.SelectedValue = iSelID;
+            }
+        }
+
+        private void FetchInvNo()
+        {
             try
             {
-                if (clsVchType == null)
+                if (clsVchType.TransactionPrefix != "") // Transactoin Prefix
                 {
-                    MessageBox.Show("Voucher settings incorrect for the voucher. Please correct the settings and open the voucher again.", "Sales Settings", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    txtPrefix.Text = clsVchType.TransactionPrefix.Trim();
+                    txtPrefix.Visible = true;
                 }
+                else
+                    txtPrefix.Visible = false;
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             try
@@ -106,7 +162,7 @@ namespace DigiposZen.Forms
                 {
                     if (iIDFromEditWindow == 0) //New
                     {
-                        txtInvAutoNo.Text = Comm.gfnGetNextSerialNo("tblSales", "AutoNum", " VchTypeID=" + vchtypeID).ToString();
+                        txtInvAutoNo.Text = Comm.gfnGetNextSerialNo("tblBarcodeManager", "AutoNum", " VchTypeID=" + vchtypeID).ToString();
                         txtInvAutoNo.Tag = 0;
                     }
                     txtInvAutoNo.ReadOnly = true;
@@ -116,8 +172,8 @@ namespace DigiposZen.Forms
                 {
                     if (iIDFromEditWindow == 0) //New
                     {
-                        //txtInvAutoNo.Text = Comm.gfnGetNextSerialNo("tblSales", "AutoNum").ToString();
-                        txtInvAutoNo.Text = Comm.gfnGetNextSerialNo("tblSales", "AutoNum", " VchTypeID=" + vchtypeID).ToString();
+                        //txtInvAutoNo.Text = Comm.gfnGetNextSerialNo("tblBarcodeManager", "AutoNum").ToString();
+                        txtInvAutoNo.Text = Comm.gfnGetNextSerialNo("tblBarcodeManager", "AutoNum", " VchTypeID=" + vchtypeID).ToString();
                         txtInvAutoNo.Tag = 0;
                     }
 
@@ -135,21 +191,24 @@ namespace DigiposZen.Forms
             {
                 MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
+        }
+        //Description : Setting Default Transactional Settings to the form
+        private void SetTransactionDefaults()
+        {
             try
             {
-                if (clsVchType.TransactionPrefix != "") // Transactoin Prefix
+                if (clsVchType == null)
                 {
-                    txtPrefix.Text = clsVchType.TransactionPrefix.Trim();
-                    txtPrefix.Visible = true;
+                    MessageBox.Show("Voucher settings incorrect for the voucher. Please correct the settings and open the voucher again.", "Sales Settings", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-                else
-                    txtPrefix.Visible = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
+
+            FetchInvNo();
 
             try
             {
@@ -327,18 +386,10 @@ namespace DigiposZen.Forms
 
                     DgvData.Columns[0].Visible = false;
                     DgvData.Columns[1].Visible = false;
-                    //DgvData.Columns[2].Visible = false;
                     DgvData.Columns[DgvData.Columns.Count - 1].Visible = false;
                     DgvData.Columns[DgvData.Columns.Count - 3].Visible = false;
                     DgvData.Columns[DgvData.Columns.Count - 2].HeaderText = "Active Status";
                     DgvData.Columns[DgvData.Columns.Count - 3].HeaderText = "Old Status";
-
-                    //DgvData.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
-
-                    //foreach (DataGridViewColumn col in DgvData.Columns)
-                    //{
-                    //    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    //}
 
                     int i = 0;
                     foreach (DataGridViewRow row in DgvData.Rows)
@@ -365,8 +416,110 @@ namespace DigiposZen.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            sqlControl rs = new sqlControl();
-            
+            try
+            {
+                sqlControl rs = new sqlControl();
+                try
+                {
+                    rs.BeginTrans = true;
+
+                    int invid;
+                    if (iIDFromEditWindow == 0)
+                    {
+                        invid = Comm.gfnGetNextSerialNo("tblBarcodeManager", "invid");
+                        FetchInvNo();
+                    }
+                    else
+                    {
+                        invid = Comm.ToInt32(txtInvAutoNo.Tag);
+                    }
+
+                    bool blnStartedInsert = false;
+
+                    for (int i = 0; i < DgvData.RowCount; i++)
+                    {
+                        if ((Convert.ToBoolean(DgvData[Comm.ToInt32(DgvData.Columns.Count - 2), i].Value) == true && Comm.ToInt32(DgvData[Comm.ToInt32(DgvData.Columns.Count - 3), i].Value) != 1)
+                            || (Convert.ToBoolean(DgvData[Comm.ToInt32(DgvData.Columns.Count - 2), i].Value) == false && Comm.ToInt32(DgvData[Comm.ToInt32(DgvData.Columns.Count - 3), i].Value) != 0))
+                        {
+                            if (blnStartedInsert == false)
+                            {
+                                //insert to table
+                                rs.Execute("Insert Into tblBarcodeManager (InvID,AutoNum,InvNo,VchtypeID,Prefix,VchDate,CCID,StaffID) Values (" + invid + "," + txtInvAutoNo.Text.ToString() + ",'" + txtPrefix.Text.ToString() + txtInvAutoNo.Text.ToString() + "'," + vchtypeID + ",'" + txtPrefix.Text.ToString() + "','" + dtpInvDate.Value.ToString("dd/MMM/yyyy") + "'," + cboCostCentre.SelectedValue + "," + cboSalesStaff.SelectedValue + ")");
+                                blnStartedInsert = true;
+                            }
+                            rs.Execute("Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (" + invid + "," + DgvData[0, i].Value + "," + DgvData[1, i].Value + ",'" + DgvData[4, i].Value + "'," + DgvData[5, i].Value + "," + DgvData[6, i].Value + "," + DgvData[7, i].Value + "," + DgvData[8, i].Value + "," + (Convert.ToBoolean(DgvData[9, i].Value) == true ? 1 : 0) + "," + (Convert.ToBoolean(DgvData[10, i].Value) == true ? 1 : 0) + ")");
+
+                            rs.Execute("UPDATE TBLSTOCK SET StockActiveStatus = " + (Convert.ToBoolean(DgvData[10, i].Value) == true ? 1 : 0) + " WHERE ITEMID=" + DgvData[0, i].Value + " AND BATCHUNIQUE='" + DgvData[4, i].Value + "' ");
+
+                            //        string SQL = @" SELECT   dbo.tblItemMaster.ItemID, dbo.tblStock.StockID,  dbo.tblItemMaster.ItemCode, dbo.tblItemMaster.ItemName, dbo.tblStock.BatchUnique,
+                            //CONVERT(DECIMAL(20," + AppSettings.QtyDecimals + "), dbo.tblStock.qoh) AS Qty, CONVERT(DECIMAL(20," + AppSettings.CurrencyDecimals + "), dbo.tblStock.Prate ) as Prate, CONVERT(DECIMAL(20," + AppSettings.CurrencyDecimals + "), dbo.tblStock.CostRateExcl ) as Crate,CONVERT(DECIMAL(20," + AppSettings.CurrencyDecimals + "), dbo.tblStock.MRP ) as MRP, isnull(tblStock.StockActiveStatus, 1) as OldStatus, isnull(tblStock.StockActiveStatus, 1) as ActiveStatus        FROM    dbo.tblItemMaster INNER JOIN    dbo.tblStock ON dbo.tblItemMaster.ItemID = dbo.tblStock.ItemID  WHERE  (dbo.tblItemMaster.ActiveStatus = 1) " + whereSQL + QuerySQL + "   ORDER BY dbo.tblItemMaster.ItemCode, dbo.tblItemMaster.ItemName ";
+                        }
+                    }
+                    rs.CommitTrans = true;
+
+                    ClearControls();
+
+                    Comm.MessageboxToasted("Sales", "Voucher[" + txtPrefix.Text + txtInvAutoNo.Text + "] Saved Successfully");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Barcode Manager", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Cursor = Cursors.Default;
+                    btnFillData.Enabled = true;
+                    DgvData.Cursor = Cursors.Default;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Barcode Manager", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void ClearControls()
+        {
+            try
+            {
+                DgvData.DataSource = null;
+                DgvData.Rows.Clear();
+
+                txtFillSearch.Text = "";
+                txtSearch.Text = "";
+
+                cboCostCentre.SelectedIndex = 0;
+                cboSalesStaff.SelectedIndex = 0;
+                cmbDisplayStyle.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Barcode Manager", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtInvAutoNo_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                Comm.ControlEnterLeave(txtInvAutoNo);
+                if (iIDFromEditWindow == 0)
+                {
+                    DataTable dtInv = Comm.fnGetData("SELECT Invid FROM tblBarcodeManager WHERE InvNo = '" + txtInvAutoNo.Text + "' AND VchTypeID=" + vchtypeID + " AND TenantID = " + Global.gblTenantID + "").Tables[0];
+                    if (dtInv.Rows.Count > 0)
+                    {
+                        DialogResult dlgResult = MessageBox.Show("There is an Exisiting Bill Number in this Invoice No [" + txtInvAutoNo.Text + "]. Please enter different number.", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2);
+
+                        txtInvAutoNo.Clear();
+                        txtInvAutoNo.Tag = 0;
+                        txtInvAutoNo.Focus();
+
+                        FetchInvNo();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Barcode Manager", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

@@ -27,6 +27,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -437,6 +440,8 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + sizeinfo.SizeName, 518, 518, sizeinfo.SizeName, Comm.ToInt32(sizeinfo.SizeID), "Size");
+
                     }
                 }
                 else
@@ -567,6 +572,9 @@ namespace DigiposZen
                     txtSortOrder.Text = dtLoad.Rows[0]["SortOrder"].ToString();
                     iAction = 1;
                 }
+                oldvalue = txtSizeName.Text;
+                olddata = "Size Name:" + txtSizeName.Text + ",SizeNameShort:" + txtSizeShortName.Text + ",SortOrder:" + txtSortOrder.Text;
+
                 Cursor.Current = Cursors.Default;
             }
             catch (Exception ex)
@@ -579,6 +587,8 @@ namespace DigiposZen
         {
             if (IsValidate() == true)
             {
+                newdata = "Size Name:" + txtSizeName.Text + ",SizeNameShort:" + txtSizeShortName.Text + ",SortOrder:" + txtSortOrder.Text;
+
                 string[] strResult;
                 string strRet = "";
                 if (iAction == 0)
@@ -647,7 +657,19 @@ namespace DigiposZen
                             }
                         }
                         Comm.MessageboxToasted("Size", "Size saved successfully");
-                     }
+                    if (iIDFromEditWindow > 0)
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Size to " + sizeinfo.SizeName, 518, 518, sizeinfo.SizeName, Comm.ToInt32(sizeinfo.SizeID), "Size");
+
+                    }
+                    else
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + sizeinfo.SizeName, 518, 518, sizeinfo.SizeName, Comm.ToInt32(sizeinfo.SizeID), "Size");
+
+                    }
+                }
             }
          }
         //Description :  Delete Data from Size table

@@ -26,6 +26,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -403,6 +406,8 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                        DeleteData();
+                       Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + Stateinfo.State, 518, 518, Stateinfo.StateCode, Comm.ToInt32(Stateinfo.StateId), "State");
+
                     }
                 }
                 else
@@ -505,12 +510,17 @@ namespace DigiposZen
                 cboCountry.SelectedValue = dtLoad.Rows[0]["CountryID"].ToString();
                 iAction = 1;
             }
+            oldvalue = txtStateCode.Text;
+            olddata = "StateCode:" + txtStateCode.Text + ",State:" + txtStateName.Text + ",StateType:" + cboStateType.Text + "Country:" + cboCountry.Text;
+
         }
         //Description : Save and Update Functionalities to the Database
         private void SaveData()
         {
             if (IsValidate() == true)
             {
+                newdata = "StateCode:" + txtStateCode.Text + ",State:" + txtStateName.Text + ",StateType:" + cboStateType.Text + "Country:" + cboCountry.Text;
+
                 string[] strResult;
                 string strRet = "";
 
@@ -521,7 +531,7 @@ namespace DigiposZen
                         Stateinfo.StateId = 6;
                 }
                 else
-                    Stateinfo.StateId = Convert.ToDecimal(iIDFromEditWindow);
+                Stateinfo.StateId = Convert.ToDecimal(iIDFromEditWindow);
                 Stateinfo.StateCode = txtStateCode.Text.TrimStart().TrimEnd();
                 Stateinfo.State = txtStateName.Text.TrimStart().TrimEnd();
                 Stateinfo.StateType =Convert.ToString(cboStateType.SelectedItem);
@@ -564,6 +574,18 @@ namespace DigiposZen
                             this.Close();
                         }
                         Comm.MessageboxToasted("State", "State Saved Successfully");
+                        if (iIDFromEditWindow > 0)
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " State to " + Stateinfo.State, 518, 518, Stateinfo.StateCode, Comm.ToInt32(Stateinfo.StateId), "State");
+
+                        }
+                        else
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + Stateinfo.State, 518, 518, Stateinfo.StateCode, Comm.ToInt32(Stateinfo.StateId), "State");
+
+                        }
                     }
                 }
                 else
@@ -578,6 +600,19 @@ namespace DigiposZen
                             this.Close();
                         }
                         Comm.MessageboxToasted("State", "State Saved Successfully");
+
+                        if (iIDFromEditWindow > 0)
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " State to " + Stateinfo.State, 518, 518, Stateinfo.StateCode, Comm.ToInt32(Stateinfo.StateId), "State");
+
+                        }
+                        else
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + Stateinfo.State, 518, 518, Stateinfo.StateCode, Comm.ToInt32(Stateinfo.StateId), "State");
+
+                        }
                     }
                 }
             }

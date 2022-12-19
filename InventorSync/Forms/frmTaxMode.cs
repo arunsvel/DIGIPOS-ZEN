@@ -28,6 +28,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -651,6 +654,9 @@ namespace DigiposZen
                         togglebtnActive.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive;
                     iAction = 1;
                 }
+                oldvalue = txtTaxMode.Text;
+                olddata = "TaxMode:" + txtTaxMode.Text + ",CalculationMode:" + cmbCalculationMode.Text + ",SortNo:" + txtSortOrder.Text;
+
                 Cursor.Current = Cursors.Default;
             }
             catch (Exception ex)
@@ -663,6 +669,8 @@ namespace DigiposZen
         {
             if (IsValidate() == true)
             {
+                newdata = "TaxMode:" + txtTaxMode.Text + ",CalculationMode:" + cmbCalculationMode.Text + ",SortNo:" + txtSortOrder.Text;
+
                 string[] strResult;
                 string strRet = "";
             
@@ -710,6 +718,18 @@ namespace DigiposZen
                          RefreshList();
                          ClearAll();
                          Comm.MessageboxToasted("Tax Mode", "Tax Mode saved successfully");
+                        if (iIDFromEditWindow > 0)
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " TaxMode to " + TaxModeInfo.TaxMode, 518, 518, TaxModeInfo.TaxMode, Comm.ToInt32(TaxModeInfo.TaxModeID), "TaxMode");
+
+                        }
+                        else
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + TaxModeInfo.TaxMode, 518, 518, TaxModeInfo.TaxMode, Comm.ToInt32(TaxModeInfo.TaxModeID), "TaxMode");
+
+                        }
                     }
                 }
                 else
@@ -725,6 +745,18 @@ namespace DigiposZen
                           RefreshList();
                           ClearAll();
                           Comm.MessageboxToasted("Tax Mode", "Tax Mode saved successfully");
+                        if (iIDFromEditWindow > 0)
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " TaxMode to " + TaxModeInfo.TaxMode, 518, 518, TaxModeInfo.TaxMode, Comm.ToInt32(TaxModeInfo.TaxModeID), "TaxMode");
+
+                        }
+                        else
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + TaxModeInfo.TaxMode, 518, 518, TaxModeInfo.TaxMode, Comm.ToInt32(TaxModeInfo.TaxModeID), "TaxMode");
+
+                        }
                     }
                 }
             }

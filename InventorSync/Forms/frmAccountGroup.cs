@@ -25,6 +25,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -464,6 +467,8 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + AccGroupInfo.AccountGroup, 506, 506, AccGroupInfo.AccountGroup, Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
+
                     }
                 }
                 else
@@ -689,18 +694,23 @@ namespace DigiposZen
                         togglebtnActive.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive;
                     iAction = 1;
                 }
+                oldvalue = txtAccountGroup.Text;
+                olddata = "AccountGroup:" + txtAccountGroup.Text + ",SortOrder:" + txtSortOrder.Text;
                 Cursor.Current = Cursors.Default;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Edit view is not working properly" + "\n" + ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
         }
         //Description : Save and Update Functionalities to the Database
         private void SaveData()
         {
             if (IsValidate() == true)
             {
+                newdata = "AccountGroup:" + txtAccountGroup.Text + ",SortOrder:" + txtSortOrder.Text;
+
                 string[] strResult;
                 string strRet = "";
                 string strtnds = ",0,";
@@ -795,6 +805,19 @@ namespace DigiposZen
                             ClearAll();
                             SetDefaultTreeview();
                             Comm.MessageboxToasted("Account Group", "Account Group saved successfully");
+
+                            if (iIDFromEditWindow > 0)
+                            {
+
+                                Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " AccountGroup to " + AccGroupInfo.AccountGroup, 506, 506, AccGroupInfo.AccountGroup, Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
+
+                            }
+                            else
+                            {
+
+                                Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AccGroupInfo.AccountGroup, 506, 506, AccGroupInfo.AccountGroup, Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
+
+                            }
                             if (bFromEditWindowAccGp == true && bDirectDelete == false)
                             {
                                 this.Close();
@@ -810,6 +833,18 @@ namespace DigiposZen
                             ClearAll();
                             SetDefaultTreeview();
                             Comm.MessageboxToasted("Account Group", "Account Group saved successfully");
+                            if (iIDFromEditWindow > 0)
+                            {
+
+                                Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " AccountGroup to " + AccGroupInfo.AccountGroup, 506, 506, AccGroupInfo.AccountGroup, Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
+
+                            }
+                            else
+                            {
+
+                                Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AccGroupInfo.AccountGroup, 506, 506, AccGroupInfo.AccountGroup, Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
+
+                            }
                             if (bFromEditWindowAccGp == true && bDirectDelete == false)
                             {
                                 this.Close();

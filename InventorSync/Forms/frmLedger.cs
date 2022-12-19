@@ -31,6 +31,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -1247,6 +1250,8 @@ namespace DigiposZen
                     try
                     {
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + LedgerInfo.LedgerName, 504, 504, LedgerInfo.LedgerName, Comm.ToInt32(LedgerInfo.LID), "CostCenter");
+
                     }
 
                     catch (Exception ex)
@@ -1308,14 +1313,20 @@ namespace DigiposZen
         //Description : Validating the Mandatory Fields Before Save Functionality
         public bool PreFilterMessage(ref Message m)
         {
+
             if (m.Msg == WM_LBUTTONDOWN &&
                         controlsToMove.Contains(Control.FromHandle(m.HWnd)))
             {
+
+
                 ReleaseCapture();
                 SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
                 return true;
+
             }
             return false;
+
+
         }
         private bool IsValidate()//Validate Ledger Name
         {
@@ -1795,6 +1806,9 @@ namespace DigiposZen
                     txtAgent.Tag = dtLoad.Rows[0]["AgentID"].ToString();
                     iAction = 1;
                 }
+                oldvalue = txtledgerName.Text;
+                olddata = "ledgerName:" + txtledgerName.Text + ",ledgerAliasName" + txtledgerAliasName.Text + ",Address" + txtledgerAdd.Text + ",MobileNo:" + txtledgerMob.Text + ",Email:" + txtledgerEmail.Text + ",TaxNo:" + txtledgerTaxreg.Text + ",State:" + cboState.Text + ",Disc%:" + txtdiscPer.Text + ",PriceList" + cboPriceList.Text + ",OpBalance:" + txtledgerOpbal.Text + ",LedgerType:" + cboLedgerOpTyp + ",GstType:" + cboGsttyp.Text + ",GroupName:" + cboGroup.Text + ",Account Group:" + strAccGroup + ",Area:" + txtArea.Text + ",Agent:" + txtAgent.Text;
+
                 Cursor.Current = Cursors.Default; ;
             }
             catch (Exception ex)
@@ -1807,7 +1821,9 @@ namespace DigiposZen
         {
             if (IsValidate() == true)
             {
-                 string[] strResult;
+                newdata = "ledgerName:" + txtledgerName.Text + ",ledgerAliasName" + txtledgerAliasName.Text + ",Address" + txtledgerAdd.Text + ",MobileNo:" + txtledgerMob.Text + ",Email:" + txtledgerEmail.Text + ",TaxNo:" + txtledgerTaxreg.Text + ",State:" + cboState.Text + ",Disc%:" + txtdiscPer.Text + ",PriceList" + cboPriceList.Text + ",OpBalance:" + txtledgerOpbal.Text + ",LedgerType:" + cboLedgerOpTyp + ",GstType:" + cboGsttyp.Text + ",GroupName:" + cboGroup.Text + ",Account Group:" + strAccGroup + ",Area:" + txtArea.Text + ",Agent:" + txtAgent.Text;
+
+                string[] strResult;
                  string strRet = "";
                  int iActive = 0;
                 if (togglebtnActive.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active)
@@ -1972,6 +1988,18 @@ namespace DigiposZen
                             }
                         }
                         Comm.MessageboxToasted("Ledger", "Ledger saved successfully");
+                        if (iIDFromEditWindow > 0)
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Ledger to " + LedgerInfo.LedgerName, 504, 504, LedgerInfo.LedgerName, Comm.ToInt32(LedgerInfo.LID), "CostCenter");
+
+                        }
+                        else
+                        {
+
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + LedgerInfo.LedgerName, 504, 504, LedgerInfo.LedgerName, Comm.ToInt32(LedgerInfo.LID), "CostCenter");
+
+                        }
                     }
                 }
             }

@@ -27,6 +27,9 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+        string olddata = "";
+        string newdata = "";
+        string oldvalue = "";
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -363,6 +366,8 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                         DeleteData();
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + UnitInfo.UnitName, 518, 518, UnitInfo.UnitName, Comm.ToInt32(UnitInfo.UnitID), "Unit");
+
                     }
                 }
                 else
@@ -470,12 +475,17 @@ namespace DigiposZen
                 txtUnitShortName.Text = dtLoad.Rows[0]["UnitShortName"].ToString();
                 iAction = 1;
             }
+            oldvalue = txtUnitName.Text;
+            olddata = "UnitName" + txtUnitName.Text + ",UnitShortName:" + txtUnitShortName.Text;
+
         }
         //Description : Save and Update Functionalities to the Database
         private void SaveData()
          {
             if (IsValidate() == true)
             {
+                newdata = "UnitName" + txtUnitName.Text + ",UnitShortName:" + txtUnitShortName.Text;
+
                 string[] strResult;
                 string strRet = "";
 
@@ -558,7 +568,19 @@ namespace DigiposZen
                             }
                         }
                          Comm.MessageboxToasted("Unit", "Unit saved successfully");
+                    if (iIDFromEditWindow > 0)
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Unit to " + UnitInfo.UnitName, 518, 518, UnitInfo.UnitName, Comm.ToInt32(UnitInfo.UnitID), "Unit");
+
                     }
+                    else
+                    {
+
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + UnitInfo.UnitName, 518, 518, UnitInfo.UnitName, Comm.ToInt32(UnitInfo.UnitID), "Unit");
+
+                    }
+                }
             }
         }
         //Description :  Delete Data from Unit table
