@@ -31,11 +31,11 @@ namespace DigiposZen
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemMaster));
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection4 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection4 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection4 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
             this.lblSave = new System.Windows.Forms.Label();
@@ -273,7 +273,7 @@ namespace DigiposZen
             this.tlpMain.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tlpMain.ColumnCount = 2;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 829F));
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 439F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 440F));
             this.tlpMain.Controls.Add(this.tlpHeader, 0, 0);
             this.tlpMain.Controls.Add(this.gboxMain, 0, 1);
             this.tlpMain.Controls.Add(this.lblFooter, 0, 2);
@@ -557,32 +557,32 @@ namespace DigiposZen
             // 
             // togglebtnActive
             // 
-            activeStateCollection4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection4.ForeColor = System.Drawing.Color.Navy;
-            activeStateCollection4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection4.Text = "ON";
-            this.togglebtnActive.ActiveState = activeStateCollection4;
+            activeStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection1.ForeColor = System.Drawing.Color.Navy;
+            activeStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection1.Text = "ON";
+            this.togglebtnActive.ActiveState = activeStateCollection1;
             this.tlpHeader.SetColumnSpan(this.togglebtnActive, 2);
             this.togglebtnActive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.togglebtnActive.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.togglebtnActive.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            inactiveStateCollection4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            inactiveStateCollection4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            inactiveStateCollection4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            inactiveStateCollection4.Text = "OFF";
-            this.togglebtnActive.InactiveState = inactiveStateCollection4;
+            inactiveStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            inactiveStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            inactiveStateCollection1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            inactiveStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            inactiveStateCollection1.Text = "OFF";
+            this.togglebtnActive.InactiveState = inactiveStateCollection1;
             this.togglebtnActive.Location = new System.Drawing.Point(694, 66);
             this.togglebtnActive.MinimumSize = new System.Drawing.Size(52, 20);
             this.togglebtnActive.Name = "togglebtnActive";
             this.togglebtnActive.Size = new System.Drawing.Size(132, 29);
-            sliderCollection4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            sliderCollection4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection4.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            sliderCollection4.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.togglebtnActive.Slider = sliderCollection4;
+            sliderCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            sliderCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection1.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            sliderCollection1.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.togglebtnActive.Slider = sliderCollection1;
             this.togglebtnActive.TabIndex = 8;
             this.togglebtnActive.Text = "Active Status";
             this.togglebtnActive.ThemeName = "Office2016Black";
@@ -683,8 +683,8 @@ namespace DigiposZen
             // clmItemName
             // 
             this.clmItemName.DataPropertyName = "ItemName";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmItemName.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmItemName.DefaultCellStyle = dataGridViewCellStyle1;
             this.clmItemName.HeaderText = "Item Name";
             this.clmItemName.MinimumWidth = 6;
             this.clmItemName.Name = "clmItemName";
@@ -694,8 +694,8 @@ namespace DigiposZen
             // clmItemCode
             // 
             this.clmItemCode.DataPropertyName = "ItemCode";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmItemCode.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmItemCode.DefaultCellStyle = dataGridViewCellStyle2;
             this.clmItemCode.HeaderText = "Item Code";
             this.clmItemCode.MinimumWidth = 6;
             this.clmItemCode.Name = "clmItemCode";
@@ -2987,7 +2987,7 @@ namespace DigiposZen
             this.grpShowControls.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpShowControls.Location = new System.Drawing.Point(834, 103);
             this.grpShowControls.Name = "grpShowControls";
-            this.grpShowControls.Size = new System.Drawing.Size(433, 698);
+            this.grpShowControls.Size = new System.Drawing.Size(434, 698);
             this.grpShowControls.TabIndex = 13;
             this.grpShowControls.TabStop = false;
             // 

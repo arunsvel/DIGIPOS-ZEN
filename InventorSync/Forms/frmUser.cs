@@ -697,16 +697,26 @@ namespace DigiposZen
         {
             try
             {
-                Cursor.Current = Cursors.WaitCursor;
-                frmEditWindow frmEdit = new frmEditWindow(this.Name.ToUpper(), this.MdiParent);
-                frmEdit.ShowDialog();
-                this.Visible = false;
-                Cursor.Current = Cursors.Default;
+                frmEditWindow frmEdit = new frmEditWindow(this.Name.ToUpper(), this.MdiParent, "User");
+                frmEdit.Show();
             }
             catch (Exception ex)
             {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
                 MessageBox.Show("Failed to Find..." + "\n" + ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            //try
+            //{
+            //    Cursor.Current = Cursors.WaitCursor;
+            //    frmEditWindow frmEdit = new frmEditWindow(this.Name.ToUpper(), this.MdiParent);
+            //    frmEdit.Show();
+            //    this.Visible = false;
+            //    Cursor.Current = Cursors.Default;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Failed to Find..." + "\n" + ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         private void btnMinimize_Click(object sender, EventArgs e)
         {
@@ -863,11 +873,13 @@ namespace DigiposZen
                 if (dtLoad.Rows.Count > 0)
                 {
                     txtUserName.Text = dtLoad.Rows[0]["UserName"].ToString();
+                    txtUserName.Tag = dtLoad.Rows[0]["UserName"].ToString();
                     strCheck = dtLoad.Rows[0]["UserName"].ToString();
                     cboGroup.SelectedValue= dtLoad.Rows[0]["GroupID"].ToString();
                     txtpwd.Text = dtLoad.Rows[0]["Pwd"].ToString();
                     txtpwd.Tag = dtLoad.Rows[0]["StartupUserID"].ToString();
                     txtcpwd.Text = dtLoad.Rows[0]["Pwd"].ToString();
+                    txtcpwd.Tag = dtLoad.Rows[0]["Pwd"].ToString();
                     txtHintQuest.Text = dtLoad.Rows[0]["HintQuestion"].ToString();
                     txtHintAnswer.Text = dtLoad.Rows[0]["HintAnswer"].ToString();
                     txtPin.Text= dtLoad.Rows[0]["PIN"].ToString();
@@ -935,6 +947,20 @@ namespace DigiposZen
 
                 if (txtpwd.Tag == null) txtpwd.Tag = "0";
                 if (txtpwd.Tag.ToString() == "") txtpwd.Tag = "0";
+
+                if (iIDFromEditWindow != 0)
+                {
+                    if (txtpwd.Tag.ToString() == "0")
+                    {
+                        sqlControl rs = new sqlControl();
+                        rs.Open("Select UserID From Startup.dbo.tblUsers Where UserName='" + Comm.CheckDBNullOrEmpty(txtUserName.Tag.ToString()) + "' and Password='" + Comm.CheckDBNullOrEmpty(txtcpwd.Tag.ToString()) + "' and companyid='" + Global.CompanyID + "' ");
+                        if (!rs.eof())
+                        {
+                            //if(MessageBox.Show("Super user was not assigned for this user. A super user with same username and password is found. Do you like to map the user."))
+                            txtpwd.Tag = rs.fields("UserID");
+                        }
+                    }
+                }
 
                 UserInfo.StartupUserID = Convert.ToInt32(txtpwd.Tag.ToString().TrimStart().TrimEnd());
 
@@ -1022,15 +1048,11 @@ namespace DigiposZen
                     Comm.MessageboxToasted("User", "User saved successfully");
                     if (iIDFromEditWindow > 0)
                     {
-
                         Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " User to " + UserInfo.UserName, 512, 512, UserInfo.UserName, Comm.ToInt32(UserInfo.UserID), "User");
-
                     }
                     else
                     {
-
                         Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + UserInfo.UserName, 512, 512, UserInfo.UserName, Comm.ToInt32(UserInfo.UserID), "User");
-
                     }
                 }
             }
@@ -1118,6 +1140,7 @@ namespace DigiposZen
             cboLedger.SelectedIndex = 0;
             txtpwd.Text = "";
             txtpwd.Tag = "";
+            txtUserName.Tag = "";
 
             txtcpwd.Text = "";
             txtHintQuest.Text = "";

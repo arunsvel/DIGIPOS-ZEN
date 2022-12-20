@@ -221,16 +221,27 @@ namespace DigiposZen.InventorBL.Helper
 
                     dt = Convert.ToDateTime(strdt);
 
-                    if (dt == Convert.ToDateTime("20/Dec/2022"))
+                    if (dt == Convert.ToDateTime("21/Dec/2022"))
                         return false;
 
-                    SaveInAppSettings("DBUPDATEDATE", "20/Dec/2022");
+                    SaveInAppSettings("DBUPDATEDATE", "21/Dec/2022");
                 }
             }
             catch
             { }
             
             string sQuery = "";
+
+            try
+            {
+                sQuery = @"alter table tbluserlog add JsonDataOld varchar(max)";
+                fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"alter table tbluserlog add JsonDataNew varchar(max)";
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
 
             try
             {
@@ -1939,22 +1950,23 @@ namespace DigiposZen.InventorBL.Helper
             { }
             try
             {
-                sQuery = @"CREATE PROCEDURE  [dbo].[fnInsertUserLog] (@NewData Varchar(500),
+                sQuery = @"CREATE PROCEDURE[dbo].[fnInsertUserLog] (@id int,
+                      @NewData Varchar(500),
                         @OldData Varchar(500),
                         @Action varchar(500),
                         @ActionDescription varchar(500) ,
-                        @VchtypeId Int ,
+                        @VchtypeId Int,
                         @parentVchtypeId int ,
                         @UniqueFiledValue varchar(100)  , 
                         @RefId int ,
                         @UserId int ,
                         @SystemName varchar(100) ,
-                        @WindowName Varchar(100) )  AS    BEGIN    Declare @Username varchar(50)  Declare @id int
-                        Declare @DateOf DateTime  Declare @Timeof DateTime   Set @DateOf = CONVERT (datetime,
-                        GETDATE())  Set @Timeof = CONVERT(VARCHAR(8),getdate(),114) 
-                        select @id = Max(id)+1 from tbluserLog   
-                        select @Username = username from tbluserMaster where userID = @UserId 
-                        Insert into tbluserLog (ID,OldData,NewData,DateOf,Timeof,[Action],ActionDescription,VchtypeId , parentVchtypeId,UniqueFiledValue,RefId,UserId , SystemName,WindowName,Username) values (@id,@OldData,@NewData,@DateOf,@Timeof,@Action,@ActionDescription,@VchtypeId , @parentVchtypeId,@UniqueFiledValue,@RefId,@UserId , @SystemName,@WindowName,@Username)     end ";
+                        @WindowName Varchar(100),
+                        @JsonDataOld varchar(max),@JsonDataNew varchar(max) )  AS BEGIN    Declare @Username varchar(50)
+                        Declare @DateOf DateTime Declare @Timeof DateTime   Set @DateOf = CONVERT(datetime,
+                       GETDATE())  Set @Timeof = CONVERT(VARCHAR(8), getdate(), 114)
+                        select @Username = username from tbluserMaster where userID = @UserId
+                        Insert into tbluserLog(ID, OldData, NewData, DateOf, Timeof,[Action], ActionDescription, VchtypeId, parentVchtypeId, UniqueFiledValue, RefId, UserId, SystemName, WindowName, Username, JsonDataOld, JsonDataNew) values(@id, @OldData, @NewData, @DateOf, @Timeof, @Action, @ActionDescription, @VchtypeId, @parentVchtypeId, @UniqueFiledValue, @RefId, @UserId, @SystemName, @WindowName, @Username, @JsonDataOld, @JsonDataNew)     end";
 
                 fnExecuteNonQuery(sQuery, false);
             }
@@ -7659,7 +7671,7 @@ namespace DigiposZen.InventorBL.Helper
 
         }
 
-        public void writeuserlog(UserActivity useractivity, string NewData, string OldData, string ActionDescription, int VchTypeId, int ParentVchTypeId, string UniqueField, int RefID, string WindowName)
+        public void writeuserlog(UserActivity useractivity, string NewData, string OldData, string ActionDescription, int VchTypeId, int ParentVchTypeId, string UniqueField, int RefID, string WindowName, string strjold = "", string strJson = "")
         {
             try
             {
@@ -7729,8 +7741,9 @@ namespace DigiposZen.InventorBL.Helper
                             break;
                         }
                 }
+                int id = gfnGetNextSerialNo("tbluserLog", "ID");
 
-                cn.Execute(" exec dbo.fnInsertUserLog  '" + NewData.Replace("'", "''") + "','" + OldData.Replace("'", "''") + "','" + StrAction + "','" + ActionDescription.Replace("'", "''") + "', " + VchTypeId + " ," + ParentVchTypeId + ", '" + UniqueField + "' , " + RefID + ", " + Global.gblUserID + " ,'" + Global.ComputerName.Replace("'", "''") + "','" + WindowName.Replace("'", "''") + "'");
+                cn.Execute(" exec dbo.fnInsertUserLog  " + id + ",'" + NewData.Replace("'", "''") + "','" + OldData.Replace("'", "''") + "','" + StrAction + "','" + ActionDescription.Replace("'", "''") + "', " + VchTypeId + " ," + ParentVchTypeId + ", '" + UniqueField + "' , " + RefID + ", " + Global.gblUserID + " ,'" + Environment.MachineName.Replace("'", "''") + "','" + WindowName.Replace("'", "''") + "','" + strjold + "','" + strJson + "'");
             }
             catch (Exception ex)
             {

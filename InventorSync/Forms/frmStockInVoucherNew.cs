@@ -51,7 +51,9 @@ namespace DigiposZen
         private frmCompactSearch frmSupplierSearch;
         private frmCompactSearch frmItemSearch;
         private frmCompactSearch frmBatchSearch;
-
+        string OldData = "";
+        string newData = "";
+        string strjold = "";
         public frmStockInVoucherNew(int iVchTpeId = 0, int iTransID = 0, bool bFromEdit = false, object MDIParent = null)
         {
             try
@@ -5086,7 +5088,13 @@ namespace DigiposZen
             clsPM.clsJsonPDIteminfoList_ = lstJPDItem;
             #endregion
 
+            newData = "InvNo: " + txtPrefix.Text + "" + txtInvAutoNo.Text + ",InvDate: " + dtpInvDate.Text + ",Mop: " + cboPayment.Text + ",Customer: " + txtSupplier.Text + ",No of Items: " + (dgvPurchase.Rows.Count - 1) + ",Discount: " + txtDiscAmt.Text + ",CashDiscount: " + txtCashDisc.Text + ",Bill Amount: " + lblBillAmount.Text;
+
             return JsonConvert.SerializeObject(clsPM);
+
+
+          
+
         }
 
         // Cash : 0, Credit: 1, Both: 2, Cash Desk : 3
@@ -5269,7 +5277,12 @@ namespace DigiposZen
                     dgvPurchase.Columns[GetEnum(GridColIndexes.cIGST)].Visible = false;
                 }
                 CalcTotal();
+
             }
+            
+
+            OldData = "InvNo: " + txtPrefix.Text + "" + txtInvAutoNo.Text + ",InvDate: " + dtpInvDate.Text + ",Mop: " + cboPayment.Text + ",Customer: " + txtSupplier.Text + ",No of Items: " + dtGetPurDetail.Rows.Count + ",Item Discount Total: " + txtItemDiscTot.Text + ",Discount: " + txtDiscAmt.Text + ",CashDiscount: " + txtCashDisc.Text + ",Bill Amount: " + lblBillAmount.Text;
+
         }
 
         private void LoadBill(int iSelectedID)
@@ -5298,6 +5311,11 @@ namespace DigiposZen
                     dtpEffective.Text = Convert.ToString(rs.fields("EffectiveDate"));
                     txtReferencePrefix.Text = rs.fields("RefNo");
                     txtReferenceAutoNo.Text = Convert.ToString(rs.fields("ReferenceAutoNO"));
+
+
+
+
+
                     if (rs.fields("MOP").ToUpper() == "CASH")
                         cboPayment.SelectedIndex = 0;
                     else if (rs.fields("MOP").ToUpper() == "CREDIT")
@@ -5306,6 +5324,10 @@ namespace DigiposZen
                         cboPayment.SelectedIndex = 2;
                     else if (rs.fields("MOP").ToUpper() == "CASH DESK")
                         cboPayment.SelectedIndex = 3;
+
+
+
+
 
                     txtGrossAmt.Text = Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("GrossAmt")));
                     lblQtyTotal.Text = Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("QtyTotal")));
@@ -5333,6 +5355,7 @@ namespace DigiposZen
                     txtRoundOff.Text = Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("RoundOff")));
                     txtNarration.Text = Convert.ToString(rs.fields("UserNarration"));
                     lblBillAmount.Text = Comm.chkChangeValuetoZero(Convert.ToString(rs.fields("BillAmt")));
+                    strjold = rs.fields("JsonData");
 
                     cboTaxMode.SelectedValue = rs.fields("TaxModeID");
                     cboCostCentre.SelectedValue = rs.fields("CCID");
@@ -5470,8 +5493,10 @@ namespace DigiposZen
 
                 }
                 CalcTotal();
+                OldData = "InvNo: " + txtPrefix.Text + "" + txtInvAutoNo.Text + ",InvDate: " + dtpInvDate.Text + ",Mop: " + cboPayment.Text + ",Customer: " + txtSupplier.Text + ",No of Items: " + dgvPurchase.Rows.Count + ",Item Discount Total: " + txtItemDiscTot.Text + ",Discount: " + txtDiscAmt.Text + ",CashDiscount: " + txtCashDisc.Text + ",Bill Amount: " + lblBillAmount.Text;
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -5724,6 +5749,21 @@ namespace DigiposZen
                         }
 
                         trans.Commit();
+                        if (iIDFromEditWindow == 0)
+
+
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newData, OldData, clsVchType.TransactionName + " InvNo : " + txtPrefix.Text + txtInvAutoNo.Text.ToString() + " Created", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsVchType.TransactionName, strjold, strJson);
+
+                        else if (iIDFromEditWindow != 0 && iAction == 1)
+
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newData, OldData, clsVchType.TransactionName + " InvNo : " + txtPrefix.Text + txtInvAutoNo.Text.ToString() + " Updated", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsVchType.TransactionName, strjold, strJson);
+
+                        else if (iIDFromEditWindow != 0 && iAction == 2)
+
+                            Comm.writeuserlog(Common.UserActivity.Delete_Entry, "", OldData, clsVchType.TransactionName + " InvNo : " + txtPrefix.Text + txtInvAutoNo.Text.ToString() + " Deleted", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsVchType.TransactionName, strjold, strJson);
+
+
+
                         blnTransactionStarted = false;
 
                         string vchno = txtInvAutoNo.Text;
@@ -6120,6 +6160,7 @@ namespace DigiposZen
                         {
                             lblPause.Tag = Comm.ToInt32(sCompSearchData[0].ToString());
                             strJson = dtGet.Rows[0]["JsonData"].ToString();
+                            strjold= dtGet.Rows[0]["JsonData"].ToString();
                             DeserializeFromJSon(strJson);
                             return true;
                         }
@@ -8766,6 +8807,8 @@ namespace DigiposZen
         private void LoadDataFromJSon(string strJson = "")
         {
             DeserializeFromJSon(strJson);
+            strjold = strJson;
+
         }
 
         //Description : Load Saved data from database from edit window or Navigation buttons

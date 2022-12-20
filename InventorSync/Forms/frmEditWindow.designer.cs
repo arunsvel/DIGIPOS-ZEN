@@ -1472,6 +1472,7 @@ namespace DigiposZen
             this.Text = "frmEditWindow";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmEditWindow_Load);
+            this.Shown += new System.EventHandler(this.frmEditWindow_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmEditWindow_KeyDown);
             this.Resize += new System.EventHandler(this.frmEditWindow_Resize);
             this.tlpMain.ResumeLayout(false);

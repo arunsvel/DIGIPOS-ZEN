@@ -878,18 +878,18 @@ namespace DigiposZen
                     return;
                 }
 
-                SaveServerSettings();
-
                 DigiposZen.Properties.Settings.Default.server = cboPrimaryServer.Text.ToString();
                 DigiposZen.Properties.Settings.Default.ConnectionString = "Data Source=" + DigiposZen.Properties.Settings.Default.server + ";Initial Catalog=" + tvwUserCompany.SelectedNode.Name + ";User ID=sa;Password=#infinitY@279";
 
                 AppSettings.CompanyCode = tvwUserCompany.SelectedNode.Name;
-
+                
                 if (txtUsername.Text.Trim().ToUpper() == "DIGIPOS")
                 {
                     Global.SetUserId(0);
                     Global.SetUserGroupId(0);
                     Global.SetUserName("DIGIPOS");
+                    Global.SetCompanyCode(tvwUserCompany.SelectedNode.Name);
+                    Global.SetCompanyID(tvwUserCompany.SelectedNode.Tag.ToString());
                 }
                 else
                 { 
@@ -899,6 +899,11 @@ namespace DigiposZen
                         Global.SetUserId(Convert.ToInt32(dtUser.Rows[0]["userid"]));
                         Global.SetUserGroupId(Convert.ToInt32(dtUser.Rows[0]["groupid"]));
                         Global.SetUserName(dtUser.Rows[0]["username"].ToString());
+                        Global.SetCompanyCode(tvwUserCompany.SelectedNode.Name);
+                        if (tvwUserCompany.SelectedNode.Tag != null)
+                            Global.SetCompanyID(tvwUserCompany.SelectedNode.Tag.ToString());
+                        else
+                            Global.SetCompanyID(tvwUserCompany.SelectedNode.Parent.Tag.ToString());
                     }
                     else
                     {
@@ -909,6 +914,7 @@ namespace DigiposZen
                     dtUser.Dispose();
                 }
 
+                SaveServerSettings();
 
                 using (SqlConnection cn = new SqlConnection(DigiposZen.Properties.Settings.Default.ConnectionString))
                 {

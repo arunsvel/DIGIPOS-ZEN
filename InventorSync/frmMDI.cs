@@ -95,8 +95,7 @@ namespace DigiposZen
 
         private void MDI_Load(object sender, EventArgs e)
         {
-            //this.WindowState = FormWindowState.Maximized;
-            frmConnectionProperties frmcn = new frmConnectionProperties();
+            
         }
 
         private void brandToolStripMenuItem_Click(object sender, EventArgs e)
@@ -131,7 +130,7 @@ namespace DigiposZen
             switch (MenuName)
             {
                 case "CONNECTIONDETAILS":
-                    frmConnectionProperties frmCP = new frmConnectionProperties();
+                    frmConnectionProperties frmCP = new frmConnectionProperties(this);
                     frmCP.Text = "User Profile";
                     frmCP.MdiParent = this;
                     frmCP.Show();

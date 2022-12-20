@@ -30,16 +30,16 @@ namespace DigiposZen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection2 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection3 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection3 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection3 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection4 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection4 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection4 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection5 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection5 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection5 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUser));
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection6 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection6 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection6 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
@@ -60,6 +60,7 @@ namespace DigiposZen
             this.label1 = new System.Windows.Forms.Label();
             this.toggleNextLogin = new Syncfusion.Windows.Forms.Tools.ToggleButton();
             this.gpbStaffledger = new System.Windows.Forms.GroupBox();
+            this.cboLedger = new System.Windows.Forms.ComboBox();
             this.btnAddLedg = new System.Windows.Forms.Button();
             this.btnEditLedg = new System.Windows.Forms.Button();
             this.toggleCountermgmt = new Syncfusion.Windows.Forms.Tools.ToggleButton();
@@ -81,17 +82,6 @@ namespace DigiposZen
             this.btnEditCcostcntr = new System.Windows.Forms.Button();
             this.btnAddCcostcntr = new System.Windows.Forms.Button();
             this.cboGroup = new System.Windows.Forms.ComboBox();
-            this.gboxOpDetails = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.lblCCForMob = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.cboReceiptVoucherType = new System.Windows.Forms.ComboBox();
-            this.lblReceiptVoucherType = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.cboOrderVoucherType = new System.Windows.Forms.ComboBox();
-            this.lblOrderVoucherType = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.cboReturnVoucherType = new System.Windows.Forms.ComboBox();
-            this.lblReturnVoucherType = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.cboSalesVoucherType = new System.Windows.Forms.ComboBox();
-            this.lblSalesVoucherType = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.lblGroup = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.lblName = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -108,12 +98,10 @@ namespace DigiposZen
             this.label44 = new System.Windows.Forms.Label();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.toolUser = new System.Windows.Forms.ToolTip(this.components);
-            this.cboLedger = new System.Windows.Forms.ComboBox();
             this.gboxMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleNextLogin)).BeginInit();
             this.gpbStaffledger.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleCountermgmt)).BeginInit();
-            this.gboxOpDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboDropDown4)).BeginInit();
             this.tlpHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.togglebtnActive)).BeginInit();
@@ -166,12 +154,10 @@ namespace DigiposZen
             // 
             // lblSave
             // 
-            this.lblSave.AutoSize = true;
             this.lblSave.BackColor = System.Drawing.Color.Transparent;
-            this.lblSave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSave.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSave.ForeColor = System.Drawing.Color.Black;
-            this.lblSave.Location = new System.Drawing.Point(4, 84);
+            this.lblSave.Location = new System.Drawing.Point(4, 52);
             this.lblSave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSave.Name = "lblSave";
             this.lblSave.Size = new System.Drawing.Size(72, 37);
@@ -195,7 +181,7 @@ namespace DigiposZen
             this.lblFooter.BackColor = System.Drawing.Color.Transparent;
             this.lblFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblFooter.ForeColor = System.Drawing.Color.Black;
-            this.lblFooter.Location = new System.Drawing.Point(4, 483);
+            this.lblFooter.Location = new System.Drawing.Point(4, 469);
             this.lblFooter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFooter.Name = "lblFooter";
             this.lblFooter.Size = new System.Drawing.Size(1214, 25);
@@ -220,24 +206,22 @@ namespace DigiposZen
             this.lblHeading.BackColor = System.Drawing.Color.Transparent;
             this.tlpHeader.SetColumnSpan(this.lblHeading, 3);
             this.lblHeading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHeading.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeading.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeading.ForeColor = System.Drawing.Color.Black;
             this.lblHeading.Location = new System.Drawing.Point(267, 0);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(27, 0, 27, 0);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(768, 37);
+            this.lblHeading.Size = new System.Drawing.Size(768, 44);
             this.lblHeading.TabIndex = 152;
             this.lblHeading.Text = "User";
             this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblDelete
             // 
-            this.lblDelete.AutoSize = true;
             this.lblDelete.BackColor = System.Drawing.Color.Transparent;
-            this.lblDelete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDelete.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelete.ForeColor = System.Drawing.Color.Black;
-            this.lblDelete.Location = new System.Drawing.Point(84, 84);
+            this.lblDelete.Location = new System.Drawing.Point(84, 52);
             this.lblDelete.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDelete.Name = "lblDelete";
             this.lblDelete.Size = new System.Drawing.Size(72, 37);
@@ -247,12 +231,10 @@ namespace DigiposZen
             // 
             // lblFind
             // 
-            this.lblFind.AutoSize = true;
             this.lblFind.BackColor = System.Drawing.Color.Transparent;
-            this.lblFind.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblFind.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFind.ForeColor = System.Drawing.Color.Black;
-            this.lblFind.Location = new System.Drawing.Point(164, 84);
+            this.lblFind.Location = new System.Drawing.Point(164, 52);
             this.lblFind.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFind.Name = "lblFind";
             this.lblFind.Size = new System.Drawing.Size(72, 37);
@@ -310,7 +292,6 @@ namespace DigiposZen
             this.gboxMain.Controls.Add(this.btnEditCcostcntr);
             this.gboxMain.Controls.Add(this.btnAddCcostcntr);
             this.gboxMain.Controls.Add(this.cboGroup);
-            this.gboxMain.Controls.Add(this.gboxOpDetails);
             this.gboxMain.Controls.Add(this.lblGroup);
             this.gboxMain.Controls.Add(this.txtUserName);
             this.gboxMain.Controls.Add(this.lblName);
@@ -326,11 +307,11 @@ namespace DigiposZen
             this.gboxMain.Controls.Add(this.comboDropDown4);
             this.gboxMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gboxMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gboxMain.Location = new System.Drawing.Point(27, 121);
+            this.gboxMain.Location = new System.Drawing.Point(27, 91);
             this.gboxMain.Margin = new System.Windows.Forms.Padding(27, 0, 27, 0);
             this.gboxMain.Name = "gboxMain";
             this.gboxMain.Padding = new System.Windows.Forms.Padding(4);
-            this.gboxMain.Size = new System.Drawing.Size(1168, 362);
+            this.gboxMain.Size = new System.Drawing.Size(1168, 378);
             this.gboxMain.TabIndex = 0;
             this.gboxMain.TabStop = false;
             this.gboxMain.Enter += new System.EventHandler(this.gboxMain_Enter);
@@ -379,26 +360,26 @@ namespace DigiposZen
             // 
             // toggleNextLogin
             // 
-            activeStateCollection2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection2.ForeColor = System.Drawing.Color.Navy;
-            activeStateCollection2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection2.Text = " Enabled";
-            this.toggleNextLogin.ActiveState = activeStateCollection2;
+            activeStateCollection4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection4.ForeColor = System.Drawing.Color.Navy;
+            activeStateCollection4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection4.Text = " Enabled";
+            this.toggleNextLogin.ActiveState = activeStateCollection4;
             this.toggleNextLogin.Font = new System.Drawing.Font("Tahoma", 10.2F);
             this.toggleNextLogin.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            inactiveStateCollection2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            inactiveStateCollection2.ForeColor = System.Drawing.Color.White;
-            inactiveStateCollection2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            inactiveStateCollection2.Text = "Disabled";
-            this.toggleNextLogin.InactiveState = inactiveStateCollection2;
+            inactiveStateCollection4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            inactiveStateCollection4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            inactiveStateCollection4.ForeColor = System.Drawing.Color.White;
+            inactiveStateCollection4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            inactiveStateCollection4.Text = "Disabled";
+            this.toggleNextLogin.InactiveState = inactiveStateCollection4;
             this.toggleNextLogin.Location = new System.Drawing.Point(381, 230);
             this.toggleNextLogin.Margin = new System.Windows.Forms.Padding(4);
             this.toggleNextLogin.MinimumSize = new System.Drawing.Size(69, 25);
             this.toggleNextLogin.Name = "toggleNextLogin";
             this.toggleNextLogin.Size = new System.Drawing.Size(212, 32);
-            this.toggleNextLogin.Slider = sliderCollection2;
+            this.toggleNextLogin.Slider = sliderCollection4;
             this.toggleNextLogin.TabIndex = 12;
             this.toggleNextLogin.Text = "toggleButton2";
             this.toggleNextLogin.Enter += new System.EventHandler(this.toggleNextLogin_Enter);
@@ -421,6 +402,16 @@ namespace DigiposZen
             this.gpbStaffledger.TabStop = false;
             this.gpbStaffledger.Text = "Sales Staff Ledger";
             this.gpbStaffledger.Visible = false;
+            // 
+            // cboLedger
+            // 
+            this.cboLedger.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLedger.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboLedger.FormattingEnabled = true;
+            this.cboLedger.Location = new System.Drawing.Point(10, 36);
+            this.cboLedger.Name = "cboLedger";
+            this.cboLedger.Size = new System.Drawing.Size(348, 29);
+            this.cboLedger.TabIndex = 116;
             // 
             // btnAddLedg
             // 
@@ -454,26 +445,26 @@ namespace DigiposZen
             // 
             // toggleCountermgmt
             // 
-            activeStateCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection3.ForeColor = System.Drawing.Color.Navy;
-            activeStateCollection3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection3.Text = " User Ledger(Enable Counter)";
-            this.toggleCountermgmt.ActiveState = activeStateCollection3;
+            activeStateCollection5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection5.ForeColor = System.Drawing.Color.Navy;
+            activeStateCollection5.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection5.Text = " User Ledger(Enable Counter)";
+            this.toggleCountermgmt.ActiveState = activeStateCollection5;
             this.toggleCountermgmt.Font = new System.Drawing.Font("Tahoma", 10.2F);
             this.toggleCountermgmt.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            inactiveStateCollection3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            inactiveStateCollection3.ForeColor = System.Drawing.Color.White;
-            inactiveStateCollection3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            inactiveStateCollection3.Text = "Userwise Counter Management";
-            this.toggleCountermgmt.InactiveState = inactiveStateCollection3;
+            inactiveStateCollection5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            inactiveStateCollection5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            inactiveStateCollection5.ForeColor = System.Drawing.Color.White;
+            inactiveStateCollection5.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            inactiveStateCollection5.Text = "Userwise Counter Management";
+            this.toggleCountermgmt.InactiveState = inactiveStateCollection5;
             this.toggleCountermgmt.Location = new System.Drawing.Point(22, 306);
             this.toggleCountermgmt.Margin = new System.Windows.Forms.Padding(4);
             this.toggleCountermgmt.MinimumSize = new System.Drawing.Size(69, 25);
             this.toggleCountermgmt.Name = "toggleCountermgmt";
             this.toggleCountermgmt.Size = new System.Drawing.Size(340, 32);
-            this.toggleCountermgmt.Slider = sliderCollection3;
+            this.toggleCountermgmt.Slider = sliderCollection5;
             this.toggleCountermgmt.TabIndex = 13;
             this.toggleCountermgmt.Text = "toggleButton2";
             this.toggleCountermgmt.ToggleStateChanged += new Syncfusion.Windows.Forms.Tools.ToggleStateChangedEventHandler(this.toggleCountermgmt_ToggleStateChanged);
@@ -704,137 +695,6 @@ namespace DigiposZen
             this.cboGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             this.cboGroup.Leave += new System.EventHandler(this.cboGroup_Leave);
             // 
-            // gboxOpDetails
-            // 
-            this.gboxOpDetails.BackColor = System.Drawing.Color.White;
-            this.gboxOpDetails.Controls.Add(this.comboBox5);
-            this.gboxOpDetails.Controls.Add(this.lblCCForMob);
-            this.gboxOpDetails.Controls.Add(this.cboReceiptVoucherType);
-            this.gboxOpDetails.Controls.Add(this.lblReceiptVoucherType);
-            this.gboxOpDetails.Controls.Add(this.cboOrderVoucherType);
-            this.gboxOpDetails.Controls.Add(this.lblOrderVoucherType);
-            this.gboxOpDetails.Controls.Add(this.cboReturnVoucherType);
-            this.gboxOpDetails.Controls.Add(this.lblReturnVoucherType);
-            this.gboxOpDetails.Controls.Add(this.cboSalesVoucherType);
-            this.gboxOpDetails.Controls.Add(this.lblSalesVoucherType);
-            this.gboxOpDetails.Font = new System.Drawing.Font("Tahoma", 10.2F);
-            this.gboxOpDetails.Location = new System.Drawing.Point(18, 367);
-            this.gboxOpDetails.Name = "gboxOpDetails";
-            this.gboxOpDetails.Size = new System.Drawing.Size(732, 207);
-            this.gboxOpDetails.TabIndex = 18;
-            this.gboxOpDetails.TabStop = false;
-            this.gboxOpDetails.Visible = false;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(7, 163);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(342, 29);
-            this.comboBox5.TabIndex = 4;
-            this.comboBox5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
-            // 
-            // lblCCForMob
-            // 
-            this.lblCCForMob.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCCForMob.Location = new System.Drawing.Point(8, 133);
-            this.lblCCForMob.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCCForMob.Name = "lblCCForMob";
-            this.lblCCForMob.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.lblCCForMob.Size = new System.Drawing.Size(219, 27);
-            this.lblCCForMob.TabIndex = 24;
-            this.lblCCForMob.Text = "Cost Centre For Mobile App:";
-            // 
-            // cboReceiptVoucherType
-            // 
-            this.cboReceiptVoucherType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboReceiptVoucherType.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboReceiptVoucherType.FormattingEnabled = true;
-            this.cboReceiptVoucherType.Location = new System.Drawing.Point(373, 106);
-            this.cboReceiptVoucherType.Name = "cboReceiptVoucherType";
-            this.cboReceiptVoucherType.Size = new System.Drawing.Size(342, 29);
-            this.cboReceiptVoucherType.TabIndex = 3;
-            this.cboReceiptVoucherType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
-            // 
-            // lblReceiptVoucherType
-            // 
-            this.lblReceiptVoucherType.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReceiptVoucherType.Location = new System.Drawing.Point(369, 75);
-            this.lblReceiptVoucherType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblReceiptVoucherType.Name = "lblReceiptVoucherType";
-            this.lblReceiptVoucherType.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.lblReceiptVoucherType.Size = new System.Drawing.Size(178, 27);
-            this.lblReceiptVoucherType.TabIndex = 22;
-            this.lblReceiptVoucherType.Text = "Receipt Voucher Type:";
-            // 
-            // cboOrderVoucherType
-            // 
-            this.cboOrderVoucherType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboOrderVoucherType.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboOrderVoucherType.FormattingEnabled = true;
-            this.cboOrderVoucherType.Location = new System.Drawing.Point(11, 106);
-            this.cboOrderVoucherType.Name = "cboOrderVoucherType";
-            this.cboOrderVoucherType.Size = new System.Drawing.Size(342, 29);
-            this.cboOrderVoucherType.TabIndex = 2;
-            this.cboOrderVoucherType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
-            // 
-            // lblOrderVoucherType
-            // 
-            this.lblOrderVoucherType.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrderVoucherType.Location = new System.Drawing.Point(7, 75);
-            this.lblOrderVoucherType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblOrderVoucherType.Name = "lblOrderVoucherType";
-            this.lblOrderVoucherType.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.lblOrderVoucherType.Size = new System.Drawing.Size(154, 27);
-            this.lblOrderVoucherType.TabIndex = 20;
-            this.lblOrderVoucherType.Text = "OrderVoucherType:";
-            // 
-            // cboReturnVoucherType
-            // 
-            this.cboReturnVoucherType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboReturnVoucherType.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboReturnVoucherType.FormattingEnabled = true;
-            this.cboReturnVoucherType.Location = new System.Drawing.Point(369, 44);
-            this.cboReturnVoucherType.Name = "cboReturnVoucherType";
-            this.cboReturnVoucherType.Size = new System.Drawing.Size(342, 29);
-            this.cboReturnVoucherType.TabIndex = 1;
-            this.cboReturnVoucherType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
-            // 
-            // lblReturnVoucherType
-            // 
-            this.lblReturnVoucherType.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReturnVoucherType.Location = new System.Drawing.Point(365, 11);
-            this.lblReturnVoucherType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblReturnVoucherType.Name = "lblReturnVoucherType";
-            this.lblReturnVoucherType.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.lblReturnVoucherType.Size = new System.Drawing.Size(172, 27);
-            this.lblReturnVoucherType.TabIndex = 18;
-            this.lblReturnVoucherType.Text = "Return Voucher Type:";
-            // 
-            // cboSalesVoucherType
-            // 
-            this.cboSalesVoucherType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSalesVoucherType.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboSalesVoucherType.FormattingEnabled = true;
-            this.cboSalesVoucherType.Location = new System.Drawing.Point(7, 42);
-            this.cboSalesVoucherType.Name = "cboSalesVoucherType";
-            this.cboSalesVoucherType.Size = new System.Drawing.Size(342, 29);
-            this.cboSalesVoucherType.TabIndex = 0;
-            this.cboSalesVoucherType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
-            // 
-            // lblSalesVoucherType
-            // 
-            this.lblSalesVoucherType.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSalesVoucherType.Location = new System.Drawing.Point(3, 11);
-            this.lblSalesVoucherType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSalesVoucherType.Name = "lblSalesVoucherType";
-            this.lblSalesVoucherType.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.lblSalesVoucherType.Size = new System.Drawing.Size(161, 27);
-            this.lblSalesVoucherType.TabIndex = 7;
-            this.lblSalesVoucherType.Text = "Sales Voucher Type:";
-            // 
             // lblGroup
             // 
             this.lblGroup.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -923,10 +783,10 @@ namespace DigiposZen
             this.tlpHeader.Margin = new System.Windows.Forms.Padding(0);
             this.tlpHeader.Name = "tlpHeader";
             this.tlpHeader.RowCount = 3;
-            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
-            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tlpHeader.Size = new System.Drawing.Size(1222, 121);
+            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.tlpHeader.Size = new System.Drawing.Size(1222, 91);
             this.tlpHeader.TabIndex = 1;
             this.tlpHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tlpHeader_MouseDown);
             this.tlpHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tlpHeader_MouseMove);
@@ -943,7 +803,7 @@ namespace DigiposZen
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.tlpHeader.SetRowSpan(this.btnSave, 2);
-            this.btnSave.Size = new System.Drawing.Size(72, 76);
+            this.btnSave.Size = new System.Drawing.Size(72, 44);
             this.btnSave.TabIndex = 16;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -958,7 +818,7 @@ namespace DigiposZen
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.tlpHeader.SetRowSpan(this.btnDelete, 2);
-            this.btnDelete.Size = new System.Drawing.Size(72, 76);
+            this.btnDelete.Size = new System.Drawing.Size(72, 44);
             this.btnDelete.TabIndex = 152;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -973,7 +833,7 @@ namespace DigiposZen
             this.btnFind.Margin = new System.Windows.Forms.Padding(4);
             this.btnFind.Name = "btnFind";
             this.tlpHeader.SetRowSpan(this.btnFind, 2);
-            this.btnFind.Size = new System.Drawing.Size(72, 76);
+            this.btnFind.Size = new System.Drawing.Size(72, 44);
             this.btnFind.TabIndex = 150;
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
@@ -988,7 +848,7 @@ namespace DigiposZen
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.tlpHeader.SetRowSpan(this.btnClose, 2);
-            this.btnClose.Size = new System.Drawing.Size(72, 76);
+            this.btnClose.Size = new System.Drawing.Size(72, 44);
             this.btnClose.TabIndex = 152;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -997,13 +857,12 @@ namespace DigiposZen
             // 
             this.btnYtubeTutorial.BackColor = System.Drawing.Color.Transparent;
             this.btnYtubeTutorial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnYtubeTutorial.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnYtubeTutorial.FlatAppearance.BorderSize = 0;
             this.btnYtubeTutorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnYtubeTutorial.ForeColor = System.Drawing.Color.Black;
             this.btnYtubeTutorial.Image = ((System.Drawing.Image)(resources.GetObject("btnYtubeTutorial.Image")));
             this.btnYtubeTutorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnYtubeTutorial.Location = new System.Drawing.Point(244, 88);
+            this.btnYtubeTutorial.Location = new System.Drawing.Point(244, 56);
             this.btnYtubeTutorial.Margin = new System.Windows.Forms.Padding(4);
             this.btnYtubeTutorial.Name = "btnYtubeTutorial";
             this.btnYtubeTutorial.Size = new System.Drawing.Size(145, 29);
@@ -1021,40 +880,39 @@ namespace DigiposZen
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(4);
             this.btnMinimize.Name = "btnMinimize";
             this.tlpHeader.SetRowSpan(this.btnMinimize, 2);
-            this.btnMinimize.Size = new System.Drawing.Size(72, 76);
+            this.btnMinimize.Size = new System.Drawing.Size(72, 44);
             this.btnMinimize.TabIndex = 152;
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // togglebtnActive
             // 
-            activeStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.ForeColor = System.Drawing.Color.Navy;
-            activeStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.Text = "ON";
-            this.togglebtnActive.ActiveState = activeStateCollection1;
+            activeStateCollection6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection6.ForeColor = System.Drawing.Color.Navy;
+            activeStateCollection6.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection6.Text = "ON";
+            this.togglebtnActive.ActiveState = activeStateCollection6;
             this.tlpHeader.SetColumnSpan(this.togglebtnActive, 2);
-            this.togglebtnActive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.togglebtnActive.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.togglebtnActive.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            inactiveStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            inactiveStateCollection1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            inactiveStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            inactiveStateCollection1.Text = "OFF";
-            this.togglebtnActive.InactiveState = inactiveStateCollection1;
-            this.togglebtnActive.Location = new System.Drawing.Point(1066, 88);
+            inactiveStateCollection6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            inactiveStateCollection6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            inactiveStateCollection6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            inactiveStateCollection6.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            inactiveStateCollection6.Text = "OFF";
+            this.togglebtnActive.InactiveState = inactiveStateCollection6;
+            this.togglebtnActive.Location = new System.Drawing.Point(1066, 56);
             this.togglebtnActive.Margin = new System.Windows.Forms.Padding(4);
             this.togglebtnActive.MinimumSize = new System.Drawing.Size(69, 25);
             this.togglebtnActive.Name = "togglebtnActive";
             this.togglebtnActive.Size = new System.Drawing.Size(152, 29);
-            sliderCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            sliderCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection1.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            sliderCollection1.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.togglebtnActive.Slider = sliderCollection1;
+            sliderCollection6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            sliderCollection6.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection6.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            sliderCollection6.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.togglebtnActive.Slider = sliderCollection6;
             this.togglebtnActive.TabIndex = 0;
             this.togglebtnActive.Text = "Active Status";
             this.togglebtnActive.ThemeName = "Office2016Black";
@@ -1063,13 +921,11 @@ namespace DigiposZen
             // 
             // label44
             // 
-            this.label44.AutoSize = true;
             this.label44.BackColor = System.Drawing.Color.Transparent;
             this.tlpHeader.SetColumnSpan(this.label44, 2);
-            this.label44.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label44.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label44.ForeColor = System.Drawing.Color.Black;
-            this.label44.Location = new System.Drawing.Point(926, 84);
+            this.label44.Location = new System.Drawing.Point(926, 52);
             this.label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(132, 37);
@@ -1090,28 +946,18 @@ namespace DigiposZen
             this.tlpMain.Margin = new System.Windows.Forms.Padding(4);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 3;
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tlpMain.Size = new System.Drawing.Size(1222, 508);
+            this.tlpMain.Size = new System.Drawing.Size(1222, 494);
             this.tlpMain.TabIndex = 0;
-            // 
-            // cboLedger
-            // 
-            this.cboLedger.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboLedger.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboLedger.FormattingEnabled = true;
-            this.cboLedger.Location = new System.Drawing.Point(10, 36);
-            this.cboLedger.Name = "cboLedger";
-            this.cboLedger.Size = new System.Drawing.Size(348, 29);
-            this.cboLedger.TabIndex = 116;
             // 
             // frmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1224, 510);
+            this.ClientSize = new System.Drawing.Size(1224, 496);
             this.Controls.Add(this.tlpMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1130,8 +976,6 @@ namespace DigiposZen
             ((System.ComponentModel.ISupportInitialize)(this.toggleNextLogin)).EndInit();
             this.gpbStaffledger.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.toggleCountermgmt)).EndInit();
-            this.gboxOpDetails.ResumeLayout(false);
-            this.gboxOpDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboDropDown4)).EndInit();
             this.tlpHeader.ResumeLayout(false);
             this.tlpHeader.PerformLayout();
@@ -1171,7 +1015,6 @@ namespace DigiposZen
         private System.Windows.Forms.ToolTip toolUser;
         private System.Windows.Forms.TextBox txtUserName;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblGroup;
-        private System.Windows.Forms.GroupBox gboxOpDetails;
         private System.Windows.Forms.ComboBox cboGroup;
         private System.Windows.Forms.Button btnEditCcostcntr;
         private System.Windows.Forms.Button btnAddCcostcntr;
@@ -1190,16 +1033,6 @@ namespace DigiposZen
         private System.Windows.Forms.TextBox txtPin;
         private System.Windows.Forms.TextBox txtcpwd;
         private System.Windows.Forms.TextBox txtpwd;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel lblCCForMob;
-        private System.Windows.Forms.ComboBox cboReceiptVoucherType;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel lblReceiptVoucherType;
-        private System.Windows.Forms.ComboBox cboOrderVoucherType;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel lblOrderVoucherType;
-        private System.Windows.Forms.ComboBox cboReturnVoucherType;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel lblReturnVoucherType;
-        private System.Windows.Forms.ComboBox cboSalesVoucherType;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel lblSalesVoucherType;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblCostCentre;
         private System.Windows.Forms.TextBox txtCCntr;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblChangepwdnxtlog;

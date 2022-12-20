@@ -1,0 +1,8 @@
+20-Dec-2022 18:30:58
+EventTarget:frmStockVoucher_Load
+InvalidArgument=Value of '0' is not valid for 'SelectedIndex'.
+Parameter name: SelectedIndex
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------

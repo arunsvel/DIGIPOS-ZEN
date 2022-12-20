@@ -80,6 +80,12 @@ namespace DigiposZen.InventorBL.Helper
         {
             CompanyCode = companyCode;
         }
+
+        public static string CompanyID { get; private set; }
+        public static void SetCompanyID(string companyid)
+        {
+            CompanyID = companyid;
+        }
         
         public static string ComputerName { get; private set; }
         public static void SetComputerName(string computerName)

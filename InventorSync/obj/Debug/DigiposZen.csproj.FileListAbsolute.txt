@@ -1,3 +1,4 @@
+D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\Syncfusion.PdfViewer.Windows.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\SqlServerTypes\x64\msvcr120.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\SqlServerTypes\x86\msvcr120.dll
@@ -45,7 +46,6 @@ D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\Syncfusion.Maps.Windo
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\Syncfusion.MIME.Base.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\Syncfusion.OfficeChart.Base.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\Syncfusion.Pdf.Base.dll
-D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\Syncfusion.PdfViewer.Windows.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\Syncfusion.PivotAnalysis.Base.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\Syncfusion.PivotAnalysis.Windows.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\Syncfusion.PivotChart.Windows.dll

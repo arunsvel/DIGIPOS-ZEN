@@ -715,7 +715,7 @@ namespace DigiposZen
             this.txtPrefix.Location = new System.Drawing.Point(35, 30);
             this.txtPrefix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPrefix.Name = "txtPrefix";
-            this.txtPrefix.Size = new System.Drawing.Size(47, 28);
+            this.txtPrefix.Size = new System.Drawing.Size(50, 28);
             this.txtPrefix.TabIndex = 0;
             this.txtPrefix.Visible = false;
             this.txtPrefix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrefix_KeyDown);
@@ -1553,7 +1553,7 @@ namespace DigiposZen
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.77519F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.22481F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 520F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 540F));
             this.tableLayoutPanel4.Controls.Add(this.label31, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 84);

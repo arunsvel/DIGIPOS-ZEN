@@ -58,7 +58,8 @@ namespace DigiposZen
         double outoflimitbillvalue = 0;
 
         string OldData = "";
-
+        string newData = "";
+        string strjold = "";
         public frmStockOutVoucherNew(int iVchTpeId = 0, int iTransID = 0, bool bFromEdit = false, object MDIParent = null)
         {
             try
@@ -533,11 +534,14 @@ namespace DigiposZen
 
 
                 DirectoryInfo dir = new DirectoryInfo(Application.StartupPath + @"\PrintScheme");
-                FileInfo[] files = dir.GetFiles("*.rdlc");
+                FileInfo[] files = dir.GetFiles("*.rdl*");
                 foreach (FileInfo file in files)
                 {
-                    cboInvScheme1.Items.Add(file.Name.Replace(".rdlc", ""));
-                    comboBox8.Items.Add(file.Name.Replace(".rdlc", ""));
+                    //cboInvScheme1.Items.Add(file.Name.Replace(".rdlc", ""));
+                    //comboBox8.Items.Add(file.Name.Replace(".rdlc", ""));
+                    
+                    cboInvScheme1.Items.Add(file.Name);
+                    comboBox8.Items.Add(file.Name);
                 }
 
                 cboInvScheme1.SelectedIndex = 0;
@@ -1442,7 +1446,7 @@ namespace DigiposZen
                 //    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "SALES") == false)
                 //        return;
                 //}
-
+              
                 Cursor.Current = Cursors.WaitCursor;
                 if (iIDFromEditWindow == 0)
                     CRUD_Operations(0, false, blnBulkResave);
@@ -1857,6 +1861,9 @@ namespace DigiposZen
                     CRUD_Operations(2);
 
                     ReturnResult = true;
+                    //string strJson = SerializetoJson();
+                    //Comm.writeuserlog(Common.UserActivity.Delete_Entry, "", OldData, "Sales InvNo : " + txtInvAutoNo.Text.ToString() + " Deleted", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsVchType.TransactionName,strJson );
+
                 }
                 Cursor.Current = Cursors.Default;
 
@@ -4389,8 +4396,11 @@ namespace DigiposZen
                 {
                     if (dgvSales.Rows[j].Cells[GetEnum(gridColIndexes.CItemCode)].Value.ToString() != "")
                     {
+
                         clsJPDIteminfo = new clsJsonPDIteminfo();
+
                         string[] sArrItm = GetItemDetails(Convert.ToDecimal(dgvSales.Rows[j].Cells[GetEnum(gridColIndexes.cItemID)].Value));
+
                         clsJPDIteminfo.ItemID = Convert.ToDecimal(dgvSales.Rows[j].Cells[GetEnum(gridColIndexes.cItemID)].Value);
                         clsJPDIteminfo.ItemCode = sArrItm[GetEnumItem(ItemIndexes.ItemCode)].ToString();
                         clsJPDIteminfo.ItemName = sArrItm[GetEnumItem(ItemIndexes.ItemName)].ToString();
@@ -4474,14 +4484,17 @@ namespace DigiposZen
                         clsJPDIteminfo.ItmConvType = sArrItm[GetEnumItem(ItemIndexes.ItmConvType)].ToString();
                         clsJPDIteminfo.DiscPer = Convert.ToDecimal(sArrItm[GetEnumItem(ItemIndexes.DiscPer)].ToString());
                         lstJPDItem.Add(clsJPDIteminfo);
+
                     }
                 }
             }
             clsPM.clsJsonPDIteminfoList_ = lstJPDItem;
             #endregion
-
+            newData = "InvNo: " + txtPrefix.Text + "" + txtInvAutoNo.Text + ",InvDate: " + dtpInvDate.Text + ",Mop: " + cboPayment.Text + ",Customer: " + txtSupplier.Text + ",No of Items: " + (dgvSales.Rows.Count-1) + ",Discount: " + txtDiscAmt.Text + ",CashDiscount: " + txtCashDisc.Text + ",Bill Amount: " + lblBillAmount.Text;
             return JsonConvert.SerializeObject(clsPM);
+
         }
+
 
         // Cash : 0, Credit: 1, Both: 2, Cash Desk : 3
         //Description : Deserialize the JSon to Controls asper instructions.
@@ -4530,6 +4543,7 @@ namespace DigiposZen
 
             if (clsSales.clsJsonPMLedgerInfo_.LName.ToUpper() == "" || clsSales.clsJsonPMLedgerInfo_.LName.ToUpper() == "<GENERAL SUPPLIER>")
             {
+
                 this.txtSupplier.TextChanged -= this.txtSupplier_TextChanged;
                 txtSupplier.Text = "";
                 this.txtSupplier.TextChanged += this.txtSupplier_TextChanged;
@@ -4541,9 +4555,11 @@ namespace DigiposZen
                 dSupplierID = clsSales.clsJsonPMLedgerInfo_.LID;
                 lblLID.Text = dSupplierID.ToString();
                 txtSupplier.Tag = clsSales.clsJsonPMLedgerInfo_.LAliasName;
+
             }
             else
             {
+
                 this.txtSupplier.TextChanged -= this.txtSupplier_TextChanged;
                 txtSupplier.Text = clsSales.clsJsonPMLedgerInfo_.LName;
                 this.txtSupplier.TextChanged += this.txtSupplier_TextChanged;
@@ -4556,6 +4572,7 @@ namespace DigiposZen
                 lblLID.Text = dSupplierID.ToString();
                 txtSupplier.Tag = clsSales.clsJsonPMLedgerInfo_.LAliasName;
                 FillSupplierForSerializeJsonUsingID(Convert.ToInt32(dSupplierID));
+
             }
 
             txtGrossAmt.Text = Comm.chkChangeValuetoZero(Convert.ToString(clsSales.clsJsonPMInfo_.GrossAmt));
@@ -4691,6 +4708,9 @@ namespace DigiposZen
                 }
                 CalcTotal();
             }
+
+            OldData = "InvNo: " + txtPrefix.Text + "" + txtInvAutoNo.Text + ",InvDate: " + dtpInvDate.Text + ",Mop: " + cboPayment.Text + ",Customer: " + txtSupplier.Text + ",No of Items: " + dtGetPurDetail.Rows.Count + ",Item Discount Total: "+txtItemDiscTot.Text+",Discount: "+txtDiscAmt.Text+",CashDiscount: "+txtCashDisc.Text+",Bill Amount: "+lblBillAmount.Text;
+       
         }
 
         private void CRUD_Operations(int iAction = 0, bool blnLoadTest = false, bool blnBulkResave = false)
@@ -5092,10 +5112,24 @@ namespace DigiposZen
 
                         trans.Commit();
 
-                        //if (iIDFromEditWindow == 0)
-                        //    Comm.writeuserlog(Common.UserActivity.new_Entry, strJson, "", "New Sales InvNo : " + txtInvAutoNo.Text.ToString() + " Created", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsVchType.TransactionName);
-                        //else
-                        //    Comm.writeuserlog(Common.UserActivity.new_Entry, strJson, OldData, "Sales InvNo : " + txtInvAutoNo.Text.ToString() + " Updated", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsVchType.TransactionName);
+                        //UserLog
+
+                        if (iIDFromEditWindow == 0)
+
+
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newData, OldData, clsVchType.TransactionName + " InvNo : " + txtPrefix.Text + txtInvAutoNo.Text.ToString() + " Created", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsVchType.TransactionName,strjold, strJson);
+
+                        else if (iIDFromEditWindow != 0 && iAction == 1)
+
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newData, OldData, clsVchType.TransactionName + " InvNo : " + txtPrefix.Text + txtInvAutoNo.Text.ToString() + " Updated", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsVchType.TransactionName, strjold, strJson);
+
+                        else if (iIDFromEditWindow != 0 && iAction == 2)
+
+                            Comm.writeuserlog(Common.UserActivity.Delete_Entry, "", OldData, clsVchType.TransactionName + " InvNo : " + txtPrefix.Text + txtInvAutoNo.Text.ToString() + " Deleted", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(clsPM.clsJsonPMInfo_.InvId), clsVchType.TransactionName, strjold, strJson);
+
+
+
+
 
                         blnTransactionStarted = false;
 
@@ -5112,6 +5146,8 @@ namespace DigiposZen
                         {
                             id = iIDFromEditWindow.ToString();
                         }
+
+                      
 
                         if (iAction < 2 && blnLoadTest == false)
                         {
@@ -5463,7 +5499,7 @@ namespace DigiposZen
                     //edited by rohith 20/08/2022
                     //string inv = id;
                     string PrintScheme;
-                    PrintScheme = cboInvScheme1.SelectedItem.ToString() + ".rdlc";
+                    PrintScheme = cboInvScheme1.SelectedItem.ToString(); // + ".rdlc";
                     prn = new ReportPrint(inv, PrintScheme, this.MdiParent);
                     prn.Show();
                     prn.Focus();
@@ -8231,6 +8267,9 @@ namespace DigiposZen
                             prn.Close();
                             prn.Dispose();
                         }
+                        Comm.writeuserlog(Common.UserActivity.Printinvoice, "", "", clsVchType.TransactionName + " InvNo : " + txtPrefix.Text + txtInvAutoNo.Text.ToString() + " Printed", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(txtPrefix.Text+txtInvAutoNo.Text), clsVchType.TransactionName, "", "");
+
+
                     }
                 }
             }
@@ -10582,7 +10621,7 @@ namespace DigiposZen
                     dgvSales.Columns["cSRate4"].Visible = false;
                     dgvSales.Columns["cSRate5"].Visible = false;
 
-                    OldData = dtLoad.Rows[0]["JsonData"].ToString();
+                    strjold = dtLoad.Rows[0]["JsonData"].ToString();
                 }
             }
             catch (Exception ex)

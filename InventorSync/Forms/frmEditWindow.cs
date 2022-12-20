@@ -49,10 +49,15 @@ namespace DigiposZen
         int mVchtypeid = 0;
         int mParentID = 0;
 
+        string mOpenGroup = "Masters";
+        string mFormName = "";
+
         public frmEditWindow(string sFormName = "", object MDIParent = null, string DefaultFocus = "", int VchtypeID = 0, int ParentID = 0)
         {
             InitializeComponent();
             Application.AddMessageFilter(this);
+
+            mFormName = sFormName;
 
             mVchtypeid = VchtypeID;
             mParentID = ParentID;
@@ -115,120 +120,6 @@ namespace DigiposZen
             //this.gridGroupingControlSearch.BrowseOnly = true;
             //Syncfusion.GridHelperClasses.GridExcelFilter gridExcelFilter = new GridExcelFilter();
             //gridExcelFilter.WireGrid(this.gridGroupingControlSearch);
-
-            if (ParentID == 0)
-            {
-                if (sFormName.ToUpper() == "FRMITEMCATEGORY")
-                {
-                    rdoCategory.Checked = true;
-                    GetDataAsperMenuClick("CATEGORIES");
-                }
-                if (sFormName.ToUpper() == "FRMMANUFACTURER")
-                {
-                    rdoManufacturer.Checked = true;
-                    GetDataAsperMenuClick("MANUFACTURER");
-                }
-                if (sFormName.ToUpper() == "FRMBRANDMASTER")
-                {
-                    rdoBrand.Checked = true;
-                    GetDataAsperMenuClick("BRAND");
-                }
-                if (sFormName.ToUpper() == "FRMSIZEMASTER")
-                {
-                    rdoSize.Checked = true;
-                    GetDataAsperMenuClick("SIZE");
-                }
-                if (sFormName.ToUpper() == "FRMCOLORMASTER")
-                {
-                    rdoColor.Checked = true;
-                    GetDataAsperMenuClick("COLOR");
-                }
-                if (sFormName.ToUpper() == "FRMUNITMASTER")
-                {
-                    rdoUnit.Checked = true;
-                    GetDataAsperMenuClick("UNIT");
-                }
-                if (sFormName.ToUpper() == "FRMDISCOUNTGROUP")
-                {
-                    rdoDiscGroup.Checked = true;
-                    GetDataAsperMenuClick("DISCGROUP");
-                }
-                if (sFormName.ToUpper() == "FRMAREAMASTER")
-                {
-                    rdoArea.Checked = true;
-                    GetDataAsperMenuClick("AREA");
-                }
-                if (sFormName.ToUpper() == "FRMAGENTMASTER")
-                {
-                    rdoAgent.Checked = true;
-                    GetDataAsperMenuClick("AGENT");
-                }
-                if (sFormName.ToUpper() == "FRMLEDGER")
-                {
-                    rdoLedger.Checked = true;
-                    GetDataAsperMenuClick("LEDGER");
-                }
-                if (sFormName.ToUpper() == "FRMTAXMODE")
-                {
-                    rdoTaxMode.Checked = true;
-                    GetDataAsperMenuClick("TAXMODE");
-                }
-                if (sFormName.ToUpper() == "FRMACCOUNTGROUP")
-                {
-                    rdoAccountGroup.Checked = true;
-                    GetDataAsperMenuClick("ACCOUNTGROUP");
-                }
-                if (sFormName.ToUpper() == "FRMUSERGROUP")
-                {
-                    rdoUserGroup.Checked = true;
-                    GetDataAsperMenuClick("USERGROUP");
-                }
-                if (sFormName.ToUpper() == "FRMSETTINGS")
-                {
-                    rdoSettings.Checked = true;
-                    GetDataAsperMenuClick("SETTINGS");
-                }
-                if (sFormName.ToUpper() == "FRMSTATE")
-                {
-                    rdoState.Checked = true;
-                    GetDataAsperMenuClick("STATE");
-                }
-                if (sFormName.ToUpper() == "FRMCOSTCENTRE")
-                {
-                    rdoCostCentre.Checked = true;
-                    GetDataAsperMenuClick("COSTCENTRE");
-                }
-                if (sFormName.ToUpper() == "FRMEMPLOYEE")
-                {
-                    rdoEmployee.Checked = true;
-                    GetDataAsperMenuClick("EMPLOYEE");
-                }
-                if (sFormName.ToUpper() == "FRMSTOCKDEPARTMENT")
-                {
-                    rdoStockDepartment.Checked = true;
-                    GetDataAsperMenuClick("STOCKDEPARTMENT");
-                }
-                if (sFormName.ToUpper() == "FRMDEPARTMENT")
-                {
-                    rdoDepartment.Checked = true;
-                    GetDataAsperMenuClick("DEPARTMENT");
-                }
-                if (sFormName.ToUpper() == "FRMCASHDESKMASTER")
-                {
-                    rdoCashDesk.Checked = true;
-                    GetDataAsperMenuClick("CASHDESK");
-                }
-                if (sFormName.ToUpper() == "FRMUSER")
-                {
-                    rdoUser.Checked = true;
-                    GetDataAsperMenuClick("USER");
-                }
-                if (sFormName.ToUpper() == "FRMITEMMASTER")
-                {
-                    rdoItemMaster.Checked = true;
-                    GetDataAsperMenuClick("FRMITEMMASTER");
-                }
-            }
 
             Comm.LoadAppSettings();
             ApplicationSettings();
@@ -491,7 +382,13 @@ namespace DigiposZen
         }
         private void frmEditWindow_Load(object sender, EventArgs e)
         {
-            rdoMasters.Checked = true;
+            //if (mOpenGroup == "Masters")
+            //    rdoMasters.Checked = true;
+            //else if (mOpenGroup == "User")
+            //    rdoUserMngmt.Checked = true;
+            //else if (mOpenGroup == "Settings")
+            //    rdoSettings.Checked = true;
+
             cboListCount.SelectedIndex = 0;
             txtSearch.Select(0, txtSearch.Text.Length);
             
@@ -504,11 +401,32 @@ namespace DigiposZen
             HideButtons();
             FillTreeview();
 
-            rdoMasters.Checked = true;
-            rdoMasters.PerformClick();
+            rdoMasters.Checked = false;
+            rdoCategory.Checked = false;
 
+            rdoTransaction.Checked = false;
+            rdoUserMngmt.Checked = false;
+
+            //if (mOpenGroup == "Masters")
+            //{
+            //    rdoMasters.Checked = true;
+            //    rdoMasters.PerformClick();
+            //}
+            //else if (mOpenGroup == "User")
+            //{
+            //    rdoUserMngmt.Checked = true;
+            //    UserManagementClick(true);
+            //}
+            //else if (mOpenGroup == "Settings")
+            //{
+            //    rdoUserGroup.Checked = true;
+            //    rdoUserGroup.PerformClick();
+            //}
             if (mParentID > 0)
             {
+                rdoTransaction.Checked = true;
+                rdoTransaction.PerformClick();
+
                 sqlControl rs = new sqlControl();
 
                 rs.Open("Select Parentid, Vchtypeid, vchtype from tblvchtype where vchtypeid=" + mVchtypeid.ToString());
@@ -534,6 +452,179 @@ namespace DigiposZen
                     FillTransactionDetails(tnParent);
                 }
             }
+
+            strFormHeaderName = "";
+            /*
+            if (mParentID == 0)
+            {
+                if (mFormName.ToUpper() == "FRMITEMCATEGORY")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoCategory.Checked = true;
+                    GetDataAsperMenuClick("CATEGORIES");
+                }
+                if (mFormName.ToUpper() == "FRMMANUFACTURER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoManufacturer.Checked = true;
+                    GetDataAsperMenuClick("MANUFACTURER");
+                }
+                if (mFormName.ToUpper() == "FRMBRANDMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoBrand.Checked = true;
+                    GetDataAsperMenuClick("BRAND");
+                }
+                if (mFormName.ToUpper() == "FRMSIZEMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoSize.Checked = true;
+                    GetDataAsperMenuClick("SIZE");
+                }
+                if (mFormName.ToUpper() == "FRMCOLORMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoColor.Checked = true;
+                    GetDataAsperMenuClick("COLOR");
+                }
+                if (mFormName.ToUpper() == "FRMUNITMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoUnit.Checked = true;
+                    GetDataAsperMenuClick("UNIT");
+                }
+                if (mFormName.ToUpper() == "FRMDISCOUNTGROUP")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoDiscGroup.Checked = true;
+                    GetDataAsperMenuClick("DISCGROUP");
+                }
+                if (mFormName.ToUpper() == "FRMAREAMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoArea.Checked = true;
+                    GetDataAsperMenuClick("AREA");
+                }
+                if (mFormName.ToUpper() == "FRMAGENTMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoAgent.Checked = true;
+                    GetDataAsperMenuClick("AGENT");
+                }
+                if (mFormName.ToUpper() == "FRMLEDGER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoLedger.Checked = true;
+                    GetDataAsperMenuClick("LEDGER");
+                }
+                if (mFormName.ToUpper() == "FRMTAXMODE")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoTaxMode.Checked = true;
+                    GetDataAsperMenuClick("TAXMODE");
+                }
+                if (mFormName.ToUpper() == "FRMACCOUNTGROUP")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoAccountGroup.Checked = true;
+                    GetDataAsperMenuClick("ACCOUNTGROUP");
+                }
+                if (mFormName.ToUpper() == "FRMSTATE")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoState.Checked = true;
+                    GetDataAsperMenuClick("STATE");
+                }
+                if (mFormName.ToUpper() == "FRMCOSTCENTRE")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoCostCentre.Checked = true;
+                    GetDataAsperMenuClick("COSTCENTRE");
+                }
+                if (mFormName.ToUpper() == "FRMEMPLOYEE")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoEmployee.Checked = true;
+                    GetDataAsperMenuClick("EMPLOYEE");
+                }
+                if (mFormName.ToUpper() == "FRMSTOCKDEPARTMENT")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoStockDepartment.Checked = true;
+                    GetDataAsperMenuClick("STOCKDEPARTMENT");
+                }
+                if (mFormName.ToUpper() == "FRMDEPARTMENT")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoDepartment.Checked = true;
+                    GetDataAsperMenuClick("DEPARTMENT");
+                }
+                if (mFormName.ToUpper() == "FRMCASHDESKMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoCashDesk.Checked = true;
+                    GetDataAsperMenuClick("CASHDESK");
+                }
+                if (mFormName.ToUpper() == "FRMITEMMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoMasters.PerformClick();
+                    rdoItemMaster.Checked = true;
+                    GetDataAsperMenuClick("FRMITEMMASTER");
+                }
+
+
+                //-------User section
+                if (mFormName.ToUpper() == "FRMUSERGROUP")
+                {
+                    rdoUserMngmt.Checked = true;
+                    rdoUserMngmt.PerformClick();
+                    mOpenGroup = "User";
+                    rdoUserMngmt.Checked = true;
+                    UserManagementClick(true);
+                    rdoUserGroup.Checked = true;
+                    GetDataAsperMenuClick("USERGROUP");
+                }
+                if (mFormName.ToUpper() == "FRMUSER")
+                {
+                    rdoUserMngmt.Checked = true;
+                    rdoUserMngmt.PerformClick();
+                    mOpenGroup = "User";
+                    UserManagementClick(true);
+                    rdoUserMngmt.Checked = true;
+                    rdoUser.PerformClick();
+                    //rdoUser.Checked = true;
+                    //GetDataAsperMenuClick("USER");
+                }
+
+                //-------Settings section
+                if (mFormName.ToUpper() == "FRMSETTINGS")
+                {
+                    mOpenGroup = "Settings";
+                    rdoSettings.Checked = true;
+                    rdoSettings.PerformClick();
+                    GetDataAsperMenuClick("SETTINGS");
+                }
+            }
+*/
         }
         private void frmEditWindow_KeyDown(object sender, KeyEventArgs e)
         {
@@ -705,17 +796,36 @@ namespace DigiposZen
         }
         private void rdoUserMngmt_Click(object sender, EventArgs e)
         {
-            if (rdoUserMngmt.Checked == true)
-            {
-                if (this.tlpNavigator.RowStyles[7].Height == 0)
-                {
-                    this.tlpNavigator.RowStyles[7].SizeType = SizeType.Absolute;
-                    this.tlpNavigator.RowStyles[7].Height = 100;
-                }
-                else
-                    this.tlpNavigator.RowStyles[7].Height = 0;
-            }
+            UserManagementClick();
         }
+
+        private void UserManagementClick(bool ForceExpand = false)
+        {
+            try
+            {
+                if (rdoUserMngmt.Checked == true)
+                {
+                    if (ForceExpand == false)
+                    {
+                        if (this.tlpNavigator.RowStyles[7].Height == 0)
+                        {
+                            this.tlpNavigator.RowStyles[7].SizeType = SizeType.Absolute;
+                            this.tlpNavigator.RowStyles[7].Height = 100;
+                        }
+                        else
+                            this.tlpNavigator.RowStyles[7].Height = 0;
+                    }
+                    else
+                    {
+                        this.tlpNavigator.RowStyles[7].SizeType = SizeType.Absolute;
+                        this.tlpNavigator.RowStyles[7].Height = 100;
+                    }
+                }
+            }
+            catch
+            { }
+        }
+
         private void rdoReport_Click(object sender, EventArgs e)
         {
             if (rdoReport.Checked == true)
@@ -4864,6 +4974,160 @@ namespace DigiposZen
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
 
+        }
+
+        private void frmEditWindow_Shown(object sender, EventArgs e)
+        {
+            if (mParentID == 0)
+            {
+                if (mFormName.ToUpper() == "FRMITEMCATEGORY")
+                {
+                    rdoMasters.Checked = true;
+                    rdoCategory.Checked = true;
+                    GetDataAsperMenuClick("CATEGORIES");
+                }
+                if (mFormName.ToUpper() == "FRMMANUFACTURER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoManufacturer.Checked = true;
+                    GetDataAsperMenuClick("MANUFACTURER");
+                }
+                if (mFormName.ToUpper() == "FRMBRANDMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoBrand.Checked = true;
+                    GetDataAsperMenuClick("BRAND");
+                }
+                if (mFormName.ToUpper() == "FRMSIZEMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoSize.Checked = true;
+                    GetDataAsperMenuClick("SIZE");
+                }
+                if (mFormName.ToUpper() == "FRMCOLORMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoColor.Checked = true;
+                    GetDataAsperMenuClick("COLOR");
+                }
+                if (mFormName.ToUpper() == "FRMUNITMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoUnit.Checked = true;
+                    GetDataAsperMenuClick("UNIT");
+                }
+                if (mFormName.ToUpper() == "FRMDISCOUNTGROUP")
+                {
+                    rdoMasters.Checked = true;
+                    rdoDiscGroup.Checked = true;
+                    GetDataAsperMenuClick("DISCGROUP");
+                }
+                if (mFormName.ToUpper() == "FRMAREAMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoArea.Checked = true;
+                    GetDataAsperMenuClick("AREA");
+                }
+                if (mFormName.ToUpper() == "FRMAGENTMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoAgent.Checked = true;
+                    GetDataAsperMenuClick("AGENT");
+                }
+                if (mFormName.ToUpper() == "FRMLEDGER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoLedger.Checked = true;
+                    GetDataAsperMenuClick("LEDGER");
+                }
+                if (mFormName.ToUpper() == "FRMTAXMODE")
+                {
+                    rdoMasters.Checked = true;
+                    rdoTaxMode.Checked = true;
+                    GetDataAsperMenuClick("TAXMODE");
+                }
+                if (mFormName.ToUpper() == "FRMACCOUNTGROUP")
+                {
+                    rdoMasters.Checked = true;
+                    rdoAccountGroup.Checked = true;
+                    GetDataAsperMenuClick("ACCOUNTGROUP");
+                }
+                if (mFormName.ToUpper() == "FRMSTATE")
+                {
+                    rdoMasters.Checked = true;
+                    rdoState.Checked = true;
+                    GetDataAsperMenuClick("STATE");
+                }
+                if (mFormName.ToUpper() == "FRMCOSTCENTRE")
+                {
+                    rdoMasters.Checked = true;
+                    rdoCostCentre.Checked = true;
+                    GetDataAsperMenuClick("COSTCENTRE");
+                }
+                if (mFormName.ToUpper() == "FRMEMPLOYEE")
+                {
+                    rdoMasters.Checked = true;
+                    rdoEmployee.Checked = true;
+                    GetDataAsperMenuClick("EMPLOYEE");
+                }
+                if (mFormName.ToUpper() == "FRMSTOCKDEPARTMENT")
+                {
+                    rdoMasters.Checked = true;
+                    rdoStockDepartment.Checked = true;
+                    GetDataAsperMenuClick("STOCKDEPARTMENT");
+                }
+                if (mFormName.ToUpper() == "FRMDEPARTMENT")
+                {
+                    rdoMasters.Checked = true;
+                    rdoDepartment.Checked = true;
+                    GetDataAsperMenuClick("DEPARTMENT");
+                }
+                if (mFormName.ToUpper() == "FRMCASHDESKMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoCashDesk.Checked = true;
+                    GetDataAsperMenuClick("CASHDESK");
+                }
+                if (mFormName.ToUpper() == "FRMITEMMASTER")
+                {
+                    rdoMasters.Checked = true;
+                    rdoItemMaster.Checked = true;
+                    GetDataAsperMenuClick("FRMITEMMASTER");
+                }
+
+
+                //-------User section
+                if (mFormName.ToUpper() == "FRMUSERGROUP")
+                {
+                    rdoUserMngmt.Checked = true;
+                    rdoUserMngmt.PerformClick();
+                    mOpenGroup = "User";
+                    rdoUserMngmt.Checked = true;
+                    UserManagementClick(true);
+                    rdoUserGroup.Checked = true;
+                    GetDataAsperMenuClick("USERGROUP");
+                }
+                if (mFormName.ToUpper() == "FRMUSER")
+                {
+                    rdoUserMngmt.Checked = true;
+                    rdoUserMngmt.PerformClick();
+                    mOpenGroup = "User";
+                    UserManagementClick(true);
+                    rdoUserMngmt.Checked = true;
+                    rdoUser.PerformClick();
+                    //rdoUser.Checked = true;
+                    //GetDataAsperMenuClick("USER");
+                }
+
+                //-------Settings section
+                if (mFormName.ToUpper() == "FRMSETTINGS")
+                {
+                    mOpenGroup = "Settings";
+                    rdoSettings.Checked = true;
+                    rdoSettings.PerformClick();
+                    GetDataAsperMenuClick("SETTINGS");
+                }
+            }
         }
     }
 }

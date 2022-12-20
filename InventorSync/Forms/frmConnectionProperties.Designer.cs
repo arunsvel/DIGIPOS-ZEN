@@ -30,187 +30,245 @@ namespace DigiposZen.Forms
         private void InitializeComponent()
         {
             this.lblSqlServer = new System.Windows.Forms.Label();
-            this.lblCompanyCode = new System.Windows.Forms.Label();
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.lblServerClient = new System.Windows.Forms.Label();
-            this.lblCDKey = new System.Windows.Forms.Label();
             this.lblLicensedTo = new System.Windows.Forms.Label();
-            this.lblLogOut = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblCDKey = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.lblCompanyCode = new System.Windows.Forms.Label();
+            this.lblServerClient = new System.Windows.Forms.Label();
+            this.txtSqlServer = new System.Windows.Forms.TextBox();
+            this.txtServerClient = new System.Windows.Forms.TextBox();
+            this.txtCompanyCode = new System.Windows.Forms.TextBox();
+            this.txtLicensedTo = new System.Windows.Forms.TextBox();
+            this.txtCDKey = new System.Windows.Forms.TextBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.picBanner = new System.Windows.Forms.PictureBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBanner)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSqlServer
             // 
-            this.lblSqlServer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblSqlServer.Location = new System.Drawing.Point(272, 50);
+            this.lblSqlServer.AutoSize = true;
+            this.lblSqlServer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSqlServer.Location = new System.Drawing.Point(41, 182);
             this.lblSqlServer.Name = "lblSqlServer";
-            this.lblSqlServer.Size = new System.Drawing.Size(342, 32);
-            this.lblSqlServer.TabIndex = 0;
-            this.lblSqlServer.Text = "SqlServer";
-            this.lblSqlServer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblCompanyCode
-            // 
-            this.lblCompanyCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblCompanyCode.Location = new System.Drawing.Point(272, 178);
-            this.lblCompanyCode.Name = "lblCompanyCode";
-            this.lblCompanyCode.Size = new System.Drawing.Size(342, 32);
-            this.lblCompanyCode.TabIndex = 1;
-            this.lblCompanyCode.Text = "CompanyCode";
-            this.lblCompanyCode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblUserName
-            // 
-            this.lblUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblUserName.Location = new System.Drawing.Point(272, 246);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(342, 32);
-            this.lblUserName.TabIndex = 2;
-            this.lblUserName.Text = "UserName";
-            this.lblUserName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblUserName.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // lblServerClient
-            // 
-            this.lblServerClient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblServerClient.Location = new System.Drawing.Point(272, 117);
-            this.lblServerClient.Name = "lblServerClient";
-            this.lblServerClient.Size = new System.Drawing.Size(342, 32);
-            this.lblServerClient.TabIndex = 3;
-            this.lblServerClient.Text = "ServerClient";
-            this.lblServerClient.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblCDKey
-            // 
-            this.lblCDKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblCDKey.Location = new System.Drawing.Point(272, 304);
-            this.lblCDKey.Name = "lblCDKey";
-            this.lblCDKey.Size = new System.Drawing.Size(342, 32);
-            this.lblCDKey.TabIndex = 4;
-            this.lblCDKey.Text = "CDKey";
-            this.lblCDKey.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblSqlServer.Size = new System.Drawing.Size(78, 18);
+            this.lblSqlServer.TabIndex = 7;
+            this.lblSqlServer.Text = "Sql Server:";
+            this.lblSqlServer.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // lblLicensedTo
             // 
-            this.lblLicensedTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblLicensedTo.Location = new System.Drawing.Point(272, 354);
+            this.lblLicensedTo.AutoSize = true;
+            this.lblLicensedTo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLicensedTo.Location = new System.Drawing.Point(41, 342);
             this.lblLicensedTo.Name = "lblLicensedTo";
-            this.lblLicensedTo.Size = new System.Drawing.Size(342, 32);
-            this.lblLicensedTo.TabIndex = 5;
-            this.lblLicensedTo.Text = "LicensedTo";
-            this.lblLicensedTo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblLicensedTo.Size = new System.Drawing.Size(91, 18);
+            this.lblLicensedTo.TabIndex = 10;
+            this.lblLicensedTo.Text = "Licensed To:";
             // 
-            // lblLogOut
+            // lblCDKey
             // 
-            this.lblLogOut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblLogOut.Location = new System.Drawing.Point(742, 22);
-            this.lblLogOut.Name = "lblLogOut";
-            this.lblLogOut.Size = new System.Drawing.Size(114, 32);
-            this.lblLogOut.TabIndex = 6;
-            this.lblLogOut.Text = "LogOut";
-            this.lblLogOut.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCDKey.AutoSize = true;
+            this.lblCDKey.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCDKey.Location = new System.Drawing.Point(41, 310);
+            this.lblCDKey.Name = "lblCDKey";
+            this.lblCDKey.Size = new System.Drawing.Size(62, 18);
+            this.lblCDKey.TabIndex = 11;
+            this.lblCDKey.Text = "CD Key:";
             // 
-            // label1
+            // lblUserName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(146, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 17);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "SqlServer:";
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Location = new System.Drawing.Point(41, 278);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(87, 18);
+            this.lblUserName.TabIndex = 12;
+            this.lblUserName.Text = "User Name:";
             // 
-            // label4
+            // lblCompanyCode
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(146, 354);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 17);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "SqlServer:";
+            this.lblCompanyCode.AutoSize = true;
+            this.lblCompanyCode.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompanyCode.Location = new System.Drawing.Point(41, 246);
+            this.lblCompanyCode.Name = "lblCompanyCode";
+            this.lblCompanyCode.Size = new System.Drawing.Size(113, 18);
+            this.lblCompanyCode.TabIndex = 13;
+            this.lblCompanyCode.Text = "Company Code:";
             // 
-            // label5
+            // lblServerClient
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(146, 304);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 17);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "SqlServer:";
+            this.lblServerClient.AutoSize = true;
+            this.lblServerClient.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServerClient.Location = new System.Drawing.Point(41, 214);
+            this.lblServerClient.Name = "lblServerClient";
+            this.lblServerClient.Size = new System.Drawing.Size(94, 18);
+            this.lblServerClient.TabIndex = 14;
+            this.lblServerClient.Text = "Server Client:";
             // 
-            // label6
+            // txtSqlServer
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(146, 246);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 17);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "SqlServer:";
+            this.txtSqlServer.BackColor = System.Drawing.SystemColors.Control;
+            this.txtSqlServer.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSqlServer.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSqlServer.Location = new System.Drawing.Point(159, 181);
+            this.txtSqlServer.Name = "txtSqlServer";
+            this.txtSqlServer.ReadOnly = true;
+            this.txtSqlServer.Size = new System.Drawing.Size(199, 20);
+            this.txtSqlServer.TabIndex = 21;
+            this.txtSqlServer.TextChanged += new System.EventHandler(this.txtSqlServer_TextChanged);
             // 
-            // label7
+            // txtServerClient
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(146, 178);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 17);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "SqlServer:";
+            this.txtServerClient.BackColor = System.Drawing.SystemColors.Control;
+            this.txtServerClient.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtServerClient.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServerClient.Location = new System.Drawing.Point(159, 213);
+            this.txtServerClient.Name = "txtServerClient";
+            this.txtServerClient.ReadOnly = true;
+            this.txtServerClient.Size = new System.Drawing.Size(199, 20);
+            this.txtServerClient.TabIndex = 22;
             // 
-            // label8
+            // txtCompanyCode
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(146, 117);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 17);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "SqlServer:";
+            this.txtCompanyCode.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCompanyCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCompanyCode.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCompanyCode.Location = new System.Drawing.Point(159, 245);
+            this.txtCompanyCode.Name = "txtCompanyCode";
+            this.txtCompanyCode.ReadOnly = true;
+            this.txtCompanyCode.Size = new System.Drawing.Size(199, 20);
+            this.txtCompanyCode.TabIndex = 23;
+            // 
+            // txtLicensedTo
+            // 
+            this.txtLicensedTo.BackColor = System.Drawing.SystemColors.Control;
+            this.txtLicensedTo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLicensedTo.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLicensedTo.Location = new System.Drawing.Point(159, 341);
+            this.txtLicensedTo.Name = "txtLicensedTo";
+            this.txtLicensedTo.ReadOnly = true;
+            this.txtLicensedTo.Size = new System.Drawing.Size(199, 20);
+            this.txtLicensedTo.TabIndex = 26;
+            // 
+            // txtCDKey
+            // 
+            this.txtCDKey.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCDKey.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCDKey.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCDKey.Location = new System.Drawing.Point(159, 309);
+            this.txtCDKey.Name = "txtCDKey";
+            this.txtCDKey.ReadOnly = true;
+            this.txtCDKey.Size = new System.Drawing.Size(199, 20);
+            this.txtCDKey.TabIndex = 25;
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.BackColor = System.Drawing.SystemColors.Control;
+            this.txtUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtUserName.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserName.Location = new System.Drawing.Point(159, 277);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.ReadOnly = true;
+            this.txtUserName.Size = new System.Drawing.Size(199, 20);
+            this.txtUserName.TabIndex = 24;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnLogOut);
+            this.panel1.Controls.Add(this.btnOK);
+            this.panel1.Controls.Add(this.lblCompanyCode);
+            this.panel1.Controls.Add(this.picBanner);
+            this.panel1.Controls.Add(this.lblSqlServer);
+            this.panel1.Controls.Add(this.txtLicensedTo);
+            this.panel1.Controls.Add(this.lblLicensedTo);
+            this.panel1.Controls.Add(this.txtCDKey);
+            this.panel1.Controls.Add(this.lblCDKey);
+            this.panel1.Controls.Add(this.txtUserName);
+            this.panel1.Controls.Add(this.lblUserName);
+            this.panel1.Controls.Add(this.txtCompanyCode);
+            this.panel1.Controls.Add(this.lblServerClient);
+            this.panel1.Controls.Add(this.txtServerClient);
+            this.panel1.Controls.Add(this.txtSqlServer);
+            this.panel1.Location = new System.Drawing.Point(1, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(455, 435);
+            this.panel1.TabIndex = 28;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // picBanner
+            // 
+            this.picBanner.Image = global::DigiposZen.Properties.Resources.logo;
+            this.picBanner.Location = new System.Drawing.Point(0, 0);
+            this.picBanner.Name = "picBanner";
+            this.picBanner.Size = new System.Drawing.Size(455, 154);
+            this.picBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBanner.TabIndex = 27;
+            this.picBanner.TabStop = false;
+            // 
+            // btnOK
+            // 
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOK.Location = new System.Drawing.Point(238, 372);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 40);
+            this.btnOK.TabIndex = 29;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogOut.Location = new System.Drawing.Point(349, 372);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(75, 40);
+            this.btnLogOut.TabIndex = 30;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.UseVisualStyleBackColor = true;
             // 
             // frmConnectionProperties
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(970, 507);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblLogOut);
-            this.Controls.Add(this.lblLicensedTo);
-            this.Controls.Add(this.lblCDKey);
-            this.Controls.Add(this.lblServerClient);
-            this.Controls.Add(this.lblUserName);
-            this.Controls.Add(this.lblCompanyCode);
-            this.Controls.Add(this.lblSqlServer);
+            this.ClientSize = new System.Drawing.Size(457, 439);
+            this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmConnectionProperties";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "frmConnectionProperties";
             this.Load += new System.EventHandler(this.frmConnectionProperties_Load);
+            this.Shown += new System.EventHandler(this.frmConnectionProperties_Shown);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBanner)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
         private System.Windows.Forms.Label lblSqlServer;
-        private System.Windows.Forms.Label lblCompanyCode;
-        private System.Windows.Forms.Label lblUserName;
-        private System.Windows.Forms.Label lblServerClient;
-        private System.Windows.Forms.Label lblCDKey;
         private System.Windows.Forms.Label lblLicensedTo;
-        private System.Windows.Forms.Label lblLogOut;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblCDKey;
+        private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.Label lblCompanyCode;
+        private System.Windows.Forms.Label lblServerClient;
+        private System.Windows.Forms.TextBox txtSqlServer;
+        private System.Windows.Forms.TextBox txtServerClient;
+        private System.Windows.Forms.TextBox txtCompanyCode;
+        private System.Windows.Forms.TextBox txtLicensedTo;
+        private System.Windows.Forms.TextBox txtCDKey;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.PictureBox picBanner;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Button btnOK;
     }
 }
