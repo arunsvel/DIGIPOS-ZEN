@@ -5500,7 +5500,7 @@ namespace DigiposZen
                     //string inv = id;
                     string PrintScheme;
                     PrintScheme = cboInvScheme1.SelectedItem.ToString(); // + ".rdlc";
-                    prn = new ReportPrint(inv, PrintScheme, this.MdiParent);
+                    prn = new ReportPrint(inv, PrintScheme, this.MdiParent, GetTaxSplitString());
                     prn.Show();
                     prn.Focus();
                     //---------------------------------------
@@ -8267,7 +8267,7 @@ namespace DigiposZen
                             prn.Close();
                             prn.Dispose();
                         }
-                        Comm.writeuserlog(Common.UserActivity.Printinvoice, "", "", clsVchType.TransactionName + " InvNo : " + txtPrefix.Text + txtInvAutoNo.Text.ToString() + " Printed", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(txtPrefix.Text+txtInvAutoNo.Text), clsVchType.TransactionName, "", "");
+                        Comm.writeuserlog(Common.UserActivity.Printinvoice, "", OldData, clsVchType.TransactionName + " InvNo : " + txtPrefix.Text.ToString() + txtInvAutoNo.Text.ToString() + " Printed", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(txtInvAutoNo.Tag), clsVchType.TransactionName, "", "");
 
 
                     }
@@ -10576,6 +10576,171 @@ namespace DigiposZen
         //{
         //    return Convert.ToInt32(dVal);
         //}
+
+        private string GetTaxSplitString()
+        {
+            try
+            {
+                int ArTaxPer;
+                int ArTaxable;
+                int ArVAT;
+                int ArSGST;
+                int ArCGST;
+                int ArIGST;
+
+                ArTaxPer = 0;
+                ArTaxable = 1;
+                ArSGST = 2;
+                ArCGST = 3;
+                ArIGST = 4;
+                ArVAT = 5;
+
+                string[,] TaxDetails = new string[dgvSales.RowCount, 6];
+                bool blnFoundSGST;
+                bool blnFoundCGST;
+                bool blnFoundIGST;
+                bool blnFoundVAT;
+                bool blnFoundItems;
+
+                decimal ItemTaxPer;
+                int i;
+                int j;
+                int Counter;
+
+                blnFoundSGST = false;
+                blnFoundCGST = false;
+                blnFoundIGST = false;
+                blnFoundVAT = false;
+                Counter = 0;
+
+                for (i = 0; i <= dgvSales.RowCount - 1; i++)
+                {
+                    blnFoundItems = false;
+                    if (dgvSales[gridColIndexes.CItemName, i].Tag == null)
+                        dgvSales[gridColIndexes.CItemName, i].Tag = "";
+
+                    if (Comm.ToDecimal(dgvSales[gridColIndexes.CItemName, i].Tag) != 0)
+                    {
+                        ItemTaxPer = Comm.ToDecimal(dgvSales[gridColIndexes.ctaxPer, i].Value); // Comm.ToDecimal(dgvSales[cCGST, i).Tag.ToString) + Comm.ToDecimal(dgvSales[cSGST, i).Tag.ToString) + Comm.ToDecimal(dgvSales[cIGST, i).Tag.ToString)
+                        for (j = 0; j <= Information.UBound(TaxDetails) - 1; j++)
+                        {
+                            if (cboTaxMode.Text.ToUpper() == "VAT")
+                            {
+                                if (Comm.ToDecimal(dgvSales[gridColIndexes.ctax, i].Value) > 0)
+                                    blnFoundVAT = true;
+                            }
+                            else
+                            {
+                                if (Comm.ToDecimal(dgvSales[gridColIndexes.cSGST, i].Tag) > 0)
+                                    blnFoundSGST = true;
+                                if (Comm.ToDecimal(dgvSales[gridColIndexes.cCGST, i].Tag) > 0)
+                                    blnFoundCGST = true;
+                                if (Comm.ToDecimal(dgvSales[gridColIndexes.cIGST, i].Tag) > 0)
+                                    blnFoundIGST = true;
+                            }
+
+                            if (TaxDetails[j, ArTaxPer] != "" & Comm.ToDecimal(TaxDetails[j, ArTaxPer]) == ItemTaxPer)
+                            {
+                                if (Comm.ToDecimal(ItemTaxPer) == 0)
+                                    TaxDetails[j, ArTaxable] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArTaxable]) + Comm.ToDecimal(dgvSales[gridColIndexes.cNonTaxable, i].Value), "");
+                                else
+                                    TaxDetails[j, ArTaxable] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArTaxable]) + Comm.ToDecimal(dgvSales[gridColIndexes.ctaxable, i].Value), "");
+                                // TaxDetails(j, ArTaxable) = Comm.ToDecimal(TaxDetails(j, ArTaxable)) + Comm.ToDecimal(dgvSales[ctaxable, i).Value)
+                                if (cboTaxMode.Text == "VAT")
+                                    TaxDetails[j, ArVAT] = (Comm.ToDecimal(TaxDetails[j, ArVAT]) + Comm.ToDecimal(dgvSales[gridColIndexes.ctax, i].Tag)).ToString();
+                                else
+                                {
+                                    TaxDetails[j, ArSGST] = (Comm.ToDecimal(TaxDetails[j, ArSGST]) + Comm.ToDecimal(dgvSales[gridColIndexes.cSGST, i].Value)).ToString();
+                                    TaxDetails[j, ArCGST] = (Comm.ToDecimal(TaxDetails[j, ArCGST]) + Comm.ToDecimal(dgvSales[gridColIndexes.cCGST, i].Value)).ToString();
+                                    TaxDetails[j, ArIGST] = (Comm.ToDecimal(TaxDetails[j, ArIGST]) + Comm.ToDecimal(dgvSales[gridColIndexes.cIGST, i].Value)).ToString();
+                                }
+
+                                blnFoundItems = true;
+                            }
+                        }
+                        if (blnFoundItems == false)
+                        {
+                            if (Comm.CheckDBNullOrEmpty(dgvSales[gridColIndexes.CItemName, i].Value.ToString()) != "")
+                            {
+                                TaxDetails[Counter, ArTaxPer] = Comm.FormatAmt(ItemTaxPer, "");
+                                if (Comm.ToDecimal(ItemTaxPer) == 0)
+                                    TaxDetails[Counter, ArTaxable] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[Counter, ArTaxable]) + Comm.ToDecimal(dgvSales[gridColIndexes.cNonTaxable, i].Value), "");
+                                else
+                                    TaxDetails[Counter, ArTaxable] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[Counter, ArTaxable]) + Comm.ToDecimal(dgvSales[gridColIndexes.ctaxable, i].Value), "");
+
+                                if (cboTaxMode.Text == "VAT")
+                                    TaxDetails[Counter, ArVAT] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[Counter, ArVAT]) + Comm.ToDecimal(dgvSales[gridColIndexes.ctax, i].Value), "");
+                                else
+                                {
+                                    TaxDetails[Counter, ArSGST] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[Counter, ArSGST]) + Comm.ToDecimal(dgvSales[gridColIndexes.cSGST, i].Value), "");
+                                    TaxDetails[Counter, ArCGST] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[Counter, ArCGST]) + Comm.ToDecimal(dgvSales[gridColIndexes.cCGST, i].Value), "");
+                                    TaxDetails[Counter, ArIGST] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[Counter, ArIGST]) + Comm.ToDecimal(dgvSales[gridColIndexes.cIGST, i].Value), "");
+                                }
+
+                                Counter = Counter + 1;
+                            }
+                        }
+                    }
+                }
+                string StrLIne;
+                int LineLen;
+                LineLen = 0;
+                StrLIne = "_________________________________________";
+                string StrTaxSplit;
+                StrTaxSplit = Comm.Aligntext("Tax%", 8, 0) + Comm.Aligntext("Taxable", 12, 1);
+                if (cboTaxMode.Text == "VAT")
+                {
+                    if (blnFoundVAT)
+                        StrTaxSplit = StrTaxSplit + Comm.Aligntext("VAT", 10, 1);
+                    LineLen = StrTaxSplit.Length;
+                    StrTaxSplit = StrTaxSplit + Constants.vbCrLf + Strings.Mid(StrLIne, 1, LineLen) + Constants.vbCrLf;
+                }
+                else
+                {
+                    if (blnFoundCGST)
+                        StrTaxSplit = StrTaxSplit + Comm.Aligntext("CGST", 10, 1);
+                    if (blnFoundSGST)
+                        StrTaxSplit = StrTaxSplit + Comm.Aligntext("SGST", 10, 1);
+                    if (blnFoundIGST)
+                        StrTaxSplit = StrTaxSplit + Comm.Aligntext("IGST", 10, 1);
+                    LineLen = StrTaxSplit.Length;
+                    StrTaxSplit = StrTaxSplit + Constants.vbCrLf + Strings.Mid(StrLIne, 1, LineLen) + Constants.vbCrLf;
+                }
+
+                // StrTaxSplit = StrTaxSplit & vbCrLf
+                if (Counter > 0)
+                {
+                    for (j = 0; j <= Counter - 1; j++)
+                    {
+                        StrTaxSplit = StrTaxSplit + Comm.Aligntext(TaxDetails[j, ArTaxPer], 8, 0) + Comm.Aligntext(Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArTaxable]), ""), 12, 1);
+                        if (cboTaxMode.Text == "VAT")
+                        {
+                            if (blnFoundVAT)
+                                StrTaxSplit = StrTaxSplit + Comm.Aligntext(Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArVAT]), ""), 10, 1);
+                        }
+                        else
+                        {
+                            if (blnFoundCGST)
+                                StrTaxSplit = StrTaxSplit + Comm.Aligntext(Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArCGST]), ""), 10, 1);
+                            if (blnFoundSGST)
+                                StrTaxSplit = StrTaxSplit + Comm.Aligntext(Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArSGST]), ""), 10, 1);
+                            if (blnFoundIGST)
+                                StrTaxSplit = StrTaxSplit + Comm.Aligntext(Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArIGST]), ""), 10, 1);
+                        }
+
+                        StrTaxSplit = StrTaxSplit + Constants.vbCrLf;
+                    }
+                }
+
+                StrTaxSplit = Strings.Mid(StrLIne, 1, LineLen) + Constants.vbCrLf + StrTaxSplit + Strings.Mid(StrLIne, 1, LineLen);
+
+                return StrTaxSplit;
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
 
         private void LoadDataFromJSon(string strJson = "")
         {

@@ -105,6 +105,10 @@
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.minimizeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.maximizeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmConnectionDetails = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,10 +116,6 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.minimizeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.maximizeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -668,7 +668,7 @@
             this.createCompanyToolStripMenuItem,
             this.companyManagerToolStripMenuItem});
             this.companySettingsToolStripMenuItem.Name = "companySettingsToolStripMenuItem";
-            this.companySettingsToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.companySettingsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.companySettingsToolStripMenuItem.Text = "Company Settings";
             // 
             // applicationSettingsToolStripMenuItem1
@@ -703,32 +703,33 @@
             // barcodePrintToolStripMenuItem
             // 
             this.barcodePrintToolStripMenuItem.Name = "barcodePrintToolStripMenuItem";
-            this.barcodePrintToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.barcodePrintToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.barcodePrintToolStripMenuItem.Text = "Barcode Print";
             this.barcodePrintToolStripMenuItem.Click += new System.EventHandler(this.barcodePrintToolStripMenuItem_Click);
             // 
             // barcodeManagerToolStripMenuItem
             // 
             this.barcodeManagerToolStripMenuItem.Name = "barcodeManagerToolStripMenuItem";
-            this.barcodeManagerToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.barcodeManagerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.barcodeManagerToolStripMenuItem.Text = "Barcode Manager";
             this.barcodeManagerToolStripMenuItem.Click += new System.EventHandler(this.barcodeManagerToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(205, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
             // 
             // backupManagerToolStripMenuItem
             // 
             this.backupManagerToolStripMenuItem.Name = "backupManagerToolStripMenuItem";
-            this.backupManagerToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.backupManagerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.backupManagerToolStripMenuItem.Text = "Backup Manager";
+            this.backupManagerToolStripMenuItem.Click += new System.EventHandler(this.backupManagerToolStripMenuItem_Click);
             // 
             // advancedSearchToolStripMenuItem
             // 
             this.advancedSearchToolStripMenuItem.Name = "advancedSearchToolStripMenuItem";
-            this.advancedSearchToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.advancedSearchToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.advancedSearchToolStripMenuItem.Text = "Advanced Search";
             this.advancedSearchToolStripMenuItem.Click += new System.EventHandler(this.advancedSearchToolStripMenuItem_Click);
             // 
@@ -755,6 +756,37 @@
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(164, 26);
             this.usersToolStripMenuItem.Text = "Users";
             this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
+            // 
+            // windowToolStripMenuItem
+            // 
+            this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.minimizeAllToolStripMenuItem,
+            this.maximizeAllToolStripMenuItem,
+            this.cascadeToolStripMenuItem});
+            this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
+            this.windowToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.windowToolStripMenuItem.Text = "Window";
+            // 
+            // minimizeAllToolStripMenuItem
+            // 
+            this.minimizeAllToolStripMenuItem.Name = "minimizeAllToolStripMenuItem";
+            this.minimizeAllToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
+            this.minimizeAllToolStripMenuItem.Text = "Minimize All";
+            this.minimizeAllToolStripMenuItem.Click += new System.EventHandler(this.minimizeAllToolStripMenuItem_Click);
+            // 
+            // maximizeAllToolStripMenuItem
+            // 
+            this.maximizeAllToolStripMenuItem.Name = "maximizeAllToolStripMenuItem";
+            this.maximizeAllToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
+            this.maximizeAllToolStripMenuItem.Text = "Maximize All";
+            this.maximizeAllToolStripMenuItem.Click += new System.EventHandler(this.maximizeAllToolStripMenuItem_Click);
+            // 
+            // cascadeToolStripMenuItem
+            // 
+            this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
+            this.cascadeToolStripMenuItem.Text = "Cascade";
+            this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
             // 
             // tsmHelp
             // 
@@ -835,37 +867,6 @@
             this.label1.Size = new System.Drawing.Size(267, 23);
             this.label1.TabIndex = 1;
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // windowToolStripMenuItem
-            // 
-            this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.minimizeAllToolStripMenuItem,
-            this.maximizeAllToolStripMenuItem,
-            this.cascadeToolStripMenuItem});
-            this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
-            this.windowToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
-            this.windowToolStripMenuItem.Text = "Window";
-            // 
-            // minimizeAllToolStripMenuItem
-            // 
-            this.minimizeAllToolStripMenuItem.Name = "minimizeAllToolStripMenuItem";
-            this.minimizeAllToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.minimizeAllToolStripMenuItem.Text = "Minimize All";
-            this.minimizeAllToolStripMenuItem.Click += new System.EventHandler(this.minimizeAllToolStripMenuItem_Click);
-            // 
-            // maximizeAllToolStripMenuItem
-            // 
-            this.maximizeAllToolStripMenuItem.Name = "maximizeAllToolStripMenuItem";
-            this.maximizeAllToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.maximizeAllToolStripMenuItem.Text = "Maximize All";
-            this.maximizeAllToolStripMenuItem.Click += new System.EventHandler(this.maximizeAllToolStripMenuItem_Click);
-            // 
-            // cascadeToolStripMenuItem
-            // 
-            this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.cascadeToolStripMenuItem.Text = "Cascade";
-            this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
             // 
             // frmMDI
             // 

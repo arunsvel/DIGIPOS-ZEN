@@ -1148,5 +1148,12 @@ namespace DigiposZen
                 y += 25;
             }
         }
+
+        private void backupManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem t = (ToolStripMenuItem)sender;
+            OpenMenu(t.Text.ToString(), 0);
+
+        }
     }
 }

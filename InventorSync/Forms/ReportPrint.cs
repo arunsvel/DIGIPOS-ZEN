@@ -17,12 +17,16 @@ namespace DigiposZen.Forms
     {
         Common Comm = new Common();
 
-        public ReportPrint(string inv = "", string PrintScheme = "", object MDIParent = null)
+        string mTaxSplitString = "";
+
+        public ReportPrint(string inv = "", string PrintScheme = "", object MDIParent = null, string TaxSplitString = "")
         {
             InitializeComponent();
 
             frmMDI form = (frmMDI)MDIParent;
             this.MdiParent = form;
+
+            mTaxSplitString = TaxSplitString;
 
             strinv = inv;
             strPrintScheme = PrintScheme;
@@ -39,8 +43,7 @@ namespace DigiposZen.Forms
                 string constr = DigiposZen.Properties.Settings.Default.ConnectionString;
                 SqlConnection conn = new SqlConnection(constr);
 
-
-                SqlDataAdapter adp = new SqlDataAdapter("Select * from tblSales where invid='" + strinv + "' ", conn);
+                SqlDataAdapter adp = new SqlDataAdapter("Select *,'" + mTaxSplitString + "' as TaxSplit from tblSales where invid='" + strinv + "' ", conn);
                 DataTable tbl1 = new DataTable();
                 tbl1.TableName = "DataSet2";
                 adp.Fill(tbl1);
@@ -54,14 +57,17 @@ namespace DigiposZen.Forms
                 DataTable tbl3 = new DataTable();
                 tbl3.TableName = "DataSet3";
                 adp2.Fill(tbl3);
+
                 SqlDataAdapter adp3 = new SqlDataAdapter("select tblSalesItem.taxper,sum(ITaxableAmount) as ITaxableAmount,sum(InonTaxableAmount) as InonTaxableAmount,sum(CGSTTaxAmt) as CGSTTaxAmt,sum(SGSTTaxAmt) as SGSTTaxAmt from tblItemMaster join tblSalesItem on tblItemMaster.ItemId=tblSalesItem.ItemID where InvID='" + strinv + "' GROUP BY (TaxPer)", conn);
                 DataTable tbl4 = new DataTable();
                 tbl4.TableName = "DataSet4";
                 adp3.Fill(tbl4);
+
                 SqlDataAdapter adp4 = new SqlDataAdapter("select ValueName from tblAppSettings where keyname='BLNSHOWCOMPANYNAME'", conn);
                 DataTable tbl5 = new DataTable();
                 tbl5.TableName = "DataSet5";
                 adp4.Fill(tbl5);
+
                 SqlDataAdapter adp5 = new SqlDataAdapter("select ValueName from tblAppSettings where keyname='BLNSHOWCOMPANYADDRESS'", conn);
                 DataTable tbl6 = new DataTable();
                 tbl6.TableName = "DataSet6";
@@ -86,7 +92,6 @@ namespace DigiposZen.Forms
                 this.reportViewer1.LocalReport.DataSources.Add(rds1);
                 this.reportViewer1.LocalReport.DataSources.Add(rds2);
                 this.reportViewer1.LocalReport.DataSources.Add(rds3);
-
                 this.reportViewer1.LocalReport.DataSources.Add(rds4);
                 this.reportViewer1.LocalReport.DataSources.Add(rds5);
 

@@ -8149,6 +8149,68 @@ namespace DigiposZen.InventorBL.Helper
                 myFormat = "#.00";
             return ToDouble(myValue).ToString(myFormat);
         }
+        public string Aligntext(string textVal, int intLen, int align, bool BlnDoubleWidth = false)
+        {
+            long i;
+            string ReturnVal;
+            string[] STRSPLIT;
+            if (Strings.InStr(1, textVal, Environment.NewLine) > 0)
+                STRSPLIT = Strings.Split(textVal, Environment.NewLine);
+            else
+                STRSPLIT = Strings.Split("1:", ":");
+
+            int TextLen;
+            TextLen = Strings.Len(textVal);
+
+            ReturnVal = "";
+            if (BlnDoubleWidth)
+            {
+                intLen = intLen / 2;
+                if (TextLen > intLen)
+                    TextLen = intLen;
+            }
+
+            if ((intLen - TextLen) < 0)
+                TextLen = intLen;
+
+            if (Strings.Trim(STRSPLIT[1]) == "")
+            {
+                textVal = Strings.Left(textVal, intLen);
+                if (align == 0)
+                    ReturnVal = textVal + Strings.Space((intLen - TextLen));
+                else if (align == 1)
+                    ReturnVal = Strings.Space((intLen - TextLen)) + textVal;
+                else if (align == 2)
+                {
+                    ReturnVal = Strings.Space((intLen - TextLen) / 2) + textVal + Strings.Space((intLen - TextLen) / 2);
+                    ReturnVal = Strings.Left(ReturnVal, intLen);
+                }
+                if (BlnDoubleWidth)
+                    ReturnVal = Strings.Chr(27) + Strings.Chr(14) + ReturnVal;
+            }
+            else
+                for (i = 0; i <= Information.UBound(STRSPLIT); i++)
+                {
+                    textVal = Strings.Replace(STRSPLIT[i], Convert.ToChar(10).ToString(), "");
+                    textVal = Strings.Replace(textVal, Convert.ToChar(13).ToString(), "");
+                    textVal = Strings.Left(textVal, intLen);
+                    TextLen = Strings.Len(textVal);
+                    if (align == 0)
+                        ReturnVal = ReturnVal + textVal;
+                    else if (align == 1)
+                        ReturnVal = ReturnVal + "" + Strings.Space((intLen - TextLen)) + textVal;
+                    else if (align == 2)
+                        ReturnVal = ReturnVal + Strings.Space((intLen - TextLen) / 2) + textVal + Strings.Space((intLen - TextLen) / 2);
+                    else
+                    {
+                    }
+                    if (i != Information.UBound(STRSPLIT))
+                        ReturnVal = ReturnVal + Constants.vbCrLf;
+                    if (BlnDoubleWidth)
+                        ReturnVal = Strings.Chr(27) + Strings.Chr(14) + ReturnVal;
+                }
+            return ReturnVal;
+        }
         public string FormatAmt(decimal myValue, string myFormat)
         {
             //https://msdn.microsoft.com/en-us/library/microsoft.visualbasic.strings.format(v=vs.110).aspx

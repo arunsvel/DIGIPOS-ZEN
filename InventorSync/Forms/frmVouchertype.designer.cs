@@ -705,13 +705,13 @@ namespace DigiposZen
             // tblpForms
             // 
             this.tblpForms.ColumnCount = 7;
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 700F));
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 9F));
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 308F));
             this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 960F));
             this.tblpForms.Controls.Add(this.groupBox6, 0, 0);
             this.tblpForms.Controls.Add(this.groupBox5, 4, 0);
             this.tblpForms.Controls.Add(this.groupBox2, 2, 0);
@@ -749,9 +749,9 @@ namespace DigiposZen
             this.groupBox6.Controls.Add(this.label61);
             this.groupBox6.Controls.Add(this.label62);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.Location = new System.Drawing.Point(703, 3);
+            this.groupBox6.Location = new System.Drawing.Point(14, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(3, 623);
+            this.groupBox6.Size = new System.Drawing.Size(13, 623);
             this.groupBox6.TabIndex = 37;
             this.groupBox6.TabStop = false;
             // 
@@ -1088,9 +1088,9 @@ namespace DigiposZen
             this.groupBox5.Controls.Add(this.label58);
             this.groupBox5.Controls.Add(this.label59);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(1044, 3);
+            this.groupBox5.Location = new System.Drawing.Point(76, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(5, 623);
+            this.groupBox5.Size = new System.Drawing.Size(4, 623);
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
             // 
@@ -1337,9 +1337,9 @@ namespace DigiposZen
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.label28);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(728, 3);
+            this.groupBox2.Location = new System.Drawing.Point(44, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(2, 623);
+            this.groupBox2.Size = new System.Drawing.Size(16, 623);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
@@ -1403,9 +1403,9 @@ namespace DigiposZen
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(736, 3);
+            this.groupBox1.Location = new System.Drawing.Point(66, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(302, 623);
+            this.groupBox1.Size = new System.Drawing.Size(4, 623);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -2002,9 +2002,9 @@ namespace DigiposZen
             this.groupBox4.Controls.Add(this.label49);
             this.groupBox4.Controls.Add(this.label50);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(712, 3);
+            this.groupBox4.Location = new System.Drawing.Point(33, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(10, 623);
+            this.groupBox4.Size = new System.Drawing.Size(5, 623);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             // 
@@ -2356,7 +2356,7 @@ namespace DigiposZen
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(694, 623);
+            this.groupBox3.Size = new System.Drawing.Size(5, 623);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             // 
@@ -2828,9 +2828,9 @@ namespace DigiposZen
             this.groupBox7.Controls.Add(this.dgvPrintSettings);
             this.groupBox7.Controls.Add(this.label84);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox7.Location = new System.Drawing.Point(1055, 3);
+            this.groupBox7.Location = new System.Drawing.Point(86, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(4, 623);
+            this.groupBox7.Size = new System.Drawing.Size(954, 623);
             this.groupBox7.TabIndex = 38;
             this.groupBox7.TabStop = false;
             // 
@@ -2976,9 +2976,9 @@ namespace DigiposZen
             this.label80.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label80.Location = new System.Drawing.Point(440, 69);
             this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(98, 21);
+            this.label80.Size = new System.Drawing.Size(88, 21);
             this.label80.TabIndex = 45;
-            this.label80.Text = "Item Height";
+            this.label80.Text = "Item Lines";
             this.label80.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // label81
