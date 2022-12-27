@@ -98,7 +98,6 @@
             this.createCompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.companyManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barcodePrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.barcodeManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.backupManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.advancedSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,6 +115,7 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.activityMonitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -650,10 +650,10 @@
             this.tsmTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.companySettingsToolStripMenuItem,
             this.barcodePrintToolStripMenuItem,
-            this.barcodeManagerToolStripMenuItem,
             this.toolStripSeparator2,
             this.backupManagerToolStripMenuItem,
-            this.advancedSearchToolStripMenuItem});
+            this.advancedSearchToolStripMenuItem,
+            this.activityMonitorToolStripMenuItem});
             this.tsmTools.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsmTools.Name = "tsmTools";
             this.tsmTools.Size = new System.Drawing.Size(57, 24);
@@ -707,13 +707,6 @@
             this.barcodePrintToolStripMenuItem.Text = "Barcode Print";
             this.barcodePrintToolStripMenuItem.Click += new System.EventHandler(this.barcodePrintToolStripMenuItem_Click);
             // 
-            // barcodeManagerToolStripMenuItem
-            // 
-            this.barcodeManagerToolStripMenuItem.Name = "barcodeManagerToolStripMenuItem";
-            this.barcodeManagerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.barcodeManagerToolStripMenuItem.Text = "Barcode Manager";
-            this.barcodeManagerToolStripMenuItem.Click += new System.EventHandler(this.barcodeManagerToolStripMenuItem_Click);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -723,7 +716,7 @@
             // 
             this.backupManagerToolStripMenuItem.Name = "backupManagerToolStripMenuItem";
             this.backupManagerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.backupManagerToolStripMenuItem.Text = "Backup Manager";
+            this.backupManagerToolStripMenuItem.Text = "Data Manager";
             this.backupManagerToolStripMenuItem.Click += new System.EventHandler(this.backupManagerToolStripMenuItem_Click);
             // 
             // advancedSearchToolStripMenuItem
@@ -868,6 +861,13 @@
             this.label1.TabIndex = 1;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // activityMonitorToolStripMenuItem
+            // 
+            this.activityMonitorToolStripMenuItem.Name = "activityMonitorToolStripMenuItem";
+            this.activityMonitorToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.activityMonitorToolStripMenuItem.Text = "Activity Monitor";
+            this.activityMonitorToolStripMenuItem.Click += new System.EventHandler(this.activityMonitorToolStripMenuItem_Click);
+            // 
             // frmMDI
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -983,11 +983,11 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem hsnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem advancedSearchToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem barcodeManagerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem minimizeAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maximizeAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cascadeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem activityMonitorToolStripMenuItem;
     }
 }
 

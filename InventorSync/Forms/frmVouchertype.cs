@@ -2389,8 +2389,6 @@ namespace DigiposZen
                         {
                             //dt.Rows.Add("BLNAPPLYGIFTVOUCHER", "Apply Gift Voucher");
                             //dt.Rows.Add("BLNAPPLYOFFER", "Apply Offer Automatically");
-                            dt.Rows.Add("BLNCASHDESK", "Enable Cash Desk");
-                            dt.Rows.Add("BLNPOSTCASHENTRY", "Post Cash Entry In Ledger");
                             dt.Rows.Add("BLNDISPLAYLEDGERBALANCE", "Display Ledger Balance On Selection");
                             dt.Rows.Add("BLNNAMEANDMOBILENOMANDATORY", "Party Name & Mobile No Mandatory");
                             dt.Rows.Add("BLNEDITMRPRATE", "Allow User To Edit MRP In Grid");

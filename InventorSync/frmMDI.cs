@@ -129,6 +129,24 @@ namespace DigiposZen
 
             switch (MenuName)
             {
+                case "ACTIVITYMONITOR":
+                    frmActiveMonitor frmAM = new frmActiveMonitor();
+                    frmAM.Text = "Activity Monitor";
+                    frmAM.MdiParent = this;
+                    frmAM.Show();
+                    frmAM.Focus();
+                    frmAM.BringToFront();
+                    break;
+
+                case "DATAMANAGER":
+                    frmBackupManager frmDM = new frmBackupManager();
+                    frmDM.Text = "Data Manager";
+                    frmDM.MdiParent = this;
+                    frmDM.Show();
+                    frmDM.Focus();
+                    frmDM.BringToFront();
+                    break;
+
                 case "CONNECTIONDETAILS":
                     frmConnectionProperties frmCP = new frmConnectionProperties(this);
                     frmCP.Text = "User Profile";
@@ -607,6 +625,12 @@ namespace DigiposZen
                             frmStockInVoucherNew frmRecNote = new frmStockInVoucherNew(VchtypeID, 0, false, this);
                             frmRecNote.Show();
                             frmRecNote.BringToFront();
+                            break;
+
+                        case 18: //Quotation
+                            frmStockOutVoucherNew frmQt = new frmStockOutVoucherNew(VchtypeID, 0, false, this);
+                            frmQt.Show();
+                            frmQt.BringToFront();
                             break;
 
                         case 20: //Purchase
@@ -1150,6 +1174,13 @@ namespace DigiposZen
         }
 
         private void backupManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem t = (ToolStripMenuItem)sender;
+            OpenMenu(t.Text.ToString(), 0);
+
+        }
+
+        private void activityMonitorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
             OpenMenu(t.Text.ToString(), 0);

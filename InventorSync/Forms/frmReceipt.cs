@@ -38,7 +38,7 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
-
+       
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImportAttribute("user32.dll")]
@@ -49,7 +49,9 @@ namespace DigiposZen
         private frmCompactSearch frmSupplierSearch;
         private frmCompactSearch frmItemSearch;
         private frmCompactSearch frmBatchSearch;
-
+        string newData = "";
+        string oldData = "";
+        string strjold = "";
         sqlControl bsdata = new sqlControl();
 
         public frmReceipt(int iVchTpeId = 0, int iTransID = 0, bool bFromEdit = false, object MDIParent = null)
@@ -1936,6 +1938,8 @@ namespace DigiposZen
                 dgvItems.Columns[GetEnum(gridColIndexes.cLedgerID)].Visible = false;
 
                 CalcTotal();
+                oldData = "InvNo: " + txtPrefix.Text + "" + txtInvAutoNo.Text + ",InvDate: " + dtpInvDate.Text + ",Ledger: " + txtLedger.Text +",Dr/Cr: "+cboDrCr.Text+",Total: " + txtTotalDr.Text + ",Narration: " + txtNarration.Text +",BillAmount: "+ lblBillAmount.Text + ",Chequeno: " + txtChequeno.Text +",Bank Name: " + txtBankName.Text +",Status: " + cmbStatus.Text + ",Chequedate: "+ dtpChequedate.Text +",Cost Center: "+ cboCostCentre .Text+ ",SalesStaff: "+ cboSalesStaff.Text ;
+            
             }
         }
 
@@ -1960,8 +1964,11 @@ namespace DigiposZen
 
                 try
                 {
+
                     if (IsValidate() == true)
                     {
+                        newData = "InvNo: " + txtPrefix.Text + "" + txtInvAutoNo.Text + ",InvDate: " + dtpInvDate.Text + ",Ledger: " + txtLedger.Text + ",Dr/Cr: " + cboDrCr.Text + ",Total: " + txtTotalDr.Text + ",Narration: " + txtNarration.Text + ",BillAmount: " + lblBillAmount.Text + ",Chequeno: " + txtChequeno.Text + ",Bank Name: " + txtBankName.Text + ",Status: " + cmbStatus.Text + ",Chequedate: " + dtpChequedate.Text + ",Cost Center: " + cboCostCentre.Text + ",SalesStaff: " + cboSalesStaff.Text;
+
                         string strJson = SerializetoJson();
 
                         #region "DELETE THE ACCOUNT POSTING IF EDIT MODE"
@@ -2146,6 +2153,26 @@ namespace DigiposZen
                         }
 
                         trans.Commit();
+
+
+
+                        if (iIDFromEditWindow == 0)
+
+
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newData, oldData, clsVchType.TransactionName + " InvNo : " + txtPrefix.Text + txtInvAutoNo.Text.ToString() + " Created", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(txtInvAutoNo.Text), clsVchType.TransactionName, strjold, strJson);
+
+                        else if (iIDFromEditWindow != 0 && iAction == 1)
+
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newData, oldData, clsVchType.TransactionName + " InvNo : " + txtPrefix.Text + txtInvAutoNo.Text.ToString() + " Updated", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(txtInvAutoNo.Text), clsVchType.TransactionName, strjold, strJson);
+
+                        else if (iIDFromEditWindow != 0 && iAction == 2)
+
+                            Comm.writeuserlog(Common.UserActivity.Delete_Entry, "", oldData, clsVchType.TransactionName + " InvNo : " + txtPrefix.Text + txtInvAutoNo.Text.ToString() + " Deleted", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(txtInvAutoNo.Text), clsVchType.TransactionName, strjold, strJson);
+
+
+
+
+
                         blnTransactionStarted = false;
 
                         string vchno = txtInvAutoNo.Text;
@@ -3675,6 +3702,11 @@ namespace DigiposZen
             if (cboDrCr.Visible == true) cboDrCr.Enabled = true;
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //Description : Convert to Int32 of Decimal Value
         private int ConvertI32(decimal dVal)
         {
@@ -3711,6 +3743,7 @@ namespace DigiposZen
                 }
 
                 SetColumnsAsPerVchtype();
+                strjold = dtLoad.Rows[0]["JsonData"].ToString();
 
             }
             catch (Exception ex)

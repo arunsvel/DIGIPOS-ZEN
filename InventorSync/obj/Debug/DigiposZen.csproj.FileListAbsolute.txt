@@ -166,12 +166,13 @@ D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\pt\Microsoft.ReportVi
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.csproj.AssemblyReference.cache
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Controls.MsgToast.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Controls.ToastForm.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Forms.FirstRun.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Forms.AboutBoxUs.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.frmAccountReport.resources
+D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Forms.frmActiveMonitor.resources
+D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.frmBackupManager.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Forms.frmCashDesk.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.frmCashDeskMaster.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.frmCashDeskReport.resources

@@ -325,6 +325,18 @@
     <Compile Include="Forms\frmAccountReport.Designer.cs">
       <DependentUpon>frmAccountReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmActiveMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmActiveMonitor.Designer.cs">
+      <DependentUpon>frmActiveMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBackupManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBackupManager.designer.cs">
+      <DependentUpon>frmBackupManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmCashDesk.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -884,6 +896,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAccountReport.resx">
       <DependentUpon>frmAccountReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmActiveMonitor.resx">
+      <DependentUpon>frmActiveMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBackupManager.resx">
+      <DependentUpon>frmBackupManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCashDesk.resx">
       <DependentUpon>frmCashDesk.cs</DependentUpon>

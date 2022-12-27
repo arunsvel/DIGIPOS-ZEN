@@ -221,16 +221,24 @@ namespace DigiposZen.InventorBL.Helper
 
                     dt = Convert.ToDateTime(strdt);
 
-                    if (dt == Convert.ToDateTime("21/Dec/2022"))
+                    if (dt == Convert.ToDateTime("26/Dec/2022"))
                         return false;
 
-                    SaveInAppSettings("DBUPDATEDATE", "21/Dec/2022");
+                    SaveInAppSettings("DBUPDATEDATE", "26/Dec/2022");
                 }
             }
             catch
             { }
             
             string sQuery = "";
+
+            try
+            {
+                sQuery = @"UPDATE tbluserLog SET DATEOF = CAST(CAST(YEAR(DATEOF) AS VARCHAR) + '-' + CAST(MONTH(DATEOF) AS VARCHAR) + '-' + CAST(DAY(DATEOF) AS VARCHAR) AS DATETIME) ";
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
 
             try
             {
@@ -1963,7 +1971,7 @@ namespace DigiposZen.InventorBL.Helper
                         @SystemName varchar(100) ,
                         @WindowName Varchar(100),
                         @JsonDataOld varchar(max),@JsonDataNew varchar(max) )  AS BEGIN    Declare @Username varchar(50)
-                        Declare @DateOf DateTime Declare @Timeof DateTime   Set @DateOf = CONVERT(datetime,
+                        Declare @DateOf DateTime Declare @Timeof DateTime   Set @DateOf = CONVERT(date,
                        GETDATE())  Set @Timeof = CONVERT(VARCHAR(8), getdate(), 114)
                         select @Username = username from tbluserMaster where userID = @UserId
                         Insert into tbluserLog(ID, OldData, NewData, DateOf, Timeof,[Action], ActionDescription, VchtypeId, parentVchtypeId, UniqueFiledValue, RefId, UserId, SystemName, WindowName, Username, JsonDataOld, JsonDataNew) values(@id, @OldData, @NewData, @DateOf, @Timeof, @Action, @ActionDescription, @VchtypeId, @parentVchtypeId, @UniqueFiledValue, @RefId, @UserId, @SystemName, @WindowName, @Username, @JsonDataOld, @JsonDataNew)     end";
