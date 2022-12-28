@@ -498,6 +498,8 @@ namespace DigiposZen
 
                         mPrimaryServer = cboPrimaryServer.Text.ToString();
                         Global.SetSqlServerName(mPrimaryServer);
+                        Global.SetROLEOFSYSTEM(cboRoleofSystem.Text.ToString());
+
                         FirstRun();
                     }
                 }
@@ -520,6 +522,7 @@ namespace DigiposZen
                 {
                     Global.SetSqlServerName(cboPrimaryServer.Text.ToString());
                     Global.SetSqlServerName2(cboSecondaryServer.Text.ToString());
+                    Global.SetROLEOFSYSTEM(cboRoleofSystem.Text.ToString());
 
                     this.tblpLoginScreen.ColumnStyles[0].SizeType = SizeType.Absolute;
                     this.tblpLoginScreen.ColumnStyles[0].Width = 0;
@@ -632,6 +635,7 @@ namespace DigiposZen
                     Global.SetUserId(0);
                     Global.SetUserGroupId(0);
                     Global.SetUserName("DIGIPOS");
+                    Global.Setpwd("");
                     Global.SetSystemName("Standard");
 
                     return true;
@@ -644,6 +648,7 @@ namespace DigiposZen
                     Global.SetUserId(Convert.ToInt32(dtUser.Rows[0]["userid"]));
                     Global.SetUserGroupId(Convert.ToInt32(dtUser.Rows[0]["groupid"]));
                     Global.SetUserName(dtUser.Rows[0]["username"].ToString());
+                    Global.Setpwd(sPwd.ToString());
 
                     bresult = true;
                 }
@@ -888,17 +893,19 @@ namespace DigiposZen
                     Global.SetUserId(0);
                     Global.SetUserGroupId(0);
                     Global.SetUserName("DIGIPOS");
+                    Global.Setpwd("");
                     Global.SetCompanyCode(tvwUserCompany.SelectedNode.Name);
                     Global.SetCompanyID(tvwUserCompany.SelectedNode.Tag.ToString());
                 }
                 else
                 { 
-                    DataTable dtUser = Comm.fnGetData("SELECT userid,username,groupid FROM tblUserMaster WHERE LTRIM(RTRIM(UserName)) = '" + txtUsername.Text.ToString() + "' AND LTRIM(RTRIM(pwd)) = '" + txtPassword.Text.ToString() + "'").Tables[0];
+                    DataTable dtUser = Comm.fnGetData("SELECT userid,username,groupid FROM tblUserMaster WHERE LTRIM(RTRIM(UserName)) = '" + txtUsername.Text.ToString() + "' AND LTRIM(RTRIM(pwd)) = '" + txtPassword.Text.ToString() + "' ").Tables[0];
                     if (dtUser.Rows.Count > 0)
                     {
                         Global.SetUserId(Convert.ToInt32(dtUser.Rows[0]["userid"]));
                         Global.SetUserGroupId(Convert.ToInt32(dtUser.Rows[0]["groupid"]));
                         Global.SetUserName(dtUser.Rows[0]["username"].ToString());
+                        Global.Setpwd(txtPassword.Text.ToString());
                         Global.SetCompanyCode(tvwUserCompany.SelectedNode.Name);
                         if (tvwUserCompany.SelectedNode.Tag != null)
                             Global.SetCompanyID(tvwUserCompany.SelectedNode.Tag.ToString());

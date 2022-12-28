@@ -72,10 +72,11 @@ namespace DigiposZen
             controlsToMove.Add(this.lblHeading);//Add whatever controls here you want to move the form when it is clicked and dragged
 
             DirectoryInfo dir = new DirectoryInfo(Application.StartupPath + @"\PrintScheme");
-            FileInfo[] files = dir.GetFiles("*.rdlc");
+            FileInfo[] files = dir.GetFiles("*.rdl*");
             foreach (FileInfo file in files)
             {
-                cboInvScheme1.Items.Add(file.Name.Replace(".rdlc", ""));
+                //cboInvScheme1.Items.Add(file.Name.Replace(".rdlc", ""));
+                cboInvScheme1.Items.Add(file.Name);
             }
 
             dIDFromEditWindow = iID;

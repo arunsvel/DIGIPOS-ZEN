@@ -101,6 +101,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.backupManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.advancedSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.activityMonitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +116,6 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.activityMonitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -726,6 +726,13 @@
             this.advancedSearchToolStripMenuItem.Text = "Advanced Search";
             this.advancedSearchToolStripMenuItem.Click += new System.EventHandler(this.advancedSearchToolStripMenuItem_Click);
             // 
+            // activityMonitorToolStripMenuItem
+            // 
+            this.activityMonitorToolStripMenuItem.Name = "activityMonitorToolStripMenuItem";
+            this.activityMonitorToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.activityMonitorToolStripMenuItem.Text = "Activity Monitor";
+            this.activityMonitorToolStripMenuItem.Click += new System.EventHandler(this.activityMonitorToolStripMenuItem_Click);
+            // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -860,13 +867,6 @@
             this.label1.Size = new System.Drawing.Size(267, 23);
             this.label1.TabIndex = 1;
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // activityMonitorToolStripMenuItem
-            // 
-            this.activityMonitorToolStripMenuItem.Name = "activityMonitorToolStripMenuItem";
-            this.activityMonitorToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.activityMonitorToolStripMenuItem.Text = "Activity Monitor";
-            this.activityMonitorToolStripMenuItem.Click += new System.EventHandler(this.activityMonitorToolStripMenuItem_Click);
             // 
             // frmMDI
             // 

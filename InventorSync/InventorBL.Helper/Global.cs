@@ -123,6 +123,12 @@ namespace DigiposZen.InventorBL.Helper
             gblSuperUserID = iUID;
         }
 
+        public static string gblROLEOFSYSTEM { get; private set; }
+        public static void SetROLEOFSYSTEM(string Role)
+        {
+            gblROLEOFSYSTEM = Role;
+        }
+
         public static string gblUserName { get; private set; }
         public static void SetUserName(string sUName)
         {

@@ -11,6 +11,7 @@ using DigiposZen.InventorBL.Master;
 using DigiposZen.InventorBL.Helper;
 using DigiposZen.Info;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace DigiposZen
 {
@@ -227,7 +228,20 @@ namespace DigiposZen
         {
             try
             {
+                if (Global.gblROLEOFSYSTEM.ToUpper().Contains("CLIENT") == true)
+                { 
+                    MessageBox.Show("Unable to create backup form client system. " + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
                 Cursor.Current = Cursors.WaitCursor;
+
+                SelectedNodes = "";
+                string Companies = GetCheckedNodes(tvwUserCompanyBackup.Nodes);
+
+                if (MessageBox.Show("Following companies are selected for backup..." + "\n" + Companies + "." + "\n\n" + "Are you sure to continue?" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return;
+
+                Comm.BACKUPDB(ref progressBar1, "bfb", @"C:\backup");
 
                 Cursor.Current = Cursors.Default;
             }
@@ -285,6 +299,219 @@ namespace DigiposZen
             }
             return false;
         }
+
+        string SelectedNodes = "";
+
+        public string GetCheckedNodes(TreeNodeCollection nodes)
+        {
+            foreach (System.Windows.Forms.TreeNode aNode in nodes)
+            {
+                //edit
+                if (!aNode.Checked)
+                {
+                    if (aNode.Nodes.Count != 0)
+                        GetCheckedNodes(aNode.Nodes);
+
+                    continue;
+                }
+
+                SelectedNodes += aNode.Text + ",";
+
+                if (aNode.Nodes.Count != 0)
+                    GetCheckedNodes(aNode.Nodes);
+            }
+
+            return SelectedNodes;
+        }
+
+        /*
+
+        public void DatabaseFunctionality(string str, string CompanyCode, string CompanyName)
+        {
+            try
+            {
+                // MsgBox("sTARTED")
+                if (str == "backup")
+                {
+                    progressBar1.Visible = true;
+                    Progress(true, 10);
+
+                    Progress(true, 30);
+                    if (File.Exists(txtBackupPath.Text) == true)
+                    {
+                        MessageBox.Show("File already exists. Please choose a new file to backup.", MsgBoxStyle.Information);
+                        return;
+                    }
+                    Progress(true, 50);
+                    Cursor = Cursors.WaitCursor;
+
+                    string CurYear = DateTime.Today.Year.ToString();
+                    string CurMonth = DateTime.Today.Month.ToString();
+                    string CurDate = DateTime.Today.Date.ToString();
+
+
+
+                    if (Directory.Exists(@"C:\SQLBK\" + CompanyCode) == true)
+                        Directory.Delete(@"C:\SQLBK\" + CompanyCode);
+                    // MsgBox("2")
+                    if (Directory.Exists(@"C:\SQLBK\" + CompanyCode) == false)
+                        Directory.CreateDirectory(@"C:\SQLBK\" + CompanyCode);
+                    // MsgBox("3")
+                    if (Directory.Exists(@"C:\SQLBK\" + CompanyCode) == false)
+                    {
+                        MessageBox.Show("Path not found. Could not create temporary file or directory for backup creation.");
+                        Cursor = Cursors.Default;
+                        return;
+                    }
+
+                    bool blnFailed = false;
+                    if (File.Exists(@"C:\SQLBK\" + CompanyCode + @"\" + CompanyCode + ".bak") == true)
+                        File.Delete(@"C:\SQLBK\" + CompanyCode + @"\" + CompanyCode + ".bak");
+
+                    if (Comm.query("backup database " + CompanyCode + " to disk='" + @"C:\SQLBK\" + CompanyCode + @"\" + CompanyCode + ".bak'") == true)
+                    {
+                        if (BackupFile.CreateBakupFile(cmbBackupDatabase.Text) == false)
+                        {
+                            MsgBox("Failed to backup database. Could not create file to " + txtBackupPath.Text.ToString);
+                            blnFailed = true;
+                        }
+                        else
+                        {
+                            MsgBox("Backup process completed successfully. File copied to " + txtBackupPath.Text.ToString, MsgBoxStyle.Information);
+                            writeuserlog(UserActivity.new_Entry, "BackUp", "", "Successfully completed backup process", 0, 0, DCSApp.CompanyCode, 0, "BACKUP DATABASE");
+                            progressBar1.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to backup database. Backup process aboted abnormally.");
+                        blnFailed = true;
+                    }
+
+                    if (blnFailed)
+                    {
+                        Progress(true, 0);
+                        progressBar1.Visible = false;
+                        Cursor = Cursors.Default;
+                        return;
+                    }
+
+                    Progress(true, 100);
+                    progressBar1.Visible = false;
+                }
+                else if (str == "restore")
+                {
+                    Progress(true, 10);
+                    Application.DoEvents();
+                    if (File.Exists(txtRestoreFilePath.Text) == false)
+                    {
+                        MessageBox.Show("File not found. Please select a backup file.", MsgBoxStyle.Exclamation);
+                        Cursor = Cursors.Default;
+                        return;
+                    }
+                    if (System.IO.Path.GetExtension(txtRestoreFilePath.Text).ToString.ToLower == ".back" | System.IO.Path.GetExtension(txtRestoreFilePath.Text).ToString.ToLower == ".zip" | System.IO.Path.GetExtension(txtRestoreFilePath.Text).ToString.ToLower == ".bac")
+                    {
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please open a valid backup file to continue.");
+                        Cursor = Cursors.Default;
+                        return;
+                    }
+
+                    Progress(true, 30);
+                    Application.DoEvents();
+                    string BakFilePath = "";
+                    string dbname = RestoreFile.CreateRestoreFile(cmbRestoreDatabase.Text.ToString, BakFilePath);
+                    Progress(true, 70);
+                    Application.DoEvents();
+                    if (dbname == "")
+                    {
+                        MessageBox.Show("Unable to restore database. Restore operation aborts unexpectedly.");
+                        Cursor = Cursors.Default;
+                        return;
+                    }
+
+                    string RestorePath;
+                    RestorePath = txtRestorePath.Text.ToString;
+                    if (Strings.Mid(RestorePath, Strings.Len(RestorePath) - 1, 1) != @"\")
+                        RestorePath = RestorePath + @"\";
+                    // query("RESTORE DATABASE " & dbname & " FROM disk='" & BakFilePath & "'")
+                    // '''''https://www.mssqltips.com/sqlservertutorial/122/retore-sql-server-database-to-different-filenames-and-locations/
+
+                    string DatName = "";
+                    string LogName = "";
+                    bool blnRestored = false;
+
+                    Progress(true, 60);
+                    Application.DoEvents();
+                    cmd = new SqlCommand("RESTORE FILELISTONLY FROM DISK = N'" + BakFilePath + "'", con);
+                    cmd.CommandTimeout = 0;
+                    Progress(true, 70);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    Progress(true, 80);
+                    cmd.Clone();
+                    cmd.Dispose();
+                    while (dr.Read)
+                    {
+                        if (Mid(dr.Item("physicalname"), dr.Item("physicalname").ToString.Length - 2, 3).ToUpper == "DAT" | Mid(dr.Item("physicalname"), dr.Item("physicalname").ToString.Length - 2, 3).ToUpper == "MDF")
+                            DatName = dr.Item("logicalname").ToString;
+                        if (Mid(dr.Item("physicalname"), dr.Item("physicalname").ToString.Length - 2, 3).ToUpper == "LDF" | Mid(dr.Item("physicalname"), dr.Item("physicalname").ToString.Length - 2, 3).ToUpper == "LOG")
+                            LogName = dr.Item("logicalname").ToString;
+                    }
+                    dr.Close();
+
+                    if (DatName != "" & LogName != "")
+                    {
+                        if (query("RESTORE DATABASE " + dbname + " FROM disk='" + BakFilePath + "' " + "With Move '" + DatName + "' TO '" + RestorePath + dbname + "_Dat.mdf', " + "Move '" + LogName + "' TO '" + RestorePath + dbname + "_Log.ldf' "))
+                        {
+                            RestoreFile.ClearRestoreFiles();
+                            Progress(true, 100);
+                            blnRestored = true;
+
+                            int CompanyID = 0;
+                            string strQuery = "password=NEWTECH007$;User ID=sa;Initial Catalog=dcsStartup;Data Source=" + My.Settings.SQLServerName;
+                            sqlControl cnn = new sqlControl(strQuery);
+                            cnn.Open("Select * from tblCompany Where CompanyCode='" + dbname + "' ");
+                            // If there is no such a company
+                            if (cnn.eof)
+                            {
+                                cnn.Open("Select max(companyid)+1 as companyid from tblcompany");
+
+                                if (cnn.eof)
+                                    CompanyID = 301;
+                                else
+                                    CompanyID = cnn.companyid;
+
+                                if (CompanyID <= 300)
+                                    CompanyID = 301;
+                                string ClientID = DCSApp.ClientID;
+                                if (ClientID == "")
+                                    ClientID = "DEFAULT";
+                                strQuery = "INSERT INTO tblCompany (CompanyID, CompanyCode, CompanyName, Lock,Application,ApplicationID,ACTIVE,ClientID) VALUES (" + CompanyID + ", '" + dbname + "', '" + Strings.Replace(dbname, "'", "''") + "', '0','IBizNexera',101,1,'" + ClientID + "')";
+                                cnn.Execute(strQuery);
+                            }
+
+                            MessageBox.Show("Restored database successfully.", MsgBoxStyle.Information);
+                            // writeuserlog(UserActivity.new_Entry, "Restore", "Successfully completed restore process", 0, 0, DCSApp.CompanyCode, 0, "RESTORE DATABASE")
+                            ProgressBar2.Visible = false;
+                        }
+                    }
+
+                    if (blnRestored == false)
+                        MessageBox.Show("Database could not be restored.", MsgBoxStyle.Information);
+                }
+                Cursor = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                Cursor = Cursors.Default;
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        */
+
         private void DeleteCompany()
         {
             try
@@ -311,7 +538,7 @@ namespace DigiposZen
                 if (Global.gblUserName.Trim().ToUpper() == "DIGIPOS")
                     ds = Comm.fnGetData("SELECT tblCompany.CompanyID,tblCompany.CompanyCode,CompanyName FROM startup.dbo.tblCompany as tblCompany, startup.dbo.tblUsers as tblUsers WHERE tblCompany.CompanyID=tblUsers.CompanyID and tblCompany.ParentID=tblCompany.CompanyID ");
                 else
-                    ds = Comm.fnGetData("SELECT tblCompany.CompanyID,tblCompany.CompanyCode,CompanyName FROM startup.dbo.tblCompany as tblCompany, startup.dbo.tblUsers as tblUsers WHERE tblCompany.CompanyID=tblUsers.CompanyID and tblCompany.ParentID=tblCompany.CompanyID and tblUsers.UserID = " + Global.gblSuperUserID + " ");
+                    ds = Comm.fnGetData("SELECT tblCompany.CompanyID,tblCompany.CompanyCode,CompanyName FROM startup.dbo.tblCompany as tblCompany, startup.dbo.tblUsers as tblUsers WHERE tblCompany.CompanyID=tblUsers.CompanyID and tblCompany.ParentID=tblCompany.CompanyID and LTRIM(RTRIM(tblUsers.UserName)) = '" + Global.gblUserName.ToString() + "' AND LTRIM(RTRIM(tblUsers.Password)) = '" + Global.gblpwd.ToString() + "' ");
 
                 tvwUserCompanyBackup.Nodes.Clear();
                 foreach (DataRow dr in ds.Tables[0].Rows)

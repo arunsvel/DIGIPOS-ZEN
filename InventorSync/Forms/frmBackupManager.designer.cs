@@ -31,9 +31,9 @@ namespace DigiposZen
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBackupManager));
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection2 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.lblSave = new System.Windows.Forms.Label();
             this.lblHeading = new System.Windows.Forms.Label();
             this.lblDelete = new System.Windows.Forms.Label();
@@ -44,31 +44,31 @@ namespace DigiposZen
             this.btnYtubeTutorial = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabMain = new System.Windows.Forms.TabControl();
             this.tbpBackup = new System.Windows.Forms.TabPage();
+            this.togglebtnActive = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tvwUserCompanyBackup = new System.Windows.Forms.TreeView();
             this.txtBackupPath = new System.Windows.Forms.TextBox();
             this.tbpRestore = new System.Windows.Forms.TabPage();
-            this.toolTipArea = new System.Windows.Forms.ToolTip(this.components);
-            this.tvwUserCompanyBackup = new System.Windows.Forms.TreeView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblFooter = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.togglebtnActive = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tvwUserCompanyRestore = new System.Windows.Forms.TreeView();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tvwUserCompanyRestore = new System.Windows.Forms.TreeView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lblFooter = new System.Windows.Forms.Label();
+            this.toolTipArea = new System.Windows.Forms.ToolTip(this.components);
             this.tlpHeader.SuspendLayout();
             this.tlpMain.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabMain.SuspendLayout();
             this.tbpBackup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.togglebtnActive)).BeginInit();
             this.tbpRestore.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.togglebtnActive)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSave
@@ -228,7 +228,7 @@ namespace DigiposZen
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 977F));
             this.tlpMain.Controls.Add(this.tlpHeader, 0, 0);
-            this.tlpMain.Controls.Add(this.tabControl1, 0, 1);
+            this.tlpMain.Controls.Add(this.tabMain, 0, 1);
             this.tlpMain.Controls.Add(this.panel1, 0, 2);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(1, 1);
@@ -241,16 +241,16 @@ namespace DigiposZen
             this.tlpMain.Size = new System.Drawing.Size(1100, 519);
             this.tlpMain.TabIndex = 4;
             // 
-            // tabControl1
+            // tabMain
             // 
-            this.tabControl1.Controls.Add(this.tbpBackup);
-            this.tabControl1.Controls.Add(this.tbpRestore);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(3, 95);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1094, 362);
-            this.tabControl1.TabIndex = 5;
+            this.tabMain.Controls.Add(this.tbpBackup);
+            this.tabMain.Controls.Add(this.tbpRestore);
+            this.tabMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabMain.Location = new System.Drawing.Point(3, 95);
+            this.tabMain.Name = "tabMain";
+            this.tabMain.SelectedIndex = 0;
+            this.tabMain.Size = new System.Drawing.Size(1094, 362);
+            this.tabMain.TabIndex = 5;
             // 
             // tbpBackup
             // 
@@ -267,6 +267,73 @@ namespace DigiposZen
             this.tbpBackup.TabIndex = 0;
             this.tbpBackup.Text = "Backup";
             this.tbpBackup.UseVisualStyleBackColor = true;
+            // 
+            // togglebtnActive
+            // 
+            activeStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection1.ForeColor = System.Drawing.Color.Navy;
+            activeStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection1.Text = "Backup as a single file";
+            this.togglebtnActive.ActiveState = activeStateCollection1;
+            this.togglebtnActive.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.togglebtnActive.ForeColor = System.Drawing.Color.Black;
+            inactiveStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            inactiveStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            inactiveStateCollection1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            inactiveStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            inactiveStateCollection1.Text = "Backup as individual file";
+            this.togglebtnActive.InactiveState = inactiveStateCollection1;
+            this.togglebtnActive.Location = new System.Drawing.Point(658, 130);
+            this.togglebtnActive.MinimumSize = new System.Drawing.Size(52, 20);
+            this.togglebtnActive.Name = "togglebtnActive";
+            this.togglebtnActive.Size = new System.Drawing.Size(298, 29);
+            sliderCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            sliderCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection1.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            sliderCollection1.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.togglebtnActive.Slider = sliderCollection1;
+            this.togglebtnActive.TabIndex = 10;
+            this.togglebtnActive.Text = "Active Status";
+            this.togglebtnActive.ThemeName = "Office2016Black";
+            this.togglebtnActive.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
+            this.togglebtnActive.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(962, 84);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(103, 31);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Browse";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(395, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(172, 18);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Choose the backup path:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(194, 18);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Select companies to backup:";
+            // 
+            // tvwUserCompanyBackup
+            // 
+            this.tvwUserCompanyBackup.CheckBoxes = true;
+            this.tvwUserCompanyBackup.Location = new System.Drawing.Point(8, 39);
+            this.tvwUserCompanyBackup.Name = "tvwUserCompanyBackup";
+            this.tvwUserCompanyBackup.Size = new System.Drawing.Size(358, 283);
+            this.tvwUserCompanyBackup.TabIndex = 2;
             // 
             // txtBackupPath
             // 
@@ -290,104 +357,22 @@ namespace DigiposZen
             this.tbpRestore.Text = "Restore";
             this.tbpRestore.UseVisualStyleBackColor = true;
             // 
-            // tvwUserCompanyBackup
+            // label4
             // 
-            this.tvwUserCompanyBackup.CheckBoxes = true;
-            this.tvwUserCompanyBackup.Location = new System.Drawing.Point(8, 39);
-            this.tvwUserCompanyBackup.Name = "tvwUserCompanyBackup";
-            this.tvwUserCompanyBackup.Size = new System.Drawing.Size(358, 283);
-            this.tvwUserCompanyBackup.TabIndex = 2;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(61, 94);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(194, 18);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Select companies to restore:";
             // 
-            // label1
+            // tvwUserCompanyRestore
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 18);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Select companies to backup:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(395, 66);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(172, 18);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Choose the backup path:";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(962, 84);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 31);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Browse";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.progressBar1);
-            this.panel1.Controls.Add(this.lblFooter);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 463);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1094, 53);
-            this.panel1.TabIndex = 6;
-            // 
-            // lblFooter
-            // 
-            this.lblFooter.BackColor = System.Drawing.Color.Transparent;
-            this.lblFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblFooter.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFooter.ForeColor = System.Drawing.Color.Black;
-            this.lblFooter.Location = new System.Drawing.Point(0, 25);
-            this.lblFooter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblFooter.Name = "lblFooter";
-            this.lblFooter.Size = new System.Drawing.Size(1094, 28);
-            this.lblFooter.TabIndex = 5;
-            this.lblFooter.Text = "Keyboard Shortcuts : - F3 Find, F5 Save, F7 Delete, Esc Close ";
-            this.lblFooter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressBar1.Location = new System.Drawing.Point(0, 0);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1094, 24);
-            this.progressBar1.TabIndex = 6;
-            // 
-            // togglebtnActive
-            // 
-            activeStateCollection2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection2.ForeColor = System.Drawing.Color.Navy;
-            activeStateCollection2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection2.Text = "Backup as a single file";
-            this.togglebtnActive.ActiveState = activeStateCollection2;
-            this.togglebtnActive.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.togglebtnActive.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            inactiveStateCollection2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            inactiveStateCollection2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            inactiveStateCollection2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            inactiveStateCollection2.Text = "Backup as individual file";
-            this.togglebtnActive.InactiveState = inactiveStateCollection2;
-            this.togglebtnActive.Location = new System.Drawing.Point(658, 130);
-            this.togglebtnActive.MinimumSize = new System.Drawing.Size(52, 20);
-            this.togglebtnActive.Name = "togglebtnActive";
-            this.togglebtnActive.Size = new System.Drawing.Size(298, 29);
-            sliderCollection2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            sliderCollection2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection2.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            sliderCollection2.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.togglebtnActive.Slider = sliderCollection2;
-            this.togglebtnActive.TabIndex = 10;
-            this.togglebtnActive.Text = "Active Status";
-            this.togglebtnActive.ThemeName = "Office2016Black";
-            this.togglebtnActive.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
-            this.togglebtnActive.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
+            this.tvwUserCompanyRestore.CheckBoxes = true;
+            this.tvwUserCompanyRestore.Location = new System.Drawing.Point(64, 124);
+            this.tvwUserCompanyRestore.Name = "tvwUserCompanyRestore";
+            this.tvwUserCompanyRestore.Size = new System.Drawing.Size(842, 201);
+            this.tvwUserCompanyRestore.TabIndex = 9;
             // 
             // button2
             // 
@@ -414,22 +399,37 @@ namespace DigiposZen
             this.textBox1.Size = new System.Drawing.Size(842, 26);
             this.textBox1.TabIndex = 6;
             // 
-            // label4
+            // panel1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(61, 94);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(194, 18);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Select companies to restore:";
+            this.panel1.Controls.Add(this.progressBar1);
+            this.panel1.Controls.Add(this.lblFooter);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 463);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1094, 53);
+            this.panel1.TabIndex = 6;
             // 
-            // tvwUserCompanyRestore
+            // progressBar1
             // 
-            this.tvwUserCompanyRestore.CheckBoxes = true;
-            this.tvwUserCompanyRestore.Location = new System.Drawing.Point(64, 124);
-            this.tvwUserCompanyRestore.Name = "tvwUserCompanyRestore";
-            this.tvwUserCompanyRestore.Size = new System.Drawing.Size(842, 201);
-            this.tvwUserCompanyRestore.TabIndex = 9;
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.progressBar1.Location = new System.Drawing.Point(0, 0);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(1094, 24);
+            this.progressBar1.TabIndex = 6;
+            // 
+            // lblFooter
+            // 
+            this.lblFooter.BackColor = System.Drawing.Color.Transparent;
+            this.lblFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblFooter.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFooter.ForeColor = System.Drawing.Color.Black;
+            this.lblFooter.Location = new System.Drawing.Point(0, 25);
+            this.lblFooter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFooter.Name = "lblFooter";
+            this.lblFooter.Size = new System.Drawing.Size(1094, 28);
+            this.lblFooter.TabIndex = 5;
+            this.lblFooter.Text = "Keyboard Shortcuts : - F3 Find, F5 Save, F7 Delete, Esc Close ";
+            this.lblFooter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmBackupManager
             // 
@@ -455,13 +455,13 @@ namespace DigiposZen
             this.tlpHeader.ResumeLayout(false);
             this.tlpHeader.PerformLayout();
             this.tlpMain.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabMain.ResumeLayout(false);
             this.tbpBackup.ResumeLayout(false);
             this.tbpBackup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.togglebtnActive)).EndInit();
             this.tbpRestore.ResumeLayout(false);
             this.tbpRestore.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.togglebtnActive)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -478,7 +478,7 @@ namespace DigiposZen
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.TableLayoutPanel tlpMain;
         private System.Windows.Forms.ToolTip toolTipArea;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TabPage tbpBackup;
         private System.Windows.Forms.TabPage tbpRestore;
         private System.Windows.Forms.TextBox txtBackupPath;

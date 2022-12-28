@@ -94,6 +94,10 @@ namespace DigiposZen.Forms
             }
         }
 
+        //Variables
+        Control ctrl;
+
+
         //Description : Get Employee Details from Database
         public DataTable GetEmployee(int iSelID = 0)
         {
@@ -287,16 +291,16 @@ namespace DigiposZen.Forms
 
         private void btnSearchFwd_Click(object sender, EventArgs e)
         {
-            DataGridViewCell Cell = Comm.Search(DgvData, txtSearch.Text.ToString(), true, chkMatchCase.CheckState, chkExactWordOnly.CheckState);
-            if (Cell != null)
-                DgvData.CurrentCell = Cell;
+            //DataGridViewCell Cell = Comm.Search(DgvData, txtSearch.Text.ToString(), true, chkMatchCase.CheckState, chkExactWordOnly.CheckState);
+            //if (Cell != null)
+            //    DgvData.CurrentCell = Cell;
         }
 
         private void btnSearchBwd_Click(object sender, EventArgs e)
         {
-            DataGridViewCell Cell = Comm.Search(DgvData, txtSearch.Text.ToString(), false, chkMatchCase.CheckState, chkExactWordOnly.CheckState);
-            if (Cell != null)
-                DgvData.CurrentCell = Cell;
+            //DataGridViewCell Cell = Comm.Search(DgvData, txtSearch.Text.ToString(), false, chkMatchCase.CheckState, chkExactWordOnly.CheckState);
+            //if (Cell != null)
+            //    DgvData.CurrentCell = Cell;
         }
 
         public bool PreFilterMessage(ref Message m)
@@ -416,8 +420,12 @@ namespace DigiposZen.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            //SaveData();
+
             try
             {
+
+
                 sqlControl rs = new sqlControl();
                 try
                 {
@@ -521,5 +529,471 @@ namespace DigiposZen.Forms
                 MessageBox.Show(ex.Message, "Barcode Manager", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSRate4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnl3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblOldExpiryDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOldExpiryDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbpBarcodeChanger_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox15_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvBarcodeDetails_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvBarcodeDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnFill_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtInvoiceNumber_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtInvoiceNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void cmbVoucherType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearchBarcode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearchBarcode_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtSearchBarcode_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTestPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSaveAndExport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbInstalledPrinters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbPrintScheme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbPrintScheme_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtLabelsPerRow_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trvBarcodeTags_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+
+        }
+
+        private void txtBarcodeString_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel19_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel21_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void chkEncryptDecimals_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tabBarcode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbPrintScheme_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbInstalledPrinters_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearchBarcode_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbpBarcodePrint_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbVoucherType_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbPrintScheme_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                ctrl = (Control)sender;
+                if (ctrl is ComboBox)
+                {
+                    if ((e.Shift == true && e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Up))
+                    {
+                        this.SelectNextControl(ctrl, false, false, false, false);
+                    }
+                    else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+                    {
+                        this.SelectNextControl(ctrl, true, true, true, true);
+                    }
+                    else
+                        return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Key enter is not working Properly" + "\n" + ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void txtCharWidth_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // allows only numbers
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar.ToString() != "\b")
+            {
+                e.Handled = true;
+            }
+        }
+
+
+        private void textBox12_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // If you want, you can allow decimal (float) numbers
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox11_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // If you want, you can allow decimal (float) numbers
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtItemName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox12_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOldPLU_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtOldPLU_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // allows only numbers
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar.ToString() != "\b")
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCharWidth_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        /*
+        //Save Functionality
+        private void SaveData()
+        {
+            if (IsValidate() == true)
+            {
+                if (iIDFromEditWindow != 0)
+                {
+                    iAction = 1;
+                }
+                string[] strResult;
+                string strRet = "";
+                if (iAction == 0)
+                {
+                    HSNmasterInfo.HID = Comm.gfnGetNextSerialNo("tblHSNCode", "HID");
+                    if (HSNmasterInfo.HID < 6)
+                        HSNmasterInfo.HID = 6;
+                }
+                else
+                    HSNmasterInfo.HID = Convert.ToDecimal(iIDFromEditWindow);
+                HSNmasterInfo.HSNCODE = txtHSNCode.Text;
+                DataTable dtUspColor = new DataTable();
+                HSNmasterInfo.HSNDECRIPTION = txtDescription.Text;
+                HSNmasterInfo.HSNType = cmbHsnType.Text;
+                HSNmasterInfo.IGSTTaxPer = Convert.ToDecimal(cmbBTaxClass.Text);
+                HSNmasterInfo.CGSTTaxPer = Convert.ToDecimal(cmbBTaxClass.Text) / 2;
+                HSNmasterInfo.SGSTTaxPer = Convert.ToDecimal(cmbBTaxClass.Text) / 2;
+
+                if (chkBSlabEnabled1.Checked == true)
+                {
+                    HSNmasterInfo.blnSlabSystem = 1;
+
+
+                    if (txtAmountAfter1.Text != "")
+                    {
+                        HSNmasterInfo.ValueStartSB1 = Convert.ToDecimal(txtAmountBefore1.Text);
+                        HSNmasterInfo.ValueEndSB1 = Convert.ToDecimal(txtAmountAfter1.Text);
+                        HSNmasterInfo.IGSTTaxPer1 = Convert.ToDecimal(cmbBTaxClass1.Text);
+                        HSNmasterInfo.CGSTTaxPer1 = Convert.ToDecimal(cmbBTaxClass1.Text) / 2;
+                        HSNmasterInfo.SGSTTaxPer1 = Convert.ToDecimal(cmbBTaxClass1.Text) / 2;
+                    }
+                    if (txtAmountAfter2.Text != "")
+                    {
+                        HSNmasterInfo.ValueStartSB2 = Convert.ToDecimal(txtAmountBefore2.Text);
+                        HSNmasterInfo.ValueEndSB2 = Convert.ToDecimal(txtAmountAfter2.Text);
+                        HSNmasterInfo.IGSTTaxPer2 = Convert.ToDecimal(cmbBTaxClass2.Text);
+                        HSNmasterInfo.CGSTTaxPer2 = Convert.ToDecimal(cmbBTaxClass2.Text) / 2;
+                        HSNmasterInfo.SGSTTaxPer2 = Convert.ToDecimal(cmbBTaxClass2.Text) / 2;
+                    }
+                    if (txtAmountAfter3.Text != "")
+                    {
+                        HSNmasterInfo.ValueStartSB3 = Convert.ToDecimal(txtAmountBefore3.Text);
+                        HSNmasterInfo.ValueEndSB3 = Convert.ToDecimal(txtAmountAfter3.Text);
+                        HSNmasterInfo.IGSTTaxPer3 = Convert.ToDecimal(cmbBTaxClass3.Text);
+                        HSNmasterInfo.CGSTTaxPer3 = Convert.ToDecimal(cmbBTaxClass3.Text) / 2;
+                        HSNmasterInfo.SGSTTaxPer3 = Convert.ToDecimal(cmbBTaxClass3.Text) / 2;
+                    }
+                    if (txtAmountAfter4.Text != "")
+                    {
+                        HSNmasterInfo.ValueEndSB4 = Convert.ToDecimal(txtAmountAfter4.Text);
+                        HSNmasterInfo.ValueStartSB4 = Convert.ToDecimal(txtAmountBefore4.Text);
+                        HSNmasterInfo.IGSTTaxPer4 = Convert.ToDecimal(cmbBTaxClass4.Text);
+                        HSNmasterInfo.CGSTTaxPer4 = Convert.ToDecimal(cmbBTaxClass4.Text) / 2;
+                        HSNmasterInfo.SGSTTaxPer4 = Convert.ToDecimal(cmbBTaxClass4.Text) / 2;
+                    }
+                }
+                HSNmasterInfo.CessPer = Convert.ToDecimal(txtCess.Text);
+                HSNmasterInfo.CompCessQty = Convert.ToDecimal(txtCompCess.Text);
+
+
+                HSNmasterInfo.TenantID = Convert.ToDecimal(Global.gblTenantID);
+                strRet = clsHSN.InsertUpdateDeleteHSNMaster(HSNmasterInfo, iAction);
+                if (strRet.Length > 2)
+                {
+                    strResult = strRet.Split('|');
+                    if (Convert.ToInt32(strResult[0].ToString()) == -1)
+                    {
+                        if (strResult[1].ToString().ToUpper().Contains("DUPLICATE"))
+                        {
+                            MessageBox.Show("Duplicate Entry , User has restricted to enter duplicate values in the HSNCODE (" + txtHSNCode.Text + ")", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtHSNCode.Focus();
+                            //txtHSNCode.SelectAll();
+                        }
+                        else
+                            MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    if (Convert.ToInt32(strRet) == -1)
+                        MessageBox.Show("Failed to Save", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else if (CtrlPassed != null)//For Passed Value from this to Another Form Control
+                    {
+                        CtrlPassed.Text = txtHSNCode.Text;
+                        CtrlPassed.Tag = HSNmasterInfo.HID;
+
+                        CtrlPassed.Focus();
+                        this.Close();
+                    }
+                    else
+                    {
+                        ClearAll();
+                        if (bFromEditWindowColor == true)
+                        {
+                            this.Close();
+                        }
+
+                    }
+                    Comm.MessageboxToasted("HSN Code", "HSN Code saved successfully");
+                }
+            }
+        }
+
+        
+        //Validation functionality
+        private bool IsValidate()
+        {
+            bool bValidate = true;
+            if (txtHSNCode.Text.Trim() == "")
+            {
+                bValidate = false;
+                MessageBox.Show("Please enter HSN Code", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                txtHSNCode.Focus();
+            }
+        }
+*/
     }
 }
