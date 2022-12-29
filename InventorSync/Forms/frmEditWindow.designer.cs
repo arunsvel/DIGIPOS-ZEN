@@ -30,9 +30,9 @@ namespace DigiposZen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection4 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection4 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection4 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditWindow));
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -100,6 +100,7 @@ namespace DigiposZen
             this.lblHeader = new System.Windows.Forms.Label();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.rdoHSN = new System.Windows.Forms.RadioButton();
             this.tlpMain.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -257,33 +258,33 @@ namespace DigiposZen
             // 
             // togglebtnActive
             // 
-            activeStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
-            activeStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
-            activeStateCollection1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(103)))), ((int)(((byte)(176)))));
-            activeStateCollection1.Text = "DATE RANGE";
-            this.togglebtnActive.ActiveState = activeStateCollection1;
+            activeStateCollection4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            activeStateCollection4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            activeStateCollection4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(103)))), ((int)(((byte)(176)))));
+            activeStateCollection4.Text = "DATE RANGE";
+            this.togglebtnActive.ActiveState = activeStateCollection4;
             this.togglebtnActive.Cursor = System.Windows.Forms.Cursors.Hand;
             this.togglebtnActive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.togglebtnActive.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.togglebtnActive.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            inactiveStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            inactiveStateCollection1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            inactiveStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            inactiveStateCollection1.Text = "ALL";
-            this.togglebtnActive.InactiveState = inactiveStateCollection1;
+            inactiveStateCollection4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            inactiveStateCollection4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            inactiveStateCollection4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            inactiveStateCollection4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            inactiveStateCollection4.Text = "ALL";
+            this.togglebtnActive.InactiveState = inactiveStateCollection4;
             this.togglebtnActive.Location = new System.Drawing.Point(504, 4);
             this.togglebtnActive.Margin = new System.Windows.Forms.Padding(4);
             this.togglebtnActive.MinimumSize = new System.Drawing.Size(69, 25);
             this.togglebtnActive.Name = "togglebtnActive";
             this.togglebtnActive.Size = new System.Drawing.Size(141, 25);
-            sliderCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            sliderCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection1.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            sliderCollection1.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.togglebtnActive.Slider = sliderCollection1;
+            sliderCollection4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            sliderCollection4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection4.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            sliderCollection4.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.togglebtnActive.Slider = sliderCollection4;
             this.togglebtnActive.TabIndex = 9;
             this.togglebtnActive.Text = "Active Status";
             this.togglebtnActive.ThemeName = "Office2016Black";
@@ -421,6 +422,7 @@ namespace DigiposZen
             this.tlpMasters.AutoScroll = true;
             this.tlpMasters.ColumnCount = 1;
             this.tlpMasters.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpMasters.Controls.Add(this.rdoHSN, 0, 23);
             this.tlpMasters.Controls.Add(this.rdoCashDesk, 0, 22);
             this.tlpMasters.Controls.Add(this.rdoDepartment, 0, 21);
             this.tlpMasters.Controls.Add(this.rdoStockDepartment, 0, 20);
@@ -448,7 +450,7 @@ namespace DigiposZen
             this.tlpMasters.Location = new System.Drawing.Point(23, 44);
             this.tlpMasters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tlpMasters.Name = "tlpMasters";
-            this.tlpMasters.RowCount = 24;
+            this.tlpMasters.RowCount = 25;
             this.tlpMasters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tlpMasters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tlpMasters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -472,7 +474,8 @@ namespace DigiposZen
             this.tlpMasters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tlpMasters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tlpMasters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tlpMasters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tlpMasters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tlpMasters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tlpMasters.Size = new System.Drawing.Size(253, 696);
             this.tlpMasters.TabIndex = 2;
             // 
@@ -517,6 +520,7 @@ namespace DigiposZen
             this.rdoDepartment.Text = "Department";
             this.rdoDepartment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdoDepartment.UseVisualStyleBackColor = true;
+            this.rdoDepartment.CheckedChanged += new System.EventHandler(this.rdoDepartment_CheckedChanged);
             this.rdoDepartment.Click += new System.EventHandler(this.rdoDepartment_Click_1);
             this.rdoDepartment.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rdoDepartment_KeyDown_1);
             // 
@@ -1455,6 +1459,28 @@ namespace DigiposZen
             this.tableLayoutPanel3.Size = new System.Drawing.Size(279, 16);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
+            // rdoHSN
+            // 
+            this.rdoHSN.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdoHSN.AutoSize = true;
+            this.rdoHSN.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rdoHSN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdoHSN.FlatAppearance.BorderSize = 0;
+            this.rdoHSN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdoHSN.ForeColor = System.Drawing.Color.Black;
+            this.rdoHSN.Image = ((System.Drawing.Image)(resources.GetObject("rdoHSN.Image")));
+            this.rdoHSN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rdoHSN.Location = new System.Drawing.Point(3, 1152);
+            this.rdoHSN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rdoHSN.Name = "rdoHSN";
+            this.rdoHSN.Size = new System.Drawing.Size(247, 46);
+            this.rdoHSN.TabIndex = 24;
+            this.rdoHSN.Text = "HSN Code";
+            this.rdoHSN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdoHSN.UseVisualStyleBackColor = false;
+            this.rdoHSN.CheckedChanged += new System.EventHandler(this.rdoHSN_CheckedChanged);
+            this.rdoHSN.Click += new System.EventHandler(this.rdoHSN_Click);
+            // 
             // frmEditWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1570,5 +1596,6 @@ namespace DigiposZen
         private System.Windows.Forms.TableLayoutPanel tlpReport;
         private System.Windows.Forms.RadioButton rdoPurchaseReport;
         private System.Windows.Forms.RadioButton rdoDepartment;
+        private System.Windows.Forms.RadioButton rdoHSN;
     }
 }

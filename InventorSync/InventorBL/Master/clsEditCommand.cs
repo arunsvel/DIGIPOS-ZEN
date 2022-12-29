@@ -60,5 +60,28 @@ namespace DigiposZen.InventorBL.Master
 
             return dtbl;
         }
+        public DataTable GetHSNCode(UspGetHSNInfo GetHSN)
+        {
+            DataTable dtbl = new DataTable();
+            try
+            {
+                using (var sqlcon = GetDBConnection())
+                {
+                    using (SqlDataAdapter daHSN = new SqlDataAdapter("UspGetHSN", sqlcon))
+                    {
+                        daHSN.SelectCommand.CommandType = CommandType.StoredProcedure;
+                        daHSN.SelectCommand.Parameters.Add("@HID", SqlDbType.Int).Value = GetHSN.HID;
+                        daHSN.SelectCommand.Parameters.Add("@TenantID", SqlDbType.Int).Value = GetHSN.TenantID;
+                        daHSN.Fill(dtbl);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+
+            return dtbl;
+        }
     }
 }

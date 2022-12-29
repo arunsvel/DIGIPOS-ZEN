@@ -215,9 +215,7 @@ namespace DigiposZen
             this.clmHeading = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.cboInvScheme = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
             this.tooltipPurchase = new System.Windows.Forms.ToolTip(this.components);
             this.picBackground = new System.Windows.Forms.PictureBox();
@@ -279,7 +277,7 @@ namespace DigiposZen
             this.tlpMain.BackColor = System.Drawing.Color.DimGray;
             this.tlpMain.ColumnCount = 2;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
             this.tlpMain.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tlpMain.Controls.Add(this.label46, 0, 2);
             this.tlpMain.Controls.Add(this.tableLayoutPanel1, 0, 1);
@@ -867,7 +865,7 @@ namespace DigiposZen
             this.label46.Location = new System.Drawing.Point(3, 733);
             this.label46.Name = "label46";
             this.label46.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.label46.Size = new System.Drawing.Size(1371, 20);
+            this.label46.Size = new System.Drawing.Size(1021, 20);
             this.label46.TabIndex = 4;
             this.label46.Text = "Keyboard Shortcuts : - F3 Find, F4 Edit, F5 Save, F6 Taxdetails, F7 Delete Bill, " +
     "F8 BatchView, F9 Move to New Item Row";
@@ -896,7 +894,7 @@ namespace DigiposZen
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 162F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1371, 631);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1021, 631);
             this.tableLayoutPanel1.TabIndex = 11;
             // 
             // grpLedger
@@ -924,7 +922,7 @@ namespace DigiposZen
             this.grpLedger.Controls.Add(this.btnNewIcon);
             this.grpLedger.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpLedger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.grpLedger.Location = new System.Drawing.Point(699, 2);
+            this.grpLedger.Location = new System.Drawing.Point(349, 2);
             this.grpLedger.Margin = new System.Windows.Forms.Padding(3, 2, 5, 2);
             this.grpLedger.Name = "grpLedger";
             this.grpLedger.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1168,7 +1166,7 @@ namespace DigiposZen
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(688, 78);
+            this.groupBox1.Size = new System.Drawing.Size(338, 78);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -1382,7 +1380,7 @@ namespace DigiposZen
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 351F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1365, 351);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1015, 351);
             this.tableLayoutPanel3.TabIndex = 13;
             // 
             // dgvPurchase
@@ -1418,7 +1416,7 @@ namespace DigiposZen
             this.dgvPurchase.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPurchase.RowTemplate.Height = 24;
             this.dgvPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvPurchase.Size = new System.Drawing.Size(1359, 351);
+            this.dgvPurchase.Size = new System.Drawing.Size(1009, 351);
             this.dgvPurchase.TabIndex = 0;
             this.dgvPurchase.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPurchase_CellClick);
             this.dgvPurchase.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPurchase_CellContentClick);
@@ -1445,7 +1443,7 @@ namespace DigiposZen
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.77519F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.22481F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 460F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 461F));
             this.tableLayoutPanel4.Controls.Add(this.label31, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 84);
@@ -1454,7 +1452,7 @@ namespace DigiposZen
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(690, 28);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(340, 28);
             this.tableLayoutPanel4.TabIndex = 15;
             // 
             // label31
@@ -1466,7 +1464,7 @@ namespace DigiposZen
             this.label31.Location = new System.Drawing.Point(20, 0);
             this.label31.Margin = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(94, 28);
+            this.label31.Size = new System.Drawing.Size(1, 21);
             this.label31.TabIndex = 2;
             this.label31.Text = "Item Detail Table:";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1503,7 +1501,7 @@ namespace DigiposZen
             this.flowLPnlBottom.Location = new System.Drawing.Point(5, 469);
             this.flowLPnlBottom.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.flowLPnlBottom.Name = "flowLPnlBottom";
-            this.flowLPnlBottom.Size = new System.Drawing.Size(1096, 162);
+            this.flowLPnlBottom.Size = new System.Drawing.Size(746, 162);
             this.flowLPnlBottom.TabIndex = 0;
             this.flowLPnlBottom.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLPnlBottom_Paint);
             // 
@@ -1730,7 +1728,7 @@ namespace DigiposZen
             this.tblpDiscPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpDiscPerc.Controls.Add(this.label22, 0, 0);
             this.tblpDiscPerc.Controls.Add(this.txtDiscPerc, 0, 1);
-            this.tblpDiscPerc.Location = new System.Drawing.Point(650, 0);
+            this.tblpDiscPerc.Location = new System.Drawing.Point(0, 53);
             this.tblpDiscPerc.Margin = new System.Windows.Forms.Padding(0);
             this.tblpDiscPerc.Name = "tblpDiscPerc";
             this.tblpDiscPerc.RowCount = 2;
@@ -1778,7 +1776,7 @@ namespace DigiposZen
             this.tblpDiscAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpDiscAmt.Controls.Add(this.txtDiscAmt, 0, 1);
             this.tblpDiscAmt.Controls.Add(this.label5, 0, 0);
-            this.tblpDiscAmt.Location = new System.Drawing.Point(780, 0);
+            this.tblpDiscAmt.Location = new System.Drawing.Point(130, 53);
             this.tblpDiscAmt.Margin = new System.Windows.Forms.Padding(0);
             this.tblpDiscAmt.Name = "tblpDiscAmt";
             this.tblpDiscAmt.RowCount = 2;
@@ -1825,7 +1823,7 @@ namespace DigiposZen
             this.tblpAmount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpAmount.Controls.Add(this.txtAmount, 0, 1);
             this.tblpAmount.Controls.Add(this.label40, 0, 0);
-            this.tblpAmount.Location = new System.Drawing.Point(910, 0);
+            this.tblpAmount.Location = new System.Drawing.Point(260, 53);
             this.tblpAmount.Margin = new System.Windows.Forms.Padding(0);
             this.tblpAmount.Name = "tblpAmount";
             this.tblpAmount.RowCount = 2;
@@ -1867,7 +1865,7 @@ namespace DigiposZen
             this.tblpTaxable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpTaxable.Controls.Add(this.txtTaxable, 0, 1);
             this.tblpTaxable.Controls.Add(this.label41, 0, 0);
-            this.tblpTaxable.Location = new System.Drawing.Point(0, 53);
+            this.tblpTaxable.Location = new System.Drawing.Point(390, 53);
             this.tblpTaxable.Margin = new System.Windows.Forms.Padding(0);
             this.tblpTaxable.Name = "tblpTaxable";
             this.tblpTaxable.RowCount = 2;
@@ -1909,7 +1907,7 @@ namespace DigiposZen
             this.tblpNonTaxable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpNonTaxable.Controls.Add(this.txtNonTaxable, 0, 1);
             this.tblpNonTaxable.Controls.Add(this.label42, 0, 0);
-            this.tblpNonTaxable.Location = new System.Drawing.Point(130, 53);
+            this.tblpNonTaxable.Location = new System.Drawing.Point(520, 53);
             this.tblpNonTaxable.Margin = new System.Windows.Forms.Padding(0);
             this.tblpNonTaxable.Name = "tblpNonTaxable";
             this.tblpNonTaxable.RowCount = 2;
@@ -1951,7 +1949,7 @@ namespace DigiposZen
             this.tblpTaxAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpTaxAmt.Controls.Add(this.txtTaxAmt, 0, 1);
             this.tblpTaxAmt.Controls.Add(this.tableLayoutPanel6, 0, 0);
-            this.tblpTaxAmt.Location = new System.Drawing.Point(260, 53);
+            this.tblpTaxAmt.Location = new System.Drawing.Point(0, 106);
             this.tblpTaxAmt.Margin = new System.Windows.Forms.Padding(0);
             this.tblpTaxAmt.Name = "tblpTaxAmt";
             this.tblpTaxAmt.RowCount = 2;
@@ -2022,7 +2020,7 @@ namespace DigiposZen
             this.tblpCess.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpCess.Controls.Add(this.txtCess, 0, 1);
             this.tblpCess.Controls.Add(this.label44, 0, 0);
-            this.tblpCess.Location = new System.Drawing.Point(390, 53);
+            this.tblpCess.Location = new System.Drawing.Point(130, 106);
             this.tblpCess.Margin = new System.Windows.Forms.Padding(0);
             this.tblpCess.Name = "tblpCess";
             this.tblpCess.RowCount = 2;
@@ -2064,7 +2062,7 @@ namespace DigiposZen
             this.tblpCompCess.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpCompCess.Controls.Add(this.txtCompCess, 0, 1);
             this.tblpCompCess.Controls.Add(this.label45, 0, 0);
-            this.tblpCompCess.Location = new System.Drawing.Point(520, 53);
+            this.tblpCompCess.Location = new System.Drawing.Point(260, 106);
             this.tblpCompCess.Margin = new System.Windows.Forms.Padding(0);
             this.tblpCompCess.Name = "tblpCompCess";
             this.tblpCompCess.RowCount = 2;
@@ -2106,7 +2104,7 @@ namespace DigiposZen
             this.tblpQtyCess.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpQtyCess.Controls.Add(this.txtQtyCess, 0, 1);
             this.tblpQtyCess.Controls.Add(this.label47, 0, 0);
-            this.tblpQtyCess.Location = new System.Drawing.Point(650, 53);
+            this.tblpQtyCess.Location = new System.Drawing.Point(390, 106);
             this.tblpQtyCess.Margin = new System.Windows.Forms.Padding(0);
             this.tblpQtyCess.Name = "tblpQtyCess";
             this.tblpQtyCess.RowCount = 2;
@@ -2151,7 +2149,7 @@ namespace DigiposZen
             this.tblpOtherExp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpOtherExp.Controls.Add(this.label24, 0, 0);
             this.tblpOtherExp.Controls.Add(this.txtOtherExp, 0, 1);
-            this.tblpOtherExp.Location = new System.Drawing.Point(780, 53);
+            this.tblpOtherExp.Location = new System.Drawing.Point(520, 106);
             this.tblpOtherExp.Margin = new System.Windows.Forms.Padding(0);
             this.tblpOtherExp.Name = "tblpOtherExp";
             this.tblpOtherExp.RowCount = 2;
@@ -2196,7 +2194,7 @@ namespace DigiposZen
             this.tblpNetAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpNetAmt.Controls.Add(this.txtNetAmt, 0, 1);
             this.tblpNetAmt.Controls.Add(this.label21, 0, 0);
-            this.tblpNetAmt.Location = new System.Drawing.Point(910, 53);
+            this.tblpNetAmt.Location = new System.Drawing.Point(0, 159);
             this.tblpNetAmt.Margin = new System.Windows.Forms.Padding(0);
             this.tblpNetAmt.Name = "tblpNetAmt";
             this.tblpNetAmt.RowCount = 2;
@@ -2238,7 +2236,7 @@ namespace DigiposZen
             this.tblpCoolie.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpCoolie.Controls.Add(this.txtCoolie, 0, 1);
             this.tblpCoolie.Controls.Add(this.label25, 0, 0);
-            this.tblpCoolie.Location = new System.Drawing.Point(0, 106);
+            this.tblpCoolie.Location = new System.Drawing.Point(130, 159);
             this.tblpCoolie.Margin = new System.Windows.Forms.Padding(0);
             this.tblpCoolie.Name = "tblpCoolie";
             this.tblpCoolie.RowCount = 2;
@@ -2280,7 +2278,7 @@ namespace DigiposZen
             this.tblpCostFactor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpCostFactor.Controls.Add(this.txtCostFactor, 0, 1);
             this.tblpCostFactor.Controls.Add(this.label32, 0, 0);
-            this.tblpCostFactor.Location = new System.Drawing.Point(130, 106);
+            this.tblpCostFactor.Location = new System.Drawing.Point(260, 159);
             this.tblpCostFactor.Margin = new System.Windows.Forms.Padding(0);
             this.tblpCostFactor.Name = "tblpCostFactor";
             this.tblpCostFactor.RowCount = 2;
@@ -2324,7 +2322,7 @@ namespace DigiposZen
             this.tblpCashDicper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpCashDicper.Controls.Add(this.txtcashDisper, 0, 1);
             this.tblpCashDicper.Controls.Add(this.lblCashDicperc, 0, 0);
-            this.tblpCashDicper.Location = new System.Drawing.Point(260, 106);
+            this.tblpCashDicper.Location = new System.Drawing.Point(390, 159);
             this.tblpCashDicper.Margin = new System.Windows.Forms.Padding(0);
             this.tblpCashDicper.Name = "tblpCashDicper";
             this.tblpCashDicper.RowCount = 2;
@@ -2369,7 +2367,7 @@ namespace DigiposZen
             this.tblpCashDisc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpCashDisc.Controls.Add(this.txtCashDisc, 0, 1);
             this.tblpCashDisc.Controls.Add(this.label48, 0, 0);
-            this.tblpCashDisc.Location = new System.Drawing.Point(390, 106);
+            this.tblpCashDisc.Location = new System.Drawing.Point(520, 159);
             this.tblpCashDisc.Margin = new System.Windows.Forms.Padding(0);
             this.tblpCashDisc.Name = "tblpCashDisc";
             this.tblpCashDisc.RowCount = 2;
@@ -2413,7 +2411,7 @@ namespace DigiposZen
             this.tblpRoundOff.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpRoundOff.Controls.Add(this.txtRoundOff, 0, 1);
             this.tblpRoundOff.Controls.Add(this.label49, 0, 0);
-            this.tblpRoundOff.Location = new System.Drawing.Point(520, 106);
+            this.tblpRoundOff.Location = new System.Drawing.Point(0, 212);
             this.tblpRoundOff.Margin = new System.Windows.Forms.Padding(0);
             this.tblpRoundOff.Name = "tblpRoundOff";
             this.tblpRoundOff.RowCount = 2;
@@ -2457,7 +2455,7 @@ namespace DigiposZen
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.Controls.Add(this.lblQtyTotal, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.label17, 0, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(650, 106);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(130, 212);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
@@ -2500,7 +2498,7 @@ namespace DigiposZen
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.Controls.Add(this.lblFreeTotal, 0, 1);
             this.tableLayoutPanel9.Controls.Add(this.label18, 0, 0);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(780, 106);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(260, 212);
             this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
@@ -2542,7 +2540,7 @@ namespace DigiposZen
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.Controls.Add(this.lblAgentCommissionTotal, 0, 1);
             this.tableLayoutPanel10.Controls.Add(this.label20, 0, 0);
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(910, 106);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(390, 212);
             this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 2;
@@ -2584,7 +2582,7 @@ namespace DigiposZen
             this.tblpNarration.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpNarration.Controls.Add(this.txtNarration, 0, 1);
             this.tblpNarration.Controls.Add(this.label9, 0, 0);
-            this.tblpNarration.Location = new System.Drawing.Point(0, 159);
+            this.tblpNarration.Location = new System.Drawing.Point(0, 265);
             this.tblpNarration.Margin = new System.Windows.Forms.Padding(0);
             this.tblpNarration.Name = "tblpNarration";
             this.tblpNarration.RowCount = 2;
@@ -2621,7 +2619,7 @@ namespace DigiposZen
             this.groupBox5.BackColor = System.Drawing.Color.White;
             this.groupBox5.Controls.Add(this.tableLayoutPanel7);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(1104, 471);
+            this.groupBox5.Location = new System.Drawing.Point(754, 471);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 5, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -2709,17 +2707,15 @@ namespace DigiposZen
             this.groupBox4.Controls.Add(this.toggleWidthSettings);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.panel2);
-            this.groupBox4.Controls.Add(this.comboBox8);
-            this.groupBox4.Controls.Add(this.label29);
-            this.groupBox4.Controls.Add(this.comboBox7);
+            this.groupBox4.Controls.Add(this.cboInvScheme);
             this.groupBox4.Controls.Add(this.label28);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(1380, 100);
+            this.groupBox4.Location = new System.Drawing.Point(1030, 100);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox4.Size = new System.Drawing.Size(1, 631);
+            this.groupBox4.Size = new System.Drawing.Size(344, 631);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             // 
@@ -2772,7 +2768,7 @@ namespace DigiposZen
             inactiveStateCollection2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             inactiveStateCollection2.Text = "Manual Width Settings";
             this.toggleWidthSettings.InactiveState = inactiveStateCollection2;
-            this.toggleWidthSettings.Location = new System.Drawing.Point(15, 199);
+            this.toggleWidthSettings.Location = new System.Drawing.Point(15, 140);
             this.toggleWidthSettings.Margin = new System.Windows.Forms.Padding(4);
             this.toggleWidthSettings.MinimumSize = new System.Drawing.Size(69, 25);
             this.toggleWidthSettings.Name = "toggleWidthSettings";
@@ -2787,7 +2783,7 @@ namespace DigiposZen
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(5, 245);
+            this.label10.Location = new System.Drawing.Point(5, 187);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(264, 21);
             this.label10.TabIndex = 12;
@@ -2799,10 +2795,10 @@ namespace DigiposZen
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.Controls.Add(this.dgvColWidth);
-            this.panel2.Location = new System.Drawing.Point(11, 268);
+            this.panel2.Location = new System.Drawing.Point(11, 210);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(329, 325);
+            this.panel2.Size = new System.Drawing.Size(329, 383);
             this.panel2.TabIndex = 11;
             // 
             // dgvColWidth
@@ -2822,7 +2818,7 @@ namespace DigiposZen
             this.dgvColWidth.RowHeadersVisible = false;
             this.dgvColWidth.RowHeadersWidth = 51;
             this.dgvColWidth.RowTemplate.Height = 24;
-            this.dgvColWidth.Size = new System.Drawing.Size(329, 325);
+            this.dgvColWidth.Size = new System.Drawing.Size(329, 383);
             this.dgvColWidth.TabIndex = 0;
             this.dgvColWidth.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvColWidth_CellContentClick);
             this.dgvColWidth.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvColWidth_CellEndEdit);
@@ -2859,38 +2855,16 @@ namespace DigiposZen
             this.clmColName.Visible = false;
             this.clmColName.Width = 6;
             // 
-            // comboBox8
+            // cboInvScheme
             // 
-            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox8.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(15, 158);
-            this.comboBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(217, 29);
-            this.comboBox8.TabIndex = 9;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(11, 134);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(140, 21);
-            this.label29.TabIndex = 10;
-            this.label29.Text = "Invoice Scheme 1";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox7.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(15, 92);
-            this.comboBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(213, 29);
-            this.comboBox7.TabIndex = 7;
+            this.cboInvScheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboInvScheme.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboInvScheme.FormattingEnabled = true;
+            this.cboInvScheme.Location = new System.Drawing.Point(15, 92);
+            this.cboInvScheme.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cboInvScheme.Name = "cboInvScheme";
+            this.cboInvScheme.Size = new System.Drawing.Size(213, 29);
+            this.cboInvScheme.TabIndex = 7;
             // 
             // label28
             // 
@@ -3100,9 +3074,7 @@ namespace DigiposZen
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox comboBox8;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox cboInvScheme;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;

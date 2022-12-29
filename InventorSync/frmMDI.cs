@@ -11,6 +11,9 @@ namespace DigiposZen
 {
     public partial class frmMDI : Form
     {
+
+        Common Comm = new Common();
+
         public frmMDI()
         {
             InitializeComponent();
@@ -89,7 +92,7 @@ namespace DigiposZen
                 ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
                 // Take some action based on the data in clickedItem
 
-                OpenMenu("", Convert.ToInt32(clickedItem.Tag.ToString()));
+                Comm.OpenMenu("", Comm.ToInt32(clickedItem.Tag.ToString()), this);
             }
         }
 
@@ -101,7 +104,7 @@ namespace DigiposZen
         private void brandToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -112,16 +115,11 @@ namespace DigiposZen
         private void itemMasterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
         }
 
-        private Boolean GetFromItemSearch(string sReturn)
-        {
-
-            return true;
-        }
-
-        private void OpenMenu(string MenuName, Int32 VchtypeID)
+        /*
+        private void Comm.OpenMenu(string MenuName, Int32 VchtypeID)
         {
             MenuName = MenuName.Replace("&", "").Replace(" ", "").ToString().ToUpper();
 
@@ -696,109 +694,109 @@ namespace DigiposZen
                 }
             }
         }
-
+*/
         private void categoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void manufacturerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void sizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void colourToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void unitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void itemDepartmenttoolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void ledgerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void accountGroupToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void areaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void agentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void employeeCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void employeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void departmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
@@ -810,7 +808,7 @@ namespace DigiposZen
         private void customizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
@@ -822,7 +820,7 @@ namespace DigiposZen
         private void editWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
@@ -853,137 +851,137 @@ namespace DigiposZen
         private void dISCGROUPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void voucherTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void costCentreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
         }
 
         private void stateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
         }
 
         private void taxModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
         }
 
         private void stockReportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void stockAdjustmentReportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void orderReportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void accountsReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void analysisReportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void purchaseReturnReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void salesReturnReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void userGroupToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void applicationSettingsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void stockHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void itemViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void customerViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void supplierViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
@@ -995,21 +993,21 @@ namespace DigiposZen
         private void dashBoardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void deliveryNoteReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void receiptNoteReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
@@ -1030,83 +1028,83 @@ namespace DigiposZen
         private void createCompanyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void companySettingsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void gSTR1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void uPIMasterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void cashDeskReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
         }
 
         private void rEPACKINGREPORTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void daybookToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void trialBalanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void daybookSummaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void profitLossToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void balancesheetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void tsmConnectionDetails_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu("CONNECTIONDETAILS", 0);
+            Comm.OpenMenu("CONNECTIONDETAILS", 0, this);
 
         }
 
@@ -1120,28 +1118,28 @@ namespace DigiposZen
         private void hsnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void advancedSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void barcodePrintToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void barcodeManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
@@ -1176,14 +1174,14 @@ namespace DigiposZen
         private void backupManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
 
         private void activityMonitorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
-            OpenMenu(t.Text.ToString(), 0);
+            Comm.OpenMenu(t.Text.ToString(), 0, this);
 
         }
     }

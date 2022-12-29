@@ -1,0 +1,19 @@
+Start15:44
+Insert Into tblBarcodeManager (InvID,AutoNum,InvNo,VchtypeID,Prefix,VchDate,CCID,StaffID) Values (4,,'',88,'','29-Dec-2022',1,1)
+Incorrect syntax near ','.
+
+EndStart15:45
+Insert Into tblBarcodeManager (InvID,AutoNum,InvNo,VchtypeID,Prefix,VchDate,CCID,StaffID) Values (4,'','',88,'','29-Dec-2022',1,1)
+Error converting data type varchar to numeric.
+
+EndStart15:46
+Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (4,401,260568,'1ASD',-3.00,10.00,9.52,100.00,0,1)
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_tblBarcodeManagerItemStatus_tblBarcodeManager". The conflict occurred in database "BFB", table "dbo.tblBarcodeManager", column 'InvID'.
+The statement has been terminated.
+
+EndStart15:46
+Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (4,229,260578,'B407@690.00',1.00,300.00,300.00,690.00,0,1)
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_tblBarcodeManagerItemStatus_tblBarcodeManager". The conflict occurred in database "BFB", table "dbo.tblBarcodeManager", column 'InvID'.
+The statement has been terminated.
+
+End

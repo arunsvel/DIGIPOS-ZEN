@@ -452,12 +452,28 @@ namespace DigiposZen.Forms
                             if (blnStartedInsert == false)
                             {
                                 //insert to table
-                                rs.Execute("Insert Into tblBarcodeManager (InvID,AutoNum,InvNo,VchtypeID,Prefix,VchDate,CCID,StaffID) Values (" + invid + "," + txtInvAutoNo.Text.ToString() + ",'" + txtPrefix.Text.ToString() + txtInvAutoNo.Text.ToString() + "'," + vchtypeID + ",'" + txtPrefix.Text.ToString() + "','" + dtpInvDate.Value.ToString("dd/MMM/yyyy") + "'," + cboCostCentre.SelectedValue + "," + cboSalesStaff.SelectedValue + ")");
+                                rs.Execute("Insert Into tblBarcodeManager (InvID,AutoNum,InvNo,VchtypeID,Prefix,VchDate,CCID,StaffID) Values (" + invid + ",'" + txtInvAutoNo.Text.ToString() + "','" + txtPrefix.Text.ToString() + txtInvAutoNo.Text.ToString() + "'," + vchtypeID + ",'" + txtPrefix.Text.ToString() + "','" + dtpInvDate.Value.ToString("dd/MMM/yyyy") + "'," + cboCostCentre.SelectedValue + "," + cboSalesStaff.SelectedValue + ")");
+                                if (rs.Exception != "")
+                                {
+                                    rs.RollbackTrans = true;
+                                    return;
+                                }
+
                                 blnStartedInsert = true;
                             }
                             rs.Execute("Insert Into tblBarcodeManagerItemStatus (InvID,ItemID,StockID,BatchUnique,Qty,PRate,Crate,MRP,OldStatus,NewStatus) Values (" + invid + "," + DgvData[0, i].Value + "," + DgvData[1, i].Value + ",'" + DgvData[4, i].Value + "'," + DgvData[5, i].Value + "," + DgvData[6, i].Value + "," + DgvData[7, i].Value + "," + DgvData[8, i].Value + "," + (Convert.ToBoolean(DgvData[9, i].Value) == true ? 1 : 0) + "," + (Convert.ToBoolean(DgvData[10, i].Value) == true ? 1 : 0) + ")");
+                            if (rs.Exception != "")
+                            {
+                                rs.RollbackTrans = true;
+                                return;
+                            }
 
                             rs.Execute("UPDATE TBLSTOCK SET StockActiveStatus = " + (Convert.ToBoolean(DgvData[10, i].Value) == true ? 1 : 0) + " WHERE ITEMID=" + DgvData[0, i].Value + " AND BATCHUNIQUE='" + DgvData[4, i].Value + "' ");
+                            if (rs.Exception != "")
+                            {
+                                rs.RollbackTrans = true;
+                                return;
+                            }
 
                             //        string SQL = @" SELECT   dbo.tblItemMaster.ItemID, dbo.tblStock.StockID,  dbo.tblItemMaster.ItemCode, dbo.tblItemMaster.ItemName, dbo.tblStock.BatchUnique,
                             //CONVERT(DECIMAL(20," + AppSettings.QtyDecimals + "), dbo.tblStock.qoh) AS Qty, CONVERT(DECIMAL(20," + AppSettings.CurrencyDecimals + "), dbo.tblStock.Prate ) as Prate, CONVERT(DECIMAL(20," + AppSettings.CurrencyDecimals + "), dbo.tblStock.CostRateExcl ) as Crate,CONVERT(DECIMAL(20," + AppSettings.CurrencyDecimals + "), dbo.tblStock.MRP ) as MRP, isnull(tblStock.StockActiveStatus, 1) as OldStatus, isnull(tblStock.StockActiveStatus, 1) as ActiveStatus        FROM    dbo.tblItemMaster INNER JOIN    dbo.tblStock ON dbo.tblItemMaster.ItemID = dbo.tblStock.ItemID  WHERE  (dbo.tblItemMaster.ActiveStatus = 1) " + whereSQL + QuerySQL + "   ORDER BY dbo.tblItemMaster.ItemCode, dbo.tblItemMaster.ItemName ";

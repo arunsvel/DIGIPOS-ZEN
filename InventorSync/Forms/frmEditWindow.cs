@@ -158,9 +158,13 @@ namespace DigiposZen
         clsUser clsUsr = new clsUser();
         clsDepartment clsDepart = new clsDepartment();
         clsCashDeskMaster clsCashDesk = new clsCashDeskMaster();
+        clsHSNMaster clsHSN = new clsHSNMaster();
+
+        UspInsertHSNmasterInfo HSNmasterInfo = new UspInsertHSNmasterInfo();
 
         UspGetCategoriesinfo Catinfo = new UspGetCategoriesinfo();
         UspGetManufacturerInfo Manfinfo = new UspGetManufacturerInfo();
+        UspGetHSNInfo GetHSN = new UspGetHSNInfo();
         UspGetBrandinfo GetBrandInfo = new UspGetBrandinfo();
         UspGetColorInfo GetcolorInfo = new UspGetColorInfo();
         UspGetSizeInfo Getsizeinfo = new UspGetSizeInfo();
@@ -1358,6 +1362,9 @@ namespace DigiposZen
                     case 30:
                         GetDataAsperMenuClick("CASHDESK");
                         return;
+                    case 31:
+                        GetDataAsperMenuClick("HSNCODE");
+                        return;
                 }
             }
             else
@@ -2156,6 +2163,39 @@ namespace DigiposZen
                             ManfInsert.TenantID = Global.gblTenantID;
                             ManfInsert.LastUpdateDate = DateTime.Today;
                             ManfInsert.LastUpdateTime = DateTime.Now;
+                            sRet = clsManf.InsertUpdateDeleteManufacturer(ManfInsert, iAction);
+                            if (sRet.Length > 2)
+                            {
+                                strResult = sRet.Split('|');
+                                if (Convert.ToInt32(strResult[0].ToString()) == -1)
+                                {
+                                    if (strResult[1].ToString().ToUpper().Contains("THE DELETE STATEMENT CONFLICTED WITH THE REFERENCE CONSTRAINT"))
+                                        MessageBox.Show("Hey! There are Items Associated with this Manufacturer[" + GetSelectedRowData("Manufacturer") + "].Please Check.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    else
+                                        MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                                }
+                                else
+                                    RemoveGridRowAfterDelete();
+                            }
+                            else
+                                RemoveGridRowAfterDelete();
+                            //GetDataAsperMenuClick("MANUFACTURER");
+                        }
+                }
+                else
+                    MessageBox.Show("Default manufacturer [" + GetSelectedRowData("Manufacturer") + "] can't be deleted.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else if (rdoHSN.Checked == true)
+            {
+                if (GetSelectedRowID("MnfID") > 5)
+                {
+                    DialogResult dlgResult2 = MessageBox.Show("Are you sure to delete  hsn [" + GetSelectedRowData("HSNCode") + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    if (dlgResult2.Equals(DialogResult.Yes))
+                        if (dlgResult2 == DialogResult.Yes)
+                        {
+                            HSNmasterInfo.HID = GetSelectedRowID("HID");
+
                             sRet = clsManf.InsertUpdateDeleteManufacturer(ManfInsert, iAction);
                             if (sRet.Length > 2)
                             {
@@ -3026,7 +3066,6 @@ namespace DigiposZen
                 }
                 else
                     MessageBox.Show("Default Employee [" + GetSelectedRowData("Name") + "] can't be deleted.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             else if (rdoStockDepartment.Checked == true)
             {
@@ -4121,6 +4160,13 @@ namespace DigiposZen
                 dtResult = EdtComm.GetManufacturer(Manfinfo);
                 strGtidColumnSize = "0,-1,250,100";
             }
+            else if (sMenuType.ToUpper() == "HSNCODE")
+            {
+                GetHSN.HID = 0;
+                GetHSN.TenantID = Global.gblTenantID;
+                dtResult = EdtComm.GetHSNCode(GetHSN);
+                strGtidColumnSize = "0,-1,250,100";
+            }
             else if (sMenuType.ToUpper() == "BRAND")
             {
                 GetBrandInfo.brandID = 0;
@@ -4998,6 +5044,12 @@ namespace DigiposZen
                     rdoBrand.Checked = true;
                     GetDataAsperMenuClick("BRAND");
                 }
+                if (mFormName.ToUpper() == "FRMHSNCODE")
+                {
+                    rdoMasters.Checked = true;
+                    rdoHSN.Checked = true;
+                    GetDataAsperMenuClick("HSNCODE");
+                }
                 if (mFormName.ToUpper() == "FRMSIZEMASTER")
                 {
                     rdoMasters.Checked = true;
@@ -5127,6 +5179,30 @@ namespace DigiposZen
                     rdoSettings.PerformClick();
                     GetDataAsperMenuClick("SETTINGS");
                 }
+            }
+        }
+
+        private void rdoDepartment_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdoHSN_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdoHSN_Click(object sender, EventArgs e)
+        {
+            if (rdoHSN.Checked == true)
+            {
+                HideButtons();
+                AnalysisChecked();
+                UserManagementChecked();
+                ReportChecked();
+                strFormHeaderName = "HSN Code";
+                GetDataAsperMenuClick("HSNCODE");
+                ibtnNumber = 31;
             }
         }
     }

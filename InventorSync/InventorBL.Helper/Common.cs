@@ -14,6 +14,7 @@ using System.Drawing.Drawing2D;
 using System.IO.Compression;
 using DigiposZen.Info;
 using DigiposZen.InventorBL.Master;
+using DigiposZen.Forms;
 
 namespace DigiposZen.InventorBL.Helper
 {
@@ -2991,11 +2992,12 @@ namespace DigiposZen.InventorBL.Helper
                              ELSE
                              BEGIN
 		                        SELECT *
-		                        FROM tblColor WHERE TenantID = @TenantID
-		                        ORDER BY ColorName ASC
+		                        FROM tblHSNCode WHERE TenantID = @TenantID
+		                        ORDER BY HSNCODE ASC
 		
                              END
                         END";
+
                 fnExecuteNonQuery(sQuery, false);
             }
             catch
@@ -10152,6 +10154,588 @@ namespace DigiposZen.InventorBL.Helper
             }
             catch 
             {
+            }
+        }
+
+        //THIS IS USED TO OPEN ITEMVIEW IN OPENMENU FUNCTION. DO NOT REMOVE THIS FUNCTION
+        private Boolean GetFromItemSearch(string sReturn)
+        {
+            return true;
+        }
+        
+        public void OpenMenu(string MenuName, Int32 VchtypeID, frmMDI MDIParent, int BcodePrintVchtypeID = 0, decimal BcodePrintInvId = 0)
+        {
+            MenuName = MenuName.Replace("&", "").Replace(" ", "").ToString().ToUpper();
+
+            String sQuery = "";
+
+            switch (MenuName)
+            {
+                case "ACTIVITYMONITOR":
+                    frmActiveMonitor frmAM = new frmActiveMonitor();
+                    frmAM.Text = "Activity Monitor";
+                    frmAM.MdiParent = MDIParent;
+                    frmAM.Show();
+                    frmAM.Focus();
+                    frmAM.BringToFront();
+                    break;
+
+                case "DATAMANAGER":
+                    frmBackupManager frmDM = new frmBackupManager();
+                    frmDM.Text = "Data Manager";
+                    frmDM.MdiParent = MDIParent;
+                    frmDM.Show();
+                    frmDM.Focus();
+                    frmDM.BringToFront();
+                    break;
+
+                case "CONNECTIONDETAILS":
+                    frmConnectionProperties frmCP = new frmConnectionProperties(MDIParent);
+                    frmCP.Text = "User Profile";
+                    frmCP.MdiParent = MDIParent;
+                    frmCP.Show();
+                    frmCP.Focus();
+                    frmCP.BringToFront();
+                    break;
+
+                case "ADVANCEDSEARCH":
+                    frmCommadWindow frmcmd = new frmCommadWindow();
+                    frmcmd.MdiParent = MDIParent;
+                    frmcmd.Show();
+                    frmcmd.Focus();
+                    frmcmd.BringToFront();
+                    break;
+
+                case "DAYBOOK":
+                    frmAccountStatements frmACC = new frmAccountStatements("DAYBOOK", MDIParent);
+                    frmACC.Text = "DAYBOOK";
+                    frmACC.MdiParent = MDIParent;
+                    frmACC.Show();
+                    frmACC.Focus();
+                    frmACC.BringToFront();
+                    break;
+
+                case "DAYBOOKSUMMARY":
+                    frmAccountStatements frmDBS = new frmAccountStatements("DAYBOOKSUMMARY", MDIParent);
+                    frmDBS.Text = "DAYBOOK SUMMARY";
+                    frmDBS.MdiParent = MDIParent;
+                    frmDBS.Show();
+                    frmDBS.Focus();
+                    frmDBS.BringToFront();
+                    break;
+
+                case "TRIALBALANCE":
+                    frmAccountStatements frmTB = new frmAccountStatements("TRIALBALANCE", MDIParent);
+                    frmTB.Text = "TRIAL BALANCE";
+                    frmTB.MdiParent = MDIParent;
+                    frmTB.Show();
+                    frmTB.Focus();
+                    frmTB.BringToFront();
+                    break;
+
+                case "PROFITLOSS":
+                    frmAccountStatements frmPL = new frmAccountStatements("PROFITLOSS", MDIParent);
+                    frmPL.Text = "PROFIT AND LOSS";
+                    frmPL.MdiParent = MDIParent;
+                    frmPL.Show();
+                    frmPL.Focus();
+                    frmPL.BringToFront();
+                    break;
+
+                case "BALANCESHEET":
+                    frmAccountStatements frmBS = new frmAccountStatements("BALANCESHEET", MDIParent);
+                    frmBS.Text = "BALANCE SHEET";
+                    frmBS.MdiParent = MDIParent;
+                    frmBS.Show();
+                    frmBS.Focus();
+                    frmBS.BringToFront();
+                    break;
+
+                case "GSTR1":
+                    frmGstReport frmGSTR1 = new frmGstReport(MDIParent);
+                    frmGSTR1.Text = "GSTR1";
+                    frmGSTR1.MdiParent = MDIParent;
+                    frmGSTR1.Show();
+                    frmGSTR1.Focus();
+                    frmGSTR1.BringToFront();
+                    break;
+
+                case "CREATECOMPANY":
+                    frmCompanySettings frmComp = new frmCompanySettings();
+                    frmComp.Text = "CREATE COMPANY";
+                    frmComp.MdiParent = MDIParent;
+                    frmComp.Show();
+                    frmComp.Focus();
+                    frmComp.BringToFront();
+                    break;
+
+                case "DASHBOARD":
+                    frmDashBoard frmDB = new frmDashBoard();
+                    frmDB.Text = "DASH BOARD";
+                    frmDB.MdiParent = MDIParent;
+                    frmDB.Show();
+                    frmDB.Focus();
+                    frmDB.BringToFront();
+                    break;
+
+                case "ITEMVIEW":
+                    sQuery = "SELECT ItemCode + ItemName + BatchUnique + CAST(MRP AS varchar) AS anywhere, ItemCode, ItemName, BatchUnique, QOH, MRP, ItemID, StockID " +
+                            " FROM     vwCompactSearch Where isnull(ActiveStatus, 1) = 1 and isnull(StockActiveStatus, 1) = 1 ";
+                    frmDetailedSearch2 frmN = new frmDetailedSearch2(GetFromItemSearch, sQuery, "Anywhere|ItemCode|ItemName|BatchUnique", (MDIParent.Width / 2) - 535, (MDIParent.Height / 2) - 245, 7, 0, "", 6, 0, "ORDER BY ItemCode ASC, Batchunique", 0, 0, "Item Search...", 0, "150,250,150,150,150,0,0", true, "frmItemMaster", 20, false, MDIParent, 6);
+                    frmN.MdiParent = MDIParent;
+                    frmN.Show(); //20-Aug-2022
+
+                    break;
+
+                case "CUSTOMERVIEW":
+                    sQuery = "SELECT LName+LAliasName+MobileNo+Address as AnyWhere,LALiasname as [Supplier Code],lname as [Supplier Name] ,MobileNo ,Address,LID,Email  FROM tblLedger L";
+                    sQuery = sQuery + " WHERE UPPER(L.groupName)='CUSTOMER' AND L.TenantID=" + Global.gblTenantID + "";
+                    frmDetailedSearch2 frmC = new frmDetailedSearch2(GetFromItemSearch, sQuery, "Anywhere|ItemCode|ItemName|BatchUnique", (MDIParent.Width / 2) - 535, (MDIParent.Height / 2) - 245, 5, 0, "", 5, 0, "ORDER BY ItemCode ASC, Batchunique", 0, 0, "Item Search...", 0, "150,250,150,150,150,0,0", true, "frmItemMaster", 20, false, MDIParent, 5);
+                    frmC.MdiParent = MDIParent;
+                    frmC.Show(); //20-Aug-2022
+
+                    break;
+
+                case "SUPPLIERVIEW":
+                    sQuery = "SELECT LName+LAliasName+MobileNo+Address as AnyWhere,LALiasname as [Supplier Code],lname as [Supplier Name] ,MobileNo ,Address,LID,Email  FROM tblLedger L";
+                    sQuery = sQuery + " WHERE UPPER(L.groupName)='SUPPLIER' AND L.TenantID=" + Global.gblTenantID + "";
+                    frmDetailedSearch2 frmS = new frmDetailedSearch2(GetFromItemSearch, sQuery, "Anywhere|ItemCode|ItemName|BatchUnique", (MDIParent.Width / 2) - 535, (MDIParent.Height / 2) - 245, 5, 0, "", 5, 0, "ORDER BY ItemCode ASC, Batchunique", 0, 0, "Item Search...", 0, "150,250,150,150,150,0,0", true, "frmItemMaster", 20, false, MDIParent, 5);
+                    frmS.MdiParent = MDIParent;
+                    frmS.Show(); //20-Aug-2022
+
+                    break;
+
+                case "COMPANYSETTINGS":
+                    frmCompanySettings frmCS = new frmCompanySettings();
+                    frmCS.Text = "Settings";
+                    frmCS.MdiParent = MDIParent;
+                    frmCS.Show();
+                    frmCS.Focus();
+                    frmCS.BringToFront();
+                    break;
+
+                case "STOCKHISTORY":
+                    frmItemAnalysis frmIA = new frmItemAnalysis();
+                    frmIA.Text = "Settings";
+                    frmIA.MdiParent = MDIParent;
+                    frmIA.Show();
+                    frmIA.Focus();
+                    frmIA.BringToFront();
+                    break;
+
+                case "APPLICATIONSETTINGS":
+                    frmSettings frmSet = new frmSettings(0, false);
+                    frmSet.Text = "Settings";
+                    frmSet.MdiParent = MDIParent;
+                    frmSet.Show();
+                    frmSet.Focus();
+                    frmSet.BringToFront();
+                    break;
+
+                case "EDITWINDOW":
+                    frmEditWindow frmEdit = new frmEditWindow("", MDIParent);
+                    frmEdit.Text = "Edit Window";
+                    frmEdit.MdiParent = MDIParent;
+                    frmEdit.Show();
+                    frmEdit.Focus();
+                    frmEdit.BringToFront();
+                    break;
+                case "BARCODEPRINT":
+                    frmBarcode frmBCode = new frmBarcode(BcodePrintVchtypeID, BcodePrintInvId, "", "", MDIParent);
+                    frmBCode.Text = "Barcode Manager";
+                    frmBCode.MdiParent = MDIParent;
+                    frmBCode.Show();
+                    frmBCode.Focus();
+                    frmBCode.BringToFront();
+                    break;
+                case "HSN":
+                    frmHSN frmhsn = new frmHSN(0, false);
+                    frmhsn.MdiParent = MDIParent;
+                    frmhsn.Show();
+                    frmhsn.Focus();
+                    frmhsn.BringToFront();
+                    break;
+                case "CATEGORY":
+                    frmItemCategory frmCat = new frmItemCategory(0, false);
+                    frmCat.MdiParent = MDIParent;
+                    frmCat.Show();
+                    frmCat.Focus();
+                    frmCat.BringToFront();
+                    break;
+                case "MANUFACTURER":
+                    frmManufacturer frmM = new frmManufacturer(0, false);
+                    frmM.MdiParent = MDIParent;
+                    frmM.Show();
+                    frmM.Focus();
+                    frmM.BringToFront();
+                    break;
+                case "BRAND":
+                    frmBrandMaster frmB = new frmBrandMaster(0, false);
+                    frmB.MdiParent = MDIParent;
+                    frmB.Show();
+                    frmB.Focus();
+                    frmB.BringToFront();
+                    break;
+                case "DISCGROUP":
+                    frmDiscountGroup frmDisc = new frmDiscountGroup(0, false);
+                    frmDisc.MdiParent = MDIParent;
+                    frmDisc.Show();
+                    frmDisc.Focus();
+                    frmDisc.BringToFront();
+                    break;
+                case "SIZE":
+                    FrmSizeMaster frmSize = new FrmSizeMaster(0, false);
+                    frmSize.MdiParent = MDIParent;
+                    frmSize.Show();
+                    frmSize.Focus();
+                    frmSize.BringToFront();
+                    break;
+                case "COLOUR":
+                    frmColorMaster frmColor = new frmColorMaster(0, false);
+                    frmColor.MdiParent = MDIParent;
+                    frmColor.Show();
+                    frmColor.Focus();
+                    frmColor.BringToFront();
+                    break;
+                case "UPIMASTER":
+                    frmCashDeskMaster frmCDM = new frmCashDeskMaster(0, false);
+                    frmCDM.MdiParent = MDIParent;
+                    frmCDM.Show();
+                    frmCDM.Focus();
+                    frmCDM.BringToFront();
+                    break;
+                case "UNIT":
+                    frmUnitMaster frmUnit = new frmUnitMaster(0, false);
+                    frmUnit.MdiParent = MDIParent;
+                    frmUnit.Show();
+                    frmUnit.Focus();
+                    frmUnit.BringToFront();
+                    break;
+                case "STOCKDEPARTMENT":
+                    frmDepartment frmStDep = new frmDepartment(0, false, 0);
+                    frmStDep.MdiParent = MDIParent;
+                    frmStDep.Show();
+                    frmStDep.Focus();
+                    frmStDep.BringToFront();
+                    break;
+                case "ITEM":
+                    frmItemMaster frmItem = new frmItemMaster(0, true);
+                    frmItem.MdiParent = MDIParent;
+                    frmItem.Show();
+                    frmItem.Focus();
+                    frmItem.BringToFront();
+                    break;
+                case "AREA":
+                    frmAreaMaster frmArea = new frmAreaMaster(0, false);
+                    frmArea.MdiParent = MDIParent;
+                    frmArea.Show();
+                    frmArea.Focus();
+                    frmArea.BringToFront();
+                    break;
+                case "AGENT":
+                    frmAgentMaster frmAgent = new frmAgentMaster(0, false);
+                    frmAgent.MdiParent = MDIParent;
+                    frmAgent.Show();
+                    frmAgent.Focus();
+                    frmAgent.BringToFront();
+                    break;
+                case "SUPPLIER":
+                    frmLedger frmSup = new frmLedger(0, false, 0, "SUPPLIER");
+                    frmSup.MdiParent = MDIParent;
+                    frmSup.Show();
+                    frmSup.Focus();
+                    frmSup.BringToFront();
+                    break;
+                case "CUSTOMER":
+                    frmLedger frmCust = new frmLedger(0, false, 0, "CUSTOMER");
+                    frmCust.MdiParent = MDIParent;
+                    frmCust.Show();
+                    frmCust.Focus();
+                    frmCust.BringToFront();
+                    break;
+                case "LEDGER":
+                    frmLedger frmLed = new frmLedger(0, false);
+                    frmLed.MdiParent = MDIParent;
+                    frmLed.Show();
+                    frmLed.Focus();
+                    frmLed.BringToFront();
+                    break;
+                case "TAXMODE":
+                    frmTaxMode frmTax = new frmTaxMode(0, false);
+                    frmTax.MdiParent = MDIParent;
+                    frmTax.Show();
+                    frmTax.Focus();
+                    frmTax.BringToFront();
+                    break;
+                case "ACCOUNTGROUP":
+                    frmAccountGroup frmAcc = new frmAccountGroup(0, false);
+                    frmAcc.MdiParent = MDIParent;
+                    frmAcc.Show();
+                    frmAcc.Focus();
+                    frmAcc.BringToFront();
+                    break;
+                case "VOUCHERTYPE":
+                    frmVouchertype frmVch = new frmVouchertype(0, false);
+                    frmVch.MdiParent = MDIParent;
+                    frmVch.Show();
+                    frmVch.Focus();
+                    frmVch.BringToFront();
+                    break;
+                case "STATE":
+                    frmState frmSt = new frmState(0, false);
+                    frmSt.MdiParent = MDIParent;
+                    frmSt.Show();
+                    frmSt.Focus();
+                    frmSt.BringToFront();
+                    break;
+                case "COSTCENTRE":
+                    frmCostCentre frmCC = new frmCostCentre(0, false);
+                    frmCC.MdiParent = MDIParent;
+                    frmCC.Show();
+                    frmCC.Focus();
+                    frmCC.BringToFront();
+                    break;
+                case "EMPLOYEECATEGORY":
+                    break;
+                case "EMPLOYEE":
+                    frmEmployee frmEmp = new frmEmployee(0, false);
+                    frmEmp.MdiParent = MDIParent;
+                    frmEmp.Show();
+                    frmEmp.Focus();
+                    frmEmp.BringToFront();
+                    break;
+                case "DEPARTMENT":
+                    frmDepartment frmDep = new frmDepartment(0, false, 1);
+                    frmDep.MdiParent = MDIParent;
+                    frmDep.Show();
+                    frmDep.Focus();
+                    frmDep.BringToFront();
+                    break;
+                case "STOCKANALYSIS":
+                    frmItemAnalysis frmStAn = new frmItemAnalysis();
+                    frmStAn.MdiParent = MDIParent;
+                    frmStAn.Show();
+                    frmStAn.Focus();
+                    frmStAn.BringToFront();
+                    break;
+                case "USERGROUP":
+                    frmUserGroup frmUG = new frmUserGroup(0, false);
+                    frmUG.MdiParent = MDIParent;
+                    frmUG.Show();
+                    frmUG.Focus();
+                    frmUG.BringToFront();
+                    break;
+                case "USERS":
+                    frmUser frmUsr = new frmUser(0, false);
+                    frmUsr.MdiParent = MDIParent;
+                    frmUsr.Show();
+                    frmUsr.Focus();
+                    frmUsr.BringToFront();
+                    break;
+                case "REPACKINGREPORT":
+                    frmRepackingReport frmRPR = new frmRepackingReport();
+                    frmRPR.MdiParent = MDIParent;
+                    frmRPR.Show();
+                    frmRPR.Focus();
+                    frmRPR.BringToFront();
+                    break;
+                case "CASHDESKREPORT":
+                    frmCashDeskReport frmCDR = new frmCashDeskReport();
+                    frmCDR.MdiParent = MDIParent;
+                    frmCDR.Show();
+                    frmCDR.Focus();
+                    frmCDR.BringToFront();
+                    break;
+                case "PURCHASEREPORT":
+                    frmPurchaseReport frmPR = new frmPurchaseReport();
+                    frmPR.MdiParent = MDIParent;
+                    frmPR.Show();
+                    frmPR.Focus();
+                    frmPR.BringToFront();
+                    break;
+                case "SALESREPORT":
+                    frmSalesReport frmSR = new frmSalesReport();
+                    frmSR.MdiParent = MDIParent;
+                    frmSR.Show();
+                    frmSR.Focus();
+                    frmSR.BringToFront();
+                    break;
+                case "PURCHASERETURNREPORT":
+                    frmPurchaseReturnReport frmPRR = new frmPurchaseReturnReport();
+                    frmPRR.MdiParent = MDIParent;
+                    frmPRR.Show();
+                    frmPRR.Focus();
+                    frmPRR.BringToFront();
+                    break;
+                case "SALESRETURNREPORT":
+                    frmSalesReturnReport frmSRR = new frmSalesReturnReport();
+                    frmSRR.MdiParent = MDIParent;
+                    frmSRR.Show();
+                    frmSRR.Focus();
+                    frmSRR.BringToFront();
+                    break;
+                case "STOCKREPORT":
+                    frmStockReport frmSTOCKREPORT = new frmStockReport();
+                    frmSTOCKREPORT.MdiParent = MDIParent;
+                    frmSTOCKREPORT.Show();
+                    frmSTOCKREPORT.Focus();
+                    frmSTOCKREPORT.BringToFront();
+                    break;
+                case "ACCOUNTSREPORT":
+                    frmAccountReport frmaccreport = new frmAccountReport();
+                    frmaccreport.MdiParent = MDIParent;
+                    frmaccreport.Show();
+                    frmaccreport.Focus();
+                    frmaccreport.BringToFront();
+                    break;
+                case "STOCKADJUSTMENTREPORT":
+                    frmStockMovementReport frmSTOCKADJREPORT = new frmStockMovementReport();
+                    frmSTOCKADJREPORT.MdiParent = MDIParent;
+                    frmSTOCKADJREPORT.Show();
+                    frmSTOCKADJREPORT.Focus();
+                    frmSTOCKADJREPORT.BringToFront();
+                    break;
+                case "DELIVERYNOTEREPORT":
+                    frmDeliveryNote frmdelnoterep = new frmDeliveryNote();
+                    frmdelnoterep.MdiParent = MDIParent;
+                    frmdelnoterep.Show();
+                    frmdelnoterep.Focus();
+                    frmdelnoterep.BringToFront();
+                    break;
+                case "RECEIPTNOTEREPORT":
+                    frmReceiptNote frmrecnotrep = new frmReceiptNote();
+                    frmrecnotrep.MdiParent = MDIParent;
+                    frmrecnotrep.Show();
+                    frmrecnotrep.Focus();
+                    frmrecnotrep.BringToFront();
+                    break;
+
+                case null:
+                    break;
+
+                default:
+                    break;
+            }
+
+            Int32 ParentVchtypeID = -1;
+            sqlControl rs = new sqlControl();
+            rs.Open("Select ParentID From tblVchtype Where isnull(ActiveStatus,0)=1 and VchtypeID=" + VchtypeID.ToString());
+            if (!rs.eof())
+            {
+                //if(rs.fields("ParentID").ToString() != null)
+                {
+                    ParentVchtypeID = Convert.ToInt32(rs.fields("ParentID").ToString());
+                    switch (ParentVchtypeID)
+                    {
+                        case 100: //Barcode Manager
+                            frmBarcodeManager frmBCM = new frmBarcodeManager(VchtypeID, 0, false, MDIParent);
+                            frmBCM.Show();
+                            frmBCM.BringToFront();
+                            break;
+
+                        case 1: //Sales
+                            frmStockOutVoucherNew frmSale = new frmStockOutVoucherNew(VchtypeID, 0, false, MDIParent);
+                            frmSale.Show();
+                            frmSale.BringToFront();
+                            break;
+
+                        case 2: //Purchase
+                            frmStockInVoucherNew frmPurch = new frmStockInVoucherNew(VchtypeID, 0, false, MDIParent);
+                            frmPurch.Show();
+                            frmPurch.BringToFront();
+                            break;
+
+                        case 3: //Sales Return
+                            frmStockOutVoucherNew frmSaleRet = new frmStockOutVoucherNew(VchtypeID, 0, false, MDIParent);
+                            frmSaleRet.Show();
+                            frmSaleRet.BringToFront();
+                            break;
+
+                        case 4: //Purchase Return
+                            frmStockInVoucherNew frmPurchRet = new frmStockInVoucherNew(VchtypeID, 0, false, MDIParent);
+                            frmPurchRet.Show();
+                            frmPurchRet.BringToFront();
+                            break;
+
+                        case 5: //Delivery Note
+                            frmStockOutVoucherNew frmDelNote = new frmStockOutVoucherNew(VchtypeID, 0, false, MDIParent);
+                            frmDelNote.Show();
+                            frmDelNote.BringToFront();
+                            break;
+
+                        case 6: //Receipt Note
+                            frmStockInVoucherNew frmRecNote = new frmStockInVoucherNew(VchtypeID, 0, false, MDIParent);
+                            frmRecNote.Show();
+                            frmRecNote.BringToFront();
+                            break;
+
+                        case 18: //Quotation
+                            frmStockOutVoucherNew frmQt = new frmStockOutVoucherNew(VchtypeID, 0, false, MDIParent);
+                            frmQt.Show();
+                            frmQt.BringToFront();
+                            break;
+
+                        case 20: //Purchase
+                            frmRepacking frmRepack = new frmRepacking(VchtypeID, 0, false, MDIParent);
+                            frmRepack.Show();
+                            frmRepack.BringToFront();
+                            break;
+
+                        case 88: //Purchase
+                            frmBarcodeManager frmBM = new frmBarcodeManager(VchtypeID, 0, false, MDIParent);
+                            frmBM.Show();
+                            frmBM.BringToFront();
+                            break;
+
+                        case 40: //board rate updator
+                            frmBoardRateUpdator frmBRU = new frmBoardRateUpdator(VchtypeID, 0, false, MDIParent);
+                            frmBRU.Show();
+                            frmBRU.BringToFront();
+                            break;
+
+                        case 41: //Physical Stock
+                            frmPhysicalStock frmPhSt = new frmPhysicalStock(VchtypeID, 0, false, MDIParent);
+                            frmPhSt.Show();
+                            frmPhSt.BringToFront();
+                            break;
+
+                        case 16: //Stock Transfer
+                            frmPhysicalStock frmStTr = new frmPhysicalStock(VchtypeID, 0, false, MDIParent);
+                            frmStTr.Show();
+                            frmStTr.BringToFront();
+                            break;
+
+                        case 1005: //Opening
+                            frmStockInVoucherNew frmOP = new frmStockInVoucherNew(VchtypeID, 0, false, MDIParent);
+                            frmOP.Show();
+                            frmOP.BringToFront();
+                            break;
+
+                        case 42: //Price List
+                            frmPriceListUpdator frmPL = new frmPriceListUpdator(VchtypeID, 0, false, MDIParent);
+                            frmPL.Show();
+                            frmPL.BringToFront();
+                            break;
+
+                        case 7: //Receipt
+                        case 8: //Payment
+                        case 9: //Contra
+                        case 10: //Journal
+                            frmReceipt frmRec = new frmReceipt(VchtypeID, 0, false, MDIParent);
+                            frmRec.Show();
+                            frmRec.BringToFront();
+                            break;
+
+                        case 89: //PriceList Updator
+                            frmPriceListUpdator frmPLU = new frmPriceListUpdator(VchtypeID, 0, false, MDIParent);
+                            frmPLU.Show();
+                            frmPLU.BringToFront();
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
             }
         }
     }

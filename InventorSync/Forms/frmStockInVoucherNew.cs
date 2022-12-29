@@ -21,6 +21,7 @@ using System.Collections;
 using Microsoft.VisualBasic;
 using System.Runtime.InteropServices;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace DigiposZen
 {
@@ -38,6 +39,8 @@ namespace DigiposZen
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         public const int WM_LBUTTONDOWN = 0x0201;
+
+        private ReportPrint prn = new ReportPrint();
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -585,6 +588,42 @@ namespace DigiposZen
                 Application.DoEvents();
 
                 GridInitialize_dgvColWidth();
+
+                DirectoryInfo dir = new DirectoryInfo(Application.StartupPath + @"\PrintScheme");
+                FileInfo[] files = dir.GetFiles("*.rdl*");
+                foreach (FileInfo file in files)
+                {
+                    cboInvScheme.Items.Add(file.Name);
+                }
+
+                cboInvScheme.SelectedIndex = 0;
+
+                cboInvScheme.Items.Add("BARCODE");
+
+                string constr = DigiposZen.Properties.Settings.Default.ConnectionString;
+
+                SqlConnection conn = new SqlConnection();
+
+                conn = new SqlConnection(constr);
+                string query = "select InvScheme1,InvScheme2 from tblVchType where VchTypeID='" + vchtypeID + "' ";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.CommandText = query;
+                conn.Open();
+                SqlDataReader drd = cmd.ExecuteReader();
+
+                if (drd.Read())
+                {
+                    try
+                    {
+                        for (int i = 0; i < cboInvScheme.Items.Count; i++)
+                        {
+                            if (cboInvScheme.Items[i].ToString() == drd["InvScheme1"].ToString())
+                                cboInvScheme.SelectedIndex = i;
+                        }
+                    }
+                    catch
+                    { }
+                }
 
                 this.tlpMain.ColumnStyles[1].SizeType = SizeType.Absolute;
                 this.tlpMain.ColumnStyles[1].Width = 0;
@@ -2885,11 +2924,20 @@ namespace DigiposZen
 
         private void txtInvAutoNo_Enter(object sender, EventArgs e)
         {
-            Comm.ControlEnterLeave(txtInvAutoNo, true);
-            if (txtInvAutoNo.Tag == null) txtInvAutoNo.Tag = 0;
-            if (Comm.ToInt32(txtPrefix.Tag.ToString()) == 3)
+            try
             {
-                MessageBox.Show("This is a Archived Voucher", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Comm.ControlEnterLeave(txtInvAutoNo, true);
+                if (txtInvAutoNo.Tag == null) txtInvAutoNo.Tag = 0;
+                if (txtPrefix.Tag == null) txtPrefix.Tag = 0;
+                if (Comm.ToInt32(txtPrefix.Tag.ToString()) == 3)
+                {
+                    MessageBox.Show("This is a Archived Voucher", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (Exception ex)
+            {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -5570,9 +5618,8 @@ namespace DigiposZen
         //    {
         //        MessageBox.Show(ex.Message, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         //    }
-
-
         //}
+
         private void CRUD_Operations(int iAction = 0, bool blnLoadTest = false)
         {
             //return;
@@ -5768,17 +5815,70 @@ namespace DigiposZen
 
                         string vchno = txtInvAutoNo.Text;
 
+                        string id = "";
+                        if (iIDFromEditWindow == 0)
+                        {
+                            id = clsJPMinfo.InvId.ToString();
+                        }
+                        else
+                        {
+                            id = iIDFromEditWindow.ToString();
+                        }
+
 
                         if (iAction < 2 && blnLoadTest == false)
                         {
                             if (iIDFromEditWindow != 0)
                             {
+                                if (PrintTrans(id.ToString()) == true)
+                                {
+                                    if (prn.Visible == true && prn.Enabled == true)
+                                    {
+                                        if (clsVchTypeFeatures.blnprintimmediately == true)
+                                        {
+                                            prn.PrintReport(clsVchType.PrintSettings, cboInvScheme.SelectedItem.ToString(), GetNoOfItems());
+                                        }
+                                        if (clsVchTypeFeatures.blnshowpreview == true)
+                                        {
+                                            prn.BringToFront();
+                                            prn.Focus();
+                                        }
+                                        else
+                                        {
+                                            prn.Close();
+                                            prn.Dispose();
+                                        }
+                                    }
+                                }
+
                                 this.Close();
                                 Comm.MessageboxToasted("Purchase", "Voucher[" + vchno + "] Saved Successfully");
                                 return;
                             }
                             else
                             {
+                                if (PrintTrans(id.ToString()) == true)
+                                {
+                                    if (prn.Visible == true && prn.Enabled == true)
+                                    {
+                                        if (clsVchTypeFeatures.blnprintimmediately == true)
+                                        {
+                                            prn.PrintReport(clsVchType.PrintSettings, cboInvScheme.SelectedItem.ToString(), GetNoOfItems());
+                                        }
+                                        if (clsVchTypeFeatures.blnshowpreview == true)
+                                        {
+                                            prn.BringToFront();
+                                            prn.Focus();
+                                        }
+                                        else
+                                        {
+                                            prn.Close();
+                                            prn.Dispose();
+                                        }
+                                    }
+                                }
+
+
                                 ClearControls();
 
                                 GridInitialize_dgvColWidth();
@@ -5835,6 +5935,244 @@ namespace DigiposZen
                 MessageBox.Show(ex.Message, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+        }
+
+        private decimal GetNoOfItems()
+        {
+            try
+            {
+                decimal NoOfItems = 0;
+
+                for (int i = 0; i < dgvPurchase.Rows.Count; i++)
+                {
+                    if (dgvPurchase.Rows[i].Cells[GetEnum(GridColIndexes.cItemID)].Value == null)
+                        dgvPurchase.Rows[i].Cells[GetEnum(GridColIndexes.cItemID)].Value = "0";
+
+                    if (Comm.ToDecimal(dgvPurchase.Rows[i].Cells[GetEnum(GridColIndexes.cItemID)].Value.ToString()) != 0)
+                    {
+                        NoOfItems += 1;
+                    }
+                }
+
+                return NoOfItems;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
+        private string GetTaxSplitString()
+        {
+            try
+            {
+                int ArTaxPer;
+                int ArTaxable;
+                int ArVAT;
+                int ArSGST;
+                int ArCGST;
+                int ArIGST;
+
+                ArTaxPer = 0;
+                ArTaxable = 1;
+                ArSGST = 2;
+                ArCGST = 3;
+                ArIGST = 4;
+                ArVAT = 5;
+
+                string[,] TaxDetails = new string[dgvPurchase.RowCount, 6];
+                bool blnFoundSGST;
+                bool blnFoundCGST;
+                bool blnFoundIGST;
+                bool blnFoundVAT;
+                bool blnFoundItems;
+
+                decimal ItemTaxPer;
+                int i;
+                int j;
+                int Counter;
+
+                blnFoundSGST = false;
+                blnFoundCGST = false;
+                blnFoundIGST = false;
+                blnFoundVAT = false;
+                Counter = 0;
+
+                for (i = 0; i <= dgvPurchase.RowCount - 1; i++)
+                {
+                    blnFoundItems = false;
+                    if (dgvPurchase[GetEnum(GridColIndexes.CItemName), i].Tag == null)
+                        dgvPurchase[GetEnum(GridColIndexes.CItemName), i].Tag = "";
+
+                    if (Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.CItemName), i].Tag) != 0)
+                    {
+                        ItemTaxPer = Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.ctaxPer), i].Value); // Comm.ToDecimal(dgvPurchase[cCGST, i).Tag.ToString) + Comm.ToDecimal(dgvPurchase[cSGST, i).Tag.ToString) + Comm.ToDecimal(dgvPurchase[cIGST, i).Tag.ToString)
+                        for (j = 0; j <= Information.UBound(TaxDetails) - 1; j++)
+                        {
+                            if (cboTaxMode.Text.ToUpper() == "VAT")
+                            {
+                                if (Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.ctax), i].Value) > 0)
+                                    blnFoundVAT = true;
+                            }
+                            else
+                            {
+                                if (Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cSGST), i].Tag) > 0)
+                                    blnFoundSGST = true;
+                                if (Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cCGST), i].Tag) > 0)
+                                    blnFoundCGST = true;
+                                if (Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cIGST), i].Tag) > 0)
+                                    blnFoundIGST = true;
+                            }
+
+                            if (TaxDetails[j, ArTaxPer] != "" & Comm.ToDecimal(TaxDetails[j, ArTaxPer]) == ItemTaxPer)
+                            {
+                                if (Comm.ToDecimal(ItemTaxPer) == 0)
+                                    TaxDetails[j, ArTaxable] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArTaxable]) + Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cNonTaxable), i].Value), "");
+                                else
+                                    TaxDetails[j, ArTaxable] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArTaxable]) + Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.ctaxable), i].Value), "");
+                                // TaxDetails(j, ArTaxable) = Comm.ToDecimal(TaxDetails(j, ArTaxable)) + Comm.ToDecimal(dgvPurchase[ctaxable, i).Value)
+                                if (cboTaxMode.Text == "VAT")
+                                    TaxDetails[j, ArVAT] = (Comm.ToDecimal(TaxDetails[j, ArVAT]) + Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.ctax), i].Tag)).ToString();
+                                else
+                                {
+                                    TaxDetails[j, ArSGST] = (Comm.ToDecimal(TaxDetails[j, ArSGST]) + Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cSGST), i].Value)).ToString();
+                                    TaxDetails[j, ArCGST] = (Comm.ToDecimal(TaxDetails[j, ArCGST]) + Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cCGST), i].Value)).ToString();
+                                    TaxDetails[j, ArIGST] = (Comm.ToDecimal(TaxDetails[j, ArIGST]) + Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cIGST), i].Value)).ToString();
+                                }
+
+                                blnFoundItems = true;
+                            }
+                        }
+                        if (blnFoundItems == false)
+                        {
+                            if (Comm.CheckDBNullOrEmpty(dgvPurchase[GetEnum(GridColIndexes.CItemName), i].Value.ToString()) != "")
+                            {
+                                TaxDetails[Counter, ArTaxPer] = Comm.FormatAmt(ItemTaxPer, "");
+                                if (Comm.ToDecimal(ItemTaxPer) == 0)
+                                    TaxDetails[Counter, ArTaxable] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[Counter, ArTaxable]) + Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cNonTaxable), i].Value), "");
+                                else
+                                    TaxDetails[Counter, ArTaxable] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[Counter, ArTaxable]) + Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.ctaxable), i].Value), "");
+
+                                if (cboTaxMode.Text == "VAT")
+                                    TaxDetails[Counter, ArVAT] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[Counter, ArVAT]) + Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.ctax), i].Value), "");
+                                else
+                                {
+                                    TaxDetails[Counter, ArSGST] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[Counter, ArSGST]) + Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cSGST), i].Value), "");
+                                    TaxDetails[Counter, ArCGST] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[Counter, ArCGST]) + Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cCGST), i].Value), "");
+                                    TaxDetails[Counter, ArIGST] = Comm.FormatAmt(Comm.ToDecimal(TaxDetails[Counter, ArIGST]) + Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cIGST), i].Value), "");
+                                }
+
+                                Counter = Counter + 1;
+                            }
+                        }
+                    }
+                }
+                string StrLIne;
+                int LineLen;
+                LineLen = 0;
+                StrLIne = "_________________________________________";
+                string StrTaxSplit;
+                StrTaxSplit = Comm.Aligntext("Tax%", 8, 0) + Comm.Aligntext("Taxable", 12, 1);
+                if (cboTaxMode.Text == "VAT")
+                {
+                    if (blnFoundVAT)
+                        StrTaxSplit = StrTaxSplit + Comm.Aligntext("VAT", 10, 1);
+                    LineLen = StrTaxSplit.Length;
+                    StrTaxSplit = StrTaxSplit + Constants.vbCrLf + Strings.Mid(StrLIne, 1, LineLen) + Constants.vbCrLf;
+                }
+                else
+                {
+                    if (blnFoundCGST)
+                        StrTaxSplit = StrTaxSplit + Comm.Aligntext("CGST", 10, 1);
+                    if (blnFoundSGST)
+                        StrTaxSplit = StrTaxSplit + Comm.Aligntext("SGST", 10, 1);
+                    if (blnFoundIGST)
+                        StrTaxSplit = StrTaxSplit + Comm.Aligntext("IGST", 10, 1);
+                    LineLen = StrTaxSplit.Length;
+                    StrTaxSplit = StrTaxSplit + Constants.vbCrLf + Strings.Mid(StrLIne, 1, LineLen) + Constants.vbCrLf;
+                }
+
+                // StrTaxSplit = StrTaxSplit & vbCrLf
+                if (Counter > 0)
+                {
+                    for (j = 0; j <= Counter - 1; j++)
+                    {
+                        StrTaxSplit = StrTaxSplit + Comm.Aligntext(TaxDetails[j, ArTaxPer], 8, 0) + Comm.Aligntext(Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArTaxable]), ""), 12, 1);
+                        if (cboTaxMode.Text == "VAT")
+                        {
+                            if (blnFoundVAT)
+                                StrTaxSplit = StrTaxSplit + Comm.Aligntext(Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArVAT]), ""), 10, 1);
+                        }
+                        else
+                        {
+                            if (blnFoundCGST)
+                                StrTaxSplit = StrTaxSplit + Comm.Aligntext(Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArCGST]), ""), 10, 1);
+                            if (blnFoundSGST)
+                                StrTaxSplit = StrTaxSplit + Comm.Aligntext(Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArSGST]), ""), 10, 1);
+                            if (blnFoundIGST)
+                                StrTaxSplit = StrTaxSplit + Comm.Aligntext(Comm.FormatAmt(Comm.ToDecimal(TaxDetails[j, ArIGST]), ""), 10, 1);
+                        }
+
+                        StrTaxSplit = StrTaxSplit + Constants.vbCrLf;
+                    }
+                }
+
+                StrTaxSplit = Strings.Mid(StrLIne, 1, LineLen) + Constants.vbCrLf + StrTaxSplit + Strings.Mid(StrLIne, 1, LineLen);
+
+                return StrTaxSplit;
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
+        
+        private bool PrintTrans(string inv)
+        {
+            try
+            {
+                bool blnConfirmPrint = false;
+
+                if (clsVchTypeFeatures.blnshowpreview == true || clsVchTypeFeatures.blnprintimmediately == true)
+                {
+                    blnConfirmPrint = true;
+                }
+                if (blnConfirmPrint == true && clsVchTypeFeatures.blnprintconfirmation == true)
+                {
+                    if (MessageBox.Show("Do you like to print the invoice.", "Invoice Print", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        blnConfirmPrint = false;
+                    }
+                }
+
+                if (blnConfirmPrint == true)
+                {
+                    if (cboInvScheme.SelectedItem.ToString() == "BARCODE")
+                    {
+                        Comm.OpenMenu("BARCODEPRINT", 0, (frmMDI)this.MdiParent, vchtypeID, Comm.ToDecimal(iIDFromEditWindow));
+                        
+                        //THIS IS RETURNED FALSE SO THAT THE CALLING SUB OR FUNCTION WILL NOT TRY TO OPEN THE REPORTVIEWER
+                        return false;
+                    }
+                    else
+                    {
+                        //edited by rohith 20/08/2022
+                        //string inv = id;
+                        string PrintScheme;
+                        PrintScheme = cboInvScheme.SelectedItem.ToString(); // + ".rdlc";
+                        prn = new ReportPrint(inv, PrintScheme, this.MdiParent, GetTaxSplitString());
+                        prn.Show();
+                        prn.Focus();
+                        //---------------------------------------
+                    }
+                }
+
+                return blnConfirmPrint;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         //Description : Agent Discount Asper Voucher Settings Value
@@ -6822,6 +7160,8 @@ namespace DigiposZen
             this.dgvPurchase.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cID", HeaderText = "ID", Visible = false, ReadOnly = true });
             this.dgvPurchase.Columns.Add(new DataGridViewImageColumn() { Name = "cImgDel", HeaderText="", Image = DigiposZen.Properties.Resources.Delete_24_P4, Width=40, ReadOnly = true });
             this.dgvPurchase.Columns.Add(new DataGridViewImageColumn() { Name = "cBatchUnique", HeaderText="", Image = DigiposZen.Properties.Resources.Delete_24_P4, Width=40, Visible = false, ReadOnly = true });
+            this.dgvPurchase.Columns.Add(new DataGridViewImageColumn() { Name = "cSlabEnabled", HeaderText = "", Image = DigiposZen.Properties.Resources.Delete_24_P4, Width = 40, Visible = false, ReadOnly = true });
+            this.dgvPurchase.Columns.Add(new DataGridViewImageColumn() { Name = "cSlabString", HeaderText = "", Image = DigiposZen.Properties.Resources.Delete_24_P4, Width = 40, Visible = false, ReadOnly = true });
 
             //Dipoos 21-03-2022
             //if (iIDFromEditWindow==0)
@@ -7206,6 +7546,10 @@ namespace DigiposZen
             {
                 SaveGridSettings();
 
+                sqlControl rs = new sqlControl();
+
+                rs.Execute("Update tblVchType Set InvScheme1 = '" + cboInvScheme.SelectedItem.ToString() + "' Where VchTypeID='" + vchtypeID + "' ");
+
             }
             catch (Exception ex)
             {
@@ -7325,7 +7669,37 @@ namespace DigiposZen
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (PrintTrans(iIDFromEditWindow.ToString()) == true)
+                {
+                    if (prn.Visible == true && prn.Enabled == true)
+                    {
+                        if (clsVchTypeFeatures.blnprintimmediately == true)
+                        {
+                            prn.PrintReport(clsVchType.PrintSettings, cboInvScheme.SelectedItem.ToString(), GetNoOfItems());
+                        }
+                        if (clsVchTypeFeatures.blnshowpreview == true)
+                        {
+                            prn.BringToFront();
+                            prn.Focus();
+                        }
+                        else
+                        {
+                            prn.Close();
+                            prn.Dispose();
+                        }
+                        Comm.writeuserlog(Common.UserActivity.Printinvoice, "", OldData, clsVchType.TransactionName + " InvNo : " + txtPrefix.Text.ToString() + txtInvAutoNo.Text.ToString() + " Printed", vchtypeID, Comm.ToInt32(clsVchType.ParentID), "InvNo", Convert.ToInt32(txtInvAutoNo.Tag), clsVchType.TransactionName, "", "");
 
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void txtCoolie_TextChanged(object sender, EventArgs e)
@@ -7714,6 +8088,40 @@ namespace DigiposZen
                                 SetValue(GetEnum(GridColIndexes.cFree), i, "0");
 
                             DblRate = Comm.ToDouble(dgvPurchase.Rows[i].Cells[GetEnum(GridColIndexes.cPrate)].Value);
+
+                            sqlControl rs = new sqlControl();
+                            rs.Open(@"Select h.blnSlabSystem, IGSTTaxPer1, IGSTTaxPer2, IGSTTaxPer3, IGSTTaxPer4 , 
+	                                    ValueStartSB1, ValueStartSB2, ValueStartSB3, ValueStartSB4 ,
+	                                    ValueEndSB1, ValueEndSB2, ValueEndSB3, ValueEndSB4 
+                                      From tblHSNCode as h , tblItemMaster as i Where h.HSNID = i.HSNID and h.blnSlabSystem > 0 and i.ItemID = " + Comm.ToDecimal(dgvPurchase.Rows[i].Cells[GetEnum(GridColIndexes.cItemID)].Value).ToString());
+
+                            if (!rs.eof())
+                            {
+                                if (Comm.ToDecimal(rs.fields("blnSlabSystem")) > 0)
+                                {
+                                    if (Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cPrate), i].Value) >= Comm.ToDecimal(rs.fields("ValueStartSB4")) &&
+                                        Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cPrate), i].Value) <= Comm.ToDecimal(rs.fields("ValueEndSB4")))
+                                    {
+                                        dgvPurchase.Rows[i].Cells[GetEnum(GridColIndexes.ctaxPer)].Value = rs.fields("IGSTTaxPer4");
+                                    }
+                                    else if (Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cPrate), i].Value) >= Comm.ToDecimal(rs.fields("ValueStartSB3")) &&
+                                        Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cPrate), i].Value) <= Comm.ToDecimal(rs.fields("ValueEndSB3")))
+                                    {
+                                        dgvPurchase.Rows[i].Cells[GetEnum(GridColIndexes.ctaxPer)].Value = rs.fields("IGSTTaxPer3");
+                                    }
+                                    else if (Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cPrate), i].Value) >= Comm.ToDecimal(rs.fields("ValueStartSB2")) &&
+                                        Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cPrate), i].Value) <= Comm.ToDecimal(rs.fields("ValueEndSB2")))
+                                    {
+                                        dgvPurchase.Rows[i].Cells[GetEnum(GridColIndexes.ctaxPer)].Value = rs.fields("IGSTTaxPer2");
+                                    }
+                                    else if (Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cPrate), i].Value) >= Comm.ToDecimal(rs.fields("ValueStartSB1")) &&
+                                        Comm.ToDecimal(dgvPurchase[GetEnum(GridColIndexes.cPrate), i].Value) <= Comm.ToDecimal(rs.fields("ValueEndSB1")))
+                                    {
+                                        dgvPurchase.Rows[i].Cells[GetEnum(GridColIndexes.ctaxPer)].Value = rs.fields("IGSTTaxPer1");
+                                    }
+                                }
+                            }
+
                             //Dipu on 13-May-2022 ---------- >
                             dblQty = Comm.ToDouble(dgvPurchase.Rows[i].Cells[GetEnum(GridColIndexes.cQty)].Value);
                             //dblQty = Comm.ToDouble(dgvPurchase.Rows[i].Cells[GetEnum(GridColIndexes.cQty)].Value) + Comm.ToDouble(dgvPurchase.Rows[i].Cells[GetEnum(GridColIndexes.cFree)].Value);
@@ -8081,7 +8489,7 @@ namespace DigiposZen
                             SetValue(GetEnum(GridColIndexes.ctaxable), j, Comm.FormatValue(dbltaxableAmount));
                             SetValue(GetEnum(GridColIndexes.cNonTaxable), j, Comm.FormatValue(DblNontaxableValue));
                             //Check Dipu
-                            //SetValue(GetEnum(gridColIndexes.ctaxable), j, Comm.FormatValue(dbltaxableAmount));
+                            //SetValue(GetEnum(GridColIndexes.ctaxable), j, Comm.FormatValue(dbltaxableAmount));
 
                             SetValue(GetEnum(GridColIndexes.cCGST), j, "0");
                             SetValue(GetEnum(GridColIndexes.cSGST), j, "0");

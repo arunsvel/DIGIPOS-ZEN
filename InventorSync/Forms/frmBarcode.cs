@@ -57,11 +57,11 @@ namespace DigiposZen
         sqlControl rs = new sqlControl();
         string mReportName = "";
         int mVchtypeID;
-        long mInvID;
+        decimal mInvID;
         string MyPrinterName = "";
         string strFileData = "";
 
-        public frmBarcode(int VchtypeID, long InvID, string InvNo, string SchemeName, object MDIParent)//(int iVchTpeId = 0, int iTransID = 0, bool bFromEdit = false, object MDIParent = null)
+        public frmBarcode(int VchtypeID, decimal InvID, string InvNo, string SchemeName, object MDIParent)//(int iVchTpeId = 0, int iTransID = 0, bool bFromEdit = false, object MDIParent = null)
         {
             InitializeComponent();
             //Application.AddMessageFilter(this);
@@ -81,7 +81,7 @@ namespace DigiposZen
 
                 //Comm.LoadBGImage(this, picBackground);
 
-                lblHeading.Font = new Font("Tahoma", 21, FontStyle.Regular, GraphicsUnit.Pixel);
+                //lblHeading.Font = new Font("Tahoma", 21, FontStyle.Regular, GraphicsUnit.Pixel);
 
                 btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
                 btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
@@ -189,7 +189,7 @@ namespace DigiposZen
                     txtInvoiceNumber.Text = InvNo;
                     txtInvoiceNumber.Tag = InvID;
                     // txtInvoiceNumber_TButtonClick(txtInvoiceNumber, New System.EventArgs)
-                    SearchInvoice(false);
+                    //SearchInvoice(false);
                 }
 
                 // If SchemeName <> "" Then
@@ -344,8 +344,9 @@ namespace DigiposZen
 
                 FNLISTING();
 
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
                 MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -521,6 +522,9 @@ namespace DigiposZen
                     //Application.DoEvents()
                     rdbSearchSearchInvoice.Tag = "loaded";
                 }
+
+                if (mInvID > 0)
+                    SearchInvoice(false);
             }
             catch (Exception ex)
             {
@@ -2087,6 +2091,16 @@ namespace DigiposZen
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void dgvBarcodeDetails_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                dgvBarcodeDetails.EndEdit();
+            }
+            catch
+            { }
         }
 
         private void btnMenu_Click(object sender, EventArgs e)

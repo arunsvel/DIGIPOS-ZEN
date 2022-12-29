@@ -6900,6 +6900,8 @@ namespace DigiposZen
             this.dgvSales.Columns.Add(new DataGridViewTextBoxColumn() { Name = "cID", HeaderText = "ID", Visible = false, ReadOnly = true });
             this.dgvSales.Columns.Add(new DataGridViewImageColumn() { Name = "cImgDel", HeaderText = "", Image = DigiposZen.Properties.Resources.Delete_24_P4, Width = 40, ReadOnly = true });
             this.dgvSales.Columns.Add(new DataGridViewImageColumn() { Name = "cBatchUnique", HeaderText = "", Image = DigiposZen.Properties.Resources.Delete_24_P4, Width = 40, Visible = false, ReadOnly = true });
+            this.dgvSales.Columns.Add(new DataGridViewImageColumn() { Name = "cSlabEnabled", HeaderText = "", Image = DigiposZen.Properties.Resources.Delete_24_P4, Width = 40, Visible = false, ReadOnly = true });
+            this.dgvSales.Columns.Add(new DataGridViewImageColumn() { Name = "cSlabString", HeaderText = "", Image = DigiposZen.Properties.Resources.Delete_24_P4, Width = 40, Visible = false, ReadOnly = true });
 
             //Dipoos 21-03-2022
             //if (iIDFromEditWindow==0)
@@ -7462,6 +7464,7 @@ namespace DigiposZen
                 }
                 else if (dgvSales.CurrentCell.ColumnIndex == GetEnum(gridColIndexes.cSrate))
                 {
+
                     SendKeys.Send("{up}");
                     SendKeys.Send("{right}");
                 }
@@ -9275,7 +9278,6 @@ namespace DigiposZen
             if (txtDiscPerc.Tag.ToString() == "")
                 txtDiscPerc.Tag = "0";
 
-
             if (txtCoolie.Text == "" || txtCoolie.Text == "0")
             {
                 blnCalculateCoolie = true;
@@ -9296,6 +9298,40 @@ namespace DigiposZen
                                 SetValue(GetEnum(gridColIndexes.cFree), i, "0");
 
                             DblRate = Comm.ToDouble(dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.cSrate)].Value);
+
+                            sqlControl rs = new sqlControl();
+                            rs.Open(@"Select h.blnSlabSystem, IGSTTaxPer1, IGSTTaxPer2, IGSTTaxPer3, IGSTTaxPer4 , 
+	                                    ValueStartSB1, ValueStartSB2, ValueStartSB3, ValueStartSB4 ,
+	                                    ValueEndSB1, ValueEndSB2, ValueEndSB3, ValueEndSB4 
+                                      From tblHSNCode as h , tblItemMaster as i Where h.HSNID = i.HSNID and h.blnSlabSystem > 0 and i.ItemID = " + Comm.ToDecimal(dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.cItemID)].Value).ToString());
+
+                            if (!rs.eof())
+                            {
+                                if (Comm.ToDecimal(rs.fields("blnSlabSystem")) > 0)
+                                {
+                                    if (Comm.ToDecimal(dgvSales[GetEnum(gridColIndexes.cSrate), i].Value) >= Comm.ToDecimal(rs.fields("ValueStartSB4")) && 
+                                        Comm.ToDecimal(dgvSales[GetEnum(gridColIndexes.cSrate), i].Value) <= Comm.ToDecimal(rs.fields("ValueEndSB4")))
+                                    {
+                                        dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.ctaxPer)].Value = rs.fields("IGSTTaxPer4");
+                                    }
+                                    else if (Comm.ToDecimal(dgvSales[GetEnum(gridColIndexes.cSrate), i].Value) >= Comm.ToDecimal(rs.fields("ValueStartSB3")) && 
+                                        Comm.ToDecimal(dgvSales[GetEnum(gridColIndexes.cSrate), i].Value) <= Comm.ToDecimal(rs.fields("ValueEndSB3")))
+                                    {
+                                        dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.ctaxPer)].Value = rs.fields("IGSTTaxPer3");
+                                    }
+                                    else if (Comm.ToDecimal(dgvSales[GetEnum(gridColIndexes.cSrate), i].Value) >= Comm.ToDecimal(rs.fields("ValueStartSB2")) && 
+                                        Comm.ToDecimal(dgvSales[GetEnum(gridColIndexes.cSrate), i].Value) <= Comm.ToDecimal(rs.fields("ValueEndSB2")))
+                                    {
+                                        dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.ctaxPer)].Value = rs.fields("IGSTTaxPer2");
+                                    }
+                                    else if (Comm.ToDecimal(dgvSales[GetEnum(gridColIndexes.cSrate), i].Value) >= Comm.ToDecimal(rs.fields("ValueStartSB1")) && 
+                                        Comm.ToDecimal(dgvSales[GetEnum(gridColIndexes.cSrate), i].Value) <= Comm.ToDecimal(rs.fields("ValueEndSB1")))
+                                    {
+                                        dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.ctaxPer)].Value = rs.fields("IGSTTaxPer1");
+                                    }
+                                }
+                            }
+
                             //Dipu on 13-May-2022 ---------- >
                             dblQty = Comm.ToDouble(dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.cQty)].Value);
                             //dblQty = Comm.ToDouble(dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.cQty)].Value) + Comm.ToDouble(dgvSales.Rows[i].Cells[GetEnum(gridColIndexes.cFree)].Value);
