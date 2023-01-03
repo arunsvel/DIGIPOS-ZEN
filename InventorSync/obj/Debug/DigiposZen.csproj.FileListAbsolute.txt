@@ -166,6 +166,7 @@ D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\pt\Microsoft.ReportVi
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.csproj.AssemblyReference.cache
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Controls.MsgToast.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Controls.ToastForm.resources
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.Forms.FirstRun.resources
@@ -246,4 +247,3 @@ D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\Digipos Zen.applicati
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.csproj.CopyComplete
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\Digipos Zen.exe
 D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\Digipos Zen.pdb
-D:\Projects\DIGIPOS-ZEN\DIGIPOS-ZEN\InventorSync\obj\Debug\DigiposZen.csproj.AssemblyReference.cache

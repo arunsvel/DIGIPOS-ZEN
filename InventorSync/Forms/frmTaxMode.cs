@@ -458,6 +458,18 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "TAXMODE") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "TAXMODE") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 SaveData();
                 Cursor.Current = Cursors.Default;

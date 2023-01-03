@@ -1,0 +1,21 @@
+31-Dec-2022 11:50:48
+EventTarget:btnNew_Click
+Error creating window handle.
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+31-Dec-2022 11:51:57
+EventTarget:GetSelectedRowID
+Object reference not set to an instance of an object.
+
+Digipos Zen
+User Name: Administrator
+------------------------------------------------------------------------------
+31-Dec-2022 11:56:38
+EventTarget:LoadBarCodeMode
+There is no row at position 31.
+
+System.Data
+User Name: Administrator
+------------------------------------------------------------------------------

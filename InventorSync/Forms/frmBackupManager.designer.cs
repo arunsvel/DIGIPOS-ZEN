@@ -31,9 +31,6 @@ namespace DigiposZen
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBackupManager));
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.lblSave = new System.Windows.Forms.Label();
             this.lblHeading = new System.Windows.Forms.Label();
             this.lblDelete = new System.Windows.Forms.Label();
@@ -46,7 +43,6 @@ namespace DigiposZen
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tbpBackup = new System.Windows.Forms.TabPage();
-            this.togglebtnActive = new Syncfusion.Windows.Forms.Tools.ToggleButton();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,7 +62,6 @@ namespace DigiposZen
             this.tlpMain.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.tbpBackup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.togglebtnActive)).BeginInit();
             this.tbpRestore.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -93,7 +88,7 @@ namespace DigiposZen
             this.lblHeading.Location = new System.Drawing.Point(253, 0);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(27, 0, 27, 0);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(660, 48);
+            this.lblHeading.Size = new System.Drawing.Size(560, 48);
             this.lblHeading.TabIndex = 2;
             this.lblHeading.Text = "Backup Manager";
             this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -137,7 +132,7 @@ namespace DigiposZen
             this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
             this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 79F));
-            this.tlpHeader.Size = new System.Drawing.Size(1100, 92);
+            this.tlpHeader.Size = new System.Drawing.Size(1000, 92);
             this.tlpHeader.TabIndex = 0;
             this.tlpHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tlpHeader_MouseDown);
             this.tlpHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tlpHeader_MouseMove);
@@ -180,7 +175,7 @@ namespace DigiposZen
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
-            this.btnClose.Location = new System.Drawing.Point(1024, 4);
+            this.btnClose.Location = new System.Drawing.Point(924, 4);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.tlpHeader.SetRowSpan(this.btnClose, 2);
@@ -213,7 +208,7 @@ namespace DigiposZen
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
-            this.btnMinimize.Location = new System.Drawing.Point(944, 4);
+            this.btnMinimize.Location = new System.Drawing.Point(844, 4);
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(4);
             this.btnMinimize.Name = "btnMinimize";
             this.tlpHeader.SetRowSpan(this.btnMinimize, 2);
@@ -238,7 +233,7 @@ namespace DigiposZen
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
-            this.tlpMain.Size = new System.Drawing.Size(1100, 519);
+            this.tlpMain.Size = new System.Drawing.Size(1000, 519);
             this.tlpMain.TabIndex = 4;
             // 
             // tabMain
@@ -249,12 +244,11 @@ namespace DigiposZen
             this.tabMain.Location = new System.Drawing.Point(3, 95);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(1094, 362);
+            this.tabMain.Size = new System.Drawing.Size(994, 362);
             this.tabMain.TabIndex = 5;
             // 
             // tbpBackup
             // 
-            this.tbpBackup.Controls.Add(this.togglebtnActive);
             this.tbpBackup.Controls.Add(this.button1);
             this.tbpBackup.Controls.Add(this.label2);
             this.tbpBackup.Controls.Add(this.label1);
@@ -263,56 +257,25 @@ namespace DigiposZen
             this.tbpBackup.Location = new System.Drawing.Point(4, 27);
             this.tbpBackup.Name = "tbpBackup";
             this.tbpBackup.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpBackup.Size = new System.Drawing.Size(1086, 331);
+            this.tbpBackup.Size = new System.Drawing.Size(986, 331);
             this.tbpBackup.TabIndex = 0;
             this.tbpBackup.Text = "Backup";
             this.tbpBackup.UseVisualStyleBackColor = true;
             // 
-            // togglebtnActive
-            // 
-            activeStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.ForeColor = System.Drawing.Color.Navy;
-            activeStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.Text = "Backup as a single file";
-            this.togglebtnActive.ActiveState = activeStateCollection1;
-            this.togglebtnActive.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.togglebtnActive.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            inactiveStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            inactiveStateCollection1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            inactiveStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            inactiveStateCollection1.Text = "Backup as individual file";
-            this.togglebtnActive.InactiveState = inactiveStateCollection1;
-            this.togglebtnActive.Location = new System.Drawing.Point(658, 130);
-            this.togglebtnActive.MinimumSize = new System.Drawing.Size(52, 20);
-            this.togglebtnActive.Name = "togglebtnActive";
-            this.togglebtnActive.Size = new System.Drawing.Size(298, 29);
-            sliderCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            sliderCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection1.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            sliderCollection1.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.togglebtnActive.Slider = sliderCollection1;
-            this.togglebtnActive.TabIndex = 10;
-            this.togglebtnActive.Text = "Active Status";
-            this.togglebtnActive.ThemeName = "Office2016Black";
-            this.togglebtnActive.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
-            this.togglebtnActive.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(962, 84);
+            this.button1.Location = new System.Drawing.Point(853, 138);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 31);
             this.button1.TabIndex = 5;
             this.button1.Text = "Browse";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(395, 66);
+            this.label2.Location = new System.Drawing.Point(411, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 18);
             this.label2.TabIndex = 4;
@@ -321,7 +284,7 @@ namespace DigiposZen
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 18);
+            this.label1.Location = new System.Drawing.Point(31, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(194, 18);
             this.label1.TabIndex = 3;
@@ -330,16 +293,16 @@ namespace DigiposZen
             // tvwUserCompanyBackup
             // 
             this.tvwUserCompanyBackup.CheckBoxes = true;
-            this.tvwUserCompanyBackup.Location = new System.Drawing.Point(8, 39);
+            this.tvwUserCompanyBackup.Location = new System.Drawing.Point(31, 39);
             this.tvwUserCompanyBackup.Name = "tvwUserCompanyBackup";
             this.tvwUserCompanyBackup.Size = new System.Drawing.Size(358, 283);
             this.tvwUserCompanyBackup.TabIndex = 2;
             // 
             // txtBackupPath
             // 
-            this.txtBackupPath.Location = new System.Drawing.Point(398, 87);
+            this.txtBackupPath.Location = new System.Drawing.Point(414, 87);
             this.txtBackupPath.Name = "txtBackupPath";
-            this.txtBackupPath.Size = new System.Drawing.Size(558, 26);
+            this.txtBackupPath.Size = new System.Drawing.Size(542, 26);
             this.txtBackupPath.TabIndex = 0;
             // 
             // tbpRestore
@@ -352,7 +315,7 @@ namespace DigiposZen
             this.tbpRestore.Location = new System.Drawing.Point(4, 27);
             this.tbpRestore.Name = "tbpRestore";
             this.tbpRestore.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpRestore.Size = new System.Drawing.Size(1086, 331);
+            this.tbpRestore.Size = new System.Drawing.Size(986, 331);
             this.tbpRestore.TabIndex = 1;
             this.tbpRestore.Text = "Restore";
             this.tbpRestore.UseVisualStyleBackColor = true;
@@ -371,12 +334,12 @@ namespace DigiposZen
             this.tvwUserCompanyRestore.CheckBoxes = true;
             this.tvwUserCompanyRestore.Location = new System.Drawing.Point(64, 124);
             this.tvwUserCompanyRestore.Name = "tvwUserCompanyRestore";
-            this.tvwUserCompanyRestore.Size = new System.Drawing.Size(842, 201);
+            this.tvwUserCompanyRestore.Size = new System.Drawing.Size(844, 201);
             this.tvwUserCompanyRestore.TabIndex = 9;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(919, 45);
+            this.button2.Location = new System.Drawing.Point(805, 80);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(103, 31);
             this.button2.TabIndex = 8;
@@ -396,7 +359,7 @@ namespace DigiposZen
             // 
             this.textBox1.Location = new System.Drawing.Point(64, 48);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(842, 26);
+            this.textBox1.Size = new System.Drawing.Size(844, 26);
             this.textBox1.TabIndex = 6;
             // 
             // panel1
@@ -406,7 +369,7 @@ namespace DigiposZen
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 463);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1094, 53);
+            this.panel1.Size = new System.Drawing.Size(994, 53);
             this.panel1.TabIndex = 6;
             // 
             // progressBar1
@@ -414,7 +377,7 @@ namespace DigiposZen
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.progressBar1.Location = new System.Drawing.Point(0, 0);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1094, 24);
+            this.progressBar1.Size = new System.Drawing.Size(994, 24);
             this.progressBar1.TabIndex = 6;
             // 
             // lblFooter
@@ -426,7 +389,7 @@ namespace DigiposZen
             this.lblFooter.Location = new System.Drawing.Point(0, 25);
             this.lblFooter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFooter.Name = "lblFooter";
-            this.lblFooter.Size = new System.Drawing.Size(1094, 28);
+            this.lblFooter.Size = new System.Drawing.Size(994, 28);
             this.lblFooter.TabIndex = 5;
             this.lblFooter.Text = "Keyboard Shortcuts : - F3 Find, F5 Save, F7 Delete, Esc Close ";
             this.lblFooter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -436,7 +399,7 @@ namespace DigiposZen
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1102, 521);
+            this.ClientSize = new System.Drawing.Size(1002, 521);
             this.Controls.Add(this.tlpMain);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -458,7 +421,6 @@ namespace DigiposZen
             this.tabMain.ResumeLayout(false);
             this.tbpBackup.ResumeLayout(false);
             this.tbpBackup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.togglebtnActive)).EndInit();
             this.tbpRestore.ResumeLayout(false);
             this.tbpRestore.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -489,7 +451,6 @@ namespace DigiposZen
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label lblFooter;
-        private Syncfusion.Windows.Forms.Tools.ToggleButton togglebtnActive;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;

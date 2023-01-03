@@ -7949,30 +7949,30 @@ namespace DigiposZen.InventorBL.Helper
 
                 Progress(ref PrgBar, 40);
 
-                if (Directory.Exists(@"C:\SQLBK\" + BackupCompany) == true)
-                    Directory.Delete(@"C:\SQLBK\" + BackupCompany);
+                if (Directory.Exists(@"C:\DIGIBackup\" + BackupCompany) == true)
+                    Directory.Delete(@"C:\DIGIBackup\" + BackupCompany);
                 // MsgBox("2")
-                if (Directory.Exists(@"C:\SQLBK\" + BackupCompany) == false)
-                    Directory.CreateDirectory(@"C:\SQLBK\" + BackupCompany);
+                if (Directory.Exists(@"C:\DIGIBackup\" + BackupCompany) == false)
+                    Directory.CreateDirectory(@"C:\DIGIBackup\" + BackupCompany);
                 // MsgBox("3")
 
                 Progress(ref PrgBar, 50);
 
-                if (Directory.Exists(@"C:\SQLBK\" + BackupCompany) == false)
+                if (Directory.Exists(@"C:\DIGIBackup\" + BackupCompany) == false)
                 {
                     Interaction.MsgBox("Path not found. Could not create temporary file or directory for backup creation.");
                     return false;
                 }
 
                 bool blnFailed = false;
-                if (File.Exists(@"C:\SQLBK\" + BackupCompany + @"\" + BackupCompany + ".bak") == true)
-                    File.Delete(@"C:\SQLBK\" + BackupCompany + @"\" + BackupCompany + ".bak");
+                if (File.Exists(@"C:\DIGIBackup\" + BackupCompany + @"\" + BackupCompany + ".bak") == true)
+                    File.Delete(@"C:\DIGIBackup\" + BackupCompany + @"\" + BackupCompany + ".bak");
 
                 Progress(ref PrgBar, 60);
 
-                if (query("backup database " + BackupCompany + " to disk='" + @"C:\SQLBK\" + BackupCompany + ".bak'") == true)
+                if (query("backup database " + BackupCompany + " to disk='" + @"C:\DIGIBackup\" + BackupCompany + @"\" + BackupCompany + ".bak'") == true)
                 {
-                    if (CreateZipFile(@"C:\SQLBK\", BackupCompany + ".bak'", BackupPath, BackupCompany + DateTime.Now.ToString("ddMMMyyyy_hh_mm_ss_tt") + ".zip'") == false)
+                    if (CreateZipFile(@"C:\DIGIBackup\" + BackupCompany + @"\", BackupCompany + ".bak'", BackupPath, BackupCompany + DateTime.Now.ToString("ddMMMyyyy_hh_mm_ss_tt") + ".zip'") == false)
                     {
                         Interaction.MsgBox("Failed to backup database. Could not create file to " + BackupPath);
                         blnFailed = true;
@@ -7980,7 +7980,7 @@ namespace DigiposZen.InventorBL.Helper
                     else
                     {
                         Progress(ref PrgBar, 100);
-                        Interaction.MsgBox("Backup process completed successfully. File copied to " + BackupPath, MsgBoxStyle.Information);
+                        Interaction.MsgBox("Backup process for " + BackupCompany + " completed successfully. File copied to " + BackupPath, MsgBoxStyle.Information);
                         blnFailed = false;
                     }
                 }
@@ -10163,7 +10163,7 @@ namespace DigiposZen.InventorBL.Helper
             return true;
         }
         
-        public void OpenMenu(string MenuName, Int32 VchtypeID, frmMDI MDIParent, int BcodePrintVchtypeID = 0, decimal BcodePrintInvId = 0)
+        public void OpenMenu(string MenuName, Int32 VchtypeID, frmMDI MDIParent, int BcodePrintVchtypeID = 0, decimal BcodePrintInvId = 0, string BcodePrintInvNo = "")
         {
             MenuName = MenuName.Replace("&", "").Replace(" ", "").ToString().ToUpper();
 
@@ -10341,7 +10341,7 @@ namespace DigiposZen.InventorBL.Helper
                     frmEdit.BringToFront();
                     break;
                 case "BARCODEPRINT":
-                    frmBarcode frmBCode = new frmBarcode(BcodePrintVchtypeID, BcodePrintInvId, "", "", MDIParent);
+                    frmBarcode frmBCode = new frmBarcode(BcodePrintVchtypeID, BcodePrintInvId, BcodePrintInvNo, "", MDIParent);
                     frmBCode.Text = "Barcode Manager";
                     frmBCode.MdiParent = MDIParent;
                     frmBCode.Show();

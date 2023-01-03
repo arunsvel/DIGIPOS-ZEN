@@ -101,7 +101,7 @@ namespace DigiposZen.Forms
             DateTime FD = Convert.ToDateTime(dtpFD.Text);
             DateTime TD = Convert.ToDateTime(dtpTD.Text);
             string a = "select [Action],WindowName,format(DateOf, 'dd-MMM-yyyy') as Date,format(timeof, 'hh-mm-ss') as Time,UserName,SystemName,NewData,OldData from tbluserLog where Action in (" + Action.Remove(Action.Length - 1) + ") and userName in (" + User.Remove(User.Length - 1) + ") and Systemname in (" + SystemName.Remove(SystemName.Length - 1) + ") and WindowName in (" + WindowsName.Remove(WindowsName.Length - 1) + ") and DateOf BETWEEN '" + FD.ToString("dd-MMM-yyyy") + "' and '" + TD.ToString("dd-MMM-yyyy") + "' ";
-            SqlDataAdapter da = new SqlDataAdapter("select [Action],WindowName,format(DateOf, 'dd-MMM-yyyy') as Date,format(timeof, 'hh-mm-ss') as Time,UserName,SystemName,NewData,OldData from tbluserLog where Action in (" + Action.Remove(Action.Length - 1) + ") and userName in (" + User.Remove(User.Length - 1) + ") and Systemname in (" + SystemName.Remove(SystemName.Length - 1) + ") and WindowName in (" + WindowsName.Remove(WindowsName.Length - 1) + ") and DateOf BETWEEN '" + FD.ToString("dd-MMM-yyyy") + "' and '" + TD.ToString("dd-MMM-yyyy") + "' ", constr);
+            SqlDataAdapter da = new SqlDataAdapter("select [Action],WindowName,format(DateOf, 'dd-MMM-yyyy') as Date,format(timeof, 'hh-mm-ss') as Time,UserName,SystemName,NewData,OldData from tbluserLog where Action in (" + Action.Remove(Action.Length - 1) + ") and userName in (" + User.Remove(User.Length - 1) + ") and Systemname in (" + SystemName.Remove(SystemName.Length - 1) + ") and WindowName in (" + WindowsName.Remove(WindowsName.Length - 1) + ") and DateOf BETWEEN '" + FD.ToString("dd-MMM-yyyy") + "' and '" + TD.ToString("dd-MMM-yyyy") + "' order by DateOf", constr);
             DataSet ds = new DataSet();
             da.Fill(ds, "vwpurchase");
             DgvLoadData.DataSource = ds.Tables["vwpurchase"].DefaultView;
@@ -165,6 +165,7 @@ namespace DigiposZen.Forms
                 string olddata = "OLDDATA..........\r\n"+DgvLoadData.CurrentRow.Cells[7].Value.ToString().Replace(",", "\r\n");
                 txtDataLoadOld.Text = olddata;
                 txtDataLoadOld.Dock = DockStyle.Fill;
+
 
             }
             else if(DgvLoadData.CurrentRow.Cells[7].Value.ToString() != "" && DgvLoadData.CurrentRow.Cells[6].Value.ToString() != "")

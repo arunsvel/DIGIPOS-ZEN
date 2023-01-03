@@ -501,6 +501,17 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "ITEMMASTER") == false)
+                        return;
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "ITEMMASTER") == false)
+                        return;
+                }
+
                 double doubleValue;
                 if (string.IsNullOrEmpty(txtDiscountPerc.Text))
                     txtDiscountPerc.Text = "0";
@@ -529,8 +540,11 @@ namespace DigiposZen
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
+
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "CATEGORY") == false)
+                    return;
                 Cursor.Current = Cursors.WaitCursor;
                 strSelectNodeName = Convert.ToString(trvwParentcategory.SelectedNode.Text);
                 int iCategoryID = GetCategoryID();
@@ -540,7 +554,7 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                         DeleteData();
-                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Deleted " + CategoryInfo.Category, 514, 514, CategoryInfo.Category, Comm.ToInt32(CategoryInfo.CategoryID), "Category");
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Deleted " + CategoryInfo.Category, 514, 514, "Category", Comm.ToInt32(CategoryInfo.CategoryID), "Category");
 
                     }
                 }
@@ -555,7 +569,8 @@ namespace DigiposZen
             finally
             {
                 Cursor.Current = Cursors.Default;
-            }               
+            }    
+            
         }
         private void btnFind_Click(object sender, EventArgs e)
         {
@@ -580,6 +595,7 @@ namespace DigiposZen
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
+
             if (txtCategoryName.Text != "")
             {
                 if (txtCategoryName.Text != strCheck)
@@ -858,12 +874,12 @@ namespace DigiposZen
                                 Comm.MessageboxToasted("Categories", "Category details saved successfully");
                                 if (iIDFromEditWindow > 0)
                                 {
-                                    Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "update "+oldvalue+" Catogery to " + CategoryInfo.Category, 514, 514, CategoryInfo.Category, Comm.ToInt32(CategoryInfo.CategoryID), "Category");
+                                    Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "update "+oldvalue+" Catogery to " + CategoryInfo.Category, 514, 514, "Category", Comm.ToInt32(CategoryInfo.CategoryID), "Category");
 
                                 }
                                 else
                                 {
-                                    Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created Category " + CategoryInfo.Category, 514, 514, CategoryInfo.Category, Comm.ToInt32(CategoryInfo.CategoryID), "Category");
+                                    Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created Category " + CategoryInfo.Category, 514, 514, "Category", Comm.ToInt32(CategoryInfo.CategoryID), "Category");
                                 }
                                 Cursor.Current = Cursors.Default;
                             }

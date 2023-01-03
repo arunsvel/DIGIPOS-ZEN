@@ -402,8 +402,6 @@ namespace DigiposZen
 
                 Application.DoEvents();
 
-                //C:\DIGIDATA
-
                 try
                 {
                     if (BlnFirstRun == true)
@@ -441,7 +439,7 @@ namespace DigiposZen
                 }
                 catch
                 { }
-
+                
                 try
                 {
                     Comm.RESTOREDB("DigiposModel", @"c:\digisql\sqlTemp\DigiposModel.bak", "");
@@ -487,12 +485,6 @@ namespace DigiposZen
                 {
                     if (File.Exists(Application.StartupPath + @"\Resources\InitLog.ini") == false)
                     {
-                        //var frm = new FirstRun(cboPrimaryServer.Text.ToString());
-                        //frm.ShowDialog();
-                        //this.Close();
-                        //Environment.Exit(0);
-
-
                         lblIniitialize.Visible = true;
                         prgInitialize.Visible = true;
 

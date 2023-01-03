@@ -142,6 +142,7 @@ namespace DigiposZen
                 
                 cmbPrintScheme.DisplayMember = "ReportName";
                 cmbPrintScheme.ValueMember = "ReportID";
+
                 LoadPrintSchemes();
 
                 int i;
@@ -201,6 +202,8 @@ namespace DigiposZen
                         SchemeName = rs.fields("ReportName");
                 }
                 rs.Open("Select * from tblReportXml Where ReportName='" + SchemeName + "' and VchtypeID=" + VchtypeID + " and isnull(isbarcode,0)=1");
+                if (rs.eof()) //If no schemes are saved for selected vchtype then scheme from purchase will be opened if present
+                    rs.Open("Select * from tblReportXml Where ReportName='" + SchemeName + "' and VchtypeID=2 and isnull(isbarcode,0)=1");
                 if (!rs.eof())
                 {
                     txtBarcodeString.Text = rs.fields("DesignData");
@@ -397,7 +400,7 @@ namespace DigiposZen
                 }
 
                 txtInvoiceNumber.DisplayMember = "invno";
-                txtInvoiceNumber.ValueMember = "invno";
+                txtInvoiceNumber.ValueMember = "INVID";
                 txtInvoiceNumber.DataSource = Comm.fnGetData(MyQry).Tables[0];
                 
                 //loadcontrol(txtInvoiceNumber, MyQry);
@@ -524,7 +527,10 @@ namespace DigiposZen
                 }
 
                 if (mInvID > 0)
+                {
+                    txtInvoiceNumber.SelectedValue = mInvID;
                     SearchInvoice(false);
+                }
             }
             catch (Exception ex)
             {
@@ -1811,8 +1817,13 @@ namespace DigiposZen
 
         private void cmbVoucherType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (this.ActiveControl != null)
+                if (this.ActiveControl.Name != cmbVoucherType.Name) return;
+
             ClearControl();
 
+            mVchtypeID = Comm.ToInt32(cmbVoucherType.SelectedValue.ToString());
+            LoadPrintSchemes();
         }
 
         private async void btnTestPrint_Click(object sender, EventArgs e)
@@ -2101,6 +2112,28 @@ namespace DigiposZen
             }
             catch
             { }
+        }
+
+        private void rdbSearchSearchInvoice_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.ActiveControl != null)
+                if (this.ActiveControl.Name != rdbSearchSearchInvoice.Name) return;
+
+            ClearControl();
+
+            mVchtypeID = Comm.ToInt32(cmbVoucherType.SelectedValue.ToString());
+            LoadPrintSchemes();
+        }
+
+        private void rdbSearchBarcode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.ActiveControl != null)
+                if (this.ActiveControl.Name != rdbSearchBarcode.Name) return;
+
+            ClearControl();
+
+            mVchtypeID = 0;
+            LoadPrintSchemes();
         }
 
         private void btnMenu_Click(object sender, EventArgs e)

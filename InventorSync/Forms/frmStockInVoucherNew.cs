@@ -6149,7 +6149,7 @@ namespace DigiposZen
                 {
                     if (cboInvScheme.SelectedItem.ToString() == "BARCODE")
                     {
-                        Comm.OpenMenu("BARCODEPRINT", 0, (frmMDI)this.MdiParent, vchtypeID, Comm.ToDecimal(iIDFromEditWindow));
+                        Comm.OpenMenu("BARCODEPRINT", 0, (frmMDI)this.MdiParent, vchtypeID, Comm.ToDecimal(iIDFromEditWindow), txtPrefix.Text + txtInvAutoNo.Text);
                         
                         //THIS IS RETURNED FALSE SO THAT THE CALLING SUB OR FUNCTION WILL NOT TRY TO OPEN THE REPORTVIEWER
                         return false;

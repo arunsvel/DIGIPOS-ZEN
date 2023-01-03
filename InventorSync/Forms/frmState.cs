@@ -382,6 +382,18 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "STATE") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "STATE") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 SaveData();
                 Cursor.Current = Cursors.Default;
@@ -399,6 +411,9 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "STATE") == false)
+                    return;
+
                 Cursor.Current = Cursors.WaitCursor;
                 if (iIDFromEditWindow > 5)
                 {

@@ -396,6 +396,18 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "DEPARTMENT") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "DEPARTMENT") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 SaveData();
                 Cursor.Current = Cursors.Default;
@@ -413,6 +425,9 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "DEPARTMENT") == false)
+                    return;
+
                 Cursor.Current = Cursors.WaitCursor;
                 if (iIDFromEditWindow > 5)
                 {
@@ -420,7 +435,7 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                        DeleteData();
-                       Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted" + Departmentinfo.Department, 521, 521, Departmentinfo.Department, Comm.ToInt32(Departmentinfo.DepartmentID), "Department");
+                       Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted" + Departmentinfo.Department, 0, 0, "Department", Comm.ToInt32(Departmentinfo.DepartmentID), "Department");
 
                     }
                 }
@@ -602,12 +617,12 @@ namespace DigiposZen
                         Comm.MessageboxToasted("Department", "Department Saved Successfully");
                         if (iIDFromEditWindow > 0)
                         {
-                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update Department to " + Departmentinfo.Department, 521, 521, Departmentinfo.Department, Comm.ToInt32(Departmentinfo.DepartmentID), "Department");
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update Department to " + Departmentinfo.Department, 0, 0, "Department", Comm.ToInt32(Departmentinfo.DepartmentID), "Department");
                         }
                         else
                         {
 
-                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + Departmentinfo.Department, 521, 521, Departmentinfo.Department, Comm.ToInt32(Departmentinfo.DepartmentID), "department");
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + Departmentinfo.Department, 0, 0, "Department", Comm.ToInt32(Departmentinfo.DepartmentID), "department");
 
                         }
                     }
@@ -645,12 +660,12 @@ namespace DigiposZen
                     Comm.MessageboxToasted("Department", "Department Saved Successfully");
                     if (iIDFromEditWindow > 0)
                     {
-                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update Department to " + Departmentinfo.Department, 521, 521, Departmentinfo.Department, Comm.ToInt32(Departmentinfo.DepartmentID), "Department");
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update Department to " + Departmentinfo.Department, 0, 0, "Department", Comm.ToInt32(Departmentinfo.DepartmentID), "Department");
                     }
                     else
                     {
 
-                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + Departmentinfo.Department, 521, 521, Departmentinfo.Department, Comm.ToInt32(Departmentinfo.DepartmentID), "department");
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + Departmentinfo.Department, 0, 0, "Department", Comm.ToInt32(Departmentinfo.DepartmentID), "Department");
 
                     }
                     if (bFromEditWindowDepartment == true)

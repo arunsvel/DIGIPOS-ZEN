@@ -584,51 +584,10 @@ namespace DigiposZen
                     cboBrand.Focus();
                     SendKeys.Send("+{F4}");
                 }
-                else if (cboDiscGroup.Visible == true)
+                else
                 {
                     cboDiscGroup.Focus();
                     SendKeys.Send("+{F4}");
-                }
-                else if (cboDepmnt.Visible == true)
-                {
-                    cboDepmnt.Focus();
-                    SendKeys.Send("{F4}");
-                }
-                else if (txtDescription.Visible == true)
-                {
-                    txtDescription.Focus();
-                }
-                else if (txtAgentCommision.Visible == true)
-                {
-                    txtAgentCommision.Focus();
-                }
-                else if (txtDiscPerc.Visible == true)
-                {
-                    txtDiscPerc.Focus();
-                }
-                else if (txtCoolie.Visible == true)
-                {
-                    txtCoolie.Focus();
-                }
-                else if (txtROL.Visible == true)
-                {
-                    txtROL.Focus();
-                }
-                else if (txtMOQ.Visible == true)
-                {
-                    txtMOQ.Focus();
-                }
-                else if (txtMinRate.Visible == true)
-                {
-                    txtMinRate.Focus();
-                }
-                else if (txtAgentCommision.Visible == true)
-                {
-                    txtMaxRate.Focus();
-                }
-                else if (txtHSNCode.Visible == true)
-                {
-                    txtHSNCode.Focus();
                 }
             }
             else if (e.KeyCode == Keys.F3)
@@ -1457,51 +1416,10 @@ namespace DigiposZen
                     cboBrand.Focus();
                     SendKeys.Send("{F4}");
                 }
-                else if (cboDiscGroup.Visible == true)
+                else
                 {
                     cboDiscGroup.Focus();
                     SendKeys.Send("{F4}");
-                }
-                else if (cboDepmnt.Visible == true)
-                {
-                    cboDepmnt.Focus();
-                    SendKeys.Send("{F4}");
-                }
-                else if (txtDescription.Visible == true)
-                {
-                    txtDescription.Focus();
-                }
-                else if (txtAgentCommision.Visible == true)
-                {
-                    txtAgentCommision.Focus();
-                }
-                else if (txtDiscPerc.Visible == true)
-                {
-                    txtDiscPerc.Focus();
-                }
-                else if (txtCoolie.Visible == true)
-                {
-                    txtCoolie.Focus();
-                }
-                else if (txtROL.Visible == true)
-                {
-                    txtROL.Focus();
-                }
-                else if (txtMOQ.Visible == true)
-                {
-                    txtMOQ.Focus();
-                }
-                else if (txtMinRate.Visible == true)
-                {
-                    txtMinRate.Focus();
-                }
-                else if (txtAgentCommision.Visible == true)
-                {
-                    txtMaxRate.Focus();
-                }
-                else if (txtHSNCode.Visible == true)
-                {
-                    txtHSNCode.Focus();
                 }
             }
         }
@@ -1658,43 +1576,8 @@ namespace DigiposZen
         {
             if (e.KeyData == Keys.Tab)
             {
-                //e.IsInputKey = true;
-                //txtRack.Focus();
-
-                //if (txtRack.Visible == true)
-                //{
-                //    txtRack.Focus();
-                //}
-                //else if (txtColor.Visible == true)
-                //{
-                //    txtColor.Focus();
-                //    SendKeys.Send("{DOWN}");
-                //}
-                //else if (txtSize.Visible == true)
-                //{
-                //    txtSize.Focus();
-                //    SendKeys.Send("{DOWN}");
-                //}
-                //else if (cboBrand.Visible == true)
-                //{
-                //    cboBrand.Focus();
-                //    SendKeys.Send("{F4}");
-                //}
-                //else if (cboDiscGroup.Visible == true)
-                //{
-                //    cboDiscGroup.Focus();
-                //    SendKeys.Send("{F4}");
-                //}
-                //else if (cboDepmnt.Visible == true)
-                //{
-                //    cboDepmnt.Focus();
-                //    SendKeys.Send("{F4}");
-                //}
-                //else if (txtDescription.Visible == true)
-                //{
-                //    txtDescription.Focus();
-                //    SendKeys.Send("{F4}");
-                //}
+                e.IsInputKey = true;
+                txtRack.Focus();
             }
         }
 
@@ -3308,6 +3191,17 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "ITEMMASTER") == false)
+                        return;
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "ITEMMASTER") == false)
+                        return;
+                }
+
                 Cursor.Current = Cursors.WaitCursor;
                 if (chkLoadTest.Checked == true)
                 {
@@ -3338,12 +3232,13 @@ namespace DigiposZen
         {
             try
             {
+
                 DialogResult diaRslt = MessageBox.Show("Are you sure to delete the Item [" + txtItemName.Text + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
                 if (diaRslt.Equals(DialogResult.Yes))
                 {
                     Cursor.Current = Cursors.WaitCursor;
                     DeleteData();
-                    Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Delete " + itemInsertInfo.ItemCode, 502, 502, itemInsertInfo.ItemCode, Comm.ToInt32(itemInsertInfo.ItemID), "ItemMaster");
+                    Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Delete " + itemInsertInfo.ItemCode, 502, 502, "ItemCode", Comm.ToInt32(itemInsertInfo.ItemID), "ItemMaster");
 
                     Cursor.Current = Cursors.Default;
                 }
@@ -5179,11 +5074,11 @@ namespace DigiposZen
                         Comm.MessageboxToasted("Item Master", "Item Saved Successfully");
                         if (iIDFromEditWindow > 0)
                         {
-                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Item to " + itemInsertInfo.ItemCode, 502, 502, itemInsertInfo.ItemCode, Comm.ToInt32(itemInsertInfo.ItemID), "ItemMaster");
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Item to " + itemInsertInfo.ItemCode, 502, 502, "ItemCode", Comm.ToInt32(itemInsertInfo.ItemID), "ItemMaster");
                         }
                         else
                         {
-                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + itemInsertInfo.ItemCode, 502, 502, itemInsertInfo.ItemCode, Comm.ToInt32(itemInsertInfo.ItemID), "ItemMaster");
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + itemInsertInfo.ItemCode, 502, 502, "ItemCode", Comm.ToInt32(itemInsertInfo.ItemID), "ItemMaster");
 
                         }
 
@@ -6576,11 +6471,6 @@ namespace DigiposZen
         }
 
         private void lblSave_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

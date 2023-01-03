@@ -342,6 +342,18 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "UNIT") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "UNIT") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 SaveData();
                 Cursor.Current = Cursors.Default;
@@ -359,6 +371,9 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "UNIT") == false)
+                    return;
+
                 Cursor.Current = Cursors.WaitCursor;
                 if (Convert.ToDecimal(iIDFromEditWindow) > 5)
                 {
@@ -366,7 +381,7 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                         DeleteData();
-                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + UnitInfo.UnitName, 518, 518, UnitInfo.UnitName, Comm.ToInt32(UnitInfo.UnitID), "Unit");
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + UnitInfo.UnitName, 515, 515, "UnitName", Comm.ToInt32(UnitInfo.UnitID), "Unit");
 
                     }
                 }
@@ -571,13 +586,13 @@ namespace DigiposZen
                     if (iIDFromEditWindow > 0)
                     {
 
-                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Unit to " + UnitInfo.UnitName, 518, 518, UnitInfo.UnitName, Comm.ToInt32(UnitInfo.UnitID), "Unit");
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Unit to " + UnitInfo.UnitName, 515, 515, "UnitName", Comm.ToInt32(UnitInfo.UnitID), "Unit");
 
                     }
                     else
                     {
 
-                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + UnitInfo.UnitName, 518, 518, UnitInfo.UnitName, Comm.ToInt32(UnitInfo.UnitID), "Unit");
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + UnitInfo.UnitName, 515, 515, "UnitName", Comm.ToInt32(UnitInfo.UnitID), "Unit");
 
                     }
                 }
@@ -599,10 +614,14 @@ namespace DigiposZen
                 strResult = strRet.Split('|');
                 if (Convert.ToInt32(strResult[0].ToString()) == -1)
                 {
+
                    if (strResult[1].ToString().ToUpper().Contains("THE DELETE STATEMENT CONFLICTED WITH THE REFERENCE CONSTRAINT"))
-                      MessageBox.Show("Hey! There are Items Associated with this Unit [" + txtUnitName.Text + "] . Please Check.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+                        MessageBox.Show("Hey! There are Items Associated with this Unit [" + txtUnitName.Text + "] . Please Check.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                    else
-                      MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                        MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                 }
             }
             else

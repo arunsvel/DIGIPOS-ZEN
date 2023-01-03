@@ -583,16 +583,19 @@ namespace DigiposZen
         {
             try
             {
+                DataGridViewCheckBoxCell fchk = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[0].Cells[1];
+
                 if (e.ColumnIndex == 1 && e.RowIndex == 0)
                 {
 
-                    DataGridViewCheckBoxCell fchk = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[0].Cells[1];
+                   
                     if (Convert.ToBoolean(fchk.Value) == false)
                     {
                         foreach (DataGridViewRow row in dgvsettingsMaster.Rows)
                         {
                             DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[1];
                             chk.Value = true;
+                            
                         }
                     }
                     else
@@ -601,11 +604,20 @@ namespace DigiposZen
                         {
                             DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[1];
                             chk.Value = false;
+                            DataGridViewCheckBoxCell chkNew = (DataGridViewCheckBoxCell)row.Cells[2];
+                            chkNew.Value = false;
+                            DataGridViewCheckBoxCell chkEdit = (DataGridViewCheckBoxCell)row.Cells[3];
+                            chkEdit.Value = false;
+                            DataGridViewCheckBoxCell chkdelete = (DataGridViewCheckBoxCell)row.Cells[4];
+                            chkdelete.Value = false;
+
+
                         }
+
                     }
 
                 }
-                else if (e.ColumnIndex == 2 && e.RowIndex == 0)
+                else if (e.ColumnIndex == 2 && e.RowIndex == 0 && Convert.ToBoolean(fchk.Value) == true)
                 {
                     DataGridViewCheckBoxCell fchkNew = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[0].Cells[2];
                     if (Convert.ToBoolean(fchkNew.Value) == false)
@@ -625,7 +637,7 @@ namespace DigiposZen
                         }
                     }
                 }
-                else if (e.ColumnIndex == 3 && e.RowIndex == 0)
+                else if (e.ColumnIndex == 3 && e.RowIndex == 0 && Convert.ToBoolean(fchk.Value) == true)
                 {
                     DataGridViewCheckBoxCell fchkEdit = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[0].Cells[3];
                     if (Convert.ToBoolean(fchkEdit.Value) == false)
@@ -645,7 +657,7 @@ namespace DigiposZen
                         }
                     }
                 }
-                else if (e.ColumnIndex == 4 && e.RowIndex == 0)
+                else if (e.ColumnIndex == 4 && e.RowIndex == 0 && Convert.ToBoolean(fchk.Value) == true)
                 {
                     DataGridViewCheckBoxCell fchkdelete = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[0].Cells[4];
                     if (Convert.ToBoolean(fchkdelete.Value) == false)
@@ -672,6 +684,18 @@ namespace DigiposZen
 
                     DataGridViewCheckBoxCell chkall = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[0].Cells[1];
                     DataGridViewCheckBoxCell chkmid = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[e.RowIndex].Cells[1];
+                    if (Convert.ToBoolean(chkmid.Value) == true)
+                    {
+                        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[e.RowIndex].Cells[2];
+                        chk.Value = false;
+                        DataGridViewCheckBoxCell chk1 = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[e.RowIndex].Cells[3];
+                        chk1.Value = false;
+                        DataGridViewCheckBoxCell chk2 = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[e.RowIndex].Cells[4];
+                        chk2.Value = false;
+
+
+
+                    }
                     if (Convert.ToBoolean(chkmid.Value) == true && Convert.ToBoolean(chkall.Value) == true)
                     {
                         foreach (DataGridViewRow row in dgvsettingsMaster.Rows)
@@ -684,11 +708,14 @@ namespace DigiposZen
                             }
                         }
                     }
+                    
+                 
                 }
                 else if (e.ColumnIndex == 2 && e.RowIndex > 0)
                 {
                     int iFlag = 0;
-
+                    DataGridViewCheckBoxCell chkv = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[e.RowIndex].Cells[1];
+                
                     DataGridViewCheckBoxCell chkall = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[0].Cells[2];
                     DataGridViewCheckBoxCell chkmid = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[e.RowIndex].Cells[2];
                     if (Convert.ToBoolean(chkmid.Value) == true && Convert.ToBoolean(chkall.Value) == true)
@@ -701,6 +728,19 @@ namespace DigiposZen
                                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[2];
                                 chk.Value = false;
                             }
+                        }
+                    }
+                    else
+                    {
+                        if (Convert.ToBoolean(chkv.Value) == true)
+                        {
+                            DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[e.RowIndex].Cells[2];
+                            chk.Value = true;
+                        }
+                        else
+                        {
+                            DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[e.RowIndex].Cells[2];
+                            chk.Value = false;
                         }
                     }
                 }
@@ -798,6 +838,24 @@ namespace DigiposZen
                         {
                             DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[1];
                             chk.Value = false;
+                            DataGridViewCheckBoxCell chk1 = (DataGridViewCheckBoxCell)row.Cells[2];
+                            chk1.Value = false;
+                            DataGridViewCheckBoxCell chk2 = (DataGridViewCheckBoxCell)row.Cells[3];
+                            chk2.Value = false;
+                            DataGridViewCheckBoxCell chk3 = (DataGridViewCheckBoxCell)row.Cells[4];
+                            chk3.Value = false;
+
+                            DataGridViewCheckBoxCell chk4 = (DataGridViewCheckBoxCell)row.Cells[5];
+                            chk4.Value = false;
+                            DataGridViewCheckBoxCell chk5 = (DataGridViewCheckBoxCell)row.Cells[6];
+                            chk5.Value = false;
+                            DataGridViewCheckBoxCell chk6 = (DataGridViewCheckBoxCell)row.Cells[7];
+                            chk6.Value = false;
+
+
+
+
+
                         }
                     }
                 }
@@ -1383,6 +1441,7 @@ namespace DigiposZen
             }
             catch (Exception ex)
             {
+
                 MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -1409,6 +1468,18 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "USERGROUP") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "USERGROUP") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 SaveData();
                 Cursor.Current = Cursors.Default;
@@ -1426,6 +1497,9 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "USERGROUP") == false)
+                    return;
+
                 Cursor.Current = Cursors.WaitCursor;
                 if (Convert.ToDecimal(iIDFromEditWindow) > 5)
                 {
@@ -1708,12 +1782,41 @@ namespace DigiposZen
                                 string EditData = sArrFillItems1[0];
                                 if (LoadData == EditData)
                                 {
-                                    row["View"] = Convert.ToInt32(sArrFillItems1[1]);
+                                    if (sArrFillItems1[1].ToString() == "0")
+                                    {
+                                        row["View"] = 0;
+                                    }
+                                    else
+                                    {
+                                        row["View"] = 1;
+                                    }
                                     if (strGridType == "MASTER")
                                     {
-                                        row["New"] = Convert.ToInt32(sArrFillItems1[2]);
-                                        row["Edit"] = Convert.ToInt32(sArrFillItems1[3]);
-                                        row["Delete"] = Convert.ToInt32(sArrFillItems1[4]);
+                                        if (sArrFillItems1[2].ToString() == "0")
+                                        {
+                                            row["New"] = 0;
+                                        }
+                                        else 
+                                        {
+                                            row["New"] = 1;
+                                        }
+                                        if (sArrFillItems1[3].ToString() == "0")
+                                        {
+                                            row["Edit"] = 0;
+                                        }
+                                        else
+                                        {
+                                            row["Edit"] = 1;
+                                        }
+                                        if (sArrFillItems1[4].ToString() == "0")
+                                        {
+                                            row["Delete"] = 0;
+                                        }
+                                        else
+                                        {
+                                            row["Delete"] = 1;
+                                        }
+                                        
                                     }
                                 }
                             }
@@ -1827,13 +1930,67 @@ namespace DigiposZen
                     if (EditData1 == "TRANSACTION")
                     {
                         row["Allow User Access To :"] = "TRANSACTION";
-                        row["View"] = Convert.ToInt32(strArrFillItems2[1]);
-                        row["New"] = Convert.ToInt32(strArrFillItems2[2]);
-                        row["Edit"] = Convert.ToInt32(strArrFillItems2[3]);
-                        row["Cancel"] = Convert.ToInt32(strArrFillItems2[4]);
-                        row["Delete"] = Convert.ToInt32(strArrFillItems2[5]);
-                        row["Print"] = Convert.ToInt32(strArrFillItems2[6]);
-                        row["Date Editable"] = Convert.ToInt32(strArrFillItems2[7]);
+
+                        if (strArrFillItems2[1].ToString() == "0")
+                        {
+                            row["View"] = 0;
+                        }
+                        else
+                        {
+                            row["View"] = 1;
+                        }
+
+                        if (strArrFillItems2[2].ToString() == "0")
+                        {
+                            row["New"] = 0;
+                        }
+                        else
+                        {
+                            row["New"] = 1;
+                        }
+
+                        if (strArrFillItems2[3].ToString() == "0")
+                        {
+                            row["Edit"] = 0;
+                        }
+                        else
+                        {
+                            row["Edit"] = 1;
+                        }
+
+                        if (strArrFillItems2[4].ToString() == "0")
+                        {
+                            row["Cancel"] = 0;
+                        }
+                        else
+                        {
+                            row["Cancel"] = 1;
+                        }
+
+                        if (strArrFillItems2[5].ToString() == "0")
+                        {
+                            row["Delete"] = 0;
+                        }
+                        else
+                        {
+                            row["Delete"] = 1;
+                        }
+                        if (strArrFillItems2[6].ToString() == "0")
+                        {
+                            row["Print"] = 0;
+                        }
+                        else
+                        {
+                            row["Print"] = 1;
+                        }
+                        if (strArrFillItems2[7].ToString() == "0")
+                        {
+                            row["Date Editable"] = 0;
+                        }
+                        else
+                        {
+                            row["Date Editable"] = 1;
+                        }
                         dtTransGrid.Rows.Add(row);
                     }
                 }
@@ -1862,13 +2019,76 @@ namespace DigiposZen
                                 string strLoadData = dtTransParent.Rows[i][1].ToString();
                                 if (strLoadData == strEditData)
                                 {
-                                    row["View"] = Convert.ToInt32(sArrFillItems1[1]);
-                                    row["New"] = Convert.ToInt32(sArrFillItems1[2]);
-                                    row["Edit"] = Convert.ToInt32(sArrFillItems1[3]);
-                                    row["Cancel"] = Convert.ToInt32(sArrFillItems1[4]);
-                                    row["Delete"] = Convert.ToInt32(sArrFillItems1[5]);
-                                    row["Print"] = Convert.ToInt32(sArrFillItems1[6]);
-                                    row["Date Editable"] = Convert.ToInt32(sArrFillItems1[7]);
+                                    //row["View"] = Convert.ToInt32(sArrFillItems1[1]);
+                                    //row["New"] = Convert.ToInt32(sArrFillItems1[2]);
+                                    //row["Edit"] = Convert.ToInt32(sArrFillItems1[3]);
+                                    //row["Cancel"] = Convert.ToInt32(sArrFillItems1[4]);
+                                    //row["Delete"] = Convert.ToInt32(sArrFillItems1[5]);
+                                    //row["Print"] = Convert.ToInt32(sArrFillItems1[6]);
+                                    //row["Date Editable"] = Convert.ToInt32(sArrFillItems1[7]);
+
+                                    if (sArrFillItems1[1].ToString() == "0")
+                                    {
+                                        row["View"] = 0;
+                                    }
+                                    else
+                                    {
+                                        row["View"] = 1;
+                                    }
+
+                                    if (sArrFillItems1[2].ToString() == "0")
+                                    {
+                                        row["New"] = 0;
+                                    }
+                                    else
+                                    {
+                                        row["New"] = 1;
+                                    }
+
+                                    if (sArrFillItems1[3].ToString() == "0")
+                                    {
+                                        row["Edit"] = 0;
+                                    }
+                                    else
+                                    {
+                                        row["Edit"] = 1;
+                                    }
+
+                                    if (sArrFillItems1[4].ToString() == "0")
+                                    {
+                                        row["Cancel"] = 0;
+                                    }
+                                    else
+                                    {
+                                        row["Cancel"] = 1;
+                                    }
+
+                                    if (sArrFillItems1[5].ToString() == "0")
+                                    {
+                                        row["Delete"] = 0;
+                                    }
+                                    else
+                                    {
+                                        row["Delete"] = 1;
+                                    }
+                                    if (sArrFillItems1[6].ToString() == "0")
+                                    {
+                                        row["Print"] = 0;
+                                    }
+                                    else
+                                    {
+                                        row["Print"] = 1;
+                                    }
+                                    if (sArrFillItems1[7].ToString() == "0")
+                                    {
+                                        row["Date Editable"] = 0;
+                                    }
+                                    else
+                                    {
+                                        row["Date Editable"] = 1;
+                                    }
+
+
                                     dtTransGrid.Rows.Add(row);
                                     int parentid = Convert.ToInt32(dtTransParent.Rows[i][0]);
                                     DataTable dtTranschild = Comm.fnGetData("SELECT VchTypeID,VchType,ParentID From tblVchType WHERE ((VchTypeID BETWEEN 1 and 500) OR (VchTypeID >= 1005)) AND (ParentID <> VchTypeID) AND (ParentID = " + parentid + ")").Tables[0];
@@ -1888,13 +2108,73 @@ namespace DigiposZen
                                                 {
                                                     row = dtTransGrid.NewRow();
                                                     row["Allow User Access To :"] = "          >> " + dtTranschild.Rows[j][1];
-                                                    row["View"] = Convert.ToInt32(strArrFillItems2[1]);
-                                                    row["New"] = Convert.ToInt32(strArrFillItems2[2]);
-                                                    row["Edit"] = Convert.ToInt32(strArrFillItems2[3]);
-                                                    row["Cancel"] = Convert.ToInt32(strArrFillItems2[4]);
-                                                    row["Delete"] = Convert.ToInt32(strArrFillItems2[5]);
-                                                    row["Print"] = Convert.ToInt32(strArrFillItems2[6]);
-                                                    row["Date Editable"] = Convert.ToInt32(strArrFillItems2[7]);
+                                                    //row["View"] = Convert.ToInt32(strArrFillItems2[1]);
+                                                    //row["New"] = Convert.ToInt32(strArrFillItems2[2]);
+                                                    //row["Edit"] = Convert.ToInt32(strArrFillItems2[3]);
+                                                    //row["Cancel"] = Convert.ToInt32(strArrFillItems2[4]);
+                                                    //row["Delete"] = Convert.ToInt32(strArrFillItems2[5]);
+                                                    //row["Print"] = Convert.ToInt32(strArrFillItems2[6]);
+                                                    //row["Date Editable"] = Convert.ToInt32(strArrFillItems2[7]);
+                                                    if (strArrFillItems2[1].ToString() == "0")
+                                                    {
+                                                        row["View"] = 0;
+                                                    }
+                                                    else
+                                                    {
+                                                        row["View"] = 1;
+                                                    }
+
+                                                    if (strArrFillItems2[2].ToString() == "0")
+                                                    {
+                                                        row["New"] = 0;
+                                                    }
+                                                    else
+                                                    {
+                                                        row["New"] = 1;
+                                                    }
+
+                                                    if (strArrFillItems2[3].ToString() == "0")
+                                                    {
+                                                        row["Edit"] = 0;
+                                                    }
+                                                    else
+                                                    {
+                                                        row["Edit"] = 1;
+                                                    }
+
+                                                    if (strArrFillItems2[4].ToString() == "0")
+                                                    {
+                                                        row["Cancel"] = 0;
+                                                    }
+                                                    else
+                                                    {
+                                                        row["Cancel"] = 1;
+                                                    }
+
+                                                    if (strArrFillItems2[5].ToString() == "0")
+                                                    {
+                                                        row["Delete"] = 0;
+                                                    }
+                                                    else
+                                                    {
+                                                        row["Delete"] = 1;
+                                                    }
+                                                    if (strArrFillItems2[6].ToString() == "0")
+                                                    {
+                                                        row["Print"] = 0;
+                                                    }
+                                                    else
+                                                    {
+                                                        row["Print"] = 1;
+                                                    }
+                                                    if (strArrFillItems2[7].ToString() == "0")
+                                                    {
+                                                        row["Date Editable"] = 0;
+                                                    }
+                                                    else
+                                                    {
+                                                        row["Date Editable"] = 1;
+                                                    }
                                                     dtTransGrid.Rows.Add(row);
                                                 }
                                             }
@@ -1999,6 +2279,8 @@ namespace DigiposZen
         {
             try
             {
+                string strview = "", strNew = "", strEdit = "", strCancel = "", strDelete = "", strPrint = "", strDateEdit = "";
+
                 //Settings and Master
                 for (int k = 0; k < dgvsettingsMaster.Rows.Count; k++)
                 {
@@ -2008,11 +2290,47 @@ namespace DigiposZen
                     DataGridViewCheckBoxCell cellEdit = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[k].Cells[3];
                     DataGridViewCheckBoxCell cellDelete = (DataGridViewCheckBoxCell)dgvsettingsMaster.Rows[k].Cells[4];
                     strAccessName = cellAccessName.Value.ToString();
+                    
                     iview = Convert.ToInt32(cellView.Value);
+                    if (iview==1)
+                    {
+                        strview = "V";
+                    }
+                    else
+                    {
+                        strview = "0";
+                    }
+
                     iNew = Convert.ToInt32(cellNew.Value);
+                    if (iNew == 1)
+                    {
+                        strNew = "N";
+                    }
+                    else
+                    {
+                        strNew = "0";
+                    }
+
                     iEdit = Convert.ToInt32(cellEdit.Value);
+                    if (iEdit == 1)
+                    {
+                        strEdit = "E";
+                    }
+                    else
+                    {
+                        strEdit = "0";
+                    }
+
                     iDelete = Convert.ToInt32(cellDelete.Value);
-                    strAccessLevelsettings = strAccessLevelsettings + "<" + strAccessName + "|" + iview + "|" + iNew + "|" + iEdit + "|" + iDelete + "|>";
+                    if (iDelete == 1)
+                    {
+                        strDelete = "D";
+                    }
+                    else
+                    {
+                        strDelete = "0";
+                    }
+                    strAccessLevelsettings = strAccessLevelsettings + "<" + strAccessName + "|" + strview + "|" + strNew + "|" + strEdit + "|" + strDelete + "|>";
                 }
                 strAccessLevelsettings = strAccessLevelSeparator + strAccessLevelsettings + strAccessLevelSeparator;
                 //Transaction
@@ -2027,14 +2345,75 @@ namespace DigiposZen
                     DataGridViewCheckBoxCell cellPrint = (DataGridViewCheckBoxCell)dgvTrans.Rows[k].Cells[6];
                     DataGridViewCheckBoxCell cellDate = (DataGridViewCheckBoxCell)dgvTrans.Rows[k].Cells[7];
                     strAccessName = cellAccessName.Value.ToString();
+
                     iview = Convert.ToInt32(cellView.Value);
+                    if (iview == 1)
+                    {
+                        strview = "V";
+                    }
+                    else
+                    {
+                        strview = "0";
+                    }
+
                     iNew = Convert.ToInt32(cellNew.Value);
+                    if (iNew == 1)
+                    {
+                        strNew = "N";
+                    }
+                    else
+                    {
+                        strNew = "0";
+                    }
+
                     iEdit = Convert.ToInt32(cellEdit.Value);
+                    if (iEdit == 1)
+                    {
+                        strEdit = "E";
+                    }
+                    else
+                    {
+                        strEdit = "0";
+                    }
+
                     iCancel = Convert.ToInt32(cellCan.Value);
+                    if (iCancel == 1)
+                    {
+                        strCancel = "C";
+                    }
+                    else
+                    {
+                        strCancel = "0";
+                    }
                     iDelete = Convert.ToInt32(cellDelete.Value);
+                    if (iDelete == 1)
+                    {
+                        strDelete = "D";
+                    }
+                    else
+                    {
+                        strDelete = "0";
+                    }
                     iPrint = Convert.ToInt32(cellPrint.Value);
+                    if (iPrint == 1)
+                    {
+                        strPrint = "P";
+                    }
+                    else
+                    {
+                        strPrint = "0";
+                    }
+
                     iDateEdit = Convert.ToInt32(cellDate.Value);
-                    strAccessLevelTrans = strAccessLevelTrans + "<" + strAccessName + "|" + iview + "|" + iNew + "|" + iEdit + "|" + iCancel + "|" + iDelete + "|" + iPrint + "|" + iDateEdit + "|>";
+                    if (iDateEdit == 1)
+                    {
+                        strDateEdit = "A";
+                    }
+                    else
+                    {
+                        strDateEdit = "0";
+                    }
+                    strAccessLevelTrans = strAccessLevelTrans + "<" + strAccessName + "|" + strview + "|" + strNew + "|" + strEdit + "|" + strCancel + "|" + strDelete + "|" + strPrint + "|" + strDateEdit + "|>";
                 }
                 strAccessLevelTrans = strAccessLevelSeparator + strAccessLevelTrans + strAccessLevelSeparator;
                 //Report
@@ -2045,7 +2424,15 @@ namespace DigiposZen
                     DataGridViewCheckBoxCell cellView = (DataGridViewCheckBoxCell)dgvReports.Rows[k].Cells[1];
                     strAccessName = cellAccessName.Value.ToString();
                     iview = Convert.ToInt32(cellView.Value);
-                    strAccessLevelReport = strAccessLevelReport + "<" + strAccessName + "|" + iview + "|>";
+                    if (iview == 1)
+                    {
+                        strview = "V";
+                    }
+                    else
+                    {
+                        strview = "0";
+                    }
+                    strAccessLevelReport = strAccessLevelReport + "<" + strAccessName + "|" + strview + "|>";
                 }
                 strAccessLevelReport = strAccessLevelSeparator + strAccessLevelReport + strAccessLevelSeparator;
                 //Accounts & Analysis
@@ -2055,7 +2442,15 @@ namespace DigiposZen
                     DataGridViewCheckBoxCell cellView = (DataGridViewCheckBoxCell)dgvaccounts.Rows[k].Cells[1];
                     strAccessName = cellAccessName.Value.ToString();
                     iview = Convert.ToInt32(cellView.Value);
-                    strAccessLevelAcc = strAccessLevelAcc + "<" + strAccessName + "|" + iview + "|>";
+                    if (iview == 1)
+                    {
+                        strview = "V";
+                    }
+                    else
+                    {
+                        strview = "0";
+                    }
+                    strAccessLevelAcc = strAccessLevelAcc + "<" + strAccessName + "|" + strview + "|>";
                 }
                 strAccessLevelAcc = strAccessLevelSeparator + strAccessLevelAcc + strAccessLevelSeparator;
                 strAccessLevel = strAccessLevelsettings + strAccessLevelTrans + strAccessLevelReport + strAccessLevelAcc;
@@ -2133,6 +2528,7 @@ namespace DigiposZen
                     UserGroupInfo.CashDisc = float.Parse(txtCashdisc.Text);
                     strRet = clsuser.InsertUpdateDeleteUserGroup(UserGroupInfo, iAction);
                     if (strRet.Length > 2)
+
                     {
                         strResult = strRet.Split('|');
                         if (Convert.ToInt32(strResult[0].ToString()) == -1)

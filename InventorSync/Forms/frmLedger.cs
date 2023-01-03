@@ -1218,6 +1218,18 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "LEDGER") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "LEDGER") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 SaveData();
                 Cursor.Current = Cursors.Default;
@@ -1233,6 +1245,9 @@ namespace DigiposZen
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "LEDGER") == false)
+                return;
+
             string msgName = "";
             Cursor.Current = Cursors.WaitCursor;
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -1250,7 +1265,7 @@ namespace DigiposZen
                     try
                     {
                         DeleteData();
-                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + LedgerInfo.LedgerName, 504, 504, LedgerInfo.LedgerName, Comm.ToInt32(LedgerInfo.LID), "CostCenter");
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + LedgerInfo.LedgerName, 504, 504,"LedgerName", Comm.ToInt32(LedgerInfo.LID), "Ledger");
 
                     }
 
@@ -1991,13 +2006,13 @@ namespace DigiposZen
                         if (iIDFromEditWindow > 0)
                         {
 
-                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Ledger to " + LedgerInfo.LedgerName, 504, 504, LedgerInfo.LedgerName, Comm.ToInt32(LedgerInfo.LID), "CostCenter");
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Ledger to " + LedgerInfo.LedgerName, 504, 504, "LedgerName", Comm.ToInt32(LedgerInfo.LID), "Ledger");
 
                         }
                         else
                         {
 
-                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + LedgerInfo.LedgerName, 504, 504, LedgerInfo.LedgerName, Comm.ToInt32(LedgerInfo.LID), "CostCenter");
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + LedgerInfo.LedgerName, 504, 504, "LedgerName", Comm.ToInt32(LedgerInfo.LID), "Ledger");
 
                         }
                     }

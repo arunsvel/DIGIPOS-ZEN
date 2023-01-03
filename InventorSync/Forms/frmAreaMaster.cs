@@ -394,6 +394,18 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "AREA") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "AREA") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 SaveData();
                 Cursor.Current = Cursors.Default;
@@ -411,6 +423,9 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "AREA") == false)
+                    return;
+
                 Cursor.Current = Cursors.WaitCursor;
                 strSelectNodeName = Convert.ToString(trvwParentArea.SelectedNode.Text);
                 decimal iAreaID = GetAreaID();
@@ -419,7 +434,7 @@ namespace DigiposZen
                     DialogResult dlgResult = MessageBox.Show("Are you sure to delete the Area [" + strSelectNodeName + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dlgResult.Equals(DialogResult.Yes))
                         DeleteData();
-                    Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + AreaInfo.Area, 521, 521, AreaInfo.Area, Comm.ToInt32(AreaInfo.AreaID), "Area");
+                    Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + AreaInfo.Area, 521, 521, "Area", Comm.ToInt32(AreaInfo.AreaID), "Area");
 
                 }
                 else
@@ -727,11 +742,11 @@ namespace DigiposZen
                         Comm.MessageboxToasted("Area", "Area saved successfully");
                         if (iIDFromEditWindow > 0)
                         {
-                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Area to " + AreaInfo.Area, 521, 521, AreaInfo.Area, Comm.ToInt32(AreaInfo.AreaID), "ItemMaster");
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Area to " + AreaInfo.Area, 521, 521,"Area", Comm.ToInt32(AreaInfo.AreaID), "Area");
                         }
                         else
                         {
-                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AreaInfo.Area, 521, 521, AreaInfo.Area, Comm.ToInt32(AreaInfo.AreaID), "ItemMaster");
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AreaInfo.Area, 521, 521, "Area", Comm.ToInt32(AreaInfo.AreaID), "Area");
 
                         }
                         if (bFromEditWindowArea == true && bDirectDelete == false)

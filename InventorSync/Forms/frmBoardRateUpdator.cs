@@ -597,6 +597,8 @@ namespace DigiposZen
             sqlControl rs = new sqlControl();
             bool TransactionStarted = false;
 
+            dgvItems.EndEdit();
+
             try
             {
 
@@ -3654,6 +3656,16 @@ namespace DigiposZen
                         dgvItems.BeginEdit(true);
                     }
                 }
+            }
+            catch
+            { }
+        }
+
+        private void dgvItems_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvItems.EndEdit();
             }
             catch
             { }

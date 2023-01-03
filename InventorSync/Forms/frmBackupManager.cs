@@ -12,6 +12,7 @@ using DigiposZen.InventorBL.Helper;
 using DigiposZen.Info;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.IO.Compression;
 
 namespace DigiposZen
 {
@@ -88,6 +89,11 @@ namespace DigiposZen
                 this.BackColor = Global.gblFormBorderColor;
 
                 if (blnDisableMinimize == true) btnMinimize.Enabled = false;
+
+                if (Directory.Exists(Application.StartupPath + @"\Backups") == false)
+                {
+                    Directory.CreateDirectory(Application.StartupPath + @"\Backups");
+                }
 
                 Cursor.Current = Cursors.Default;
             }
@@ -228,20 +234,61 @@ namespace DigiposZen
         {
             try
             {
+                string BackupPath = "";
+
                 if (Global.gblROLEOFSYSTEM.ToUpper().Contains("CLIENT") == true)
                 { 
                     MessageBox.Show("Unable to create backup form client system. " + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    return;
+                }
+
+                if (Directory.Exists(txtBackupPath.Text) == false)
+                {
+                    MessageBox.Show("Specified backup path doesn't exists. Please provide valid backup path.", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    return;
                 }
 
                 Cursor.Current = Cursors.WaitCursor;
 
-                SelectedNodes = "";
-                string Companies = GetCheckedNodes(tvwUserCompanyBackup.Nodes);
+                if (Directory.Exists(@"C:\DIGIBackup") == true)
+                {
+                    Directory.Delete(@"C:\DIGIBackup", true);
+                }
 
-                if (MessageBox.Show("Following companies are selected for backup..." + "\n" + Companies + "." + "\n\n" + "Are you sure to continue?" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                    return;
+                BackupPath = $@"{txtBackupPath.Text}\{DateTime.Now.Year}\{DateTime.Now.ToString("MMM")}\{DateTime.Now.Day}";
+                if (Directory.Exists(BackupPath) == false)
+                {
+                    new DirectoryInfo(BackupPath).Create();
+                }
 
-                Comm.BACKUPDB(ref progressBar1, "bfb", @"C:\backup");
+                int FileCount = 0;
+                string LastBackupCompany = "";
+                foreach (TreeNode aNode in tvwUserCompanyBackup.Nodes)
+                {
+                    if (aNode.Parent == null)
+                    {
+                        foreach (System.Windows.Forms.TreeNode cNode in aNode.Nodes)
+                        {
+                            if (cNode.Checked == true)
+                            {
+                                Comm.BACKUPDB(ref progressBar1, cNode.Name, BackupPath);
+                                LastBackupCompany = cNode.Text;
+                                FileCount += 1;
+                            }
+                        }
+                    }
+                }
+
+                if (FileCount > 1)
+                {
+                    ZipFile.CreateFromDirectory(@"C:\DIGIBackup", BackupPath + @"\GroupBackup_" + DateTime.Now.ToString("dd_MMM_yyyy") + ".zip");
+                }
+                else
+                {
+                    ZipFile.CreateFromDirectory(@"C:\DIGIBackup", BackupPath + $@"\{LastBackupCompany}.zip");
+                }
 
                 Cursor.Current = Cursors.Default;
             }
@@ -300,7 +347,7 @@ namespace DigiposZen
             return false;
         }
 
-        string SelectedNodes = "";
+        string SelectedNodes = ",";
 
         public string GetCheckedNodes(TreeNodeCollection nodes)
         {
@@ -315,7 +362,8 @@ namespace DigiposZen
                     continue;
                 }
 
-                SelectedNodes += aNode.Text + ",";
+                if (SelectedNodes.Contains("," + aNode.Name + ",") == false)
+                    SelectedNodes += aNode.Name + ",";
 
                 if (aNode.Nodes.Count != 0)
                     GetCheckedNodes(aNode.Nodes);
@@ -598,6 +646,22 @@ namespace DigiposZen
             DialogResult dlgResult = MessageBox.Show("Do you want to exit backup / restore manager?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (dlgResult.Equals(DialogResult.No))
                 e.Cancel = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog fbd = new FolderBrowserDialog())
+            {
+                fbd.Description = "Select a folder";
+                fbd.ShowNewFolderButton = true;
+                fbd.RootFolder = Environment.SpecialFolder.MyComputer;
+                fbd.SelectedPath = Application.ExecutablePath + @"\Backups";
+                DialogResult result = fbd.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    txtBackupPath.Text = fbd.SelectedPath;
+                }
+            }
         }
     }
 }

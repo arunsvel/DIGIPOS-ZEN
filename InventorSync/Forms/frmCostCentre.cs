@@ -336,6 +336,18 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "COSTCENTRE") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "COSTCENTRE") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 SaveData();
                 Cursor.Current = Cursors.Default;
@@ -353,6 +365,9 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "COSTCENTRE") == false)
+                    return;
+
                 Cursor.Current = Cursors.WaitCursor;
                 if (iIDFromEditWindow > 5)
                 {
@@ -360,7 +375,7 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                        DeleteData();
-                       Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted" + CostCentrinfo.CCName, 518, 518, CostCentrinfo.CCName, Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
+                       Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted" + CostCentrinfo.CCName, 507, 507, "CCName", Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
 
 
                     }
@@ -518,13 +533,13 @@ namespace DigiposZen
                         if (iIDFromEditWindow > 0)
                         {
 
-                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " CostCenter to " + CostCentrinfo.CCName, 507, 507, CostCentrinfo.CCName, Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " CostCenter to " + CostCentrinfo.CCName, 507, 507, "CCName", Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
 
                         }
                         else
                         {
 
-                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + CostCentrinfo.CCName, 507, 507, CostCentrinfo.CCName, Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + CostCentrinfo.CCName, 507, 507, "CCName", Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
 
                         }
                     }
@@ -552,13 +567,13 @@ namespace DigiposZen
                     if (iIDFromEditWindow > 0)
                     {
 
-                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " CostCenter to " + CostCentrinfo.CCName, 507, 507, CostCentrinfo.CCName, Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " CostCenter to " + CostCentrinfo.CCName, 507, 507, "CCName", Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
 
                     }
                     else
                     {
 
-                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + CostCentrinfo.CCName, 507, 507, CostCentrinfo.CCName, Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + CostCentrinfo.CCName, 507, 507, "CCName", Comm.ToInt32(CostCentrinfo.CCID), "CostCenter");
 
                     }
                     if (bFromEditWindowCostCentre == true)

@@ -454,6 +454,18 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "HSNCODE") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "HSNCODE") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 SaveData();
                 Cursor.Current = Cursors.Default;
@@ -471,6 +483,9 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "HSNCODE") == false)
+                    return;
+
                 Cursor.Current = Cursors.WaitCursor;
                 if (Convert.ToDecimal(iIDFromEditWindow) > 5)
                 {
@@ -478,7 +493,7 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                         DeleteData();
-                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Deleted " + HSNmasterInfo.HSNCODE, 516, 516, HSNmasterInfo.HSNCODE, Comm.ToInt32(HSNmasterInfo.HID), "Hsncode");
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Deleted " + HSNmasterInfo.HSNCODE, 516, 516, "HSNDECRIPTION", Comm.ToInt32(HSNmasterInfo.HID), "Hsncode");
 
 
                     }
@@ -854,13 +869,13 @@ namespace DigiposZen
                     if (iIDFromEditWindow > 0)
                     {
 
-                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Hsncode to " + HSNmasterInfo.HSNCODE, 516, 516, HSNmasterInfo.HSNCODE, Comm.ToInt32(HSNmasterInfo.HID), "Hsncode");
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Hsncode to " + HSNmasterInfo.HSNCODE, 516, 516, "HSNDECRIPTION", Comm.ToInt32(HSNmasterInfo.HID), "Hsncode");
 
                     }
                     else
                     {
 
-                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + HSNmasterInfo.HSNCODE, 516, 516, HSNmasterInfo.HSNCODE, Comm.ToInt32(HSNmasterInfo.HID), "Hsncode");
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + HSNmasterInfo.HSNCODE, 516, 516, "HSNDECRIPTION", Comm.ToInt32(HSNmasterInfo.HID), "Hsncode");
 
                     }
                 }

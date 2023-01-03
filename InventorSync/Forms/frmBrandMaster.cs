@@ -482,6 +482,18 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "BRAND") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "BRAND") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 double doubleValue;
                 if (string.IsNullOrEmpty(txtDiscountPerc.Text))
@@ -513,6 +525,9 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "BRAND") == false)
+                    return;
+
                 Cursor.Current = Cursors.WaitCursor;
                 if (iIDFromEditWindow > 5)
                 {
@@ -521,7 +536,7 @@ namespace DigiposZen
                     {
                       
                         DeleteData();
-                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Deleted " + Brandinfo.brandName, 518, 518, Brandinfo.brandName, Comm.ToInt32(Brandinfo.brandID), "Brand");
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Deleted " + Brandinfo.brandName, 0, 0, "brandName", Comm.ToInt32(Brandinfo.brandID), "Brand");
 
                     }
                 }
@@ -754,13 +769,13 @@ namespace DigiposZen
                     if (iIDFromEditWindow > 0)
                     {
 
-                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Brand to " + Brandinfo.brandName, 0, 0, Brandinfo.brandName, Comm.ToInt32(Brandinfo.brandID), "Brand");
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Brand to " + Brandinfo.brandName, 0, 0, "brandName", Comm.ToInt32(Brandinfo.brandID), "Brand");
 
                     }
                     else
                     {
 
-                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + Brandinfo.brandName, 0, 0, Brandinfo.brandName, Comm.ToInt32(Brandinfo.brandID), "Brand");
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + Brandinfo.brandName, 0, 0, "brandName", Comm.ToInt32(Brandinfo.brandID), "Brand");
 
                     }
                 }

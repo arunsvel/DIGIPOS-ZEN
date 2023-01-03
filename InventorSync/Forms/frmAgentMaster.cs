@@ -751,6 +751,18 @@ namespace DigiposZen
             Cursor.Current = Cursors.WaitCursor;
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "AGENT") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "AGENT") == false)
+                        return;
+                }
                 if (txtAgentDiscount.Text == "")
                     txtAgentDiscount.Text = "0";
                 if (Comm.IsDiscountPercentageOutofLimit(Convert.ToDecimal(txtAgentDiscount.Text), "Agent") == false)
@@ -776,6 +788,9 @@ namespace DigiposZen
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "AGENT") == false)
+                return;
+
             Cursor.Current = Cursors.WaitCursor;
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             if (iIDFromEditWindow > 5)
@@ -786,7 +801,7 @@ namespace DigiposZen
                     try
                     {
                         DeleteData();
-                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + AgentInfo.AgentCode, 501, 501, AgentInfo.AgentCode, Comm.ToInt32(AgentInfo.AgentID), "Agent");
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + AgentInfo.AgentCode, 501, 501, "AgentCode", Comm.ToInt32(AgentInfo.AgentID), "Agent");
 
                     }
                     catch (Exception ex)
@@ -1156,11 +1171,11 @@ namespace DigiposZen
                         Comm.MessageboxToasted("Agent", "Agent saved successfully");
                     if (iIDFromEditWindow > 0)
                     {
-                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Agent to " + AgentInfo.AgentCode, 501, 501, AgentInfo.AgentCode, Comm.ToInt32(AgentInfo.AgentID), "Agent");
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Agent to " + AgentInfo.AgentCode, 501, 501, "AgentCode", Comm.ToInt32(AgentInfo.AgentID), "Agent");
                     }
                     else
                     {
-                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AgentInfo.AgentCode, 501, 501, AgentInfo.AgentCode, Comm.ToInt32(AgentInfo.AgentID), "Agent");
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AgentInfo.AgentCode, 501, 501, "AgentCode", Comm.ToInt32(AgentInfo.AgentID), "Agent");
 
                     }
                 }
@@ -1187,11 +1202,11 @@ namespace DigiposZen
                     Comm.MessageboxToasted("Agent", "Agent saved successfully");
                     if (iIDFromEditWindow > 0)
                     {
-                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Agent to " + AgentInfo.AgentCode, 501, 501, AgentInfo.AgentCode, Comm.ToInt32(AgentInfo.AgentID), "Agent");
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Agent to " + AgentInfo.AgentCode, 501, 501, "AgentCode", Comm.ToInt32(AgentInfo.AgentID), "Agent");
                     }
                     else
                     {
-                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AgentInfo.AgentCode, 501, 501, AgentInfo.AgentCode, Comm.ToInt32(AgentInfo.AgentID), "Agent");
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AgentInfo.AgentCode, 501, 501, "AgentCode", Comm.ToInt32(AgentInfo.AgentID), "Agent");
 
                     }
                     if (bFromEditWindowAgent == true)

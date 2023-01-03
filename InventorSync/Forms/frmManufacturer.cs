@@ -544,6 +544,18 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "MANUFACTURER") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "MANUFACTURER") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 double doubleValue;
 
@@ -574,14 +586,18 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "MANUFACTURER") == false)
+                    return;
+
                 Cursor.Current = Cursors.WaitCursor;
                 if (Convert.ToDecimal(iIDFromEditWindow) > 5)
                 {
                     DialogResult dlgResult = MessageBox.Show("Are you sure to delete Manufacturer[" + txtManufacture.Text + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
                     if (dlgResult == DialogResult.Yes)
                     {
+
                         DeleteData();
-                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + ManfInfo.MnfName, 518, 518, ManfInfo.MnfName, Comm.ToInt32(ManfInfo.MnfID), "Manufacturer");
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + ManfInfo.MnfName, 518, 518, "MnfName", Comm.ToInt32(ManfInfo.MnfID), "Manufacturer");
 
                     }
                 }
@@ -599,6 +615,7 @@ namespace DigiposZen
         {
             try
             {
+
                 Cursor.Current = Cursors.WaitCursor;
                 frmEditWindow frmEdit = new frmEditWindow(this.Name.ToUpper(), this.MdiParent);
                 //frmEdit.ShowDialog();
@@ -606,6 +623,7 @@ namespace DigiposZen
                 frmEdit.BringToFront();
                 //this.Close();
                 Cursor.Current = Cursors.Default;
+
             }
             catch (Exception ex)
             {
@@ -737,7 +755,7 @@ namespace DigiposZen
             {
                 if (IsValidate() == true)
                 {
-                    newdata = "MnfName:" + txtManufacture + ",MnfShortName:" + txtManfShortName.Text + ",Disc:" + txtDiscountPerc.Text;
+                    newdata = "MnfName:" + txtManufacture.Text + ",MnfShortName:" + txtManfShortName.Text + ",Disc:" + txtDiscountPerc.Text;
 
                     string[] strResult;
                     string sRet = "";
@@ -770,9 +788,9 @@ namespace DigiposZen
                     sRet = clsManf.InsertUpdateDeleteManufacturer(ManfInfo, iAction);
                     if (sRet.Length > 2)
                     {
-                       strResult = sRet.Split('|');
-                       if (Convert.ToInt32(strResult[0].ToString()) == -1)
-                       {
+                        strResult = sRet.Split('|');
+                        if (Convert.ToInt32(strResult[0].ToString()) == -1)
+                        {
                             if (strResult[1].ToString().ToUpper().Contains("DUPLICATE"))
                             {
                                 if (strResult[1].ToString().Contains("UK_ManufacturerShortName"))
@@ -791,7 +809,7 @@ namespace DigiposZen
                             }
                             else
                                 MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                       }
+                        }
                     }
                     else
                     {
@@ -799,9 +817,9 @@ namespace DigiposZen
                             MessageBox.Show("Failed to Save ...", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else if (CtrlPassed != null)//For Passed Value from this to Another Form Control
                         {
-                             CtrlPassed.Text = txtManufacture.Text;
-                             CtrlPassed.Tag = ManfInfo.MnfID;
-                             CtrlPassed.Focus();
+                            CtrlPassed.Text = txtManufacture.Text;
+                            CtrlPassed.Tag = ManfInfo.MnfID;
+                            CtrlPassed.Focus();
                             this.Close();
                         }
                         else
@@ -814,15 +832,16 @@ namespace DigiposZen
                         if (iIDFromEditWindow > 0)
                         {
 
-                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Manufacture to " + ManfInfo.MnfName, 518, 518, ManfInfo.MnfName, Comm.ToInt32(ManfInfo.MnfID), "Manufacturer");
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Manufacture to " + ManfInfo.MnfName, 518, 518, "MnfName", Comm.ToInt32(ManfInfo.MnfID), "Manufacturer");
 
                         }
                         else
                         {
 
-                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + ManfInfo.MnfName, 518, 518, ManfInfo.MnfName, Comm.ToInt32(ManfInfo.MnfID), "Manufacturer");
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + ManfInfo.MnfName, 518, 518, "MnfName", Comm.ToInt32(ManfInfo.MnfID), "Manufacturer");
 
                         }
+
                     }
                 }
             }

@@ -154,6 +154,8 @@ namespace DigiposZen
 
         private void frmAccountGroup_Load(object sender, EventArgs e)
         {
+            if (Comm.CheckUserPermission(Common.UserActivity.DisplayWindow, "ACCOUNTGROUP") == false)
+                return;
             Cursor.Current = Cursors.WaitCursor;
             if (iIDFromEditWindow == 0)
             {
@@ -440,6 +442,18 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "ACCOUNTGROUP") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "ACCOUNTGROUP") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 SaveData();
                 Cursor.Current = Cursors.Default;
@@ -457,6 +471,9 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "ACCOUNTGROUP") == false)
+                    return;
+
                 Cursor.Current = Cursors.WaitCursor;
                 strSelectNodeName = Convert.ToString(trvwParentAccGroup.SelectedNode.Text);
 
@@ -467,7 +484,7 @@ namespace DigiposZen
                     if (dlgResult == DialogResult.Yes)
                     {
                         DeleteData();
-                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + AccGroupInfo.AccountGroup, 506, 506, AccGroupInfo.AccountGroup, Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
+                        Comm.writeuserlog(Common.UserActivity.Delete_Entry, newdata, olddata, "Deleted " + AccGroupInfo.AccountGroup, 506, 506, "AccountGroup", Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
 
                     }
                 }
@@ -809,13 +826,13 @@ namespace DigiposZen
                             if (iIDFromEditWindow > 0)
                             {
 
-                                Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " AccountGroup to " + AccGroupInfo.AccountGroup, 506, 506, AccGroupInfo.AccountGroup, Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
+                                Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " AccountGroup to " + AccGroupInfo.AccountGroup, 506, 506, "AccountGroup", Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
 
                             }
                             else
                             {
 
-                                Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AccGroupInfo.AccountGroup, 506, 506, AccGroupInfo.AccountGroup, Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
+                                Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AccGroupInfo.AccountGroup, 506, 506, "AccountGroup", Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
 
                             }
                             if (bFromEditWindowAccGp == true && bDirectDelete == false)
@@ -836,13 +853,13 @@ namespace DigiposZen
                             if (iIDFromEditWindow > 0)
                             {
 
-                                Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " AccountGroup to " + AccGroupInfo.AccountGroup, 506, 506, AccGroupInfo.AccountGroup, Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
+                                Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " AccountGroup to " + AccGroupInfo.AccountGroup, 506, 506, "AccountGroup", Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
 
                             }
                             else
                             {
 
-                                Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AccGroupInfo.AccountGroup, 506, 506, AccGroupInfo.AccountGroup, Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
+                                Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + AccGroupInfo.AccountGroup, 506, 506, "AccountGroup", Comm.ToInt32(AccGroupInfo.AccountGroupID), "Account Group");
 
                             }
                             if (bFromEditWindowAccGp == true && bDirectDelete == false)

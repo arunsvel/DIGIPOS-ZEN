@@ -57,10 +57,10 @@ namespace DigiposZen
             InitializeComponent();
             Application.AddMessageFilter(this);
 
-            mFormName = sFormName;
-
             mVchtypeid = VchtypeID;
             mParentID = ParentID;
+
+            mFormName = sFormName;
 
             try
             {
@@ -121,6 +121,120 @@ namespace DigiposZen
             //Syncfusion.GridHelperClasses.GridExcelFilter gridExcelFilter = new GridExcelFilter();
             //gridExcelFilter.WireGrid(this.gridGroupingControlSearch);
 
+            //if (ParentID == 0)
+            //{
+            //    if (sFormName.ToUpper() == "FRMITEMCATEGORY")
+            //    {
+            //        rdoCategory.Checked = true;
+            //        GetDataAsperMenuClick("CATEGORIES");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMMANUFACTURER")
+            //    {
+            //        rdoManufacturer.Checked = true;
+            //        GetDataAsperMenuClick("MANUFACTURER");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMBRANDMASTER")
+            //    {
+            //        rdoBrand.Checked = true;
+            //        GetDataAsperMenuClick("BRAND");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMSIZEMASTER")
+            //    {
+            //        rdoSize.Checked = true;
+            //        GetDataAsperMenuClick("SIZE");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMCOLORMASTER")
+            //    {
+            //        rdoColor.Checked = true;
+            //        GetDataAsperMenuClick("COLOR");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMUNITMASTER")
+            //    {
+            //        rdoUnit.Checked = true;
+            //        GetDataAsperMenuClick("UNIT");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMDISCOUNTGROUP")
+            //    {
+            //        rdoDiscGroup.Checked = true;
+            //        GetDataAsperMenuClick("DISCGROUP");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMAREAMASTER")
+            //    {
+            //        rdoArea.Checked = true;
+            //        GetDataAsperMenuClick("AREA");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMAGENTMASTER")
+            //    {
+            //        rdoAgent.Checked = true;
+            //        GetDataAsperMenuClick("AGENT");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMLEDGER")
+            //    {
+            //        rdoLedger.Checked = true;
+            //        GetDataAsperMenuClick("LEDGER");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMTAXMODE")
+            //    {
+            //        rdoTaxMode.Checked = true;
+            //        GetDataAsperMenuClick("TAXMODE");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMACCOUNTGROUP")
+            //    {
+            //        rdoAccountGroup.Checked = true;
+            //        GetDataAsperMenuClick("ACCOUNTGROUP");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMUSERGROUP")
+            //    {
+            //        rdoUserGroup.Checked = true;
+            //        GetDataAsperMenuClick("USERGROUP");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMSETTINGS")
+            //    {
+            //        rdoSettings.Checked = true;
+            //        GetDataAsperMenuClick("SETTINGS");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMSTATE")
+            //    {
+            //        rdoState.Checked = true;
+            //        GetDataAsperMenuClick("STATE");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMCOSTCENTRE")
+            //    {
+            //        rdoCostCentre.Checked = true;
+            //        GetDataAsperMenuClick("COSTCENTRE");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMEMPLOYEE")
+            //    {
+            //        rdoEmployee.Checked = true;
+            //        GetDataAsperMenuClick("EMPLOYEE");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMSTOCKDEPARTMENT")
+            //    {
+            //        rdoStockDepartment.Checked = true;
+            //        GetDataAsperMenuClick("STOCKDEPARTMENT");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMDEPARTMENT")
+            //    {
+            //        rdoDepartment.Checked = true;
+            //        GetDataAsperMenuClick("DEPARTMENT");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMCASHDESKMASTER")
+            //    {
+            //        rdoCashDesk.Checked = true;
+            //        GetDataAsperMenuClick("CASHDESK");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMUSER")
+            //    {
+            //        rdoUser.Checked = true;
+            //        GetDataAsperMenuClick("USER");
+            //    }
+            //    if (sFormName.ToUpper() == "FRMITEMMASTER")
+            //    {
+            //        rdoItemMaster.Checked = true;
+            //        GetDataAsperMenuClick("FRMITEMMASTER");
+            //    }
+            //}
+
             Comm.LoadAppSettings();
             ApplicationSettings();
             RadioButtonDoubleClick();
@@ -161,10 +275,10 @@ namespace DigiposZen
         clsHSNMaster clsHSN = new clsHSNMaster();
 
         UspInsertHSNmasterInfo HSNmasterInfo = new UspInsertHSNmasterInfo();
+        UspGetHSNInfo GetHSN = new UspGetHSNInfo();
 
         UspGetCategoriesinfo Catinfo = new UspGetCategoriesinfo();
         UspGetManufacturerInfo Manfinfo = new UspGetManufacturerInfo();
-        UspGetHSNInfo GetHSN = new UspGetHSNInfo();
         UspGetBrandinfo GetBrandInfo = new UspGetBrandinfo();
         UspGetColorInfo GetcolorInfo = new UspGetColorInfo();
         UspGetSizeInfo Getsizeinfo = new UspGetSizeInfo();
@@ -386,13 +500,7 @@ namespace DigiposZen
         }
         private void frmEditWindow_Load(object sender, EventArgs e)
         {
-            //if (mOpenGroup == "Masters")
-            //    rdoMasters.Checked = true;
-            //else if (mOpenGroup == "User")
-            //    rdoUserMngmt.Checked = true;
-            //else if (mOpenGroup == "Settings")
-            //    rdoSettings.Checked = true;
-
+            rdoMasters.Checked = true;
             cboListCount.SelectedIndex = 0;
             txtSearch.Select(0, txtSearch.Text.Length);
             
@@ -405,32 +513,11 @@ namespace DigiposZen
             HideButtons();
             FillTreeview();
 
-            rdoMasters.Checked = false;
-            rdoCategory.Checked = false;
+            rdoMasters.Checked = true;
+            rdoMasters.PerformClick();
 
-            rdoTransaction.Checked = false;
-            rdoUserMngmt.Checked = false;
-
-            //if (mOpenGroup == "Masters")
-            //{
-            //    rdoMasters.Checked = true;
-            //    rdoMasters.PerformClick();
-            //}
-            //else if (mOpenGroup == "User")
-            //{
-            //    rdoUserMngmt.Checked = true;
-            //    UserManagementClick(true);
-            //}
-            //else if (mOpenGroup == "Settings")
-            //{
-            //    rdoUserGroup.Checked = true;
-            //    rdoUserGroup.PerformClick();
-            //}
             if (mParentID > 0)
             {
-                rdoTransaction.Checked = true;
-                rdoTransaction.PerformClick();
-
                 sqlControl rs = new sqlControl();
 
                 rs.Open("Select Parentid, Vchtypeid, vchtype from tblvchtype where vchtypeid=" + mVchtypeid.ToString());
@@ -456,179 +543,6 @@ namespace DigiposZen
                     FillTransactionDetails(tnParent);
                 }
             }
-
-            strFormHeaderName = "";
-            /*
-            if (mParentID == 0)
-            {
-                if (mFormName.ToUpper() == "FRMITEMCATEGORY")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoCategory.Checked = true;
-                    GetDataAsperMenuClick("CATEGORIES");
-                }
-                if (mFormName.ToUpper() == "FRMMANUFACTURER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoManufacturer.Checked = true;
-                    GetDataAsperMenuClick("MANUFACTURER");
-                }
-                if (mFormName.ToUpper() == "FRMBRANDMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoBrand.Checked = true;
-                    GetDataAsperMenuClick("BRAND");
-                }
-                if (mFormName.ToUpper() == "FRMSIZEMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoSize.Checked = true;
-                    GetDataAsperMenuClick("SIZE");
-                }
-                if (mFormName.ToUpper() == "FRMCOLORMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoColor.Checked = true;
-                    GetDataAsperMenuClick("COLOR");
-                }
-                if (mFormName.ToUpper() == "FRMUNITMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoUnit.Checked = true;
-                    GetDataAsperMenuClick("UNIT");
-                }
-                if (mFormName.ToUpper() == "FRMDISCOUNTGROUP")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoDiscGroup.Checked = true;
-                    GetDataAsperMenuClick("DISCGROUP");
-                }
-                if (mFormName.ToUpper() == "FRMAREAMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoArea.Checked = true;
-                    GetDataAsperMenuClick("AREA");
-                }
-                if (mFormName.ToUpper() == "FRMAGENTMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoAgent.Checked = true;
-                    GetDataAsperMenuClick("AGENT");
-                }
-                if (mFormName.ToUpper() == "FRMLEDGER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoLedger.Checked = true;
-                    GetDataAsperMenuClick("LEDGER");
-                }
-                if (mFormName.ToUpper() == "FRMTAXMODE")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoTaxMode.Checked = true;
-                    GetDataAsperMenuClick("TAXMODE");
-                }
-                if (mFormName.ToUpper() == "FRMACCOUNTGROUP")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoAccountGroup.Checked = true;
-                    GetDataAsperMenuClick("ACCOUNTGROUP");
-                }
-                if (mFormName.ToUpper() == "FRMSTATE")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoState.Checked = true;
-                    GetDataAsperMenuClick("STATE");
-                }
-                if (mFormName.ToUpper() == "FRMCOSTCENTRE")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoCostCentre.Checked = true;
-                    GetDataAsperMenuClick("COSTCENTRE");
-                }
-                if (mFormName.ToUpper() == "FRMEMPLOYEE")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoEmployee.Checked = true;
-                    GetDataAsperMenuClick("EMPLOYEE");
-                }
-                if (mFormName.ToUpper() == "FRMSTOCKDEPARTMENT")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoStockDepartment.Checked = true;
-                    GetDataAsperMenuClick("STOCKDEPARTMENT");
-                }
-                if (mFormName.ToUpper() == "FRMDEPARTMENT")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoDepartment.Checked = true;
-                    GetDataAsperMenuClick("DEPARTMENT");
-                }
-                if (mFormName.ToUpper() == "FRMCASHDESKMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoCashDesk.Checked = true;
-                    GetDataAsperMenuClick("CASHDESK");
-                }
-                if (mFormName.ToUpper() == "FRMITEMMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoMasters.PerformClick();
-                    rdoItemMaster.Checked = true;
-                    GetDataAsperMenuClick("FRMITEMMASTER");
-                }
-
-
-                //-------User section
-                if (mFormName.ToUpper() == "FRMUSERGROUP")
-                {
-                    rdoUserMngmt.Checked = true;
-                    rdoUserMngmt.PerformClick();
-                    mOpenGroup = "User";
-                    rdoUserMngmt.Checked = true;
-                    UserManagementClick(true);
-                    rdoUserGroup.Checked = true;
-                    GetDataAsperMenuClick("USERGROUP");
-                }
-                if (mFormName.ToUpper() == "FRMUSER")
-                {
-                    rdoUserMngmt.Checked = true;
-                    rdoUserMngmt.PerformClick();
-                    mOpenGroup = "User";
-                    UserManagementClick(true);
-                    rdoUserMngmt.Checked = true;
-                    rdoUser.PerformClick();
-                    //rdoUser.Checked = true;
-                    //GetDataAsperMenuClick("USER");
-                }
-
-                //-------Settings section
-                if (mFormName.ToUpper() == "FRMSETTINGS")
-                {
-                    mOpenGroup = "Settings";
-                    rdoSettings.Checked = true;
-                    rdoSettings.PerformClick();
-                    GetDataAsperMenuClick("SETTINGS");
-                }
-            }
-*/
         }
         private void frmEditWindow_KeyDown(object sender, KeyEventArgs e)
         {
@@ -802,7 +716,6 @@ namespace DigiposZen
         {
             UserManagementClick();
         }
-
         private void UserManagementClick(bool ForceExpand = false)
         {
             try
@@ -829,7 +742,6 @@ namespace DigiposZen
             catch
             { }
         }
-
         private void rdoReport_Click(object sender, EventArgs e)
         {
             if (rdoReport.Checked == true)
@@ -1440,6 +1352,10 @@ namespace DigiposZen
         {
             if (rdoCategory.Checked == true)
             {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "CATEGORY") == false)
+                        return;
+
                 frmItemCategory frmCat = new frmItemCategory(0, false);
                 frmCat.MdiParent = this.MdiParent;
                 frmCat.Show();
@@ -1447,6 +1363,9 @@ namespace DigiposZen
             }
             else if (rdoManufacturer.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "MANUFACTURER") == false)
+                    return;
+
                 frmManufacturer frm = new frmManufacturer(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1454,6 +1373,9 @@ namespace DigiposZen
             }
             else if (rdoBrand.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "BRAND") == false)
+                    return;
+
                 frmBrandMaster frm = new frmBrandMaster(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1461,6 +1383,9 @@ namespace DigiposZen
             }
             else if (rdoDiscGroup.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "DISCOUNTGROUP") == false)
+                    return;
+
                 frmDiscountGroup frm = new frmDiscountGroup(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1468,6 +1393,9 @@ namespace DigiposZen
             }
             else if (rdoSize.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "SIZE") == false)
+                    return;
+
                 FrmSizeMaster frm = new FrmSizeMaster(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1475,6 +1403,9 @@ namespace DigiposZen
             }
             else if (rdoColor.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "COLOR") == false)
+                    return;
+
                 frmColorMaster frm = new frmColorMaster(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1482,6 +1413,9 @@ namespace DigiposZen
             }
             else if (rdoUnit.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "UNIT") == false)
+                    return;
+
                 frmUnitMaster frm = new frmUnitMaster(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1489,6 +1423,9 @@ namespace DigiposZen
             }
             else if (rdoItemMaster.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "ITEMMASTER") == false)
+                    return;
+
                 frmItemMaster frm = new frmItemMaster(0, true);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1496,6 +1433,9 @@ namespace DigiposZen
             }
             else if (rdoArea.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "AREA") == false)
+                    return;
+
                 frmAreaMaster frm = new frmAreaMaster(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1503,6 +1443,9 @@ namespace DigiposZen
             }
             else if (rdoAgent.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "AGENT") == false)
+                    return;
+
                 frmAgentMaster frm = new frmAgentMaster(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1510,6 +1453,9 @@ namespace DigiposZen
             }
             else if (rdoSupplier.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "LEDGER") == false)
+                    return;
+
                 frmLedger frm = new frmLedger(0, false,0, "SUPPLIER");
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1517,6 +1463,9 @@ namespace DigiposZen
             }
             else if (rdoCustomer.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "LEDGER") == false)
+                    return;
+
                 frmLedger frm = new frmLedger(0, false, 0, "CUSTOMER");
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1524,6 +1473,9 @@ namespace DigiposZen
             }
             else if (rdoLedger.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "LEDGER") == false)
+                    return;
+
                 frmLedger frm = new frmLedger(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1531,6 +1483,9 @@ namespace DigiposZen
             }
             else if (rdoTaxMode.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "TAXMODE") == false)
+                    return;
+
                 frmTaxMode frm = new frmTaxMode(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1538,6 +1493,9 @@ namespace DigiposZen
             }
             else if (rdoAccountGroup.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "ACCOUNTGROUP") == false)
+                    return;
+
                 frmAccountGroup frm = new frmAccountGroup(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1545,6 +1503,9 @@ namespace DigiposZen
             }
             else if (rdoVoucherType.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "VOUCHERTYPE") == false)
+                    return;
+
                 frmVouchertype frm = new frmVouchertype(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1552,6 +1513,9 @@ namespace DigiposZen
             }
             else if (rdoSettings.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "SETTINGS") == false)
+                    return;
+
                 frmSettings frm = new frmSettings(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1559,6 +1523,9 @@ namespace DigiposZen
             }
             else if (rdoState.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "STATE") == false)
+                    return;
+
                 frmState frm = new frmState(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1566,6 +1533,9 @@ namespace DigiposZen
             }
             else if (rdoCostCentre.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "COSTCENTRE") == false)
+                    return;
+
                 frmCostCentre frm = new frmCostCentre(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1573,6 +1543,9 @@ namespace DigiposZen
             }
             else if (rdoEmployee.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "EMPLOYEE") == false)
+                    return;
+
                 frmEmployee frm = new frmEmployee(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1580,6 +1553,9 @@ namespace DigiposZen
             }
             else if (rdoStockDepartment.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "STOCKDEPARTMENT") == false)
+                    return;
+
                 frmDepartment frm = new frmDepartment(0, false, 0);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1587,6 +1563,9 @@ namespace DigiposZen
             }
             else if (rdoDepartment.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "DEPARTMENT") == false)
+                    return;
+
                 frmDepartment frm = new frmDepartment(0, false, 1);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1594,6 +1573,9 @@ namespace DigiposZen
             }
             else if (rdoCashDesk.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "CASHDESK") == false)
+                    return;
+
                 frmCashDeskMaster frm = new frmCashDeskMaster(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1601,6 +1583,9 @@ namespace DigiposZen
             }
             else if (rdoStockAnalysis.Checked == true) //Analysis
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "STOCKANALYSIS") == false)
+                    return;
+
                 frmItemAnalysis frm = new frmItemAnalysis();
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1608,6 +1593,9 @@ namespace DigiposZen
             }
             else if (rdoUserGroup.Checked == true) //User Management
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "USERGROUP") == false)
+                    return;
+
                 frmUserGroup frm = new frmUserGroup(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1615,13 +1603,26 @@ namespace DigiposZen
             }
             else if (rdoUser.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "USER") == false)
+                    return;
                 frmUser frm = new frmUser(0, false);
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
+                frm.BringToFront();
+            }
+            else if (rdoHSN.Checked == true)
+            {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "HSN") == false)
+                    return;
+                frmHSN frm = new frmHSN(0, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
                 frm.BringToFront();
             }
             else if (rdoPurchaseReport.Checked == true) //Analysis
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "PURCHASEREPORT") == false)
+                    return;
                 frmPurchaseReport frm = new frmPurchaseReport();
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -1700,6 +1701,8 @@ namespace DigiposZen
             int iSelectedID = 0;
             if (rdoCategory.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "CATEGORY") == false)
+                    return;
                 iSelectedID = GetSelectedRowID("CategoryID");
                 if (iSelectedID == 1)
                 {
@@ -1715,6 +1718,9 @@ namespace DigiposZen
             }
             else if (rdoManufacturer.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "MANUFACTURER") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("MnfID");
                 if (iSelectedID == 1)
                 {
@@ -1730,6 +1736,8 @@ namespace DigiposZen
             }
             else if (rdoBrand.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "BRAND") == false)
+                    return;
                 iSelectedID = GetSelectedRowID("brandID");
                 if (iSelectedID == 1)
                 {
@@ -1741,11 +1749,13 @@ namespace DigiposZen
                     frmBrand.MdiParent = this.MdiParent;
                     frmBrand.Show();
                     frmBrand.BringToFront();
-                    //GetDataAsperMenuClick("BRAND");
+                    
                 }
             }
             else if (rdoColor.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "COLOR") == false)
+                    return;
                 iSelectedID = GetSelectedRowID("ColorID");
                 if (iSelectedID == 1)
                 {
@@ -1762,6 +1772,8 @@ namespace DigiposZen
             }
             else if (rdoDiscGroup.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "DISCOUNTGROUP") == false)
+                    return;
                 iSelectedID = GetSelectedRowID("DiscountGroupID");
                 if (iSelectedID == 1)
                 {
@@ -1778,6 +1790,8 @@ namespace DigiposZen
             }
             else if (rdoUnit.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "UNIT") == false)
+                    return;
                 iSelectedID = GetSelectedRowID("UnitID");
                 frmUnitMaster frmUnit = new frmUnitMaster(iSelectedID, true);
                 frmUnit.MdiParent = this.MdiParent;
@@ -1787,6 +1801,8 @@ namespace DigiposZen
             }
             else if (rdoSize.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "SIZE") == false)
+                    return;
                 iSelectedID = GetSelectedRowID("SizeID");
                 if (iSelectedID == 1)
                 {
@@ -1803,6 +1819,8 @@ namespace DigiposZen
             }
             else if (rdoArea.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "AREA") == false)
+                    return;
                 iSelectedID = GetSelectedRowID("AreaID");
                 if (iSelectedID == 1)
                 {
@@ -1819,6 +1837,9 @@ namespace DigiposZen
             }
             else if (rdoAgent.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "AGENT") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("AgentID");
                 if (iSelectedID == 1)
                 {
@@ -1835,6 +1856,9 @@ namespace DigiposZen
             }
             else if (rdoItemMaster.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "ITEMMASTER") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("ItemID");
                 frmItemMaster frmItm = new frmItemMaster(iSelectedID, true);
                 frmItm.MdiParent = this.MdiParent;
@@ -1844,6 +1868,9 @@ namespace DigiposZen
             }
             else if (rdoSupplier.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "LEDGER") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("LID");
                 frmLedger frmLed = new frmLedger(iSelectedID, true,0,"SUPPLIER");
                 frmLed.MdiParent = this.MdiParent;
@@ -1852,6 +1879,9 @@ namespace DigiposZen
             }
             else if (rdoCustomer.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "LEDGER") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("LID");
                 frmLedger frmLed = new frmLedger(iSelectedID, true,0, "CUSTOMER");
                 frmLed.MdiParent = this.MdiParent;
@@ -1860,6 +1890,9 @@ namespace DigiposZen
             }
             else if (rdoLedger.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "LEDGER") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("LID");
                 frmLedger frmLed = new frmLedger(iSelectedID, true);
                 frmLed.MdiParent = this.MdiParent;
@@ -1869,6 +1902,9 @@ namespace DigiposZen
             }
             else if (rdoTaxMode.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "TAXMODE") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("TaxModeID");
                 frmTaxMode frmTax = new frmTaxMode(iSelectedID, true);
                 frmTax.MdiParent = this.MdiParent;
@@ -1878,6 +1914,9 @@ namespace DigiposZen
             }
             else if (rdoAccountGroup.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "ACCOUNTGROUP") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("AccountGroupID");
                 frmAccountGroup frmAcc = new frmAccountGroup(iSelectedID, true);
                 frmAcc.MdiParent = this.MdiParent;
@@ -1887,6 +1926,9 @@ namespace DigiposZen
             }
             else if (rdoVoucherType.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "VOUCHERTYPE") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("VchTypeID");
                 frmVouchertype frm = new frmVouchertype(iSelectedID, false);
                 frm.MdiParent = this.MdiParent;
@@ -1896,6 +1938,9 @@ namespace DigiposZen
             }
             else if (rdoState.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "STATE") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("StateId");
                 frmState frmState = new frmState(iSelectedID, true);
                 frmState.MdiParent = this.MdiParent;
@@ -1905,6 +1950,9 @@ namespace DigiposZen
             }
             else if (rdoCostCentre.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "COSTCENTER") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("CCID");
                 frmCostCentre frmCCntr = new frmCostCentre(iSelectedID, true);
                 frmCCntr.MdiParent = this.MdiParent;
@@ -1913,6 +1961,9 @@ namespace DigiposZen
             }
             else if (rdoEmployee.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "EMPLOYEE") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("EmpID");
                 if (iSelectedID == 1)
                 {
@@ -1928,6 +1979,9 @@ namespace DigiposZen
             }
             else if (rdoStockDepartment.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "STOCKDEPARTMENT") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("DepartmentID");
                 if (iSelectedID == 1)
                 {
@@ -1943,6 +1997,9 @@ namespace DigiposZen
             }
             else if (rdoDepartment.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "DEPARTMENT") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("DepartmentID");
                 if (iSelectedID == 1)
                 {
@@ -1958,6 +2015,9 @@ namespace DigiposZen
             }
             else if (rdoCashDesk.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "CASHDESK") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("PaymentID");
                 if (iSelectedID <= 6)
                 {
@@ -1975,6 +2035,9 @@ namespace DigiposZen
             ////User Management
             else if (rdoUserGroup.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "USERGROUP") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("ID");
                 frmUserGroup frmUserGp = new frmUserGroup(iSelectedID, true);
                 frmUserGp.MdiParent = this.MdiParent;
@@ -1983,11 +2046,25 @@ namespace DigiposZen
             }
             else if (rdoUser.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "USER") == false)
+                    return;
+
                 iSelectedID = GetSelectedRowID("UserID");
                 frmUser frmUsr = new frmUser(iSelectedID, true);
                 frmUsr.MdiParent = this.MdiParent;
                 frmUsr.Show();
                 frmUsr.BringToFront();
+            }
+            else if (rdoHSN.Checked == true)
+            {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "HSN") == false)
+                    return;
+
+                iSelectedID = GetSelectedRowID("HID");
+                frmHSN frmhsn = new frmHSN(iSelectedID, true);
+                frmhsn.MdiParent = this.MdiParent;
+                frmhsn.Show();
+                frmhsn.BringToFront();
             }
 
             ////Transaction Treeview
@@ -2085,6 +2162,9 @@ namespace DigiposZen
             int iAction = 2;
             if (rdoCategory.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "CATEGORY") == false)
+                    return;
+
                 if (GetSelectedRowID("CategoryID") > 5)
                 {
                     DialogResult dlgResult1 = MessageBox.Show("Are you sure to delete category[" + GetSelectedRowData("CATEGORY") + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2148,6 +2228,10 @@ namespace DigiposZen
             }
             else if (rdoManufacturer.Checked == true)
             {
+
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "MANUFACTURER") == false)
+                    return;
+
                 if (GetSelectedRowID("MnfID") > 5)
                 {
                     DialogResult dlgResult2 = MessageBox.Show("Are you sure to delete  manufacturer[" + GetSelectedRowData("Manufacturer") + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2186,41 +2270,11 @@ namespace DigiposZen
                     MessageBox.Show("Default manufacturer [" + GetSelectedRowData("Manufacturer") + "] can't be deleted.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            else if (rdoHSN.Checked == true)
-            {
-                if (GetSelectedRowID("MnfID") > 5)
-                {
-                    DialogResult dlgResult2 = MessageBox.Show("Are you sure to delete  hsn [" + GetSelectedRowData("HSNCode") + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                    if (dlgResult2.Equals(DialogResult.Yes))
-                        if (dlgResult2 == DialogResult.Yes)
-                        {
-                            HSNmasterInfo.HID = GetSelectedRowID("HID");
-
-                            sRet = clsManf.InsertUpdateDeleteManufacturer(ManfInsert, iAction);
-                            if (sRet.Length > 2)
-                            {
-                                strResult = sRet.Split('|');
-                                if (Convert.ToInt32(strResult[0].ToString()) == -1)
-                                {
-                                    if (strResult[1].ToString().ToUpper().Contains("THE DELETE STATEMENT CONFLICTED WITH THE REFERENCE CONSTRAINT"))
-                                        MessageBox.Show("Hey! There are Items Associated with this Manufacturer[" + GetSelectedRowData("Manufacturer") + "].Please Check.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    else
-                                        MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
-                                }
-                                else
-                                    RemoveGridRowAfterDelete();
-                            }
-                            else
-                                RemoveGridRowAfterDelete();
-                            //GetDataAsperMenuClick("MANUFACTURER");
-                        }
-                }
-                else
-                    MessageBox.Show("Default manufacturer [" + GetSelectedRowData("Manufacturer") + "] can't be deleted.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
             else if (rdoColor.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "COLOR") == false)
+                    return;
+
                 if (GetSelectedRowID("ColorID") > 5)
                 {
                     DialogResult dlgResult3 = MessageBox.Show("Are you sure to delete  Color[" + GetSelectedRowData("Color") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2263,6 +2317,9 @@ namespace DigiposZen
             }
             else if (rdoSize.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "SIZE") == false)
+                    return;
+
                 if (GetSelectedRowID("SizeID") > 5)
                 {
                     DialogResult dlgResult4 = MessageBox.Show("Are you sure to delete Size[" + GetSelectedRowData("Size") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2305,6 +2362,9 @@ namespace DigiposZen
             }
             else if (rdoUnit.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "UNIT") == false)
+                    return;
+
                 if (GetSelectedRowID("UnitID") > 5)
                 {
                     DialogResult dlgResult5 = MessageBox.Show("Are you sure to delete Unit[" + GetSelectedRowData("Unit") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2342,6 +2402,9 @@ namespace DigiposZen
             }
             else if (rdoDiscGroup.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "DISCOUNTGROUP") == false)
+                    return;
+
                 if (GetSelectedRowID("DiscountGroupID") > 5)
                 {
                     DialogResult dlgResult6 = MessageBox.Show("Are you sure to delete Discount Group[" + GetSelectedRowData("Discount Group") + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2383,6 +2446,9 @@ namespace DigiposZen
             }
             else if (rdoBrand.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "BRAND") == false)
+                    return;
+
                 if (GetSelectedRowID("brandID") > 5)
                 {
                     DialogResult dlgResult7 = MessageBox.Show("Are you sure to delete Brand[" + GetSelectedRowData("Brand") + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2424,6 +2490,9 @@ namespace DigiposZen
             }
             else if (rdoArea.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "AREA") == false)
+                    return;
+
                 if (GetSelectedRowID("AreaID") > 5)
                 {
                     DialogResult dlgResult8 = MessageBox.Show("Are you sure to delete Area[" + GetSelectedRowData("Area") + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2474,6 +2543,9 @@ namespace DigiposZen
             }
             else if (rdoAgent.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "AGENT") == false)
+                    return;
+
                 if (GetSelectedRowID("AgentID") > 5)
                 {
                     DialogResult dlgResult9 = MessageBox.Show("Are you sure to delete  Agent[" + GetSelectedRowData("Agent Code") + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2527,6 +2599,9 @@ namespace DigiposZen
             }
             else if (rdoItemMaster.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "ITEMMASTER") == false)
+                    return;
+
                 DialogResult dlgRsltItm = MessageBox.Show("Are you sure to delete Item[" + GetSelectedRowData("Item") + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
                 if (dlgRsltItm.Equals(DialogResult.Yes))
                 {
@@ -2641,6 +2716,9 @@ namespace DigiposZen
             }
             else if (rdoLedger.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "LEDGER") == false)
+                    return;
+
                 if (GetSelectedRowID("LID") > 101)
                 {
                     DialogResult dlgResult10 = MessageBox.Show("Are you sure to delete Ledger[" + GetSelectedRowData("Ledger Name") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2698,6 +2776,9 @@ namespace DigiposZen
             }
             else if (rdoSupplier.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "LEDGER") == false)
+                    return;
+
                 if (GetSelectedRowID("LID") > 101)
                 {
                     DialogResult dlgResult10 = MessageBox.Show("Are you sure to delete Supplier[" + GetSelectedRowData("Supplier Name") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2755,6 +2836,9 @@ namespace DigiposZen
             }
             else if (rdoCustomer.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "LEDGER") == false)
+                    return;
+
                 if (GetSelectedRowID("LID") > 101)
                 {
                     DialogResult dlgResult10 = MessageBox.Show("Are you sure to delete Customer[" + GetSelectedRowData("Customer Name") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2812,6 +2896,9 @@ namespace DigiposZen
             }
             else if (rdoTaxMode.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "TAXMODE") == false)
+                    return;
+
                 if (GetSelectedRowID("TaxModeID") > 5)
                 {
                     DialogResult dlgResult11 = MessageBox.Show("Are you sure to delete Tax Mode[" + GetSelectedRowData("Tax Mode") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2848,6 +2935,9 @@ namespace DigiposZen
             }
             else if (rdoAccountGroup.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "ACCOUNTGROUP") == false)
+                    return;
+
                 if (GetSelectedRowID("AccountGroupID") > 101)
                 {
                     DialogResult dlgResult12 = MessageBox.Show("Are you sure to delete Account Group[" + GetSelectedRowData("Account Group") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2899,6 +2989,9 @@ namespace DigiposZen
             }
             else if (rdoState.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "STATE") == false)
+                    return;
+
                 if (GetSelectedRowID("StateId") > 5)
                 {
                     DialogResult dlgResult11 = MessageBox.Show("Are you sure to delete State Code[" + GetSelectedRowData("State Code") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2939,6 +3032,9 @@ namespace DigiposZen
             }
             else if (rdoCostCentre.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "COSTCENTRE") == false)
+                    return;
+
                 if (GetSelectedRowID("CCID") > 5)
                 {
                     DialogResult dlgResult11 = MessageBox.Show("Are you sure to delete Cost Centre[" + GetSelectedRowData("Cost Centre Name") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -2982,6 +3078,9 @@ namespace DigiposZen
             }
             else if (rdoEmployee.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "EMPLOYEE") == false)
+                    return;
+
                 if (GetSelectedRowID("EmpID") > 5)
                 {
                     DialogResult dlgResult11 = MessageBox.Show("Are you sure to delete Employee[" + GetSelectedRowData("Name") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -3066,9 +3165,13 @@ namespace DigiposZen
                 }
                 else
                     MessageBox.Show("Default Employee [" + GetSelectedRowData("Name") + "] can't be deleted.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
             else if (rdoStockDepartment.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "STOCKDEPARTMENT") == false)
+                    return;
+
                 if (GetSelectedRowID("DepartmentID") > 5)
                 {
                     DialogResult dlgResult11 = MessageBox.Show("Are you sure to delete Department[" + GetSelectedRowData("Department") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -3108,6 +3211,9 @@ namespace DigiposZen
             }
             else if (rdoDepartment.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "DEPARTMENT") == false)
+                    return;
+
                 if (GetSelectedRowID("DepartmentID") > 5)
                 {
                     DialogResult dlgResult11 = MessageBox.Show("Are you sure to delete Department[" + GetSelectedRowData("Department") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -3147,6 +3253,9 @@ namespace DigiposZen
             }
             else if (rdoCashDesk.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "CASHDESK") == false)
+                    return;
+
                 if (GetSelectedRowID("PaymentID") > 5)
                 {
                     DialogResult dlgResult11 = MessageBox.Show("Are you sure to delete cash desk master [" + GetSelectedRowData("PaymentType") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -3180,6 +3289,10 @@ namespace DigiposZen
             }
             else if (rdoUserGroup.Checked == true)
             {
+
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "USERGROUP") == false)
+                    return;
+
                 if (GetSelectedRowID("ID") > 5)
                 {
                     DialogResult dlgResult11 = MessageBox.Show("Are you sure to delete User Group[" + GetSelectedRowData("GroupName") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -3220,8 +3333,76 @@ namespace DigiposZen
                     MessageBox.Show("Default User Group [" + GetSelectedRowData("GroupName") + "] can't be deleted.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+            else if (rdoHSN.Checked == true)
+            {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "USERGROUP") == false)
+                    return;
+
+                if (GetSelectedRowID("HID") > 1)
+                {
+                    DialogResult dlgResult2 = MessageBox.Show("Are you sure to delete HSN [" + GetSelectedRowData("HSNCODE") + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    if (dlgResult2.Equals(DialogResult.Yes))
+                        if (dlgResult2 == DialogResult.Yes)
+                        {
+                            HSNmasterInfo.HID = GetSelectedRowID("HID");
+                            HSNmasterInfo.HSNCODE = GetSelectedRowData("HSNCODE");
+                            HSNmasterInfo.HSNDECRIPTION = "";
+                            HSNmasterInfo.HSNType = "";
+                            HSNmasterInfo.IGSTTaxPer = 0;
+                            HSNmasterInfo.CGSTTaxPer = 0;
+                            HSNmasterInfo.SGSTTaxPer = 0;
+                            HSNmasterInfo.IGSTTaxPer1 = 0;
+                            HSNmasterInfo.CGSTTaxPer1 = 0;
+                            HSNmasterInfo.SGSTTaxPer1 = 0;
+                            HSNmasterInfo.IGSTTaxPer2 = 0;
+                            HSNmasterInfo.CGSTTaxPer2 = 0;
+                            HSNmasterInfo.SGSTTaxPer2 = 0;
+                            HSNmasterInfo.IGSTTaxPer3 = 0;
+                            HSNmasterInfo.CGSTTaxPer3 = 0;
+                            HSNmasterInfo.SGSTTaxPer3 = 0;
+                            HSNmasterInfo.IGSTTaxPer4 = 0;
+                            HSNmasterInfo.CGSTTaxPer4 = 0;
+                            HSNmasterInfo.SGSTTaxPer4 = 0;
+                            HSNmasterInfo.blnSlabSystem = 0;
+                            HSNmasterInfo.CessPer = 0;
+                            HSNmasterInfo.CompCessQty = 0;
+                            HSNmasterInfo.TenantID = 1;
+                            HSNmasterInfo.ValueStartSB1 = 0;
+                            HSNmasterInfo.ValueEndSB1 = 0;
+                            HSNmasterInfo.ValueStartSB2 = 0;
+                            HSNmasterInfo.ValueEndSB2 = 0;
+                            HSNmasterInfo.ValueStartSB3 = 0;
+                            HSNmasterInfo.ValueEndSB3 = 0;
+                            HSNmasterInfo.ValueStartSB4 = 0;
+                            HSNmasterInfo.ValueEndSB4 = 0;
+
+                            sRet = clsHSN.InsertUpdateDeleteHSNMaster(HSNmasterInfo, iAction);
+                            if (sRet.Length > 2)
+                            {
+                                strResult = sRet.Split('|');
+                                if (Convert.ToInt32(strResult[0].ToString()) == -1)
+                                {
+                                    if (strResult[1].ToString().ToUpper().Contains("THE DELETE STATEMENT CONFLICTED WITH THE REFERENCE CONSTRAINT"))
+                                        MessageBox.Show("Hey! There are Items Associated with this HSN [" + GetSelectedRowData("HSNCode") + "]. Please Check.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    else
+                                        MessageBox.Show(strResult[1].ToString(), Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                                }
+                                else
+                                    RemoveGridRowAfterDelete();
+                            }
+                            else
+                                RemoveGridRowAfterDelete();
+                        }
+                }
+                else
+                    MessageBox.Show("Default HSNCode [" + GetSelectedRowData("HSNCode") + "] can't be deleted.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
             else if (rdoUser.Checked == true)
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "USERGROUP") == false)
+                    return;
+
                 if (GetSelectedRowID("UserID") > 5)
                 {
                     DialogResult dlgResult11 = MessageBox.Show("Are you sure to delete User[" + GetSelectedRowData("User Name") + "] Permanently ? ", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -3252,6 +3433,7 @@ namespace DigiposZen
                         UserInfo.ActiveCounterID = 0;
                         UserInfo.PIN = 0;
                         UserInfo.CCIDs = "";
+                     
                         sRet = clsUsr.InsertUpdateDeleteUserMaster(UserInfo, iAction);
                         if (sRet.Length > 2)
                         {
@@ -5024,161 +5206,170 @@ namespace DigiposZen
 
         private void frmEditWindow_Shown(object sender, EventArgs e)
         {
-            if (mParentID == 0)
+            try
             {
-                if (mFormName.ToUpper() == "FRMITEMCATEGORY")
+                if (mParentID == 0)
                 {
-                    rdoMasters.Checked = true;
-                    rdoCategory.Checked = true;
-                    GetDataAsperMenuClick("CATEGORIES");
-                }
-                if (mFormName.ToUpper() == "FRMMANUFACTURER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoManufacturer.Checked = true;
-                    GetDataAsperMenuClick("MANUFACTURER");
-                }
-                if (mFormName.ToUpper() == "FRMBRANDMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoBrand.Checked = true;
-                    GetDataAsperMenuClick("BRAND");
-                }
-                if (mFormName.ToUpper() == "FRMHSNCODE")
-                {
-                    rdoMasters.Checked = true;
-                    rdoHSN.Checked = true;
-                    GetDataAsperMenuClick("HSNCODE");
-                }
-                if (mFormName.ToUpper() == "FRMSIZEMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoSize.Checked = true;
-                    GetDataAsperMenuClick("SIZE");
-                }
-                if (mFormName.ToUpper() == "FRMCOLORMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoColor.Checked = true;
-                    GetDataAsperMenuClick("COLOR");
-                }
-                if (mFormName.ToUpper() == "FRMUNITMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoUnit.Checked = true;
-                    GetDataAsperMenuClick("UNIT");
-                }
-                if (mFormName.ToUpper() == "FRMDISCOUNTGROUP")
-                {
-                    rdoMasters.Checked = true;
-                    rdoDiscGroup.Checked = true;
-                    GetDataAsperMenuClick("DISCGROUP");
-                }
-                if (mFormName.ToUpper() == "FRMAREAMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoArea.Checked = true;
-                    GetDataAsperMenuClick("AREA");
-                }
-                if (mFormName.ToUpper() == "FRMAGENTMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoAgent.Checked = true;
-                    GetDataAsperMenuClick("AGENT");
-                }
-                if (mFormName.ToUpper() == "FRMLEDGER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoLedger.Checked = true;
-                    GetDataAsperMenuClick("LEDGER");
-                }
-                if (mFormName.ToUpper() == "FRMTAXMODE")
-                {
-                    rdoMasters.Checked = true;
-                    rdoTaxMode.Checked = true;
-                    GetDataAsperMenuClick("TAXMODE");
-                }
-                if (mFormName.ToUpper() == "FRMACCOUNTGROUP")
-                {
-                    rdoMasters.Checked = true;
-                    rdoAccountGroup.Checked = true;
-                    GetDataAsperMenuClick("ACCOUNTGROUP");
-                }
-                if (mFormName.ToUpper() == "FRMSTATE")
-                {
-                    rdoMasters.Checked = true;
-                    rdoState.Checked = true;
-                    GetDataAsperMenuClick("STATE");
-                }
-                if (mFormName.ToUpper() == "FRMCOSTCENTRE")
-                {
-                    rdoMasters.Checked = true;
-                    rdoCostCentre.Checked = true;
-                    GetDataAsperMenuClick("COSTCENTRE");
-                }
-                if (mFormName.ToUpper() == "FRMEMPLOYEE")
-                {
-                    rdoMasters.Checked = true;
-                    rdoEmployee.Checked = true;
-                    GetDataAsperMenuClick("EMPLOYEE");
-                }
-                if (mFormName.ToUpper() == "FRMSTOCKDEPARTMENT")
-                {
-                    rdoMasters.Checked = true;
-                    rdoStockDepartment.Checked = true;
-                    GetDataAsperMenuClick("STOCKDEPARTMENT");
-                }
-                if (mFormName.ToUpper() == "FRMDEPARTMENT")
-                {
-                    rdoMasters.Checked = true;
-                    rdoDepartment.Checked = true;
-                    GetDataAsperMenuClick("DEPARTMENT");
-                }
-                if (mFormName.ToUpper() == "FRMCASHDESKMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoCashDesk.Checked = true;
-                    GetDataAsperMenuClick("CASHDESK");
-                }
-                if (mFormName.ToUpper() == "FRMITEMMASTER")
-                {
-                    rdoMasters.Checked = true;
-                    rdoItemMaster.Checked = true;
-                    GetDataAsperMenuClick("FRMITEMMASTER");
-                }
+                    if (mFormName.ToUpper() == "FRMITEMCATEGORY")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoCategory.Checked = true;
+                        GetDataAsperMenuClick("CATEGORIES");
+                    }
+                    if (mFormName.ToUpper() == "FRMMANUFACTURER")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoManufacturer.Checked = true;
+                        GetDataAsperMenuClick("MANUFACTURER");
+                    }
+                    if (mFormName.ToUpper() == "FRMBRANDMASTER")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoBrand.Checked = true;
+                        GetDataAsperMenuClick("BRAND");
+                    }
+                    if (mFormName.ToUpper() == "FRMHSNCODE" || mFormName.ToUpper() == "FRMHSN")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoHSN.Checked = true;
+                        rdoHSN.PerformClick();
+                        //GetDataAsperMenuClick("HSNCODE");
+                    }
+                    if (mFormName.ToUpper() == "FRMSIZEMASTER")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoSize.Checked = true;
+                        GetDataAsperMenuClick("SIZE");
+                    }
+                    if (mFormName.ToUpper() == "FRMCOLORMASTER")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoColor.Checked = true;
+                        GetDataAsperMenuClick("COLOR");
+                    }
+                    if (mFormName.ToUpper() == "FRMUNITMASTER")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoUnit.Checked = true;
+                        GetDataAsperMenuClick("UNIT");
+                    }
+                    if (mFormName.ToUpper() == "FRMDISCOUNTGROUP")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoDiscGroup.Checked = true;
+                        GetDataAsperMenuClick("DISCGROUP");
+                    }
+                    if (mFormName.ToUpper() == "FRMAREAMASTER")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoArea.Checked = true;
+                        GetDataAsperMenuClick("AREA");
+                    }
+                    if (mFormName.ToUpper() == "FRMAGENTMASTER")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoAgent.Checked = true;
+                        GetDataAsperMenuClick("AGENT");
+                    }
+                    if (mFormName.ToUpper() == "FRMLEDGER")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoLedger.Checked = true;
+                        GetDataAsperMenuClick("LEDGER");
+                    }
+                    if (mFormName.ToUpper() == "FRMTAXMODE")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoTaxMode.Checked = true;
+                        GetDataAsperMenuClick("TAXMODE");
+                    }
+                    if (mFormName.ToUpper() == "FRMACCOUNTGROUP")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoAccountGroup.Checked = true;
+                        GetDataAsperMenuClick("ACCOUNTGROUP");
+                    }
+                    if (mFormName.ToUpper() == "FRMSTATE")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoState.Checked = true;
+                        GetDataAsperMenuClick("STATE");
+                    }
+                    if (mFormName.ToUpper() == "FRMCOSTCENTRE")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoCostCentre.Checked = true;
+                        GetDataAsperMenuClick("COSTCENTRE");
+                    }
+                    if (mFormName.ToUpper() == "FRMEMPLOYEE")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoEmployee.Checked = true;
+                        GetDataAsperMenuClick("EMPLOYEE");
+                    }
+                    if (mFormName.ToUpper() == "FRMSTOCKDEPARTMENT")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoStockDepartment.Checked = true;
+                        GetDataAsperMenuClick("STOCKDEPARTMENT");
+                    }
+                    if (mFormName.ToUpper() == "FRMDEPARTMENT")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoDepartment.Checked = true;
+                        GetDataAsperMenuClick("DEPARTMENT");
+                    }
+                    if (mFormName.ToUpper() == "FRMCASHDESKMASTER")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoCashDesk.Checked = true;
+                        GetDataAsperMenuClick("CASHDESK");
+                    }
+                    if (mFormName.ToUpper() == "FRMITEMMASTER")
+                    {
+                        rdoMasters.Checked = true;
+                        rdoItemMaster.Checked = true;
+                        GetDataAsperMenuClick("FRMITEMMASTER");
+                    }
 
 
-                //-------User section
-                if (mFormName.ToUpper() == "FRMUSERGROUP")
-                {
-                    rdoUserMngmt.Checked = true;
-                    rdoUserMngmt.PerformClick();
-                    mOpenGroup = "User";
-                    rdoUserMngmt.Checked = true;
-                    UserManagementClick(true);
-                    rdoUserGroup.Checked = true;
-                    GetDataAsperMenuClick("USERGROUP");
-                }
-                if (mFormName.ToUpper() == "FRMUSER")
-                {
-                    rdoUserMngmt.Checked = true;
-                    rdoUserMngmt.PerformClick();
-                    mOpenGroup = "User";
-                    UserManagementClick(true);
-                    rdoUserMngmt.Checked = true;
-                    rdoUser.PerformClick();
-                    //rdoUser.Checked = true;
-                    //GetDataAsperMenuClick("USER");
-                }
+                    //-------User section
+                    if (mFormName.ToUpper() == "FRMUSERGROUP")
+                    {
+                        rdoUserMngmt.Checked = true;
+                        rdoUserMngmt.PerformClick();
+                        mOpenGroup = "User";
+                        rdoUserMngmt.Checked = true;
+                        UserManagementClick(true);
+                        rdoUserGroup.Checked = true;
+                        GetDataAsperMenuClick("USERGROUP");
+                    }
+                    if (mFormName.ToUpper() == "FRMUSER")
+                    {
+                        rdoUserMngmt.Checked = true;
+                        rdoUserMngmt.PerformClick();
+                        mOpenGroup = "User";
+                        UserManagementClick(true);
+                        rdoUserMngmt.Checked = true;
+                        rdoUser.PerformClick();
+                        //rdoUser.Checked = true;
+                        //GetDataAsperMenuClick("USER");
+                    }
 
-                //-------Settings section
-                if (mFormName.ToUpper() == "FRMSETTINGS")
-                {
-                    mOpenGroup = "Settings";
-                    rdoSettings.Checked = true;
-                    rdoSettings.PerformClick();
-                    GetDataAsperMenuClick("SETTINGS");
+                    //-------Settings section
+                    if (mFormName.ToUpper() == "FRMSETTINGS")
+                    {
+                        mOpenGroup = "Settings";
+                        rdoSettings.Checked = true;
+                        rdoSettings.PerformClick();
+                        GetDataAsperMenuClick("SETTINGS");
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -5194,17 +5385,26 @@ namespace DigiposZen
 
         private void rdoHSN_Click(object sender, EventArgs e)
         {
-            if (rdoHSN.Checked == true)
+            try
             {
-                HideButtons();
-                AnalysisChecked();
-                UserManagementChecked();
-                ReportChecked();
-                strFormHeaderName = "HSN Code";
-                GetDataAsperMenuClick("HSNCODE");
-                ibtnNumber = 31;
+                if (rdoHSN.Checked == true)
+                {
+                    HideButtons();
+                    AnalysisChecked();
+                    UserManagementChecked();
+                    ReportChecked();
+                    strFormHeaderName = "HSN Code";
+                    GetDataAsperMenuClick("HSNCODE");
+                    ibtnNumber = 31;
+                }
+            }
+            catch (Exception ex)
+            {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
     }
 }
 

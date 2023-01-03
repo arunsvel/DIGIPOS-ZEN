@@ -539,15 +539,31 @@ namespace DigiposZen
             Cursor.Current = Cursors.WaitCursor;
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "EMPLOYEE") == false)
+                        return;
+
+                }
+                else
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "EMPLOYEE") == false)
+                        return;
+
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 SaveData();
                 Cursor.Current = Cursors.Default;
 
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to Save..." + "\n" + ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             finally
             {
                 Cursor.Current = Cursors.Default;
@@ -556,6 +572,8 @@ namespace DigiposZen
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "EMPLOYEE") == false)
+                return;
             Cursor.Current = Cursors.WaitCursor;
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             if (iIDFromEditWindow > 5)
@@ -566,7 +584,7 @@ namespace DigiposZen
                     try
                     {
                         DeleteData();
-                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Deleted " + EmpInfo.EmpFname, 503, 503, EmpInfo.EmpFname, Comm.ToInt32(EmpInfo.EmpID), "Employee");
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Deleted " + EmpInfo.EmpFname, 503, 503, "EmpID", Comm.ToInt32(EmpInfo.EmpID), "Employee");
 
 
                     }
@@ -819,11 +837,11 @@ namespace DigiposZen
                         Comm.MessageboxToasted("Employee", "Employee saved successfully");
                         if (iIDFromEditWindow > 0)
                         {
-                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Employee to " + EmpInfo.EmpFname, 503, 503, EmpInfo.EmpFname, Comm.ToInt32(EmpInfo.EmpID), "Employee");
+                            Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Employee to " + EmpInfo.EmpFname, 503, 503, "EmpID", Comm.ToInt32(EmpInfo.EmpID), "Employee");
                         }
                         else
                         {
-                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + EmpInfo.EmpFname, 503, 503, EmpInfo.EmpFname, Comm.ToInt32(EmpInfo.EmpID), "Employee");
+                            Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + EmpInfo.EmpFname, 503, 503, "EmpID", Comm.ToInt32(EmpInfo.EmpID), "Employee");
 
                         }
                         ClearAll();
@@ -832,11 +850,11 @@ namespace DigiposZen
 
                     if (iIDFromEditWindow > 0)
                     {
-                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Employee to " + EmpInfo.EmpFname, 503, 503, EmpInfo.EmpFname, Comm.ToInt32(EmpInfo.EmpID), "Employee");
+                        Comm.writeuserlog(Common.UserActivity.UpdateEntry, newdata, olddata, "Update " + oldvalue + " Employee to " + EmpInfo.EmpFname, 503, 503, "EmpID", Comm.ToInt32(EmpInfo.EmpID), "Employee");
                     }
                     else
                     {
-                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + EmpInfo.EmpFname, 503, 503, EmpInfo.EmpFname, Comm.ToInt32(EmpInfo.EmpID), "Employee");
+                        Comm.writeuserlog(Common.UserActivity.new_Entry, newdata, olddata, "Created " + EmpInfo.EmpFname, 503, 503, "EmpID", Comm.ToInt32(EmpInfo.EmpID), "Employee");
 
                     }
 
