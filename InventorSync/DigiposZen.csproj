@@ -1225,6 +1225,8 @@
     <None Include="Resources\Colour-combo2_Op2 %281%29.png" />
     <None Include="Resources\Wallpaper_BG_2_V4.jpg" />
     <None Include="Resources\logo.jpg" />
+    <None Include="Resources\restore_db_1.png" />
+    <None Include="Resources\restore_db_1 %282%29.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

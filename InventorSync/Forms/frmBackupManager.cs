@@ -71,6 +71,20 @@ namespace DigiposZen
                     btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
 
                     FillTreeview();
+
+                    TreeNode[] tns = tvwUserCompanyBackup.Nodes.Find(AppSettings.CompanyCode, true);
+                    if (tns.Length > 0)
+                    {
+                        for (int i = 0; i < tns.Length; i++)
+                        {
+                            tvwUserCompanyBackup.SelectedNode = tns[i];
+                            tvwUserCompanyBackup.SelectedNode.Checked = true;
+                            tvwUserCompanyBackup.Focus();
+                        }
+                    }
+
+                    txtBackupPath.Text = Application.StartupPath + @"\Backups";
+
                 }
                 catch (Exception ex)
                 {
@@ -238,7 +252,7 @@ namespace DigiposZen
 
                 if (Global.gblROLEOFSYSTEM.ToUpper().Contains("CLIENT") == true)
                 { 
-                    MessageBox.Show("Unable to create backup form client system. " + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Unable to create backup from client system. " + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return;
                 }
@@ -273,24 +287,41 @@ namespace DigiposZen
                         {
                             if (cNode.Checked == true)
                             {
+                                LastBackupCompany = cNode.Parent.Text + cNode.Text.Replace(@"/","").Replace(@"\", "").Replace(@":","").Replace(@"*", "").Replace(@"?", "").Replace(@"""", "").Replace(@"<", "").Replace(@">", "").Replace(@"|", "").Replace(@" ", "");
+                                progressBar1.Value = 0;
                                 Comm.BACKUPDB(ref progressBar1, cNode.Name, BackupPath);
-                                LastBackupCompany = cNode.Text;
+                                Application.DoEvents();
                                 FileCount += 1;
                             }
                         }
                     }
                 }
 
-                if (FileCount > 1)
+                var BackupPaths = new List<string>() { BackupPath, AppSettings.BackUpPath1, AppSettings.BackUpPath2, AppSettings.BackUpPath3 };
+                foreach (string bp in BackupPaths)
                 {
-                    ZipFile.CreateFromDirectory(@"C:\DIGIBackup", BackupPath + @"\GroupBackup_" + DateTime.Now.ToString("dd_MMM_yyyy") + ".zip");
-                }
-                else
-                {
-                    ZipFile.CreateFromDirectory(@"C:\DIGIBackup", BackupPath + $@"\{LastBackupCompany}.zip");
+                    if(bp != null)
+                    {
+                        if (bp != "")
+                        {
+                            if (Directory.Exists(bp))
+                            {
+                                if (FileCount > 1)
+                                {
+                                    ZipFile.CreateFromDirectory(@"C:\DIGIBackup", bp + @"\GroupBackup_" + DateTime.Now.ToString("HH_mm_ss").Replace(@"/", "").Replace(@"\", "").Replace(@":", "").Replace(@"*", "").Replace(@"?", "").Replace(@"""", "").Replace(@"<", "").Replace(@">", "").Replace(@"|", "").Replace(@" ", "") + ".zip");
+                                }
+                                else
+                                {
+                                    ZipFile.CreateFromDirectory(@"C:\DIGIBackup", bp + $@"\{LastBackupCompany}" + DateTime.Now.ToString("HH_mm_ss").Replace(@"/", "").Replace(@"\", "").Replace(@":", "").Replace(@"*", "").Replace(@"?", "").Replace(@"""", "").Replace(@"<", "").Replace(@">", "").Replace(@"|", "").Replace(@" ", "") + ".zip");
+                                }
+                            }
+                        }
+                    }
                 }
 
                 Cursor.Current = Cursors.Default;
+                
+                MessageBox.Show("Backup process completed successfully..." + "\n" + $@"File copied to {BackupPath} and all backup paths provided in application settings.", Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -611,7 +642,8 @@ namespace DigiposZen
                 if (Global.gblUserName.Trim().ToUpper() == "DIGIPOS")
                     dtgetData = Comm.fnGetData("SELECT C.CompanyID,C.CompanyCode,REPLACE((CONVERT(VARCHAR,FyStartDate,103) + '-' + CONVERT(VARCHAR,FyEndDate,103)),'','-') as FinYear FROM startup.dbo.tblCompany C, startup.dbo.tblUsers U WHERE C.CompanyID=U.CompanyID AND C.ParentID = " + parentId + "").Tables[0];
                 else
-                    dtgetData = Comm.fnGetData("SELECT C.CompanyID,C.CompanyCode,REPLACE((CONVERT(VARCHAR,FyStartDate,103) + '-' + CONVERT(VARCHAR,FyEndDate,103)),'','-') as FinYear FROM startup.dbo.tblCompany C, startup.dbo.tblUsers U WHERE C.CompanyID=U.CompanyID and U.UserID = " + Global.gblSuperUserID + " AND C.ParentID = " + parentId + "").Tables[0];
+                    dtgetData = Comm.fnGetData("SELECT C.CompanyID,C.CompanyCode,REPLACE((CONVERT(VARCHAR,FyStartDate,103) + '-' + CONVERT(VARCHAR,FyEndDate,103)),'','-') as FinYear FROM startup.dbo.tblCompany C, startup.dbo.tblUsers U WHERE C.CompanyID=U.CompanyID and LTRIM(RTRIM(U.UserName)) = '" + Global.gblUserName.ToString() + "' AND LTRIM(RTRIM(U.Password)) = '" + Global.gblpwd.ToString() + "' AND C.ParentID = " + parentId + "").Tables[0];
+                    //dtgetData = Comm.fnGetData("SELECT C.CompanyID,C.CompanyCode,REPLACE((CONVERT(VARCHAR,FyStartDate,103) + '-' + CONVERT(VARCHAR,FyEndDate,103)),'','-') as FinYear FROM startup.dbo.tblCompany C, startup.dbo.tblUsers U WHERE C.CompanyID=U.CompanyID and U.UserID = " + Global.gblSuperUserID + " AND C.ParentID = " + parentId + "").Tables[0];
 
                 TreeNode childNode;
                 foreach (DataRow dr in dtgetData.Rows)
@@ -648,19 +680,57 @@ namespace DigiposZen
                 e.Cancel = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBackupFolderLocation_Click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog fbd = new FolderBrowserDialog())
             {
                 fbd.Description = "Select a folder";
                 fbd.ShowNewFolderButton = true;
                 fbd.RootFolder = Environment.SpecialFolder.MyComputer;
-                fbd.SelectedPath = Application.ExecutablePath + @"\Backups";
+                fbd.SelectedPath = Application.StartupPath + @"\Backups";
                 DialogResult result = fbd.ShowDialog();
                 if (result == DialogResult.OK)
                 {
                     txtBackupPath.Text = fbd.SelectedPath;
                 }
+            }
+        }
+
+        private void btnRestoreFile_Click(object sender, EventArgs e)
+        {
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+
+                    txtRestoreFile.Text = filePath;
+
+                    //ZipFile.ExtractToDirectory()
+                }
+            }
+        }
+
+        private void tabMain_Click(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedTab == tbpRestore)
+            {
+                tlpHeader.ColumnStyles[0].Width = 0;
+                tlpHeader.ColumnStyles[1].Width = 90;
+            }
+            else if (tabMain.SelectedTab == tbpBackup)
+            {
+                tlpHeader.ColumnStyles[0].Width = 90;
+                tlpHeader.ColumnStyles[1].Width = 0;
             }
         }
     }

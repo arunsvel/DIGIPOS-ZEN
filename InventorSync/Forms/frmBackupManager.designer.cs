@@ -35,15 +35,10 @@ namespace DigiposZen
             this.lblHeading = new System.Windows.Forms.Label();
             this.lblDelete = new System.Windows.Forms.Label();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnYtubeTutorial = new System.Windows.Forms.Button();
-            this.btnMinimize = new System.Windows.Forms.Button();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tbpBackup = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBackupFolderLocation = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tvwUserCompanyBackup = new System.Windows.Forms.TreeView();
@@ -51,13 +46,20 @@ namespace DigiposZen
             this.tbpRestore = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.tvwUserCompanyRestore = new System.Windows.Forms.TreeView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRestoreFile = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtRestoreFile = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblFooter = new System.Windows.Forms.Label();
             this.toolTipArea = new System.Windows.Forms.ToolTip(this.components);
+            this.lblRestore = new System.Windows.Forms.Label();
+            this.btnRestore = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnYtubeTutorial = new System.Windows.Forms.Button();
+            this.btnMinimize = new System.Windows.Forms.Button();
             this.tlpHeader.SuspendLayout();
             this.tlpMain.SuspendLayout();
             this.tabMain.SuspendLayout();
@@ -73,7 +75,7 @@ namespace DigiposZen
             this.lblSave.Location = new System.Drawing.Point(4, 57);
             this.lblSave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSave.Name = "lblSave";
-            this.lblSave.Size = new System.Drawing.Size(102, 22);
+            this.lblSave.Size = new System.Drawing.Size(82, 22);
             this.lblSave.TabIndex = 7;
             this.lblSave.Text = "Backup";
             this.lblSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -85,10 +87,10 @@ namespace DigiposZen
             this.lblHeading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblHeading.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeading.ForeColor = System.Drawing.Color.Black;
-            this.lblHeading.Location = new System.Drawing.Point(253, 0);
+            this.lblHeading.Location = new System.Drawing.Point(207, 0);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(27, 0, 27, 0);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(560, 48);
+            this.lblHeading.Size = new System.Drawing.Size(635, 48);
             this.lblHeading.TabIndex = 2;
             this.lblHeading.Text = "Backup Manager";
             this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -97,10 +99,10 @@ namespace DigiposZen
             // 
             this.lblDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelete.ForeColor = System.Drawing.Color.Black;
-            this.lblDelete.Location = new System.Drawing.Point(114, 57);
+            this.lblDelete.Location = new System.Drawing.Point(94, 57);
             this.lblDelete.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDelete.Name = "lblDelete";
-            this.lblDelete.Size = new System.Drawing.Size(100, 22);
+            this.lblDelete.Size = new System.Drawing.Size(82, 22);
             this.lblDelete.TabIndex = 7;
             this.lblDelete.Text = "Delete";
             this.lblDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -109,21 +111,22 @@ namespace DigiposZen
             // 
             this.tlpHeader.BackColor = System.Drawing.Color.Transparent;
             this.tlpHeader.ColumnCount = 6;
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpHeader.Controls.Add(this.lblSave, 0, 2);
+            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.tlpHeader.Controls.Add(this.btnRestore, 1, 0);
             this.tlpHeader.Controls.Add(this.btnSave, 0, 0);
-            this.tlpHeader.Controls.Add(this.btnDelete, 1, 0);
+            this.tlpHeader.Controls.Add(this.btnDelete, 2, 0);
             this.tlpHeader.Controls.Add(this.lblHeading, 3, 0);
-            this.tlpHeader.Controls.Add(this.lblDelete, 1, 2);
+            this.tlpHeader.Controls.Add(this.lblDelete, 2, 2);
             this.tlpHeader.Controls.Add(this.btnClose, 5, 0);
             this.tlpHeader.Controls.Add(this.btnYtubeTutorial, 3, 2);
             this.tlpHeader.Controls.Add(this.btnMinimize, 4, 0);
+            this.tlpHeader.Controls.Add(this.lblSave, 0, 2);
+            this.tlpHeader.Controls.Add(this.lblRestore, 1, 2);
             this.tlpHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpHeader.Location = new System.Drawing.Point(0, 0);
             this.tlpHeader.Margin = new System.Windows.Forms.Padding(0);
@@ -138,90 +141,11 @@ namespace DigiposZen
             this.tlpHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tlpHeader_MouseMove);
             this.tlpHeader.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tlpHeader_MouseUp);
             // 
-            // btnSave
-            // 
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Image = global::DigiposZen.Properties.Resources.save240402;
-            this.btnSave.Location = new System.Drawing.Point(4, 4);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSave.Name = "btnSave";
-            this.tlpHeader.SetRowSpan(this.btnSave, 2);
-            this.btnSave.Size = new System.Drawing.Size(102, 49);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Image = global::DigiposZen.Properties.Resources.delete340402;
-            this.btnDelete.Location = new System.Drawing.Point(114, 4);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDelete.Name = "btnDelete";
-            this.tlpHeader.SetRowSpan(this.btnDelete, 2);
-            this.btnDelete.Size = new System.Drawing.Size(100, 49);
-            this.btnDelete.TabIndex = 5;
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
-            this.btnClose.Location = new System.Drawing.Point(924, 4);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
-            this.btnClose.Name = "btnClose";
-            this.tlpHeader.SetRowSpan(this.btnClose, 2);
-            this.btnClose.Size = new System.Drawing.Size(72, 49);
-            this.btnClose.TabIndex = 6;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnYtubeTutorial
-            // 
-            this.btnYtubeTutorial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnYtubeTutorial.FlatAppearance.BorderSize = 0;
-            this.btnYtubeTutorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnYtubeTutorial.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnYtubeTutorial.ForeColor = System.Drawing.Color.Black;
-            this.btnYtubeTutorial.Image = ((System.Drawing.Image)(resources.GetObject("btnYtubeTutorial.Image")));
-            this.btnYtubeTutorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnYtubeTutorial.Location = new System.Drawing.Point(230, 61);
-            this.btnYtubeTutorial.Margin = new System.Windows.Forms.Padding(4);
-            this.btnYtubeTutorial.Name = "btnYtubeTutorial";
-            this.btnYtubeTutorial.Size = new System.Drawing.Size(186, 30);
-            this.btnYtubeTutorial.TabIndex = 10;
-            this.btnYtubeTutorial.Text = "Tutorial";
-            this.btnYtubeTutorial.UseVisualStyleBackColor = true;
-            this.btnYtubeTutorial.Visible = false;
-            // 
-            // btnMinimize
-            // 
-            this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnMinimize.FlatAppearance.BorderSize = 0;
-            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
-            this.btnMinimize.Location = new System.Drawing.Point(844, 4);
-            this.btnMinimize.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMinimize.Name = "btnMinimize";
-            this.tlpHeader.SetRowSpan(this.btnMinimize, 2);
-            this.btnMinimize.Size = new System.Drawing.Size(72, 49);
-            this.btnMinimize.TabIndex = 6;
-            this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
-            // 
             // tlpMain
             // 
             this.tlpMain.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tlpMain.ColumnCount = 1;
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 977F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1000F));
             this.tlpMain.Controls.Add(this.tlpHeader, 0, 0);
             this.tlpMain.Controls.Add(this.tabMain, 0, 1);
             this.tlpMain.Controls.Add(this.panel1, 0, 2);
@@ -246,10 +170,11 @@ namespace DigiposZen
             this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(994, 362);
             this.tabMain.TabIndex = 5;
+            this.tabMain.Click += new System.EventHandler(this.tabMain_Click);
             // 
             // tbpBackup
             // 
-            this.tbpBackup.Controls.Add(this.button1);
+            this.tbpBackup.Controls.Add(this.btnBackupFolderLocation);
             this.tbpBackup.Controls.Add(this.label2);
             this.tbpBackup.Controls.Add(this.label1);
             this.tbpBackup.Controls.Add(this.tvwUserCompanyBackup);
@@ -262,15 +187,15 @@ namespace DigiposZen
             this.tbpBackup.Text = "Backup";
             this.tbpBackup.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnBackupFolderLocation
             // 
-            this.button1.Location = new System.Drawing.Point(853, 138);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 31);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Browse";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnBackupFolderLocation.Location = new System.Drawing.Point(853, 138);
+            this.btnBackupFolderLocation.Name = "btnBackupFolderLocation";
+            this.btnBackupFolderLocation.Size = new System.Drawing.Size(103, 31);
+            this.btnBackupFolderLocation.TabIndex = 5;
+            this.btnBackupFolderLocation.Text = "Browse";
+            this.btnBackupFolderLocation.UseVisualStyleBackColor = true;
+            this.btnBackupFolderLocation.Click += new System.EventHandler(this.btnBackupFolderLocation_Click);
             // 
             // label2
             // 
@@ -309,9 +234,9 @@ namespace DigiposZen
             // 
             this.tbpRestore.Controls.Add(this.label4);
             this.tbpRestore.Controls.Add(this.tvwUserCompanyRestore);
-            this.tbpRestore.Controls.Add(this.button2);
+            this.tbpRestore.Controls.Add(this.btnRestoreFile);
             this.tbpRestore.Controls.Add(this.label3);
-            this.tbpRestore.Controls.Add(this.textBox1);
+            this.tbpRestore.Controls.Add(this.txtRestoreFile);
             this.tbpRestore.Location = new System.Drawing.Point(4, 27);
             this.tbpRestore.Name = "tbpRestore";
             this.tbpRestore.Padding = new System.Windows.Forms.Padding(3);
@@ -337,14 +262,15 @@ namespace DigiposZen
             this.tvwUserCompanyRestore.Size = new System.Drawing.Size(844, 201);
             this.tvwUserCompanyRestore.TabIndex = 9;
             // 
-            // button2
+            // btnRestoreFile
             // 
-            this.button2.Location = new System.Drawing.Point(805, 80);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 31);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Browse";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnRestoreFile.Location = new System.Drawing.Point(805, 80);
+            this.btnRestoreFile.Name = "btnRestoreFile";
+            this.btnRestoreFile.Size = new System.Drawing.Size(103, 31);
+            this.btnRestoreFile.TabIndex = 8;
+            this.btnRestoreFile.Text = "Browse";
+            this.btnRestoreFile.UseVisualStyleBackColor = true;
+            this.btnRestoreFile.Click += new System.EventHandler(this.btnRestoreFile_Click);
             // 
             // label3
             // 
@@ -355,12 +281,12 @@ namespace DigiposZen
             this.label3.TabIndex = 7;
             this.label3.Text = "Choose the backup path:";
             // 
-            // textBox1
+            // txtRestoreFile
             // 
-            this.textBox1.Location = new System.Drawing.Point(64, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(844, 26);
-            this.textBox1.TabIndex = 6;
+            this.txtRestoreFile.Location = new System.Drawing.Point(64, 48);
+            this.txtRestoreFile.Name = "txtRestoreFile";
+            this.txtRestoreFile.Size = new System.Drawing.Size(844, 26);
+            this.txtRestoreFile.TabIndex = 6;
             // 
             // panel1
             // 
@@ -393,6 +319,112 @@ namespace DigiposZen
             this.lblFooter.TabIndex = 5;
             this.lblFooter.Text = "Keyboard Shortcuts : - F3 Find, F5 Save, F7 Delete, Esc Close ";
             this.lblFooter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRestore
+            // 
+            this.lblRestore.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRestore.ForeColor = System.Drawing.Color.Black;
+            this.lblRestore.Location = new System.Drawing.Point(94, 57);
+            this.lblRestore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRestore.Name = "lblRestore";
+            this.lblRestore.Size = new System.Drawing.Size(1, 22);
+            this.lblRestore.TabIndex = 7;
+            this.lblRestore.Text = "Restore";
+            this.lblRestore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnRestore
+            // 
+            this.btnRestore.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnRestore.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRestore.FlatAppearance.BorderSize = 0;
+            this.btnRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestore.Image = global::DigiposZen.Properties.Resources.restore_db_1__2_;
+            this.btnRestore.Location = new System.Drawing.Point(94, 4);
+            this.btnRestore.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRestore.Name = "btnRestore";
+            this.tlpHeader.SetRowSpan(this.btnRestore, 2);
+            this.btnRestore.Size = new System.Drawing.Size(1, 49);
+            this.btnRestore.TabIndex = 11;
+            this.btnRestore.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Image = global::DigiposZen.Properties.Resources.save240402;
+            this.btnSave.Location = new System.Drawing.Point(4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Name = "btnSave";
+            this.tlpHeader.SetRowSpan(this.btnSave, 2);
+            this.btnSave.Size = new System.Drawing.Size(82, 49);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Image = global::DigiposZen.Properties.Resources.delete340402;
+            this.btnDelete.Location = new System.Drawing.Point(94, 4);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Name = "btnDelete";
+            this.tlpHeader.SetRowSpan(this.btnDelete, 2);
+            this.btnDelete.Size = new System.Drawing.Size(82, 49);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
+            this.btnClose.Location = new System.Drawing.Point(941, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Name = "btnClose";
+            this.tlpHeader.SetRowSpan(this.btnClose, 2);
+            this.btnClose.Size = new System.Drawing.Size(55, 49);
+            this.btnClose.TabIndex = 6;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnYtubeTutorial
+            // 
+            this.btnYtubeTutorial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnYtubeTutorial.FlatAppearance.BorderSize = 0;
+            this.btnYtubeTutorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYtubeTutorial.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnYtubeTutorial.ForeColor = System.Drawing.Color.Black;
+            this.btnYtubeTutorial.Image = ((System.Drawing.Image)(resources.GetObject("btnYtubeTutorial.Image")));
+            this.btnYtubeTutorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnYtubeTutorial.Location = new System.Drawing.Point(184, 61);
+            this.btnYtubeTutorial.Margin = new System.Windows.Forms.Padding(4);
+            this.btnYtubeTutorial.Name = "btnYtubeTutorial";
+            this.btnYtubeTutorial.Size = new System.Drawing.Size(186, 30);
+            this.btnYtubeTutorial.TabIndex = 10;
+            this.btnYtubeTutorial.Text = "Tutorial";
+            this.btnYtubeTutorial.UseVisualStyleBackColor = true;
+            this.btnYtubeTutorial.Visible = false;
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+            this.btnMinimize.Location = new System.Drawing.Point(873, 4);
+            this.btnMinimize.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimize.Name = "btnMinimize";
+            this.tlpHeader.SetRowSpan(this.btnMinimize, 2);
+            this.btnMinimize.Size = new System.Drawing.Size(60, 49);
+            this.btnMinimize.TabIndex = 6;
+            this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // frmBackupManager
             // 
@@ -444,17 +476,19 @@ namespace DigiposZen
         private System.Windows.Forms.TabPage tbpBackup;
         private System.Windows.Forms.TabPage tbpRestore;
         private System.Windows.Forms.TextBox txtBackupPath;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBackupFolderLocation;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TreeView tvwUserCompanyBackup;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label lblFooter;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRestoreFile;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtRestoreFile;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TreeView tvwUserCompanyRestore;
+        private System.Windows.Forms.Button btnRestore;
+        private System.Windows.Forms.Label lblRestore;
     }
 }

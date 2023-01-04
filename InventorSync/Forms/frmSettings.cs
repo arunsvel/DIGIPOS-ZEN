@@ -1909,6 +1909,30 @@ namespace DigiposZen
             Comm.SaveInAppSettings("MRPNAME", txtMRP.Text);
             Comm.SaveInAppSettings("INTTAXMODE", iTaxmod.ToString());
 
+            string sQuery = "";
+
+            try
+            {
+                sQuery = @"Alter Table tblCompanyMaster Add ParentCompanyID Numeric";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"Alter Table tblCompanyMaster Add ParentCompanyCode Varchar(500)";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"Update tblCompanyMaster Set ParentCompanyID = (Select [Startup].[dbo].[tblCompany].[ParentID] From [Startup].[dbo].[tblCompany] Where [Startup].[dbo].[tblCompany].[CompanyCode]='" + AppSettings.CompanyCode + "') Where ParentCompanyID is null";
+                Comm.fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"Update tblCompanyMaster Set ParentCompanyCode = (Select [Startup].[dbo].[tblCompany].[CompanyCode] From [Startup].[dbo].[tblCompany] Where [Startup].[dbo].[tblCompany].[CompanyID]=tblCompanyMaster.ParentCompanyID) Where ParentCompanyCode is null";
+                Comm.fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
             Comm.MessageboxToasted("Settings", "Settings Saved successfully");
             Comm.LoadAppSettings();
             if (bFromEditWindowSettings == true)

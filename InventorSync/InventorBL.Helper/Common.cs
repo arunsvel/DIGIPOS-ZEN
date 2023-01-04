@@ -222,16 +222,38 @@ namespace DigiposZen.InventorBL.Helper
 
                     dt = Convert.ToDateTime(strdt);
 
-                    if (dt == Convert.ToDateTime("27/Dec/2022"))
+                    if (dt == Convert.ToDateTime("29/Dec/2022"))
                         return false;
 
-                    SaveInAppSettings("DBUPDATEDATE", "27/Dec/2022");
+                    SaveInAppSettings("DBUPDATEDATE", "29/Dec/2022");
                 }
             }
             catch
             { }
             
             string sQuery = "";
+
+            try
+            {
+                sQuery = @"Alter Table tblCompanyMaster Add ParentCompanyID Numeric";
+                fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"Alter Table tblCompanyMaster Add ParentCompanyCode Varchar(500)";
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
+                sQuery = @"Update tblCompanyMaster Set ParentCompanyID = (Select [Startup].[dbo].[tblCompany].[ParentID] From [Startup].[dbo].[tblCompany] Where [Startup].[dbo].[tblCompany].[CompanyCode]='" + AppSettings.CompanyCode + "') Where ParentCompanyID is null";
+                fnExecuteNonQuery(sQuery, false);
+
+                sQuery = @"Update tblCompanyMaster Set ParentCompanyCode = (Select [Startup].[dbo].[tblCompany].[CompanyCode] From [Startup].[dbo].[tblCompany] Where [Startup].[dbo].[tblCompany].[CompanyID]=tblCompanyMaster.ParentCompanyID) Where ParentCompanyCode is null";
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
 
             try
             {
@@ -7980,7 +8002,7 @@ namespace DigiposZen.InventorBL.Helper
                     else
                     {
                         Progress(ref PrgBar, 100);
-                        Interaction.MsgBox("Backup process for " + BackupCompany + " completed successfully. File copied to " + BackupPath, MsgBoxStyle.Information);
+                        //Interaction.MsgBox("Backup process for " + BackupCompany + " completed successfully. File copied to " + BackupPath, MsgBoxStyle.Information);
                         blnFailed = false;
                     }
                 }
