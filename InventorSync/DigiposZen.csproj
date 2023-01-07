@@ -790,7 +790,6 @@
     <Compile Include="InventorBL.Helper\Printing.cs" />
     <Compile Include="InventorBL.Helper\SqlQueryBuilder.cs" />
     <Compile Include="InventorBL.Helper\ThemeColor.cs" />
-    <Compile Include="InventorBL.Helper\TransSettings.cs" />
     <Compile Include="InventorBL\Accounts\clsAccountGroup.cs" />
     <Compile Include="InventorBL\Accounts\clsLedger.cs" />
     <Compile Include="InventorBL\Master\clsAgentMaster.cs" />

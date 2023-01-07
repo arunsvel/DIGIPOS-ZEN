@@ -435,6 +435,11 @@ namespace DigiposZen.InventorBL.Helper
             get;
             set;
         }
+        public int intDEFORDERVCHTYPEID
+        {
+            get;
+            set;
+        }
         public int  intDEFAGENTID
         {
             get;

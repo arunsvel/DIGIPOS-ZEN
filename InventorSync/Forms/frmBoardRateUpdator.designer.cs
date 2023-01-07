@@ -33,33 +33,24 @@ namespace DigiposZen
             Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
             Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
             Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBoardRateUpdator));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
             Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection2 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
             Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBoardRateUpdator));
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.togglebtnActive = new Syncfusion.Windows.Forms.Tools.ToggleButton();
             this.lblSave = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.lblHeading = new System.Windows.Forms.Label();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.btnMenu = new System.Windows.Forms.Button();
-            this.btnMinimize = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.lblFind = new System.Windows.Forms.Label();
             this.gboxInvoice = new System.Windows.Forms.Panel();
             this.dtpInvDate = new System.Windows.Forms.DateTimePicker();
             this.txtInvAutoNo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnprev = new System.Windows.Forms.Button();
-            this.btnSettings = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
             this.label46 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -98,6 +89,15 @@ namespace DigiposZen
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
             this.tooltipPurchase = new System.Windows.Forms.ToolTip(this.components);
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.btnMenu = new System.Windows.Forms.Button();
+            this.btnMinimize = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnprev = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.tlpMain.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.togglebtnActive)).BeginInit();
@@ -156,7 +156,7 @@ namespace DigiposZen
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
             this.tableLayoutPanel2.Controls.Add(this.togglebtnActive, 11, 2);
             this.tableLayoutPanel2.Controls.Add(this.lblSave, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.btnSave, 0, 0);
@@ -201,11 +201,11 @@ namespace DigiposZen
             inactiveStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             inactiveStateCollection1.Text = "OFF";
             this.togglebtnActive.InactiveState = inactiveStateCollection1;
-            this.togglebtnActive.Location = new System.Drawing.Point(1220, 73);
+            this.togglebtnActive.Location = new System.Drawing.Point(1218, 73);
             this.togglebtnActive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.togglebtnActive.MinimumSize = new System.Drawing.Size(52, 20);
             this.togglebtnActive.Name = "togglebtnActive";
-            this.togglebtnActive.Size = new System.Drawing.Size(159, 23);
+            this.togglebtnActive.Size = new System.Drawing.Size(161, 23);
             sliderCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             sliderCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             sliderCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -232,21 +232,6 @@ namespace DigiposZen
             this.lblSave.Text = "Save";
             this.lblSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnSave
-            // 
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Image = global::DigiposZen.Properties.Resources.save240402;
-            this.btnSave.Location = new System.Drawing.Point(3, 2);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSave.Name = "btnSave";
-            this.tableLayoutPanel2.SetRowSpan(this.btnSave, 2);
-            this.btnSave.Size = new System.Drawing.Size(66, 67);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // lblHeading
             // 
             this.lblHeading.AutoSize = true;
@@ -260,65 +245,6 @@ namespace DigiposZen
             this.lblHeading.TabIndex = 2;
             this.lblHeading.Text = "BoardRate Updator";
             this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnFind
-            // 
-            this.btnFind.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnFind.FlatAppearance.BorderSize = 0;
-            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFind.Image = global::DigiposZen.Properties.Resources.find_finalised_3030;
-            this.btnFind.Location = new System.Drawing.Point(75, 2);
-            this.btnFind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnFind.Name = "btnFind";
-            this.tableLayoutPanel2.SetRowSpan(this.btnFind, 2);
-            this.btnFind.Size = new System.Drawing.Size(66, 67);
-            this.btnFind.TabIndex = 5;
-            this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // btnMenu
-            // 
-            this.btnMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnMenu.FlatAppearance.BorderSize = 0;
-            this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenu.Image = global::DigiposZen.Properties.Resources.menu_hamburger2;
-            this.btnMenu.Location = new System.Drawing.Point(1150, 2);
-            this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMenu.Name = "btnMenu";
-            this.tableLayoutPanel2.SetRowSpan(this.btnMenu, 2);
-            this.btnMenu.Size = new System.Drawing.Size(64, 67);
-            this.btnMenu.TabIndex = 7;
-            this.btnMenu.UseVisualStyleBackColor = true;
-            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
-            // 
-            // btnMinimize
-            // 
-            this.btnMinimize.FlatAppearance.BorderSize = 0;
-            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
-            this.btnMinimize.Location = new System.Drawing.Point(1220, 2);
-            this.btnMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMinimize.Name = "btnMinimize";
-            this.tableLayoutPanel2.SetRowSpan(this.btnMinimize, 2);
-            this.btnMinimize.Size = new System.Drawing.Size(53, 65);
-            this.btnMinimize.TabIndex = 6;
-            this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
-            this.btnClose.Location = new System.Drawing.Point(1283, 2);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnClose.Name = "btnClose";
-            this.tableLayoutPanel2.SetRowSpan(this.btnClose, 2);
-            this.btnClose.Size = new System.Drawing.Size(96, 67);
-            this.btnClose.TabIndex = 8;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblFind
             // 
@@ -402,67 +328,6 @@ namespace DigiposZen
             this.label7.TabIndex = 7;
             this.label7.Text = "Voucher Number:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnNext
-            // 
-            this.btnNext.FlatAppearance.BorderSize = 0;
-            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
-            this.btnNext.Location = new System.Drawing.Point(159, 28);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(28, 31);
-            this.btnNext.TabIndex = 11;
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Visible = false;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnprev
-            // 
-            this.btnprev.FlatAppearance.BorderSize = 0;
-            this.btnprev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnprev.Image = ((System.Drawing.Image)(resources.GetObject("btnprev.Image")));
-            this.btnprev.Location = new System.Drawing.Point(5, 28);
-            this.btnprev.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnprev.Name = "btnprev";
-            this.btnprev.Size = new System.Drawing.Size(28, 31);
-            this.btnprev.TabIndex = 11;
-            this.btnprev.UseVisualStyleBackColor = true;
-            this.btnprev.Visible = false;
-            this.btnprev.Click += new System.EventHandler(this.btnprev_Click);
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSettings.FlatAppearance.BorderSize = 0;
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Image = global::DigiposZen.Properties.Resources.settings_finalised;
-            this.btnSettings.Location = new System.Drawing.Point(1084, 2);
-            this.btnSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSettings.Name = "btnSettings";
-            this.tableLayoutPanel2.SetRowSpan(this.btnSettings, 2);
-            this.btnSettings.Size = new System.Drawing.Size(60, 67);
-            this.btnSettings.TabIndex = 6;
-            this.btnSettings.UseVisualStyleBackColor = true;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
-            // button11
-            // 
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.ForeColor = System.Drawing.Color.Black;
-            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
-            this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(972, 0);
-            this.button11.Margin = new System.Windows.Forms.Padding(0);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(93, 27);
-            this.button11.TabIndex = 10;
-            this.button11.Text = "Tutorial";
-            this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Visible = false;
             // 
             // label46
             // 
@@ -749,7 +614,7 @@ namespace DigiposZen
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.77519F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.22481F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 396F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 398F));
             this.tableLayoutPanel4.Controls.Add(this.label31, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 62);
@@ -976,6 +841,141 @@ namespace DigiposZen
             this.label28.TabIndex = 8;
             this.label28.Text = "Invoice Scheme 1";
             this.label28.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Image = global::DigiposZen.Properties.Resources.save240402;
+            this.btnSave.Location = new System.Drawing.Point(3, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSave.Name = "btnSave";
+            this.tableLayoutPanel2.SetRowSpan(this.btnSave, 2);
+            this.btnSave.Size = new System.Drawing.Size(66, 67);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnFind
+            // 
+            this.btnFind.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnFind.FlatAppearance.BorderSize = 0;
+            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind.Image = global::DigiposZen.Properties.Resources.find_finalised_3030;
+            this.btnFind.Location = new System.Drawing.Point(75, 2);
+            this.btnFind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFind.Name = "btnFind";
+            this.tableLayoutPanel2.SetRowSpan(this.btnFind, 2);
+            this.btnFind.Size = new System.Drawing.Size(66, 67);
+            this.btnFind.TabIndex = 5;
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // btnMenu
+            // 
+            this.btnMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMenu.FlatAppearance.BorderSize = 0;
+            this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenu.Image = global::DigiposZen.Properties.Resources.menu_hamburger2;
+            this.btnMenu.Location = new System.Drawing.Point(1148, 2);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMenu.Name = "btnMenu";
+            this.tableLayoutPanel2.SetRowSpan(this.btnMenu, 2);
+            this.btnMenu.Size = new System.Drawing.Size(64, 67);
+            this.btnMenu.TabIndex = 7;
+            this.btnMenu.UseVisualStyleBackColor = true;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
+            this.btnMinimize.Location = new System.Drawing.Point(1218, 2);
+            this.btnMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMinimize.Name = "btnMinimize";
+            this.tableLayoutPanel2.SetRowSpan(this.btnMinimize, 2);
+            this.btnMinimize.Size = new System.Drawing.Size(53, 65);
+            this.btnMinimize.TabIndex = 6;
+            this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
+            this.btnClose.Location = new System.Drawing.Point(1281, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClose.Name = "btnClose";
+            this.tableLayoutPanel2.SetRowSpan(this.btnClose, 2);
+            this.btnClose.Size = new System.Drawing.Size(98, 67);
+            this.btnClose.TabIndex = 8;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.FlatAppearance.BorderSize = 0;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
+            this.btnNext.Location = new System.Drawing.Point(159, 28);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(28, 31);
+            this.btnNext.TabIndex = 11;
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Visible = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnprev
+            // 
+            this.btnprev.FlatAppearance.BorderSize = 0;
+            this.btnprev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnprev.Image = ((System.Drawing.Image)(resources.GetObject("btnprev.Image")));
+            this.btnprev.Location = new System.Drawing.Point(5, 28);
+            this.btnprev.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnprev.Name = "btnprev";
+            this.btnprev.Size = new System.Drawing.Size(28, 31);
+            this.btnprev.TabIndex = 11;
+            this.btnprev.UseVisualStyleBackColor = true;
+            this.btnprev.Visible = false;
+            this.btnprev.Click += new System.EventHandler(this.btnprev_Click);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Image = global::DigiposZen.Properties.Resources.settings_finalised;
+            this.btnSettings.Location = new System.Drawing.Point(1082, 2);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSettings.Name = "btnSettings";
+            this.tableLayoutPanel2.SetRowSpan(this.btnSettings, 2);
+            this.btnSettings.Size = new System.Drawing.Size(60, 67);
+            this.btnSettings.TabIndex = 6;
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // button11
+            // 
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.ForeColor = System.Drawing.Color.Black;
+            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
+            this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button11.Location = new System.Drawing.Point(970, 0);
+            this.button11.Margin = new System.Windows.Forms.Padding(0);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(93, 27);
+            this.button11.TabIndex = 10;
+            this.button11.Text = "Tutorial";
+            this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Visible = false;
             // 
             // frmBoardRateUpdator
             // 

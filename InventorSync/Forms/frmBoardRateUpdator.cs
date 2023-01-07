@@ -594,6 +594,19 @@ namespace DigiposZen
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (iIDFromEditWindow == 0)
+            {
+
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "BOARD RATE UPDATOR") == false)
+                    return;
+
+            }
+            else
+            {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "BOARD RATE UPDATOR") == false)
+                    return;
+            }
+
             sqlControl rs = new sqlControl();
             bool TransactionStarted = false;
 
@@ -601,8 +614,8 @@ namespace DigiposZen
 
             try
             {
-
-                Cursor.Current = Cursors.WaitCursor;
+                //Board Rate Updator,BOARD RATE UPDATOR
+                 Cursor.Current = Cursors.WaitCursor;
 
                 try
                 {

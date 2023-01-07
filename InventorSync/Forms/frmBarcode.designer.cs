@@ -146,7 +146,7 @@ namespace DigiposZen
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
-            this.tlpMain.Size = new System.Drawing.Size(1184, 787);
+            this.tlpMain.Size = new System.Drawing.Size(1184, 693);
             this.tlpMain.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -168,7 +168,7 @@ namespace DigiposZen
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel2.Controls.Add(this.lblHeading, 6, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnMenu, 11, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnMinimize, 12, 0);
@@ -199,7 +199,7 @@ namespace DigiposZen
             this.lblHeading.Location = new System.Drawing.Point(413, 0);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(395, 66);
+            this.lblHeading.Size = new System.Drawing.Size(394, 66);
             this.lblHeading.TabIndex = 2;
             this.lblHeading.Text = "Barcode Print";
             this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -210,7 +210,7 @@ namespace DigiposZen
             this.btnMenu.FlatAppearance.BorderSize = 0;
             this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenu.Image = global::DigiposZen.Properties.Resources.menu_hamburger2;
-            this.btnMenu.Location = new System.Drawing.Point(942, 2);
+            this.btnMenu.Location = new System.Drawing.Point(941, 2);
             this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMenu.Name = "btnMenu";
             this.tableLayoutPanel2.SetRowSpan(this.btnMenu, 2);
@@ -224,7 +224,7 @@ namespace DigiposZen
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
-            this.btnMinimize.Location = new System.Drawing.Point(1020, 2);
+            this.btnMinimize.Location = new System.Drawing.Point(1019, 2);
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMinimize.Name = "btnMinimize";
             this.tableLayoutPanel2.SetRowSpan(this.btnMinimize, 2);
@@ -239,7 +239,7 @@ namespace DigiposZen
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
-            this.btnClose.Location = new System.Drawing.Point(1091, 2);
+            this.btnClose.Location = new System.Drawing.Point(1090, 2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
             this.tableLayoutPanel2.SetRowSpan(this.btnClose, 2);
@@ -254,7 +254,7 @@ namespace DigiposZen
             this.btnSettings.FlatAppearance.BorderSize = 0;
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Image = global::DigiposZen.Properties.Resources.settings_finalised;
-            this.btnSettings.Location = new System.Drawing.Point(876, 2);
+            this.btnSettings.Location = new System.Drawing.Point(875, 2);
             this.btnSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSettings.Name = "btnSettings";
             this.tableLayoutPanel2.SetRowSpan(this.btnSettings, 2);
@@ -271,7 +271,7 @@ namespace DigiposZen
             this.button11.ForeColor = System.Drawing.Color.White;
             this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
             this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(839, 0);
+            this.button11.Location = new System.Drawing.Point(838, 0);
             this.button11.Margin = new System.Windows.Forms.Padding(0);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(26, 30);
@@ -286,7 +286,7 @@ namespace DigiposZen
             this.label46.BackColor = System.Drawing.Color.Transparent;
             this.label46.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label46.ForeColor = System.Drawing.Color.Black;
-            this.label46.Location = new System.Drawing.Point(3, 765);
+            this.label46.Location = new System.Drawing.Point(3, 671);
             this.label46.Name = "label46";
             this.label46.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.label46.Size = new System.Drawing.Size(1178, 22);
@@ -310,7 +310,7 @@ namespace DigiposZen
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox4.Size = new System.Drawing.Size(1, 692);
+            this.groupBox4.Size = new System.Drawing.Size(1, 598);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             // 
@@ -318,7 +318,7 @@ namespace DigiposZen
             // 
             this.btnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSaveSettings.BackColor = System.Drawing.Color.LightGray;
-            this.btnSaveSettings.Location = new System.Drawing.Point(152, 651);
+            this.btnSaveSettings.Location = new System.Drawing.Point(152, 557);
             this.btnSaveSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSaveSettings.Name = "btnSaveSettings";
             this.btnSaveSettings.Size = new System.Drawing.Size(188, 43);
@@ -392,7 +392,7 @@ namespace DigiposZen
             this.panel2.Location = new System.Drawing.Point(11, 123);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(329, 527);
+            this.panel2.Size = new System.Drawing.Size(329, 433);
             this.panel2.TabIndex = 11;
             // 
             // dgvColWidth
@@ -454,7 +454,7 @@ namespace DigiposZen
             this.tabControl1.Location = new System.Drawing.Point(3, 72);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1170, 690);
+            this.tabControl1.Size = new System.Drawing.Size(1170, 596);
             this.tabControl1.TabIndex = 13;
             // 
             // tpgBarcode
@@ -478,15 +478,15 @@ namespace DigiposZen
             this.tpgBarcode.Location = new System.Drawing.Point(4, 27);
             this.tpgBarcode.Name = "tpgBarcode";
             this.tpgBarcode.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgBarcode.Size = new System.Drawing.Size(1162, 659);
+            this.tpgBarcode.Size = new System.Drawing.Size(1162, 565);
             this.tpgBarcode.TabIndex = 0;
             this.tpgBarcode.Text = "Barcode Search";
             // 
             // btnPrintDirect
             // 
-            this.btnPrintDirect.Location = new System.Drawing.Point(951, 607);
+            this.btnPrintDirect.Location = new System.Drawing.Point(982, 510);
             this.btnPrintDirect.Name = "btnPrintDirect";
-            this.btnPrintDirect.Size = new System.Drawing.Size(167, 42);
+            this.btnPrintDirect.Size = new System.Drawing.Size(153, 36);
             this.btnPrintDirect.TabIndex = 19;
             this.btnPrintDirect.Text = "Print";
             this.btnPrintDirect.UseVisualStyleBackColor = true;
@@ -494,9 +494,9 @@ namespace DigiposZen
             // 
             // btnBarcodeSettings
             // 
-            this.btnBarcodeSettings.Location = new System.Drawing.Point(766, 607);
+            this.btnBarcodeSettings.Location = new System.Drawing.Point(797, 510);
             this.btnBarcodeSettings.Name = "btnBarcodeSettings";
-            this.btnBarcodeSettings.Size = new System.Drawing.Size(167, 42);
+            this.btnBarcodeSettings.Size = new System.Drawing.Size(153, 36);
             this.btnBarcodeSettings.TabIndex = 18;
             this.btnBarcodeSettings.Text = "Settings";
             this.btnBarcodeSettings.UseVisualStyleBackColor = true;
@@ -504,9 +504,9 @@ namespace DigiposZen
             // 
             // btnPreview
             // 
-            this.btnPreview.Location = new System.Drawing.Point(584, 607);
+            this.btnPreview.Location = new System.Drawing.Point(615, 510);
             this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(167, 42);
+            this.btnPreview.Size = new System.Drawing.Size(153, 36);
             this.btnPreview.TabIndex = 17;
             this.btnPreview.Text = "Preview";
             this.btnPreview.UseVisualStyleBackColor = true;
@@ -517,9 +517,9 @@ namespace DigiposZen
             this.panelsearch.BackColor = System.Drawing.Color.DimGray;
             this.panelsearch.Controls.Add(this.lblSelected);
             this.panelsearch.Controls.Add(this.dgvSubMenu);
-            this.panelsearch.Location = new System.Drawing.Point(29, 210);
+            this.panelsearch.Location = new System.Drawing.Point(29, 147);
             this.panelsearch.Name = "panelsearch";
-            this.panelsearch.Size = new System.Drawing.Size(923, 370);
+            this.panelsearch.Size = new System.Drawing.Size(923, 329);
             this.panelsearch.TabIndex = 16;
             // 
             // lblSelected
@@ -541,7 +541,7 @@ namespace DigiposZen
             this.dgvSubMenu.Location = new System.Drawing.Point(3, 39);
             this.dgvSubMenu.Name = "dgvSubMenu";
             this.dgvSubMenu.RowHeadersWidth = 51;
-            this.dgvSubMenu.Size = new System.Drawing.Size(917, 327);
+            this.dgvSubMenu.Size = new System.Drawing.Size(917, 287);
             this.dgvSubMenu.TabIndex = 10;
             this.dgvSubMenu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvSubMenu_KeyDown);
             this.dgvSubMenu.Resize += new System.EventHandler(this.dgvSubMenu_Resize);
@@ -550,10 +550,10 @@ namespace DigiposZen
             // 
             this.dgvBarcodeDetails.BackgroundColor = System.Drawing.Color.White;
             this.dgvBarcodeDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBarcodeDetails.Location = new System.Drawing.Point(11, 184);
+            this.dgvBarcodeDetails.Location = new System.Drawing.Point(11, 127);
             this.dgvBarcodeDetails.Name = "dgvBarcodeDetails";
             this.dgvBarcodeDetails.RowHeadersWidth = 51;
-            this.dgvBarcodeDetails.Size = new System.Drawing.Size(1144, 416);
+            this.dgvBarcodeDetails.Size = new System.Drawing.Size(1144, 376);
             this.dgvBarcodeDetails.TabIndex = 15;
             this.dgvBarcodeDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBarcodeDetails_CellClick);
             this.dgvBarcodeDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBarcodeDetails_CellContentClick);
@@ -561,7 +561,7 @@ namespace DigiposZen
             // 
             // btnFill
             // 
-            this.btnFill.Location = new System.Drawing.Point(914, 141);
+            this.btnFill.Location = new System.Drawing.Point(1017, 80);
             this.btnFill.Name = "btnFill";
             this.btnFill.Size = new System.Drawing.Size(72, 39);
             this.btnFill.TabIndex = 14;
@@ -572,7 +572,7 @@ namespace DigiposZen
             // txtInvoiceNumber
             // 
             this.txtInvoiceNumber.FormattingEnabled = true;
-            this.txtInvoiceNumber.Location = new System.Drawing.Point(570, 145);
+            this.txtInvoiceNumber.Location = new System.Drawing.Point(673, 87);
             this.txtInvoiceNumber.Name = "txtInvoiceNumber";
             this.txtInvoiceNumber.Size = new System.Drawing.Size(338, 26);
             this.txtInvoiceNumber.TabIndex = 9;
@@ -582,7 +582,7 @@ namespace DigiposZen
             // lblBarcodeDetails
             // 
             this.lblBarcodeDetails.AutoSize = true;
-            this.lblBarcodeDetails.Location = new System.Drawing.Point(8, 153);
+            this.lblBarcodeDetails.Location = new System.Drawing.Point(8, 99);
             this.lblBarcodeDetails.Name = "lblBarcodeDetails";
             this.lblBarcodeDetails.Size = new System.Drawing.Size(108, 18);
             this.lblBarcodeDetails.TabIndex = 8;
@@ -591,7 +591,7 @@ namespace DigiposZen
             // lblInvoice
             // 
             this.lblInvoice.AutoSize = true;
-            this.lblInvoice.Location = new System.Drawing.Point(567, 123);
+            this.lblInvoice.Location = new System.Drawing.Point(555, 90);
             this.lblInvoice.Name = "lblInvoice";
             this.lblInvoice.Size = new System.Drawing.Size(112, 18);
             this.lblInvoice.TabIndex = 7;
@@ -600,7 +600,7 @@ namespace DigiposZen
             // cmbVoucherType
             // 
             this.cmbVoucherType.FormattingEnabled = true;
-            this.cmbVoucherType.Location = new System.Drawing.Point(570, 76);
+            this.cmbVoucherType.Location = new System.Drawing.Point(673, 47);
             this.cmbVoucherType.Name = "cmbVoucherType";
             this.cmbVoucherType.Size = new System.Drawing.Size(416, 26);
             this.cmbVoucherType.TabIndex = 6;
@@ -609,7 +609,7 @@ namespace DigiposZen
             // lblVoucherType
             // 
             this.lblVoucherType.AutoSize = true;
-            this.lblVoucherType.Location = new System.Drawing.Point(567, 52);
+            this.lblVoucherType.Location = new System.Drawing.Point(567, 50);
             this.lblVoucherType.Name = "lblVoucherType";
             this.lblVoucherType.Size = new System.Drawing.Size(100, 18);
             this.lblVoucherType.TabIndex = 5;
@@ -628,7 +628,7 @@ namespace DigiposZen
             // 
             // txtSearchBarcode
             // 
-            this.txtSearchBarcode.Location = new System.Drawing.Point(52, 76);
+            this.txtSearchBarcode.Location = new System.Drawing.Point(116, 47);
             this.txtSearchBarcode.Name = "txtSearchBarcode";
             this.txtSearchBarcode.Size = new System.Drawing.Size(370, 26);
             this.txtSearchBarcode.TabIndex = 3;
@@ -639,7 +639,7 @@ namespace DigiposZen
             // lblSearchBatchCode
             // 
             this.lblSearchBatchCode.AutoSize = true;
-            this.lblSearchBatchCode.Location = new System.Drawing.Point(49, 52);
+            this.lblSearchBatchCode.Location = new System.Drawing.Point(49, 50);
             this.lblSearchBatchCode.Name = "lblSearchBatchCode";
             this.lblSearchBatchCode.Size = new System.Drawing.Size(61, 18);
             this.lblSearchBatchCode.TabIndex = 2;
@@ -662,7 +662,7 @@ namespace DigiposZen
             this.tpgSettings.Location = new System.Drawing.Point(4, 27);
             this.tpgSettings.Name = "tpgSettings";
             this.tpgSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgSettings.Size = new System.Drawing.Size(1162, 659);
+            this.tpgSettings.Size = new System.Drawing.Size(1162, 565);
             this.tpgSettings.TabIndex = 3;
             this.tpgSettings.Text = "Settings";
             this.tpgSettings.UseVisualStyleBackColor = true;
@@ -672,7 +672,7 @@ namespace DigiposZen
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.87248F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.12752F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 291F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 292F));
             this.tableLayoutPanel1.Controls.Add(this.panel3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
@@ -681,7 +681,7 @@ namespace DigiposZen
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1156, 653);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1156, 559);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel3
@@ -704,15 +704,15 @@ namespace DigiposZen
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.lblSettings);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(867, 3);
+            this.panel3.Location = new System.Drawing.Point(866, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(286, 647);
+            this.panel3.Size = new System.Drawing.Size(287, 553);
             this.panel3.TabIndex = 1;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // txtSaveAs
             // 
-            this.txtSaveAs.Location = new System.Drawing.Point(25, 507);
+            this.txtSaveAs.Location = new System.Drawing.Point(25, 447);
             this.txtSaveAs.Name = "txtSaveAs";
             this.txtSaveAs.Size = new System.Drawing.Size(186, 26);
             this.txtSaveAs.TabIndex = 27;
@@ -721,7 +721,7 @@ namespace DigiposZen
             // 
             this.chkEncryptDecimals.Checked = true;
             this.chkEncryptDecimals.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkEncryptDecimals.Location = new System.Drawing.Point(22, 406);
+            this.chkEncryptDecimals.Location = new System.Drawing.Point(22, 359);
             this.chkEncryptDecimals.Name = "chkEncryptDecimals";
             this.chkEncryptDecimals.Size = new System.Drawing.Size(255, 57);
             this.chkEncryptDecimals.TabIndex = 26;
@@ -731,7 +731,7 @@ namespace DigiposZen
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(22, 378);
+            this.label13.Location = new System.Drawing.Point(22, 331);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(175, 18);
             this.label13.TabIndex = 25;
@@ -740,7 +740,7 @@ namespace DigiposZen
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(22, 480);
+            this.label9.Location = new System.Drawing.Point(22, 420);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 18);
             this.label9.TabIndex = 24;
@@ -751,10 +751,10 @@ namespace DigiposZen
             this.btnTestPrint.FlatAppearance.BorderSize = 0;
             this.btnTestPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTestPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnTestPrint.Image")));
-            this.btnTestPrint.Location = new System.Drawing.Point(138, 545);
+            this.btnTestPrint.Location = new System.Drawing.Point(138, 485);
             this.btnTestPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTestPrint.Name = "btnTestPrint";
-            this.btnTestPrint.Size = new System.Drawing.Size(71, 75);
+            this.btnTestPrint.Size = new System.Drawing.Size(71, 61);
             this.btnTestPrint.TabIndex = 29;
             this.btnTestPrint.UseVisualStyleBackColor = true;
             this.btnTestPrint.Click += new System.EventHandler(this.btnTestPrint_Click);
@@ -764,17 +764,17 @@ namespace DigiposZen
             this.btnSaveAndExport.FlatAppearance.BorderSize = 0;
             this.btnSaveAndExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveAndExport.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAndExport.Image")));
-            this.btnSaveAndExport.Location = new System.Drawing.Point(22, 545);
+            this.btnSaveAndExport.Location = new System.Drawing.Point(22, 485);
             this.btnSaveAndExport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSaveAndExport.Name = "btnSaveAndExport";
-            this.btnSaveAndExport.Size = new System.Drawing.Size(71, 75);
+            this.btnSaveAndExport.Size = new System.Drawing.Size(71, 61);
             this.btnSaveAndExport.TabIndex = 28;
             this.btnSaveAndExport.UseVisualStyleBackColor = true;
             this.btnSaveAndExport.Click += new System.EventHandler(this.btnSaveAndExport_Click);
             // 
             // txtEncKey
             // 
-            this.txtEncKey.Location = new System.Drawing.Point(17, 335);
+            this.txtEncKey.Location = new System.Drawing.Point(17, 291);
             this.txtEncKey.Name = "txtEncKey";
             this.txtEncKey.Size = new System.Drawing.Size(186, 26);
             this.txtEncKey.TabIndex = 23;
@@ -783,7 +783,7 @@ namespace DigiposZen
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 288);
+            this.label8.Location = new System.Drawing.Point(14, 244);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(102, 36);
             this.label8.TabIndex = 22;
@@ -792,7 +792,7 @@ namespace DigiposZen
             // cmbInstalledPrinters
             // 
             this.cmbInstalledPrinters.FormattingEnabled = true;
-            this.cmbInstalledPrinters.Location = new System.Drawing.Point(18, 248);
+            this.cmbInstalledPrinters.Location = new System.Drawing.Point(18, 204);
             this.cmbInstalledPrinters.Name = "cmbInstalledPrinters";
             this.cmbInstalledPrinters.Size = new System.Drawing.Size(189, 26);
             this.cmbInstalledPrinters.TabIndex = 21;
@@ -801,7 +801,7 @@ namespace DigiposZen
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(18, 226);
+            this.label14.Location = new System.Drawing.Point(18, 182);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(54, 18);
             this.label14.TabIndex = 20;
@@ -810,7 +810,7 @@ namespace DigiposZen
             // cmbPrintScheme
             // 
             this.cmbPrintScheme.FormattingEnabled = true;
-            this.cmbPrintScheme.Location = new System.Drawing.Point(18, 186);
+            this.cmbPrintScheme.Location = new System.Drawing.Point(18, 142);
             this.cmbPrintScheme.Name = "cmbPrintScheme";
             this.cmbPrintScheme.Size = new System.Drawing.Size(189, 26);
             this.cmbPrintScheme.TabIndex = 19;
@@ -820,7 +820,7 @@ namespace DigiposZen
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(18, 164);
+            this.label15.Location = new System.Drawing.Point(18, 120);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(98, 18);
             this.label15.TabIndex = 18;
@@ -828,9 +828,9 @@ namespace DigiposZen
             // 
             // txtLabelsPerRow
             // 
-            this.txtLabelsPerRow.Location = new System.Drawing.Point(18, 125);
+            this.txtLabelsPerRow.Location = new System.Drawing.Point(143, 76);
             this.txtLabelsPerRow.Name = "txtLabelsPerRow";
-            this.txtLabelsPerRow.Size = new System.Drawing.Size(186, 26);
+            this.txtLabelsPerRow.Size = new System.Drawing.Size(98, 26);
             this.txtLabelsPerRow.TabIndex = 17;
             this.txtLabelsPerRow.Text = "3";
             this.txtLabelsPerRow.TextChanged += new System.EventHandler(this.txtLabelsPerRow_TextChanged);
@@ -838,7 +838,7 @@ namespace DigiposZen
             // lblLabelsPerRow
             // 
             this.lblLabelsPerRow.AutoSize = true;
-            this.lblLabelsPerRow.Location = new System.Drawing.Point(18, 102);
+            this.lblLabelsPerRow.Location = new System.Drawing.Point(25, 79);
             this.lblLabelsPerRow.Name = "lblLabelsPerRow";
             this.lblLabelsPerRow.Size = new System.Drawing.Size(111, 18);
             this.lblLabelsPerRow.TabIndex = 16;
@@ -846,16 +846,16 @@ namespace DigiposZen
             // 
             // txtCharWidth
             // 
-            this.txtCharWidth.Location = new System.Drawing.Point(18, 63);
+            this.txtCharWidth.Location = new System.Drawing.Point(143, 38);
             this.txtCharWidth.Name = "txtCharWidth";
-            this.txtCharWidth.Size = new System.Drawing.Size(186, 26);
+            this.txtCharWidth.Size = new System.Drawing.Size(98, 26);
             this.txtCharWidth.TabIndex = 15;
             this.txtCharWidth.Text = "43";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(18, 39);
+            this.label11.Location = new System.Drawing.Point(18, 41);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(118, 18);
             this.label11.TabIndex = 14;
@@ -877,14 +877,14 @@ namespace DigiposZen
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(261, 647);
+            this.panel4.Size = new System.Drawing.Size(260, 553);
             this.panel4.TabIndex = 1;
             // 
             // trvBarcodeTags
             // 
             this.trvBarcodeTags.Location = new System.Drawing.Point(4, 81);
             this.trvBarcodeTags.Name = "trvBarcodeTags";
-            this.trvBarcodeTags.Size = new System.Drawing.Size(261, 558);
+            this.trvBarcodeTags.Size = new System.Drawing.Size(261, 470);
             this.trvBarcodeTags.TabIndex = 12;
             this.trvBarcodeTags.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvBarcodeTags_NodeMouseDoubleClick);
             // 
@@ -903,14 +903,14 @@ namespace DigiposZen
             this.panel1.Controls.Add(this.txtBarcodeString);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(270, 3);
+            this.panel1.Location = new System.Drawing.Point(269, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(591, 647);
+            this.panel1.Size = new System.Drawing.Size(591, 553);
             this.panel1.TabIndex = 0;
             // 
             // chkFileName
             // 
-            this.chkFileName.Location = new System.Drawing.Point(7, 562);
+            this.chkFileName.Location = new System.Drawing.Point(7, 491);
             this.chkFileName.Name = "chkFileName";
             this.chkFileName.Size = new System.Drawing.Size(534, 60);
             this.chkFileName.TabIndex = 27;
@@ -919,10 +919,10 @@ namespace DigiposZen
             // 
             // txtBarcodeString
             // 
-            this.txtBarcodeString.Location = new System.Drawing.Point(7, 92);
+            this.txtBarcodeString.Location = new System.Drawing.Point(7, 86);
             this.txtBarcodeString.Multiline = true;
             this.txtBarcodeString.Name = "txtBarcodeString";
-            this.txtBarcodeString.Size = new System.Drawing.Size(593, 463);
+            this.txtBarcodeString.Size = new System.Drawing.Size(593, 399);
             this.txtBarcodeString.TabIndex = 11;
             this.txtBarcodeString.TextChanged += new System.EventHandler(this.txtBarcodeString_TextChanged);
             // 
@@ -942,7 +942,7 @@ namespace DigiposZen
             this.tpgPreview.Location = new System.Drawing.Point(4, 27);
             this.tpgPreview.Name = "tpgPreview";
             this.tpgPreview.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgPreview.Size = new System.Drawing.Size(1162, 659);
+            this.tpgPreview.Size = new System.Drawing.Size(1162, 565);
             this.tpgPreview.TabIndex = 2;
             this.tpgPreview.Text = "Print";
             this.tpgPreview.UseVisualStyleBackColor = true;
@@ -952,10 +952,10 @@ namespace DigiposZen
             this.btnPrintFromPreview.FlatAppearance.BorderSize = 0;
             this.btnPrintFromPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrintFromPreview.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintFromPreview.Image")));
-            this.btnPrintFromPreview.Location = new System.Drawing.Point(1081, 580);
+            this.btnPrintFromPreview.Location = new System.Drawing.Point(1083, 504);
             this.btnPrintFromPreview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPrintFromPreview.Name = "btnPrintFromPreview";
-            this.btnPrintFromPreview.Size = new System.Drawing.Size(71, 75);
+            this.btnPrintFromPreview.Size = new System.Drawing.Size(62, 50);
             this.btnPrintFromPreview.TabIndex = 23;
             this.btnPrintFromPreview.UseVisualStyleBackColor = true;
             this.btnPrintFromPreview.Click += new System.EventHandler(this.btnPrintFromPreview_Click);
@@ -968,13 +968,13 @@ namespace DigiposZen
             this.dgvPreview.Location = new System.Drawing.Point(6, 7);
             this.dgvPreview.Name = "dgvPreview";
             this.dgvPreview.RowHeadersWidth = 51;
-            this.dgvPreview.Size = new System.Drawing.Size(1160, 572);
+            this.dgvPreview.Size = new System.Drawing.Size(1160, 492);
             this.dgvPreview.TabIndex = 6;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1187, 765);
+            this.label5.Location = new System.Drawing.Point(1187, 671);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(1, 18);
             this.label5.TabIndex = 14;
@@ -985,7 +985,7 @@ namespace DigiposZen
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1186, 789);
+            this.ClientSize = new System.Drawing.Size(1186, 695);
             this.ControlBox = false;
             this.Controls.Add(this.tlpMain);
             this.DoubleBuffered = true;

@@ -496,7 +496,7 @@ namespace DigiposZen
                     }
                 }
 
-                MakeViewForUserDatabase();
+                //MakeViewForUserDatabase();
 
                 if (DateTime.Today > Convert.ToDateTime("30-Jan-2023"))
                 {

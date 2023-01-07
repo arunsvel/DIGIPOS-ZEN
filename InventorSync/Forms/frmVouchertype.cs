@@ -17,6 +17,7 @@ using System.Collections;
 using DigiposZen.JsonClass;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace DigiposZen
 {
@@ -120,6 +121,8 @@ namespace DigiposZen
                 if (Comm.ToInt32(cboParentTrans.SelectedValue.ToString()) == 40)
                     GrbBoardRate.Visible = true;
             }
+
+            this.Width = 950;
         }
 
         #region "VARIABLES  -------------------------------------------- >>"
@@ -1285,6 +1288,12 @@ namespace DigiposZen
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "VOUCHER TYPE") == false)
+                    return;
+           
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "VOUCHER TYPE") == false)
+                    return;
+           
             Cursor.Current = Cursors.WaitCursor;
             decimal dVchTypID = 0;
             if (IsValidate() == true)
@@ -1325,6 +1334,8 @@ namespace DigiposZen
                 if (Comm.ToInt32(cboParentTrans.SelectedValue.ToString()) == 40)
                     GrbBoardRate.Visible = true;
             }
+
+            FillOrderVchtypeForDefault();
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -1384,6 +1395,10 @@ namespace DigiposZen
             cboDefaultPriceList.SelectedValue = 1; //Cash
             cboDefaultSalesStaff.SelectedValue = 1; //Default
             cboDefaultAgent.SelectedValue = 1; // Default
+            
+            if (cboDefaultOrderVchtype.Items.Count > 0)
+                cboDefaultOrderVchtype.SelectedIndex = 0; // Default
+            
             cboDefaultBarcodeMode.SelectedValue = 0;//From Item Master
             cboDefaultTaxInclusive.SelectedValue = 1;//From Item Master
             cboDefaultSearchMethod.SelectedValue = 1; //Anywhere
@@ -1526,6 +1541,33 @@ namespace DigiposZen
             cboDefaultAgent.DisplayMember = "Agent Name";
             cboDefaultAgent.ValueMember = "AgentID";
             cboDefaultAgent.SelectedIndex = -1;
+        }
+        //Description : Fill Agent in Combobox
+        private void FillOrderVchtypeForDefault(int iSelectedID = 0)
+        {
+            if (cboParentTrans.SelectedValue == null) return;
+            string SQuery = "";
+            if (Comm.ToDecimal(cboParentTrans.SelectedValue.ToString()) == 1)
+                SQuery = "SELECT VchtypeID, Vchtype From tblVchtype Where ParentID = 14 Order By Vchtype ";
+            if (Comm.ToDecimal(cboParentTrans.SelectedValue.ToString()) == 2)
+                SQuery = "SELECT VchtypeID, Vchtype From tblVchtype Where ParentID = 15 Order By Vchtype ";
+            else
+                return;
+
+            using (SqlConnection con = Comm.GetDBConnection())
+            {
+                using (SqlDataAdapter sda = new SqlDataAdapter(SQuery, con))
+                {
+                    //Fill the DataTable with records from Table.
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+
+                    //Assign DataTable as DataSource.
+                    cboDefaultOrderVchtype.DataSource = dt;
+                    cboDefaultOrderVchtype.DisplayMember = "Vchtype";
+                    cboDefaultOrderVchtype.ValueMember = "VchtypeID";
+                }
+            }
         }
         //Description : Fill Mode of Payment in Combobox
         private void FillModofPayForDefault()
@@ -3714,6 +3756,8 @@ namespace DigiposZen
                     else
                         clsVch.blnSaleStaffLockWSel = 0;
 
+                    clsVch.DefaultOrderVchtypeID = Convert.ToDecimal(cboDefaultOrderVchtype.SelectedValue);
+
                     clsVch.DefaultAgentValue = Convert.ToDecimal(cboDefaultAgent.SelectedValue);
                     if (tbtnAgent.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active)
                         clsVch.blnAgentLockWSel = 1;
@@ -3882,6 +3926,9 @@ namespace DigiposZen
                         tbtnSalesStaff.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
                     else
                         tbtnSalesStaff.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive;
+
+                    cboDefaultOrderVchtype.SelectedValue = clsVchDSer.DefaultOrderVchtypeID;
+
                     cboDefaultAgent.SelectedValue = clsVchDSer.DefaultAgentValue;
                     if (clsVchDSer.blnAgentLockWSel == 1)
                         tbtnAgent.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
@@ -4317,6 +4364,9 @@ namespace DigiposZen
                 infoVchTyp.BLNLOCKTAXMODE = 1;
             else
                 infoVchTyp.BLNLOCKTAXMODE = 1;
+
+            infoVchTyp.DEFORDERVCHTYPEID = Convert.ToInt32(cboDefaultOrderVchtype.SelectedValue);
+
             infoVchTyp.DEFAGENTID = Convert.ToInt32(cboDefaultAgent.SelectedValue);
             if (tbtnAgent.ToggleState == Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active)
                 infoVchTyp.BLNLOCKAGENT = 1;
@@ -4405,7 +4455,10 @@ namespace DigiposZen
             infoVchTyp.FeaturesJson = FeaturesJsonSerializeAndDeserializeObject(true, "", dvchTyid);
             string sResult = clsVouchTyp.InsertUpdateDeleteVchTypeInsert(infoVchTyp, iAction);
 
-            return dvchTyid;
+                Comm.LoadTransMenu((frmMDI)this.MdiParent);
+
+                return dvchTyid;
+
             }
             catch (Exception ex)
             {
@@ -4464,6 +4517,7 @@ namespace DigiposZen
             cboDefaultSalesStaff.SelectedIndex = -1;
             tbtnSalesStaff.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive;
             cboDefaultAgent.SelectedIndex = -1;
+            cboDefaultOrderVchtype.SelectedIndex = -1;
             tbtnAgent.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Inactive;
             cboDefaultBarcodeMode.SelectedIndex = -1;
             cboDefaultTaxInclusive.SelectedIndex = -1;

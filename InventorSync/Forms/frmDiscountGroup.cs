@@ -421,6 +421,16 @@ namespace DigiposZen
         {
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "DISCOUNTGROUP") == false)
+                        return;
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "DISCOUNTGROUP") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 {
                     if (string.IsNullOrEmpty(txtDiscountPerc.Text))
@@ -453,6 +463,8 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "DISCOUNTGROUP") == false)
+                    return;
                 Cursor.Current = Cursors.WaitCursor;
                 if (iIDFromEditWindow > 5)
                 {

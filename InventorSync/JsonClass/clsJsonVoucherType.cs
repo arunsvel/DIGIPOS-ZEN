@@ -66,6 +66,7 @@ namespace DigiposZen.JsonClass
         public decimal DefaultSaleStaffValue { get; set; }
         public decimal blnSaleStaffLockWSel { get; set; }
         public decimal DefaultAgentValue { get; set; }
+        public decimal DefaultOrderVchtypeID { get; set; }
         public decimal blnAgentLockWSel { get; set; }
         public decimal DefaultTaxInclusiveValue { get; set; }
         public decimal DefaultBarcodeMode { get; set; }
@@ -133,6 +134,7 @@ namespace DigiposZen.JsonClass
                 blnModeofPaymentLockWSel  = 0;
                 DefaultPriceList = 0;
                 blnPriceListLockWSel = 0;
+                DefaultOrderVchtypeID = 0;
                 DefaultSaleStaffValue  = 0;
                 blnSaleStaffLockWSel  = 0;
                 DefaultAgentValue  = 0;

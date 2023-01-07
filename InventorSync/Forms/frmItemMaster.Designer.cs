@@ -273,7 +273,7 @@ namespace DigiposZen
             this.tlpMain.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tlpMain.ColumnCount = 2;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 829F));
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 448F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 451F));
             this.tlpMain.Controls.Add(this.tlpHeader, 0, 0);
             this.tlpMain.Controls.Add(this.gboxMain, 0, 1);
             this.tlpMain.Controls.Add(this.lblFooter, 0, 2);
@@ -2986,7 +2986,7 @@ namespace DigiposZen
             this.grpShowControls.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpShowControls.Location = new System.Drawing.Point(834, 103);
             this.grpShowControls.Name = "grpShowControls";
-            this.grpShowControls.Size = new System.Drawing.Size(442, 698);
+            this.grpShowControls.Size = new System.Drawing.Size(445, 698);
             this.grpShowControls.TabIndex = 13;
             this.grpShowControls.TabStop = false;
             // 

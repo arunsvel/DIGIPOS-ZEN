@@ -603,9 +603,19 @@ namespace DigiposZen
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (iIDFromEditWindow == 0)
+            {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "PRICE LIST UPDATOR") == false)
+                    return;
+            }
+            else
+            {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "PRICE LIST UPDATOR") == false)
+                    return;
+            }
             try
             {
-
+              
                 Cursor.Current = Cursors.WaitCursor;
 
                 try

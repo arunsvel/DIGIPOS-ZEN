@@ -30,16 +30,16 @@ namespace DigiposZen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection3 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection3 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection3 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStockInVoucherNew));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection2 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection4 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection4 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection4 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.togglebtnActive = new Syncfusion.Windows.Forms.Tools.ToggleButton();
@@ -72,8 +72,8 @@ namespace DigiposZen
             this.lblInvNo = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnprev = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.btnDeliveryNote = new System.Windows.Forms.Button();
+            this.btnPurchaseOrder = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.label46 = new System.Windows.Forms.Label();
@@ -219,6 +219,10 @@ namespace DigiposZen
             this.label28 = new System.Windows.Forms.Label();
             this.tooltipPurchase = new System.Windows.Forms.ToolTip(this.components);
             this.picBackground = new System.Windows.Forms.PictureBox();
+            this.pnlPurchaseOrder = new System.Windows.Forms.Panel();
+            this.lblPurchaseOrders = new System.Windows.Forms.Label();
+            this.chklstPurchaseOrders = new System.Windows.Forms.CheckedListBox();
+            this.btnProcesOrder = new System.Windows.Forms.Button();
             this.tlpMain.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.togglebtnActive)).BeginInit();
@@ -270,6 +274,7 @@ namespace DigiposZen
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvColWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBackground)).BeginInit();
+            this.pnlPurchaseOrder.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpMain
@@ -332,8 +337,8 @@ namespace DigiposZen
             this.tableLayoutPanel2.Controls.Add(this.lblDelete, 4, 2);
             this.tableLayoutPanel2.Controls.Add(this.lblArchive, 3, 2);
             this.tableLayoutPanel2.Controls.Add(this.gboxInvoice, 6, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button13, 8, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button14, 9, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnDeliveryNote, 8, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnPurchaseOrder, 9, 0);
             this.tableLayoutPanel2.Controls.Add(this.button11, 7, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnSettings, 10, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -352,33 +357,33 @@ namespace DigiposZen
             // 
             // togglebtnActive
             // 
-            activeStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.ForeColor = System.Drawing.Color.Navy;
-            activeStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection1.Text = "ON";
-            this.togglebtnActive.ActiveState = activeStateCollection1;
+            activeStateCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection3.ForeColor = System.Drawing.Color.Navy;
+            activeStateCollection3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection3.Text = "ON";
+            this.togglebtnActive.ActiveState = activeStateCollection3;
             this.tableLayoutPanel2.SetColumnSpan(this.togglebtnActive, 2);
             this.togglebtnActive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.togglebtnActive.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.togglebtnActive.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            inactiveStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            inactiveStateCollection1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            inactiveStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            inactiveStateCollection1.Text = "OFF";
-            this.togglebtnActive.InactiveState = inactiveStateCollection1;
+            inactiveStateCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            inactiveStateCollection3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            inactiveStateCollection3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            inactiveStateCollection3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            inactiveStateCollection3.Text = "OFF";
+            this.togglebtnActive.InactiveState = inactiveStateCollection3;
             this.togglebtnActive.Location = new System.Drawing.Point(1232, 73);
             this.togglebtnActive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.togglebtnActive.MinimumSize = new System.Drawing.Size(52, 20);
             this.togglebtnActive.Name = "togglebtnActive";
             this.togglebtnActive.Size = new System.Drawing.Size(122, 23);
-            sliderCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            sliderCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection1.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            sliderCollection1.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.togglebtnActive.Slider = sliderCollection1;
+            sliderCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            sliderCollection3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection3.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            sliderCollection3.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.togglebtnActive.Slider = sliderCollection3;
             this.togglebtnActive.TabIndex = 13;
             this.togglebtnActive.Text = "Active Status";
             this.togglebtnActive.ThemeName = "Office2016Black";
@@ -637,7 +642,7 @@ namespace DigiposZen
             // txtReferencePrefix
             // 
             this.txtReferencePrefix.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReferencePrefix.Location = new System.Drawing.Point(497, 30);
+            this.txtReferencePrefix.Location = new System.Drawing.Point(495, 30);
             this.txtReferencePrefix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtReferencePrefix.Name = "txtReferencePrefix";
             this.txtReferencePrefix.Size = new System.Drawing.Size(55, 28);
@@ -696,7 +701,7 @@ namespace DigiposZen
             // txtReferenceAutoNo
             // 
             this.txtReferenceAutoNo.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReferenceAutoNo.Location = new System.Drawing.Point(497, 30);
+            this.txtReferenceAutoNo.Location = new System.Drawing.Point(495, 30);
             this.txtReferenceAutoNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtReferenceAutoNo.MaxLength = 100;
             this.txtReferenceAutoNo.Name = "txtReferenceAutoNo";
@@ -740,7 +745,7 @@ namespace DigiposZen
             this.lblReferenceNo.AutoSize = true;
             this.lblReferenceNo.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReferenceNo.ForeColor = System.Drawing.Color.Black;
-            this.lblReferenceNo.Location = new System.Drawing.Point(493, 9);
+            this.lblReferenceNo.Location = new System.Drawing.Point(491, 9);
             this.lblReferenceNo.Name = "lblReferenceNo";
             this.lblReferenceNo.Size = new System.Drawing.Size(66, 21);
             this.lblReferenceNo.TabIndex = 7;
@@ -786,43 +791,43 @@ namespace DigiposZen
             this.btnprev.UseVisualStyleBackColor = true;
             this.btnprev.Click += new System.EventHandler(this.btnprev_Click);
             // 
-            // button13
+            // btnDeliveryNote
             // 
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.ForeColor = System.Drawing.Color.Black;
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.Location = new System.Drawing.Point(834, 0);
-            this.button13.Margin = new System.Windows.Forms.Padding(0);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(135, 30);
-            this.button13.TabIndex = 10;
-            this.button13.Text = "Delivery Note";
-            this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Visible = false;
+            this.btnDeliveryNote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDeliveryNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDeliveryNote.FlatAppearance.BorderSize = 0;
+            this.btnDeliveryNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeliveryNote.ForeColor = System.Drawing.Color.Black;
+            this.btnDeliveryNote.Image = ((System.Drawing.Image)(resources.GetObject("btnDeliveryNote.Image")));
+            this.btnDeliveryNote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeliveryNote.Location = new System.Drawing.Point(834, 0);
+            this.btnDeliveryNote.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDeliveryNote.Name = "btnDeliveryNote";
+            this.btnDeliveryNote.Size = new System.Drawing.Size(135, 30);
+            this.btnDeliveryNote.TabIndex = 10;
+            this.btnDeliveryNote.Text = "Delivery Note";
+            this.btnDeliveryNote.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeliveryNote.UseVisualStyleBackColor = true;
+            this.btnDeliveryNote.Visible = false;
             // 
-            // button14
+            // btnPurchaseOrder
             // 
-            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.ForeColor = System.Drawing.Color.Black;
-            this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
-            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(969, 0);
-            this.button14.Margin = new System.Windows.Forms.Padding(0);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(140, 30);
-            this.button14.TabIndex = 10;
-            this.button14.Text = "Purchase Order";
-            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Visible = false;
+            this.btnPurchaseOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPurchaseOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPurchaseOrder.FlatAppearance.BorderSize = 0;
+            this.btnPurchaseOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPurchaseOrder.ForeColor = System.Drawing.Color.Black;
+            this.btnPurchaseOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnPurchaseOrder.Image")));
+            this.btnPurchaseOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPurchaseOrder.Location = new System.Drawing.Point(969, 0);
+            this.btnPurchaseOrder.Margin = new System.Windows.Forms.Padding(0);
+            this.btnPurchaseOrder.Name = "btnPurchaseOrder";
+            this.btnPurchaseOrder.Size = new System.Drawing.Size(140, 30);
+            this.btnPurchaseOrder.TabIndex = 10;
+            this.btnPurchaseOrder.Text = "Purchase Order";
+            this.btnPurchaseOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPurchaseOrder.UseVisualStyleBackColor = true;
+            this.btnPurchaseOrder.Click += new System.EventHandler(this.btnPurchaseOrder_Click);
             // 
             // button11
             // 
@@ -1388,32 +1393,32 @@ namespace DigiposZen
             this.dgvPurchase.AllowUserToAddRows = false;
             this.dgvPurchase.AllowUserToResizeRows = false;
             this.dgvPurchase.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPurchase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPurchase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel3.SetColumnSpan(this.dgvPurchase, 3);
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Yellow;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPurchase.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Yellow;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPurchase.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPurchase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPurchase.Location = new System.Drawing.Point(3, 0);
             this.dgvPurchase.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.dgvPurchase.Name = "dgvPurchase";
             this.dgvPurchase.RowHeadersVisible = false;
             this.dgvPurchase.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightCyan;
-            this.dgvPurchase.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightCyan;
+            this.dgvPurchase.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPurchase.RowTemplate.Height = 24;
             this.dgvPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvPurchase.Size = new System.Drawing.Size(1009, 351);
@@ -2761,19 +2766,19 @@ namespace DigiposZen
             // 
             // toggleWidthSettings
             // 
-            activeStateCollection2.Text = "Auto Width Settings";
-            this.toggleWidthSettings.ActiveState = activeStateCollection2;
+            activeStateCollection4.Text = "Auto Width Settings";
+            this.toggleWidthSettings.ActiveState = activeStateCollection4;
             this.toggleWidthSettings.Font = new System.Drawing.Font("Tahoma", 10.2F);
             this.toggleWidthSettings.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            inactiveStateCollection2.Text = "Manual Width Settings";
-            this.toggleWidthSettings.InactiveState = inactiveStateCollection2;
+            inactiveStateCollection4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            inactiveStateCollection4.Text = "Manual Width Settings";
+            this.toggleWidthSettings.InactiveState = inactiveStateCollection4;
             this.toggleWidthSettings.Location = new System.Drawing.Point(15, 140);
             this.toggleWidthSettings.Margin = new System.Windows.Forms.Padding(4);
             this.toggleWidthSettings.MinimumSize = new System.Drawing.Size(69, 25);
             this.toggleWidthSettings.Name = "toggleWidthSettings";
             this.toggleWidthSettings.Size = new System.Drawing.Size(325, 32);
-            this.toggleWidthSettings.Slider = sliderCollection2;
+            this.toggleWidthSettings.Slider = sliderCollection4;
             this.toggleWidthSettings.TabIndex = 13;
             this.toggleWidthSettings.Text = "toggleButton2";
             this.toggleWidthSettings.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
@@ -2888,6 +2893,48 @@ namespace DigiposZen
             this.picBackground.Visible = false;
             this.picBackground.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(this.picBackground_LoadCompleted);
             // 
+            // pnlPurchaseOrder
+            // 
+            this.pnlPurchaseOrder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlPurchaseOrder.Controls.Add(this.btnProcesOrder);
+            this.pnlPurchaseOrder.Controls.Add(this.chklstPurchaseOrders);
+            this.pnlPurchaseOrder.Controls.Add(this.lblPurchaseOrders);
+            this.pnlPurchaseOrder.Location = new System.Drawing.Point(290, 175);
+            this.pnlPurchaseOrder.Name = "pnlPurchaseOrder";
+            this.pnlPurchaseOrder.Size = new System.Drawing.Size(596, 360);
+            this.pnlPurchaseOrder.TabIndex = 8;
+            this.pnlPurchaseOrder.Visible = false;
+            // 
+            // lblPurchaseOrders
+            // 
+            this.lblPurchaseOrders.AutoSize = true;
+            this.lblPurchaseOrders.Font = new System.Drawing.Font("Tahoma", 10.2F);
+            this.lblPurchaseOrders.Location = new System.Drawing.Point(19, 16);
+            this.lblPurchaseOrders.Name = "lblPurchaseOrders";
+            this.lblPurchaseOrders.Size = new System.Drawing.Size(138, 21);
+            this.lblPurchaseOrders.TabIndex = 0;
+            this.lblPurchaseOrders.Text = "Purchase Orders:";
+            // 
+            // chklstPurchaseOrders
+            // 
+            this.chklstPurchaseOrders.Font = new System.Drawing.Font("Tahoma", 10.2F);
+            this.chklstPurchaseOrders.FormattingEnabled = true;
+            this.chklstPurchaseOrders.Location = new System.Drawing.Point(22, 41);
+            this.chklstPurchaseOrders.Name = "chklstPurchaseOrders";
+            this.chklstPurchaseOrders.Size = new System.Drawing.Size(545, 259);
+            this.chklstPurchaseOrders.TabIndex = 1;
+            // 
+            // btnProcesOrder
+            // 
+            this.btnProcesOrder.Font = new System.Drawing.Font("Tahoma", 10.2F);
+            this.btnProcesOrder.Location = new System.Drawing.Point(339, 312);
+            this.btnProcesOrder.Name = "btnProcesOrder";
+            this.btnProcesOrder.Size = new System.Drawing.Size(214, 34);
+            this.btnProcesOrder.TabIndex = 2;
+            this.btnProcesOrder.Text = "Process";
+            this.btnProcesOrder.UseVisualStyleBackColor = true;
+            this.btnProcesOrder.Click += new System.EventHandler(this.btnProcesOrder_Click);
+            // 
             // frmStockInVoucherNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2895,6 +2942,7 @@ namespace DigiposZen
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1387, 763);
             this.ControlBox = false;
+            this.Controls.Add(this.pnlPurchaseOrder);
             this.Controls.Add(this.picBackground);
             this.Controls.Add(this.tlpMain);
             this.DoubleBuffered = true;
@@ -3002,6 +3050,8 @@ namespace DigiposZen
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvColWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBackground)).EndInit();
+            this.pnlPurchaseOrder.ResumeLayout(false);
+            this.pnlPurchaseOrder.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3071,8 +3121,8 @@ namespace DigiposZen
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button btnDeliveryNote;
+        private System.Windows.Forms.Button btnPurchaseOrder;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox cboInvScheme;
         private System.Windows.Forms.Label label28;
@@ -3188,5 +3238,9 @@ namespace DigiposZen
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnSaveSettings;
         private System.Windows.Forms.PictureBox picBackground;
+        private System.Windows.Forms.Panel pnlPurchaseOrder;
+        private System.Windows.Forms.Button btnProcesOrder;
+        private System.Windows.Forms.CheckedListBox chklstPurchaseOrders;
+        private System.Windows.Forms.Label lblPurchaseOrders;
     }
 }

@@ -1475,6 +1475,16 @@ namespace DigiposZen
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (iIDFromEditWindow == 0)
+            {
+                if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "SALES") == false)
+                    return;
+            }
+            else
+            {
+                if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "SALES") == false)
+                    return;
+            }
             SaveData();
         }
 
@@ -1845,6 +1855,9 @@ namespace DigiposZen
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "SALES") == false)
+                return;
+
             DeleteVoucher();
         }
 
@@ -8251,6 +8264,9 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Printinvoice, "SALES") == false)
+                    return;
+
                 if (PrintTrans(iIDFromEditWindow.ToString()) == true)
                 {
                     if (prn.Visible == true && prn.Enabled == true)

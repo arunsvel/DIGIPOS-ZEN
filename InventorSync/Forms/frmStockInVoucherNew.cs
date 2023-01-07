@@ -147,7 +147,7 @@ namespace DigiposZen
                 FillStates();
 
                 SetTransactionsthatVarying();
-                LoadData(iTransID);
+                LoadData(iTransID, false);
                 txtInvAutoNo.Select();
             }
             else
@@ -158,6 +158,20 @@ namespace DigiposZen
             dtp.Format = DateTimePickerFormat.Custom;
             
             lblPause.Text = "Pause";
+
+                if (clsVchType.ParentID == 2)
+                {
+                    btnPurchaseOrder.Visible = true;
+                }
+                else
+                {
+                    btnPurchaseOrder.Visible = false;
+                }
+                if (clsVchType.ParentID == 15)
+                {
+                    cboPayment.SelectedIndex = 0;
+                    pnlPayment.Visible = false;
+                }
 
             }
             catch (Exception ex)
@@ -643,7 +657,7 @@ namespace DigiposZen
                 }
                 else
                 {
-                    LoadData(iIDFromEditWindow);
+                    LoadData(iIDFromEditWindow, false);
 
                     int iRowCnt = dgvPurchase.Rows.Count;
                     dgvPurchase.CurrentCell = dgvPurchase.Rows[iRowCnt - 1].Cells[GetEnum(GridColIndexes.CItemCode)];
@@ -2121,6 +2135,17 @@ namespace DigiposZen
 
             try
             {
+                if (iIDFromEditWindow == 0)
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "PURCHASE") == false)
+                        return;
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "PURCHASE") == false)
+                        return;
+                }
+
                 Cursor.Current = Cursors.WaitCursor;
                 if (iIDFromEditWindow == 0)
                     CRUD_Operations(0, false);
@@ -2550,6 +2575,9 @@ namespace DigiposZen
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "PURCHASE") == false)
+                return;
+
             DeleteVoucher();
         }
 
@@ -2956,7 +2984,7 @@ namespace DigiposZen
                         {
                             //LoadData(Comm.ToInt32(dtInv.Rows[0]["InvId"].ToString()));
                             iIDFromEditWindow = Comm.ToInt32(dtInv.Rows[0]["InvId"].ToString());
-                            LoadBill(iIDFromEditWindow);
+                            LoadBill(iIDFromEditWindow, false);
                         }
                         else
                         {
@@ -3211,11 +3239,6 @@ namespace DigiposZen
 
         }
 
-        private void button13_Click(object sender, EventArgs e)
-        {
-
-        }
-
         #endregion
 
         #region "METHODS ----------------------------------------------- >>"
@@ -3258,7 +3281,7 @@ namespace DigiposZen
                     else
                     {
                         iIDFromEditWindow = Comm.ToInt32(dInvId);
-                        LoadData(Comm.ToInt32(dInvId));
+                        LoadData(Comm.ToInt32(dInvId), false);
                         btnprev.Enabled = true;
 
                         GridInitialize_dgvColWidth();
@@ -3360,7 +3383,7 @@ namespace DigiposZen
                             btnNext.Enabled = true;
 
                             iIDFromEditWindow = Comm.ToInt32(dInvId);
-                            LoadData(Comm.ToInt32(dInvId));
+                            LoadData(Comm.ToInt32(dInvId), false);
 
                             GridInitialize_dgvColWidth();
                             try
@@ -5333,7 +5356,7 @@ namespace DigiposZen
 
         }
 
-        private void LoadBill(int iSelectedID)
+        private void LoadBill(int iSelectedID, bool blnAppend)
         {
             try
             {
@@ -5443,8 +5466,10 @@ namespace DigiposZen
                     }
                 }
 
-                AddColumnsToGrid();
-                int i = 0;
+                if (blnAppend == false)
+                    AddColumnsToGrid();
+
+                int i = dgvPurchase.Rows.Count-1;
                 while (rs.eof() == false)
                 {
                     dgvPurchase.Rows.Add();
@@ -7719,6 +7744,87 @@ namespace DigiposZen
             }
         }
 
+        private void btnPurchaseOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                pnlPurchaseOrder.Top = tableLayoutPanel2.Height + grpLedger.Height;
+                pnlPurchaseOrder.Left = (this.Width / 2) - (pnlPurchaseOrder.Width / 2);
+                pnlPurchaseOrder.Visible = !pnlPurchaseOrder.Visible;
+
+                if (pnlPurchaseOrder.Visible == true)
+                {
+                    sqlControl rs = new sqlControl();
+                    if (Comm.ToDecimal(lblLID.Text) > 0)
+                    {
+                        using (SqlConnection con = Comm.GetDBConnection())
+                        {
+                            using (SqlDataAdapter sda = new SqlDataAdapter("SELECT InvID, invno + ' - ' + format(invdate,'dd-MMM-yyyy') as InvNo From tblpurchase Where VchtypeID = " + clsVchType.DefaultOrderVchtypeID + " and LedgerID = " + Convert.ToDecimal(lblLID.Text), con))
+                            {
+                                //Fill the DataTable with records from Table.
+                                DataTable dt = new DataTable();
+                                sda.Fill(dt);
+
+                                //Assign DataTable as DataSource.
+                                chklstPurchaseOrders.DataSource = dt;
+                                chklstPurchaseOrders.DisplayMember = "InvNo";
+                                chklstPurchaseOrders.ValueMember = "InvID";
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnProcesOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AddColumnsToGrid();
+
+                string InvIDs = "";
+                foreach (object item in chklstPurchaseOrders.CheckedItems)
+                {
+                    DataRowView row = item as DataRowView;
+                    InvIDs += row["InvID"];
+                    InvIDs += ",";
+
+                    iIDFromEditWindow = Comm.ToInt32(row["InvID"]);
+                    LoadData(Comm.ToInt32(row["InvID"]), true);
+                    iIDFromEditWindow = 0;
+
+                    txtInvAutoNo.Text = "";
+                    SetTransactionDefaults();
+
+                    GridInitialize_dgvColWidth();
+                    try
+                    {
+                        LoadGridWidthFromItemGrid();
+                        DisableGridSettingsCheckbox();
+
+                        GridSettingsEnableDisable(Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
+
+                pnlPurchaseOrder.Visible = false;
+
+            }
+            catch (Exception ex)
+            {
+                Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void dgvPurchase_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -8903,10 +9009,13 @@ namespace DigiposZen
                 tblpCashDisc.Enabled = false;
             }
 
-            if (clsVchTypeFeatures.blnenableEffeciveDate == true)
+            if (clsVchTypeFeatures.blnenableEffeciveDate == true || clsVchType.ParentID == 15)
             {
                 lblEffectiveDate.Visible = true;
                 dtpEffective.Visible = true;
+
+                if (clsVchType.ParentID == 15)
+                    lblEffectiveDate.Text = "Execution Date:";
             }
             else
             {
@@ -9220,11 +9329,11 @@ namespace DigiposZen
         }
 
         //Description : Load Saved data from database from edit window or Navigation buttons
-        private void LoadData(int iSelectedID = 0)
+        private void LoadData(int iSelectedID = 0, bool blnAppend = false)
         {
             DataTable dtLoad = new DataTable();
             
-                LoadBill(iSelectedID);
+                LoadBill(iSelectedID, blnAppend);
     
                 iAction = 1;
 

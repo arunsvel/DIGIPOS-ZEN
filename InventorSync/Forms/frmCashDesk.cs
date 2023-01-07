@@ -1148,7 +1148,7 @@ namespace DigiposZen.Forms
                             if (mcashdesk.PaymentDetails != null) mcashdesk.PaymentDetails.Clear();
                             for (int i = 0; i < dgvPayments.Rows.Count; i++)
                             {
-                                clsCashDeskDetail cdd = new clsCashDeskDetail(dgvPayments[0, i].Value.ToString(), 1, 3, Comm.ToInt32(dgvPayments[1, i].Value.ToString()),0,0,0,0);
+                                clsCashDeskDetail cdd = new clsCashDeskDetail(dgvPayments[0, i].Value.ToString(), Comm.ToInt32(dgvPayments[3, i].Value.ToString()), Comm.ToInt32(dgvPayments[4, i].Value.ToString()), Comm.ToInt32(dgvPayments[1, i].Value.ToString()),0,0,0,0);
                                 mcashdesk.PaymentDetails.Add(cdd);
                             }
                         }

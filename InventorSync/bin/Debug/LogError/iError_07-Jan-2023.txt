@@ -1,0 +1,98 @@
+07-Jan-2023 11:05:19
+EventTarget:JsonSerialLizeAndDeserializeObject
+InvalidArgument=Value of '15' is not valid for 'SelectedIndex'.
+Parameter name: SelectedIndex
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+07-Jan-2023 11:05:53
+EventTarget:JsonSerialLizeAndDeserializeObject
+InvalidArgument=Value of '15' is not valid for 'SelectedIndex'.
+Parameter name: SelectedIndex
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+07-Jan-2023 11:07:22
+EventTarget:JsonSerialLizeAndDeserializeObject
+InvalidArgument=Value of '15' is not valid for 'SelectedIndex'.
+Parameter name: SelectedIndex
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+07-Jan-2023 11:11:56
+EventTarget:JsonSerialLizeAndDeserializeObject
+InvalidArgument=Value of '15' is not valid for 'SelectedIndex'.
+Parameter name: SelectedIndex
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+07-Jan-2023 11:13:49
+EventTarget:JsonSerialLizeAndDeserializeObject
+InvalidArgument=Value of '15' is not valid for 'SelectedIndex'.
+Parameter name: SelectedIndex
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+07-Jan-2023 11:14:35
+EventTarget:JsonSerialLizeAndDeserializeObject
+InvalidArgument=Value of '15' is not valid for 'SelectedIndex'.
+Parameter name: SelectedIndex
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+07-Jan-2023 11:15:52
+EventTarget:JsonSerialLizeAndDeserializeObject
+InvalidArgument=Value of '15' is not valid for 'SelectedIndex'.
+Parameter name: SelectedIndex
+
+System.Windows.Forms
+User Name: Administrator
+------------------------------------------------------------------------------
+07-Jan-2023 15:04:02
+EventTarget:InsertUpdateDeleteVchTypeInsert
+Could not find stored procedure 'UspVchTypeInsert'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+07-Jan-2023 15:04:47
+EventTarget:InsertUpdateDeleteVchTypeInsert
+Could not find stored procedure 'UspVchTypeInsert'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+07-Jan-2023 15:09:10
+EventTarget:InsertUpdateDeleteVchTypeInsert
+Could not find stored procedure 'UspVchTypeInsert'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+07-Jan-2023 15:15:58
+EventTarget:InsertUpdateDeleteVchTypeInsert
+Could not find stored procedure 'UspVchTypeInsert'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+07-Jan-2023 15:17:11
+EventTarget:InsertUpdateDeleteVchTypeInsert
+Could not find stored procedure 'UspVchTypeInsert'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------
+07-Jan-2023 15:19:14
+EventTarget:InsertUpdateDeleteVchTypeInsert
+Could not find stored procedure 'UspVchTypeInsert'.
+
+.Net SqlClient Data Provider
+User Name: Administrator
+------------------------------------------------------------------------------

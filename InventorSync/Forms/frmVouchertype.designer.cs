@@ -284,6 +284,11 @@ namespace DigiposZen
             this.digiposDemoDataSet = new DigiposZen.DigiposDemoDataSet();
             this.tblAccountGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label92 = new System.Windows.Forms.Label();
+            this.cboDefaultOrderVchtype = new System.Windows.Forms.ComboBox();
+            this.label93 = new System.Windows.Forms.Label();
+            this.lblOrderVchtype = new System.Windows.Forms.Label();
+            this.lblBottomSpacer = new System.Windows.Forms.Label();
             this.tlpMain.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.togglebtnActive)).BeginInit();
@@ -340,7 +345,7 @@ namespace DigiposZen
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpMain.Size = new System.Drawing.Size(991, 752);
+            this.tlpMain.Size = new System.Drawing.Size(1212, 752);
             this.tlpMain.TabIndex = 2;
             // 
             // label48
@@ -352,7 +357,7 @@ namespace DigiposZen
             this.label48.Location = new System.Drawing.Point(4, 732);
             this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(983, 20);
+            this.label48.Size = new System.Drawing.Size(1204, 20);
             this.label48.TabIndex = 11;
             this.label48.Text = "Keyboard Shortcuts : - F5 Save, Esc Close ";
             this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -385,7 +390,7 @@ namespace DigiposZen
             this.tlpMain.SetRowSpan(this.tlpHeader, 2);
             this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tlpHeader.Size = new System.Drawing.Size(991, 97);
+            this.tlpHeader.Size = new System.Drawing.Size(1212, 97);
             this.tlpHeader.TabIndex = 0;
             this.tlpHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tlpHeader_MouseDown);
             this.tlpHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tlpHeader_MouseMove);
@@ -408,7 +413,7 @@ namespace DigiposZen
             inactiveStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             inactiveStateCollection1.Text = "OFF";
             this.togglebtnActive.InactiveState = inactiveStateCollection1;
-            this.togglebtnActive.Location = new System.Drawing.Point(864, 70);
+            this.togglebtnActive.Location = new System.Drawing.Point(1085, 70);
             this.togglebtnActive.MinimumSize = new System.Drawing.Size(52, 20);
             this.togglebtnActive.Name = "togglebtnActive";
             this.togglebtnActive.Size = new System.Drawing.Size(124, 22);
@@ -433,7 +438,7 @@ namespace DigiposZen
             this.label78.ForeColor = System.Drawing.Color.White;
             this.label78.Location = new System.Drawing.Point(554, 67);
             this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(304, 39);
+            this.label78.Size = new System.Drawing.Size(525, 39);
             this.label78.TabIndex = 1002;
             this.label78.Text = "Active Status";
             this.label78.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -471,7 +476,7 @@ namespace DigiposZen
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
-            this.btnClose.Location = new System.Drawing.Point(929, 3);
+            this.btnClose.Location = new System.Drawing.Point(1150, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(59, 61);
             this.btnClose.TabIndex = 6;
@@ -484,7 +489,7 @@ namespace DigiposZen
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
-            this.btnMinimize.Location = new System.Drawing.Point(864, 3);
+            this.btnMinimize.Location = new System.Drawing.Point(1085, 3);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(59, 61);
             this.btnMinimize.TabIndex = 6;
@@ -502,7 +507,7 @@ namespace DigiposZen
             this.lblHeading.Location = new System.Drawing.Point(305, 0);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(536, 67);
+            this.lblHeading.Size = new System.Drawing.Size(757, 67);
             this.lblHeading.TabIndex = 2;
             this.lblHeading.Text = "Transaction Settings";
             this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -706,12 +711,12 @@ namespace DigiposZen
             // 
             this.tblpForms.ColumnCount = 7;
             this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11F));
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11F));
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 960F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 757F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
+            this.tblpForms.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tblpForms.Controls.Add(this.groupBox6, 0, 0);
             this.tblpForms.Controls.Add(this.groupBox5, 4, 0);
             this.tblpForms.Controls.Add(this.groupBox2, 2, 0);
@@ -724,7 +729,7 @@ namespace DigiposZen
             this.tblpForms.Name = "tblpForms";
             this.tblpForms.RowCount = 1;
             this.tblpForms.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblpForms.Size = new System.Drawing.Size(805, 629);
+            this.tblpForms.Size = new System.Drawing.Size(1026, 629);
             this.tblpForms.TabIndex = 10;
             // 
             // groupBox6
@@ -751,7 +756,7 @@ namespace DigiposZen
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(14, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(13, 623);
+            this.groupBox6.Size = new System.Drawing.Size(7, 623);
             this.groupBox6.TabIndex = 37;
             this.groupBox6.TabStop = false;
             // 
@@ -1088,9 +1093,9 @@ namespace DigiposZen
             this.groupBox5.Controls.Add(this.label58);
             this.groupBox5.Controls.Add(this.label59);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(76, 3);
+            this.groupBox5.Location = new System.Drawing.Point(805, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(4, 623);
+            this.groupBox5.Size = new System.Drawing.Size(140, 623);
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
             // 
@@ -1337,9 +1342,9 @@ namespace DigiposZen
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.label28);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(44, 3);
+            this.groupBox2.Location = new System.Drawing.Point(38, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(16, 623);
+            this.groupBox2.Size = new System.Drawing.Size(4, 623);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
@@ -1403,15 +1408,20 @@ namespace DigiposZen
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(66, 3);
+            this.groupBox1.Location = new System.Drawing.Point(48, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(4, 623);
+            this.groupBox1.Size = new System.Drawing.Size(751, 623);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
             // panel3
             // 
             this.panel3.AutoScroll = true;
+            this.panel3.Controls.Add(this.lblBottomSpacer);
+            this.panel3.Controls.Add(this.label92);
+            this.panel3.Controls.Add(this.cboDefaultOrderVchtype);
+            this.panel3.Controls.Add(this.label93);
+            this.panel3.Controls.Add(this.lblOrderVchtype);
             this.panel3.Controls.Add(this.label91);
             this.panel3.Controls.Add(this.tbtnPriceList);
             this.panel3.Controls.Add(this.label88);
@@ -1454,7 +1464,7 @@ namespace DigiposZen
             this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(10, 17);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(736, 578);
+            this.panel3.Size = new System.Drawing.Size(736, 601);
             this.panel3.TabIndex = 71;
             // 
             // label91
@@ -2002,7 +2012,7 @@ namespace DigiposZen
             this.groupBox4.Controls.Add(this.label49);
             this.groupBox4.Controls.Add(this.label50);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(33, 3);
+            this.groupBox4.Location = new System.Drawing.Point(27, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(5, 623);
             this.groupBox4.TabIndex = 0;
@@ -2828,9 +2838,9 @@ namespace DigiposZen
             this.groupBox7.Controls.Add(this.dgvPrintSettings);
             this.groupBox7.Controls.Add(this.label84);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox7.Location = new System.Drawing.Point(86, 3);
+            this.groupBox7.Location = new System.Drawing.Point(951, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(954, 623);
+            this.groupBox7.Size = new System.Drawing.Size(89, 623);
             this.groupBox7.TabIndex = 38;
             this.groupBox7.TabStop = false;
             // 
@@ -3161,12 +3171,63 @@ namespace DigiposZen
             this.tblAccountGroupBindingSource.DataMember = "tblAccountGroup";
             this.tblAccountGroupBindingSource.DataSource = this.digiposDemoDataSet;
             // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label92.Location = new System.Drawing.Point(112, 908);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(116, 21);
+            this.label92.TabIndex = 116;
+            this.label92.Text = "Default Value:";
+            // 
+            // cboDefaultOrderVchtype
+            // 
+            this.cboDefaultOrderVchtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDefaultOrderVchtype.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDefaultOrderVchtype.FormattingEnabled = true;
+            this.cboDefaultOrderVchtype.Location = new System.Drawing.Point(237, 903);
+            this.cboDefaultOrderVchtype.Name = "cboDefaultOrderVchtype";
+            this.cboDefaultOrderVchtype.Size = new System.Drawing.Size(183, 29);
+            this.cboDefaultOrderVchtype.TabIndex = 115;
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Location = new System.Drawing.Point(95, 873);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(375, 17);
+            this.label93.TabIndex = 114;
+            this.label93.Text = "Select the connected order vouchertype for this transaction";
+            // 
+            // lblOrderVchtype
+            // 
+            this.lblOrderVchtype.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.lblOrderVchtype.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrderVchtype.Location = new System.Drawing.Point(95, 832);
+            this.lblOrderVchtype.Name = "lblOrderVchtype";
+            this.lblOrderVchtype.Size = new System.Drawing.Size(544, 29);
+            this.lblOrderVchtype.TabIndex = 113;
+            this.lblOrderVchtype.Text = "Order Vchtype";
+            this.lblOrderVchtype.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblBottomSpacer
+            // 
+            this.lblBottomSpacer.BackColor = System.Drawing.Color.White;
+            this.lblBottomSpacer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblBottomSpacer.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBottomSpacer.Location = new System.Drawing.Point(0, 932);
+            this.lblBottomSpacer.Name = "lblBottomSpacer";
+            this.lblBottomSpacer.Size = new System.Drawing.Size(715, 50);
+            this.lblBottomSpacer.TabIndex = 117;
+            this.lblBottomSpacer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmVouchertype
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(993, 754);
+            this.ClientSize = new System.Drawing.Size(1214, 754);
             this.Controls.Add(this.tlpMain);
             this.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -3439,5 +3500,10 @@ namespace DigiposZen
         private System.Windows.Forms.Label label90;
         private System.Windows.Forms.Label label91;
         private Syncfusion.Windows.Forms.Tools.ToggleButton tbtnPriceList;
+        private System.Windows.Forms.Label label92;
+        private System.Windows.Forms.ComboBox cboDefaultOrderVchtype;
+        private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.Label lblOrderVchtype;
+        private System.Windows.Forms.Label lblBottomSpacer;
     }
 }

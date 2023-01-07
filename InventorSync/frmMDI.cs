@@ -27,7 +27,7 @@ namespace DigiposZen
 
             Comm.LoadAppSettings();
 
-            LoadTransMenu();
+            Comm.LoadTransMenu(this);
 
             if (AppSettings.BLNBARCODE == false)
             {
@@ -36,65 +36,65 @@ namespace DigiposZen
 
         }
 
-        private void LoadTransMenu()
-        {
-            Common Comm = new Common();
-            tsmTransactions.DropDownItems.Clear();
+        //public void LoadTransMenu()
+        //{
+        //    Common Comm = new Common();
+        //    tsmTransactions.DropDownItems.Clear();
 
-            DataTable dtTreeView = new DataTable();
-            ToolStripMenuItem parentNode = new ToolStripMenuItem();
+        //    DataTable dtTreeView = new DataTable();
+        //    ToolStripMenuItem parentNode = new ToolStripMenuItem();
 
-            dtTreeView = Comm.fnGetData("SELECT VchTypeID,VchType,ParentID,SystemName,UserID,LastUpdateDate,LastUpdateTime,TenantID FROM tblVchType WHERE ((VchTypeID BETWEEN 1 and 500) OR (VchTypeID >= 1005)) AND ParentID=VchTypeID AND isnull(ActiveStatus,0)=1 Order by SortOrder, VchType ").Tables[0];
-            if (dtTreeView.Rows.Count > 0)
-            {
-                foreach (DataRow dr in dtTreeView.Rows)
-                {
-                    ToolStripMenuItem trans = new ToolStripMenuItem(); // = new ToolStripItem
+        //    dtTreeView = Comm.fnGetData("SELECT VchTypeID,VchType,ParentID,SystemName,UserID,LastUpdateDate,LastUpdateTime,TenantID FROM tblVchType WHERE ((VchTypeID BETWEEN 1 and 500) OR (VchTypeID >= 1005)) AND ParentID=VchTypeID AND isnull(ActiveStatus,0)=1 Order by SortOrder, VchType ").Tables[0];
+        //    if (dtTreeView.Rows.Count > 0)
+        //    {
+        //        foreach (DataRow dr in dtTreeView.Rows)
+        //        {
+        //            ToolStripMenuItem trans = new ToolStripMenuItem(); // = new ToolStripItem
                     
-                    trans.Text = dr["VchType"].ToString();
-                    trans.Tag = Convert.ToInt32(dr["VchTypeID"].ToString());
-                    trans.Click += new EventHandler(MenuItemClickHandler);
+        //            trans.Text = dr["VchType"].ToString();
+        //            trans.Tag = Convert.ToInt32(dr["VchTypeID"].ToString());
+        //            trans.Click += new EventHandler(MenuItemClickHandler);
 
-                    DataTable dtgetData = new DataTable();
-                    dtgetData = Comm.fnGetData("SELECT VchTypeID,VchType,ParentID,SystemName,UserID,LastUpdateDate,LastUpdateTime,TenantID FROM tblVchType WHERE ((VchTypeID BETWEEN 1 and 500) OR (VchTypeID >= 1005)) AND (ParentID <> VchTypeID) AND isnull(ActiveStatus,0)=1 AND ParentID =" + dr["VchTypeID"].ToString() + " ORDER BY SortOrder, VchType Desc").Tables[0];
+        //            DataTable dtgetData = new DataTable();
+        //            dtgetData = Comm.fnGetData("SELECT VchTypeID,VchType,ParentID,SystemName,UserID,LastUpdateDate,LastUpdateTime,TenantID FROM tblVchType WHERE ((VchTypeID BETWEEN 1 and 500) OR (VchTypeID >= 1005)) AND (ParentID <> VchTypeID) AND isnull(ActiveStatus,0)=1 AND ParentID =" + dr["VchTypeID"].ToString() + " ORDER BY SortOrder, VchType Desc").Tables[0];
 
-                    if (dtgetData.Rows.Count > 0)
-                    {
-                        //Opening parent voucher if sub voucher is added to menu list is disabled
-                        trans.Click -= new EventHandler(MenuItemClickHandler);
+        //            if (dtgetData.Rows.Count > 0)
+        //            {
+        //                //Opening parent voucher if sub voucher is added to menu list is disabled
+        //                trans.Click -= new EventHandler(MenuItemClickHandler);
 
-                        ToolStripMenuItem submenu = new ToolStripMenuItem();
+        //                ToolStripMenuItem submenu = new ToolStripMenuItem();
 
-                        submenu.Text = dr["VchType"].ToString();
-                        submenu.Tag = Convert.ToInt32(dr["VchTypeID"].ToString());
-                        submenu.Click += new EventHandler(MenuItemClickHandler);
+        //                submenu.Text = dr["VchType"].ToString();
+        //                submenu.Tag = Convert.ToInt32(dr["VchTypeID"].ToString());
+        //                submenu.Click += new EventHandler(MenuItemClickHandler);
 
-                        trans.DropDownItems.Add(submenu);
-                    }
+        //                trans.DropDownItems.Add(submenu);
+        //            }
 
-                    foreach (DataRow dr1 in dtgetData.Rows)
-                    {
-                        ToolStripMenuItem submenu = new ToolStripMenuItem();
+        //            foreach (DataRow dr1 in dtgetData.Rows)
+        //            {
+        //                ToolStripMenuItem submenu = new ToolStripMenuItem();
 
-                        submenu.Text = dr1["VchType"].ToString();
-                        submenu.Tag = Convert.ToInt32(dr1["VchTypeID"].ToString());
-                        submenu.Click += new EventHandler(MenuItemClickHandler);
+        //                submenu.Text = dr1["VchType"].ToString();
+        //                submenu.Tag = Convert.ToInt32(dr1["VchTypeID"].ToString());
+        //                submenu.Click += new EventHandler(MenuItemClickHandler);
 
-                        trans.DropDownItems.Add(submenu);
-                    }
+        //                trans.DropDownItems.Add(submenu);
+        //            }
 
-                    tsmTransactions.DropDownItems.Add(trans);
-                }
-            }
+        //            tsmTransactions.DropDownItems.Add(trans);
+        //        }
+        //    }
 
-            void MenuItemClickHandler(object sender, EventArgs e)
-            {
-                ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
-                // Take some action based on the data in clickedItem
+        //    void MenuItemClickHandler(object sender, EventArgs e)
+        //    {
+        //        ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
+        //        // Take some action based on the data in clickedItem
 
-                Comm.OpenMenu("", Comm.ToInt32(clickedItem.Tag.ToString()), this);
-            }
-        }
+        //        Comm.OpenMenu("", Comm.ToInt32(clickedItem.Tag.ToString()), this);
+        //    }
+        //}
 
         private void MDI_Load(object sender, EventArgs e)
         {

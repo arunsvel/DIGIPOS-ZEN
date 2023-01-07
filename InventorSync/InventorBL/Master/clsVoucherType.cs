@@ -85,6 +85,8 @@ namespace DigiposZen.InventorBL.Master
                         SpParam.Value = VchTypeInsertInfo.BLNLOCKTAXMODE;
                         SpParam = sqlCmd.Parameters.Add("@DEFAGENTID", SqlDbType.Int);
                         SpParam.Value = VchTypeInsertInfo.DEFAGENTID;
+                        SpParam = sqlCmd.Parameters.Add("@DEFORDERVCHTYPEID", SqlDbType.Int);
+                        SpParam.Value = VchTypeInsertInfo.DEFORDERVCHTYPEID;
                         SpParam = sqlCmd.Parameters.Add("@BLNLOCKAGENT", SqlDbType.Int);
                         SpParam.Value = VchTypeInsertInfo.BLNLOCKAGENT;
                         SpParam = sqlCmd.Parameters.Add("@DEFPRICELISTID", SqlDbType.Int);

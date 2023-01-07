@@ -812,6 +812,19 @@ namespace DigiposZen
         {
             try
             {
+                
+                if (iIDFromEditWindow == 0)
+                {
+
+                    if (Comm.CheckUserPermission(Common.UserActivity.new_Entry, "PHYSICAL STOCK") == false)
+                        return;
+
+                }
+                else
+                {
+                    if (Comm.CheckUserPermission(Common.UserActivity.UpdateEntry, "PHYSICAL STOCK") == false)
+                        return;
+                }
                 Cursor.Current = Cursors.WaitCursor;
                 if (iIDFromEditWindow == 0)
                     CRUD_Operations(0);
@@ -964,6 +977,10 @@ namespace DigiposZen
         {
             try
             {
+                if (Comm.CheckUserPermission(Common.UserActivity.Delete_Entry, "PHYSICAL STOCK") == false)
+                    return;
+
+
                 Cursor.Current = Cursors.WaitCursor;
                 DialogResult dlgResult = MessageBox.Show("Are you sure to delete Invoice No [" + txtInvAutoNo.Text + "] Permanently ?", Global.gblMessageCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (dlgResult == DialogResult.Yes)
@@ -4608,6 +4625,11 @@ namespace DigiposZen
         }
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
         {
 
         }

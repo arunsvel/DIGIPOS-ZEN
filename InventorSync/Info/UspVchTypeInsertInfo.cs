@@ -169,6 +169,11 @@ namespace DigiposZen.Info
             get;
             set;
         }
+        public int DEFORDERVCHTYPEID
+        {
+            get;
+            set;
+        }
         public int BLNLOCKAGENT
         {
             get;
