@@ -23,7 +23,6 @@ namespace DigiposZen.Controls
         #region "Variables --------------------------- >>"
 
         private static List<ToastForm> openForms = new List<ToastForm>();
-        private bool allowFocus = false;
         //private FormAnimator animator;
         private IntPtr currentForegroundWindow;
 

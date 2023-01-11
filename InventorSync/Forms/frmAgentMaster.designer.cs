@@ -679,7 +679,7 @@ namespace DigiposZen
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 18);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Agent Name :";
+            this.label2.Text = "&Agent Name :";
             // 
             // label1
             // 

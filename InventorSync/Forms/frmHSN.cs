@@ -771,7 +771,22 @@ namespace DigiposZen
                 string strRet = "";
                 if (iAction == 0)
                 {
+                    decimal hsnid = 0;
+                    hsnid = Comm.gfnGetNextSerialNo("tblHSNCode", "hsnid");
                     HSNmasterInfo.HID = Comm.gfnGetNextSerialNo("tblHSNCode", "HID");
+                    if (hsnid != HSNmasterInfo.HID)
+                    {
+                        if (hsnid > HSNmasterInfo.HID)
+                        { 
+                            HSNmasterInfo.HID = hsnid;
+                        }
+                        else
+                        {
+                            hsnid = HSNmasterInfo.HID;
+                        }
+                    }
+
+
                     if (HSNmasterInfo.HID < 6)
                         HSNmasterInfo.HID = 6;
                 }

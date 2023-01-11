@@ -116,6 +116,7 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.printDesignerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -653,7 +654,8 @@
             this.toolStripSeparator2,
             this.backupManagerToolStripMenuItem,
             this.advancedSearchToolStripMenuItem,
-            this.activityMonitorToolStripMenuItem});
+            this.activityMonitorToolStripMenuItem,
+            this.printDesignerToolStripMenuItem});
             this.tsmTools.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsmTools.Name = "tsmTools";
             this.tsmTools.Size = new System.Drawing.Size(57, 24);
@@ -868,6 +870,13 @@
             this.label1.TabIndex = 1;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // printDesignerToolStripMenuItem
+            // 
+            this.printDesignerToolStripMenuItem.Name = "printDesignerToolStripMenuItem";
+            this.printDesignerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.printDesignerToolStripMenuItem.Text = "Print Designer";
+            this.printDesignerToolStripMenuItem.Click += new System.EventHandler(this.printDesignerToolStripMenuItem_Click);
+            // 
             // frmMDI
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -988,6 +997,7 @@
         private System.Windows.Forms.ToolStripMenuItem maximizeAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cascadeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem activityMonitorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printDesignerToolStripMenuItem;
     }
 }
 

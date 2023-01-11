@@ -1,5 +1,4 @@
 ﻿using DigiposZen.Forms;
-using DigiposZen.Forms;
 using DigiposZen.InventorBL.Helper;
 using System;
 using System.Data;
@@ -1183,6 +1182,13 @@ namespace DigiposZen
             ToolStripMenuItem t = (ToolStripMenuItem)sender;
             Comm.OpenMenu(t.Text.ToString(), 0, this);
 
+        }
+
+        private void printDesignerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPrintDesigner frm = new frmPrintDesigner(this);
+            frm.Show();
+            frm.BringToFront();
         }
     }
 }

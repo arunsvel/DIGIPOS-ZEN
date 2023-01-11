@@ -2156,6 +2156,287 @@ namespace DigiposZen.InventorBL.Helper
 
             try
             {
+                sQuery = @"DROP PROCEDURE [dbo].[UspGetItemMasterFromStock] ";
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+            try
+            {
+                sQuery = @"CREATE PROCEDURE [dbo].[UspGetItemMasterFromStock] (@StockID   NUMERIC (18, 0),
+                                          @TenantID NUMERIC (18, 0))
+                            AS
+                              BEGIN
+	                              DECLARE @ItemID numeric
+                                  DECLARE @CatIDsNames VARCHAR(1000)
+                                  DECLARE @CatIDs VARCHAR(1000)
+
+                                  IF @StockID <> 0
+                                    BEGIN
+                                        SELECT @ItemID = ItemID
+                                        FROM   tblStock
+                                        WHERE  StockID = @StockID
+                                               AND tenantid = @TenantID
+
+                                        SELECT @CatIDs = categoryids
+                                        FROM   tblitemmaster
+                                        WHERE  itemid = @ItemID
+                                               AND tenantid = @TenantID
+
+                                        SELECT @CatIDsNames = COALESCE(@CatIDsNames + ',', '') + category
+                                        FROM   tblcategories
+                                        WHERE  tenantid = @TenantID
+                                               AND ',' + @CatIDs + ',' LIKE '%,' + CONVERT(VARCHAR(50),
+                                                                            categoryid
+                                                                            )
+                                                                            +
+                                                                            ',%';
+
+			                            IF @StockID > 0
+			                            BEGIN
+				                            SELECT I.itemid,
+                                               itemcode,
+                                               itemname,
+				                               BatchCode,
+				                               BatchID,
+                                               I.categoryid,
+				                               I.SrateCalcMode,
+                                               description,ExpiryDate,
+                                               Isnull(S.prate, 0)          AS PRate,
+                                               Isnull(sratecalcmode, 0)    AS SrateCalcMode,
+                                               crateavg,
+				                               CostRateInc,
+				                               CostRateExcl,
+                                               srate1per,
+                                               S.srate1,
+                                               srate2per,
+                                               S.srate2,
+                                               srate3per,
+                                               S.srate3,
+                                               S.srate4,
+                                               srate4per,
+                                               S.srate5,
+                                               srate5per,
+                                               Isnull(S.mrp, 0)            AS MRP,
+                                               rol,
+                                               rack,
+                                               manufacturer,
+                                               activestatus,
+                                               intlocal,
+                                               producttype,
+                                               producttypeid,
+                                               ledgerid,
+                                               I.unitid,
+                                               notes,
+                                               agentcommper,
+                                               blnexpiryitem,
+                                               coolie,
+                                               finishedgoodid,
+                                               minrate,
+                                               maxrate,
+                                               pluno,
+                                               hsnid,
+                                               icatdiscper,
+                                               ipgdiscper,
+                                               imandiscper,
+                                               itemnameunicode,
+                                               minqty,
+                                               mnfid,
+                                               pgid,
+                                               itemcodeunicode,
+                                               upc,
+                                               batchmode,
+                                               blnexpiry,
+                                               qty,
+				                               (select sum(qtyin)-sum(qtyout) from tblstockhistory as h where h.ItemID=@ItemID and h.BatchUnique=s.BatchUnique and h.CCID=s.CCID and h.TenantID=s.TenantID) as QOH,
+                                               maxqty,
+                                               intnoorweight,
+                                               I.systemname,
+                                               I.userid,
+                                               I.lastupdatedate,
+                                               I.lastupdatetime,
+                                               I.tenantid,
+                                               blncessontax,
+                                               compcessqty,
+                                               cgsttaxper,
+                                               sgsttaxper,
+                                               igsttaxper,
+                                               cessper,
+                                               vat,
+                                               categoryids,
+                                               colorids,
+                                               sizeids,
+                                               branddisper,
+                                               dgroupid,
+                                               dgroupdisper,
+                                               @CatIDsNames                AS Categories,
+                                               U.unitshortname             AS [Unit],
+                                               Isnull(batchcode, 0)        AS BatchCode,
+                                               brandid,
+                                               Isnull(altunitid, 0)        AS AltUnitID,
+                                               Isnull(convfactor, 0)       AS ConvFactor,
+                                               Isnull(shelflife, 0)        AS Shelflife,
+                                               Isnull(srateinclusive, 0)   AS SRateInclusive,
+                                               Isnull(prateinclusive, 0)   AS PRateInclusive,
+                                               Isnull(slabsys, 0)          AS Slabsystem,
+                                               batchmode,
+                                               Isnull(discper, 0)          AS DiscPer,
+                                               S.batchunique,
+                                               S.stockid,
+                                               Isnull(departmentid, 0)     AS DepartmentID,
+                                               Isnull(compcessqty, 0)      AS CompCessQty,
+                                               Isnull(defaultexpindays, 0) AS DefaultExpInDays
+				                            FROM   tblitemmaster I
+                                               INNER JOIN tblcategories C
+                                                       ON C.categoryid = I.categoryid
+                                               LEFT JOIN tblunit U
+                                                      ON U.unitid = I.unitid
+                                                         AND U.tenantid = @TenantID
+                                               LEFT JOIN tblstock S
+                                                      ON S.itemid = I.itemid
+				                            WHERE  I.itemid = @ItemID AND StockID = @StockID 
+                                               AND I.tenantid = @TenantID
+			                            END
+			                            ELSE
+			                            BEGIN
+				                            SET @ItemID = -1 * @StockID
+
+				                            SELECT I.itemid,
+                                               itemcode,
+                                               itemname,
+				                               '<AUTO BARCODE>' AS BatchCode,
+				                               0 AS BatchID,
+                                               I.categoryid,
+				                               I.SrateCalcMode,
+                                               description,'' as ExpiryDate,
+                                               Isnull(I.prate, 0)          AS PRate,
+                                               Isnull(sratecalcmode, 0)    AS SrateCalcMode,
+                                               ISNULL(crateavg, 0) AS crateavg,
+				                               ISNULL(I.prate,0) AS CostRateInc,
+				                               ISNULL(I.prate,0) AS CostRateExcl,
+                                               ISNULL(srate1per,0) AS srate1per,
+                                               ISNULL(I.srate1,0) AS srate1,
+                                               ISNULL(srate2per,0) AS srate2per,
+                                               ISNULL(I.srate2,0) AS srate2,
+                                               ISNULL(srate3per,0) AS srate3per,
+                                               ISNULL(I.srate3,0) AS srate3,
+                                               ISNULL(I.srate4,0) AS srate4,
+                                               ISNULL(srate4per,0) AS srate4per,
+                                               ISNULL(I.srate5,0) AS srate5,
+                                               ISNULL(srate5per,0) AS srate5per,
+                                               Isnull(I.mrp, 0)            AS MRP,
+                                               rol,
+                                               rack,
+                                               manufacturer,
+                                               activestatus,
+                                               intlocal,
+                                               producttype,
+                                               producttypeid,
+                                               ledgerid,
+                                               I.unitid,
+                                               notes,
+                                               agentcommper,
+                                               blnexpiryitem,
+                                               coolie,
+                                               finishedgoodid,
+                                               minrate,
+                                               maxrate,
+                                               pluno,
+                                               hsnid,
+                                               icatdiscper,
+                                               ipgdiscper,
+                                               imandiscper,
+                                               itemnameunicode,
+                                               minqty,
+                                               mnfid,
+                                               pgid,
+                                               itemcodeunicode,
+                                               upc,
+                                               batchmode,
+                                               blnexpiry,
+                                               qty,
+				                               0 as QOH,
+                                               maxqty,
+                                               intnoorweight,
+                                               I.systemname,
+                                               I.userid,
+                                               I.lastupdatedate,
+                                               I.lastupdatetime,
+                                               I.tenantid,
+                                               blncessontax,
+                                               compcessqty,
+                                               cgsttaxper,
+                                               sgsttaxper,
+                                               igsttaxper,
+                                               cessper,
+                                               vat,
+                                               categoryids,
+                                               colorids,
+                                               sizeids,
+                                               branddisper,
+                                               dgroupid,
+                                               dgroupdisper,
+                                               @CatIDsNames                AS Categories,
+                                               U.unitshortname             AS [Unit],
+                                               '<AUTO BARCODE>'		       AS BatchCode,
+                                               brandid,
+                                               Isnull(altunitid, 0)        AS AltUnitID,
+                                               Isnull(convfactor, 0)       AS ConvFactor,
+                                               Isnull(shelflife, 0)        AS Shelflife,
+                                               Isnull(srateinclusive, 0)   AS SRateInclusive,
+                                               Isnull(prateinclusive, 0)   AS PRateInclusive,
+                                               Isnull(slabsys, 0)          AS Slabsystem,
+                                               batchmode,
+                                               Isnull(discper, 0)          AS DiscPer,
+                                               '<AUTO BARCODE>'			   AS batchunique,
+                                               ISNULL(-1, 0)			   AS stockid,
+                                               Isnull(departmentid, 0)     AS DepartmentID,
+                                               Isnull(compcessqty, 0)      AS CompCessQty,
+                                               Isnull(defaultexpindays, 0) AS DefaultExpInDays
+				                            FROM   tblitemmaster I
+                                               INNER JOIN tblcategories C
+                                                       ON C.categoryid = I.categoryid
+                                               LEFT JOIN tblunit U
+                                                      ON U.unitid = I.unitid
+                                                         AND U.tenantid = @TenantID
+				                            WHERE  I.itemid = @ItemID 
+                                               AND I.tenantid = @TenantID
+			                            END
+                                    END
+                                  ELSE
+                                    BEGIN
+                                        SELECT I.itemid,
+                                               itemcode             AS [Item Code],
+                                               itemname             AS [Item],
+                                               U.unitshortname      AS [Unit],
+                                               C.category,
+                                               description,
+                                               I.mrp,
+                                               hsnid                AS [HSN Code],
+                                               ( CASE
+                                                   WHEN activestatus = 1 THEN 'Active'
+                                                   ELSE 'In Active'
+                                                 END )              AS Status,
+                                               Isnull(batchcode, 0) AS BatchCode
+                                        FROM   tblitemmaster I
+                                               INNER JOIN tblcategories C
+                                                       ON C.categoryid = I.categoryid
+                                               LEFT JOIN tblunit U
+                                                      ON U.unitid = I.unitid
+                                                         AND U.tenantid = @TenantID
+                                               LEFT JOIN tblstock S
+                                                      ON S.itemid = I.itemid
+                                        WHERE  I.tenantid = @TenantID
+                                    END
+                              END ";
+
+                fnExecuteNonQuery(sQuery, false);
+            }
+            catch
+            { }
+
+            try
+            {
                 sQuery = @"DROP PROCEDURE [dbo].[fnInsertUserLog] ";
                 fnExecuteNonQuery(sQuery, false);
             }
@@ -8616,7 +8897,7 @@ namespace DigiposZen.InventorBL.Helper
                 myFormat = AppSettings.QtyDecimalFormat;
 
             if (myFormat == "")
-                myFormat = "#.00";
+                myFormat = "#0.00";
 
             if (sMyFormat != "")
                 myFormat = sMyFormat;

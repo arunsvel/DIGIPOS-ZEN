@@ -30,16 +30,16 @@ namespace DigiposZen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection3 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection3 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection3 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStockInVoucherNew));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection4 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection4 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection4 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection2 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.togglebtnActive = new Syncfusion.Windows.Forms.Tools.ToggleButton();
@@ -220,9 +220,9 @@ namespace DigiposZen
             this.tooltipPurchase = new System.Windows.Forms.ToolTip(this.components);
             this.picBackground = new System.Windows.Forms.PictureBox();
             this.pnlPurchaseOrder = new System.Windows.Forms.Panel();
-            this.lblPurchaseOrders = new System.Windows.Forms.Label();
-            this.chklstPurchaseOrders = new System.Windows.Forms.CheckedListBox();
             this.btnProcesOrder = new System.Windows.Forms.Button();
+            this.chklstPurchaseOrders = new System.Windows.Forms.CheckedListBox();
+            this.lblPurchaseOrders = new System.Windows.Forms.Label();
             this.tlpMain.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.togglebtnActive)).BeginInit();
@@ -357,33 +357,33 @@ namespace DigiposZen
             // 
             // togglebtnActive
             // 
-            activeStateCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection3.ForeColor = System.Drawing.Color.Navy;
-            activeStateCollection3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            activeStateCollection3.Text = "ON";
-            this.togglebtnActive.ActiveState = activeStateCollection3;
+            activeStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection1.ForeColor = System.Drawing.Color.Navy;
+            activeStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            activeStateCollection1.Text = "ON";
+            this.togglebtnActive.ActiveState = activeStateCollection1;
             this.tableLayoutPanel2.SetColumnSpan(this.togglebtnActive, 2);
             this.togglebtnActive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.togglebtnActive.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.togglebtnActive.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            inactiveStateCollection3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            inactiveStateCollection3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            inactiveStateCollection3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            inactiveStateCollection3.Text = "OFF";
-            this.togglebtnActive.InactiveState = inactiveStateCollection3;
+            inactiveStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            inactiveStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            inactiveStateCollection1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            inactiveStateCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            inactiveStateCollection1.Text = "OFF";
+            this.togglebtnActive.InactiveState = inactiveStateCollection1;
             this.togglebtnActive.Location = new System.Drawing.Point(1232, 73);
             this.togglebtnActive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.togglebtnActive.MinimumSize = new System.Drawing.Size(52, 20);
             this.togglebtnActive.Name = "togglebtnActive";
             this.togglebtnActive.Size = new System.Drawing.Size(122, 23);
-            sliderCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            sliderCollection3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            sliderCollection3.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            sliderCollection3.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.togglebtnActive.Slider = sliderCollection3;
+            sliderCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            sliderCollection1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            sliderCollection1.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            sliderCollection1.InactiveHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.togglebtnActive.Slider = sliderCollection1;
             this.togglebtnActive.TabIndex = 13;
             this.togglebtnActive.Text = "Active Status";
             this.togglebtnActive.ThemeName = "Office2016Black";
@@ -1393,32 +1393,32 @@ namespace DigiposZen
             this.dgvPurchase.AllowUserToAddRows = false;
             this.dgvPurchase.AllowUserToResizeRows = false;
             this.dgvPurchase.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPurchase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPurchase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel3.SetColumnSpan(this.dgvPurchase, 3);
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Yellow;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPurchase.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Yellow;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPurchase.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPurchase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPurchase.Location = new System.Drawing.Point(3, 0);
             this.dgvPurchase.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.dgvPurchase.Name = "dgvPurchase";
             this.dgvPurchase.RowHeadersVisible = false;
             this.dgvPurchase.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightCyan;
-            this.dgvPurchase.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightCyan;
+            this.dgvPurchase.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPurchase.RowTemplate.Height = 24;
             this.dgvPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvPurchase.Size = new System.Drawing.Size(1009, 351);
@@ -2766,19 +2766,19 @@ namespace DigiposZen
             // 
             // toggleWidthSettings
             // 
-            activeStateCollection4.Text = "Auto Width Settings";
-            this.toggleWidthSettings.ActiveState = activeStateCollection4;
+            activeStateCollection2.Text = "Auto Width Settings";
+            this.toggleWidthSettings.ActiveState = activeStateCollection2;
             this.toggleWidthSettings.Font = new System.Drawing.Font("Tahoma", 10.2F);
             this.toggleWidthSettings.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            inactiveStateCollection4.Text = "Manual Width Settings";
-            this.toggleWidthSettings.InactiveState = inactiveStateCollection4;
+            inactiveStateCollection2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            inactiveStateCollection2.Text = "Manual Width Settings";
+            this.toggleWidthSettings.InactiveState = inactiveStateCollection2;
             this.toggleWidthSettings.Location = new System.Drawing.Point(15, 140);
             this.toggleWidthSettings.Margin = new System.Windows.Forms.Padding(4);
             this.toggleWidthSettings.MinimumSize = new System.Drawing.Size(69, 25);
             this.toggleWidthSettings.Name = "toggleWidthSettings";
             this.toggleWidthSettings.Size = new System.Drawing.Size(325, 32);
-            this.toggleWidthSettings.Slider = sliderCollection4;
+            this.toggleWidthSettings.Slider = sliderCollection2;
             this.toggleWidthSettings.TabIndex = 13;
             this.toggleWidthSettings.Text = "toggleButton2";
             this.toggleWidthSettings.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
@@ -2905,25 +2905,6 @@ namespace DigiposZen
             this.pnlPurchaseOrder.TabIndex = 8;
             this.pnlPurchaseOrder.Visible = false;
             // 
-            // lblPurchaseOrders
-            // 
-            this.lblPurchaseOrders.AutoSize = true;
-            this.lblPurchaseOrders.Font = new System.Drawing.Font("Tahoma", 10.2F);
-            this.lblPurchaseOrders.Location = new System.Drawing.Point(19, 16);
-            this.lblPurchaseOrders.Name = "lblPurchaseOrders";
-            this.lblPurchaseOrders.Size = new System.Drawing.Size(138, 21);
-            this.lblPurchaseOrders.TabIndex = 0;
-            this.lblPurchaseOrders.Text = "Purchase Orders:";
-            // 
-            // chklstPurchaseOrders
-            // 
-            this.chklstPurchaseOrders.Font = new System.Drawing.Font("Tahoma", 10.2F);
-            this.chklstPurchaseOrders.FormattingEnabled = true;
-            this.chklstPurchaseOrders.Location = new System.Drawing.Point(22, 41);
-            this.chklstPurchaseOrders.Name = "chklstPurchaseOrders";
-            this.chklstPurchaseOrders.Size = new System.Drawing.Size(545, 259);
-            this.chklstPurchaseOrders.TabIndex = 1;
-            // 
             // btnProcesOrder
             // 
             this.btnProcesOrder.Font = new System.Drawing.Font("Tahoma", 10.2F);
@@ -2934,6 +2915,25 @@ namespace DigiposZen
             this.btnProcesOrder.Text = "Process";
             this.btnProcesOrder.UseVisualStyleBackColor = true;
             this.btnProcesOrder.Click += new System.EventHandler(this.btnProcesOrder_Click);
+            // 
+            // chklstPurchaseOrders
+            // 
+            this.chklstPurchaseOrders.Font = new System.Drawing.Font("Tahoma", 10.2F);
+            this.chklstPurchaseOrders.FormattingEnabled = true;
+            this.chklstPurchaseOrders.Location = new System.Drawing.Point(22, 41);
+            this.chklstPurchaseOrders.Name = "chklstPurchaseOrders";
+            this.chklstPurchaseOrders.Size = new System.Drawing.Size(545, 257);
+            this.chklstPurchaseOrders.TabIndex = 1;
+            // 
+            // lblPurchaseOrders
+            // 
+            this.lblPurchaseOrders.AutoSize = true;
+            this.lblPurchaseOrders.Font = new System.Drawing.Font("Tahoma", 10.2F);
+            this.lblPurchaseOrders.Location = new System.Drawing.Point(19, 16);
+            this.lblPurchaseOrders.Name = "lblPurchaseOrders";
+            this.lblPurchaseOrders.Size = new System.Drawing.Size(138, 21);
+            this.lblPurchaseOrders.TabIndex = 0;
+            this.lblPurchaseOrders.Text = "Purchase Orders:";
             // 
             // frmStockInVoucherNew
             // 

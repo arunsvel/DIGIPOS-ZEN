@@ -53,9 +53,18 @@ namespace DigiposZen.Forms
                 tbl2.TableName = "DataSet1";
                 adp1.Fill(tbl2);
 
-                SqlDataAdapter adp2 = new SqlDataAdapter("Select * from tblSalesItem join tblItemMaster on tblItemMaster.ItemID=tblSalesItem.ItemId where invid= '" + strinv + "'", conn);
+                SqlDataAdapter adp2 = new SqlDataAdapter("Select * from tblSalesItem join tblItemMaster on tblItemMaster.ItemID=tblSalesItem.ItemId join tblHSNCode on tblItemMaster.HSNID=tblHSNCode.HSNID  where invid= '" + strinv + "'", conn);
                 DataTable tbl3 = new DataTable();
                 tbl3.TableName = "DataSet3";
+
+                //DataRow dr;
+                
+                //for (int i = 0; i < 5; i++)
+                //    dr.col
+
+                //for (int i = 0; i < 5; i++)
+                //    tbl3.Rows.Add(new object[] { null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null });
+
                 adp2.Fill(tbl3);
 
                 SqlDataAdapter adp3 = new SqlDataAdapter("select tblSalesItem.taxper,sum(ITaxableAmount) as ITaxableAmount,sum(InonTaxableAmount) as InonTaxableAmount,sum(CGSTTaxAmt) as CGSTTaxAmt,sum(SGSTTaxAmt) as SGSTTaxAmt from tblItemMaster join tblSalesItem on tblItemMaster.ItemId=tblSalesItem.ItemID where InvID='" + strinv + "' GROUP BY (TaxPer)", conn);
@@ -97,7 +106,7 @@ namespace DigiposZen.Forms
 
                 this.reportViewer1.RefreshReport();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Comm.WritetoErrorLog(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
                 MessageBox.Show(ex.Message + "|" + System.Reflection.MethodBase.GetCurrentMethod().Name, Global.gblMessageCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -111,8 +120,8 @@ namespace DigiposZen.Forms
                 Printing obj = new Printing();
                 obj.Run(reportViewer1, PrintSettings, ReportName, NoOfItems);
             }
-            catch 
-            { 
+            catch
+            {
 
             }
         }

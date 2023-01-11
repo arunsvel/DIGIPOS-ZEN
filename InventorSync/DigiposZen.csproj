@@ -79,6 +79,9 @@
     <ApplicationIcon>DigiPos_Logomark_purple.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gma.QrCodeNet.0.4.1.2\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -105,6 +108,11 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>J:\Gravity Work Transfer\# Reference Codes\JsonProject\JsonProject\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.3\lib\net40\QRCoder.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.BulletGraph.Windows, Version=19.2460.0.59, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.BulletGraph.Windows.19.2.0.59\lib\net46\Syncfusion.BulletGraph.Windows.dll</HintPath>
@@ -318,6 +326,12 @@
     </Compile>
     <Compile Include="Forms\AboutBoxUs.Designer.cs">
       <DependentUpon>AboutBoxUs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPrintDesigner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPrintDesigner.Designer.cs">
+      <DependentUpon>frmPrintDesigner.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmAccountReport.cs">
       <SubType>Form</SubType>
@@ -697,6 +711,12 @@
     <Compile Include="Forms\frmVouchertype.designer.cs">
       <DependentUpon>frmVouchertype.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmWindowsPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmWindowsPrint.Designer.cs">
+      <DependentUpon>frmWindowsPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\InputBox.cs" />
     <Compile Include="Forms\ReportPrint.cs">
       <SubType>Form</SubType>
@@ -949,6 +969,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPriceListUpdator.resx">
       <DependentUpon>frmPriceListUpdator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPrintDesigner.resx">
+      <DependentUpon>frmPrintDesigner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPurchaseReturnReport.resx">
       <DependentUpon>frmPurchaseReturnReport.cs</DependentUpon>
@@ -1226,6 +1249,8 @@
     <None Include="Resources\logo.jpg" />
     <None Include="Resources\restore_db_1.png" />
     <None Include="Resources\restore_db_1 %282%29.png" />
+    <None Include="Resources\upload.png" />
+    <None Include="Resources\download.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -423,6 +423,16 @@ namespace DigiposZen.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap download {
+            get {
+                object obj = ResourceManager.GetObject("download", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap e106316a_c97c_4c16_bdc9_b56841c7dd5b {
             get {
                 object obj = ResourceManager.GetObject("e106316a-c97c-4c16-bdc9-b56841c7dd5b", resourceCulture);
@@ -1086,6 +1096,16 @@ namespace DigiposZen.Properties {
         internal static System.Drawing.Bitmap TITLEBAR2 {
             get {
                 object obj = ResourceManager.GetObject("TITLEBAR2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap upload {
+            get {
+                object obj = ResourceManager.GetObject("upload", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

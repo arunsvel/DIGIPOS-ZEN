@@ -36,22 +36,22 @@ namespace DigiposZen.Forms
             this.lblSave = new System.Windows.Forms.Label();
             this.btnFind = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.lblHeading = new System.Windows.Forms.Label();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnYtubeTutorial = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.tlpInvoiceHeader = new System.Windows.Forms.TableLayoutPanel();
             this.cboSalesStaff = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.cboCostCentre = new System.Windows.Forms.ComboBox();
+            this.lblInvNo = new System.Windows.Forms.Label();
+            this.lblInvDate = new System.Windows.Forms.Label();
+            this.dtpInvDate = new System.Windows.Forms.DateTimePicker();
             this.lblCostCenter = new System.Windows.Forms.Label();
+            this.cboCostCentre = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnprev = new System.Windows.Forms.Button();
             this.txtPrefix = new System.Windows.Forms.TextBox();
             this.txtInvAutoNo = new System.Windows.Forms.TextBox();
-            this.lblInvNo = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
-            this.btnprev = new System.Windows.Forms.Button();
-            this.dtpInvDate = new System.Windows.Forms.DateTimePicker();
-            this.lblInvDate = new System.Windows.Forms.Label();
+            this.lblHeading = new System.Windows.Forms.Label();
             this.lblFooter = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabBarcode = new System.Windows.Forms.TabControl();
@@ -70,7 +70,7 @@ namespace DigiposZen.Forms
             this.tbpBarcodeChanger = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTOLDBarCode = new System.Windows.Forms.Label();
-            this.txtOldBarcode = new System.Windows.Forms.TextBox();
+            this.txtOldBarCode = new System.Windows.Forms.TextBox();
             this.lblTNEWBarCode = new System.Windows.Forms.Label();
             this.pnlMRPNew = new System.Windows.Forms.Panel();
             this.lblMRPB = new System.Windows.Forms.Label();
@@ -85,7 +85,6 @@ namespace DigiposZen.Forms
             this.lblOldPLU = new System.Windows.Forms.Label();
             this.lblNewBarCode = new System.Windows.Forms.Label();
             this.txtItemSearch = new System.Windows.Forms.TextBox();
-            this.txtOldExpiryDate = new System.Windows.Forms.TextBox();
             this.lblOldExpiryDate = new System.Windows.Forms.Label();
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.pnlPrateOld = new System.Windows.Forms.Panel();
@@ -96,8 +95,7 @@ namespace DigiposZen.Forms
             this.txtCRateOld = new System.Windows.Forms.TextBox();
             this.lblItemName = new System.Windows.Forms.Label();
             this.lblNewExpiry = new System.Windows.Forms.Label();
-            this.txtNewExpiry = new System.Windows.Forms.TextBox();
-            this.pnlCRateOldwTax = new System.Windows.Forms.Panel();
+            this.pnlCRateOldWTax = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCRateWTaxOld = new System.Windows.Forms.TextBox();
             this.pnlSRate1New = new System.Windows.Forms.Panel();
@@ -136,26 +134,33 @@ namespace DigiposZen.Forms
             this.pnlSRate5Old = new System.Windows.Forms.Panel();
             this.lblSRateA5 = new System.Windows.Forms.Label();
             this.txtSRate5Old = new System.Windows.Forms.TextBox();
+            this.dtpNewExpiryDate = new System.Windows.Forms.DateTimePicker();
+            this.txtOldExpiryDate = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbpBarcodePrint = new System.Windows.Forms.TabPage();
+            this.panelsearch = new System.Windows.Forms.Panel();
+            this.lblSelected = new System.Windows.Forms.Label();
+            this.dgvSubMenu = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.dgvBarcodeDetails = new System.Windows.Forms.DataGridView();
             this.label18 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.cmbInvNoBCP = new System.Windows.Forms.ComboBox();
+            this.lblInvoice = new System.Windows.Forms.Label();
+            this.btnFill = new System.Windows.Forms.Button();
+            this.cmbVTypeBCP = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbPrinterBCP = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btnPrintDirect = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.cmbVoucherType = new System.Windows.Forms.ComboBox();
-            this.lblInvoice = new System.Windows.Forms.Label();
-            this.btnFill = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.cmbPrintSchemeBCP = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.txtItemCodeBCP = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.dgvBarcodeDetails = new System.Windows.Forms.DataGridView();
             this.lblVoucherType = new System.Windows.Forms.Label();
             this.rdbSearchSearchInvoice = new System.Windows.Forms.RadioButton();
             this.lblSearchBatchCode = new System.Windows.Forms.Label();
@@ -180,14 +185,9 @@ namespace DigiposZen.Forms
             this.label10 = new System.Windows.Forms.Label();
             this.cmbInstalledPrinters = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label20 = new System.Windows.Forms.Label();
-            this.panelsearch = new System.Windows.Forms.Panel();
-            this.lblSelected = new System.Windows.Forms.Label();
-            this.dgvSubMenu = new System.Windows.Forms.DataGridView();
             this.tlpMain.SuspendLayout();
             this.tlpHeader.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.tlpInvoiceHeader.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabBarcode.SuspendLayout();
             this.tbpBatchDeactivator.SuspendLayout();
@@ -198,7 +198,7 @@ namespace DigiposZen.Forms
             this.pnlPRateNew.SuspendLayout();
             this.pnlPrateOld.SuspendLayout();
             this.pnlCRateOld.SuspendLayout();
-            this.pnlCRateOldwTax.SuspendLayout();
+            this.pnlCRateOldWTax.SuspendLayout();
             this.pnlSRate1New.SuspendLayout();
             this.pnlMRPOld.SuspendLayout();
             this.pnlSRate1Old.SuspendLayout();
@@ -211,14 +211,15 @@ namespace DigiposZen.Forms
             this.pnlSRate5New.SuspendLayout();
             this.pnlSRate5Old.SuspendLayout();
             this.tbpBarcodePrint.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBarcodeDetails)).BeginInit();
-            this.tbpSettings.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.panelsearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubMenu)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBarcodeDetails)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.tbpSettings.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpMain
@@ -246,54 +247,54 @@ namespace DigiposZen.Forms
             this.tlpHeader.BackColor = System.Drawing.Color.White;
             this.tlpHeader.ColumnCount = 8;
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.tlpHeader.Controls.Add(this.lblFind, 1, 1);
             this.tlpHeader.Controls.Add(this.lblSave, 0, 1);
             this.tlpHeader.Controls.Add(this.btnFind, 1, 0);
             this.tlpHeader.Controls.Add(this.btnSave, 0, 0);
-            this.tlpHeader.Controls.Add(this.lblHeading, 2, 0);
             this.tlpHeader.Controls.Add(this.btnMinimize, 6, 0);
             this.tlpHeader.Controls.Add(this.btnClose, 7, 0);
             this.tlpHeader.Controls.Add(this.btnYtubeTutorial, 6, 1);
-            this.tlpHeader.Controls.Add(this.panel2, 2, 1);
+            this.tlpHeader.Controls.Add(this.tlpInvoiceHeader, 2, 1);
+            this.tlpHeader.Controls.Add(this.lblHeading, 2, 0);
             this.tlpHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpHeader.Location = new System.Drawing.Point(0, 0);
             this.tlpHeader.Margin = new System.Windows.Forms.Padding(0);
             this.tlpHeader.Name = "tlpHeader";
             this.tlpHeader.RowCount = 2;
-            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
-            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
+            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tlpHeader.Size = new System.Drawing.Size(1404, 95);
             this.tlpHeader.TabIndex = 0;
             // 
             // lblFind
             // 
-            this.lblFind.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFind.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFind.ForeColor = System.Drawing.Color.Black;
-            this.lblFind.Location = new System.Drawing.Point(80, 51);
+            this.lblFind.Location = new System.Drawing.Point(80, 54);
             this.lblFind.Name = "lblFind";
-            this.lblFind.Size = new System.Drawing.Size(71, 43);
+            this.lblFind.Size = new System.Drawing.Size(83, 30);
             this.lblFind.TabIndex = 14;
             this.lblFind.Text = "Find";
             this.lblFind.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblSave
             // 
-            this.lblSave.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSave.ForeColor = System.Drawing.Color.Black;
-            this.lblSave.Location = new System.Drawing.Point(3, 51);
+            this.lblSave.Location = new System.Drawing.Point(3, 54);
             this.lblSave.Name = "lblSave";
-            this.lblSave.Size = new System.Drawing.Size(71, 43);
+            this.lblSave.Size = new System.Drawing.Size(71, 30);
             this.lblSave.TabIndex = 13;
             this.lblSave.Text = "Save";
             this.lblSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSave.Click += new System.EventHandler(this.lblSave_Click);
             // 
             // btnFind
             // 
@@ -305,7 +306,7 @@ namespace DigiposZen.Forms
             this.btnFind.Location = new System.Drawing.Point(80, 2);
             this.btnFind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(71, 47);
+            this.btnFind.Size = new System.Drawing.Size(83, 50);
             this.btnFind.TabIndex = 12;
             this.btnFind.UseVisualStyleBackColor = false;
             // 
@@ -319,26 +320,10 @@ namespace DigiposZen.Forms
             this.btnSave.Location = new System.Drawing.Point(3, 2);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(71, 47);
+            this.btnSave.Size = new System.Drawing.Size(71, 50);
             this.btnSave.TabIndex = 11;
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // lblHeading
-            // 
-            this.lblHeading.AutoSize = true;
-            this.lblHeading.BackColor = System.Drawing.Color.Transparent;
-            this.tlpHeader.SetColumnSpan(this.lblHeading, 4);
-            this.lblHeading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHeading.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeading.ForeColor = System.Drawing.Color.Black;
-            this.lblHeading.Location = new System.Drawing.Point(175, 0);
-            this.lblHeading.Margin = new System.Windows.Forms.Padding(21, 0, 21, 0);
-            this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(1050, 51);
-            this.lblHeading.TabIndex = 2;
-            this.lblHeading.Text = "Barcode Manager";
-            this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnMinimize
             // 
@@ -346,10 +331,10 @@ namespace DigiposZen.Forms
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::DigiposZen.Properties.Resources.minimize_finalised;
-            this.btnMinimize.Location = new System.Drawing.Point(1249, 2);
+            this.btnMinimize.Location = new System.Drawing.Point(1245, 2);
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(68, 47);
+            this.btnMinimize.Size = new System.Drawing.Size(68, 50);
             this.btnMinimize.TabIndex = 6;
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
@@ -360,10 +345,10 @@ namespace DigiposZen.Forms
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::DigiposZen.Properties.Resources.logout_Final;
-            this.btnClose.Location = new System.Drawing.Point(1323, 2);
+            this.btnClose.Location = new System.Drawing.Point(1319, 2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(78, 47);
+            this.btnClose.Size = new System.Drawing.Size(82, 50);
             this.btnClose.TabIndex = 6;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -377,168 +362,208 @@ namespace DigiposZen.Forms
             this.btnYtubeTutorial.ForeColor = System.Drawing.Color.Black;
             this.btnYtubeTutorial.Image = ((System.Drawing.Image)(resources.GetObject("btnYtubeTutorial.Image")));
             this.btnYtubeTutorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnYtubeTutorial.Location = new System.Drawing.Point(1249, 53);
+            this.btnYtubeTutorial.Location = new System.Drawing.Point(1245, 56);
             this.btnYtubeTutorial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnYtubeTutorial.Name = "btnYtubeTutorial";
-            this.btnYtubeTutorial.Size = new System.Drawing.Size(68, 47);
+            this.btnYtubeTutorial.Size = new System.Drawing.Size(68, 44);
             this.btnYtubeTutorial.TabIndex = 10;
             this.btnYtubeTutorial.Text = "Tutorial";
             this.btnYtubeTutorial.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnYtubeTutorial.UseVisualStyleBackColor = true;
             this.btnYtubeTutorial.Visible = false;
             // 
-            // panel2
+            // tlpInvoiceHeader
             // 
-            this.tlpHeader.SetColumnSpan(this.panel2, 4);
-            this.panel2.Controls.Add(this.cboSalesStaff);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.cboCostCentre);
-            this.panel2.Controls.Add(this.lblCostCenter);
-            this.panel2.Controls.Add(this.txtPrefix);
-            this.panel2.Controls.Add(this.txtInvAutoNo);
-            this.panel2.Controls.Add(this.lblInvNo);
-            this.panel2.Controls.Add(this.btnNext);
-            this.panel2.Controls.Add(this.btnprev);
-            this.panel2.Controls.Add(this.dtpInvDate);
-            this.panel2.Controls.Add(this.lblInvDate);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(157, 54);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1086, 45);
-            this.panel2.TabIndex = 15;
+            this.tlpInvoiceHeader.ColumnCount = 11;
+            this.tlpHeader.SetColumnSpan(this.tlpInvoiceHeader, 4);
+            this.tlpInvoiceHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlpInvoiceHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tlpInvoiceHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tlpInvoiceHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
+            this.tlpInvoiceHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tlpInvoiceHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tlpInvoiceHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
+            this.tlpInvoiceHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpInvoiceHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
+            this.tlpInvoiceHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tlpInvoiceHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 236F));
+            this.tlpInvoiceHeader.Controls.Add(this.cboSalesStaff, 13, 0);
+            this.tlpInvoiceHeader.Controls.Add(this.lblInvNo, 0, 0);
+            this.tlpInvoiceHeader.Controls.Add(this.lblInvDate, 5, 0);
+            this.tlpInvoiceHeader.Controls.Add(this.dtpInvDate, 6, 0);
+            this.tlpInvoiceHeader.Controls.Add(this.lblCostCenter, 7, 0);
+            this.tlpInvoiceHeader.Controls.Add(this.cboCostCentre, 8, 0);
+            this.tlpInvoiceHeader.Controls.Add(this.label14, 9, 0);
+            this.tlpInvoiceHeader.Controls.Add(this.btnprev, 1, 0);
+            this.tlpInvoiceHeader.Controls.Add(this.txtPrefix, 2, 0);
+            this.tlpInvoiceHeader.Controls.Add(this.txtInvAutoNo, 3, 0);
+            this.tlpInvoiceHeader.Controls.Add(this.btnNext, 4, 0);
+            this.tlpInvoiceHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpInvoiceHeader.Location = new System.Drawing.Point(169, 57);
+            this.tlpInvoiceHeader.Name = "tlpInvoiceHeader";
+            this.tlpInvoiceHeader.RowCount = 1;
+            this.tlpInvoiceHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpInvoiceHeader.Size = new System.Drawing.Size(1070, 42);
+            this.tlpInvoiceHeader.TabIndex = 37;
             // 
             // cboSalesStaff
             // 
             this.cboSalesStaff.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboSalesStaff.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboSalesStaff.Dock = System.Windows.Forms.DockStyle.Left;
             this.cboSalesStaff.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSalesStaff.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboSalesStaff.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboSalesStaff.FormattingEnabled = true;
-            this.cboSalesStaff.Location = new System.Drawing.Point(957, 8);
+            this.cboSalesStaff.Location = new System.Drawing.Point(893, 2);
             this.cboSalesStaff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboSalesStaff.Name = "cboSalesStaff";
-            this.cboSalesStaff.Size = new System.Drawing.Size(111, 29);
-            this.cboSalesStaff.TabIndex = 35;
+            this.cboSalesStaff.Size = new System.Drawing.Size(190, 26);
+            this.cboSalesStaff.TabIndex = 38;
+            this.cboSalesStaff.SelectedIndexChanged += new System.EventHandler(this.cboSalesStaff_SelectedIndexChanged);
             // 
-            // label14
+            // lblInvNo
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(857, 12);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 21);
-            this.label14.TabIndex = 36;
-            this.label14.Text = "Sales Staff:";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lblInvNo.AutoSize = true;
+            this.lblInvNo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblInvNo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvNo.ForeColor = System.Drawing.Color.Black;
+            this.lblInvNo.Location = new System.Drawing.Point(52, 0);
+            this.lblInvNo.Name = "lblInvNo";
+            this.lblInvNo.Size = new System.Drawing.Size(65, 42);
+            this.lblInvNo.TabIndex = 30;
+            this.lblInvNo.Text = "Invoice Number:";
+            this.lblInvNo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblInvNo.Click += new System.EventHandler(this.lblInvNo_Click);
+            // 
+            // lblInvDate
+            // 
+            this.lblInvDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblInvDate.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvDate.ForeColor = System.Drawing.Color.Black;
+            this.lblInvDate.Location = new System.Drawing.Point(379, 0);
+            this.lblInvDate.Name = "lblInvDate";
+            this.lblInvDate.Size = new System.Drawing.Size(68, 30);
+            this.lblInvDate.TabIndex = 27;
+            this.lblInvDate.Text = "VchDate:";
+            this.lblInvDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblInvDate.Click += new System.EventHandler(this.lblInvDate_Click);
+            // 
+            // dtpInvDate
+            // 
+            this.dtpInvDate.CustomFormat = "dd/MMM/yyyy";
+            this.dtpInvDate.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dtpInvDate.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.dtpInvDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpInvDate.Location = new System.Drawing.Point(453, 2);
+            this.dtpInvDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpInvDate.Name = "dtpInvDate";
+            this.dtpInvDate.Size = new System.Drawing.Size(119, 26);
+            this.dtpInvDate.TabIndex = 26;
+            this.dtpInvDate.ValueChanged += new System.EventHandler(this.dtpInvDate_ValueChanged);
+            // 
+            // lblCostCenter
+            // 
+            this.lblCostCenter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCostCenter.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostCenter.Location = new System.Drawing.Point(582, 0);
+            this.lblCostCenter.Name = "lblCostCenter";
+            this.lblCostCenter.Size = new System.Drawing.Size(90, 30);
+            this.lblCostCenter.TabIndex = 34;
+            this.lblCostCenter.Text = "Cost Centre:";
+            this.lblCostCenter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // cboCostCentre
             // 
             this.cboCostCentre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboCostCentre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboCostCentre.Dock = System.Windows.Forms.DockStyle.Left;
             this.cboCostCentre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCostCentre.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCostCentre.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCostCentre.FormattingEnabled = true;
-            this.cboCostCentre.Location = new System.Drawing.Point(722, 8);
+            this.cboCostCentre.Location = new System.Drawing.Point(678, 2);
             this.cboCostCentre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboCostCentre.Name = "cboCostCentre";
-            this.cboCostCentre.Size = new System.Drawing.Size(116, 29);
+            this.cboCostCentre.Size = new System.Drawing.Size(119, 26);
             this.cboCostCentre.TabIndex = 33;
             // 
-            // lblCostCenter
+            // label14
             // 
-            this.lblCostCenter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCostCenter.AutoSize = true;
-            this.lblCostCenter.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCostCenter.Location = new System.Drawing.Point(613, 12);
-            this.lblCostCenter.Name = "lblCostCenter";
-            this.lblCostCenter.Size = new System.Drawing.Size(103, 21);
-            this.lblCostCenter.TabIndex = 34;
-            this.lblCostCenter.Text = "Cost Centre:";
-            this.lblCostCenter.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(805, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(82, 30);
+            this.label14.TabIndex = 36;
+            this.label14.Text = "Sales Staff:";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnprev
+            // 
+            this.btnprev.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnprev.FlatAppearance.BorderSize = 0;
+            this.btnprev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnprev.Image = global::DigiposZen.Properties.Resources.fast_backwards;
+            this.btnprev.Location = new System.Drawing.Point(128, 2);
+            this.btnprev.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnprev.Name = "btnprev";
+            this.btnprev.Size = new System.Drawing.Size(24, 38);
+            this.btnprev.TabIndex = 32;
+            this.btnprev.UseVisualStyleBackColor = true;
             // 
             // txtPrefix
             // 
-            this.txtPrefix.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrefix.Location = new System.Drawing.Point(192, 8);
+            this.txtPrefix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPrefix.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPrefix.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrefix.Location = new System.Drawing.Point(158, 2);
             this.txtPrefix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPrefix.Name = "txtPrefix";
-            this.txtPrefix.Size = new System.Drawing.Size(47, 28);
+            this.txtPrefix.Size = new System.Drawing.Size(54, 26);
             this.txtPrefix.TabIndex = 28;
-            this.txtPrefix.Visible = false;
             // 
             // txtInvAutoNo
             // 
-            this.txtInvAutoNo.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvAutoNo.Location = new System.Drawing.Point(192, 8);
+            this.txtInvAutoNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtInvAutoNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtInvAutoNo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInvAutoNo.Location = new System.Drawing.Point(218, 2);
             this.txtInvAutoNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInvAutoNo.MaxLength = 100;
             this.txtInvAutoNo.Name = "txtInvAutoNo";
-            this.txtInvAutoNo.Size = new System.Drawing.Size(127, 28);
+            this.txtInvAutoNo.Size = new System.Drawing.Size(119, 26);
             this.txtInvAutoNo.TabIndex = 29;
             this.txtInvAutoNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtInvAutoNo.Leave += new System.EventHandler(this.txtInvAutoNo_Leave);
             // 
-            // lblInvNo
-            // 
-            this.lblInvNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblInvNo.AutoSize = true;
-            this.lblInvNo.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvNo.ForeColor = System.Drawing.Color.Black;
-            this.lblInvNo.Location = new System.Drawing.Point(28, 12);
-            this.lblInvNo.Name = "lblInvNo";
-            this.lblInvNo.Size = new System.Drawing.Size(132, 21);
-            this.lblInvNo.TabIndex = 30;
-            this.lblInvNo.Text = "Invoice Number:";
-            this.lblInvNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnNext
             // 
+            this.btnNext.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnNext.FlatAppearance.BorderSize = 0;
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.Image = global::DigiposZen.Properties.Resources.fast_forward;
-            this.btnNext.Location = new System.Drawing.Point(316, 7);
+            this.btnNext.Location = new System.Drawing.Point(343, 2);
             this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(28, 31);
+            this.btnNext.Size = new System.Drawing.Size(29, 38);
             this.btnNext.TabIndex = 31;
             this.btnNext.UseVisualStyleBackColor = true;
             // 
-            // btnprev
+            // lblHeading
             // 
-            this.btnprev.FlatAppearance.BorderSize = 0;
-            this.btnprev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnprev.Image = global::DigiposZen.Properties.Resources.fast_backwards;
-            this.btnprev.Location = new System.Drawing.Point(162, 7);
-            this.btnprev.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnprev.Name = "btnprev";
-            this.btnprev.Size = new System.Drawing.Size(28, 31);
-            this.btnprev.TabIndex = 32;
-            this.btnprev.UseVisualStyleBackColor = true;
-            // 
-            // dtpInvDate
-            // 
-            this.dtpInvDate.CustomFormat = "dd/MMM/yyyy";
-            this.dtpInvDate.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.dtpInvDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpInvDate.Location = new System.Drawing.Point(432, 9);
-            this.dtpInvDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtpInvDate.Name = "dtpInvDate";
-            this.dtpInvDate.Size = new System.Drawing.Size(145, 26);
-            this.dtpInvDate.TabIndex = 26;
-            // 
-            // lblInvDate
-            // 
-            this.lblInvDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblInvDate.AutoSize = true;
-            this.lblInvDate.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblInvDate.ForeColor = System.Drawing.Color.Black;
-            this.lblInvDate.Location = new System.Drawing.Point(357, 13);
-            this.lblInvDate.Name = "lblInvDate";
-            this.lblInvDate.Size = new System.Drawing.Size(68, 18);
-            this.lblInvDate.TabIndex = 27;
-            this.lblInvDate.Text = "VchDate:";
-            this.lblInvDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHeading.AutoSize = true;
+            this.lblHeading.BackColor = System.Drawing.Color.Transparent;
+            this.tlpHeader.SetColumnSpan(this.lblHeading, 4);
+            this.lblHeading.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHeading.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeading.ForeColor = System.Drawing.Color.Black;
+            this.lblHeading.Location = new System.Drawing.Point(187, 0);
+            this.lblHeading.Margin = new System.Windows.Forms.Padding(21, 0, 21, 0);
+            this.lblHeading.Name = "lblHeading";
+            this.lblHeading.Size = new System.Drawing.Size(1034, 54);
+            this.lblHeading.TabIndex = 2;
+            this.lblHeading.Text = "Barcode Manager";
+            this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHeading.Click += new System.EventHandler(this.lblHeading_Click);
             // 
             // lblFooter
             // 
@@ -612,9 +637,9 @@ namespace DigiposZen.Forms
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(11, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(403, 18);
+            this.label1.Size = new System.Drawing.Size(398, 18);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Enter barcode or part of barcode or itemcode  or itemname:";
+            this.label1.Text = "Enter barcode or part of barcode or itemcode or itemname:";
             // 
             // txtFillSearch
             // 
@@ -630,7 +655,7 @@ namespace DigiposZen.Forms
             // 
             this.btnFillData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFillData.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFillData.Location = new System.Drawing.Point(704, 38);
+            this.btnFillData.Location = new System.Drawing.Point(722, 38);
             this.btnFillData.Name = "btnFillData";
             this.btnFillData.Size = new System.Drawing.Size(96, 34);
             this.btnFillData.TabIndex = 21;
@@ -649,7 +674,7 @@ namespace DigiposZen.Forms
             "Negative /Zero Qty Batches",
             "Active Batches",
             "Deactive Batches"});
-            this.cmbDisplayStyle.Location = new System.Drawing.Point(465, 44);
+            this.cmbDisplayStyle.Location = new System.Drawing.Point(472, 44);
             this.cmbDisplayStyle.Name = "cmbDisplayStyle";
             this.cmbDisplayStyle.Size = new System.Drawing.Size(233, 26);
             this.cmbDisplayStyle.TabIndex = 20;
@@ -658,7 +683,7 @@ namespace DigiposZen.Forms
             // 
             this.chkExactWordOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkExactWordOnly.AutoSize = true;
-            this.chkExactWordOnly.Location = new System.Drawing.Point(946, 111);
+            this.chkExactWordOnly.Location = new System.Drawing.Point(723, 111);
             this.chkExactWordOnly.Name = "chkExactWordOnly";
             this.chkExactWordOnly.Size = new System.Drawing.Size(140, 22);
             this.chkExactWordOnly.TabIndex = 19;
@@ -669,7 +694,7 @@ namespace DigiposZen.Forms
             // 
             this.chkMatchCase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkMatchCase.AutoSize = true;
-            this.chkMatchCase.Location = new System.Drawing.Point(822, 112);
+            this.chkMatchCase.Location = new System.Drawing.Point(599, 112);
             this.chkMatchCase.Name = "chkMatchCase";
             this.chkMatchCase.Size = new System.Drawing.Size(107, 22);
             this.chkMatchCase.TabIndex = 18;
@@ -680,7 +705,7 @@ namespace DigiposZen.Forms
             // 
             this.btnSearchFwd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearchFwd.Image = global::DigiposZen.Properties.Resources.fast_forward;
-            this.btnSearchFwd.Location = new System.Drawing.Point(756, 105);
+            this.btnSearchFwd.Location = new System.Drawing.Point(532, 104);
             this.btnSearchFwd.Name = "btnSearchFwd";
             this.btnSearchFwd.Size = new System.Drawing.Size(45, 34);
             this.btnSearchFwd.TabIndex = 17;
@@ -691,7 +716,7 @@ namespace DigiposZen.Forms
             // 
             this.btnSearchBwd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearchBwd.Image = global::DigiposZen.Properties.Resources.fast_backwards;
-            this.btnSearchBwd.Location = new System.Drawing.Point(704, 105);
+            this.btnSearchBwd.Location = new System.Drawing.Point(472, 105);
             this.btnSearchBwd.Name = "btnSearchBwd";
             this.btnSearchBwd.Size = new System.Drawing.Size(45, 34);
             this.btnSearchBwd.TabIndex = 16;
@@ -705,7 +730,7 @@ namespace DigiposZen.Forms
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Location = new System.Drawing.Point(15, 110);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(683, 26);
+            this.txtSearch.Size = new System.Drawing.Size(443, 26);
             this.txtSearch.TabIndex = 15;
             // 
             // DgvData
@@ -753,7 +778,7 @@ namespace DigiposZen.Forms
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11234F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11234F));
             this.tableLayoutPanel1.Controls.Add(this.lblTOLDBarCode, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtOldBarcode, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtOldBarCode, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblTNEWBarCode, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.pnlMRPNew, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.pnlPRateNew, 0, 10);
@@ -764,15 +789,13 @@ namespace DigiposZen.Forms
             this.tableLayoutPanel1.Controls.Add(this.lblOldPLU, 7, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblNewBarCode, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.txtItemSearch, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtOldExpiryDate, 6, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblOldExpiryDate, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtItemName, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.pnlPrateOld, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.pnlCRateOld, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblItemName, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblNewExpiry, 2, 7);
-            this.tableLayoutPanel1.Controls.Add(this.txtNewExpiry, 2, 8);
-            this.tableLayoutPanel1.Controls.Add(this.pnlCRateOldwTax, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.pnlCRateOldWTax, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.pnlSRate1New, 2, 10);
             this.tableLayoutPanel1.Controls.Add(this.pnlMRPOld, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.pnlSRate1Old, 4, 4);
@@ -787,23 +810,25 @@ namespace DigiposZen.Forms
             this.tableLayoutPanel1.Controls.Add(this.pnlSRate4New, 5, 10);
             this.tableLayoutPanel1.Controls.Add(this.pnlSRate5New, 6, 10);
             this.tableLayoutPanel1.Controls.Add(this.pnlSRate5Old, 8, 4);
+            this.tableLayoutPanel1.Controls.Add(this.dtpNewExpiryDate, 2, 8);
+            this.tableLayoutPanel1.Controls.Add(this.txtOldExpiryDate, 6, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
             this.tableLayoutPanel1.RowCount = 12;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.01355F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.471545F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.149052F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.084011F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0271F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.420054F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.200542F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.471545F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.742548F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.168022F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.891599F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.22493F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1384, 738);
             this.tableLayoutPanel1.TabIndex = 30;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
@@ -812,31 +837,32 @@ namespace DigiposZen.Forms
             // 
             this.lblTOLDBarCode.AutoSize = true;
             this.lblTOLDBarCode.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblTOLDBarCode.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTOLDBarCode.Location = new System.Drawing.Point(18, 19);
+            this.lblTOLDBarCode.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTOLDBarCode.Location = new System.Drawing.Point(18, 22);
             this.lblTOLDBarCode.Name = "lblTOLDBarCode";
             this.lblTOLDBarCode.Size = new System.Drawing.Size(144, 18);
             this.lblTOLDBarCode.TabIndex = 32;
             this.lblTOLDBarCode.Text = "Current BarCode";
             this.lblTOLDBarCode.Click += new System.EventHandler(this.label6_Click);
             // 
-            // txtOldBarcode
+            // txtOldBarCode
             // 
-            this.txtOldBarcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tableLayoutPanel1.SetColumnSpan(this.txtOldBarcode, 2);
-            this.txtOldBarcode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtOldBarcode.Location = new System.Drawing.Point(618, 73);
-            this.txtOldBarcode.Name = "txtOldBarcode";
-            this.txtOldBarcode.ReadOnly = true;
-            this.txtOldBarcode.Size = new System.Drawing.Size(294, 26);
-            this.txtOldBarcode.TabIndex = 22;
+            this.txtOldBarCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableLayoutPanel1.SetColumnSpan(this.txtOldBarCode, 2);
+            this.txtOldBarCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtOldBarCode.Location = new System.Drawing.Point(618, 83);
+            this.txtOldBarCode.Name = "txtOldBarCode";
+            this.txtOldBarCode.ReadOnly = true;
+            this.txtOldBarCode.Size = new System.Drawing.Size(294, 26);
+            this.txtOldBarCode.TabIndex = 22;
+            this.txtOldBarCode.TabStop = false;
             // 
             // lblTNEWBarCode
             // 
             this.lblTNEWBarCode.AutoSize = true;
             this.lblTNEWBarCode.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblTNEWBarCode.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTNEWBarCode.Location = new System.Drawing.Point(18, 243);
+            this.lblTNEWBarCode.Location = new System.Drawing.Point(18, 257);
             this.lblTNEWBarCode.Name = "lblTNEWBarCode";
             this.lblTNEWBarCode.Size = new System.Drawing.Size(144, 18);
             this.lblTNEWBarCode.TabIndex = 31;
@@ -849,10 +875,10 @@ namespace DigiposZen.Forms
             this.pnlMRPNew.Controls.Add(this.lblMRPB);
             this.pnlMRPNew.Controls.Add(this.txtMRPNew);
             this.pnlMRPNew.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMRPNew.Location = new System.Drawing.Point(168, 348);
+            this.pnlMRPNew.Location = new System.Drawing.Point(168, 363);
             this.pnlMRPNew.Name = "pnlMRPNew";
             this.pnlMRPNew.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlMRPNew.Size = new System.Drawing.Size(144, 67);
+            this.pnlMRPNew.Size = new System.Drawing.Size(144, 64);
             this.pnlMRPNew.TabIndex = 7;
             // 
             // lblMRPB
@@ -869,12 +895,12 @@ namespace DigiposZen.Forms
             // 
             this.txtMRPNew.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMRPNew.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtMRPNew.Location = new System.Drawing.Point(3, 38);
+            this.txtMRPNew.Location = new System.Drawing.Point(3, 35);
             this.txtMRPNew.Name = "txtMRPNew";
             this.txtMRPNew.Size = new System.Drawing.Size(138, 26);
             this.txtMRPNew.TabIndex = 0;
-            this.txtMRPNew.TextChanged += new System.EventHandler(this.textBox15_TextChanged);
             this.txtMRPNew.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
+            this.txtMRPNew.Leave += new System.EventHandler(this.TextBoxRateChecks_Leave);
             // 
             // pnlPRateNew
             // 
@@ -883,10 +909,10 @@ namespace DigiposZen.Forms
             this.pnlPRateNew.Controls.Add(this.lblPRateB);
             this.pnlPRateNew.Controls.Add(this.txtPRateNew);
             this.pnlPRateNew.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPRateNew.Location = new System.Drawing.Point(18, 348);
+            this.pnlPRateNew.Location = new System.Drawing.Point(18, 363);
             this.pnlPRateNew.Name = "pnlPRateNew";
             this.pnlPRateNew.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlPRateNew.Size = new System.Drawing.Size(144, 67);
+            this.pnlPRateNew.Size = new System.Drawing.Size(144, 64);
             this.pnlPRateNew.TabIndex = 11;
             // 
             // lblPRateB
@@ -903,18 +929,19 @@ namespace DigiposZen.Forms
             // 
             this.txtPRateNew.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPRateNew.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtPRateNew.Location = new System.Drawing.Point(3, 38);
+            this.txtPRateNew.Location = new System.Drawing.Point(3, 35);
             this.txtPRateNew.Name = "txtPRateNew";
             this.txtPRateNew.Size = new System.Drawing.Size(138, 26);
             this.txtPRateNew.TabIndex = 0;
             this.txtPRateNew.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
+            this.txtPRateNew.Leave += new System.EventHandler(this.TextBoxRateChecks_Leave);
             // 
             // lblCurrentBarCode
             // 
             this.lblCurrentBarCode.AccessibleName = "";
             this.lblCurrentBarCode.AutoSize = true;
             this.lblCurrentBarCode.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblCurrentBarCode.Location = new System.Drawing.Point(618, 52);
+            this.lblCurrentBarCode.Location = new System.Drawing.Point(618, 62);
             this.lblCurrentBarCode.Name = "lblCurrentBarCode";
             this.lblCurrentBarCode.Size = new System.Drawing.Size(144, 18);
             this.lblCurrentBarCode.TabIndex = 23;
@@ -926,7 +953,7 @@ namespace DigiposZen.Forms
             this.txtNewBarCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableLayoutPanel1.SetColumnSpan(this.txtNewBarCode, 2);
             this.txtNewBarCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNewBarCode.Location = new System.Drawing.Point(18, 297);
+            this.txtNewBarCode.Location = new System.Drawing.Point(18, 318);
             this.txtNewBarCode.Name = "txtNewBarCode";
             this.txtNewBarCode.Size = new System.Drawing.Size(294, 26);
             this.txtNewBarCode.TabIndex = 12;
@@ -936,7 +963,7 @@ namespace DigiposZen.Forms
             this.lblItemSearch.AccessibleName = "";
             this.lblItemSearch.AutoSize = true;
             this.lblItemSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblItemSearch.Location = new System.Drawing.Point(18, 52);
+            this.lblItemSearch.Location = new System.Drawing.Point(18, 62);
             this.lblItemSearch.Name = "lblItemSearch";
             this.lblItemSearch.Size = new System.Drawing.Size(144, 18);
             this.lblItemSearch.TabIndex = 19;
@@ -947,11 +974,12 @@ namespace DigiposZen.Forms
             // 
             this.txtOldPLU.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOldPLU.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtOldPLU.Location = new System.Drawing.Point(1068, 73);
+            this.txtOldPLU.Location = new System.Drawing.Point(1068, 83);
             this.txtOldPLU.Name = "txtOldPLU";
             this.txtOldPLU.ReadOnly = true;
             this.txtOldPLU.Size = new System.Drawing.Size(144, 26);
             this.txtOldPLU.TabIndex = 26;
+            this.txtOldPLU.TabStop = false;
             this.txtOldPLU.TextChanged += new System.EventHandler(this.txtOldPLU_TextChanged);
             this.txtOldPLU.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNum_KeyPress);
             // 
@@ -960,7 +988,7 @@ namespace DigiposZen.Forms
             this.lblOldPLU.AccessibleName = "";
             this.lblOldPLU.AutoSize = true;
             this.lblOldPLU.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblOldPLU.Location = new System.Drawing.Point(1068, 52);
+            this.lblOldPLU.Location = new System.Drawing.Point(1068, 62);
             this.lblOldPLU.Name = "lblOldPLU";
             this.lblOldPLU.Size = new System.Drawing.Size(144, 18);
             this.lblOldPLU.TabIndex = 27;
@@ -972,7 +1000,7 @@ namespace DigiposZen.Forms
             this.lblNewBarCode.AccessibleName = "";
             this.lblNewBarCode.AutoSize = true;
             this.lblNewBarCode.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblNewBarCode.Location = new System.Drawing.Point(18, 276);
+            this.lblNewBarCode.Location = new System.Drawing.Point(18, 297);
             this.lblNewBarCode.Name = "lblNewBarCode";
             this.lblNewBarCode.Size = new System.Drawing.Size(144, 18);
             this.lblNewBarCode.TabIndex = 13;
@@ -984,28 +1012,18 @@ namespace DigiposZen.Forms
             this.txtItemSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableLayoutPanel1.SetColumnSpan(this.txtItemSearch, 2);
             this.txtItemSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtItemSearch.Location = new System.Drawing.Point(18, 73);
+            this.txtItemSearch.Location = new System.Drawing.Point(18, 83);
             this.txtItemSearch.Name = "txtItemSearch";
             this.txtItemSearch.Size = new System.Drawing.Size(294, 26);
             this.txtItemSearch.TabIndex = 18;
-            // 
-            // txtOldExpiryDate
-            // 
-            this.txtOldExpiryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtOldExpiryDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtOldExpiryDate.Location = new System.Drawing.Point(918, 73);
-            this.txtOldExpiryDate.Name = "txtOldExpiryDate";
-            this.txtOldExpiryDate.ReadOnly = true;
-            this.txtOldExpiryDate.Size = new System.Drawing.Size(144, 26);
-            this.txtOldExpiryDate.TabIndex = 24;
-            this.txtOldExpiryDate.TextChanged += new System.EventHandler(this.txtOldExpiryDate_TextChanged);
+            this.txtItemSearch.TextChanged += new System.EventHandler(this.txtItemSearch_TextChanged);
             // 
             // lblOldExpiryDate
             // 
             this.lblOldExpiryDate.AccessibleName = "";
             this.lblOldExpiryDate.AutoSize = true;
             this.lblOldExpiryDate.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblOldExpiryDate.Location = new System.Drawing.Point(918, 52);
+            this.lblOldExpiryDate.Location = new System.Drawing.Point(918, 62);
             this.lblOldExpiryDate.Name = "lblOldExpiryDate";
             this.lblOldExpiryDate.Size = new System.Drawing.Size(144, 18);
             this.lblOldExpiryDate.TabIndex = 25;
@@ -1018,11 +1036,12 @@ namespace DigiposZen.Forms
             this.txtItemName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableLayoutPanel1.SetColumnSpan(this.txtItemName, 2);
             this.txtItemName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtItemName.Location = new System.Drawing.Point(318, 73);
+            this.txtItemName.Location = new System.Drawing.Point(318, 83);
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.ReadOnly = true;
             this.txtItemName.Size = new System.Drawing.Size(294, 26);
             this.txtItemName.TabIndex = 20;
+            this.txtItemName.TabStop = false;
             this.txtItemName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemName_KeyPress);
             // 
             // pnlPrateOld
@@ -1031,10 +1050,10 @@ namespace DigiposZen.Forms
             this.pnlPrateOld.Controls.Add(this.lblPRateA);
             this.pnlPrateOld.Controls.Add(this.txtPRateOld);
             this.pnlPrateOld.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPrateOld.Location = new System.Drawing.Point(18, 119);
+            this.pnlPrateOld.Location = new System.Drawing.Point(18, 128);
             this.pnlPrateOld.Name = "pnlPrateOld";
             this.pnlPrateOld.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlPrateOld.Size = new System.Drawing.Size(144, 68);
+            this.pnlPrateOld.Size = new System.Drawing.Size(144, 64);
             this.pnlPrateOld.TabIndex = 10;
             // 
             // lblPRateA
@@ -1050,11 +1069,12 @@ namespace DigiposZen.Forms
             // 
             this.txtPRateOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPRateOld.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtPRateOld.Location = new System.Drawing.Point(3, 39);
+            this.txtPRateOld.Location = new System.Drawing.Point(3, 35);
             this.txtPRateOld.Name = "txtPRateOld";
             this.txtPRateOld.ReadOnly = true;
             this.txtPRateOld.Size = new System.Drawing.Size(138, 26);
             this.txtPRateOld.TabIndex = 0;
+            this.txtPRateOld.TabStop = false;
             this.txtPRateOld.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
             this.txtPRateOld.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
             // 
@@ -1064,10 +1084,10 @@ namespace DigiposZen.Forms
             this.pnlCRateOld.Controls.Add(this.lblCRateA);
             this.pnlCRateOld.Controls.Add(this.txtCRateOld);
             this.pnlCRateOld.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCRateOld.Location = new System.Drawing.Point(168, 119);
+            this.pnlCRateOld.Location = new System.Drawing.Point(168, 128);
             this.pnlCRateOld.Name = "pnlCRateOld";
             this.pnlCRateOld.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlCRateOld.Size = new System.Drawing.Size(144, 68);
+            this.pnlCRateOld.Size = new System.Drawing.Size(144, 64);
             this.pnlCRateOld.TabIndex = 6;
             // 
             // lblCRateA
@@ -1083,11 +1103,12 @@ namespace DigiposZen.Forms
             // 
             this.txtCRateOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCRateOld.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtCRateOld.Location = new System.Drawing.Point(3, 39);
+            this.txtCRateOld.Location = new System.Drawing.Point(3, 35);
             this.txtCRateOld.Name = "txtCRateOld";
             this.txtCRateOld.ReadOnly = true;
             this.txtCRateOld.Size = new System.Drawing.Size(138, 26);
             this.txtCRateOld.TabIndex = 0;
+            this.txtCRateOld.TabStop = false;
             this.txtCRateOld.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
             // 
             // lblItemName
@@ -1095,7 +1116,7 @@ namespace DigiposZen.Forms
             this.lblItemName.AccessibleName = "";
             this.lblItemName.AutoSize = true;
             this.lblItemName.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblItemName.Location = new System.Drawing.Point(318, 52);
+            this.lblItemName.Location = new System.Drawing.Point(318, 62);
             this.lblItemName.Name = "lblItemName";
             this.lblItemName.Size = new System.Drawing.Size(144, 18);
             this.lblItemName.TabIndex = 21;
@@ -1107,33 +1128,24 @@ namespace DigiposZen.Forms
             this.lblNewExpiry.AccessibleName = "";
             this.lblNewExpiry.AutoSize = true;
             this.lblNewExpiry.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblNewExpiry.Location = new System.Drawing.Point(318, 276);
+            this.lblNewExpiry.Location = new System.Drawing.Point(318, 297);
             this.lblNewExpiry.Name = "lblNewExpiry";
             this.lblNewExpiry.Size = new System.Drawing.Size(144, 18);
             this.lblNewExpiry.TabIndex = 15;
             this.lblNewExpiry.Text = "New Expiry";
             this.lblNewExpiry.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtNewExpiry
+            // pnlCRateOldWTax
             // 
-            this.txtNewExpiry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNewExpiry.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNewExpiry.Location = new System.Drawing.Point(318, 297);
-            this.txtNewExpiry.Name = "txtNewExpiry";
-            this.txtNewExpiry.Size = new System.Drawing.Size(144, 26);
-            this.txtNewExpiry.TabIndex = 14;
-            // 
-            // pnlCRateOldwTax
-            // 
-            this.pnlCRateOldwTax.BackColor = System.Drawing.Color.Beige;
-            this.pnlCRateOldwTax.Controls.Add(this.label4);
-            this.pnlCRateOldwTax.Controls.Add(this.txtCRateWTaxOld);
-            this.pnlCRateOldwTax.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCRateOldwTax.Location = new System.Drawing.Point(318, 119);
-            this.pnlCRateOldwTax.Name = "pnlCRateOldwTax";
-            this.pnlCRateOldwTax.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlCRateOldwTax.Size = new System.Drawing.Size(144, 68);
-            this.pnlCRateOldwTax.TabIndex = 29;
+            this.pnlCRateOldWTax.BackColor = System.Drawing.Color.Beige;
+            this.pnlCRateOldWTax.Controls.Add(this.label4);
+            this.pnlCRateOldWTax.Controls.Add(this.txtCRateWTaxOld);
+            this.pnlCRateOldWTax.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCRateOldWTax.Location = new System.Drawing.Point(318, 128);
+            this.pnlCRateOldWTax.Name = "pnlCRateOldWTax";
+            this.pnlCRateOldWTax.Padding = new System.Windows.Forms.Padding(3);
+            this.pnlCRateOldWTax.Size = new System.Drawing.Size(144, 64);
+            this.pnlCRateOldWTax.TabIndex = 29;
             // 
             // label4
             // 
@@ -1148,11 +1160,12 @@ namespace DigiposZen.Forms
             // 
             this.txtCRateWTaxOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCRateWTaxOld.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtCRateWTaxOld.Location = new System.Drawing.Point(3, 39);
+            this.txtCRateWTaxOld.Location = new System.Drawing.Point(3, 35);
             this.txtCRateWTaxOld.Name = "txtCRateWTaxOld";
             this.txtCRateWTaxOld.ReadOnly = true;
             this.txtCRateWTaxOld.Size = new System.Drawing.Size(138, 26);
             this.txtCRateWTaxOld.TabIndex = 0;
+            this.txtCRateWTaxOld.TabStop = false;
             this.txtCRateWTaxOld.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
             // 
             // pnlSRate1New
@@ -1162,10 +1175,10 @@ namespace DigiposZen.Forms
             this.pnlSRate1New.Controls.Add(this.txtSRateB1);
             this.pnlSRate1New.Controls.Add(this.txtSRate1New);
             this.pnlSRate1New.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSRate1New.Location = new System.Drawing.Point(318, 348);
+            this.pnlSRate1New.Location = new System.Drawing.Point(318, 363);
             this.pnlSRate1New.Name = "pnlSRate1New";
             this.pnlSRate1New.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlSRate1New.Size = new System.Drawing.Size(144, 67);
+            this.pnlSRate1New.Size = new System.Drawing.Size(144, 64);
             this.pnlSRate1New.TabIndex = 5;
             // 
             // txtSRateB1
@@ -1182,12 +1195,12 @@ namespace DigiposZen.Forms
             // 
             this.txtSRate1New.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSRate1New.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtSRate1New.Location = new System.Drawing.Point(3, 38);
+            this.txtSRate1New.Location = new System.Drawing.Point(3, 35);
             this.txtSRate1New.Name = "txtSRate1New";
             this.txtSRate1New.Size = new System.Drawing.Size(138, 26);
             this.txtSRate1New.TabIndex = 0;
-            this.txtSRate1New.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             this.txtSRate1New.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
+            this.txtSRate1New.Leave += new System.EventHandler(this.TextBoxRateChecks_Leave);
             // 
             // pnlMRPOld
             // 
@@ -1195,10 +1208,10 @@ namespace DigiposZen.Forms
             this.pnlMRPOld.Controls.Add(this.lblMRPA);
             this.pnlMRPOld.Controls.Add(this.txtMRPOld);
             this.pnlMRPOld.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMRPOld.Location = new System.Drawing.Point(468, 119);
+            this.pnlMRPOld.Location = new System.Drawing.Point(468, 128);
             this.pnlMRPOld.Name = "pnlMRPOld";
             this.pnlMRPOld.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlMRPOld.Size = new System.Drawing.Size(144, 68);
+            this.pnlMRPOld.Size = new System.Drawing.Size(144, 64);
             this.pnlMRPOld.TabIndex = 6;
             // 
             // lblMRPA
@@ -1214,11 +1227,12 @@ namespace DigiposZen.Forms
             // 
             this.txtMRPOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMRPOld.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtMRPOld.Location = new System.Drawing.Point(3, 39);
+            this.txtMRPOld.Location = new System.Drawing.Point(3, 35);
             this.txtMRPOld.Name = "txtMRPOld";
             this.txtMRPOld.ReadOnly = true;
             this.txtMRPOld.Size = new System.Drawing.Size(138, 26);
             this.txtMRPOld.TabIndex = 0;
+            this.txtMRPOld.TabStop = false;
             this.txtMRPOld.TextChanged += new System.EventHandler(this.textBox16_TextChanged);
             this.txtMRPOld.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
             // 
@@ -1228,10 +1242,10 @@ namespace DigiposZen.Forms
             this.pnlSRate1Old.Controls.Add(this.lblSRateA1);
             this.pnlSRate1Old.Controls.Add(this.txtSRate1Old);
             this.pnlSRate1Old.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSRate1Old.Location = new System.Drawing.Point(618, 119);
+            this.pnlSRate1Old.Location = new System.Drawing.Point(618, 128);
             this.pnlSRate1Old.Name = "pnlSRate1Old";
             this.pnlSRate1Old.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlSRate1Old.Size = new System.Drawing.Size(144, 68);
+            this.pnlSRate1Old.Size = new System.Drawing.Size(144, 64);
             this.pnlSRate1Old.TabIndex = 0;
             // 
             // lblSRateA1
@@ -1248,11 +1262,12 @@ namespace DigiposZen.Forms
             // 
             this.txtSRate1Old.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSRate1Old.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtSRate1Old.Location = new System.Drawing.Point(3, 39);
+            this.txtSRate1Old.Location = new System.Drawing.Point(3, 35);
             this.txtSRate1Old.Name = "txtSRate1Old";
             this.txtSRate1Old.ReadOnly = true;
             this.txtSRate1Old.Size = new System.Drawing.Size(138, 26);
             this.txtSRate1Old.TabIndex = 0;
+            this.txtSRate1Old.TabStop = false;
             this.txtSRate1Old.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.txtSRate1Old.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
             // 
@@ -1262,10 +1277,10 @@ namespace DigiposZen.Forms
             this.pnlSRate2Old.Controls.Add(this.lblSRateA2);
             this.pnlSRate2Old.Controls.Add(this.txtSRate2Old);
             this.pnlSRate2Old.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSRate2Old.Location = new System.Drawing.Point(768, 119);
+            this.pnlSRate2Old.Location = new System.Drawing.Point(768, 128);
             this.pnlSRate2Old.Name = "pnlSRate2Old";
             this.pnlSRate2Old.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlSRate2Old.Size = new System.Drawing.Size(144, 68);
+            this.pnlSRate2Old.Size = new System.Drawing.Size(144, 64);
             this.pnlSRate2Old.TabIndex = 1;
             // 
             // lblSRateA2
@@ -1281,11 +1296,12 @@ namespace DigiposZen.Forms
             // 
             this.txtSRate2Old.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSRate2Old.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtSRate2Old.Location = new System.Drawing.Point(3, 39);
+            this.txtSRate2Old.Location = new System.Drawing.Point(3, 35);
             this.txtSRate2Old.Name = "txtSRate2Old";
             this.txtSRate2Old.ReadOnly = true;
             this.txtSRate2Old.Size = new System.Drawing.Size(138, 26);
             this.txtSRate2Old.TabIndex = 0;
+            this.txtSRate2Old.TabStop = false;
             this.txtSRate2Old.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.txtSRate2Old.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
             // 
@@ -1295,10 +1311,10 @@ namespace DigiposZen.Forms
             this.pnlSRate3Old.Controls.Add(this.lblSRateA3);
             this.pnlSRate3Old.Controls.Add(this.txtSRate3Old);
             this.pnlSRate3Old.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSRate3Old.Location = new System.Drawing.Point(918, 119);
+            this.pnlSRate3Old.Location = new System.Drawing.Point(918, 128);
             this.pnlSRate3Old.Name = "pnlSRate3Old";
             this.pnlSRate3Old.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlSRate3Old.Size = new System.Drawing.Size(144, 68);
+            this.pnlSRate3Old.Size = new System.Drawing.Size(144, 64);
             this.pnlSRate3Old.TabIndex = 2;
             this.pnlSRate3Old.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl3_Paint);
             // 
@@ -1315,11 +1331,12 @@ namespace DigiposZen.Forms
             // 
             this.txtSRate3Old.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSRate3Old.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtSRate3Old.Location = new System.Drawing.Point(3, 39);
+            this.txtSRate3Old.Location = new System.Drawing.Point(3, 35);
             this.txtSRate3Old.Name = "txtSRate3Old";
             this.txtSRate3Old.ReadOnly = true;
             this.txtSRate3Old.Size = new System.Drawing.Size(138, 26);
             this.txtSRate3Old.TabIndex = 0;
+            this.txtSRate3Old.TabStop = false;
             this.txtSRate3Old.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             this.txtSRate3Old.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
             // 
@@ -1329,10 +1346,10 @@ namespace DigiposZen.Forms
             this.pnlSRate4Old.Controls.Add(this.lblSRateA4);
             this.pnlSRate4Old.Controls.Add(this.txtSRate4Old);
             this.pnlSRate4Old.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSRate4Old.Location = new System.Drawing.Point(1068, 119);
+            this.pnlSRate4Old.Location = new System.Drawing.Point(1068, 128);
             this.pnlSRate4Old.Name = "pnlSRate4Old";
             this.pnlSRate4Old.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlSRate4Old.Size = new System.Drawing.Size(144, 68);
+            this.pnlSRate4Old.Size = new System.Drawing.Size(144, 64);
             this.pnlSRate4Old.TabIndex = 3;
             this.pnlSRate4Old.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
@@ -1350,11 +1367,12 @@ namespace DigiposZen.Forms
             // 
             this.txtSRate4Old.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSRate4Old.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtSRate4Old.Location = new System.Drawing.Point(3, 39);
+            this.txtSRate4Old.Location = new System.Drawing.Point(3, 35);
             this.txtSRate4Old.Name = "txtSRate4Old";
             this.txtSRate4Old.ReadOnly = true;
             this.txtSRate4Old.Size = new System.Drawing.Size(138, 26);
             this.txtSRate4Old.TabIndex = 0;
+            this.txtSRate4Old.TabStop = false;
             this.txtSRate4Old.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
             // 
             // lblNewPLU
@@ -1362,7 +1380,7 @@ namespace DigiposZen.Forms
             this.lblNewPLU.AccessibleName = "";
             this.lblNewPLU.AutoSize = true;
             this.lblNewPLU.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblNewPLU.Location = new System.Drawing.Point(468, 276);
+            this.lblNewPLU.Location = new System.Drawing.Point(468, 297);
             this.lblNewPLU.Name = "lblNewPLU";
             this.lblNewPLU.Size = new System.Drawing.Size(144, 18);
             this.lblNewPLU.TabIndex = 17;
@@ -1373,7 +1391,7 @@ namespace DigiposZen.Forms
             // 
             this.txtNewPLU.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNewPLU.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNewPLU.Location = new System.Drawing.Point(468, 297);
+            this.txtNewPLU.Location = new System.Drawing.Point(468, 318);
             this.txtNewPLU.Name = "txtNewPLU";
             this.txtNewPLU.Size = new System.Drawing.Size(144, 26);
             this.txtNewPLU.TabIndex = 16;
@@ -1384,7 +1402,7 @@ namespace DigiposZen.Forms
             this.label5.AccessibleName = "";
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label5.Location = new System.Drawing.Point(618, 276);
+            this.label5.Location = new System.Drawing.Point(618, 297);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(144, 18);
             this.label5.TabIndex = 31;
@@ -1397,10 +1415,10 @@ namespace DigiposZen.Forms
             this.pnlSRate2New.Controls.Add(this.txtSRateB2);
             this.pnlSRate2New.Controls.Add(this.txtSRate2New);
             this.pnlSRate2New.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSRate2New.Location = new System.Drawing.Point(468, 348);
+            this.pnlSRate2New.Location = new System.Drawing.Point(468, 363);
             this.pnlSRate2New.Name = "pnlSRate2New";
             this.pnlSRate2New.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlSRate2New.Size = new System.Drawing.Size(144, 67);
+            this.pnlSRate2New.Size = new System.Drawing.Size(144, 64);
             this.pnlSRate2New.TabIndex = 6;
             // 
             // txtSRateB2
@@ -1417,12 +1435,12 @@ namespace DigiposZen.Forms
             // 
             this.txtSRate2New.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSRate2New.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtSRate2New.Location = new System.Drawing.Point(3, 38);
+            this.txtSRate2New.Location = new System.Drawing.Point(3, 35);
             this.txtSRate2New.Name = "txtSRate2New";
             this.txtSRate2New.Size = new System.Drawing.Size(138, 26);
             this.txtSRate2New.TabIndex = 0;
-            this.txtSRate2New.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             this.txtSRate2New.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
+            this.txtSRate2New.Leave += new System.EventHandler(this.TextBoxRateChecks_Leave);
             // 
             // pnlSRate3New
             // 
@@ -1431,10 +1449,10 @@ namespace DigiposZen.Forms
             this.pnlSRate3New.Controls.Add(this.txtSRateB3);
             this.pnlSRate3New.Controls.Add(this.txtSRate3New);
             this.pnlSRate3New.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSRate3New.Location = new System.Drawing.Point(618, 348);
+            this.pnlSRate3New.Location = new System.Drawing.Point(618, 363);
             this.pnlSRate3New.Name = "pnlSRate3New";
             this.pnlSRate3New.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlSRate3New.Size = new System.Drawing.Size(144, 67);
+            this.pnlSRate3New.Size = new System.Drawing.Size(144, 64);
             this.pnlSRate3New.TabIndex = 7;
             // 
             // txtSRateB3
@@ -1450,12 +1468,12 @@ namespace DigiposZen.Forms
             // 
             this.txtSRate3New.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSRate3New.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtSRate3New.Location = new System.Drawing.Point(3, 38);
+            this.txtSRate3New.Location = new System.Drawing.Point(3, 35);
             this.txtSRate3New.Name = "txtSRate3New";
             this.txtSRate3New.Size = new System.Drawing.Size(138, 26);
             this.txtSRate3New.TabIndex = 0;
-            this.txtSRate3New.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             this.txtSRate3New.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
+            this.txtSRate3New.Leave += new System.EventHandler(this.TextBoxRateChecks_Leave);
             // 
             // pnlSRate4New
             // 
@@ -1464,10 +1482,10 @@ namespace DigiposZen.Forms
             this.pnlSRate4New.Controls.Add(this.txtSRateB4);
             this.pnlSRate4New.Controls.Add(this.txtSRate4New);
             this.pnlSRate4New.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSRate4New.Location = new System.Drawing.Point(768, 348);
+            this.pnlSRate4New.Location = new System.Drawing.Point(768, 363);
             this.pnlSRate4New.Name = "pnlSRate4New";
             this.pnlSRate4New.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlSRate4New.Size = new System.Drawing.Size(144, 67);
+            this.pnlSRate4New.Size = new System.Drawing.Size(144, 64);
             this.pnlSRate4New.TabIndex = 8;
             // 
             // txtSRateB4
@@ -1483,12 +1501,12 @@ namespace DigiposZen.Forms
             // 
             this.txtSRate4New.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSRate4New.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtSRate4New.Location = new System.Drawing.Point(3, 38);
+            this.txtSRate4New.Location = new System.Drawing.Point(3, 35);
             this.txtSRate4New.Name = "txtSRate4New";
             this.txtSRate4New.Size = new System.Drawing.Size(138, 26);
             this.txtSRate4New.TabIndex = 0;
-            this.txtSRate4New.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             this.txtSRate4New.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
+            this.txtSRate4New.Leave += new System.EventHandler(this.TextBoxRateChecks_Leave);
             // 
             // pnlSRate5New
             // 
@@ -1497,10 +1515,10 @@ namespace DigiposZen.Forms
             this.pnlSRate5New.Controls.Add(this.txtSRateB5);
             this.pnlSRate5New.Controls.Add(this.txtSRate5New);
             this.pnlSRate5New.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSRate5New.Location = new System.Drawing.Point(918, 348);
+            this.pnlSRate5New.Location = new System.Drawing.Point(918, 363);
             this.pnlSRate5New.Name = "pnlSRate5New";
             this.pnlSRate5New.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlSRate5New.Size = new System.Drawing.Size(144, 67);
+            this.pnlSRate5New.Size = new System.Drawing.Size(144, 64);
             this.pnlSRate5New.TabIndex = 9;
             // 
             // txtSRateB5
@@ -1516,12 +1534,13 @@ namespace DigiposZen.Forms
             // 
             this.txtSRate5New.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSRate5New.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtSRate5New.Location = new System.Drawing.Point(3, 38);
+            this.txtSRate5New.Location = new System.Drawing.Point(3, 35);
             this.txtSRate5New.Name = "txtSRate5New";
             this.txtSRate5New.Size = new System.Drawing.Size(138, 26);
             this.txtSRate5New.TabIndex = 0;
-            this.txtSRate5New.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.txtSRate5New.TextChanged += new System.EventHandler(this.txtSRate5New_TextChanged);
             this.txtSRate5New.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
+            this.txtSRate5New.Leave += new System.EventHandler(this.TextBoxRateChecks_Leave);
             // 
             // pnlSRate5Old
             // 
@@ -1529,10 +1548,10 @@ namespace DigiposZen.Forms
             this.pnlSRate5Old.Controls.Add(this.lblSRateA5);
             this.pnlSRate5Old.Controls.Add(this.txtSRate5Old);
             this.pnlSRate5Old.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSRate5Old.Location = new System.Drawing.Point(1218, 119);
+            this.pnlSRate5Old.Location = new System.Drawing.Point(1218, 128);
             this.pnlSRate5Old.Name = "pnlSRate5Old";
             this.pnlSRate5Old.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlSRate5Old.Size = new System.Drawing.Size(148, 68);
+            this.pnlSRate5Old.Size = new System.Drawing.Size(148, 64);
             this.pnlSRate5Old.TabIndex = 4;
             // 
             // lblSRateA5
@@ -1548,12 +1567,36 @@ namespace DigiposZen.Forms
             // 
             this.txtSRate5Old.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSRate5Old.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtSRate5Old.Location = new System.Drawing.Point(3, 39);
+            this.txtSRate5Old.Location = new System.Drawing.Point(3, 35);
             this.txtSRate5Old.Name = "txtSRate5Old";
             this.txtSRate5Old.ReadOnly = true;
             this.txtSRate5Old.Size = new System.Drawing.Size(142, 26);
             this.txtSRate5Old.TabIndex = 0;
+            this.txtSRate5Old.TabStop = false;
             this.txtSRate5Old.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
+            // 
+            // dtpNewExpiryDate
+            // 
+            this.dtpNewExpiryDate.CustomFormat = "dd/MMM/yyyy";
+            this.dtpNewExpiryDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtpNewExpiryDate.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.dtpNewExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNewExpiryDate.Location = new System.Drawing.Point(318, 317);
+            this.dtpNewExpiryDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpNewExpiryDate.Name = "dtpNewExpiryDate";
+            this.dtpNewExpiryDate.Size = new System.Drawing.Size(144, 26);
+            this.dtpNewExpiryDate.TabIndex = 33;
+            // 
+            // txtOldExpiryDate
+            // 
+            this.txtOldExpiryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtOldExpiryDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtOldExpiryDate.Location = new System.Drawing.Point(918, 83);
+            this.txtOldExpiryDate.Name = "txtOldExpiryDate";
+            this.txtOldExpiryDate.ReadOnly = true;
+            this.txtOldExpiryDate.Size = new System.Drawing.Size(144, 26);
+            this.txtOldExpiryDate.TabIndex = 35;
+            this.txtOldExpiryDate.TabStop = false;
             // 
             // label3
             // 
@@ -1566,15 +1609,8 @@ namespace DigiposZen.Forms
             // 
             // tbpBarcodePrint
             // 
-            this.tbpBarcodePrint.Controls.Add(this.label19);
-            this.tbpBarcodePrint.Controls.Add(this.label20);
-            this.tbpBarcodePrint.Controls.Add(this.panel5);
             this.tbpBarcodePrint.Controls.Add(this.panelsearch);
             this.tbpBarcodePrint.Controls.Add(this.tableLayoutPanel2);
-            this.tbpBarcodePrint.Controls.Add(this.panel4);
-            this.tbpBarcodePrint.Controls.Add(this.label18);
-            this.tbpBarcodePrint.Controls.Add(this.dgvBarcodeDetails);
-            this.tbpBarcodePrint.Controls.Add(this.panel3);
             this.tbpBarcodePrint.Controls.Add(this.lblVoucherType);
             this.tbpBarcodePrint.Controls.Add(this.rdbSearchSearchInvoice);
             this.tbpBarcodePrint.Controls.Add(this.lblSearchBatchCode);
@@ -1588,51 +1624,195 @@ namespace DigiposZen.Forms
             this.tbpBarcodePrint.UseVisualStyleBackColor = true;
             this.tbpBarcodePrint.Click += new System.EventHandler(this.tbpBarcodePrint_Click);
             // 
+            // panelsearch
+            // 
+            this.panelsearch.BackColor = System.Drawing.Color.DimGray;
+            this.panelsearch.Controls.Add(this.lblSelected);
+            this.panelsearch.Controls.Add(this.dgvSubMenu);
+            this.panelsearch.Location = new System.Drawing.Point(100, 250);
+            this.panelsearch.Name = "panelsearch";
+            this.panelsearch.Size = new System.Drawing.Size(850, 350);
+            this.panelsearch.TabIndex = 46;
+            // 
+            // lblSelected
+            // 
+            this.lblSelected.AutoSize = true;
+            this.lblSelected.Location = new System.Drawing.Point(20, 15);
+            this.lblSelected.Name = "lblSelected";
+            this.lblSelected.Size = new System.Drawing.Size(0, 18);
+            this.lblSelected.TabIndex = 11;
+            // 
+            // dgvSubMenu
+            // 
+            this.dgvSubMenu.AllowUserToAddRows = false;
+            this.dgvSubMenu.AllowUserToDeleteRows = false;
+            this.dgvSubMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSubMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvSubMenu.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSubMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSubMenu.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvSubMenu.Location = new System.Drawing.Point(3, 36);
+            this.dgvSubMenu.Name = "dgvSubMenu";
+            this.dgvSubMenu.RowHeadersWidth = 51;
+            this.dgvSubMenu.Size = new System.Drawing.Size(844, 311);
+            this.dgvSubMenu.TabIndex = 10;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel2.Controls.Add(this.label19, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label20, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.dgvBarcodeDetails, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label18, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel4, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.panel5, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.panel3, 0, 1);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 6);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 168F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1378, 732);
+            this.tableLayoutPanel2.TabIndex = 45;
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(492, 26);
+            this.label19.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label19.Location = new System.Drawing.Point(462, 17);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(104, 18);
+            this.label19.Size = new System.Drawing.Size(453, 18);
             this.label19.TabIndex = 37;
             this.label19.Text = "Invoice Search";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label20.Location = new System.Drawing.Point(921, 17);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(454, 18);
+            this.label20.TabIndex = 45;
+            this.label20.Text = "Settings";
+            // 
+            // dgvBarcodeDetails
+            // 
+            this.dgvBarcodeDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvBarcodeDetails.BackgroundColor = System.Drawing.Color.White;
+            this.dgvBarcodeDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableLayoutPanel2.SetColumnSpan(this.dgvBarcodeDetails, 3);
+            this.dgvBarcodeDetails.Location = new System.Drawing.Point(3, 206);
+            this.dgvBarcodeDetails.Name = "dgvBarcodeDetails";
+            this.dgvBarcodeDetails.RowHeadersWidth = 51;
+            this.dgvBarcodeDetails.Size = new System.Drawing.Size(1372, 523);
+            this.dgvBarcodeDetails.TabIndex = 27;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(40, 29);
+            this.label18.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label18.Location = new System.Drawing.Point(3, 17);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(94, 18);
+            this.label18.Size = new System.Drawing.Size(453, 18);
             this.label18.TabIndex = 36;
             this.label18.Text = "Batch Search";
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.cmbInvNoBCP);
+            this.panel4.Controls.Add(this.lblInvoice);
+            this.panel4.Controls.Add(this.btnFill);
+            this.panel4.Controls.Add(this.cmbVTypeBCP);
+            this.panel4.Controls.Add(this.label17);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(462, 38);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(453, 162);
+            this.panel4.TabIndex = 42;
+            // 
+            // cmbInvNoBCP
+            // 
+            this.cmbInvNoBCP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbInvNoBCP.FormattingEnabled = true;
+            this.cmbInvNoBCP.Location = new System.Drawing.Point(144, 65);
+            this.cmbInvNoBCP.Name = "cmbInvNoBCP";
+            this.cmbInvNoBCP.Size = new System.Drawing.Size(277, 26);
+            this.cmbInvNoBCP.TabIndex = 22;
+            this.cmbInvNoBCP.SelectedIndexChanged += new System.EventHandler(this.cmbVoucherType_SelectedIndexChanged_1);
+            // 
+            // lblInvoice
+            // 
+            this.lblInvoice.AutoSize = true;
+            this.lblInvoice.Location = new System.Drawing.Point(15, 69);
+            this.lblInvoice.Name = "lblInvoice";
+            this.lblInvoice.Size = new System.Drawing.Size(117, 18);
+            this.lblInvoice.TabIndex = 23;
+            this.lblInvoice.Text = "Invoice Number:";
+            // 
+            // btnFill
+            // 
+            this.btnFill.Location = new System.Drawing.Point(338, 105);
+            this.btnFill.Name = "btnFill";
+            this.btnFill.Size = new System.Drawing.Size(83, 37);
+            this.btnFill.TabIndex = 26;
+            this.btnFill.Text = "Load";
+            this.btnFill.UseVisualStyleBackColor = true;
+            // 
+            // cmbVTypeBCP
+            // 
+            this.cmbVTypeBCP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbVTypeBCP.FormattingEnabled = true;
+            this.cmbVTypeBCP.Location = new System.Drawing.Point(144, 12);
+            this.cmbVTypeBCP.Name = "cmbVTypeBCP";
+            this.cmbVTypeBCP.Size = new System.Drawing.Size(277, 26);
+            this.cmbVTypeBCP.TabIndex = 39;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(27, 16);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(105, 18);
+            this.label17.TabIndex = 36;
+            this.label17.Text = "Voucher Type:";
+            // 
             // panel5
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.Controls.Add(this.comboBox1);
+            this.panel5.Controls.Add(this.cmbPrinterBCP);
             this.panel5.Controls.Add(this.label12);
             this.panel5.Controls.Add(this.btnPrintDirect);
             this.panel5.Controls.Add(this.label13);
-            this.panel5.Controls.Add(this.comboBox2);
-            this.panel5.Location = new System.Drawing.Point(938, 36);
+            this.panel5.Controls.Add(this.cmbPrintSchemeBCP);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(921, 38);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(430, 154);
+            this.panel5.Size = new System.Drawing.Size(454, 162);
             this.panel5.TabIndex = 43;
             // 
-            // comboBox1
+            // cmbPrinterBCP
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbPrinterBCP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(142, 65);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(278, 26);
-            this.comboBox1.TabIndex = 41;
+            this.cmbPrinterBCP.FormattingEnabled = true;
+            this.cmbPrinterBCP.Location = new System.Drawing.Point(128, 65);
+            this.cmbPrinterBCP.Name = "cmbPrinterBCP";
+            this.cmbPrinterBCP.Size = new System.Drawing.Size(294, 26);
+            this.cmbPrinterBCP.TabIndex = 41;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(20, 20);
+            this.label12.Location = new System.Drawing.Point(24, 16);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(98, 18);
             this.label12.TabIndex = 40;
@@ -1641,7 +1821,7 @@ namespace DigiposZen.Forms
             // 
             // btnPrintDirect
             // 
-            this.btnPrintDirect.Location = new System.Drawing.Point(307, 103);
+            this.btnPrintDirect.Location = new System.Drawing.Point(339, 105);
             this.btnPrintDirect.Name = "btnPrintDirect";
             this.btnPrintDirect.Size = new System.Drawing.Size(83, 37);
             this.btnPrintDirect.TabIndex = 29;
@@ -1651,125 +1831,51 @@ namespace DigiposZen.Forms
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(20, 73);
+            this.label13.Location = new System.Drawing.Point(68, 69);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 18);
             this.label13.TabIndex = 32;
             this.label13.Text = "Printer:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // comboBox2
+            // cmbPrintSchemeBCP
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbPrintSchemeBCP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(142, 12);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(278, 26);
-            this.comboBox2.TabIndex = 33;
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.cmbVoucherType);
-            this.panel4.Controls.Add(this.lblInvoice);
-            this.panel4.Controls.Add(this.btnFill);
-            this.panel4.Controls.Add(this.comboBox3);
-            this.panel4.Controls.Add(this.label17);
-            this.panel4.Location = new System.Drawing.Point(478, 36);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(451, 154);
-            this.panel4.TabIndex = 42;
-            // 
-            // cmbVoucherType
-            // 
-            this.cmbVoucherType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbVoucherType.FormattingEnabled = true;
-            this.cmbVoucherType.Location = new System.Drawing.Point(145, 65);
-            this.cmbVoucherType.Name = "cmbVoucherType";
-            this.cmbVoucherType.Size = new System.Drawing.Size(298, 26);
-            this.cmbVoucherType.TabIndex = 22;
-            this.cmbVoucherType.SelectedIndexChanged += new System.EventHandler(this.cmbVoucherType_SelectedIndexChanged_1);
-            // 
-            // lblInvoice
-            // 
-            this.lblInvoice.AutoSize = true;
-            this.lblInvoice.Location = new System.Drawing.Point(9, 73);
-            this.lblInvoice.Name = "lblInvoice";
-            this.lblInvoice.Size = new System.Drawing.Size(117, 18);
-            this.lblInvoice.TabIndex = 23;
-            this.lblInvoice.Text = "Invoice Number:";
-            // 
-            // btnFill
-            // 
-            this.btnFill.Location = new System.Drawing.Point(310, 105);
-            this.btnFill.Name = "btnFill";
-            this.btnFill.Size = new System.Drawing.Size(83, 35);
-            this.btnFill.TabIndex = 26;
-            this.btnFill.Text = "Load";
-            this.btnFill.UseVisualStyleBackColor = true;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(145, 12);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(298, 26);
-            this.comboBox3.TabIndex = 39;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(9, 20);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(105, 18);
-            this.label17.TabIndex = 36;
-            this.label17.Text = "Voucher Type:";
+            this.cmbPrintSchemeBCP.FormattingEnabled = true;
+            this.cmbPrintSchemeBCP.Location = new System.Drawing.Point(128, 12);
+            this.cmbPrintSchemeBCP.Name = "cmbPrintSchemeBCP";
+            this.cmbPrintSchemeBCP.Size = new System.Drawing.Size(294, 26);
+            this.cmbPrintSchemeBCP.TabIndex = 33;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.textBox13);
+            this.panel3.Controls.Add(this.txtItemCodeBCP);
             this.panel3.Controls.Add(this.label16);
-            this.panel3.Location = new System.Drawing.Point(25, 36);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 38);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(444, 154);
+            this.panel3.Size = new System.Drawing.Size(453, 162);
             this.panel3.TabIndex = 41;
             // 
-            // textBox13
+            // txtItemCodeBCP
             // 
-            this.textBox13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtItemCodeBCP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox13.Location = new System.Drawing.Point(118, 38);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(317, 26);
-            this.textBox13.TabIndex = 34;
+            this.txtItemCodeBCP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtItemCodeBCP.Location = new System.Drawing.Point(110, 12);
+            this.txtItemCodeBCP.Name = "txtItemCodeBCP";
+            this.txtItemCodeBCP.Size = new System.Drawing.Size(311, 26);
+            this.txtItemCodeBCP.TabIndex = 34;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(16, 46);
+            this.label16.Location = new System.Drawing.Point(21, 16);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(83, 18);
             this.label16.TabIndex = 35;
             this.label16.Text = "Item Code:";
-            // 
-            // dgvBarcodeDetails
-            // 
-            this.dgvBarcodeDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvBarcodeDetails.BackgroundColor = System.Drawing.Color.White;
-            this.dgvBarcodeDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBarcodeDetails.Location = new System.Drawing.Point(25, 208);
-            this.dgvBarcodeDetails.Name = "dgvBarcodeDetails";
-            this.dgvBarcodeDetails.RowHeadersWidth = 51;
-            this.dgvBarcodeDetails.Size = new System.Drawing.Size(1344, 515);
-            this.dgvBarcodeDetails.TabIndex = 27;
             // 
             // lblVoucherType
             // 
@@ -2062,65 +2168,6 @@ namespace DigiposZen.Forms
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label6.Click += new System.EventHandler(this.label6_Click_1);
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(1338, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 148F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(49, 31);
-            this.tableLayoutPanel2.TabIndex = 45;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(950, 27);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(59, 18);
-            this.label20.TabIndex = 45;
-            this.label20.Text = "Settings";
-            // 
-            // panelsearch
-            // 
-            this.panelsearch.BackColor = System.Drawing.Color.DimGray;
-            this.panelsearch.Controls.Add(this.lblSelected);
-            this.panelsearch.Controls.Add(this.dgvSubMenu);
-            this.panelsearch.Location = new System.Drawing.Point(808, 268);
-            this.panelsearch.Name = "panelsearch";
-            this.panelsearch.Size = new System.Drawing.Size(373, 204);
-            this.panelsearch.TabIndex = 46;
-            // 
-            // lblSelected
-            // 
-            this.lblSelected.AutoSize = true;
-            this.lblSelected.Location = new System.Drawing.Point(20, 15);
-            this.lblSelected.Name = "lblSelected";
-            this.lblSelected.Size = new System.Drawing.Size(0, 18);
-            this.lblSelected.TabIndex = 11;
-            // 
-            // dgvSubMenu
-            // 
-            this.dgvSubMenu.AllowUserToAddRows = false;
-            this.dgvSubMenu.AllowUserToDeleteRows = false;
-            this.dgvSubMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvSubMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvSubMenu.BackgroundColor = System.Drawing.Color.White;
-            this.dgvSubMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSubMenu.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvSubMenu.Location = new System.Drawing.Point(3, 36);
-            this.dgvSubMenu.Name = "dgvSubMenu";
-            this.dgvSubMenu.RowHeadersWidth = 51;
-            this.dgvSubMenu.Size = new System.Drawing.Size(367, 165);
-            this.dgvSubMenu.TabIndex = 10;
-            // 
             // frmBarcodeManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -2137,8 +2184,8 @@ namespace DigiposZen.Forms
             this.tlpMain.ResumeLayout(false);
             this.tlpHeader.ResumeLayout(false);
             this.tlpHeader.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.tlpInvoiceHeader.ResumeLayout(false);
+            this.tlpInvoiceHeader.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tabBarcode.ResumeLayout(false);
             this.tbpBatchDeactivator.ResumeLayout(false);
@@ -2156,8 +2203,8 @@ namespace DigiposZen.Forms
             this.pnlPrateOld.PerformLayout();
             this.pnlCRateOld.ResumeLayout(false);
             this.pnlCRateOld.PerformLayout();
-            this.pnlCRateOldwTax.ResumeLayout(false);
-            this.pnlCRateOldwTax.PerformLayout();
+            this.pnlCRateOldWTax.ResumeLayout(false);
+            this.pnlCRateOldWTax.PerformLayout();
             this.pnlSRate1New.ResumeLayout(false);
             this.pnlSRate1New.PerformLayout();
             this.pnlMRPOld.ResumeLayout(false);
@@ -2182,19 +2229,21 @@ namespace DigiposZen.Forms
             this.pnlSRate5Old.PerformLayout();
             this.tbpBarcodePrint.ResumeLayout(false);
             this.tbpBarcodePrint.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBarcodeDetails)).EndInit();
-            this.tbpSettings.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.panelsearch.ResumeLayout(false);
             this.panelsearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubMenu)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBarcodeDetails)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.tbpSettings.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2227,18 +2276,6 @@ namespace DigiposZen.Forms
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.Label lblSave;
         private System.Windows.Forms.Label lblFind;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DateTimePicker dtpInvDate;
-        private System.Windows.Forms.Label lblInvDate;
-        private System.Windows.Forms.TextBox txtPrefix;
-        private System.Windows.Forms.TextBox txtInvAutoNo;
-        private System.Windows.Forms.Label lblInvNo;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnprev;
-        private System.Windows.Forms.ComboBox cboCostCentre;
-        private System.Windows.Forms.Label lblCostCenter;
-        private System.Windows.Forms.ComboBox cboSalesStaff;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel pnlSRate1Old;
         private System.Windows.Forms.Label lblSRateA1;
         private System.Windows.Forms.TextBox txtSRate1Old;
@@ -2270,9 +2307,8 @@ namespace DigiposZen.Forms
         private System.Windows.Forms.Label lblOldPLU;
         private System.Windows.Forms.TextBox txtOldPLU;
         private System.Windows.Forms.Label lblOldExpiryDate;
-        private System.Windows.Forms.TextBox txtOldExpiryDate;
         private System.Windows.Forms.Label lblCurrentBarCode;
-        private System.Windows.Forms.TextBox txtOldBarcode;
+        private System.Windows.Forms.TextBox txtOldBarCode;
         private System.Windows.Forms.Label lblItemName;
         private System.Windows.Forms.TextBox txtItemName;
         private System.Windows.Forms.Label lblItemSearch;
@@ -2280,7 +2316,6 @@ namespace DigiposZen.Forms
         private System.Windows.Forms.Label lblNewPLU;
         private System.Windows.Forms.TextBox txtNewPLU;
         private System.Windows.Forms.Label lblNewExpiry;
-        private System.Windows.Forms.TextBox txtNewExpiry;
         private System.Windows.Forms.Label lblNewBarCode;
         private System.Windows.Forms.TextBox txtNewBarCode;
         private System.Windows.Forms.Panel pnlMRPNew;
@@ -2298,7 +2333,7 @@ namespace DigiposZen.Forms
         private System.Windows.Forms.Panel pnlPrateOld;
         private System.Windows.Forms.Label lblPRateA;
         private System.Windows.Forms.TextBox txtPRateOld;
-        private System.Windows.Forms.Panel pnlCRateOldwTax;
+        private System.Windows.Forms.Panel pnlCRateOldWTax;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCRateWTaxOld;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -2312,7 +2347,7 @@ namespace DigiposZen.Forms
         internal System.Windows.Forms.DataGridView dgvBarcodeDetails;
         internal System.Windows.Forms.Button btnFill;
         private System.Windows.Forms.Label lblInvoice;
-        private System.Windows.Forms.ComboBox cmbVoucherType;
+        private System.Windows.Forms.ComboBox cmbInvNoBCP;
         private System.Windows.Forms.Label lblVoucherType;
         internal System.Windows.Forms.RadioButton rdbSearchSearchInvoice;
         private System.Windows.Forms.Label lblSearchBatchCode;
@@ -2339,22 +2374,36 @@ namespace DigiposZen.Forms
         private System.Windows.Forms.TreeView trvBarcodeTags;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbPrintSchemeBCP;
+        private System.Windows.Forms.ComboBox cmbVTypeBCP;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox txtItemCodeBCP;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbPrinterBCP;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Panel panelsearch;
         private System.Windows.Forms.Label lblSelected;
         internal System.Windows.Forms.DataGridView dgvSubMenu;
+        private System.Windows.Forms.TableLayoutPanel tlpInvoiceHeader;
+        private System.Windows.Forms.Label lblInvNo;
+        private System.Windows.Forms.Label lblInvDate;
+        private System.Windows.Forms.DateTimePicker dtpInvDate;
+        private System.Windows.Forms.Label lblCostCenter;
+        private System.Windows.Forms.ComboBox cboCostCentre;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnprev;
+        private System.Windows.Forms.TextBox txtPrefix;
+        private System.Windows.Forms.TextBox txtInvAutoNo;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.ComboBox cboSalesStaff;
+        private System.Windows.Forms.DateTimePicker dtpNewExpiryDate;
+        private System.Windows.Forms.TextBox txtOldExpiryDate;
     }
 }

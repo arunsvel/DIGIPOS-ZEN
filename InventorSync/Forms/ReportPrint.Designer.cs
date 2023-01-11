@@ -69,7 +69,7 @@ namespace DigiposZen.Forms
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
             this.Name = "ReportPrint";
-            this.Text = "Form3";
+            this.Text = "Print";
             this.Load += new System.EventHandler(this.ReportPrint_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tblAccountGroupBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digiposDemoDataSet)).EndInit();

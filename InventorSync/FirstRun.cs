@@ -172,7 +172,7 @@ namespace DigiposZen.Forms
                     if (Convert.ToInt32(cnn.fields("NOS")) < 3)
                     {
                         return;
-                        MessageBox.Show("Sorry . We couldn't restore the files to the database. make sure your SQL is running.");
+                        //MessageBox.Show("Sorry . We couldn't restore the files to the database. make sure your SQL is running.");
                     }
                     else
                     {
